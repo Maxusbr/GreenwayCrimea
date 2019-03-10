@@ -28,5 +28,23 @@
     "inputFiles": [
       "vendors/jquery/jquery-2.1.4.js"
     ]
+  },
+  {
+    "outputFileName": "scripts/business/owl.carousel.min.js",
+    "inputFiles": [
+      "scripts/business/owl.carousel.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/business/jquery.easing.1.3.min.js",
+    "inputFiles": [
+      "scripts/business/jquery.easing.1.3.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/business/custom.min.js",
+    "inputFiles": [
+      "scripts/business/custom.js"
+    ]
   }
 ]

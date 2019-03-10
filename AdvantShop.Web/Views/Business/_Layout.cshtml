@@ -14,6 +14,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=cyrillic" rel="stylesheet">
 
 	<script type="text/javascript" src="/vendors/jquery/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="/scripts/business/jquery.lazy.min.js"></script>
+	<script type="text/javascript" src="/scripts/business/jquery.lazy.youtube.min.js"></script>
 	@*	<script type="text/javascript" src="/vendors/angular/angular.js"></script>*@
 	<style>
 		.ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
@@ -24,12 +26,20 @@
 	<!--===== Script Source ========-->
 	@*<script src="/scripts/business/jquery.js"></script>*@
 	<script src="/scripts/business/bootstrap.js"></script>
-	<script src="/scripts/business/owl.carousel.js"></script>
-	<script src="/scripts/business/jquery.easing.1.3.js"></script>
+	<script src="/scripts/business/owl.carousel.min.js"></script>
+	<script src="/scripts/business/jquery.easing.1.3.min.js"></script>
 	<!-- Magnific Popup core JS file -->
 	<script src="/scripts/business/jquery.magnific-popup.min.js"></script>
-	<script src="/scripts/business/custom.js"></script>
-
+	<script src="/scripts/business/custom.min.js"></script>
+	<script>
+		$(function () {
+			$("iframe[data-src]").Lazy({
+				afterLoad: function (element) {
+					element.fadeIn(600);
+				}
+			});
+		});
+	</script>
 </head>
 
 <body class="">
@@ -65,5 +75,6 @@
 
 	<link rel="stylesheet" type="text/css" href="/scripts/_partials/cookies-policy/styles/cookies-policy.css">
 	@Html.Partial("_FooterMinScripts")
+	
 </body>
 </html>
