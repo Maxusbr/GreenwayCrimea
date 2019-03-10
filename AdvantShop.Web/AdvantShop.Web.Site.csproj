@@ -1271,17 +1271,6 @@
     <Content Include="design\themes\_none\theme.config" />
     <Content Include="design\themes\_themes.scss" />
     <Content Include="Areas\Mobile\Views\Business\_Layout.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_AdBonus.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_Bonuses.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_Comments.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_Features.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_Footer.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_FooterMinScripts.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_HeaderMain.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_Products.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\_StepRegistration.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\Index.cshtml" />
-    <Content Include="Areas\Mobile\Views\Business\Logo.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="fonts\fontawesome-webfont\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont\fontawesome-webfont.ttf" />
