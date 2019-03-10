@@ -1,0 +1,49 @@
+.color-viewer-item {
+  line-height: 0;
+  font-size: 0;
+  display: inline-block;
+  padding: 0.0625rem;
+  /*margin: rem-calc(1px);*/
+  box-sizing: border-box;
+  border: 1px transparent solid;
+  vertical-align: middle; }
+
+.color-viewer-item, .color-viewer-inner {
+  border-radius: 0.1875rem;
+  position: relative;
+  cursor: pointer; }
+
+.color-viewer-alt .color-viewer-inner {
+  width: auto !important;
+  height: auto !important;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1;
+  background: transparent !important;
+  border: 0; }
+
+.color-viewer-inner {
+  margin: 0.125rem;
+  display: block;
+  border-style: solid;
+  border-width: 1px;
+  background-repeat: no-repeat; }
+
+.color-viewer-header {
+  font-size: 0.75rem;
+  margin-bottom: 0.3125rem; }
+
+.carousel-colors-wrap {
+  text-align: center;
+  line-height: 0;
+  font-size: 0; }
+  .carousel-colors-wrap .carousel-inner {
+    padding: 0 1px; }
+
+.carousel-colors {
+  padding: 0 1.25rem; }
+  .carousel-colors .color-viewer-list {
+    white-space: nowrap; }
+
+.carousel-nav-not-show.carousel-colors {
+  padding: 0; }

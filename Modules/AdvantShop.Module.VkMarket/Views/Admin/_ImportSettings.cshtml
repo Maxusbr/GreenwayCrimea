@@ -1,0 +1,13 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@model AdvantShop.Module.VkMarket.Models.Settings.ImportSettingsModel
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>()
+    {
+        url + "modules/vkMarket/content/js/vkMarketService.js",
+        url + "modules/vkMarket/content/js/vkMarketImportSettings/vkMarketImportSettings.js",
+    };
+}
+<div data-oc-lazy-load="[@(String.Join(", ", scripts.Select(x => "'" + x + "?v=" + Model.Version + "'")))]">
+    <vk-market-import-settings></vk-market-import-settings>
+</div>

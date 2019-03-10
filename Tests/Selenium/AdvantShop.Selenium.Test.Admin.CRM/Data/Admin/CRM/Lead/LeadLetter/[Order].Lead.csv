@@ -1,0 +1,2 @@
+﻿Id;FirstName;Phone;Email;LeadStatus;Comment;AdminComment;CreatedDate[DATE];Discount;OrderSourceId;LastName;Patronymic;Description;Sum;DealStatusId;ShippingCost
+1;FirstName1;1;ksyusha.ker1994@gmail.com;New;comment1;admin comment1;06.10.2015 14:40;0;1;LastName1;Patron1;Desc1;100;1;0

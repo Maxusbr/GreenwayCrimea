@@ -1,0 +1,36 @@
+﻿@import "defFuncValues.scss";
+
+@function toEm($target, $context: $hfs) {
+   @if $target == 0 { @return 0 }
+   @return $target / $context + 0em;
+}
+
+@function toEmSize($target, $context) {
+   @if $target == 0 { @return 0 }
+   @return unquote(($target / $context)*100 + '%') ;
+}
+
+@mixin font-face($style-name, $file, $family, $category:"") {
+    $filepath: "../fonts/" + $family + "/" + $file;
+    @font-face {
+        font-family: "#{$style-name}";
+        src: url($filepath + ".eot");
+        src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
+    }
+    %#{$style-name} {
+        font: {
+            @if $category != "" {
+                family: (quote(#{$name}), $category);
+            }
+            @else {
+                family: "#{$style-name}";
+                weight: normal;
+            }
+        }
+    }
+}
+
+
+
+
+

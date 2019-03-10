@@ -1,0 +1,14 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.IPTelephonySettingsModel
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="CallBackZadarmaPhone" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.ZadarmaPhone")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.CallBackZadarmaPhone, new { ng_model = "settingsTelephony.callBackZadarmaPhone", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.ZadarmaPhone")">
+            @T("Admin.Zadarma.CallBack.PhoneNote")
+        </help-trigger>
+    </div>
+</div>

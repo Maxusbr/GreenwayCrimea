@@ -1,0 +1,91 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Настройки шаблона</h2>
+</div>
+<div class="modal-body modal-body-template-setting">
+    <form name="templateSettingsForm" novalidate="novalidate">
+        <div ng-repeat="section in ctrl.templateSettingsData.Sections track by $index" class="container-fluid">
+            <div class="template-setting-block">
+                <div class="row top-xs">
+                    <div class="col-xs-3 col-wl-3">
+                        <h2 class="template-setting-title">{{section.Name}}</h2>
+                    </div>
+                    <div class="col-xs-9 col-wl-9">
+                        <div class="ibox">
+                            <div class="template-setting-inputs ibox-content">
+                                <div class="row">
+                                    <div class="col-xs-5 m-b-sm" ng-repeat="item in section.Settings track by $index">
+                                        <ng-switch on="item.Type">
+                                            <div class="row" ng-switch-when="Checkbox">
+                                                <div class="col-xs-12">
+                                                    <div class="m-b-xs">
+                                                        <label class="adv-checkbox-label" data-e2e="{{item.Title}}">
+                                                            <input type="checkbox" class="adv-checkbox-input" ng-model="item.Value" ng-true-value="'True'"/>
+                                                            <span class="adv-checkbox-emul"></span>
+                                                            <span ng-bind="item.Title"></span>
+                                                            <help-trigger class="ng-cloak word-spacing" use-template="true" ng-if="item.Description != null && item.Description.length > 0">
+                                                                <div ng-bind="item.Description"></div>
+                                                            </help-trigger>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" ng-switch-when="TextBox" data-e2e="{{item.Title}}">
+                                                <div class="col-xs-12">
+                                                    <div class="m-b-xs">
+                                                        <span ng-bind="item.Title"></span>
+                                                        <help-trigger class="ng-cloak word-spacing" use-template="true" ng-if="item.Description != null && item.Description.length > 0">
+                                                            <div ng-bind="item.Description"></div>
+                                                        </help-trigger>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <input class="form-control" type="text" ng-model="item.Value"/>
+                                                </div>
+                                            </div>
+
+                                            <div ng-switch-when="MultiLineTextBox" data-e2e="{{item.Title}}">
+                                                <div class="col-xs-12">
+                                                    <div class="m-b-xs">
+                                                        <span ng-bind="item.Title"></span>
+                                                        <help-trigger class="ng-cloak word-spacing" use-template="true" ng-if="item.Description != null && item.Description.length > 0">
+                                                            <div ng-bind="item.Description"></div>
+                                                        </help-trigger>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <textarea ng-model="item.Value"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" ng-switch-when="DropDownList">
+                                                <div class="col-xs-12">
+                                                    <div class="m-b-xs">
+                                                        <span ng-bind="item.Title"></span>
+                                                        <help-trigger class="ng-cloak word-spacing" use-template="true" ng-if="item.Description != null && item.Description.length > 0">
+                                                            <div ng-bind="item.Description"></div>
+                                                        </help-trigger>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-9 col-wl-10" data-e2e="{{item.Title}}">
+                                                    <select class="form-control" ng-model="item.Value" ng-options="option.Value as option.Title for option in item.Options"></select>
+                                                </div>
+                                            </div>
+
+                                        </ng-switch>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.save(ctrl.templateSettingsData)">Сохранить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.cancel()">Отмена</button>
+</div>

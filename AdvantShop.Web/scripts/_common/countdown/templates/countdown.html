@@ -1,0 +1,33 @@
+﻿<div class="countdown wSeconds">
+    <div class="countdown-item">
+        <span class="countdown-item-part" data-ng-bind="countdown.dataTime.days < 10 ? 0 : countdown.dataTime.days.toString().charAt(0)"></span>
+        <span class="countdown-item-part" data-ng-bind="countdown.dataTime.days < 10 ? countdown.dataTime.days.toString().charAt(0) : countdown.dataTime.days.toString().charAt(1)"></span>
+        <div class="countdown-item-label">
+            {{ ::'Js.Countdown.Days' | translate }}
+        </div>
+    </div>
+    <div class="countdown-spliter">:</div>
+    <div class="countdown-item">
+        <span class="countdown-item-part" data-ng-bind="countdown.dataTime.hours < 10 ? 0 : countdown.dataTime.hours.toString().charAt(0)"></span>
+        <span class="countdown-item-part" data-ng-bind="countdown.dataTime.hours < 10 ? countdown.dataTime.hours.toString().charAt(0) : countdown.dataTime.hours.toString().charAt(1)"></span>
+        <div class="countdown-item-label">
+            {{ ::'Js.Countdown.Hours' | translate }}
+        </div>
+    </div>
+    <div class="countdown-spliter">:</div>
+    <div class="countdown-item">
+        <span class="countdown-item-part" data-ng-bind="countdown.dataTime.minutes < 10 ? 0 : countdown.dataTime.minutes.toString().charAt(0)"></span>
+        <span class="countdown-item-part" data-ng-bind="countdown.dataTime.minutes < 10 ? countdown.dataTime.minutes.toString().charAt(0) : countdown.dataTime.minutes.toString().charAt(1)"></span>
+        <div class="countdown-item-label">
+            {{ ::'Js.Countdown.Minutes' | translate }}
+        </div>
+    </div>
+    <div class="countdown-spliter">:</div>
+    <div class="countdown-item">
+        <span class="countdown-item-part" data-ng-bind="countdown.dataTime.seconds < 10 ? 0 : countdown.dataTime.seconds.toString().charAt(0)"></span>
+        <span class="countdown-item-part" data-ng-bind="countdown.dataTime.seconds < 10 ? countdown.dataTime.seconds.toString().charAt(0) : countdown.dataTime.seconds.toString().charAt(1)"></span>
+        <div class="countdown-item-label">
+            {{ ::'Js.Countdown.Seconds' | translate }}
+        </div>
+    </div>
+</div>

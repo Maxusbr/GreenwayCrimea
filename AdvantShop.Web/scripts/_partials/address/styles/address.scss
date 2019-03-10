@@ -1,0 +1,39 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+.address-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: block;
+}
+
+.address-list-item {
+    font-size: $font-size-medium;
+    padding: rem-calc(20px) 0 0 0;
+    margin: 0;
+    /*border-bottom: 1px #ededee solid;*/
+
+    &:first-child {
+        border-top: 1px #ededee solid;
+    }
+}
+
+.address-list-change-text {
+    cursor: pointer;
+}
+
+.address-controls-item {
+    margin-left: rem-calc(20px);
+}
+
+.address-empty {
+    font-size: $font-size-xmedium;
+    padding: $padding-base 0;
+}
+.address-dialog{
+    min-width: 40vw; /*for IE*/
+}
+
+.row-address-full {
+    max-width: 40vw;
+}

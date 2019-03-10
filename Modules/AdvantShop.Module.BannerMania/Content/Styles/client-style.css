@@ -1,0 +1,12 @@
+﻿#bannerInTop {
+    display: inline-block;
+    margin-top: 0px;
+    height: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.bm-banner {
+    text-align: center;
+    margin: 0 auto;
+}

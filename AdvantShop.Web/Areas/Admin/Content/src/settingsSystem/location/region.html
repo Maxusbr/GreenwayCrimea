@@ -1,0 +1,11 @@
+﻿<ui-grid-custom grid-unique-id="gridRegion"
+                grid-row-identificator="'RegionId'"
+                grid-options="$ctrl.gridOptions"
+                grid-on-init="$ctrl.onGridInit({grid: grid})"
+                grid-url="'regions/getregions'"
+                grid-params="$ctrl.gridParams"
+                grid-inplace-url="'regions/inplaceregion'"
+                grid-extend-ctrl="$ctrl">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="$ctrl.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "";
+    var baseUrl = UrlService.GetUrl();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <base href="@baseUrl" />
+    <title>@Resource.Install_Default_Title</title>
+    <link type="text/css" rel="stylesheet" href="@(baseUrl)styles/views/install.css" />
+    <link type="text/css" rel="stylesheet" href="@(baseUrl)admin/css/jq/jquery.autocomplete.css" />
+    <link type="text/css" rel="stylesheet" href="@(baseUrl)admin/css/validator.css" />
+    <script type="text/javascript" src="@(baseUrl)admin/js/jq/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="@(baseUrl)admin/js/localization/@(SettingsMain.Language)/lang.js"></script>
+</head>
+<body>
+    <table class="container footer-img">
+        <tr>
+            <td class="header">
+                <img src="@(baseUrl)images/advlogo.png" alt="AdvantShop.NET" class="logo" />
+                <div class="header-text">
+                    <span class="options">@Resource.Installer_Setting</span><br />
+                    <span class="version">@Resource.Installer_Version</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="content">
+                <div class="column-left">
+                    <div class="column-split-top">
+                    </div>
+                    <div class="steps">
+                        @Html.Action("Menu", "Install")
+                    </div>
+                </div>
+                <div class="column-right">
+                    @RenderBody()
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="column-split-bottom"></td>
+        </tr>
+        <tr>
+            <td class="footer">
+                <a href="http://advantshop.net">AdVantShop.NET</a> powered by ITM Company 2006-@DateTime.Now.Year
+            </td>
+        </tr>
+    </table>
+    <div class="footer-bg"></div>
+    <div class="footer-img"></div>
+    <div class="top-img"></div>
+    <script type="text/javascript" src="@(baseUrl)admin/js/jq/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="@(baseUrl)admin/js/jq/jquery.validate.js"></script>
+    <script type="text/javascript" src="@(baseUrl)admin/js/validateInit.js"></script>
+    <script type="text/javascript" src="@(baseUrl)scripts/install/install.js"></script>
+</body>
+</html>

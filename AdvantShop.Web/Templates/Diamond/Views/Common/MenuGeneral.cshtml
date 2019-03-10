@@ -1,0 +1,138 @@
+﻿@model AdvantShop.ViewModel.Common.MenuViewModel
+@{
+    var viewMode = Model.ViewMode.ToString().ToLower();
+}
+
+    
+        <ul class="menu-general harmonica" 
+            data-submenu-container="{'checkOrientation': true, 'type': '@viewMode', submenuDirection: 'below', blockOrientation: '.js-menu-general-block-orientation'}" 
+            data-harmonica 
+            data-harmonica-tile-outer-width="45" 
+            data-harmonica-class-tile="menu-general-item menu-general-tile cs-l-4" 
+            data-harmonica-class-tile-submenu="menu-general-tile-submenu">
+            @foreach (var item in Model.MenuItems)
+            {
+                if (item.NoFollow)
+                {
+                    <!--noindex-->
+                }
+                <li class="menu-general-item cs-bg-i-1 @(item.HasChild ? "parent": "")" data-harmonica-item data-submenu-parent>
+                    @if (item.HasChild)
+                    {
+                        <ul class="menu-general-submenu cs-bg-5 ng-hide" data-submenu data-ng-show="submenu.isSubmenuVisible">
+                            <li class="menu-general-sub-row">
+                                @if (item.DisplaySubItems)
+                                {
+                                    <div class="menu-general-sub-cell-multiple">
+                                        @{
+                                            var itemsInColumn = 3;
+                                        }
+                                        @for (int index = 0; index < item.SubItems.Count; index++)
+                                        {
+                                            <div class="menu-general-sub-column">
+                                                <div class="menu-general-sub-category-parent @(item.SubItems[index].HasChild && item.DisplaySubItems ? "true-parent" : "")">
+                                                    @if (item.SubItems[index].NoFollow)
+                                                    {
+                                                        <!--noindex-->
+                                                    }
+                                                    <a class="cs-l-4 link-text-decoration" href="@item.SubItems[index].UrlPath" @(item.SubItems[index].Blank ? " target=\"_blank\"" : "") @(item.SubItems[index].NoFollow ? "rel=\"nofollow\"" : "")>@Html.Raw(item.SubItems[index].Name)</a>
+                                                    @if (item.SubItems[index].NoFollow)
+                                                    {
+                                                        <!--/noindex-->
+                                                    }
+                                                </div>
+                                                @if (item.SubItems[index].HasChild)
+                                                {
+                                                    <ul class="menu-general-sub-childs">
+                                                        @foreach (var subSubItem in item.SubItems[index].SubItems)
+                                                        {
+                                                            <li class="menu-general-sub-category ">
+                                                                @if (subSubItem.NoFollow)
+                                                                {
+                                                                    <!--noindex-->
+                                                                }
+                                                                <a class="cs-l-4" href="@subSubItem.UrlPath" @(subSubItem.Blank ? "target=\"_blank\"" : "") @(subSubItem.NoFollow ? "rel=\"nofollow\"" : "")>@Html.Raw(subSubItem.Name)</a>
+                                                                @if (subSubItem.NoFollow)
+                                                                {
+                                                                    <!--/noindex-->
+                                                                }
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </div>
+                                            if (index%itemsInColumn == 0 && index != 0 || index == item.SubItems.Count)
+                                            {
+                                                <br>
+                                            }
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    var itemsInColumn = 10;
+                                    var itemsInRow = itemsInColumn * 4;
+                                    for (int index = 0; index <= item.SubItems.Count - 1; index++)
+                                    {
+                                        if (index % itemsInColumn == 0)
+                                        {
+                                            @:<div class="menu-general-sub-column">
+                                        }
+                                            <div class="menu-general-category-parent @(item.SubItems[index].HasChild && item.DisplaySubItems ? "true-parent" : "")">
+                                                @if (item.SubItems[index].NoFollow)
+                                                {
+                                                    <!--noindex-->
+                                                }
+                                                <a class="cs-l-4 link-text-decoration" href="@item.SubItems[index].UrlPath" @(item.SubItems[index].Blank ? "target=\"_blank\"" : "") @(item.SubItems[index].NoFollow ? "rel=\"nofollow\"" : "")> @Html.Raw(item.SubItems[index].Name)</a>
+                                                @if (item.SubItems[index].NoFollow)
+                                                {
+                                                    <!--/noindex-->
+                                                }
+                                            </div>
+                                        if ((index + 1) % itemsInColumn == 0 && index != 0 || (index + 1) == item.SubItems.Count)
+                                        {
+                                            @:</div>
+
+                                            if((index + 1) % itemsInRow == 0){
+                                                <br />
+                                            }   
+                                        }
+                                    }
+                                }
+
+                                @if (item.DisplayBrandsInMenu && item.Brands.Count > 0)
+                                {
+                                    <div class="menu-general-sub-cell">
+                                        <div class="menu-general-sub-column menu-general-sub-brand-column cs-l-4">
+                                            <div class="menu-general-sub-brand-title">
+                                                <a href="@Url.AbsoluteRouteUrl("BrandRoot")" class="cs-l-4 link-text-decoration">@T("Catalog.MenuCatalog.Brands")</a>
+                                            </div>
+                                            <ul class="menu-general-sub-childs">
+                                                @foreach (var brand in item.Brands)
+                                                {
+                                                    <li class="menu-general-sub-category ">
+                                                        <a href="@Url.AbsoluteRouteUrl("Brand", new {url = brand.UrlPath})" class="cs-l-4 link-text-decoration">@Html.Raw(brand.Name)</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                }
+                            </li>
+                        </ul>
+                    }
+                    <a class="menu-general-root-link cs-l-4" href="@item.UrlPath" @(item.Blank ? "target='_blank'" : "") @(item.NoFollow ? "rel=\"nofollow\"" : "") data-harmonica-link>
+                        @if (!string.IsNullOrEmpty(item.IconPath))
+                        {
+                            <span class="menu-general-icon"><img class="menu-general-icon-img" src="@(@item.IconPath.Contains("http") ? @item.IconPath : ("pictures/icons/"+ @item.IconPath))" alt="" /></span>
+                        }
+                        <span class="menu-general-root-link-text">@item.Name</span>
+                    </a>
+                </li>
+                if (item.NoFollow)
+                {
+                    <!--/noindex-->
+                }
+            }
+        </ul>
+

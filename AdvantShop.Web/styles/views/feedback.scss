@@ -1,0 +1,55 @@
+﻿@import "../_settings.scss";
+@import "../functions/_util.scss";
+
+.feedback-theme-changer {
+    margin-top: 30px;
+    margin-bottom: 45px;
+}
+
+.feedback-theme-item {
+    font-size: rem-calc(16px);
+    text-align: center;
+    text-decoration: none;
+    line-height: 51px;
+    position: relative;
+    border: 1px solid #dcdcdc;
+    &:hover {
+        text-decoration: none;
+    }
+    &.active {
+        border-color: #4b4f58;
+        color: #fff;
+        background: #4b4f58; 
+        /*&:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            left: 0;
+            bottom: -13px;
+            right: 0;
+            margin: 0 auto;
+            display: inline-block;
+            border-left: 13px solid transparent;
+            border-right: 13px solid transparent;
+            border-top: 13px solid #4b4f58;
+            border-bottom: 0 solid transparent;
+        }*/
+    }
+    
+}
+
+.feedback-theme-changer .feedback-theme-item:first-child {
+    border-right-width: 0;
+    border-radius: 5px 0 0 5px;
+}
+.feedback-theme-changer .feedback-theme-item:nth-child(4) {
+    border-left-width: 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.feedbackSuccess-block {
+    font-size: $font-size-large;
+    font-weight: bold;
+    padding-bottom: rem-calc(50px);
+    padding-top: rem-calc(40px);
+}

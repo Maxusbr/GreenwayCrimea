@@ -1,0 +1,41 @@
+﻿<form novalidate name="addEditRuleForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новое условие" : "Редактирование условия"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.addEditRuleForm = addEditRuleForm">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Сотрудник</span>
+            </label>
+            <div class="col-xs-9">
+                <select ng-model="ctrl.filterType" ng-options="s.label for s in ctrl.filterTypes track by s.value" 
+                        class="form-control" required validation-input-text="Сотрудник" data-e2e="BizRuleManager">
+                    <option value="">Не выбран</option>
+                </select>
+            </div>
+        </div>
+        <div ng-if="ctrl.filterType.type != null && ctrl.filterType.type != 2 && ctrl.filterType.type != 3">
+            <div class="form-group row">
+                <label class="col-xs-3 control-label">Роль</label>
+                <div class="col-xs-9">
+                    <select ng-model="ctrl.managerRole" ng-options="s.label for s in ctrl.managerRoles track by s.value" class="form-control" data-e2e="BizRuleManagerRole">
+                        <option value="">Не выбрана</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-3 control-label">Город</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" ng-model="ctrl.city" data-e2e="BizRuleManagerCity">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button"
+                data-button-validation-success="ctrl.apply()" data-button-validation
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !addEditRuleForm.modified)" data-e2e="BizRuleManagerOk">Применить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()" data-e2e="BizRuleManagerCancel">Отмена</button>
+    </div>
+</form>

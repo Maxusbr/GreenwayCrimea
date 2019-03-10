@@ -1,0 +1,53 @@
+﻿@using AdvantShop.Helpers
+@model bool
+
+@{
+    bool enableInplace = Model;
+    bool isDebug = HttpContext.Current.IsDebuggingEnabled;
+    string result = "";
+
+    if(isDebug)
+    {
+        result = @"'scripts/_partials/inplace/inplace.js',
+                   'scripts/_partials/inplace/services/inplaceService.js',
+                   'scripts/_partials/inplace/controllers/inplaceSwitchController.js',
+                   'scripts/_partials/inplace/controllers/inplaceRichController.js',
+                   'scripts/_partials/inplace/controllers/inplaceRichButtonsController.js',
+                   'scripts/_partials/inplace/controllers/inplaceModalController.js',
+                   'scripts/_partials/inplace/controllers/inplaceAutocompleteController.js',
+                   'scripts/_partials/inplace/controllers/inplaceAutocompleteButtonsController.js',
+                   'scripts/_partials/inplace/controllers/inplacePropertiesNewController.js',
+                   'scripts/_partials/inplace/controllers/inplaceImageController.js',
+                   'scripts/_partials/inplace/controllers/inplaceImageButtonsController.js',
+                   'scripts/_partials/inplace/controllers/inplacePriceController.js',
+                   'scripts/_partials/inplace/controllers/inplacePricePanelController.js',
+                   'scripts/_partials/inplace/controllers/inplacePriceButtonsController.js',
+                   'scripts/_partials/inplace/controllers/inplaceProgressController.js',
+                   'scripts/_partials/inplace/directives/inplaceDirectivesMinimum.js',
+                   'scripts/_partials/inplace/directives/inplaceDirectives.js'";
+    }else{
+        result = String.Format("'" + UrlService.GetUrl() + "scripts/_partials/inplace/build/{0}.js'", enableInplace ? "inplaceMaximum" : "inplaceMinimum");
+    }
+}
+@if (enableInplace)
+{
+    <script>
+        window.CKEDITOR_BASEPATH = '@UrlService.GetUrl()vendors/ckeditor/';
+    </script>
+    <script src="vendors/ckeditor/ckeditor.js"></script>
+    <script>
+        //выключаем автоматическую инициализацию inline редактирования
+        CKEDITOR.disableAutoInline = true;
+    </script>
+}
+<div data-oc-lazy-load="[{serie:true, files: [
+                         '@UrlService.GetUrl()scripts/_partials/inplace/styles/inplace.css',
+                          @Html.Raw(result)
+                         ]}]">
+    <div data-inplace-start></div>
+    <div data-inplace-progress></div>
+</div>
+
+
+
+

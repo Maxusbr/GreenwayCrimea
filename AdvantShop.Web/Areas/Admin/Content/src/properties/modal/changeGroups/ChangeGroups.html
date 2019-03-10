@@ -1,0 +1,17 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Группы свойств</h2>
+</div>
+<div class="modal-body">
+    <div>
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-options="ctrl.gridOptions"
+                        grid-on-init="ctrl.gridOnInit(grid)"
+                        grid-url="'properties/getPropertyGroups'"
+                        grid-inplace-url="'properties/updateGroup'">
+        </ui-grid-custom>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

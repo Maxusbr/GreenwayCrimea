@@ -1,0 +1,73 @@
+﻿@using AdvantShop.Payment
+@model AdvantShop.Core.Services.Payment.PaymentMethodAdminModel
+
+
+@if (Model.ShowUrls.HasFlag(UrlStatus.ReturnUrl))
+{
+
+        <div class="form-group row">
+            <div class="flex-grow-n col-fixed-size-md">
+                Return url
+            </div>
+            <div class="col-xs-6 relative">
+                @Model.SuccessUrl
+            </div>
+        </div>
+
+}
+
+@if (Model.ShowUrls.HasFlag(UrlStatus.FailUrl))
+{
+
+        <div class="form-group row">
+            <div class="flex-grow-n col-fixed-size-md">
+                Fail url
+            </div>
+            <div class="col-xs-6 relative">
+                @Model.FailUrl
+            </div>
+        </div>
+
+}
+
+@if (Model.ShowUrls.HasFlag(UrlStatus.CancelUrl))
+{
+
+        <div class="form-group row">
+            <div class="flex-grow-n col-fixed-size-md">
+                Cancel url
+            </div>
+            <div class="col-xs-6 relative">
+                @Model.CancelUrl
+            </div>
+        </div>
+
+}
+
+@if (Model.ShowUrls.HasFlag(UrlStatus.NotificationUrl))
+{
+
+        <div class="form-group row">
+            <div class="flex-grow-n col-fixed-size-md">
+                URL обработки оповещений об оплате (Notification URL)
+            </div>
+            <div class="col-xs-6 relative">
+                @Model.NotificationUrl
+            </div>
+        </div>
+
+}
+
+@if (Model.Instruction != null)
+{
+
+        <div class="form-group row">
+            <div class="col-xs-9">
+                <div class="adv-panel-info">
+                    <a href="@Model.Instruction.Item1" target="_blank">@Model.Instruction.Item2</a>
+                </div>
+            </div>
+        </div>
+
+
+}

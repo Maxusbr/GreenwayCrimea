@@ -1,0 +1,31 @@
+﻿<form name="formAddEditTaskGroup" novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новый проект" : "Редактирование проекта"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.formAddEditTaskGroup = formAddEditTaskGroup">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">
+                    Название
+                </span>
+            </label>
+            <div class="col-xs-9">
+                <input data-e2e="taskGroupName" type="text" class="form-control" ng-model="ctrl.name" required validation-input-text="Название" autofocus />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Порядок сортировки</label>
+            <div class="col-xs-9">
+                <input type="text" data-e2e="taskGroupSortOrder" ng-model="ctrl.sortOrder" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-e2e="taskGroupButtonSave"
+                data-button-validation-success="ctrl.save()" data-button-validation
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !formAddEditTaskGroup.modified)"
+                ng-bind="ctrl.mode == 'add' ? 'Добавить' : 'Сохранить'"></button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD968A0C-989A-4CD2-B998-7520F850D4C1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvantShop.Selenium.Test.Admin.Catalog</RootNamespace>
+    <AssemblyName>AdvantShop.Selenium.Test.Admin.Catalog</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="WebDriver, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.WebDriver.3.8.0\lib\net45\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.Support.3.8.0\lib\net45\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\CatalogProperties\Colors\ColorAdd.cs" />
+    <Compile Include="Tests\CatalogProperties\Colors\ColorEdit.cs" />
+    <Compile Include="Tests\CatalogProperties\Colors\ColorMainPage.cs" />
+    <Compile Include="Tests\CatalogProperties\Colors\ColorPaginationAndView.cs" />
+    <Compile Include="Tests\CatalogProperties\Colors\ColorSelect.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\GroupProperties.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesAdd.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesEdit.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesFilterName.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesFilterSortOrder.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesFilterUseInBrief.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesFilterUseInDetails.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesFilterUseInFilter.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesInPlace.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesMainPage.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesPaginationAndView.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesSelect.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesSort.cs" />
+    <Compile Include="Tests\CatalogProperties\Properties\PropertiesValue.cs" />
+    <Compile Include="Tests\CatalogProperties\Size\SizeAddEditTest.cs" />
+    <Compile Include="Tests\CatalogProperties\Size\SizePageTest.cs" />
+    <Compile Include="Tests\CatalogProperties\Size\SizeTest.cs" />
+    <Compile Include="Tests\CatalogProperties\Tag\TagAdd.cs" />
+    <Compile Include="Tests\CatalogProperties\Tag\TagEdit.cs" />
+    <Compile Include="Tests\CatalogProperties\Tag\TagFilter.cs" />
+    <Compile Include="Tests\CatalogProperties\Tag\TagPaginationAndView.cs" />
+    <Compile Include="Tests\CatalogProperties\Tag\TagSelect.cs" />
+    <Compile Include="Tests\CatalogProperties\Tag\TagSort.cs" />
+    <Compile Include="Tests\Category\AddCategory\CategoryAddAdditional.cs" />
+    <Compile Include="Tests\Category\AddCategory\CategoryAddBaseInfo.cs" />
+    <Compile Include="Tests\Category\AddCategory\CategoryAddPicture.cs" />
+    <Compile Include="Tests\Category\AddCategory\CategoryAddSEO.cs" />
+    <Compile Include="Tests\Category\CategoriesCatalog\CatalogAdminTest.cs" />
+    <Compile Include="Tests\Category\CategoriesCatalog\NoCategoriesCatalogAdminTest.cs" />
+    <Compile Include="Tests\Category\EditCategory\CategoryEditAdditional.cs" />
+    <Compile Include="Tests\Category\EditCategory\CategoryEditCategoryBaseInfo.cs" />
+    <Compile Include="Tests\Category\EditCategory\CategoryEditCategoryPicture.cs" />
+    <Compile Include="Tests\Category\EditCategory\CategoryEditRecommendProd.cs" />
+    <Compile Include="Tests\Category\EditCategory\CategoryEditSEO.cs" />
+    <Compile Include="Tests\Category\EditCategory\CategoryEditSotr.cs" />
+    <Compile Include="Tests\Export\ExportCategories\ExportCategopieTest.cs" />
+    <Compile Include="Tests\Export\ExportProducts\ExportProductsAddEditTest.cs" />
+    <Compile Include="Tests\Export\ExportProducts\ExportProductsTest.cs" />
+    <Compile Include="Tests\PriceRegulation\PriceRegulationDecreasePriceZeroTest.cs" />
+    <Compile Include="Tests\PriceRegulation\PriceRegulationDecreaseTest.cs" />
+    <Compile Include="Tests\PriceRegulation\PriceRegulationIncreasePriceZeroTest.cs" />
+    <Compile Include="Tests\PriceRegulation\PriceRegulationIncreaseSupplyPriceTest.cs" />
+    <Compile Include="Tests\PriceRegulation\PriceRegulationIncreaseSupplyPriceZeroTest.cs" />
+    <Compile Include="Tests\PriceRegulation\PriceRegulationIncreaseTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\ProductListsAddEditTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\ProductListsNoTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\ProductListsPageTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\ProductListsTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFiltersPagination\AddProd_ProdListFilterActivOffPageViewTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFiltersPagination\AddProd_ProdListFilterActivOnPageViewTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFiltersPagination\AddProd_ProdListFilterAmountPageViewTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFiltersPagination\AddProd_ProdListFilterArtNoPageViewTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFiltersPagination\AddProd_ProdListFilterBrandPageViewTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFiltersPagination\AddProd_ProdListFilterNamePageViewTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFiltersPagination\AddProd_ProdListFilterPricePageViewTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFilter\AddProd_ProdListFilterActivTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFilter\AddProd_ProdListFilterAmountTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFilter\AddProd_ProdListFilterArtNoTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFilter\AddProd_ProdListFilterBrandTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFilter\AddProd_ProdListFilterNameTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductListsFilter\AddProd_ProdListFilterPriceTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductLists\AddProduct_ProductListsTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductLists\PaginationAddProduct_ProductListsTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductLists\Product_ProductListsPageTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductLists\Product_ProductLists\Product_ProductListsTest.cs" />
+    <Compile Include="Tests\ProductsOnMainPage\ProductsOnMainClient\ProdOnMainClientTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandAddTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandEditTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandFilterActivityPageTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandFilterActivityTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandFilterCountryPageTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandFilterCountryTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandFilterPhotoPageTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandFilterPhotoTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandFilterSortPageTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandFilterSortTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandPageTest.cs" />
+    <Compile Include="Tests\Product\Brands\BrandTest.cs" />
+    <Compile Include="Tests\Product\Brands\NoBrandsTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProdAddEditDescTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProdEditBrandPageViewSort.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProdEditMainAddBrandTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProdEditMarkerTagTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProdEditPhoto360DelTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProdEditPhotoDelTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditAdditional.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditAlternative.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditGifts.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditMainTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditPhotoTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditPriceTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditProperties.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditSEO.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditShippingTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditSimilar.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductAddEditVideoTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductEditCategoryBlockTest.cs" />
+    <Compile Include="Tests\Product\ProductAddEdit\ProductEditReviewCopyTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterAddDateCalendarTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterAddDatePageTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterAddDateTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterArtNoTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterCheckedTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterEmailTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterImgTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterNameTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsFilterTextTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsGridTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsPageTest.cs" />
+    <Compile Include="Tests\Product\Reviews\CatalogReviewsSettingsTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\AddCategory\Catalog.Brand.csv" />
+    <None Include="Data\AddCategory\Catalog.Category.csv" />
+    <None Include="Data\AddCategory\Catalog.Offer.csv" />
+    <None Include="Data\AddCategory\Catalog.Product.csv" />
+    <None Include="Data\AddCategory\Catalog.ProductCategories.csv" />
+    <None Include="Data\AddCategory\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\AddCategory\Catalog.Property.csv" />
+    <None Include="Data\AddCategory\Catalog.PropertyGroup.csv" />
+    <None Include="Data\AddCategory\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\AddCategory\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\AddCategory\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\AddCategory\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\AddCategory\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\AddCategory\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandAdd\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandAdd\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandAdd\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandAdd\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandAdd\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandEdit\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandEdit\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandEdit\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandEdit\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandEdit\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandFilters\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandFilters\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandFilters\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandFilters\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandFilters\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Brands\BrandFilters\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Brands\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\Brands\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Brands\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\Brands\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Brands\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Brands\NoBrands\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Brands\NoBrands\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\Brands\NoBrands\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Brands\NoBrands\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\CatalogSize\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\CatalogSize\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\CatalogSize\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\CatalogSize\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\CatalogSize\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\CatalogSize\Catalog.Size.csv" />
+    <None Include="Data\Admin\Catalog\CatalogTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\CatalogTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\CatalogTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\CatalogTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\CatalogTest\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Color.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Property.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Size.csv" />
+    <None Include="Data\Admin\Catalog\Export\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Color.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Property.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Size.csv" />
+    <None Include="Data\Admin\Catalog\Export\ExportCategories\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Catalog\NoCategoryTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\NoCategoryTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreasePriceZeroTest\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreasePriceZeroTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreasePriceZeroTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreasePriceZeroTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreasePriceZeroTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreaseTest\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreaseTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreaseTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreaseTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationDecreaseTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreasePriceZeroTest\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreasePriceZeroTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreasePriceZeroTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreasePriceZeroTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreasePriceZeroTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceTest\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceZeroTest\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceZeroTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceZeroTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceZeroTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseSupplyPriceZeroTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseTest\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\PriceRegulation\PriceRegulationIncreaseTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.Color.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.Property.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.Size.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Additional\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Color.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Property.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Size.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Catalog.TagMap.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\CMS.Menu.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\CMS.Review.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\CMS.StaticBlock.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\CMS.StaticPage.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Customers.Customer.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Customers.Departments.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Customers.Managers.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Customers.ManagerTask.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.Property.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Lists\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Color.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Property.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Size.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Catalog.TagMap.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\CMS.Menu.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\CMS.Review.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\CMS.StaticBlock.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\CMS.StaticPage.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Customers.Customer.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Customers.Departments.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Customers.Managers.csv" />
+    <None Include="Data\Admin\Catalog\ProductAddEdit\Main\Customers.ManagerTask.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\Catalog.ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\Catalog.Product_ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterPage\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterPage\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterPage\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterPage\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterPage\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterPage\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterPage\Catalog.ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterPage\Catalog.Product_ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterTest\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterTest\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterTest\Catalog.ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\AddProd_ProdLists\FilterTest\Catalog.Product_ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\Catalog.ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\Catalog.Product_ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\PaginationProduct_ProductListsTest\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\PaginationProduct_ProductListsTest\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\PaginationProduct_ProductListsTest\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\PaginationProduct_ProductListsTest\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\PaginationProduct_ProductListsTest\Catalog.ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\PaginationProduct_ProductListsTest\Catalog.Product_ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\ProductListsNo\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\ProductListsNo\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\ProductListsNo\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductLists\ProductListsNo\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductOnMainClient\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductOnMainClient\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductOnMainClient\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductOnMainClient\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductOnMainClient\Catalog.ProductList.csv" />
+    <None Include="Data\Admin\Catalog\ProductsOnMainPage\ProductOnMainClient\Catalog.Product_ProductList.csv" />
+    <None Include="Data\Admin\Catalog\Reviews\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Reviews\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Catalog\Reviews\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Catalog\Reviews\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Reviews\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Reviews\CMS.Review.csv" />
+    <None Include="Data\Admin\Catalog\Reviews\Customers.Customer.csv" />
+    <None Include="Data\Admin\Catalog\Reviews\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Catalog\Tag\Catalog.Category.csv" />
+    <None Include="Data\Admin\Catalog\Tag\Catalog.Product.csv" />
+    <None Include="Data\Admin\Catalog\Tag\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Catalog\Tag\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Catalog\Tag\Catalog.TagMap.csv" />
+    <None Include="Data\Admin\Color\Catalog.Color.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.Brand.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.Category.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.Offer.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.Product.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.Property.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\EditCategory\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\EditCategory\EditCategoryColor\Catalog.Category.csv" />
+    <None Include="Data\Admin\Properties\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Properties\Catalog.Category.csv" />
+    <None Include="Data\Admin\Properties\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Properties\Catalog.Product.csv" />
+    <None Include="Data\Admin\Properties\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Properties\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Properties\Catalog.Property.csv" />
+    <None Include="Data\Admin\Properties\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Properties\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.Category.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.Product.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.Property.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Properties\PropertiesValue\Catalog.PropertyValue.csv" />
+    <None Include="Data\EditCategory\Catalog.Brand.csv" />
+    <None Include="Data\EditCategory\Catalog.Category.csv" />
+    <None Include="Data\EditCategory\Catalog.Offer.csv" />
+    <None Include="Data\EditCategory\Catalog.Product.csv" />
+    <None Include="Data\EditCategory\Catalog.ProductCategories.csv" />
+    <None Include="Data\EditCategory\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\EditCategory\Catalog.Property.csv" />
+    <None Include="Data\EditCategory\Catalog.PropertyGroup.csv" />
+    <None Include="Data\EditCategory\Catalog.PropertyValue.csv" />
+    <None Include="Data\EditCategory\EditCategoryColor\Catalog.Category.csv" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvantShop.Selenium.Core\AdvantShop.Selenium.Core.csproj">
+      <Project>{a1f7b566-7c19-421f-b002-c6c7b48b13b0}</Project>
+      <Name>AdvantShop.Selenium.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\..\..\packages\WebDriver.GeckoDriver.0.19.0\content\geckodriver.exe">
+      <Link>geckodriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pictures\avatar.jpg" />
+    <Content Include="Data\pictures\big.png" />
+    <Content Include="Data\pictures\brandeditpic.jpg" />
+    <Content Include="Data\pictures\brandpic.png" />
+    <Content Include="Data\pictures\brand_logo.jpg" />
+    <Content Include="Data\pictures\color.png" />
+    <Content Include="Data\pictures\icon.jpg" />
+    <Content Include="Data\pictures\mandaue_cebu.png" />
+    <Content Include="Data\pictures\pic.png" />
+    <Content Include="Data\pictures\pics3d\1.jpg" />
+    <Content Include="Data\pictures\pics3d\2.jpg" />
+    <Content Include="Data\pictures\pics3d\3.jpg" />
+    <Content Include="Data\pictures\pics3d\4.jpg" />
+    <Content Include="Data\pictures\pictures-1.jpg" />
+    <Content Include="Data\pictures\small.jpg" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.34.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.34.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.34.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.34.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

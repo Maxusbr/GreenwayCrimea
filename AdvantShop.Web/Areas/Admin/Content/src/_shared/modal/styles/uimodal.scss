@@ -1,0 +1,103 @@
+﻿$column-count: 12 !default;
+$column-selector: '.modal' !default;
+ 
+$gutter-width: 1.25rem !default;
+$gutter-compensation: (($gutter-width / 2) * -1) !default;
+$half-gutter-width: ($gutter-width / 2) !default;
+
+$width-xs: 30 !default;
+$width-sm: 48 !default;
+$width-md: 62 !default;
+$width-lg: 75 !default;
+$width-wl: 120 !default;
+
+$viewport-xs: #{$width-xs}em !default;
+$viewport-sm: #{$width-sm}em !default;
+$viewport-md: #{$width-md}em !default;
+$viewport-lg: #{$width-lg}em !default;
+$viewport-wl: #{$width-wl}em !default;
+
+$container-sm: #{$width-sm}rem + $gutter-width !default;
+$container-md: #{$width-md}rem + $gutter-width !default;
+$container-lg: #{$width-lg}rem + $gutter-width !default;
+$container-wall: #{$width-wl}rem + $gutter-width !default;
+
+$xs: 'xs' !default;
+$sm: 'sm' !default;
+$md: 'md' !default;
+$lg: 'lg' !default;
+$wl: 'wl' !default;
+
+$block-delimiter: '-' !default;
+$element-delimiter: '-' !default;
+$modifier-delimiter: '-' !default;
+
+$defaultQuery: $viewport-xs !default;
+$sizes: $xs $sm $md $lg $wl !default;
+$queries: (#{$xs}:#{$viewport-xs}, #{$sm}:#{$viewport-sm}, #{$md}:#{$viewport-md}, #{$lg}:#{$viewport-lg}, #{$wl}:#{$viewport-wl}) !default;
+
+$column-properties: 'width' !default;
+ 
+
+@mixin percentWidth($property, $columns, $count) {
+  #{$property}: ((100% / $columns) * $count);
+}
+
+@mixin percentOffset($property, $columns, $count) {
+  $single-column-width: ((100% / $columns) * 1);
+  #{$property}: $single-column-width * $count;
+}
+
+@mixin queries($key, $queries) {
+  $query: map-get($queries, $key);
+  @if ($query == $defaultQuery) {
+    @content;
+  } @else {
+    @media screen and (min-width: #{$query}) {
+      @content;
+    }
+  }
+}
+
+@mixin columns($selector: $column-selector, $properties: $column-properties, $columns: $column-count, $queries: $queries) {
+  @each $size in $sizes {
+
+    $iterator-selector: '';
+
+    @for $i from 0 through $columns {
+      @if ($i == 0) {
+        $iterator-selector: #{$selector}#{$block-delimiter}#{$size};
+      } @else {
+        $iterator-selector: #{$selector}#{$block-delimiter}#{$size}#{$modifier-delimiter}#{$i};
+      }
+
+      #{$iterator-selector} {
+        @extend %column;
+      }
+    }
+
+    @include queries($size, $queries) {
+      @for $i from 0 through $columns {
+        @if ($i == 0) {
+          #{$selector}#{$block-delimiter}#{$size} {
+            @content;
+          }
+        } @else {
+          #{$selector}#{$block-delimiter}#{$size}#{$modifier-delimiter}#{$i} {
+            @content;
+            @each $prop in $properties {
+              @include percentWidth($prop, $columns, $i);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+%column {
+  box-sizing: border-box;
+}
+
+@include columns();
+

@@ -1,0 +1,2 @@
+OrderID;Number;ShippingMethodID;PaymentMethodID;OrderDate;PaymentDate;StatusComment;Decremented;ShippingCost;TaxCost;SupplyTotal;Sum;OrderStatusID;ShippingContactID;BillingContactID;PaymentMethodName;ShippingMethodName;PaymentCost;BonusCost;DiscountCost;Code[GUID];ManagerConfirmed;OrderSourceId;IsDraft;IsFromAdminArea
+1;1;141;NULL;2016-08-04 00:00:00.000;NULL;comment1;false;0;0;1;1;2;1;1;Оплата наличными при получении заказа в пункте выдачи;Самовывоз;0;0;0;CFC2C33B-1E84-415E-8482-E98156341510;true;1;false;false

@@ -1,0 +1,24 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Tools.core.MasterPage" Codebehind="MasterPage.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <span style="font-family: Tahoma; font-weight: bold;">AdvantShop.NET Core tools</span> -
+    <asp:HyperLink ID="HyperLink6" runat="server" ForeColor="Green" NavigateUrl="Default.aspx"
+        Text="Back to main page"></asp:HyperLink><asp:Label ID="lblSplit" runat="server"
+            Text=" - " OnClick="lbnExitCoreAuth_Click"></asp:Label><asp:LinkButton ID="lbnExitCoreAuth"
+                runat="server" Text="ExitCoreAuth" OnClick="lbnExitCoreAuth_Click"></asp:LinkButton>
+    <br />
+    <br />
+    <div>
+        <asp:ContentPlaceHolder ID="main" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

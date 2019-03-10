@@ -1,0 +1,17 @@
+﻿@model List<AdvantShop.Module.BannerMania.Models.BannerEntity>
+
+@foreach (var bannerEntity in Model)
+{
+    <div data-bannermania-entity-id="@bannerEntity.EntityId" data-bannermania-entity-placement="@bannerEntity.Placement.ToString()" class="static-block" style="display: none;">
+        @if (!string.IsNullOrEmpty(bannerEntity.URL))
+        {
+            <a href="@bannerEntity.URL" target=@(bannerEntity.NewWindow ? "_blank" : "_self")>
+                <img src="userfiles/Modules/BannerMania/Pictures/@bannerEntity.ImagePath" />
+            </a>
+        }
+        else
+        {
+            <img src="userfiles/Modules/BannerMania/Pictures/@bannerEntity.ImagePath" />
+        }
+    </div>
+}

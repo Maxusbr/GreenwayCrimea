@@ -1,0 +1,29 @@
+﻿namespace AdvantShop.Trial
+{
+    public enum ETrackEvent
+    {
+        None,
+        Trial_FillUserData,
+        Trial_ClearData,
+        Trial_ChangeLogo,
+        Trial_ChangeAboutData,
+        Trial_AddCategory,
+        Trial_AddProduct,
+        Trial_AddCarousel,
+        Trial_AddOrder,
+        Trial_AddCustomer,
+        Trial_VisitCRM,
+        Trial_AddLead,
+        Trial_VisitTasks,
+        Trial_AddTask,
+        Trial_ImportCSV,
+        Trial_ImportYML,
+        Trial_VisitClientSide,
+        Trial_ChangeDesignTransformer,
+        Trial_ApplyDesignTemplate,
+        Trial_PreviewDesignTemplate,
+        Trial_VisitMobileVersion,
+        Trial_AddOrderFromClientSide,
+        Trial_VisitAcademy
+    }
+}

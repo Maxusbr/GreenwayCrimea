@@ -1,0 +1,51 @@
+﻿@model AdvantShop.Web.Admin.Models.Leads.LeadModel
+
+<div class="ibox m-b">
+    <div class="ibox-content">
+        <div class="m-b-sm">
+            <div class="flex between-xs inline">
+                <h1 class="page-name-block-text">
+                    Товары
+                </h1>
+            </div>
+            <ui-modal-trigger class="pull-right" size="xs-11" data-controller="'ModalOffersSelectvizrCtrl'" data-controller-as="ctrl"
+                              data-on-close="lead.addLeadItems(result)"
+                              template-url="../areas/admin/content/src/_shared/modal/offers-selectvizr/offersSelectvizrModal.html">
+                <a class="btn btn-sm btn-success" href="" data-e2e="LeadProductAdd">
+                    <span class="fa fa-plus"></span> Добавить товар
+                </a>
+            </ui-modal-trigger>
+        </div>
+        <div class="">
+            <div class="m-b">
+                <div>
+                    <ui-grid-custom grid-unique-id="gridLeadItems"
+                                    grid-on-init="lead.gridLeadItemsOnInit(grid)"
+                                    grid-filter-enabled="false"
+                                    grid-pagination-enabled="false"
+                                    grid-selection-enabled="false"
+                                    grid-params="{leadId: lead.leadId}"
+                                    grid-options="lead.gridLeadItemsOptions"
+                                    grid-url="'leads/getLeadItems'"
+                                    grid-inplace-url="'leads/updateLeadItem'"
+                                    grid-on-inplace-apply="lead.gridLeadItemUpdate()"
+                                    grid-on-delete="lead.gridLeadItemDelete()"
+                                    grid-empty-text="'Выберите товары'"
+                                    grid-extend-ctrl="lead">
+                    </ui-grid-custom>
+                </div>
+                <lead-items-summary data-lead-id="lead.leadId"
+                                    on-init="lead.initLeadItemsSummary(leadItemsSummary)" 
+                                    on-change-discount="lead.leadItemsSummaryUpdate()">
+                </lead-items-summary>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Lead.Comment))
+            {
+                <div class="m-b">
+                    <div class="m-b-xs">Комментарий пользователя:</div>
+                    @Html.Raw(Model.Lead.Comment)
+                </div>
+            }
+        </div>
+    </div>
+</div>

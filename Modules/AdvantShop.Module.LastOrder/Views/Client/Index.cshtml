@@ -1,0 +1,15 @@
+﻿@model AdvantShop.Module.LastOrder.ViewModel.FNPViewModel
+<div class="notify-wrap cs-br-2" style="display:none">
+    <div class="notify-icon cs-br-2">
+        <div class="notify-clock cs-br-2"> </div>
+    </div>
+    <div class="notify-text cs-br-2">
+        <span> Последняя покупка @Model.Time назад </span>
+        @if(!string.IsNullOrEmpty(Model.Name) && !string.IsNullOrEmpty(Model.City))
+        {
+            <br/>
+            <span>@(Model.Name)</span><span> из </span><span>г.@(Model.City)</span>
+            
+        }
+    </div>
+</div>

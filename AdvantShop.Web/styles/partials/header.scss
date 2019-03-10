@@ -1,0 +1,139 @@
+﻿@import "../functions/_util.scss", "../_settings.scss", "../functions/_breakpoints.scss";
+
+.site-head {
+}
+
+.site-head-search-input {
+    margin-bottom: rem-calc(9px);
+}
+
+.site-head-phone-col {
+    text-align: right;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.site-head-search-example {
+    font-size: $font-size-xsmall;
+}
+
+.site-head-phone {
+    font-size: rem-calc(24px);
+    margin-bottom: 3px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.site-head-links {
+    font-size: $font-size-small;
+}
+
+.site-head-links-item + .site-head-links-item {
+    margin-left: rem-calc(14px);
+}
+
+.site-head-userid {
+    font-size: $font-size-normal;
+}
+
+.site-head-logo-block {
+    position: relative;
+}
+
+.site-head-logo-link {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+}
+
+.site-head-search-block, .site-head-search-form {
+    position: relative;
+}
+
+.site-head-logo, .site-head-menu-col, .site-head-phone-col {
+    margin-top: $margin-value-base;
+    margin-bottom: $margin-value-base;
+}
+
+.site-head-cart {
+    margin-bottom: rem-calc(7px);
+}
+
+.site-head-search-btn {
+    position: relative;
+
+    .icon-search-block {
+        display: none; //скрываем иконку поиска
+    }
+}
+
+.site-head-search-input-wrap {
+    position: relative;
+}
+
+.search-block-catalogmenu {
+    margin-right: 5px;
+
+    .autocompleter-sub {
+        left: auto;
+        right: 0;
+        min-width: 300px;
+    }
+
+    .site-head-search-form {
+        display: block;
+    }
+
+    .site-head-search-input {
+        font-size: $font-size-normal;
+        padding: 0.5625rem 40px 0.5625rem 0.5625rem;
+        margin: $vertical-interval-xsmall 0;
+    }
+
+    .site-head-search-btn {
+        background: none;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-right: 12px;
+
+        .icon-search-block {
+            display: block; //скрываем иконку поиска
+        }
+
+        .site-head-search-btn-text {
+            display: none;
+        }
+    }
+
+    .site-head-search-input-wrap, .site-head-search-btn-wrap {
+        display: block;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .site-head-search-col {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        box-sizing: border-box;
+        transform: translateY(-50%);
+    }
+}
+
+.col-searc-block-menu {
+    flex-basis: 20%;
+    min-width: 20%;
+}
+
+.static-block-email-header {
+    font-size: $font-size-normal;
+}
+
+@include breakpointsGetMedia('tablet') {
+    .site-head-phone {
+        font-size: $font-size-large;
+    }
+}

@@ -1,0 +1,103 @@
+﻿@model AdvantShop.Module.CheckoutInShoppingCart.Models.CheckoutInShoppingCartModel
+
+<div data-oc-lazy-load="['modules/orderconfirmationinshoppingcart/scripts/checkout.js']" style="margin-bottom:40px">
+    <div data-ng-controller="CheckoutInShoppingCartCtrl as checkoutInShoppingCart">
+        <h1>
+            @Html.Raw(Model.FirstText)
+        </h1>
+        <div class="row between-xs">
+            <div class="col-xs-6">
+                @using (Html.BeginForm("MakeOrder", "OrderConfirmationInShoppingCart", FormMethod.Post, new { name = "checkoutInCartForm", novalidate = "novalidate" }))
+                {
+                    @Html.Raw(Model.Error)
+
+                    if (Model.DisplayName)
+                    {
+                        <label class="row middle-xs">
+                            <span class="col-xs-4">
+                                <span class="form-field-name vertical-interval-xsmall @(Model.IsRequiredName ? "input-required" : "")">
+                                   @Html.Raw(@Model.LabelName)
+                                </span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-xsmall">
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "input-small", maxlength = 70, data_ng_required = Model.IsRequiredName ? "true" : "false", data_ng_model = "checkoutInShoppingCart.newCustomer.FirstName", data_ng_blur = "checkoutInShoppingCart.saveNewCustomer()" })
+                                </span>
+                            </span>
+                        </label>
+                    }
+                    if (Model.DisplayEmail)
+                    {
+                        <label class="row middle-xs">
+                            <span class="col-xs-4">
+                                <span class="form-field-name vertical-interval-xsmall @(Model.IsRequiredEmail ? "input-required" : "")">
+                                    @Html.Raw(@Model.LabelEmail)
+                                </span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-xsmall">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "input-small", maxlength = 70, data_ng_required = Model.IsRequiredEmail ? "true" : "false", data_ng_model = "checkoutInShoppingCart.newCustomer.Email", data_ng_blur = "checkoutInShoppingCart.saveNewCustomer('email')" })
+                                </span>
+                            </span>
+                        </label>
+                    }
+                    if (Model.DisplayPhone)
+                    {
+                        <label class="row middle-xs">
+                            <span class="col-xs-4">
+                                <span class="form-field-name vertical-interval-xsmall @(Model.IsRequiredPhone ? "input-required" : "")">
+                                    @Html.Raw(@Model.LabelPhone)
+                                </span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-xsmall">
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "input-small", maxlength = 70, data_ng_required = Model.IsRequiredPhone ? "true" : "false", data_ng_model = "checkoutInShoppingCart.newCustomer.Phone", data_ui_mask = "{{ ::'Js.OrderConfermationCart.PhoneMask' | translate }}", data_ng_blur = "checkoutInShoppingCart.saveNewCustomer()" })
+                                </span>
+                            </span>
+                        </label>
+                    }
+                    if (Model.DisplayComment)
+                    {
+                        <label class="row middle-xs">
+                            <span class="col-xs-4">
+                                <span class="form-field-name vertical-interval-xsmall @(Model.IsRequiredComment ? "input-required" : "")">
+                                   @Html.Raw(@Model.LabelComment)
+                                </span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-xsmall">
+                                    @Html.TextAreaFor(m => m.Comment, new { @class = "input-small", data_ng_required = Model.IsRequiredComment ? "true" : "false", data_ng_model = "fcomment" })
+                                </span>
+                            </span>
+                        </label>
+                    }
+                    if (Model.IsShowUserAgreementText)
+                    {
+                        <div class="col-xs-12 subscribe-block-field">
+                            <label>
+                                <span class="form-field-input vertical-interval-xsmall">
+                                    @Html.CheckBox("Agreement",
+                                   new
+                                   {
+                                       data_ng_model = "checkoutInShoppingCart.agreement",
+                                       @class = "custom-input-native",
+                                       data_ng_init = "checkoutInShoppingCart.agreement = false"
+                                   })
+                                    <span class="custom-input-checkbox"></span>
+                                    @Html.Raw(Model.UserAgreementText)
+                                </span>
+                            </label>
+                        </div>
+                    }
+                    <input type="submit"
+                           value="Оформить заказ"
+                           class="btn btn-big btn-submit"
+                           data-button-validation="checkoutInShoppingCart.validate()" />
+                }
+                <div class="vertical-interval-xsmall">
+                    @Html.Raw(Model.FinalText)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

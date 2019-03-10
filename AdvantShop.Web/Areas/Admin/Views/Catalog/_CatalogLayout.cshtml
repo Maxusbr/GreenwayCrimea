@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    var categoryId = ViewBag.CategoryId != null ? (int)ViewBag.CategoryId : 0;
+    var ngCallbackOnInit = (string)ViewBag.CatalogLeftMenuNgCallbackOnInit;
+}
+<div class="row">
+    <div class="col-xs-3 col-wl-2">
+        @Html.Action("CatalogLeftMenu", "Catalog", new { categoryId = categoryId, NgCallbackOnInit = ngCallbackOnInit })
+        @Html.Action("CatalogTreeView", "Catalog", new { categoryId = 0, categoryIdSelected = categoryId })
+        @if (AdvantShop.Trial.TrialService.IsTrialEnabled)
+        {
+            <ui-modal-trigger data-controller="'ModalClearDataCtrl'" controller-as="ctrl" data-resolve="{'params': {'mode': 'catalog'}}"
+                              template-url="../areas/admin/content/src/settings/modal/clearData/ClearData.html">
+                <a class="aside-menu-row settigs-menu-row link-invert link-danger" href="">
+                    <div class="aside-menu-inner">
+                        <div class="aside-menu-name">
+                            @T("Admin.Catalog.ClearDemoData")
+                        </div>
+                    </div>
+                </a>
+            </ui-modal-trigger>
+        }
+    </div>
+    <div class="col-xs-9 col-wl-10">
+        <div class="ibox">
+            <div class="ibox-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>

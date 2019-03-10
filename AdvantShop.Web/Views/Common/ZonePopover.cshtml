@@ -1,0 +1,13 @@
+﻿@model AdvantShop.ViewModel.Common.ZonePopoverViewModel
+
+<div data-zone-popover>
+    <div id="zonePopover" class="ng-hide" data-popover data-popover-position="bottom" data-popover-is-fixed="true" data-popover-show-on-load="true" data-popover-overlay-enabled="true">
+        <div>
+            @T("Common.ZonePopover.YourCityQuestion", Model.City)
+            <div class="text-align-center vertical-interval-small no-bottom">
+                <a href="" data-ng-click="zonePopover.zoneOk()" class="btn btn-xsmall btn-buy">@T("Common.ZonePopover.Yes")</a>
+                <a href="" data-ng-click="zonePopover.zoneNo()" class="btn btn-xsmall">@T("Common.ZonePopover.No")</a>
+            </div>
+        </div>
+    </div>
+</div>

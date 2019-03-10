@@ -1,0 +1,74 @@
+﻿@model  AdvantShop.Web.Admin.Models.Modules.DetailsModel
+
+@if (Model.Settings == null)
+{
+    <iframe id="moduleIFrame" src="../admin/Module.aspx?module=@(Model.Module.StringId)&MasterPageEmpty=true" scrolling="no"
+            onload="(function (iframe) { setTimeout(function () { iframe.style.height = iframe.contentDocument.body.scrollHeight + 'px'; }, 1000) })(this)"
+            
+            style="width: 100%; height: 100%; border: none; margin: 0; padding: 0;" ></iframe>
+    <script>
+        'use strict'
+
+        window.addEventListener('load', function () {
+            var moduleIFrame = document.getElementById('moduleIFrame');
+            if (moduleIFrame != null) {
+                setIframeHeight(moduleIFrame);
+            }
+
+        });
+
+        function setIframeHeight(iframe) {
+            iframe.style.height = iframe.contentDocument.body.scrollHeight + 'px';
+            setTimeout(setIframeHeight.bind(null,iframe), 800);
+        }
+    </script>
+}
+else
+{
+    <div class="m-b-md" ng-init="module.stringId='@Model.Module.StringId';">
+        <div class="module-details-title m-b-sm">
+            Модуль "@(Model.Module.Name)"
+            <span class="ng-cloak module-active" ng-if="module.enabled == true">Активен</span>
+            <span class="ng-cloak module-not-active" ng-if="module.enabled == false">Не активен</span>
+        </div>
+        <div>
+            <label class="adv-checkbox-label form-label-block">
+                @Html.CheckBoxFor(x => x.Module.Enabled, new { ng_model = "module.enabled", ng_init = "module.enabled=" + Model.Module.Enabled.ToLowerString(), ng_click = "module.changeEnabled()", @class = "adv-checkbox-input" }) Активность модуля
+                <span class="adv-checkbox-emul"></span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="flex-grow-n col-fixed-size-md">
+            <div class="aside-menu">
+                @for (var i = 0; i < Model.Settings.Count; i++)
+                {
+                    <a href="" class="link-invert link-decoration-none aside-menu-row" ng-class="{selected: module.isSet(@i)}" ng-click="module.setTab(@i)">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @Model.Settings[i].Title
+                            </div>
+                        </div>
+                    </a>
+                }
+                <a href="@Url.Action("Academy", "Service", new { id = 32 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell m-t-md">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    Видеоурок о Модулях
+                </a>
+            </div>
+        </div>
+        <div class="flex-grow flex-basis-n flex-width-n">
+            <div class="ibox">
+                <div class="ibox-content">
+                    @for (var i = 0; i < Model.Settings.Count; i++)
+                    {
+                        <div ng-show="module.isSet(@i)">
+                            @Html.Action(Model.Settings[i].Action, Model.Settings[i].Controller, Model.Settings[i].RouteValues)
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

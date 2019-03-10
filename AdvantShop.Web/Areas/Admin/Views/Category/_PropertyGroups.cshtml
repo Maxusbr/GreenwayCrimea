@@ -1,0 +1,93 @@
+﻿@using AdvantShop.Catalog
+@model AdvantShop.Web.Admin.Models.Categories.AdminCategoryModel
+
+<div class="row" in-view="$inview ? category.propertyGroupsShowed = true : null"> 
+    <div class="col-xs-3 col-lg-3 col-wl-2">
+        <h2 class="category-title">Группы свойств</h2>
+        <div class="">
+            Вы можете указать какие группы свойств должны быть заполнены у всех товаров из данной категории. Это может ускорить процесс заполнения свойств у карточек товаров
+        </div>
+    </div>
+    <div class="col-xs-9 col-wl-10">
+        <div class="ibox category-block">
+            <div class="ibox-content category-content border_none property-groups-content">
+                <div class="form-group" ng-if="category.showGridPropertyGroups && category.propertyGroupsShowed">
+                    <ui-grid-custom grid-unique-id="gridPropertyGroups"
+                                    grid-on-init="category.gridOnInit(grid)"
+                                    grid-filter-enabled="false"
+                                    grid-pagination-enabled="false"
+                                    grid-selection-enabled="false"
+                                    grid-params="{categoryId:@Model.CategoryId}"
+                                    grid-options="category.gridPropertyGroupsOptions"
+                                    grid-on-fetch="category.gridOnFetch(grid)"
+                                    grid-url="'category/getPropertyGroups'">
+                    </ui-grid-custom>
+                </div>
+                <ui-modal-trigger data-controller="'ModalAddPropertyGroupCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/category/modal/addPropertyGroup/addPropertyGroup.html"
+                                  data-resolve="{'categoryId': @Model.CategoryId }"
+                                  data-on-close="category.gridPropertyGroups.fetchData()">
+                    <button class="btn btn-sm btn-default" type="button" data-e2e="categoryGroupAdd">
+                        @T("Добавить группу")
+                    </button>
+                </ui-modal-trigger>
+                <help-trigger class="ng-cloak word-spacing" data-title="Группы свойств">
+                    Для данной категории можно назначить одну или несколько групп свойств.<br>
+                    <br>
+                    Подробнее:<br>
+                    <a href="http://www.advantshop.net/help/pages/property-sets" target="_blank">Инструкция. Группы свойств.</a>
+                </help-trigger>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" in-view="$inview ? category.recommendationsShowed = true : null">
+    <div class="col-xs-3 col-lg-3 col-wl-2">
+        <h2 class="category-title">Автоподборка рекомендуемых товаров</h2>
+        <div class="category-text">
+            <p>Вы можете указать алгоритмы подбора товаров для блоков перекрестного маркетинга</p>
+            <p><b>Активировать опцию:</b></p>
+            <p>Настройки - Каталог товаров - Карточка товара - Источник товаров для перекрестного маркетинга</p>
+        </div>
+    </div>
+    <div class="col-xs-9 col-wl-10">
+        <div class="ibox category-block">
+            <div class="ibox-content category-content" ng-if="category.recommendationsShowed">
+
+                <div class="row category-row">
+                    <div class="flex-grow-n col-fixed-size-md">
+                        <span class="relative">
+                            С этим товаром покупают
+                            <help-trigger class="ng-cloak word-spacing help-trigger-icon-abs" data-title="С этим товаром покупают">
+                                Если у товара есть рекомендуемые/альтернативные товары, то будут выводиться они. Если нет, то товары будут выводиться случайным образом из заданной категории. Для товаров можно задать параметры отбора по свойствам.
+                            </help-trigger>
+                        </span>
+                    </div>
+                    <div class="flex-grow flex-basis-n flex-width-n">
+                        <div class="form-group">
+                            <cat-product-recommendations data-type="@RelatedType.Related.ToString()"
+                                                         data-category-id="@Model.CategoryId"
+                                                         data-title="@Html.AttributeEncode(SettingsCatalog.RelatedProductName)">
+                            </cat-product-recommendations>
+                        </div>
+                    </div>
+                </div>
+                <div class="row category-row">
+                    <div class="flex-grow-n col-fixed-size-md">
+                        Похожие товары
+                        <help-trigger class="ng-cloak word-spacing" data-title="Похожие товары">
+                            Если у товара есть рекомендуемые/альтернативные товары, то будут выводиться они. Если нет, то товары будут выводиться случайным образом из заданной категории. Для товаров можно задать параметры отбора по свойствам.
+                        </help-trigger>
+                    </div>
+                    <div class="flex-grow flex-basis-n flex-width-n">
+                        <div class="form-group">
+                            <cat-product-recommendations data-type="@RelatedType.Alternative.ToString()"
+                                                         data-category-id="@Model.CategoryId"></cat-product-recommendations>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@import "../../../../styles/_settings.scss";
+@import "../../../../styles/functions/_util.scss";
+
+.countdown {
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 0;
+    line-height: 0;
+    transform: translate3d(0, 0, 0);
+}
+
+.countdown-item,
+.countdown-item-part,
+.countdown-spliter {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.countdown-item {
+    width: 30%;
+}
+
+.wSeconds {
+    .countdown-item {
+        width: 22%;
+    }
+}
+
+.countdown-spliter {
+    width: 2%;
+    font-size: $font-size-large;
+    border-radius: $border-radius-base;
+    line-height: normal;
+    padding: 0 rem-calc(4px) 0 rem-calc(1px);
+}
+
+.countdown-item-part {
+    font-size: $font-size-large;
+    font-weight: bold;
+    color: #fff;
+    border-radius: $border-radius-base;
+    background: #4b4f58;
+    width: 49%;
+    text-align: center;
+    line-height: normal;
+    margin-left: rem-calc(1px);
+    padding-top: rem-calc(5px);
+    padding-bottom: rem-calc(5px);
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+.countdown-item-label {
+    text-align: center;
+    font-size: $font-size-small;
+    line-height: normal;
+    color: #b2b4b8;
+    margin-top: rem-calc(3px);
+}
+
+
+.countdown-admin {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.countdown-admin-item-wrap {
+    width: 22%;
+}
+
+.countdown-admin-item {
+    background-color: #191d23;
+    text-align: center;
+    color: #d1d2d3;
+    font-size: 38px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-right: 4px;
+}

@@ -1,0 +1,29 @@
+﻿@{
+    var staticUrl = UrlService.GetUrl("areas/admin/content/");
+}
+<!DOCTYPE html>
+<html data-ng-app="error" data-ng-controller="ErrorCtrl as error" style="min-width: 0;">
+<head>
+    <meta charset="utf-8">
+    <title>@T("Admin.Account.Authorization")</title>
+    <base href="@UrlService.GetUrl("adminv2/")" />
+    @Html.Partial("~/Areas/Admin/Views/Shared/_HeaderScripts.cshtml")
+</head>
+<body class="auth-bg" style="min-width: 0; position: relative;">
+
+    <div class="flex middle-xs center-xs error-block">
+        <div class="content-error">
+            <div class="loginscreen animated fadeInDown">
+                <div>
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <span style="position: absolute; left:0; bottom: 0;">
+        @Html.Partial("~/Areas/Admin/Views/Shared/_Version.cshtml")
+    </span>
+    <script src="@(staticUrl)vendors/angular/angular.min.js"></script>
+    <script src="@(staticUrl)src/error/error.js"></script>
+</body>
+</html>

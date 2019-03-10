@@ -1,0 +1,76 @@
+﻿@model List<AdvantShop.Web.Admin.Models.Menus.AdminMenuModel>
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="js-header-bottom-wrap">
+        <nav id="header-bottom" class="row navbar-static-top middle-xs navbar white-bg" role="navigation" style="margin-bottom: 0">
+            <div class="col-xs">
+                <div class="row">
+                    <ul class="nav navbar-nav" data-submenu-container="{'type': 'modern','checkOrientation': true, 'blockOrientation': 'body'}">
+                        @foreach (var menuItem in Model)
+                        {
+                            if (!menuItem.IsAccessibleToUser())
+                            {
+                                continue;
+                            }
+                            <li class="dropdown dropdown_custom @(menuItem.Selected ? "dropdown_active" : "")" data-submenu-parent>
+                                @{
+                                    var hasChild = menuItem.MenuItems != null && menuItem.MenuItems.Any(x => x.Visible && x.ActiveInSaas);
+                                }
+                                <a href="@(menuItem.IsEmptyUrl() ? "#" : Url.Action(menuItem.Action, menuItem.Controller, menuItem.RouteDictionary))" class="dropdown-toggle header-bottom-menu-link" @(hasChild ? "data-toggle=\"dropdown\"" : "")>
+                                    @T(menuItem.Name)
+                                    @if (hasChild)
+                                    {
+                                        <span class="fa fa-angle-down font-bold"></span>
+                                    }
+                                    @if (!string.IsNullOrEmpty(menuItem.StatisticsDataType))
+                                    {
+                                    <span data-statistics-count data-type="@menuItem.StatisticsDataType" data-ng-bind-html="statisticsCount.getValue()"></span>
+                                    }
+                                </a>
+                                @if (hasChild)
+                                {
+                                    <ul role="menu" class="@(menuItem.Class) dropdown-menu submenu" data-submenu>
+                                        @foreach (var subItem in menuItem.MenuItems.Where(x => x.Visible && x.ActiveInSaas))
+                                        {
+                                            if (!subItem.IsAccessibleToUser())
+                                            {
+                                                continue;
+                                            }
+                                            <li class="dropdown-submenu" data-submenu-parent>
+                                                @{
+                                                    var subItemHasChild = subItem.MenuItems != null && subItem.MenuItems.Any(x => x.Visible && x.ActiveInSaas);
+                                                }
+                                                <a class="dropdown-menu-link" href="@(subItem.IsEmptyUrl() ? "#" : Url.Action(subItem.Action, subItem.Controller, subItem.RouteDictionary))">
+                                                    @T(subItem.Name)
+                                                    @if (subItemHasChild)
+                                                    {
+                                                        <span class="fa fa-angle-right font-bold"></span>
+                                                    }
+                                                </a>
+                                                @if (subItemHasChild) // 3 lvl
+                                                {
+                                                    <ul class="dropdown-menu last-submenu" data-submenu data-ng-show="submenu.isSubmenuVisible">
+                                                        @foreach (var item in subItem.MenuItems.Where(x => x.Visible && x.ActiveInSaas))
+                                                        {
+                                                            <li>
+                                                                <a class="dropdown-menu-link" href="@(item.IsEmptyUrl() ? "#" : Url.Action(item.Action, item.Controller, item.RouteDictionary))">
+                                                                    @T(item.Name)
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </li>
+                                         }
+                                    </ul>
+                                 }
+                            </li>
+                         }
+                    </ul>
+                </div>
+            </div>
+            @Html.Action("SearchBlock", "Search")
+        </nav>
+    </div>
+}

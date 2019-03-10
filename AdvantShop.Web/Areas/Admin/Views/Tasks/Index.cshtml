@@ -1,0 +1,109 @@
+﻿@using AdvantShop.Web.Admin.Models.Tasks;
+@using AdvantShop.Core.Common.Extensions;
+@model AdvantShop.Web.Admin.ViewModels.Tasks.TasksListViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Tasks/_TasksLayout.cshtml";
+
+    var pageUrl = Model.TaskGroupId.HasValue
+        ? Url.RouteUrl("Admin_project", new { taskGroupId = Model.TaskGroupId })
+        : Url.Action("Index");
+}
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline m-r-xs bottom-cell">
+                @Model.Title
+            </h1>
+            <a href="@Url.Action("Academy", "Service", new { id = 40 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline bottom-cell">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Задачах
+            </a>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddTaskCtrl'" controller-as="ctrl" on-close="tasks.onTaskAdded(!tasks.useKanban)" size="lg" backdrop="static"
+                              template-url="../areas/admin/content/src/_shared/modal/addTask/addTask.html" class="pull-right"
+                              @Html.Raw(Model.TaskGroupId.HasValue ? "resolve=\"{'taskGroupId':" + Model.TaskGroupId + "}\"" : string.Empty)>
+                <button data-e2e="AddTask" class="btn btn-sm btn-success" type="button">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.AddTask")
+                </button>
+            </ui-modal-trigger>
+            @*<div class="pull-right m-r">
+                <label class="adv-checkbox-label m-r">
+                    <input class="adv-radio-input" name="UseKanban" ng-change="tasks.changeView('kanban', true)" 
+                           ng-model="tasks.useKanban" type="radio" ng-value="true">
+                    Канбан
+                    <span class="adv-radio-emul"></span>
+                </label>
+                <label class="adv-checkbox-label">
+                    <input class="adv-radio-input" name="UseKanban" ng-change="tasks.changeView('grid', true)"
+                           ng-model="tasks.useKanban" type="radio" ng-value="false">
+                    Таблица
+                    <span class="adv-radio-emul"></span>
+                </label>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+<div ng-init="tasks.init(@Model.UseKanban.ToLowerString(), @Model.KanbanMyTasks.ToLowerString(), '@Model.PreFilter.ToString().ToLower()' @(Model.TaskGroupId.HasValue ? ", " + Model.TaskGroupId : string.Empty))">
+    @if (!Model.UseKanban)
+    {
+        <div class="ibox m-n">
+            <div class="tasks-navbar">
+                <ul class="nav nav-tabs nav-collapse-tab">
+                    @foreach (TasksPreFilterType item in Model.PreFilterTypes)
+                    {
+                        <li class="ng-tab nav-item@(Model.PreFilter == item ? " active" : "")">
+                            <a href="@(pageUrl + (item != TasksPreFilterType.None ? "?filterby=" + item.ToString().ToLower() : ""))" class="nav-link">
+                                @item.Localize()
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="ibox">
+            <div class="ibox-content no-top-border">
+                <ui-grid-custom grid-unique-id="grid"
+                                grid-row-identificator="'Id'"
+                                grid-on-init="tasks.gridOnInit(grid)"
+                                grid-options="tasks.gridOptions"
+                                grid-params="tasks.gridParams"
+                                grid-url="'tasks/gettasks'"
+                                grid-inplace-url="'tasks/inplacetask'"
+                                grid-extend-ctrl="tasks">
+                    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="tasks.grid.gridOptions.TotalString">
+                    </ui-grid-custom-footer>
+                </ui-grid-custom>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="ibox m-n">
+            <div class="ibox-content p-xs-x2">
+                <label class="adv-checkbox-label">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox"
+                           ng-model="tasks.onlyMy"
+                           ng-change="tasks.toggleMy(tasks.onlyMy)" />
+                    <span class="adv-checkbox-emul"></span>
+                    @T("Только мои задачи")
+                </label>
+            </div>
+        </div>
+
+        <kanban data-sort-options="tasks.sortableOptions"
+            fetch-url="'tasks/getkanban'"
+            fetch-column-url="'tasks/getkanbancolumn'"
+            kanban-on-init="tasks.kanbanOnInit(kanban)"
+            extend-ctrl="tasks"
+            kanban-column-defs="tasks.gridOptions.columnDefs"
+            kanban-on-filter-init="tasks.kanbanOnFilterInit(filter)"
+            kanban-params="tasks.gridParams"
+            modal-add-params="{'taskGroupId': @(Model.TaskGroupId.HasValue ? Model.TaskGroupId.ToString() : "null")}"
+            uid="kanban">
+        </kanban>
+    }
+</div>

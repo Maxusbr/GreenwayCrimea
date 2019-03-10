@@ -1,0 +1,434 @@
+/*plp - product landing page*/
+/*$plpStickerMainSize: 180px;
+$plpStickerAltSize: 160px;
+$plpStickerAdditionalSize: 140px;*/
+.site-body.lp {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  padding-top: 10px; }
+  .site-body.lp .site-body-inner {
+    margin-top: -10px;
+    padding-bottom: 0; }
+
+.plp-block-wrap > .container {
+  background: url("../pictures/shadow.png") center 0 no-repeat;
+  padding: 50px 0; }
+
+.plp-block-wrap:nth-child(3n-2) {
+  background: url("../pictures/plp-bgd.jpg") #fff 0 0 repeat; }
+
+.plp-block-wrap:nth-child(3n-1) {
+  background: #fff; }
+
+.plp-block-wrap:nth-child(3n) {
+  background: #f3f3f3; }
+
+.plp-main-baner {
+  padding-bottom: 20px; }
+  .plp-main-baner .t-timer .timer-text {
+    font-size: 18px;
+    text-transform: uppercase;
+    position: relative;
+    color: red;
+    font-weight: bold;
+    padding-top: 15px;
+    padding-right: 10px; }
+  .plp-main-baner .t-timer .details-buy-in-time-block {
+    padding-top: 30px; }
+  .plp-main-baner .t-timer .details-buy-in-time-block, .plp-main-baner .t-timer .timer-text {
+    display: inline-block;
+    vertical-align: middle; }
+  .plp-main-baner .countdown-item-part {
+    font-size: 20px; }
+  .plp-main-baner .details-colors,
+  .plp-main-baner .details-sizes {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+    line-height: 34px; }
+  .plp-main-baner .color-viewer-header, .plp-main-baner .sizes-viewer-header {
+    margin-right: 10px; }
+  .plp-main-baner .color-viewer-list {
+    line-height: 0; }
+
+.plp-subTitle-wrap {
+  text-align: center; }
+
+.plp-subTitle, .plp-reviews .reviews-header {
+  display: inline-block;
+  font-size: 36px;
+  margin: 20px 0;
+  text-align: center;
+  position: relative;
+  font-family: "DroidSansRegular"; }
+  .plp-subTitle:before, .plp-reviews .reviews-header:before {
+    content: "";
+    display: inline-block;
+    height: 2px;
+    width: 40px;
+    left: -70px;
+    top: 50%;
+    position: absolute;
+    background: #5b5b5b; }
+  .plp-subTitle:after, .plp-reviews .reviews-header:after {
+    content: "";
+    display: inline-block;
+    height: 2px;
+    width: 40px;
+    right: -70px;
+    top: 50%;
+    position: absolute;
+    background: #5b5b5b; }
+
+/*.plp-features {
+	background: #f4f5f5;
+}*/
+.plp-item-feature .fName, .plp-item-feature .fTxt, .plp-item-feature .fImage {
+  text-align: center; }
+
+.plp-item-feature .fImage {
+  min-height: 200px; }
+
+.plp-item-feature .fName {
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 20px; }
+
+.plp-item-feature .fTxt {
+  font-size: 16px; }
+
+.plp-gift {
+  padding: 30px; }
+
+.g-item {
+  text-align: center;
+  font-size: 16px; }
+  .g-item .g-img {
+    min-height: 250px; }
+
+.gift-descr {
+  text-align: center;
+  font-size: 16px; }
+
+.gift-name {
+  color: #0662c1; }
+
+.plp-main-timer {
+  background: url("../../../../../images/misc/plpGrad.png") top center; }
+  .plp-main-timer .t-container {
+    min-height: 265px; }
+  .plp-main-timer .t-title {
+    font-size: 36px;
+    text-align: right; }
+  .plp-main-timer .t-timer > div {
+    padding-top: 48px; }
+
+.t-countdown .countdown-item-part, .t-countdown .countdown-spliter {
+  font-size: 40px; }
+
+.t-countdown .countdown-item-label {
+  font-size: 18px;
+  margin-top: 15px;
+  color: #4b4f58; }
+
+.t-countdown .countdown-spliter {
+  padding: 0 6px 0 0; }
+
+.plp-specifications .s-banner {
+  text-align: center;
+  margin: 40px 0 20px 0; }
+
+.spec-block {
+  width: 50%;
+  margin: 0 auto; }
+  .spec-block .properties-group {
+    text-align: center;
+    background: #b0b8bb;
+    border-bottom: 3px solid #8b9396; }
+    .spec-block .properties-group:hover {
+      background: #9ca4a7;
+      border-bottom: 3px solid #5b5b5b; }
+    .spec-block .properties-group .properties-group-name {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 10px 0;
+      color: #fff; }
+  .spec-block .properties-item {
+    background: #fff; }
+  .spec-block .plp-p-name, .spec-block .plp-p-value {
+    font-size: 16px;
+    padding: 10px; }
+  .spec-block .plp-p-name, .spec-block .properties-item-name {
+    text-align: right; }
+
+.plp-video .v-container {
+  text-align: center; }
+
+.plp-reasons {
+  text-align: center; }
+  .plp-reasons .reas-flex {
+    margin: 30px 10px;
+    border: 1px solid #e3e3e3;
+    background: #fff; }
+    .plp-reasons .reas-flex:hover {
+      border-color: #b0b8bb; }
+      .plp-reasons .reas-flex:hover .r-img {
+        border: 3px solid #b0b8bb;
+        top: -44px;
+        margin-left: -44px; }
+
+.r-item {
+  display: table;
+  box-sizing: border-box;
+  padding: 60px 20px 40px;
+  width: 100%;
+  position: relative; }
+  .r-item .r-img, .r-item .r-info {
+    display: table-cell;
+    vertical-align: top; }
+  .r-item .r-img {
+    font-size: 0;
+    position: absolute;
+    display: block;
+    width: 84px;
+    height: 84px;
+    background: #fff;
+    border-radius: 50%;
+    top: -42px;
+    line-height: 84px;
+    left: 50%;
+    margin-left: -42px;
+    border: 1px solid #e3e3e3; }
+    .r-item .r-img img {
+      vertical-align: middle; }
+  .r-item .r-info {
+    text-align: center;
+    box-sizing: border-box;
+    font-family: "DroidSansRegular"; }
+  .r-item .r-title {
+    font-size: 18px;
+    line-height: 1;
+    margin-bottom: 7px; }
+  .r-item .r-txt {
+    font-size: 14px; }
+
+.plp-reviews {
+  margin-bottom: 50px; }
+  .plp-reviews .js-reviews-list-root {
+    text-align: center; }
+  .plp-reviews .review-item-buttons {
+    text-align: right; }
+  .plp-reviews .review-item-text {
+    border: 1px solid #c8d2d5;
+    padding: 20px 60px;
+    text-align: left;
+    background: #fff;
+    position: relative;
+    z-index: 10; }
+    .plp-reviews .review-item-text:before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-size: contain;
+      background-image: url("../pictures/quotes.png");
+      background-repeat: no-repeat;
+      z-index: -1; }
+    .plp-reviews .review-item-text:after {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-size: contain;
+      background-image: url("../pictures/quotes.png");
+      background-repeat: no-repeat;
+      z-index: -1;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg); }
+  .plp-reviews .review-item-name {
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px; }
+  .plp-reviews .review-item-date {
+    font-size: 12px;
+    border-left: 0;
+    padding: 0;
+    margin-bottom: 10px; }
+
+.spot-txt {
+  color: #fff;
+  z-index: 3;
+  position: absolute;
+  display: inline-block;
+  width: 70%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.plp-promo-image {
+  text-align: center;
+  position: relative;
+  border: 19px solid #c8d2d5;
+  background: #fff; }
+  .plp-promo-image .pi-image {
+    display: inline-block; }
+  .plp-promo-image .plp-image-big {
+    max-height: 450px; }
+  .plp-promo-image .s-curent-price {
+    top: -50px;
+    left: 70px; }
+  .plp-promo-image .s-old-price {
+    top: 35px;
+    left: -40px; }
+  .plp-promo-image .s-gift {
+    top: 160px;
+    left: 45px; }
+
+.plp-btns {
+  margin-top: 20px; }
+
+.plp-main-timer .details-buy-in-time-block {
+  width: 385px; }
+
+.buy-in-time-text {
+  display: none; }
+
+.plp-price {
+  position: absolute;
+  top: 0;
+  left: 0; }
+  .plp-price .price-discount {
+    display: none; }
+  .plp-price .price-new, .plp-price .price-old, .plp-price .price-current, .plp-price .plp-sticker-gift {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-family: "DroidSansRegular"; }
+    .plp-price .price-new .price-number, .plp-price .price-old .price-number, .plp-price .price-current .price-number, .plp-price .plp-sticker-gift .price-number {
+      font-size: 34px; }
+    .plp-price .price-new .price-currency, .plp-price .price-old .price-currency, .plp-price .price-current .price-currency, .plp-price .plp-sticker-gift .price-currency {
+      font-size: 18px; }
+  .plp-price .price-new, .plp-price .price-current {
+    top: -40px;
+    left: -43px;
+    width: 201px;
+    height: 73px;
+    background: url(../pictures/main.png) center center/100% auto no-repeat;
+    z-index: 10; }
+    .plp-price .price-new .price-number, .plp-price .price-current .price-number {
+      font-size: 30px;
+      line-height: 55px; }
+  .plp-price .price-old {
+    top: 38px;
+    left: -36px;
+    width: 138px;
+    height: 50px;
+    background: url(../pictures/alt.png) center center/100% auto no-repeat;
+    z-index: 5; }
+    .plp-price .price-old .price-number {
+      font-size: 20px;
+      line-height: 40px; }
+    .plp-price .price-old .price-currency {
+      text-decoration: none;
+      line-height: 40px; }
+  .plp-price .price-number, .plp-price .price-currency {
+    text-align: center;
+    display: inline-block; }
+
+.plp-sticker-gift {
+  top: 98px;
+  left: -36px;
+  width: 138px;
+  height: 50px;
+  background: url(../pictures/additional.png) center center/100% auto no-repeat;
+  z-index: 0;
+  font-size: 18px;
+  line-height: 40px; }
+
+.design-background-bottom,
+.design-background-top,
+body,
+html {
+  background: transparent none !important; }
+
+body.plp-body {
+  font-family: Tahoma, "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif; }
+
+.plp-site-head-phone {
+  font-size: 24px;
+  line-height: 1;
+  color: #757575; }
+
+.plp-title {
+  font-size: 40px;
+  text-align: center;
+  margin: 20px 0 45px;
+  font-family: "DroidSansRegular";
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  max-width: 100%; }
+
+.plp-form-timer {
+  position: relative; }
+
+.plp-callback-form {
+  padding: 20px 40px;
+  background-color: rgba(247, 249, 250, 0.62); }
+  .plp-callback-form .form-field-name, .plp-callback-form .buy-one-click-text {
+    font-size: 16px; }
+  .plp-callback-form .buy-one-click-text {
+    display: none; }
+  .plp-callback-form .buy-one-click-final-text {
+    font-size: 18px; }
+  .plp-callback-form .input-required.form-field-name:after {
+    display: none; }
+  .plp-callback-form .row, .plp-callback-form [class^="col"] {
+    display: block;
+    max-width: 100%; }
+  .plp-callback-form [class^="col"] {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center; }
+  .plp-callback-form .row {
+    margin: 0;
+    width: 100%; }
+  .plp-callback-form .form-field-name.vertical-interval-middle {
+    margin-top: 0;
+    margin-bottom: 0; }
+  .plp-callback-form .buy-one-click-buttons {
+    text-align: left; }
+    .plp-callback-form .buy-one-click-buttons .btn-confirm {
+      width: 100%;
+      text-transform: uppercase; }
+  .plp-callback-form .form-field-input input {
+    background: #fff; }
+
+#containerFirst .plp-main-baner {
+  min-height: 500px; }
+
+#containerSecond .plp-form-timer {
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2; }
+  #containerSecond .plp-form-timer .plp-callback-form {
+    background: rgba(176, 184, 187, 0.3); }
+
+#containerSecond .plp-image-wrap {
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  margin-left: 20px; }

@@ -1,0 +1,42 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Добавление региона" : "Редактирование региона"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">
+                            Название
+                        </span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" data-e2e="RegionName" class="form-control" ng-model="ctrl.entity.Name" required validation-input-text="Регион" autofocus />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Код региона</label>
+                    <div class="col-xs-9">
+                        <input type="text" data-e2e="RegionCode" class="form-control input-small" ng-model="ctrl.entity.RegionCode"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Порядок сортировки</label>
+                    <div class="col-xs-9">
+                        <input type="number" data-e2e="RegionSort" ng-model="ctrl.entity.SortOrder" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-e2e="btnSave" class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-button-validation-success="ctrl.saveRegions()" data-button-validation>{{ctrl.mode == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button data-e2e="btnCancel" class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

@@ -1,0 +1,25 @@
+﻿@model  AdvantShop.Web.Admin.Models.Brands.AdminBrandModel
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Brands.Index.BrandsHeader")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            @Html.Button(T("Admin.Brands.Index.AddBrand"), eButtonType.Add, link: Url.Action("Add", "Brands"))
+        </div>
+    </div>
+</div>
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-row-identificator="'BrandId'"
+                        grid-options="brandsList.gridOptions"
+                        grid-on-init="brandsList.gridOnInit(grid)"
+                        grid-url="'brands/getbrands'"
+                        grid-inplace-url="'brands/InplaceBrand'">
+        </ui-grid-custom>
+    </div>
+</div>

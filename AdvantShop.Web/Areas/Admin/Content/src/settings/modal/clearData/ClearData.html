@@ -1,0 +1,150 @@
+﻿<form novalidate name="clearDataForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Удаление данных</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.clearDataForm = clearDataForm">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-4">
+                    <span class="text-required">
+                        Выберите данные подлежащие удалению
+                    </span>
+                </div>
+                <div class="col-xs-8">
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteCategoties" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Категории</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteProducts" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Товары</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteProperty" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Справочники</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteBrands" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Производители</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteOrder" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Заказы</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteCustomers" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Покупатели</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteSubscription" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Подписки на новости</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteMenu" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Пункты меню</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deletePage" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Страницы</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteNews" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Новости</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteCarosel" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Слайды карусели</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteShippings" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Способы доставки</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deletePayments" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Способы оплаты</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteUsers" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Сотрудники (все кроме администраторов)</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteTasks" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">Задачи. Проекты</span>
+                        </label>
+                    </div>
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.deleteCrm" class="adv-checkbox-input">
+                            <span class="adv-checkbox-emul"></span>
+                            <span class="adv-checkbox-text">CRM. Лиды</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-9">
+                    <label class="adv-checkbox-label">
+                        <input type="checkbox" ng-model="ctrl.confirm" class="adv-checkbox-input" required validation-input-text="Подтвердите удаление">
+                        <span class="adv-checkbox-emul"></span>
+                        <span class="adv-checkbox-text">Я действительно хочу удалить данные</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button"
+                data-button-validation-success="ctrl.delete()"
+                data-button-validation ladda="ctrl.btnSleep">
+            Удалить
+        </button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

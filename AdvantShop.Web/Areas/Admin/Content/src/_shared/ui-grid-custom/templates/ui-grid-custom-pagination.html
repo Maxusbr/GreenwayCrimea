@@ -1,0 +1,23 @@
+﻿<div class="clearfix form-inline">
+    <div class="pull-left">
+        <div uib-pagination data-e2e="gridPagination"
+             total-items="$ctrl.gridTotalItems"
+             items-per-page="$ctrl.gridPaginationPageSize"
+             ng-model="$ctrl.gridPaginationCurrentPage"
+             ng-change="$ctrl.change($ctrl.gridPaginationCurrentPage, $ctrl.gridPaginationPageSize,$ctrl.gridPaginationPageSizes)"
+             max-size="4"
+             previous-text="&lsaquo;"
+             next-text="&rsaquo;"
+             first-text="&laquo;"
+             last-text="&raquo;"
+             boundary-links="true"
+             force-ellipses="true"></div>
+    </div>
+
+    <div class="pull-right ui-grid-custom-pagination-select-block">
+        Показать по
+        <select data-e2e="gridPaginationSelect" class="form-control ui-grid-custom-pagination-select" ng-change="$ctrl.change($ctrl.gridPaginationCurrentPage, $ctrl.gridPaginationPageSize,$ctrl.gridPaginationPageSizes)" data-ng-model="$ctrl.gridPaginationPageSize" ng-options="o as o for o in $ctrl.gridPaginationPageSizes track by o"></select>
+    </div>
+
+</div>
+<div ng-transclude></div>

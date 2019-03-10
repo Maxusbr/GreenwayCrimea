@@ -1,0 +1,24 @@
+﻿@model CompareViewModel
+@if (Model.Mode == "product")
+{
+    @:<div class="block-exuding-row">
+}
+<label class="compare-control cs-l-2"
+       data-compare-control
+       data-ng-class="{'compare-state-add': compare.isCompare, 'compare-state-not-add': !compare.isCompare}">
+    <input type="checkbox"
+           class="custom-input-native compare-checkbox"
+           data-ng-init="compare.isAdded = @Model.Checked.ToLowerString(); @(Model.NgNameCallbackInit != null ? Model.NgNameCallbackInit + "(compare)" : "")"
+           data-ng-model="compare.isAdded"
+           data-ng-change="compare.change(@Model.NgOfferId)" />
+    <span class="icon-menu-after"></span>
+    <span class="custom-input-text">
+        @*change text to css*@
+        <span class="compare-text-not-added">@T("Compare.CompareBlock.AddToComparison")</span>
+        <span class="compare-text-added">@T("Compare.CompareBlock.InComparison") (<a href="@Url.AbsoluteRouteUrl("compare")">@T("Compare.CompareBlock.GoToComparison")</a>)</span>
+    </span>
+</label>
+@if (Model.Mode == "product")
+{
+    @:</div>
+}

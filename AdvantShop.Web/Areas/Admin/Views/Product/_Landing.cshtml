@@ -1,0 +1,55 @@
+﻿@model AdvantShop.Web.Admin.Models.Products.AdminProductModel
+
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="inline product-setting-title content-header">
+                    Посадочная страница
+                </h2>
+                @if (!Model.IsLandingEnabled)
+                {
+                    <span class="text-danger">(Не активна <a target="_blank" href="@Url.Action("Index", "LandingPages")">изменить</a>)</span>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="form-group row">
+            <div class="col-lg-2">
+                Ссылка на посадочную страницу
+            </div>
+            <div class="col-lg-10">
+                @foreach (var link in Model.LandingLinks)
+            {
+                var url = Url.AbsoluteRouteUrl("Product", new { url = Model.UrlPath, v = link });
+                    <div>
+                        <a href="@url" target="_blank">@url</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="form-group row">
+            <div class="col-lg-2">
+                Дополнительное описание товара в лендинге
+            </div>
+            <div class="col-lg-10">
+                @Html.TextAreaFor(x => x.LandingProductDescription, new { @class = "wysiwyg", ckeditor = "{height: 150}", ng_model = "product.LandingProductDescription" })
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="form-group row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-10">
+                <div class="adv-panel-info">
+                    <a href="http://www.advantshop.net/help/pages/landing-page-5" target="_blank">Инструкция. Настройка страниц "Landing Page"</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

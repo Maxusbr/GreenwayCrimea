@@ -1,0 +1,181 @@
+﻿@{
+    var lpStaticPath = LpFiles.LpStaticPath;
+
+    Html.AddBundles(new List<string>()
+    {
+        "~/styles/general.css",
+        "~/styles/common/forms.css",
+        "~/styles/common/custom-input.css",
+        "~/scripts/_partials/inplace/styles/inplace.css",
+        "~/scripts/_partials/colors-viewer/styles/colors-viewer.css",
+        "~/scripts/_partials/buy-one-click/styles/buyOneClick.css",
+        "~/scripts/_common/tabs/styles/tabs.css",
+        "~/scripts/_common/spinbox/styles/spinbox.css",
+        "~/scripts/_common/modal/styles/modal.css",
+
+
+        lpStaticPath + "frontend/_common/general.css",
+        lpStaticPath + "frontend/_common/icons.css",
+        lpStaticPath + "frontend/_common/flexboxgrid.ext.css",
+        lpStaticPath + "frontend/_common/lp-table.css",
+        lpStaticPath + "frontend/_common/responsive.css",
+        lpStaticPath + "frontend/blocks/areas/areas.css",
+        lpStaticPath + "frontend/blocks/background-picker/styles/backgroundPicker.css",
+        lpStaticPath + "frontend/blocks/blocks-constructor/styles/blocksConstructor.css",
+        lpStaticPath + "frontend/blocks/buttons/buttons.css",
+        lpStaticPath + "frontend/blocks/buy-form/styles/buyForm.css",
+        lpStaticPath + "frontend/blocks/countdown/styles/countdown.css",
+        lpStaticPath + "frontend/blocks/custom-input/custom-input.css",
+        lpStaticPath + "frontend/blocks/gradient-picker/styles/gradientPicker.css",
+        lpStaticPath + "frontend/blocks/headers/headers.css",
+        lpStaticPath + "frontend/blocks/inplace-landing/styles/inplaceLanding.css",
+        lpStaticPath + "frontend/blocks/links/links.css",
+        lpStaticPath + "frontend/blocks/menu-header/menu-header.css",
+        lpStaticPath + "frontend/blocks/product-picker/styles/productpicker.css",
+        lpStaticPath + "frontend/blocks/products-view/styles/products-view.css",
+        lpStaticPath + "frontend/blocks/properties/properties.css",
+        lpStaticPath + "frontend/blocks/subblock-inplace/styles/subblockInplace.css",
+        lpStaticPath + "frontend/blocks/validation/validation.css",
+        lpStaticPath + "frontend/vendors/fontello/css/advlp.css",
+
+        lpStaticPath + "frontend/_common/lp.css",
+
+
+    }, "lp_styles.css");
+
+
+    Html.AddBundles(new List<string>()
+    {
+        // скрипты с версии магазина
+        "~/userfiles/ru-ru.js",
+        "~/scripts/_common/dom/dom.js",
+        "~/scripts/_common/dom/services/domService.js",
+
+        "~/scripts/_common/validation/validation.js",
+        "~/scripts/_common/validation/directives/validationDirectives.js",
+
+        "~/scripts/_common/modal/modal.js",
+        "~/scripts/_common/modal/controllers/modalController.js",
+        "~/scripts/_common/modal/directives/modalDirectives.js",
+        "~/scripts/_common/modal/services/modalService.js",
+
+        "~/scripts/_common/urlhelper/urlHelperService.js",
+
+        "~/scripts/_common/spinbox/spinbox.js",
+        "~/scripts/_common/spinbox/controllers/spinboxController.js",
+        "~/scripts/_common/spinbox/directives/spinboxDirectives.js",
+
+        "~/scripts/_common/tabs/tabs.js",
+        "~/scripts/_common/tabs/controllers/tabsController.js",
+        "~/scripts/_common/tabs/controllers/tabHeaderController.js",
+        "~/scripts/_common/tabs/controllers/tabContentController.js",
+        "~/scripts/_common/tabs/directives/tabsDirectives.js",
+        "~/scripts/_common/tabs/services/tabsService.js",
+
+        "~/scripts/_partials/colors-viewer/colorsViewer.js",
+        "~/scripts/_partials/colors-viewer/controllers/colorsViewerController.js",
+        "~/scripts/_partials/colors-viewer/directives/colorsViewerDirectives.js",
+
+        "~/scripts/_partials/buy-one-click/buyOneClick.js",
+        "~/scripts/_partials/buy-one-click/controllers/buyOneClickTriggerController.js",
+        "~/scripts/_partials/buy-one-click/controllers/buyOneClickFormController.js",
+        "~/scripts/_partials/buy-one-click/directives/buyOneClickDirectives.js",
+        "~/scripts/_partials/buy-one-click/services/buyOneClickService.js",
+
+        // скрипты модуля
+        lpStaticPath + "frontend/vendors/jsTree.directive/jsTree.directive.custom.js",
+        lpStaticPath + "frontend/blocks/countdown/countdown.js",
+        lpStaticPath + "frontend/blocks/countdown/controllers/countdownController.js",
+        lpStaticPath + "frontend/blocks/countdown/directives/countdownDirectives.js",
+
+        lpStaticPath + "frontend/blocks/inplace-landing/inplaceLanding.js",
+        lpStaticPath + "frontend/blocks/inplace-landing/controllers/inplaceLandingSwitchController.js",
+        lpStaticPath + "frontend/blocks/inplace-landing/controllers/inplaceLandingImageController.js",
+        lpStaticPath + "frontend/blocks/inplace-landing/controllers/inplaceLandingImageButtonsController.js",
+        lpStaticPath + "frontend/blocks/inplace-landing/directives/inplaceLandingDirectives.js",
+        lpStaticPath + "frontend/blocks/inplace-landing/services/inplaceLandingService.js",
+
+        lpStaticPath + "frontend/blocks/blocks-constructor/blocksConstructor.js",
+        lpStaticPath + "frontend/blocks/blocks-constructor/constants/blocksConstructorColors.js",
+        lpStaticPath + "frontend/blocks/blocks-constructor/controllers/blocksConstructorController.js",
+        lpStaticPath + "frontend/blocks/blocks-constructor/controllers/blocksConstructorContainerController.js",
+        lpStaticPath + "frontend/blocks/blocks-constructor/controllers/blocksConstructorNewBlockController.js",
+        lpStaticPath + "frontend/blocks/blocks-constructor/controllers/blocksConstructorSettingsBlockController.js",
+        lpStaticPath + "frontend/blocks/blocks-constructor/controllers/blocksConstructorAddSubblockController.js",
+        lpStaticPath + "frontend/blocks/blocks-constructor/components/blocksConstructorComponent.js",
+        lpStaticPath + "frontend/blocks/blocks-constructor/services/blocksConstructorService.js",
+
+        lpStaticPath + "frontend/blocks/subblock-inplace/subblockInplace.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/constants/subblockInplaceColors.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/controllers/subblockInplaceController.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/controllers/subblockInplaceButtonController.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/controllers/subblockInplaceButtonModalController.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/controllers/subblockInplacePriceController.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/controllers/subblockInplacePriceModalController.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/controllers/subblockInplaceBuyFormController.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/controllers/subblockInplaceBuyFormModalController.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/directives/subblockInplaceDirective.js",
+        lpStaticPath + "frontend/blocks/subblock-inplace/services/subblockInplaceService.js",
+
+        lpStaticPath + "frontend/blocks/gradient-picker/gradientPicker.js",
+        lpStaticPath + "frontend/blocks/gradient-picker/controllers/gradientPickerController.js",
+        lpStaticPath + "frontend/blocks/gradient-picker/components/gradientPickerComponent.js",
+        lpStaticPath + "frontend/blocks/gradient-picker/services/gradientPickerService.js",
+
+        lpStaticPath + "frontend/blocks/background-picker/backgroundPicker.js",
+        lpStaticPath + "frontend/blocks/background-picker/controllers/backgroundPickerController.js",
+        lpStaticPath + "frontend/blocks/background-picker/components/backgroundPickerComponent.js",
+        lpStaticPath + "frontend/blocks/background-picker/services/backgroundPickerService.js",
+
+        lpStaticPath + "frontend/blocks/product-picker/productPicker.js",
+        lpStaticPath + "frontend/blocks/product-picker/controllers/productPickerController.js",
+        lpStaticPath + "frontend/blocks/product-picker/components/productPickerComponent.js",
+        lpStaticPath + "frontend/blocks/product-picker/services/productPickerService.js",
+
+        lpStaticPath + "frontend/_app/app.js",
+        lpStaticPath + "frontend/_app/controllers/appController.js",
+
+
+    }, "lp_scripts.js");
+
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-color-picker/3.4.5/angularjs-color-picker.css" rel="stylesheet" />
+@*<link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-color-picker/3.4.5/themes/angularjs-color-picker-bootstrap.css" rel="stylesheet" />*@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.0.0/toaster.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/3.1.1/ui-grid.min.css" rel="stylesheet" />
+
+@Html.RenderCssBundle("lp_styles.css")
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/jstree.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/i18n/angular-locale_ru-ru.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular-sanitize.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-color-picker/3.4.5/angularjs-color-picker.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.0.4/ng-file-upload-shim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.0.4/ng-file-upload.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/ocLazyLoad.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.10.0/angular-translate.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.0.0/toaster.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/3.1.1/ui-grid.min.js"></script>
+
+@Html.RenderJsBundle("lp_scripts.js")
+
+
+@if (true)
+{
+    @Html.Action("Inplace", "Common", new { area = "", enableInplace = true });
+}
+<div data-toaster-container data-toaster-options="{'close-button': true}">
+</div>

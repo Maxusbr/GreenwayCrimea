@@ -1,0 +1,9 @@
+﻿<a class="order-item inked ink-dark" ng-href="adminmobile/lead/{{::lead.Id}}" ng-repeat="lead in leadsCtrl.leads">
+    <div data-ng-transclude></div>
+    <span class="ordInfo">
+        <span class="ordFIO">Лид №{{::lead.Id}} {{::lead.FullName}}</span>
+        <span class="ordDate" data-ng-bind="::lead.CreatedDateFormated"></span>
+    </span>
+    <span class="ordPrice" data-ng-bind="::lead.Status"></span>
+</a>
+

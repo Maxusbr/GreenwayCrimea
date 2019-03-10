@@ -1,0 +1,123 @@
+.order-history {
+  width: 100%;
+  table-layout: fixed;
+  border: 0; }
+
+.order-history-header-item,
+.order-history-body-item {
+  text-align: left;
+  padding: 0.9375rem 0 0.9375rem 0.625rem;
+  font-size: 0.875rem; }
+
+.order-history-body-item-row:hover .order-history-body-item {
+  background: #f3f3f3; }
+
+.order-history-body-item {
+  cursor: pointer;
+  border: 0; }
+
+.order-history-header-item {
+  font-weight: bold;
+  border-width: 0 0 0.0625rem 0;
+  border-bottom: 0.0625rem #ededee solid; }
+  .order-history-header-item:first-child {
+    border-radius: 0.3125rem 0 0 0.3125rem; }
+  .order-history-header-item:last-child {
+    border-radius: 0 0.3125rem 0.3125rem 0; }
+
+.order-history-trigger-details {
+  padding-right: 0.9375rem;
+  width: 1.875rem; }
+
+.order-history-footer-item {
+  text-align: right;
+  border: 0; }
+
+.order-history-footer-text {
+  font-size: 0.875rem; }
+
+.order-history-footer-result {
+  font-size: 1.375rem;
+  font-weight: bold; }
+
+.order-history-footer-note {
+  font-size: 0.6875rem; }
+
+.order-history-id {
+  /*width: rem-calc(80px);*/ }
+
+.order-history-empty-text {
+  margin-bottom: 1.0625rem; }
+
+.order-history-details-header {
+  font-size: 1.375rem; }
+
+.order-history-details-header-selected {
+  font-weight: bold; }
+
+.order-history-details-info {
+  margin-top: 2.5rem; }
+
+.order-history-details-info-block {
+  margin-right: 1.0625rem;
+  font-size: 0.875rem; }
+
+.order-history-details-info-title {
+  font-weight: bold;
+  margin-bottom: 0.625rem; }
+
+.order-history-details-info-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: table; }
+
+.order-history-details-info-row {
+  display: table-row; }
+
+.order-history-details-info-name,
+.order-history-details-info-value {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 4px 0; }
+
+.order-history-details-info-name {
+  padding-right: 0.625rem; }
+
+.order-history-details-products {
+  margin-top: 2.5rem; }
+
+.order-history-details-products-header {
+  font-size: 1.375rem;
+  font-weight: bold; }
+
+.order-history-details-result-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: inline-table; }
+
+.order-history-details-result {
+  text-align: right; }
+
+.order-history-details-result-row {
+  display: table-row; }
+
+.order-history-details-result-name,
+.order-history-details-result-value {
+  display: table-cell;
+  vertical-align: middle; }
+
+.order-history-details-result-name {
+  padding-right: 0.625rem;
+  font-size: 0.875rem; }
+
+.order-history-details-result-value {
+  font-size: 0.875rem; }
+
+.order-history-details-result-selected {
+  font-weight: bold;
+  font-size: 1.375rem; }
+
+.order-history-details-print {
+  font-size: 0.75rem; }

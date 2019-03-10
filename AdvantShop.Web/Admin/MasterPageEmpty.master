@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" Inherits="Admin.MasterPageEmpty" CodeBehind="MasterPageEmpty.master.cs" %>
+
+<%@ Import Namespace="AdvantShop.Core.UrlRewriter" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <asp:Literal ID="headMeta" runat="server" />
+    <asp:Literal runat="server" ID="lBase" />
+    <asp:Literal ID="headStyle" runat="server" EnableViewState="False" />
+    <asp:Literal ID="headScript" runat="server" EnableViewState="False" />
+    <script src="js/plugins/d3/d3.js"></script>
+    <script src="js/plugins/d3/nv.d3.js"></script>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Head" runat="server" />
+</head>
+<body id="bodyId" runat="server">
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="Server" EnablePartialRendering="true" ID="ScriptManager1"
+            ScriptMode="Release">
+        </asp:ScriptManager>
+        <asp:ContentPlaceHolder ID="cphMain" runat="server" />
+        <asp:Literal ID="bottomScript" runat="server" EnableViewState="False"></asp:Literal>
+    </form>
+    <!--ckeditor_при_минификации_падает!-->
+    <script type="text/javascript">
+        window.CKEDITOR_BASEPATH = '<%= UrlService.GetUrl("vendors/ckeditor/") %>';
+    </script>
+    <script src="../vendors/ckeditor/ckeditor.js?v=5.0"></script>
+    <script src="js/ckeditorInit.js"></script>
+    <!--ckeditor-->
+</body>
+</html>

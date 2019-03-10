@@ -1,0 +1,104 @@
+﻿@import '../_settings.scss';
+
+$link-dotted-border-width: 1px !default;
+$link-dashed-border-width: 1px !default;
+$text-decoration-link: none !default;
+$text-decoration-hover: underline !default;
+
+a {
+    text-decoration: $text-decoration-link;
+
+    &:hover {
+        text-decoration: $text-decoration-hover;
+    }
+}
+
+.link-text-decoration-invert {
+    text-decoration: $text-decoration-hover;
+
+    &:hover {
+        text-decoration: $text-decoration-link;
+    }
+}
+
+.link-text-decoration-none {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:active {
+        text-decoration: none;
+    }
+}
+
+.link-text-decoration-underline {
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:active {
+        text-decoration: underline;
+    }
+}
+
+
+
+.link-dotted, .link-dotted-invert {
+    text-decoration: none;
+    border-bottom-style: dotted;
+    border-bottom-width: $link-dotted-border-width;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.link-dashed, .link-dashed-invert {
+    text-decoration: none;
+    border-bottom-style: dashed;
+    border-bottom-width: $link-dashed-border-width;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.link-dotted, .link-dashed {
+    @if($text-decoration-link == none) {
+        border-bottom-color: transparent;
+    }
+
+    &:hover {
+        @if($text-decoration-hover == none) {
+            border-bottom-color: transparent;
+        }
+    }
+}
+
+
+.link-dotted-invert, .link-dashed-invert {
+
+    @if($text-decoration-link != none) {
+        border-bottom-color: transparent;
+    }
+
+    &:hover {
+        @if($text-decoration-hover != none) {
+            border-bottom-color: transparent;
+        }
+    }
+}
+
+.link-dotted-none, .link-dashed-none {
+    border-bottom-color: transparent;
+}
+
+.link-return {
+    font-size: rem-calc(16px);
+    margin-top: $vertical-interval-big;
+    display: inline-block;
+}

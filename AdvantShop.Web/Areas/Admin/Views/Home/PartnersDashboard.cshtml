@@ -1,0 +1,29 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Home.PartnersDashboardViewModel
+
+<div class="ibox float-e-margins">
+    <div class="ibox-content partners-block">
+        <h3 class="partners-title">@T("Admin.Home.PartnersDashboard.Title")</h3>
+        <ul class="partners-list flex"
+            data-carousel
+            data-carousel-class="carousel-partners"
+            data-stretch="true"
+            data-dots="true"
+            data-prev-class="fa fa-angle-left carousel-partners-arrow"
+            data-next-class="fa fa-angle-right carousel-partners-arrow"
+            data-speed="700"
+            data-auto="true"
+            data-visible-max="1">
+            @foreach (var news in Model.News)
+            {
+                <li class="carousel-partners-item">
+                    <a href="@news.LinkSrc" target="_blank">
+                        @if (news.Picture != null)
+                        {
+                            <img src="@news.Picture" alt="@Html.AttributeEncode(news.Name)" />
+                        }
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

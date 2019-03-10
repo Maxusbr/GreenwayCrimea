@@ -1,0 +1,20 @@
+﻿[
+    {
+        "title": "Синий",
+        "name":  "blue",
+        "color": "#000",
+        "selected":  true
+    },
+    {
+        "title": "Лазурный",
+        "name":  "azure",
+        "color": "azure",
+        "selected":  false
+    },
+    {
+        "title": "Картинкой",
+        "name":  "imageTest",
+        "image": "images/examples/track.png",
+        "selected":  false
+    }
+]

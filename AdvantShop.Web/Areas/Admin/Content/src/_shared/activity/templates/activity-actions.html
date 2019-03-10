@@ -1,0 +1,19 @@
+﻿<div>
+    <table class="table table-striped">
+        <tr>
+            <th>Событие</th>
+            <th style="width: 100px">Дата/Время</th>
+        </tr>
+        <tr ng-if="$ctrl.items != null && $ctrl.items.length > 0" data-ng-repeat="item in $ctrl.items track by $index">
+            <td>
+                <span ng-bind-html="item.EventType"></span> <span ng-bind-html="item.Link"></span>
+            </td>
+            <td>
+                <time datetime="{{item.CreateTime}}" title="{{item.CreateTimeTitle}}">{{item.Time}}</time>
+            </td>
+        </tr>
+        <tr ng-if="$ctrl.items == null || $ctrl.items.length == 0">
+            <td colspan="2">Записи отсутствуют</td>
+        </tr>
+    </table>
+</div>

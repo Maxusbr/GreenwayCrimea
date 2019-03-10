@@ -1,0 +1,12 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>()
+    {
+        url + "modules/returnCustomer/content/Scripts/returnCustomer/returnCustomer.js"
+    };
+}
+
+<div data-oc-lazy-load="[@(String.Join(", ", scripts.Select(x => "'" + x  + "'")))]">
+    <return-customer></return-customer>
+</div>

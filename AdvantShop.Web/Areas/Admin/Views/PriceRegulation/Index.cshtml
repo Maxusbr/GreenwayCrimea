@@ -1,0 +1,91 @@
+﻿@*@using AdvantShop.Saas*@
+@using AdvantShop.Web.Admin.Models.PriceRegulation
+@*@{
+    var notAvailable = (SaasDataService.IsSaasEnabled) && (!SaasDataService.CurrentSaasData.HavePriceRegulating);
+}
+
+
+@if (notAvailable)
+{
+    <div class="ibox">
+        <div class="ibox-content">
+            @T("Admin.NotAvailableFeature")
+        </div>
+    </div>
+}
+else
+{*@
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    @T("Admin.PriceRegulation.Index.Title")
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="ibox">
+        <div class="ibox-content">
+
+            <div class="row m-b">
+                <div class="col-xs-2">
+                    <select name="action" class="form-control" ng-model="priceregulation.action" data-e2e="PriceRegulationSelect">
+                        <option value="@PriceRegulationAction.Increment">Увеличить</option>
+                        <option value="@PriceRegulationAction.Decrement">Уменьшить</option>
+                        <option value="@PriceRegulationAction.IncBySupply">+ от закупочной цены</option>
+                    </select>
+                </div>
+                <div class="col-xs">
+                    <div class="flex">
+                        <div>
+                            <span class="m-r-sm">на</span> <input type="text" name="value" ng-model="priceregulation.value" data-e2e="PriceRegulationValue" ng-value="0" class="form-control inline" style="width: 140px" />
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-wl-3">
+                            <select name="valueOption" class="form-control" ng-model="priceregulation.valueOption" data-e2e="PriceRegulationSelectOption">
+                                <option value="@PriceRegulationValueOption.Percent">%</option>
+                                <option value="@PriceRegulationValueOption.AbsoluteValue">абсолютное число</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-2">
+                    Выбор товаров
+                </div>
+                <div class="col-xs-6">
+                    <div>
+                        <label class="adv-radio-label m-b-xs">
+                            Все товары
+                            <input type="radio" name="chooseProducts" class="adv-radio-input" ng-model="priceregulation.chooseProducts" ng-value="false" checked />
+                            <span class="adv-radio-emul" data-e2e="PriceRegulationAllCheckbox"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <label class="adv-radio-label">
+                            Товары из категорий
+                            <input type="radio" name="chooseProducts" class="adv-radio-input" ng-model="priceregulation.chooseProducts" ng-value="true" />
+                            <span class="adv-radio-emul" data-e2e="PriceRegulationCatCheckbox"></span>
+                        </label>
+
+                        <div class="m-t" ng-if="priceregulation.chooseProducts">
+                            <div data-js-tree
+                                    data-tree-ajax="catalog/categoriestree"
+                                    data-tree-core=""
+                                    data-tree-events="select_node:priceregulation.treeCallbacks.select_node;deselect_node:priceregulation.treeCallbacks.deselect_node;"
+                                    tree-plugins="checkbox"
+                                    tie-selection="false"></div>
+                            <!-- check_node:exportFeeds.treeCallbacks.check_node;select_node:exportFeeds.treeCallbacks.select_node;deselect_node:exportFeeds.treeCallbacks.deselect_node; -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="" class="btn btn-success disabled-success" ladda="priceregulation.blockButton" ng-click="priceregulation.changePrices();" data-e2e="PriceRegulationOk">Изменить цены</a>
+            
+        </div>
+    </div>
+@*}*@

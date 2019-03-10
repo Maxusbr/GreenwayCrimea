@@ -1,0 +1,352 @@
+﻿@using AdvantShop.Design
+@using AdvantShop.Trial
+@model AdvantShop.Web.Admin.ViewModels.Design.DesignModel
+@{
+    var template = Model.CurrentTemplate;
+    var shopUrl = UrlService.GetUrl();
+}
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline m-r-xs middle-cell">Дизайн</h1>
+            <a href="@Url.Action("Academy", "Service", new { id = 1 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Дизайне магазина
+            </a>
+        </div>
+    </div>
+</div>
+<div class="ibox">
+    <div class="ibox-content" style="padding: 29px 52px 20px 25px">
+
+        <div class="design-first">
+            <div class="tpl-ava">
+                <img src="@template.Icon" />
+            </div>
+            <div class="tpl-info">
+                <div class="design-title" style="margin: 0 0 16px;">
+                    Ваш текущий шаблон
+                </div>
+                <div class="info-item">
+                    <div class="info-item-title">Название шаблона:</div>
+                    <div class="info-item-content">@template.Name</div>
+                    @if (template.Version != template.CurrentVersion && !AdvantShop.Trial.TrialService.IsTrialEnabled)
+                    {
+                        using (Html.BeginForm("UpdateTemplate", "Design", FormMethod.Post, new { @class = "inline" }))
+                        {
+                            @Html.Hidden("id", template.Id)
+                            @Html.Hidden("stringId", template.StringId)
+                            <button type="submit" class="btn-link"><i class="fa fa-refresh link link-decoration-none"></i></button>
+                        }
+                        @*<div class="info-item-content"><a href="" ng-click="design.updateTemplate(@template.Id)">Обновить</a></div>*@
+                    }
+                </div>
+                @if (template.Developer.IsNotEmpty())
+                {
+                    <div class="info-item">
+                        <div class="info-item-title">Разработчик шаблона:</div>
+                        <div class="info-item-content"><a href="@template.DeveloperWebSite">@template.Developer</a></div>
+                    </div>
+                }
+                @if (template.DeveloperSupport.IsNotEmpty())
+                {
+                    <div class="info-item">
+                        <div class="info-item-title">Поддержка шаблона:</div>
+                        <div class="info-item-content">
+
+                            @if (template.DeveloperSupport.Contains("@"))
+                            {
+                                <a href="mailto:@template.DeveloperSupport">@template.DeveloperSupport</a>
+                            }
+                            else if (template.DeveloperSupport.StartsWith("http"))
+                            {
+                                <a href="@template.DeveloperSupport" target="_blank">@template.DeveloperSupport</a>
+                            }
+                            else
+                            {
+                                @template.DeveloperSupport
+                            }
+                        </div>
+                    </div>
+                }
+                <div class="info-item">
+                    <div class="info-item-title">Тема:</div>
+                    <div class="select-cover">
+                        <select class="form-control info-item-select"
+                                ng-model="design.designData.DesignCurrent.CurrentTheme"
+                                ng-options="item.Name as item.Title for item in design.designData.Themes"
+                                ng-change="design.changeDesign('@eDesign.Theme', design.designData.DesignCurrent.CurrentTheme)"></select>
+                    </div>
+                    <a href=""
+                       class="select-add"
+                       accept="application/zip"
+                       ngf-drop
+                       ngf-max-size="5MB"
+                       ngf-select=""
+                       ngf-change="design.addDesign($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event, '@eDesign.Theme')">Добавить</a>
+
+                    <a href="design/theme?design=@(eDesign.Theme)&theme={{design.designData.DesignCurrent.CurrentTheme}}"
+                       ng-if="design.designData.DesignCurrent.CurrentTheme !== '_none'"
+                       class="select-delete"
+                       title="Редактировать">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a href="" class="select-delete" ng-if="design.designData.DesignCurrent.CurrentTheme !== '_none'" ng-click="design.deleteDesign('@eDesign.Theme', design.designData.DesignCurrent.CurrentTheme)"><i class="fa fa-times"></i></a>
+                    <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                        <div class="help-content">
+                            @Html.Action("FilesHelpText", "Common", new { type = AdvantShop.Helpers.EAdvantShopFileTypes.Zip, maxFileSize = "5MB" })
+                        </div>
+                    </help-trigger>
+                </div>
+                <div class="info-item">
+                    <div class="info-item-title">Фон:</div>
+                    <div class="select-cover">
+                        <select class="form-control info-item-select"
+                                ng-model="design.designData.DesignCurrent.CurrentBackGround"
+                                ng-options="item.Name as item.Title for item in design.designData.BackGrounds"
+                                ng-change="design.changeDesign('@eDesign.Background', design.designData.DesignCurrent.CurrentBackGround)"></select>
+                    </div>
+                    <a href=""
+                       class="select-add"
+                       accept="application/zip"
+                       ngf-drop
+                       ngf-max-size="5MB"
+                       ngf-select=""
+                       ngf-change="design.addDesign($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event, '@eDesign.Background')">Добавить</a>
+
+                    <a href="design/theme?design=@(eDesign.Background)&theme={{design.designData.DesignCurrent.CurrentBackGround}}"
+                       ng-if="design.designData.DesignCurrent.CurrentBackGround !== '_none'"
+                       class="select-delete"
+                       title="Редактировать">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a href="" class="select-delete" ng-if="design.designData.DesignCurrent.CurrentBackGround !== '_none'" ng-click="design.deleteDesign('@eDesign.Background', design.designData.DesignCurrent.CurrentBackGround)"><i class="fa fa-times"></i></a>
+                    <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                        <div class="help-content">
+                            @Html.Action("FilesHelpText", "Common", new { type = AdvantShop.Helpers.EAdvantShopFileTypes.Zip, maxFileSize = "5MB" })
+                        </div>
+                    </help-trigger>
+                </div>
+                <div class="info-item">
+                    <div class="info-item-title">Цветовая схема:</div>
+                    <div class="select-cover">
+                        <select class="form-control info-item-select"
+                                ng-model="design.designData.DesignCurrent.CurrentColorScheme"
+                                ng-options="item.Name as item.Title for item in design.designData.ColorSchemes"
+                                ng-change="design.changeDesign('@eDesign.Color', design.designData.DesignCurrent.CurrentColorScheme)"></select>
+                    </div>
+                    <a href=""
+                       class="select-add"
+                       accept="application/zip"
+                       ngf-drop
+                       ngf-max-size="5MB"
+                       ngf-select=""
+                       ngf-change="design.addDesign($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event, '@eDesign.Color')">Добавить</a>
+
+                    <a href="design/theme?design=@(eDesign.Color)&theme={{design.designData.DesignCurrent.CurrentColorScheme}}"
+                       ng-if="design.designData.DesignCurrent.CurrentColorScheme !== '_none'"
+                       class="select-delete"
+                       title="Редактировать">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+
+                    <a href="" class="select-delete" ng-if="design.designData.DesignCurrent.CurrentColorScheme !== '_none'" ng-click="design.deleteDesign('@eDesign.Color', design.designData.DesignCurrent.CurrentColorScheme)" title="Удалить"><i class="fa fa-times"></i></a>
+                    <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                        <div class="help-content">
+                            @Html.Action("FilesHelpText", "Common", new { type = AdvantShop.Helpers.EAdvantShopFileTypes.Zip, maxFileSize = "5MB" })
+                        </div>
+                    </help-trigger>
+                </div>
+            </div>
+            <div class="other-button">
+                <ui-modal-trigger data-controller="'ModalTemplateSettingsCtrl'"
+                                  controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/design/modal/templatesettingsModal.html"
+                                  size="wl-8 modal-xs-10">
+                    <button class="btn btn-sm btn-action other-btn">
+                        Настройки шаблона
+                    </button>
+                </ui-modal-trigger>
+                <div>
+                    @Html.ActionLink("Редактор CSS стилей", "CssEditor", "Design", null, new { @class = "btn btn-sm btn-success other-btn" })
+                </div>
+                <cm-stat>
+                    <a href="" ng-click="design.resizePictures()" ng-if="!cmStat.entity.IsRun">Пережать фотографии товаров</a>
+                    <div ng-if="cmStat.entity.IsRun">
+                        <uib-progressbar max="cmStat.entity.Total" value="cmStat.entity.Processed">
+                            <span style="color:white; white-space:nowrap;"><span ng-bind="cmStat.entity.Processed"></span> / <span ng-bind="cmStat.entity.Total"></span></span>
+                        </uib-progressbar>
+                    </div>
+                </cm-stat>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ibox">
+    <uib-tabset active class="ng-tabset" uid="tabsDesignTemplates">
+        <uib-tab index="1" heading="Установленные шаблоны" classes="ng-tab">
+            <div class="design-last" data-magnific-popup data-magnific-popup-options="{delegate: '.js-design-template-link-picture', gallery: {enabled: true}}">
+
+                @if (!Model.AvaliableTemplates.Any())
+                {
+                    <div class="h4"> Нет установленных шаблонов. Для установки перейдите в Магазин шаблонов</div>
+                }
+                else if (TrialService.IsTrialEnabled)
+                {
+                    <div class="h4">
+                        Внимание! Некоторые из этих шаблонов платные и предоставлены в пробном режиме. <br />
+                        Подробнее о ценах можно узнать на странице <a href="https://www.advantshop.net/theme-store" target="_blank">https://www.advantshop.net/theme-store</a>
+                    </div>
+                }
+
+                @foreach (var tpl in Model.AvaliableTemplates)
+                {
+                    <div class="last-item" ng-class="{'progress-overlay': design.templatesProgress['@(tpl.StringId)']}">
+                        <div class="last-item-ava">
+                            <a href="@UrlService.GetUrl(tpl.Icon.Replace("../", ""))" class="js-design-template-link-picture">
+                                <img src="@tpl.Icon" />
+                            </a>
+                        </div>
+                        <div class="last-item-con">
+                            <div class="last-item-title">
+                                @if (tpl.DetailsLink.IsNotEmpty())
+                                {
+                                    <a href="@tpl.DetailsLink" target="_blank">@tpl.Name</a>
+                                }
+                                else
+                                {
+                                    <span>@tpl.Name</span>
+                                }
+
+
+                                @using (Html.BeginForm("DeleteTemplate", "Design", FormMethod.Post, new { @class = "inline" }))
+                                {
+                                    @Html.Hidden("stringId", tpl.StringId)
+                                    <button type="submit" class="btn-link"><i class="fa fa-times link link-decoration-none"></i></button>
+                                }
+
+                                @if (!string.Equals(tpl.CurrentVersion, tpl.Version) && !tpl.IsLocalVersion)
+                                {
+                                    using (Html.BeginForm("UpdateTemplate", "Design", FormMethod.Post, new { @class = "inline" }))
+                                    {
+                                        @Html.Hidden("id", tpl.Id)
+                                        @Html.Hidden("stringId", tpl.StringId)
+                                        <button type="submit" class="btn-link"><i class="fa fa-refresh link link-decoration-none"></i></button>
+                                    }
+                                }
+                            </div>
+
+                            @if (tpl.Developer.IsNotEmpty())
+                            {
+                                <div class="last-item-content">Разработчик: <a href="@tpl.DeveloperWebSite" target="_blank">@tpl.Developer</a></div>
+                            }
+                            @if (tpl.DeveloperSupport.IsNotEmpty())
+                            {
+                                <div class="last-item-content">
+                                    Поддержка шаблона:
+                                    @if (tpl.DeveloperSupport.Contains("@"))
+                                    {
+                                        <a href="mailto:@tpl.DeveloperSupport">@tpl.DeveloperSupport</a>
+                                    }
+                                    else if (tpl.DeveloperSupport.StartsWith("http"))
+                                    {
+                                        <a href="@tpl.DeveloperSupport" target="_blank">@tpl.DeveloperSupport</a>
+                                    }
+                                    else
+                                    {
+                                        @tpl.DeveloperSupport
+                                    }
+                                </div>
+                            }
+                            @if (TrialService.IsTrialEnabled)
+                            {
+                                <div class="last-item-content">
+                                    Цена:<span> @Html.Raw(tpl.Price > 0 ? tpl.Price + " " + tpl.Currency : "Бесплатно")</span>
+                                </div>
+                            }
+
+                            @using (Html.BeginForm("ApplyTemplate", "Design", FormMethod.Post, new { @class = "inline" }))
+                            {
+                                @Html.Hidden("templateId", tpl.StringId)
+                                <input type="submit" class="btn btn-sm btn-success" value="Применить" />
+                            }
+                            <a href="" class="m-l-xs" ng-click="design.preview(@tpl.Id, '@(tpl.StringId)', '@shopUrl')">Предпросмотр</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </uib-tab>
+        <uib-tab index="2" heading="Магазин шаблонов" classes="ng-tab">
+            @if (TrialService.IsTrialEnabled)
+            {
+                <div class="h4">
+                    Внимание! Некоторые из этих шаблонов платные и предоставлены в пробном режиме. <br />
+                    Подробнее о ценах можно узнать на странице <a href="https://www.advantshop.net/theme-store" target="_blank">https://www.advantshop.net/theme-store</a>
+                </div>
+            }
+
+            <div class="design-last">
+                @if (!Model.MarketTemplates.Any())
+                {
+                    <div class="h4">Нет доступных шаблонов для приобретения</div>
+                }
+                @foreach (var tpl in Model.MarketTemplates)
+                {
+                    <div class="last-item" ng-class="{'progress-overlay': design.templatesProgress['@(tpl.StringId)']}">
+                        <div class="last-item-ava">
+                            <img src="@tpl.Icon" />
+                        </div>
+                        <div class="last-item-con">
+                            <div class="last-item-title"><a href="@tpl.DetailsLink" target="_blank">@tpl.Name</a></div>
+                            @if (tpl.Developer.IsNotEmpty())
+                            {
+                                <div class="last-item-content">Разработчик: <a href="@tpl.DeveloperWebSite" target="_blank">@tpl.Developer</a></div>
+                            }
+                            @if (tpl.DeveloperSupport.IsNotEmpty())
+                            {
+                                <div class="last-item-content">
+                                    Поддержка шаблона:
+                                    @if (tpl.DeveloperSupport.Contains("@"))
+                                    {
+                                        <a href="mailto:@tpl.DeveloperSupport">@tpl.DeveloperSupport</a>
+                                    }
+                                    else if (tpl.DeveloperSupport.StartsWith("http"))
+                                    {
+                                        <a href="@tpl.DeveloperSupport" target="_blank">@tpl.DeveloperSupport</a>
+                                    }
+                                    else
+                                    {
+                                        @tpl.DeveloperSupport
+                                    }
+                                </div>
+                            }
+
+                            @if (TrialService.IsTrialEnabled)
+                            {
+                                <div class="last-item-content">
+                                    Цена:<span> @Html.Raw(tpl.Price > 0 ? tpl.Price + " " + tpl.Currency : "Бесплатно")</span>
+                                </div>
+                            }
+
+                            @if (tpl.Price == 0 || tpl.Active || TrialService.IsTrialEnabled)
+                            {
+                                using (Html.BeginForm("InstallTemplate", "Design", FormMethod.Post, new { @class = "inline" }))
+                                {
+                                    @Html.Hidden("stringId", tpl.StringId)
+                                    @Html.Hidden("id", tpl.Id)
+                                    @Html.Hidden("version", tpl.Version)
+                                    <input type="submit" class="btn btn-sm btn-success" value="Установить" />
+                                }
+                            }
+                            else if (!TrialService.IsTrialEnabled)
+                            {
+                                <a href="@Url.Action("BuyTemplate", "Service", new { id = @tpl.StringId })" class="btn btn-sm btn-success">Купить: @tpl.Price @tpl.Currency</a>
+                            }
+                            <a href="" class="m-l-xs" ng-click="design.preview(@tpl.Id, '@(tpl.StringId)', '@shopUrl')">Предпросмотр</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</div>

@@ -1,0 +1,59 @@
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  border: 0;
+  text-align: center;
+  border-radius: 1.875rem;
+  line-height: 1.3;
+  box-sizing: border-box;
+  text-transform: uppercase; }
+  .btn:hover {
+    text-decoration: none; }
+  .btn:focus {
+    outline: none; }
+
+.btn-expander {
+  width: 100%; }
+
+.btn[class^="icon-"]:before,
+.btn[class^="icon-"]:after,
+.btn[class*=" icon-"]:before,
+.btn[class*=" icon-"]:after {
+  font-size: 0.875rem; }
+
+.btn-big {
+  font-weight: bold;
+  font-size: 0.9375rem;
+  padding-top: 0.875rem 0.875rem 0.875rem;
+  padding-bottom: 0.875rem 0.875rem 0.875rem;
+  padding-left: 38px;
+  padding-right: 38px; }
+
+.btn-middle {
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 38px;
+  padding-right: 38px; }
+
+.btn-small {
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding-top: 0.8125rem 0.625rem 0.625rem;
+  padding-bottom: 0.8125rem 0.625rem 0.625rem;
+  padding-left: 38px;
+  padding-right: 38px; }
+
+.btn-xsmall {
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 38px;
+  padding-right: 38px; }
+
+.voting .btn-action {
+  padding-left: 16px;
+  padding-right: 16px; }

@@ -1,0 +1,174 @@
+﻿@model AdvantShop.ViewModel.Common.MenuViewModel
+
+@{
+    string viewMode = Model.ViewMode.ToString().ToLower();
+}
+<nav class="menu-dropdown menu-dropdown-@viewMode @(Model.IsExpanded ? "menu-dropdown-expanded" : " menu-dropdown-compact")" @(Model.InLayout ? "data-root-menu" : "")>
+    <!--''||.icon-down-open-after-abs-->
+    @if ((Model.IsExpanded && Model.InLayout) || !Model.IsExpanded)
+    {
+        <a class="menu-dropdown-root icon-down-open-after-abs cs-bg-2" href="@Url.AbsoluteRouteUrl("CatalogRoot")">
+            <span class="menu-dropdown-root-text">@T("Catalog.MenuCatalog.AllProductsTitle")</span>
+        </a>
+    }
+    @if ((Model.IsExpanded && !Model.InLayout) || !Model.IsExpanded)
+    {
+        int itemsPerColumn = 10;
+        int itemsPerRow = itemsPerColumn * 4;
+        int brandCountLimit = 20;
+        <div class="menu-dropdown-list cs-br-1" data-submenu-container="{'type': '@viewMode'}">
+            @foreach (var categoryItem in Model.MenuItems)
+            {
+                <div class="menu-dropdown-item cs-br-1 submenu-@viewMode @(categoryItem.HasChild ? "parent" : "")" data-submenu-parent>
+                    @if (categoryItem.HasChild)
+                    {
+                        bool brandsRender = !Model.IsСlickability && categoryItem.DisplayBrandsInMenu && categoryItem.Brands != null && categoryItem.Brands.Count > 0;
+                        int count = categoryItem.SubItems.Count;
+                        <div class="menu-dropdown-sub ng-hide" data-submenu data-ng-show="submenu.isSubmenuVisible">
+                            <div class="menu-dropdown-sub-inner cs-bg-7">
+                                <div class="menu-dropdown-sub-columns">
+                                    <div class="menu-dropdown-sub-columns-item">
+                                        @{ int i = 0; }
+                                        @foreach (var subCategoryItem in categoryItem.SubItems)
+                                        {
+                                            @*Опускаем блоки на следующую строку если нужно показывать потомков подкатегорий и меню не в режиме аккордиона или тривью*@
+                                            if (!Model.IsСlickability && categoryItem.DisplaySubItems && i % (brandsRender ? Model.CountColsProductsInRow - 1 : Model.CountColsProductsInRow) == 0 && i != 0)
+                                            {
+                                                @:<br />
+                                            }
+
+                                            @*Блок рендерится когда включен показ подкатегорий потомков*@
+                                            if (categoryItem.DisplaySubItems)
+                                            {
+                                                <div class="menu-dropdown-sub-block" @Html.Raw(Model.ViewMode == SettingsDesign.eMenuStyle.Treeview ? "data-submenu-parent" : "")>
+                                                    <div class="menu-dropdown-sub-category-name" @Html.Raw(Model.ViewMode == SettingsDesign.eMenuStyle.Treeview ? "data-ng-click=\"submenuParent.submenu.toggle(); $event.stopPropagation();\"" : "")>
+                                                        @if (subCategoryItem.HasChild && Model.ViewMode == SettingsDesign.eMenuStyle.Treeview)
+                                                        {
+                                                            <label class="menu-dropdown-treeview-control">
+                                                                <input class="menu-dropdown-treeview-control-checkbox" type="checkbox" data-ng-model="submenuParent.submenu.isSubmenuVisible" />
+                                                                <span class="menu-dropdown-treeview-control-expand cs-br-1">
+                                                                    +
+                                                                </span>
+                                                                <span class="menu-dropdown-treeview-control-collapse cs-br-1">
+                                                                    -
+                                                                </span>
+                                                            </label>
+                                                        }
+                                                        <a href="@subCategoryItem.UrlPath" class="menu-dropdown-sub-category-link">
+                                                            <span class="menu-dropdown-sub-category-text">
+                                                                @subCategoryItem.Name
+                                                            </span>
+                                                            @if (Model.DisplayProductsCount)
+                                                            {
+                                                                <span class="menu-cat-count cs-t-1">(@subCategoryItem.ProductsCount)</span>
+                                                            }
+                                                        </a>
+                                                    </div>
+                                                    <div class="menu-dropdown-sub-childs" @Html.Raw(Model.ViewMode == SettingsDesign.eMenuStyle.Treeview ? "data-submenu data-ng-show=\"submenu.isSubmenuVisible\"" : "")>
+                                                        @foreach (var subChildCategoryItem in subCategoryItem.SubItems)
+                                                        {
+                                                            <div class="menu-dropdown-sub-category">
+                                                                <a href="@subChildCategoryItem.UrlPath" class="menu-dropdown-sub-link">
+                                                                    <span class="menu-dropdown-sub-category-text">
+                                                                        @subChildCategoryItem.Name
+                                                                    </span>
+                                                                    @if (Model.DisplayProductsCount)
+                                                                    {
+                                                                        <span class="menu-cat-count cs-t-1">(@subChildCategoryItem.ProductsCount)</span>
+                                                                    }
+                                                                </a>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                            @*Блок рендерится когда выключен показ потомков подкатегорий*@
+                                            @*@else if (Model.ViewMode != "accordion")*@
+                                            else
+                                            {
+                                                if (i % itemsPerColumn == 0)
+                                                {
+                                                    @:<div class="menu-dropdown-sub-block menu-dropdown-sub-block-cats-only">
+                                                }
+                                                <div class="menu-dropdown-sub-category">
+                                                    <div class="menu-dropdown-sub-childs">
+                                                        <a href="@subCategoryItem.UrlPath" class="menu-dropdown-sub-link">
+                                                            <span class="menu-dropdown-sub-category-text">
+                                                                @subCategoryItem.Name
+                                                            </span>
+                                                            @if (Model.DisplayProductsCount)
+                                                            {
+                                                                <span class="menu-cat-count cs-t-1">(@subCategoryItem.ProductsCount)</span>
+                                                            }
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                if (i % itemsPerColumn == itemsPerColumn - 1 || i == count - 1)
+                                                {
+                                                    @:</div>
+                                                    <!--index:@i-->
+                                                    if (i % (itemsPerRow - 1) == 0)
+                                                    {
+                                                        @:<br>
+                                                    }
+                                                }
+                                            }
+                                            i++;
+                                        }
+                                    </div>
+                                    @*Блок брендов*@
+                                    @if (brandsRender)
+                                    {
+                                        <div class="menu-dropdown-sub-columns-item">
+                                            <div class="menu-dropdown-sub-block menu-dropdown-sub-block-brand">
+                                                <div class="menu-dropdown-sub-brand-title">
+                                                    <a href="@Url.AbsoluteRouteUrl("BrandRoot")" class="link-text-decoration menu-dropdown-sub-category-link">@T("Catalog.MenuCatalog.Brands")</a>
+                                                </div>
+                                                @foreach (var brand in categoryItem.Brands.Take(brandCountLimit))
+                                                {
+                                                    <div class="menu-dropdown-sub-category">
+                                                        <a href="@Url.AbsoluteRouteUrl("Brand", new { url = brand.UrlPath })" class="link-text-decoration menu-dropdown-sub-link">@Html.Raw(brand.Name)</a>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="menu-dropdown-link-wrap cs-bg-i-7 @Html.Raw(Model.ViewMode != SettingsDesign.eMenuStyle.Treeview && categoryItem.HasChild ? "icon-right-open-after-abs" : "")"
+                         @Html.Raw(Model.ViewMode == SettingsDesign.eMenuStyle.Accordion && categoryItem.HasChild ? "data-ng-class=\"{'icon-right-open-after-abs': submenuParent.submenu.isSubmenuVisible === false, 'icon-down-open-after-abs': submenuParent.submenu.isSubmenuVisible === true }\"" : "")
+                         @Html.Raw(Model.IsСlickability && categoryItem.HasChild ? string.Format("data-ng-click=\"{0}; $event.stopPropagation();\"", Model.ViewMode == SettingsDesign.eMenuStyle.Accordion ? "submenuContainer.showOneOnly(submenuParent, $event)" : "submenuParent.submenu.toggle()") : "")>
+
+                        @if (Model.ViewMode == SettingsDesign.eMenuStyle.Treeview && categoryItem.HasChild)
+                        {
+                            <label class="menu-dropdown-treeview-control">
+                                <input class="menu-dropdown-treeview-control-checkbox" type="checkbox" data-ng-model="submenuParent.submenu.isSubmenuVisible" />
+                                <span class="menu-dropdown-treeview-control-expand cs-br-1">
+                                    +
+                                </span>
+                                <span class="menu-dropdown-treeview-control-collapse  cs-br-1">
+                                    -
+                                </span>
+                            </label>
+                        }
+                        <a class="menu-dropdown-link" href="@categoryItem.UrlPath" @Html.Raw(Model.ViewMode == SettingsDesign.eMenuStyle.Accordion && categoryItem.HasChild ? "data-ng-click=\"$event.preventDefault();\"" : "")>
+                            @if (!string.IsNullOrEmpty(categoryItem.IconPath))
+                            {
+                                <span class="menu-dropdown-icon"><img class="menu-dropdown-icon-img" src="@categoryItem.IconPath" alt="@categoryItem.Name" /></span>
+                            }
+                            <span class="menu-dropdown-link-text text-floating">
+                                @categoryItem.Name
+                                @if (Model.DisplayProductsCount)
+                                {
+                                    <span class="menu-cat-count cs-t-1">(@categoryItem.ProductsCount)</span>
+                                }
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</nav>

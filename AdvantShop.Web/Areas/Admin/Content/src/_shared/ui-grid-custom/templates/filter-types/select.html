@@ -1,0 +1,8 @@
+﻿<div>
+    <select class="form-control"
+            data-e2e="gridFilterItemSelect" 
+            ng-model="$ctrl.item.filter.term" 
+            ng-change="$ctrl.apply([{name: $ctrl.item.filter.name || $ctrl.item.name, value: $ctrl.item.filter.term }], $ctrl.item)" ng-options="option.value as option.label for option in $ctrl.item.filter.selectOptions">
+        <option selected value="">Выберите пункт</option>
+    </select>
+</div>

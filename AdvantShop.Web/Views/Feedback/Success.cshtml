@@ -1,0 +1,29 @@
+﻿@model AdvantShop.ViewModel.Feedback.FeedbackViewModel
+<div class="site-body-cell">
+    <div class="page-title-row brands-title-row">
+        <h1 class="contacts-title page-title">@T("Feedback.Index.FeedbackHeader")</h1>
+    </div>
+    @Html.SingleBreadCrumb(T("Feedback.Index.FeedbackHeader").ToString())
+
+    <div class="row">
+        <div class="col-xs">
+            <div class="site-body-cell-no-left">
+                <div class="feedbackSuccess-block">
+                    @Html.StaticBlock("feedback_success")
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="site-body-cell-no-right">
+                <div data-check-order></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        setTimeout(function () {
+            $(document).trigger("send_feedback");
+        }, 2000);
+    });
+</script>

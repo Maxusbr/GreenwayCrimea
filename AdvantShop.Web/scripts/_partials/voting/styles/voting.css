@@ -1,0 +1,33 @@
+.voting-question {
+  font-size: 1rem;
+  padding-bottom: 0.9375rem;
+  margin-bottom: 1.0625rem;
+  border-bottom: 0.0625rem #dbdcde solid; }
+
+.voting-answers, .voting-results {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+.voting-answers-row, .voting-results-row {
+  margin-bottom: 1.25rem; }
+
+.voting-results-progress {
+  white-space: nowrap; }
+
+.voting-results-progressbar-wrap, .voting-results-value {
+  display: inline-block;
+  vertical-align: middle; }
+
+.voting-results-progressbar-wrap {
+  width: 80%; }
+
+.voting-results-value {
+  width: 20%;
+  text-align: right; }
+
+.voting-results-progressbar {
+  height: 0.9375rem; }
+
+.voting-results-total-text {
+  font-weight: bold; }

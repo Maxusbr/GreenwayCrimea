@@ -1,0 +1,121 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Начислить дополнительные бонусы</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal m-r m-l"  style="min-height: 465px;" ng-if="!ctrl.isStartExport">
+            <div class="form-group m-b-lg">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <label class="control-label m-b-xs">
+                            Наименование
+                        </label>
+                    </div>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" ng-disabled="ctrl.isStartExport" ng-model="ctrl.name" autofocus data-e2e="Name" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row m-b-lg">
+                    <div class="col-xs-12">
+                        <div class="row form-group">
+                            <div class="col-xs-5 ">
+                                <label class="control-label m-b-xs">
+                                    Действует от
+                                </label>
+                            </div>
+                            <div class="dropdown col-xs-6">
+                                <a class="dropdown-toggle" id="startDate" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                    <div class="input-group">
+                                        <input data-e2e="addAdditionBonusStartDate" type="text" class="form-control" ng-disabled="ctrl.isStartExport" ng-model="ctrl.startDate" data-date-time-input="DD.MM.YYYY"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker ng-disabled="ctrl.isStartExport" ng-model="ctrl.startDate" data-datetimepicker-config="{ dropdownSelector: '#startDate',startView:'day', minView:'day' }" />
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row m-b-lg">
+                            <div class="col-xs-5">
+                                <label class="control-label m-b-xs">
+                                    Действует включительно до
+                                </label>
+                            </div>
+                            <div class="dropdown col-xs-6">
+                                <a class="dropdown-toggle" id="endDate" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                    <div class="input-group">
+                                        <input data-e2e="addAdditionBonusEndDate" type="text" class="form-control" ng-disabled="ctrl.isStartExport" ng-model="ctrl.endDate" data-date-time-input="DD.MM.YYYY"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker ng-disabled="ctrl.isStartExport" ng-model="ctrl.endDate" data-datetimepicker-config="{ dropdownSelector: '#endDate',startView:'day', minView:'day' }" />
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group m-b-lg">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <label class="control-label m-b-xs">
+                            <span class="text-required">Сумма бонуса</span>
+                        </label>
+                    </div>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" ng-model="ctrl.amount" required validation-input-text="Сумма бонуса" data-e2e="Amount" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group m-b-lg">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <label class="control-label m-b-xs">
+                            Основание
+                        </label>
+                    </div>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" ng-model="ctrl.reason" validation-input-text="Основание" data-e2e="Reason" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <cm-stat ng-if="ctrl.isStartExport">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <uib-progressbar max="cmStat.entity.Total" value="cmStat.entity.Processed"><span style="color:white; white-space:nowrap;">{{cmStat.entity.ProcessedPercent }} %</span></uib-progressbar>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="!cmStat.entity.IsRun">
+                        <div class="col-xs-6">
+                            <div class="form-group row" ng-if="cmStat.entity.Error == 0">
+                                <div class="col-xs-12">
+                                    <div class="setting-label-wrap">
+                                        Завершено
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </cm-stat>
+    </div>
+    <div class="modal-footer" ng-if="!ctrl.btnLoading">
+        <button class="btn btn-save btn-primary" type="submit" button-validation button-validation-success="ctrl.addBonus();" ladda="ctrl.btnLoading" data-e2e="bonusAdd">Добавить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+    <div class="modal-footer" ng-if="ctrl.btnLoading">
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Закрыть</button>
+    </div>
+</form>

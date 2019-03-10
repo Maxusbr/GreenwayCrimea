@@ -1,0 +1,162 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.YandexDeliveryShippingAdminModel
+
+@if (!Model.IsActive)
+{
+    <div class="form-group row middle-xs">
+        <div class="col-xs-12">
+            <p>Инструкция:</p>
+            <p>1) Зарегистрируйтесь на сайте <a href="https://delivery.yandex.ru" target="_blank">delivery.yandex.ru</a></p>
+            <p>2) Заполните данные в разделах "Магазин", "Склад", "Реквизиты" Яндекс.Доставки</p>
+            <p>3) Перейдите в интерфейсе сервиса Яндекс.Доставки на страницу настроек "Интеграция" - "Api". Нажмите API-ключи "получить".</p>
+            <p>Скопируйте полученные JSON ключи в соответсвующие поля магазине:</p>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="col-xs-6 relative">
+            @Html.TextAreaFor(x => x.ApiKeys, new {ng_model = "shippingMethod.Params.ApiKeys", @class = "form-control", required = "required", validation_input_text = "ApiKeys", style = "height:150px"})
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="col-xs-6 relative">
+            @Html.TextAreaFor(x => x.ApiData, new {ng_model = "shippingMethod.Params.ApiData", @class = "form-control", required = "required", validation_input_text = "ApiData", style = "height:150px"})
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="col-xs-12">
+            4) Сохраните настройки
+        </div>
+    </div>
+
+    @* after all settings *@
+    @Html.Hidden("IsActive", true)
+}
+else
+{
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Код корзинного виджета</span>
+        </div>
+        <div class="col-xs-6 relative">
+            <p>
+                Перейдите в сервисе Яндекс.Доставка "Интеграция" - "Виджеты" - "Корзинный виджет". Нажмите установить и скопируйте код в поле снизу:
+            </p>
+            @Html.TextAreaFor(x => x.WidgetCode, new {@class = "form-control", ng_model = "shippingMethod.Params.WidgetCode", style="height: 80px", required = "required", validation_input_text = "Код корзинного виджета" })
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">client_id</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.ClientId, new { @class = "form-control", ng_model = "shippingMethod.Params.ClientId", required = "required", validation_input_text = "client_id" })
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">sender_id</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.SenderId, new { @class = "form-control", ng_model = "shippingMethod.Params.SenderId", required = "required", validation_input_text = "sender_id" })
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">warehouse_id</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.WarehouseId, new { @class = "form-control", ng_model = "shippingMethod.Params.WarehouseId", required = "required", validation_input_text = "warehouse_id" })
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">requisite_id</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.RequisiteId, new { @class = "form-control", ng_model = "shippingMethod.Params.RequisiteId", required = "required", validation_input_text = "requisite_id" })
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Город, из которого осуществляется доставка</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CityFrom, new {@class = "form-control", ng_model = "shippingMethod.Params.CityFrom", required = "required", validation_input_text = "Город, из которого осуществляется доставка"})
+        </div>
+    </div>
+    
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Включать в стоимость доставки вознаграждение за объявление ценности заказа</span>
+        </div>
+        <div class="col-xs-1">
+            <label class="adv-checkbox-label">
+                @Html.CheckBoxFor(x => x.ShowAssessedValue, new {@class = "adv-checkbox-input", ng_model = "shippingMethod.Params.ShowAssessedValue"})
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak" data-title="Включать в стоимость доставки вознаграждение за объявление ценности заказа">
+                <p>Внимание!</p>
+                <p>Значение этой опции должно совпадать со значением в ЛК сервиса Яндекс.Доставка.</p> 
+                <p>Стоимость доставки увеличится в зависимости от стоимости товаров.</p>
+            </help-trigger>
+        </div>
+    </div>
+    
+    <div class="m-t">
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12">
+                Если у товаров не указан размер или вес, то будут применены следущие параметры:
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Средний вес</span>
+        </div>
+        <div class="col-xs-2 relative">
+            @Html.TextBoxFor(x => x.DefaultWeight, new {@class = "form-control", ng_model = "shippingMethod.Params.DefaultWeight", required = "required", validation_input_text = "Средний вес" })
+        </div>
+        <div class="col-xs-2">
+            кг.
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Длина, высота, ширина </span>
+        </div>
+        <div class="col-xs-6 relative">
+            <div class="row">
+                <div class="col-xs-3">
+                    @Html.TextBoxFor(x => x.DefaultLength, new {@class = "form-control", ng_model = "shippingMethod.Params.DefaultLength", required = "required", validation_input_text = "Длина" })
+                </div>
+                <div class="col-xs-3">
+                    @Html.TextBoxFor(x => x.DefaultHeight, new {@class = "form-control", ng_model = "shippingMethod.Params.DefaultHeight", required = "required", validation_input_text = "Высота" })
+                </div>
+                <div class="col-xs-3">
+                    @Html.TextBoxFor(x => x.DefaultWidth, new {@class = "form-control", ng_model = "shippingMethod.Params.DefaultWidth", required = "required", validation_input_text = "Ширина" })
+                </div>
+                <div class="col-xs">мм.</div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="adv-panel-info">
+    <a href="http://www.advantshop.net/help/pages/delivery-yandex" target="_blank">Инструкция. Подключение модуля доставки Яндекс.Доставка</a>
+</div>

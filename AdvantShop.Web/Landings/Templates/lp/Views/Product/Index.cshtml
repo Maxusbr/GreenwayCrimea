@@ -1,0 +1,115 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ProductDetailsViewModel
+@using System.Linq;
+@using AdvantShop.Core.Services.Catalog;
+@using AdvantShop.Helpers
+@{
+    var product = Model.Product;
+    var offer = Model.Offer;
+}
+
+<div data-ng-init="product.loadData(@product.ProductId); product.filterPhotosEnable=false"></div>
+
+@if (Model.IsAdmin)
+{
+    <div class="details-row">
+        @{
+            var cookie = CommonHelper.GetCookie("oldadmin");
+            var isOldAdmin = cookie != null && cookie.Value == "true";
+        }
+        <a target="_blank" href="@UrlService.GetUrl(isOldAdmin ? "admin/Product.aspx?ProductID="+ @product.ProductId : "adminv2/product/edit/" + @product.ProductId)">@Resource.Client_Details_Link_ShowInClient</a>
+    </div>
+}
+
+<h1 class="plp-title" itemprop="name" data-ng-init="product.productName='@Html.AttributeEncode(Html.GetPageH1())'" @Html.InplaceMeta(product.ProductId, AdvantShop.SEO.MetaType.Product)>
+    @Html.GetPageH1()
+</h1>
+<div id="containerFirst">
+    @Html.Action("ProductInfo", Model)
+</div>
+<div class="row plp-features">
+    <div class="col-xs" @Html.InplaceProduct(product.ProductId, ProductInplaceField.Description)>
+        @Html.Raw(product.Description)
+    </div>
+</div>
+
+@if (Model.Gifts != null && Model.Gifts.Count > 0)
+{
+    <div class="plp-gift">
+        <div class="plp-subTitle h2">+ Подарок</div>
+        <div class="gift-descr">
+            При покупке @Model.Product.Name вы получаете:
+        </div>
+        @Html.Action("ProductGifts", Model)
+    </div>
+}
+
+
+@{
+    var htmlProductInfo = Html.RenderModules("product_info", new { product, offer }).ToString();
+}
+
+@if (htmlProductInfo.IsNotEmpty())
+{
+    <div class="plp-main-timer">
+        <div class="row middle-xs t-container">
+            <div class="col-xs-6">
+                <div class="t-title">
+                    До конца акции:
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="t-countdown">
+                    @Html.Raw(htmlProductInfo)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model.Product.ProductPhotos.Any())
+{
+    <div class="s-banner">
+        <div class="s-gallery">
+            @Html.Action("ProductPhotos", new { productModel = Model, enabledModalPreview = false })
+        </div>
+    </div>
+}
+
+@if (Model.ProductProperties != null && Model.ProductProperties.Count > 0)
+{
+    <div class="plp-specifications">
+        <div class="plp-subTitle">
+            Основные характеристики
+        </div>
+        <div class="spec-block">
+            @Html.Action("ProductProperties", Model)
+        </div>
+    </div>
+}
+
+@if (Model.Product.ProductVideos != null && Model.Product.ProductVideos.Count > 0)
+{
+    <div class="plp-video">
+        <div class="plp-subTitle">
+            Видео о @product.Name
+        </div>
+        <div class="v-container">
+            @Html.Raw(Model.Product.ProductVideos.First().PlayerCode)
+        </div>
+    </div>
+}
+
+<div>
+    @Html.Raw(ProductLandingPageService.GetDescriptionByProductId(product.ProductId, false))
+</div>
+
+
+<div class="plp-reviews row center-xs">
+    <div class="col-xs-9">
+        @Html.Action("ProductReviews", new { productModel = Model, ProductId = product.ProductId, ReviewsReadonly = true, HeaderText = "Отзывы" })
+    </div>
+</div>
+<div id="containerSecond">
+    <!--сюда перемститься содежимое блока #containerSecond-->
+</div>
+

@@ -1,0 +1,27 @@
+﻿<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Tags.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <a data-e2e="AddTag" class="btn btn-sm btn-success btn--margin-left" href="@Url.Action("Add")">
+                <span class="fa fa-plus"></span>
+                @T("Admin.Tags.Index.AddTag")
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-row-identificator="'Id'"
+                        grid-on-init="tags.gridOnInit(grid)"
+                        grid-options="tags.gridOptions"
+                        grid-url="'tags/gettags'"
+                        grid-inplace-url="'tags/inplacetag'">
+        </ui-grid-custom>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Home.OrderGraphDasboardViewModel
+
+<div class="ibox">
+    <div class="ibox-content last-orders-block">
+        <uib-tabset active uid="tabsOnMainPageGraph">
+            <uib-tab index="1" heading="Неделя" classes="ng-tab">
+                @*стилистика как в старой админке*@
+                @*chart-dataset-override="[{fill:false, lineTension: 0},{fill:false, lineTension: 0}]"*@
+                <canvas id="ordersChartWeek"
+                        class="chart chart-line"
+                        chart-data="@Model.ChartWeek.Data"
+                        chart-labels="@Model.ChartWeek.Labels"
+                        chart-series="@Model.ChartWeek.Series"
+                        chart-colors="@Model.ChartWeek.Colors"
+                        chart-options="{legend:{display:true}}"></canvas>
+            </uib-tab>
+            <uib-tab index="2" heading="Месяц" classes="ng-tab" removable="true">
+                <canvas id="ordersChartMonth"
+                        class="chart chart-line"
+                        chart-data="@Model.ChartMonth.Data"
+                        chart-labels="@Model.ChartMonth.Labels"
+                        chart-series="@Model.ChartMonth.Series"
+                        chart-colors="@Model.ChartMonth.Colors"
+                        chart-options="{legend:{display:true}, scales: {xAxes:[{ticks: {maxTicksLimit: 15}}]}}"></canvas>
+            </uib-tab>
+            <uib-tab index="3" heading="Год" classes="ng-tab" removable="true">
+                <canvas id="ordersChartYear"
+                        class="chart chart-line"
+                        chart-data="@Model.ChartYear.Data"
+                        chart-labels="@Model.ChartYear.Labels"
+                        chart-series="@Model.ChartYear.Series"
+                        chart-colors="@Model.ChartYear.Colors"
+                        chart-options="{legend:{display:true}, scales: {xAxes:[{ticks: {maxTicksLimit: 15}}]}}"></canvas>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</div>
+
+

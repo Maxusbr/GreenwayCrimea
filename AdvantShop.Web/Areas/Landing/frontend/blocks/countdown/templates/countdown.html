@@ -1,0 +1,48 @@
+﻿<div class="countdown wSeconds">
+    <div class="countdown-item-list">
+        <div class="countdown-item">
+            <span class="countdown-item-part" data-ng-bind="countdown.dataTime.days < 10 ? 0 : countdown.dataTime.days.toString().charAt(0)"></span>
+            <span class="countdown-item-part" data-ng-bind="countdown.dataTime.days < 10 ? countdown.dataTime.days.toString().charAt(0) : countdown.dataTime.days.toString().charAt(1)"></span>
+        </div>
+        <div class="countdown-spliter">:</div>
+        <div class="countdown-item">
+            <span class="countdown-item-part" data-ng-bind="countdown.dataTime.hours < 10 ? 0 : countdown.dataTime.hours.toString().charAt(0)"></span>
+            <span class="countdown-item-part" data-ng-bind="countdown.dataTime.hours < 10 ? countdown.dataTime.hours.toString().charAt(0) : countdown.dataTime.hours.toString().charAt(1)"></span>
+        </div>
+        <div class="countdown-spliter">:</div>
+        <div class="countdown-item">
+            <span class="countdown-item-part" data-ng-bind="countdown.dataTime.minutes < 10 ? 0 : countdown.dataTime.minutes.toString().charAt(0)"></span>
+            <span class="countdown-item-part" data-ng-bind="countdown.dataTime.minutes < 10 ? countdown.dataTime.minutes.toString().charAt(0) : countdown.dataTime.minutes.toString().charAt(1)"></span>
+        </div>
+        <div class="countdown-spliter">:</div>
+        <div class="countdown-item">
+            <span class="countdown-item-part" data-ng-bind="countdown.dataTime.seconds < 10 ? 0 : countdown.dataTime.seconds.toString().charAt(0)"></span>
+            <span class="countdown-item-part" data-ng-bind="countdown.dataTime.seconds < 10 ? countdown.dataTime.seconds.toString().charAt(0) : countdown.dataTime.seconds.toString().charAt(1)"></span>
+        </div>
+    </div>
+    <div class="countdown-label-list">
+        <div class="countdown-item">
+            <div class="countdown-item-label">
+                Дней
+            </div>
+        </div>
+        <div class="countdown-spliter">:</div>
+        <div class="countdown-item">
+            <div class="countdown-item-label">
+                Часов
+            </div>
+        </div>
+        <div class="countdown-spliter">:</div>
+        <div class="countdown-item">
+            <div class="countdown-item-label">
+                Минут
+            </div>
+        </div>
+        <div class="countdown-spliter">:</div>
+        <div class="countdown-item">
+            <div class="countdown-item-label">
+                Секунд
+            </div>
+        </div>
+    </div>
+</div>

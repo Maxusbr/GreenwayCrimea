@@ -1,0 +1,33 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Customers.CustomersListViewModel
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline bottom-cell m-r-xs">
+                @Html.Raw(Model.Title)
+            </h1>
+            <a href="@Url.Action("Academy", "Service", new { id = 44 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline bottom-cell">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Покупателях
+            </a>
+        </div>
+        <div class="page-name-block-item-additional">            
+            <a class="btn btn-sm btn-success" href="@Url.Action("Add")">
+                <span class="fa fa-plus"></span> @T("Admin.Customers.Index.AddCustomer")
+            </a>
+
+        </div>
+    </div>
+</div>
+<div class="ibox" ng-init="customers.customersInit(@Model.EnableManagers.ToLowerString())">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-options="customers.gridOptions"
+                        @Html.Raw(Model.GroupId != 0 ? "grid-params=\"{group: " + Model.GroupId + " }\" " : "")
+                        grid-url="'customers/getcustomers'"
+                        grid-on-init="customers.gridOnInit(grid)"
+                        grid-on-filter-init="customers.gridOnFilterInit(filter)"
+                        grid-show-export="true">
+        </ui-grid-custom>
+    </div>
+</div>

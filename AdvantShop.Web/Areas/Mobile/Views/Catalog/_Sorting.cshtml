@@ -1,0 +1,10 @@
+﻿@model List<SelectListItem>
+@{
+    var curSort = Model.FirstOrDefault(x => x.Selected);
+    var val = curSort != null ? curSort.Value : "nosorting";
+}
+<div class="catalog-sort">
+    <span class="good-select-expander select-custom icon-down-open-after-abs cs-t-8">
+        @Html.DropDownList("sort", Model, new { @class = "cs-bg-2", data_ng_model = "catalogFilter.curFltr", data_ng_init = "catalogFilter.curFltr = '" + val + "'", data_ng_change = "catalogFilter.changeSort(catalogFilter.curFltr)" })
+    </span>
+</div>

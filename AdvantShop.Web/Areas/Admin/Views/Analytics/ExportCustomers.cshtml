@@ -1,0 +1,166 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Analytics.ExportCustomersModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+
+        <div class="sticky-page-name" sticky sticky-top="0">
+            <div class="page-name-block m-b-md sticky-page-name-inner top-xs">
+                <div class="page-name-block-item-main">
+                    <h1 class="page-name-block-text sticky-page-name-text m-b-xs">
+                        Выгрузка покупателей
+                    </h1>
+                    @Html.Label("Выгрузка данных по покупателям")
+                </div>
+                <div class="page-name-block-item-additional">
+
+                </div>
+            </div>
+        </div>
+        <div class="ibox" ng-if="!analytics.isStartExport">
+            <div class="ibox-content">
+                <div class="form-group row">
+                    <div class="col-xs-3 col-wl-2">
+                        <div class="setting-label-wrap">
+                            @Html.Label("Группа покупателей")
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-wl-2">
+                        @Html.DropDownList("ddlGroups", new SelectList(Model.Groups, "Key", "Value", Model.Group), new { @class = "form-control", ng_init = "analytics.exportCustomersSettings.Group='" + Model.Group + "'", ng_model = "analytics.exportCustomersSettings.Group" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 col-wl-2">
+                        <div class="setting-label-wrap">
+                            @Html.Label("Временной интервал")
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-wl-2">
+                        <div class="form-horizontal">
+                            <div class="m-b-md row">
+                                <label class="control-label col-sm-1 ui-grid-filter-text" for="gridFilterDateFrom">
+                                    От
+                                </label>
+                                <div class="dropdown col-sm-11" >
+                                    <div class="dropdown-toggle" id="gridFilterDateFrom" role="button" data-toggle="dropdown">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" data-e2e="datetimeFilterFrom" ng-model="analytics.exportCustomersSettings.DateFrom" data-date-time-input="DD.MM.YYYY HH:mm" ng-change="$ctrl.apply($ctrl.item.filter.datetimeOptions.from.name, $ctrl.item.filter.term.from, $ctrl.item)"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker ng-model="analytics.exportCustomersSettings.DateFrom" data-datetimepicker-config="{ dropdownSelector: '#gridFilterDateFrom' }" ng-change="$ctrl.apply($ctrl.item.filter.datetimeOptions.from.name, $ctrl.item.filter.term.from, $ctrl.item)" />
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="m-b-md row">
+                                <label class="control-label col-sm-1 ui-grid-filter-text" for="gridFilterDateTo">
+                                    До
+                                </label>
+                                <div class="dropdown col-sm-11" >
+                                    <div class="dropdown-toggle" id="gridFilterDateTo" role="button" data-toggle="dropdown">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" data-e2e="datetimeFilterTo" ng-model="analytics.exportCustomersSettings.DateTo" data-date-time-input="DD.MM.YYYY HH:mm" ng-change="$ctrl.apply($ctrl.item.filter.datetimeOptions.to.name, $ctrl.item.filter.term.to, $ctrl.item)"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker ng-model="analytics.exportCustomersSettings.DateTo" data-datetimepicker-config="{ dropdownSelector: '#gridFilterDateTo' }" ng-change="$ctrl.apply($ctrl.item.filter.datetimeOptions.to.name, $ctrl.item.filter.term.to, $ctrl.item)" />
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 col-wl-2">
+                        <div class="setting-label-wrap">
+                            @Html.Label("Разделитель между колонками")
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-wl-2">
+                        @Html.DropDownList("ddlColumnSeparator", new SelectList(Model.Separators, "Key", "Value", Model.ColumnSeparator), new { @class = "form-control", ng_init = "analytics.exportCustomersSettings.ColumnSeparator='" + Model.ColumnSeparator + "'", ng_model = "analytics.exportCustomersSettings.ColumnSeparator" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 col-wl-2">
+                        <div class="setting-label-wrap">
+                            @Html.Label("Разделитель между адресами")
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-wl-2">
+                        @Html.TextBox("txtPropertySeparator", Model.PropertySeparator, new { @class = "form-control", ng_init = "analytics.exportCustomersSettings.PropertySeparator='" + Model.PropertySeparator + "'", ng_model = "analytics.exportCustomersSettings.PropertySeparator" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 col-wl-2">
+                        <div class="setting-label-wrap">
+                            @Html.Label("Кодировка файла")
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-wl-2">
+                        @Html.DropDownList("ddlEncodings", new SelectList(Model.Encodings, "Key", "Value", Model.Encoding), new { @class = "form-control", ng_init = "analytics.exportCustomersSettings.Encoding='" + Model.Encoding + "'", ng_model = "analytics.exportCustomersSettings.Encoding" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-offset-3 col-wl-offset-2">
+                        <button class="btn btn-sm btn-success" data-e2e="Export" type="button" ng-click="analytics.exportCustomers()">
+                            @T("Admin.ExportFeeed.СhoiceOfProducts.Export")
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="ibox" ng-init="analytics.initProgress()" ng-if="analytics.isStartExport">
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <uib-progressbar max="analytics.progressTotal" value="analytics.progressValue"><span style="color:white; white-space:nowrap;"><span ng-bind="analytics.progressValue"></span> / <span ng-bind="analytics.progressTotal"></span></span></uib-progressbar>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <div class="setting-label-wrap">
+                            Текущий процесс
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="adv-checkbox-label">
+                            <a class="link-decoration-none" ng-href="{{analytics.progressCurrentProcess}}" ng-bind="analytics.progressCurrentProcessName"></a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" ng-if="!analytics.IsRun">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="setting-label-wrap">
+                            Данные успешно экспортированы.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" ng-if="!analytics.IsRun">
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <a ng-href="{{analytics.FileName}}" class="btn btn-sm btn-default" download>@T("Скачать файл")</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <a class="link-decoration-none" href="" ng-click="analytics.isStartExport = false">Вернуться к экспорту</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

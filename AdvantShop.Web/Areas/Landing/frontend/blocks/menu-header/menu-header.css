@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/*>480 - смартфоны*/
+/*>768 - планшеты*/
+/*>992 - нетбуки, ноутбуки*/
+/*>1200 - десктоп*/
+.lp-menu-header {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.lp-menu-header__item {
+  padding: 10px;
+  margin: 0; }
+
+.lp-menu-header__link {
+  font-size: 14px; }
+
+@media (min-width: 48em) {
+  .lp-menu-header {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row; } }

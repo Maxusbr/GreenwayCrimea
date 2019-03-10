@@ -1,0 +1,83 @@
+﻿<div>
+    <form name="buyoneclickForm" novalidate="novalidate">
+        <div data-ng-init="buyOneClickForm.form = buyoneclickForm">
+            <div data-ng-switch="buyOneClickForm.success">
+                <div data-ng-switch-when="false">
+                    <div class="buy-one-click-text" data-ng-bind-html="buyOneClickForm.fields.BuyInOneClickFirstText"></div>
+                    <label class="row middle-xs" data-ng-if="::buyOneClickForm.fields.IsShowBuyInOneClickName">
+                        <span class="col-xs-4">
+                            <span class="form-field-name form-field-name-white vertical-interval-middle" data-ng-class="::{'input-required': buyOneClickForm.fields.IsRequiredBuyInOneClickName}" data-ng-bind="::buyOneClickForm.fields.BuyInOneClickName"></span>
+                        </span>
+                        <span class="col-xs-8">
+                            <span class="form-field-input vertical-interval-middle">
+                                <input type="text" data-ng-model="buyOneClickForm.name" name="buyOneClickFormName" id="buyOneClickFormName" value="" class="input-small cs-t-1" data-ng-required="buyOneClickForm.fields.IsRequiredBuyInOneClickName" autocomplete="given-name" />
+                            </span>
+                        </span>
+                    </label>
+                    <label class="row middle-xs" data-ng-if="::buyOneClickForm.fields.IsShowBuyInOneClickEmail">
+                        <span class="col-xs-4">
+                            <span class="form-field-name form-field-name-white  vertical-interval-middle" data-ng-class="::{'input-required': buyOneClickForm.fields.IsRequiredBuyInOneClickEmail}" data-ng-bind="::buyOneClickForm.fields.BuyInOneClickEmail"></span>
+                        </span>
+                        <span class="col-xs-8">
+                            <span class="form-field-input vertical-interval-middle">
+                                <input type="email" data-ng-model="buyOneClickForm.email" name="buyOneClickFormEmail" id="buyOneClickFormEmail" value="" class="input-small cs-t-1" data-ng-required="buyOneClickForm.fields.IsRequiredBuyInOneClickEmail" autocomplete="email" />
+                            </span>
+                        </span>
+                    </label>
+                    <label class="row middle-xs" data-ng-if="::buyOneClickForm.fields.IsShowBuyInOneClickPhone">
+                        <span class="col-xs-4">
+                            <span class="form-field-name vertical-interval-middle input-required__rel" data-ng-class="::{'input-required': buyOneClickForm.fields.IsRequiredBuyInOneClickPhone}" data-ng-bind="::buyOneClickForm.fields.BuyInOneClickPhone"></span>
+                        </span>
+                        <span class="col-xs-8">
+                            <span class="form-field-input vertical-interval-middle">
+                                <input type="tel" 
+                                       data-ng-model="buyOneClickForm.phone" 
+                                       data-ui-mask="{{ ::'Js.Bonus.PhoneMask' | translate }}" 
+                                       name="buyOneClickFormPhone" 
+                                       id="buyOneClickFormPhone" 
+                                       value="" 
+                                       class="input-small cs-t-1" 
+                                       data-ng-required="buyOneClickForm.fields.IsRequiredBuyInOneClickPhone" 
+                                       data-model-view-value="true"
+                                       autocomplete="tel" />
+                            </span>
+                        </span>
+                    </label>
+                    <label class="row middle-xs" data-ng-if="::buyOneClickForm.fields.IsShowBuyInOneClickComment">
+                        <span class="col-xs-4">
+                            <span class="form-field-name vertical-interval-middle" data-ng-class="::{'input-required': buyOneClickForm.fields.IsRequiredBuyInOneClickComment}" data-ng-bind="::buyOneClickForm.fields.BuyInOneClickComment"></span>
+                        </span>
+                        <span class="col-xs-8">
+                            <span class="form-field-input vertical-interval-middle">
+                                <textarea class="textarea-small cs-t-1" name="buyOneClickFormComment" data-ng-model="buyOneClickForm.comment" data-ng-required="buyOneClickForm.fields.IsRequiredBuyInOneClickComment"></textarea>
+                            </span>
+                        </span>
+                    </label>
+                    <label class="row middle-xs" data-ng-if="::buyOneClickForm.fields.IsShowUserAgreementText">
+                        <span class="col-xs-4">
+                            <span class="form-field-name vertical-interval-middle" data-ng-bind-html="::buyOneClickForm.fields.Admin_ContactFields_UserAgreement"></span>
+                        </span>
+                        <span class="col-xs-8">
+                            <span class="form-field-input vertical-interval-middle">
+                                <input type="checkbox" data-ng-model="buyOneClickForm.useragreement" name="buyOneClickUserAgreement" id="buyOneClickUserAgreement" value="" class="input-small required" data-ng-required="true" />
+                                <span class="vertical-interval-middle" data-ng-bind-html="::buyOneClickForm.fields.UserAgreementText" /> <span class="text-required">*</span>
+                            </span>
+                        </span>
+                    </label>
+                </div>
+                <div data-ng-switch-when="true">
+                    <div class="buy-one-click-final-text" data-ng-bind-html="buyOneClickForm.fields.BuyInOneClickFinalText"></div>
+                </div>
+            </div>
+            <div class="buy-one-click-buttons">
+                <input class="btn btn-middle btn-confirm" type="button"
+                       data-ng-if="buyOneClickForm.success === false"
+                       data-ng-value="::buyOneClickForm.fields.BuyInOneClickButtonText"
+                       data-ng-disabled="buyOneClickForm.process === true"
+                       data-button-validation
+                       data-button-validation-success="buyOneClickForm.send()" />
+                <a data-ng-if="buyOneClickForm.success && buyOneClickForm.showRedirectButton" class="btn btn-middle btn-action" data-ng-href="{{buyOneClickForm.result.url}}">{{ ::'Js.BuyOneClick.Close' | translate }}</a>
+            </div>
+        </div>
+    </form>
+</div>

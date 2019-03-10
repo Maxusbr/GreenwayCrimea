@@ -1,0 +1,59 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Скидка в зависимости от времени</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Активность
+            </label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label control-checkbox">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.enabled" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Время</span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" style="width: 150px; display: inline-block" ng-model="ctrl.dateFrom" placeholder="9:00" required validation-input-text="Время от" /> -
+                <input type="text" class="form-control" style="width: 150px; display: inline-block" ng-model="ctrl.dateTo" placeholder="12:00" required validation-input-text="Время до" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Скидка, %</span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" style="width: 150px;" ng-model="ctrl.percent" required validation-input-text="Скидка" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Показывать всплывающее сообщение
+            </label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label control-checkbox">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.showPopup" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Текст сообщения
+            </label>
+            <div class="col-xs-9">
+                <textarea class="wysiwyg" ckeditor ng-model="ctrl.popupText"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

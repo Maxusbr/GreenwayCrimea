@@ -1,0 +1,42 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Письмо</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal m-r m-l">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="page-name-block-text">{{ctrl.email.Subject}}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bold m-b-xs">{{ctrl.email.From}}</div>
+                        <div class="m-b-xs">Кому: {{ctrl.email.To}}</div>
+                        <div>{{ctrl.email.Date | date:'dd MMM HH:mm'}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="email-body ng-cloak" ng-if="ctrl.email.TextBody != null && (ctrl.email.HtmlBody == null || ctrl.email.TextBody.trim() == '')">
+                    <pre>{{ctrl.email.TextBody}}</pre>
+                </div>
+                <iframe id="emailBody" style="border: none; width: 100%; display: none"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <ui-modal-trigger ng-if="ctrl.email.FromEmail != null" data-controller="'ModalSendLetterToCustomerCtrl'" controller-as="ctrl" size="lg"
+                          template-url="../areas/admin/content/src/_shared/modal/sendLetterToCustomer/sendLetterToCustomer.html"
+                          data-resolve="{params: {customerId: ctrl.customerId, email: ctrl.email.FromEmail }}">
+            <button class="btn btn-save btn-primary" type="button">Написать ответ</button>
+        </ui-modal-trigger>
+        
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Закрыть</button>
+    </div>
+</form>

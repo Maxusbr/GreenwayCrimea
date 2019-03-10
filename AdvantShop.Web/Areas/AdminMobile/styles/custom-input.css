@@ -1,0 +1,87 @@
+.custom-input-native {
+  display: none; }
+
+.custom-input-text {
+  cursor: pointer;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; }
+
+.custom-input-checkbox, .custom-input-radio {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 0.5rem;
+  box-shadow: 0 0 0.125rem #818181;
+  border: 0.0625rem #818181 solid;
+  border-bottom-color: #2d2d2d;
+  border-radius: 0.1875rem;
+  background: #fdfdfd;
+  background: linear-gradient(to bottom, #fdfdfd 0%, #f3f3f3 11%, #ebebeb 33%, gainsboro 44%, #e6e6e6 67%, #f0f0f0 78%, #f6f6f6 89%, white 100%); }
+  .custom-input-checkbox:hover, .custom-input-radio:hover {
+    background: white;
+    background: linear-gradient(to bottom, white 0%, #f6f6f6 11%, #f0f0f0 22%, #e6e6e6 33%, gainsboro 56%, #ebebeb 67%, #f3f3f3 89%, #fdfdfd 100%); }
+
+.custom-input-radio {
+  border-radius: 0.3125rem; }
+
+.custom-input-checkbox:after {
+  content: "";
+  position: absolute;
+  width: 0.6875rem;
+  height: 0.6875rem;
+  background-repeat: no-repeat;
+  left: 0.0625rem;
+  top: -0.125rem; }
+
+.custom-input-radio:after {
+  content: "";
+  position: absolute;
+  width: 45%;
+  height: 45%;
+  border-radius: 0.3125rem;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+
+.custom-input-native:checked ~ .custom-input-checkbox,
+.custom-input-native:checked ~ .custom-input-radio {
+  background: #42509b;
+  background: linear-gradient(to bottom, #42509b 0%, #94a3ca 3%, #e9f8ff 5%, #e6f3f9 8%, #daeaf7 11%, #badff2 16%, #abd4f2 19%, #99ceee 22%, #80c5ee 41%, #79c4eb 43%, #77bdf1 46%, #33b3e2 49%, #3cb3eb 51%, #41b3e9 54%, #51b6ea 57%, #51baea 59%, #64c0f3 65%, #66c1ee 68%, #7fccfa 78%, #8dd7fe 81%, #a7ebfe 86%, #b0f6ff 89%, #b7fbfe 92%, #b8fcff 95%, #b5f7ff 97%, #abecfe 100%); }
+
+.custom-input-native:checked ~ .custom-input-checkbox:after {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iMTEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBvbHlnb24gcG9pbnRzPSIwLDUgNCwxMSA1LDExIDExLDAgOSwwIDUsOCA0LDggMyw1IiBmaWxsPSJyZWQ7Ij48L3BvbHlnb24+PC9zdmc+); }
+
+.custom-input-native:checked ~ .custom-input-radio:after {
+  background-color: #000; }
+
+.select-custom {
+  position: relative;
+  display: inline-block;
+  width: 100%; }
+  .select-custom:after {
+    right: 0.625rem; }
+  .select-custom select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* do not forget set background color to select by color-sheme */
+    border: none;
+    padding: 0.5rem 1.875rem 0.5rem 0.9375rem;
+    border-radius: 0.3125rem;
+    width: 100%; }
+    .select-custom select:hover, .select-custom select:focus, .select-custom select:active {
+      border: none;
+      outline: none; }
+    .select-custom select::-ms-expand {
+      display: none; }
+    .select-custom select option {
+      background-color: #fff;
+      color: #333;
+      border: none; }
+  .select-custom--slim select {
+    padding: 0 1.875rem 0 0.9375rem; }

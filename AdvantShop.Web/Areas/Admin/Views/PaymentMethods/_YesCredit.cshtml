@@ -1,0 +1,44 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.YesCreditPaymentModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Идентификатор магазина</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.MerchantId, new { ng_model = "paymentMethod.Parameters.MerchantId", @class = "form-control", required = "required", validation_input_text = "Идентификатор магазина" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Идентификатор магазина">
+                Идентификатор магазина в системе YesCredit
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Минимальная цена</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.MinimumPrice, new { ng_model = "paymentMethod.Parameters.MinimumPrice", @class = "form-control", required = "required", validation_input_text = "Минимальная цена" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Минимальная цена">
+                Кнопка "Купить в кредит" будет отображаться у товаров превышающих минимальную цену (желательно > 3000 руб.)
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Сумма первого платежа(%)</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.FirstPayment, new { ng_model = "paymentMethod.Parameters.FirstPayment", @class = "form-control", required = "required", validation_input_text = "Сумма первого платежа(%)" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Сумма первого платежа(%)">
+                % от стоимости товара составит первый платеж
+            </help-trigger>
+        </div>
+    </div>
+
+

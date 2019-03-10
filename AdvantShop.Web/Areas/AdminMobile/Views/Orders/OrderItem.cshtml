@@ -1,0 +1,243 @@
+﻿@using AdvantShop
+@using AdvantShop.Catalog
+@using AdvantShop.Configuration
+@using AdvantShop.Core.Services.Bonuses
+@using AdvantShop.Core.Services.Bonuses.Model
+@using AdvantShop.Core.Services.Catalog
+@using AdvantShop.Core.Services.Orders
+@using AdvantShop.FilePath
+@model AdvantShop.Areas.AdminMobile.Models.Orders.OrderItemModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@{
+    var order = Model.Order;
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "blue", href = Url.RouteUrl("AdminMobile_Orders"), title = T("AdminMobile.Orders.OrderItem.ItemNum").ToString() })
+}
+<div id="content" data-ng-controller="OrderItemController as orderCtrl">
+    <div class="ordSum-bg" data-ng-init="orderCtrl.Init(@order.OrderID, @(order.Payed ? 1 : 0), @order.OrderStatusId, '@order.OrderStatus.StatusName', '@order.OrderStatus.Color')">
+        <h2 class="ordTitleNumber">№ @order.Number </h2>
+        <div class="proceeds orderView">
+            <div class="title">
+                @T("AdminMobile.Orders.OrderItem.Sum") <span class="selector">@order.OrderCurrency.CurrencySymbol</span>
+            </div>
+            <div class="value">@PriceFormatService.FormatPriceInvariant(order.Sum)</div>
+        </div>
+    </div><div class="order-corners"></div>
+    <div class="orderCustomerInfo">
+        <div class="customer">
+            @if (order.OrderCustomer != null)
+            {
+                <div class="name">@order.OrderCustomer.LastName @order.OrderCustomer.FirstName</div>
+                <div class="date">@order.OrderDate.ToString(SettingsMain.AdminDateFormat)</div>
+                if (!string.IsNullOrEmpty(order.OrderCustomer.Phone))
+                {
+                    <div class="phone"><a href="tel:@order.OrderCustomer.Phone">@order.OrderCustomer.Phone</a></div>
+                }
+            }
+            else
+            {
+                <div class="date">@order.OrderDate.ToString(SettingsMain.AdminDateFormat)</div>
+            }
+            <span class="status" style="color: #@order.OrderStatus.Color;" data-ng-style="{color:orderCtrl.status.Color}">
+                <span data-ng-bind="orderCtrl.status.Name">@order.OrderStatus.StatusName</span>
+                <span class="icon" style="background-color: #@order.OrderStatus.Color;" data-ng-style="{backgroundColor:orderCtrl.status.Color}"></span>
+            </span>
+        </div>
+        @if (order.OrderCustomer != null)
+        {
+            <div class="address">
+                <a href="http://maps.yandex.ru/?text=@(order.OrderCustomer.City),@(order.OrderCustomer.Street + " " + order.OrderCustomer.House)" target="_blank">
+                    @order.OrderCustomer.City, @order.OrderCustomer.GetCustomerAddress()
+                </a>
+            </div>
+        }
+        <div class="deliveryInfo">
+            <div class="ordInfoName">Оплата:</div>
+            <div class="ordInfoValue">
+                <span class="select-custom icon-down-open-after-abs cs-t-4">
+                    <select class="cs-bg-2" id="ddlPayed" name="ddlPayed" data-ng-model="orderCtrl.order.paid" data-ng-change="orderCtrl.setOrderPaid()">
+                        <option value="0">Не оплачен</option>
+                        <option value="1">Оплачен</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="deliveryInfo">
+            <div class="ordInfoName">Изменить статус:</div>
+            <div class="ordInfoValue">
+                <span class="select-custom icon-down-open-after-abs cs-t-4">
+                    @Html.DropDownList("ddlStatus", Model.Statuses, new
+                    {
+                        @class = "cs-bg-2",
+                        data_ng_change = "orderCtrl.changeStatus()",
+                        data_ng_model = "orderCtrl.status.Id"
+                    })
+                </span>
+            </div>
+        </div>
+        <div class="deliveryInfo">
+            <div class="ordInfoName">@T("AdminMobile.Orders.OrderItem.ShippingMethodName"):</div>
+            <div class="ordInfoValue">@order.ArchivedShippingName</div>
+            <br>
+            <div class="ordInfoName">@T("AdminMobile.Orders.OrderItem.PaymentMethodName"):</div>
+            <div class="ordInfoValue">@order.ArchivedPaymentName</div>
+        </div>
+    </div>
+    <div class="all-order-positions">
+        @if (order.OrderItems.Count > 0)
+        {
+            foreach (var orderItem in order.OrderItems)
+            {
+                <div class="order-position">
+                    <div class="img-wrap">
+                        @if (orderItem.Photo != null)
+                        {
+                            <img src="@orderItem.Photo.ImageSrcSmall()" alt="" />
+                        }
+                        else if (orderItem.ProductID != null)
+                        {
+                            var product = ProductService.GetProduct((int)orderItem.ProductID);
+                            if (product != null)
+                            {
+                                <img src="@FoldersHelper.GetImageProductPath(ProductImageType.XSmall, product.Photo, true)" alt="" />
+                            }
+                        }
+                    </div>
+                    <div class="description">
+                        <div class="name">
+                            @orderItem.ArtNo, @Html.Raw(orderItem.Name)
+                            @Html.Raw((!string.IsNullOrEmpty(orderItem.Color) ? "<div>" + SettingsCatalog.ColorsHeader + ": " + orderItem.Color + "</div>" : ""))
+                            @Html.Raw((!string.IsNullOrEmpty(orderItem.Size) ? "<div>" + SettingsCatalog.SizesHeader + ": " + orderItem.Size + "</div>" : ""))
+                        </div>
+                        <div class="addInfo">
+                            @orderItem.Amount @T("AdminMobile.Orders.OrderItem.PCS") @T("AdminMobile.Orders.OrderItem.By") @(orderItem.Price.FormatPrice(order.OrderCurrency))
+                        </div>
+                    </div>
+                    <div class="price">@((orderItem.Price * orderItem.Amount).FormatPrice(order.OrderCurrency))</div>
+                </div>
+            }
+        }
+        else if (order.OrderCertificates.Count > 0)
+        {
+            foreach (var certificate in order.OrderCertificates)
+            {
+                <div class="order-position">
+                    <div class="img-wrap">
+                    </div>
+                    <div class="description">
+                        <div class="name">
+                            @certificate.CertificateCode
+                        </div>
+                        <div class="addInfo">@PriceFormatService.FormatPrice(certificate.Sum, order.OrderCurrency)</div>
+                    </div>
+                    <div class="price">@PriceFormatService.FormatPrice(certificate.Sum, order.OrderCurrency)</div>
+                </div>
+            }
+        }
+    </div>
+    <div class="total-info">
+        <div class="row clear">
+            <div class="name">@T("AdminMobile.Orders.OrderItem.ProductsPrice"):</div>
+            <div class="value">
+                @PriceFormatService.FormatPrice((order.OrderItems.Sum(item => item.Amount * item.Price) + order.OrderCertificates.Sum(item => item.Sum)), order.OrderCurrency)
+            </div>
+        </div>
+        @if (order.TotalDiscount != 0)
+        {
+            <div class="row clear">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.Discount"):</div>
+                <div class="value">
+                    @if (order.OrderDiscountValue == 0)
+                    {
+                        <span class="inPercent">-@order.OrderDiscount %</span> @PriceFormatService.FormatPrice(order.TotalDiscount, order.OrderCurrency)
+                    }
+                    else
+                    {
+                        @PriceFormatService.FormatPrice(order.TotalDiscount, order.OrderCurrency)
+                    }
+                </div>
+            </div>
+        }
+        @if (order.BonusCost != 0)
+        {
+            <div class="row clear">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.Bonuses"):</div>
+                <div class="value">- @PriceFormatService.FormatPrice(order.BonusCost, order.OrderCurrency)</div>
+            </div>
+        }
+        @if (order.Certificate != null)
+        {
+            <div class="row clear">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.Certificate"):</div>
+                <div class="value">- @PriceFormatService.FormatPrice(order.Certificate.Price, order.OrderCurrency) (@order.Certificate.Code)</div>
+            </div>
+        }
+        @if (order.Coupon != null && order.Coupon.Value != 0)
+        {
+            <div class="row clear">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.Coupon"):</div>
+                <div class="value">
+                    - @(order.Coupon.Type == CouponType.Fixed
+                                ? PriceFormatService.FormatPrice(order.Coupon.Value, order.OrderCurrency)
+                                : PriceFormatService.FormatPrice(order.OrderItems.Where(p => p.IsCouponApplied).Sum(p => p.Price * p.Amount) * order.Coupon.Value / 100, order.OrderCurrency))
+                    (@order.Coupon.Code)
+                </div>
+            </div>
+        }
+        @if (order.TaxCost != 0)
+        {
+            <div class="row clear">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.Taxes"):</div>
+                <div class="value">@PriceFormatService.FormatPrice(order.TaxCost, order.OrderCurrency)</div>
+            </div>
+        }
+        @if (order.ShippingCost != 0)
+        {
+            <div class="row clear">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.ShippingPrice"):</div>
+                <div class="value">@PriceFormatService.FormatPrice(order.ShippingCost, order.OrderCurrency)</div>
+            </div>
+        }
+        <div class="row clear total">
+            <div class="name">@T("AdminMobile.Orders.OrderItem.TotalPrice"):</div>
+            <div class="value">@PriceFormatService.FormatPrice(order.Sum, order.OrderCurrency)</div>
+        </div>
+        @if (!string.IsNullOrEmpty(order.CustomerComment))
+        {
+            <div class="row">
+                <div class="deliveryInfo">
+                    <div class="ordInfoName">@T("AdminMobile.Orders.OrderItem.CustomerComment"):</div>
+                    <div class="ordInfoValue">@order.CustomerComment</div>
+                </div>
+            </div>
+        }
+        @{
+            Purchase purchase;
+        }
+        @if (BonusSystem.IsActive && (purchase = BonusSystemService.GetPurchase(order.BonusCardNumber, order.Number, order.OrderID)) != null)
+        {
+            <div class="row clear comment">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.BonusCard"):</div>
+                <div class="value">
+                </div>
+            </div>
+            <div class="row clear comment">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.BonusCardNumber"):</div>
+                <div class="value">
+                    @order.BonusCardNumber
+                </div>
+            </div>
+            <div class="row clear comment">
+                <div class="name">@T("AdminMobile.Orders.OrderItem.BonusCardAmount"):</div>
+                <div class="value">
+                    @purchase.NewBonusAmount.ToInvatiant()
+                </div>
+            </div>
+        }
+    </div>
+</div>

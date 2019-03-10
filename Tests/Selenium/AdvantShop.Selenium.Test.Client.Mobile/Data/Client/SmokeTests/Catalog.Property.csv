@@ -1,0 +1,11 @@
+PropertyID;Name;UseInFilter;SortOrder;Expanded;UseInDetails;Description;Type;GroupId;UseInBrief;NameDisplayed
+1;Property1;false;1;true;true;DescriptionProperty1;1;1;true;Property1
+2;Property2;false;2;true;true;DescriptionProperty2;1;1;true;Property2
+3;Property3;false;3;true;true;DescriptionProperty3;1;1;true;Property3
+4;Property4;false;4;true;true;DescriptionProperty4;1;1;true;Property4
+5;Property5;false;5;true;true;DescriptionProperty5;1;1;true;Property5
+6;Property6;false;6;true;true;DescriptionProperty6;1;1;true;Property6
+7;Property7;false;7;true;true;DescriptionProperty7;1;1;true;Property7
+8;Property8;false;8;true;true;DescriptionProperty8;1;1;true;Property8
+9;Property9;false;9;true;true;DescriptionProperty9;1;1;true;Property9
+10;Property10;false;10;true;true;DescriptionProperty10;1;2;true;Property10

@@ -1,0 +1,16 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">{{ctrl.removeFromCurrentCategories ? "Перемещение товаров в другую категорию" : "Добавление товаров в другую категорию"}}</h2>
+</div>
+<div class="modal-body">
+    <div>
+        <div data-js-tree data-tree-ajax="catalog/categoriestree" data-tree-core="" data-tree-events="select_node:ctrl.selectCategory"></div>
+    </div>
+    <div data-ng-if="ctrl.removeFromCurrentCategories" class="m-t" style="color: red">
+        Товары будут удалены из текущих категорий и добавлены в выбранную
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.move()" ng-disabled="ctrl.btnMoveDisabled">{{ctrl.removeFromCurrentCategories ? "Перенести товары" : "Добавить товары" }}</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

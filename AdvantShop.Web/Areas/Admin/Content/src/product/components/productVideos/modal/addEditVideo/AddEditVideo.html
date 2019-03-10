@@ -1,0 +1,68 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Видео</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-3 control-label">
+                        <span class="text-required">
+                            Название
+                        </span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="ctrl.name" required="required" autofocus data-e2e="ProductVideoName" validation-input-text="Название" />
+                    </div>
+                </div>
+            </div>
+            <div ng-if="ctrl.playerCode != null" class="form-group" style="text-align:center">
+                <div ng-bind-html="ctrl.playerCode | sanitize"></div>
+            </div>
+            <div ng-if="ctrl.mode == 'add'" class="form-group">
+                <label class="col-md-12 control-label">
+                    Вставить <a href="" ng-click="ctrl.showLink = true" data-e2e="ProductVideoLink">ссылку</a> на видео или <a href="" ng-click="ctrl.showLink = false" data-e2e="ProductVideoCode">код плеера</a>:
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="row" ng-if="ctrl.showLink">
+                    <label class="col-md-3 control-label">
+                        <span class="text-required">Cсылка на видео</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="ctrl.link" data-e2e="ProductVideoLinkAdd" />
+                    </div>
+                </div>
+                <div class="row" ng-if="!ctrl.showLink">
+                    <label class="col-md-3 control-label">
+                        <span class="text-required">Код плеера</span>
+                    </label>
+                    <div class="col-md-9">
+                        <textarea class="form-control" ng-model="ctrl.playerCode" rows="4" data-e2e="ProductVideoCodeAdd"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-3 control-label">Описание</label>
+                    <div class="col-md-9">
+                        <textarea class="form-control" ng-model="ctrl.description" rows="2" data-e2e="ProductVideoDesc"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-3 control-label">Порядок сортировки</label>
+                    <div class="col-md-9">
+                        <input type="text" ng-model="ctrl.videoSortOrder" class="form-control" data-e2e="ProductVideoSortOrder"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

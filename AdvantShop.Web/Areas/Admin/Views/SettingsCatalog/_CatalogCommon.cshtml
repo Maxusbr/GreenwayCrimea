@@ -1,0 +1,545 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CatalogSettings.CatalogSettingsModel
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.ProductsDisplaying")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowQuickView")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowQuickView, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowQuickView", ng_init = "settingsCatalog.ShowQuickView=" + Model.ShowQuickView.ToLowerString() })
+            <span class="adv-checkbox-emul" data-e2e="ShowQuickView"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ProductsPerPage")
+        </div>
+    </div>
+    <div class="col-xs-1 relative">
+        @Html.TextBoxFor(x => x.ProductsPerPage, new { @class = "form-control input-small", ng_model = "settingsCatalog.ProductsPerPage" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Catalog.ProductsPerPage")">
+            <div class="help-content">
+                Опция определяет, какое количество товаров выводить в категории.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowProductsCount")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowProductsCount, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowProductsCount" })
+            <span class="adv-checkbox-emul" data-e2e="ShowProductsCount"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowProductsCount")">
+            <div class="help-content">
+                Если опция <b>включена</b>, в клиентской части, рядом с названием категории в скобочках, выводится количество товаров в ней.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowCategoriesInBottomMenu")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.DisplayCategoriesInBottomMenu, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowCategoriesInBottomMenu" })
+            <span class="adv-checkbox-emul" data-e2e="DisplayCategoriesInBottomMenu"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title=" @T("Admin.Settings.Catalog.ShowCategoriesInBottomMenu")">
+            <div class="help-content">
+                Показывать или нет список категорий в нижнем меню сайта. Если категории на ряду с обычными пунктами нижнего меню не нужны, отключите опцию.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowProductArtNo")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowProductArtNo, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowProductArtNo" })
+            <span class="adv-checkbox-emul" data-e2e="ShowProductArtNo"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowProductArtNo")">
+            <div class="help-content">
+                Показывать артикул товара в каталоге для представления "плитка"
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.EnableProductRating")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableProductRating, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.EnableProductRating" })
+            <span class="adv-checkbox-emul" data-e2e="EnableProductRating"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.EnableProductRating")">
+            <div class="help-content">
+                Выводить или нет рейтинг (звездочки) для товаров в категории.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.EnableCompareProducts")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableCompareProducts, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.EnableCompareProducts" })
+            <span class="adv-checkbox-emul" data-e2e="EnableCompareProducts"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.EnableCompareProducts")">
+            <div class="help-content">
+                Определяет, выводить или нет блок сравнения товаров.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.EnablePhotoPreviews")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnablePhotoPreviews, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.EnablePhotoPreviews" })
+            <span class="adv-checkbox-emul" data-e2e="EnablePhotoPreviews"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.EnablePhotoPreviews")">
+            <div class="help-content">
+                В категории при наведении мыши на товар рядом с основной картинкой товара будут показаны другие фотографии товара.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowCountPhoto")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowCountPhoto, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowCountPhoto" })
+            <span class="adv-checkbox-emul" data-e2e="ShowCountPhoto"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowCountPhoto")">
+            <div class="help-content">
+                Опция определяет, отображать или нет в каталоге у товара небольшую иконку с количеством фотографий у товара.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowOnlyAvalible")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowOnlyAvalible, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowOnlyAvalible" })
+            <span class="adv-checkbox-emul" data-e2e="ShowOnlyAvalible"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowOnlyAvalible")">
+            <div class="help-content">
+                Опция определяет, отображать или нет в каталоге товары, которых нет в наличии.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.MoveNotAvaliableToEnd")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.MoveNotAvaliableToEnd, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.MoveNotAvaliableToEnd" })
+            <span class="adv-checkbox-emul" data-e2e="MoveNotAvaliableToEnd"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.MoveNotAvaliableToEnd")">
+            <div class="help-content">
+                При активации этой опции товары, которых нет в наличии, будут перемещаться в конец списка, несмотря на выбранную сортировку.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.HeadFilters")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowFilter")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.FilterVisibility, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.FilterVisibility" })
+            <span class="adv-checkbox-emul" data-e2e="FilterVisibility"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowPriceFilter")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowPriceFilter, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowPriceFilter" })
+            <span class="adv-checkbox-emul" data-e2e="ShowPriceFilter"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowPriceFilter")">
+            <div class="help-content">
+                Выводить или нет фильтр по цене.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowProducerFilter")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowProducerFilter, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowProducerFilter" })
+            <span class="adv-checkbox-emul" data-e2e="ShowProducerFilter"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowProducerFilter")">
+            <div class="help-content">
+                Выводить или нет фильтр по производителям.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowSizeFilter")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowSizeFilter, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowSizeFilter" })
+            <span class="adv-checkbox-emul" data-e2e="ShowSizeFilter"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowSizeFilter")">
+            <div class="help-content">
+                Выводить или нет фильтр по параметру "Размер".
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowColorFilter")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowColorFilter, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowColorFilter" })
+            <span class="adv-checkbox-emul" data-e2e="ShowColorFilter"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowColorFilter")">
+            <div class="help-content">
+                Выводить или нет фильтр по параметру "Цвет".<br>
+                Цвета в фильтре отображаются в виде кубиков.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ExluderingFilters")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ExcludingFilters, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ExluderingFilters" })
+            <span class="adv-checkbox-emul" data-e2e="ExcludingFilters"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ExluderingFilters")">
+            <div class="help-content">
+                Если опция включена, то при поиске по фильтру значения, которые заведомо не дадут результата, будут отмечены серым.<br>
+                <br>
+                Это позволяет пользователю заранее понять, что серые значения в фильтре не улучшат результат фильтрации, и можно не использовать их.<br>
+                <br>
+                Однако для работы данной опции необходимо больше ресурсов хостинга.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.SizesAndColors")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.SizesHeader")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.SizesHeader, new { @class = "form-control", ng_model = "settingsCatalog.SizesHeader" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title='@T("Admin.Settings.Catalog.SizesHeader")'>
+            <div class="help-content">
+                Вы можете задать своё название для характеристики "Размер" товара.
+                <br>
+                Например: Объем.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ColorsHeader")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.ColorsHeader, new { @class = "form-control", ng_model = "settingsCatalog.ColorsHeader" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title='@T("Admin.Settings.Catalog.ColorsHeader")'>
+            <div class="help-content">
+                Вы можете задать своё название для характеристики "Цвет" товара.
+                <br>
+                <br>
+                Например: Текстура.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ColorsPictureWidth")
+            <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ColorsPictureWidth")">
+                <div class="help-content">
+                    Размеры ширины (в пикселях) иконки цвета.
+                </div>
+            </help-trigger>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="m-b-xs">
+            @T("Admin.Settings.Catalog.InCatalog"):
+        </div>
+        <div class="input-group m-b-sm">
+            @Html.TextBoxFor(x => x.ColorIconWidthCatalog, new {@class = "form-control", ng_model = "settingsCatalog.ColorIconWidthCatalog"})
+            <span class="paramUnit">px,</span>
+        </div>
+        <div class="m-b-xs">
+            @T("Admin.Settings.Catalog.InDetails"):
+        </div>
+        <div class="input-group">
+            @Html.TextBoxFor(x => x.ColorIconWidthDetails, new { @class = "form-control", ng_model = "settingsCatalog.ColorIconWidthDetails" }) <span class="paramUnit">px</span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ColorsPictureHeight")
+            <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ColorsPictureHeight")">
+                <div class="help-content">
+                    Размеры высоты (в пикселях) иконки цвета.
+                </div>
+            </help-trigger>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="m-b-xs">
+            @T("Admin.Settings.Catalog.InCatalog"):
+        </div>
+        <div class="input-group m-b-sm">
+            @Html.TextBoxFor(x => x.ColorIconHeightCatalog, new {@class = "form-control", ng_model = "settingsCatalog.ColorIconHeightCatalog"})
+            <span class="paramUnit">px,</span>&nbsp;
+        </div>
+        <div class="m-b-xs">
+            @T("Admin.Settings.Catalog.InDetails"):
+        </div>
+        <div class="input-group">
+            @Html.TextBoxFor(x => x.ColorIconHeightDetails, new { @class = "form-control", ng_model = "settingsCatalog.ColorIconHeightDetails" })
+            <span class="paramUnit">px</span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ComplexFilter")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ComplexFilter, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ComplexFilter" })
+            <span class="adv-checkbox-emul" data-e2e="ComplexFilter"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ComplexFilter")">
+            <div class="help-content">
+                Если опция включена, то у товара в каталоге будут показаны кубики цвета, при нажатии на которые отобразится фотография, соответствующая выбранному цвету.
+                <br>
+                <br>
+                Данная опция требует больше ресурсов хостинга.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.ButtonText")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.BuyButtonText")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.BuyButtonText, new { @class = "form-control", ng_model = "settingsCatalog.BuyButtonText" })
+        <label class="adv-checkbox-label m-t-xs">
+            @Html.CheckBoxFor(x => x.DisplayBuyButton, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.DisplayBuyButton" })
+            @T("Admin.Settings.Catalog.DisplayButton")
+            <span class="adv-checkbox-emul" data-e2e="DisplayBuyButton"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.DisplayButton")">
+            <div class="help-content">
+                Отображать или нет кнопку "Добавить" у товара в каталоге.<br>
+                <br>
+                Вы также можете задать свой текст для данной кнопки.<br>
+                <br>
+                Например: Купить.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.PreOrderButtonText")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.PreOrderButtonText, new { @class = "form-control", ng_model = "settingsCatalog.PreOrderButtonText" })
+        <label class="adv-checkbox-label m-t-xs">
+            @Html.CheckBoxFor(x => x.DisplayPreOrderButton, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.DisplayPreOrderButton" })
+            @T("Admin.Settings.Catalog.DisplayButton")
+            <span class="adv-checkbox-emul" data-e2e="DisplayPreOrderButton"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.DisplayButton")">
+            <div class="help-content">
+                Отображать или нет кнопку "Под заказ" у товара в каталоге.<br>
+                <br>
+                Вы также можете задать свой текст для данной кнопки.<br>
+                <br>
+                Например: Заказать.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.CatalogView")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.DefaultCatalogView")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.DropDownListFor(x => x.DefaultCatalogView, Model.DefaultViewList, new { @class = "form-control", ng_model = "settingsCatalog.DefaultCatalogView" })
+        <label class="adv-checkbox-label m-t-xs">
+            @Html.CheckBoxFor(x => x.EnableCatalogViewChange, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.EnableCatalogViewChange" })
+            @T("Admin.Settings.Catalog.EnableCatalogViewChange")
+            <span class="adv-checkbox-emul" data-e2e="EnableCatalogViewChange"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.EnableCatalogViewChange")">
+            <div class="help-content">
+                Какой вид отображения использовать для товаров в категориях.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.DefaultSearchView")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.DropDownListFor(x => x.DefaultSearchView, Model.DefaultViewList, new { @class = "form-control", ng_model = "settingsCatalog.DefaultSearchView" })
+        <label class="adv-checkbox-label m-t-xs">
+            @Html.CheckBoxFor(x => x.EnableSearchViewChange, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.EnableSearchViewChange" })
+            @T("Admin.Settings.Catalog.EnableCatalogViewChange")
+            <span class="adv-checkbox-emul" data-e2e="EnableSearchViewChange"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title=" @T("Admin.Settings.Catalog.EnableCatalogViewChange")">
+            <div class="help-content">
+                Какой вид отображения использовать для товаров в результатах поиска.
+            </div>
+        </help-trigger>
+    </div>
+</div>

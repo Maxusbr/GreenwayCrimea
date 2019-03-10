@@ -1,0 +1,13 @@
+﻿@model AdvantShop.Module.RelatedProductsInShoppingCart.Models.RelatedProductsViewModel
+
+@Html.Raw(Model.TextBefore)
+
+<div data-products-carousel
+     data-carousel-class="product-view-carousel"
+     data-title="@Model.Title"
+     data-ids="@(string.Join(", ", Model.ProductIds))"
+     data-type="@Model.Type"
+     data-visible-items="4">
+</div>
+
+@Html.Raw(Model.TextAfter)

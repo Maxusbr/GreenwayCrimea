@@ -1,0 +1,11 @@
+DepartmentId;Name;Sort;Enabled
+1;Department1;1;true
+2;Department2;2;true
+3;Department3;3;true
+4;Department4;4;true
+5;Department5;5;true
+6;Department6;6;true
+7;Department7;7;true
+8;Department8;8;true
+9;Department9;9;true
+10;Department10;10;false

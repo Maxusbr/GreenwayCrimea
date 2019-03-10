@@ -1,0 +1,14 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Catalog.AdminCatalogTreeView
+
+<div>
+    <div class="clearfix">
+        <div class="pull-left header-alt">
+            <a class="link-terna link-decoration-none" href="catalog">@T("Admin.Catalog.CatalogTreeView.Categories")</a>
+        </div>
+        <div class="pull-right header-alt-icons">
+            <a href="@Url.Action("Add", "Category", new {parentId = Model.CategoryIdSelected })" class="link-decoration-none fa fa-plus link-alt header-alt-icons-item" uib-popover="Добавить новую категорию" popover-trigger="'mouseenter'" popover-placement="auto top" popover-append-to-body="true"></a>
+            <recalc-trigger uib-popover="Пересчет количества товаров" popover-trigger="'mouseenter'"  popover-placement="auto right"  popover-append-to-body="true"><span class="fa fa-rotate-right link-alt header-alt-icons-item"></span></recalc-trigger>
+        </div>
+    </div>
+    <catalog-treeview category-id-selected="@(Model.CategoryIdSelected)" on-init="catalog.initCatalogTreeview(jstree)"></catalog-treeview>
+</div>

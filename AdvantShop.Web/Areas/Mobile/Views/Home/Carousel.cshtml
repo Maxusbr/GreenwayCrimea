@@ -1,0 +1,24 @@
+﻿@model AdvantShop.Areas.Mobile.Models.Home.CarouselMobileViewModel
+<section>
+    <div data-carousel 
+         class="carousel-main-list" 
+         data-carousel-class="carousel-mobile" 
+         data-dots="true" 
+         data-dots-class="carousel-mobile-dots" 
+         data-dots-item-class="cs-bg-i-8" 
+         data-prev-class="carousel-main-prev" 
+         data-next-class="carousel-main-next"
+         data-visible-max="1"
+         data-speed="@Model.Speed"
+         data-auto="true"
+         data-auto-pause="@Model.Pause">
+        @foreach (var slider in @Model.Sliders)
+        {
+            <div class="carousel-main-item">
+                <a href="@slider.Url">
+                    <img src="@slider.Picture.ImageSrc()" alt="@Html.Encode(slider.Picture.Description)" />
+                </a>
+            </div>
+        }
+    </div>
+</section>

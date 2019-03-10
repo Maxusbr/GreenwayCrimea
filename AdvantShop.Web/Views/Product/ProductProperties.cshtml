@@ -1,0 +1,53 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.PropductPropertiesViewModel
+@{
+    var lineCounter = 1;
+    int? currentGroupId = null;
+}
+
+<ul class="properties" id="properties">
+    @foreach (var propertyValue in Model.PropertyValues)
+    {
+        if (propertyValue.Property.Group != null && currentGroupId != propertyValue.Property.Group.PropertyGroupId)
+        {
+            currentGroupId = propertyValue.Property.Group.PropertyGroupId;
+            lineCounter = 1;
+            <li class="properties-group"><div class="properties-group-name cs-t-5">@Html.Raw(propertyValue.Property.Group.NameDisplayed)</div></li>
+        }
+        else if (propertyValue.Property.Group == null && currentGroupId != null)
+        {
+            currentGroupId = null;
+            lineCounter = 1;
+            <li class="properties-group"><div class="properties-group-name cs-t-5">@T("Product.ProductProperties.Other")</div></li>
+        }
+        else
+        {
+            lineCounter++;
+        }
+        <li class="properties-item @(lineCounter % 2 == 0 ? "properties-item-even" : "properties-item-odd cs-bg-4")">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="properties-item-name">
+                        @Html.Raw(propertyValue.Property.NameDisplayed) 
+                        @if (propertyValue.Property.Unit.IsNotEmpty())
+                        {
+                            <span class="properties-item-unit">(@Html.Raw(propertyValue.Property.Unit))</span>
+                        }
+                        @if (propertyValue.Property.Description.IsNotEmpty())
+                        {
+                            <span class="properties-item-hint icon-question-after" uib-popover="@Html.Raw(propertyValue.Property.Description)" data-popover-trigger="'mouseenter'" popover-placement="right" popover-append-to-body="true"></span>
+                        }
+                    </div>
+                </div>
+                <div class="col-xs-7">
+                    <div class="properties-item-value">
+                        <span class="inplace-offset" @Html.InplaceProperty(propertyValue.PropertyValueId, propertyValue.PropertyId, Model.ProductId, PropertyInplaceField.Value, ".properties-item")>@Html.Raw(propertyValue.Value)</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
+@if (Model.RenderInplaceAddBlock)
+{
+    <div data-inplace-properties-new data-product-id="@Model.ProductId"></div>
+}

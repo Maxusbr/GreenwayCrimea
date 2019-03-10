@@ -1,0 +1,39 @@
+﻿@using AdvantShop.Core.Services.Catalog
+@model AdvantShop.ViewModel.Checkout.CheckoutBonusViewModel
+
+<article class="checkout-block">
+    <div class="checkout-block-title h2">
+        @T("Checkout.CheckoutBonus.Bonuses")
+    </div>
+    <div class="checkout-block-content">
+        @if (!Model.HasCard)
+        {
+            <label class="form-field-input vertical-interval-xsmall">
+                @Html.CheckBoxFor(m => m.WantBonusCard, new { @class = "custom-input-native", id = "WantBonusCard", data_ng_model = "checkout.wantBonusCard", data_ng_change = "checkout.saveWantBonusCard()" })
+                <span class="custom-input-checkbox"></span>
+                Хочу получить бонусную карту и оплачивать покупки бонусами!
+                @if (Model.BonusPlus > 0)
+                {
+                    <div class="bonus-card-plus-amount">
+                        <span class="bonus-card-plus-price">+@Model.BonusPlus.FormatPriceInvariant() бонусов</span> на бонусную карту
+                    </div>
+                }
+            </label>
+        }
+        else
+        {
+            <div data-bonus-what-to-do
+                 data-page="checkout"
+                 data-autorize-bonus="checkout.autorizeBonus(cardNumber)"
+                 data-change-bonus="checkout.changeBonus(isApply)"
+                 data-email="checkout.email"
+                 data-city="checkout.city"
+                 data-outside-name="checkout.newCustomer.firstname"
+                 data-outside-surname="checkout.newCustomer.lastname"
+                 data-outside-phone="checkout.newCustomer.phone"
+                 data-is-show-patronymic="@SettingsCheckout.IsShowPatronymic.ToLowerString()"
+                 data-is-apply="@Model.ApplyBonuses.ToString().ToLower()"
+                 data-bonus-plus="@Model.BonusPlus"></div>
+        }
+    </div>
+</article>

@@ -1,0 +1,38 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Настройка</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Заголовок</span>
+            </label>
+            <div class="col-xs-9">
+                <input data-e2e="nameSettingsSearch" type="text" class="form-control" ng-model="ctrl.Title" required validation-input-text="Заголовок" autofocus />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 text-required">Ссылка</label>
+            <div class="col-xs-9">
+                <input data-e2e="linkSettingsSearch" type="text" ng-model="ctrl.Link" class="form-control" required validation-input-text="Ссылка" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Ключевые слова</label>
+            <div class="col-xs-9">
+                <input data-e2e="keywordsSettingsSearch" type="text" ng-model="ctrl.KeyWords" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Сортировка</label>
+            <div class="col-xs-9">
+                <input data-e2e="sortOrderSettingsSearch" type="text" ng-model="ctrl.SortOrder" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-e2e="saveSettingsSearch" class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button data-e2e="cancelSettingsSearch" class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

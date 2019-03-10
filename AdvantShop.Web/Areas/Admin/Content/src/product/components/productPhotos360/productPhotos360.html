@@ -1,0 +1,47 @@
+﻿<div class="container-fluid">
+    <div class="form-group row">
+        <div class="col-xs-12">
+            <label class="adv-checkbox-label category-label">
+                Загрузить фотографии для обзора 360 градусов
+                <input class="adv-checkbox-input" ng-model="$ctrl.showPhotos360" type="checkbox" ng-change="$ctrl.setActivity($ctrl.productId, $ctrl.showPhotos360)" data-e2e="Photo360Input">
+                <span class="adv-checkbox-emul" data-e2e="Photo360CheckBox"></span>
+            </label>
+            <help-trigger class="ng-cloak" data-title="Обзор в 360 градусов">
+                <p> Загрузите несколько последовательных изображений, чтобы создать анимацию или эффект 360 градусного обзора.</p>
+                <p>Подробнее - <a href="http://www.advantshop.net/help/pages/360-degree-spin" target="_blank">Обзор товара в 360 градусов</a></p>
+            </help-trigger>
+        </div>
+        <div class="col-xs-12 ng-cloak" ng-if="$ctrl.showPhotos360">
+            <div class="product-pic-list-item product-pic-list-item-360" ng-if="$ctrl.photos != null">
+                <div class="product-block">
+                    <div class="product-block-content">
+                        <figure class="product-block-figure" data-e2e="Photo360Img">
+                            <div class="product-block-figure-link">
+                                <img ng-src="{{$ctrl.photos.ImageSrc}}" class="product-block-figure-img" alt="{{$ctrl.photos.Description}}" title="{{$ctrl.photos.Description}}" style="max-width: 130px; max-height: 130px" />
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="product-block-state clearfix">
+                        <div class="pull-right picture-hover-effect">
+                            <a ng-click="$ctrl.deletePhoto()" class="link-invert link-decoration-none pic-hover-color fa fa-remove categories-block-icon" href="" data-e2e="Photo360ImgDelete"></a>
+                        </div>
+                    </div>
+                    <div class="product-pic-list-item-overlay"></div>
+                </div>
+            </div>
+
+            <div class="product-pic-list-item">
+                <a href="" accept="image/*" multiple ngf-max-size="15MB" ngf-select="" ngf-change="$ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)">
+                    <div class="product-block">
+                        <div class="product-block-content product-block-content--max-height">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve" width="61px" height="61px">
+                            <polygon points="42,19 23,19 23,0 19,0 19,19 0,19 0,23 19,23 19,42 23,42 23,23 42,23 " fill="#eaeced" />
+                            <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

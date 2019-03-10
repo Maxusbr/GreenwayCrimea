@@ -1,0 +1,88 @@
+.products-view-meta {
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-align: center; }
+
+.products-view-meta-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: block; }
+
+.products-view-meta-item {
+  padding: 0 10px;
+  margin: 0;
+  border-style: solid;
+  border-width: 0 0 0 1px;
+  display: inline-block;
+  vertical-align: middle; }
+  .products-view-meta-item:first-child {
+    padding-left: 0;
+    border-left: 0; }
+
+.products-view-tile .products-view-item {
+  padding-left: 0 !important; }
+
+.products-view-labels {
+  margin-top: 5px; }
+
+.products-view-label {
+  margin-bottom: 0.3125rem;
+  color: #fff;
+  font-weight: bold; }
+  .products-view-label .products-view-label-inner + .products-view-label-inner {
+    margin: 0 0 0.3125rem 0.3125rem; }
+
+.products-view-label-inner {
+  border-radius: 5px;
+  padding: 0.3125rem 0.625rem;
+  display: inline-block; }
+
+.products-view-label-best {
+  background-color: #cd0303; }
+
+.products-view-label-new {
+  background-color: #b3be08; }
+
+.products-view-label-discount {
+  background-color: #cd0303; }
+
+.products-view-label-recommend {
+  background-color: #58a9fd; }
+
+.products-view-label-sales {
+  background-color: #58a9fd; }
+
+.products-view-label-warranty {
+  background-color: #cd0303; }
+
+.products-view-label-gift {
+  background-color: #cd0303; }
+
+.prod-gift-icon {
+  height: 60.05155px;
+  width: 65.20619px;
+  background: url("../../../../images/misc/giftIcon.png") no-repeat top left/100% 100%;
+  vertical-align: middle;
+  display: inline-block;
+  bottom: 0;
+  right: 0; }
+
+.prod-cell .prod-gift-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+
+.products-view-table .prod-gift-icon {
+  bottom: auto;
+  width: 1.875rem;
+  height: 1.75rem;
+  margin-top: -1.75rem; }
+
+.tiles-table .products-view-labels {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.prod-photo-inner {
+  position: relative; }

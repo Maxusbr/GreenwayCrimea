@@ -1,0 +1,35 @@
+﻿.ONwrap {
+    color: #4b4f58;
+    text-align: justify;
+    margin-top: 1em;
+}
+
+.ONtoday {
+    color: black;
+    font-weight: 600;
+}
+
+.ONtomorrow {
+    color: black;
+    font-weight: 600;
+}
+
+.ON2days {
+    color: black;
+    font-weight: 600;
+}
+
+.ON3days {
+    color: black;
+    font-weight: 600;
+}
+
+.ONndays {
+    color: black;
+    font-weight: 600;
+}
+
+.ONdate {
+    color: black;
+    font-weight: 600;
+}

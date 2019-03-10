@@ -1,0 +1,15 @@
+.telphin__customer {
+  font-size: 16px;
+  font-weight: bold; }
+
+.telphin__last-order-name, .telphin__manager, .telphin__last-lead, .telphin__total-price {
+  font-style: italic; }
+
+.telphin__info {
+  padding: 8px 0; }
+
+.telphin__info-item {
+  padding: 3px 0; }
+
+.telphin__info-manager {
+  padding: 10px 0; }

@@ -1,0 +1,70 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.WalletOneCheckoutPaymentModel
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Идентификатор интернет-магазина</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.MerchantId, new { ng_model = "paymentMethod.Parameters.MerchantId", @class = "form-control", required = "required", validation_input_text = "Идентификатор интернет-магазина" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Идентификатор интернет-магазина">
+            Это число, номер вашего магазина в системе. Получить его можно в личном кабинете WalletOne
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Секретный ключ</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.SecretKey, new { ng_model = "paymentMethod.Parameters.SecretKey", @class = "form-control", required = "required", validation_input_text = "Секретный ключ" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Секретный ключ">
+            Это длинный числовой и буквенный код, который можно получить в личном кабинете WalletOne, на вкладке "Настройки - Интеграция" в графе "Ключ"
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="flex-grow-n col-fixed-size-md">
+        Используемые платежные системы
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextAreaFor(x => x.PayWaysEnabled, new { ng_model = "paymentMethod.Parameters.PayWaysEnabled", @class = "form-control", style = "height: 80px" })
+        <div class="m-t-sm">
+            <a href="http://www.walletone.com/ru/merchant/documentation/#step4" onclick="this.target='_blank'">Список доступных спобосов</a>
+        </div>
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Используемые платежные системы">
+            Перечисление используемых способ оплаты, значение строго определены в системы  Wallet One(через пробел)<br><br>
+            <a href="http://www.walletone.com/ru/merchant/documentation/#step4" onclick="this.target='_blank'">Список спобосов</a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="flex-grow-n col-fixed-size-md">
+        Запрещенные платежные системы
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextAreaFor(x => x.PayWaysDisabled, new { ng_model = "paymentMethod.Parameters.PayWaysDisabled", @class = "form-control", style="height: 80px" })
+        <div class="m-t-sm">
+            <a href="http://www.walletone.com/ru/merchant/documentation/#step4" onclick="this.target='_blank'">Список спобосов</a>
+        </div>
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Запрещенные платежные системы">
+            Перечисление запрещенных способ оплаты, значение строго определены в системы Wallet One(через пробел)<br><br>
+            <a href="http://www.walletone.com/ru/merchant/documentation/#step4" onclick="this.target='_blank'">Список спобосов</a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Передавать данные для чека
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.SendReceiptData, new { ng_model = "paymentMethod.Parameters.SendReceiptData", ng_init = "paymentMethod.Parameters.SendReceiptData=" + Model.SendReceiptData.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+

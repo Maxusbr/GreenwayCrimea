@@ -1,0 +1,58 @@
+﻿@model AdvantShop.Web.Admin.Models.LandingPages.LandingPageAdminModel
+
+<form method="POST" action="@Url.Action("Index")" enctype="multipart/form-data" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span>Landing Page</span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, attributes: new [] { "ng-disabled=\"!form.modified\"", "disabled"})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="flex-grow flex-basis-n flex-width-n">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="ActiveLandingPage" class="form-label-block">Активность</label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <label class="adv-checkbox-label form-label-block">
+                                            @Html.CheckBoxFor(x => x.ActiveLandingPage, new { ng_model = "landingPages.ActiveLandingPage", @class = "adv-checkbox-input" })
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="LandingPageCommonStatic" class="form-label-block">
+                                            Дополнительное описание<br> (не используется, если заполнено у товара) 
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextAreaFor(x => x.LandingPageCommonStatic, new { @class = "wysiwyg", ckeditor = "", ng_model = "landingPages.LandingPageCommonStatic" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

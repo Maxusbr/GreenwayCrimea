@@ -1,0 +1,14 @@
+﻿@model AdvantShop.Module.BannerMania.ViewModel.BannerInTopViewModel
+
+<div id="bannerInTop" class="static-block" style="display: none;">
+    @if (!string.IsNullOrEmpty(Model.URL))
+    {
+        <a href="@Model.URL" target=@(Model.TargetBlank ? "_blank" : "_self")>
+            <img src="@Model.ImagePath" />
+        </a>
+    }
+    else
+    {
+        <img src="@Model.ImagePath" />
+    }
+</div>

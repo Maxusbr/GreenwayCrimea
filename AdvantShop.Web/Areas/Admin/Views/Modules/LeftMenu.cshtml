@@ -1,0 +1,19 @@
+﻿@model  bool
+
+<div class="aside-menu">
+    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(Model ? "selected" : "" )" href="@Url.Action("Index", "Modules")">
+        <div class="aside-menu-inner">
+            <div class="aside-menu-name" @*ng-click="modules.changeModulesList(true)"*@>
+                Установленные модули
+            </div>
+        </div>
+    </a>
+    <div class="m-t-sm">
+        @Html.ActionLink("+ Магазин модулей", "Market", "Modules", null, new { @class = "btn btn-sm btn-success btn-block text-left" })
+    </div>
+
+    <a href="@Url.Action("Academy", "Service", new { id = 32 })" target="_blank" class="link-academy btn btn-xsmall btn-default block link-invert bottom-cell m-t-sm">
+        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+        Видеоурок о Модулях
+    </a>
+</div>

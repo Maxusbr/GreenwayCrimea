@@ -1,0 +1,61 @@
+﻿.table-logs, .table-logs-details {
+    table-layout: fixed;
+}
+
+.table-logs-head-date,
+.table-logs-head-button {
+    width: 122px;
+}
+
+.table-logs-button {
+    vertical-align: middle !important;
+}
+
+.table-logs-overflow {
+    overflow-wrap: normal; /* не поддерживает IE, Firefox; является копией word-wrap */
+    word-wrap: normal;
+    word-break: normal; /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */
+    line-break: auto; /* нет поддержки для русского языка */
+    hyphens: manual;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.table-logs-overflow-state {
+    display: none;
+}
+
+.table-logs-overflow-state:checked {
+    ~ .table-logs-overflow {
+        overflow: visible;
+        white-space: normal;
+        text-overflow: clip;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: keep-all;
+        line-break: normal;
+        hyphens: auto;
+    }
+
+    ~ .table-logs-overflow-trigger .table-logs-overflow-open {
+        display: none;
+    }
+
+    ~ .table-logs-overflow-trigger .table-logs-overflow-close {
+        display: inline;
+    }
+}
+
+.table-logs-overflow-trigger {
+    cursor: pointer;
+}
+
+.table-logs-overflow-close {
+    display: none;
+}
+
+.table-logs-details-key {
+    width: 200px;
+}

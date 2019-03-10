@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Catalog/_CatalogLayout.cshtml";
+    ViewBag.CatalogLeftMenuNgCallbackOnInit = "productlists.initCatalogLeftMenu(catalogLeftMenu)";
+}
+
+<div class="clearfix ibox-content-header">
+    <div class="pull-right btns-in-header">
+        <ui-modal-trigger data-controller="'ModalAddEditProductListCtrl'" controller-as="ctrl" size="lg"
+                          template-url="../areas/admin/content/src/productlists/modal/addEditProductList/addEditProductList.html"
+                          data-on-close="productlists.onAddList()">
+            <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="productListAdd">
+                <span class="fa fa-plus"></span> @T("Admin.ProductLists.Index.AddList")
+            </button>
+        </ui-modal-trigger>
+    </div>
+    <h2 class="inline content-header">
+        <span class="bottom-cell inline m-r-xs">@T("Admin.ProductLists.Index.Title")</span>
+        <a href="@Url.Action("Academy", "Service", new { id = 34 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline">
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+            Видеоурок о Товарах на главной
+        </a>
+    </h2>
+</div>
+
+
+<ui-grid-custom grid-unique-id="gridProductLists"
+                grid-options="productlists.gridProductListsOptions"
+                grid-on-init="productlists.gridOnInit(grid)"
+                grid-url="'productlists/getproductLists'"
+                grid-on-delete="productlists.onGridDeleteItem()"
+                grid-selection-mass-apply="productlists.onGridDeleteItem()">
+</ui-grid-custom>

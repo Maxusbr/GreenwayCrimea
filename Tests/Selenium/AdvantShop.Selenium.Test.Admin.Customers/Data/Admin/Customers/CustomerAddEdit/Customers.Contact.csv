@@ -1,0 +1,2 @@
+﻿ContactID[GUID];CustomerID[GUID];Name;Country;City;Zone;Zip;Street;House;Apartment;Structure;Entrance;Floor;CountryID;RegionID
+CFC2C33B-1E84-415E-8482-E98156341700;CFC2C33B-1E84-415E-8482-E98156341604;FirstName LastName;Россия;Москва;Московская область;222222;Улица;1;2;3;4;5;171;42

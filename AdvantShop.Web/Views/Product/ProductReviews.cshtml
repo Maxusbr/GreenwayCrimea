@@ -1,0 +1,121 @@
+﻿@using AdvantShop.CMS
+@model AdvantShop.ViewModel.ProductDetails.ProductReviewsViewModel
+
+@helper BuildReviews(List<Review> reviews, int parentId, bool indent)
+{
+    var items = reviews.Where(r => r.ParentId == parentId).ToList();
+    if (items.Count > 0)
+    {
+
+        <ul class="reviews-list row">
+            @foreach (var item in items)
+            {
+                <li class="review-item col-xs-12" data-review-item data-review-id="@item.ReviewId" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                    <div class="row">
+                        <meta itemprop="itemReviewed" content="@Html.AttributeEncode(Html.GetPageH1())">
+                        @if (Model.DisplayImage)
+                        {
+                            <div class="review-item-image" style="-webkit-flex-basis: @(item.Photo.ImageWidth)px; -ms-flex-preferred-size: @(item.Photo.ImageWidth)px; flex-basis: @(item.Photo.ImageWidth)px; min-width: @(item.Photo.ImageWidth)px;">
+                                <img alt="@item.Name" src="@(!string.IsNullOrWhiteSpace(item.Photo.ImageSrc()) ? item.Photo.ImageSrc() : "images/nophoto_user.jpg")" @Html.InplaceImageReview(item.ReviewId.ToString()) />
+                            </div>
+                        }
+                        <div class="col-xs">
+                            <div class="review-item-name cs-t-1" itemprop="author" @Html.InplaceReview(item.ReviewId.ToString(), ReviewInplaceField.Name, true)>
+                                @Html.Raw(item.Name)
+                            </div>
+                            <div class="review-item-date cs-t-3">
+                                <time datetime="@item.AddDate.ToString("yyyy-MM-dd")" itemprop="datePublished">@item.AddDate.ToShortDateTime()</time>
+                            </div>
+                            <div class="review-item-text" itemprop="description" @Html.InplaceReview(item.ReviewId.ToString(), ReviewInplaceField.Message)>
+                                @Html.Raw(item.Text)
+                            </div>
+                            <div class="review-item-buttons">
+                                @if (Model.ReviewsReadonly == false)
+                                {
+                                    <a href="" class="review-item-button" data-review-reply data-review-id="@item.ReviewId">{{ ::'Js.Review.Respond' | translate }}</a>
+                                }
+                                @if (Model.IsAdmin)
+                                {
+                                    <a href="" class="review-item-button" data-review-delete data-review-id="@item.ReviewId" data-action-url="/reviews/delete">{{ ::'Js.Review.Delete' | translate }}</a>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                    @if (item.HasChildren)
+                    {
+                        @BuildReviews(reviews, item.ReviewId, indent || !string.IsNullOrWhiteSpace(item.Photo.ImageSrc()))
+                    }
+                </li>
+            }
+        </ul>
+    }
+}
+@*Template for review item*@
+<script type="text/ng-template" id="reviewItemTemplate.html">
+    <li class="review-item col-xs-12" data-review-item data-review-id="{{reviewId}}">
+        <div class="row">
+            @if (Model.DisplayImage)
+            {
+                <div class="review-item-image" style="-webkit-flex-basis: @( SettingsPictureSize.ReviewImageWidth)px; -ms-flex-preferred-size: @(SettingsPictureSize.ReviewImageWidth)px; flex-basis: @( SettingsPictureSize.ReviewImageWidth)px; min-width: @(SettingsPictureSize.ReviewImageWidth)px;">
+                    <img alt="" data-ng-src="{{photoPath || 'images/nophoto_user.jpg'}}" @Html.InplaceImageReview("reviewId") />
+                </div>
+            }
+            <div class="col-xs">
+                <div class="review-item-name cs-t-1" @Html.InplaceReview("reviewId", ReviewInplaceField.Name, true) data-ng-bind="name"></div>
+                <div class="review-item-date cs-t-3">
+                    <time datetime="" data-ng-bind="date"></time>
+                </div>
+                <div class="review-item-text" @Html.InplaceReview("reviewId", ReviewInplaceField.Message) data-ng-bind-html="text"></div>
+
+                <div class="review-item-buttons">
+                    @if (Model.ReviewsReadonly == false)
+                    {
+                        <a href="" class="review-item-button" data-review-reply data-review-id="{{reviewId}}">{{ ::'Js.Review.Respond' | translate }}</a>
+                    }
+                    @if (Model.IsAdmin)
+                    {
+                        <a href="" class="review-item-button" data-review-delete data-review-id="{{reviewId}}" data-action-url="/reviews/delete">{{ ::'Js.Review.Delete' | translate }}</a>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </li>
+</script>
+
+<div class="reviews"
+     data-reviews
+     data-moderate="@Model.ModerateReviews.ToLowerString()"
+     data-is-admin="@Model.IsAdmin.ToLowerString()"
+     data-entity-id="@Model.EntityId"
+     data-entity-type="@Model.EntityType"
+     data-name="@Model.UserName"
+     data-email="@Model.Email"
+     data-action-url="/reviews/add"
+     data-allow-image-upload="@SettingsCatalog.AllowReviewsImageUploading.ToLowerString()"
+     data-readonly="@Model.ReviewsReadonly.ToLowerString()">
+    <div class="js-reviews-list-root">
+        @if (Model.HeaderText.IsNotEmpty() && Model.Reviews.Count > 0)
+        {
+            <header class="reviews-header">@Model.HeaderText</header>
+        }
+        @BuildReviews(Model.Reviews, 0, false)
+    </div>
+    @if (!Model.ReviewsReadonly)
+    {
+        <div data-reviews-form
+             data-form-visible="reviews.formVisible"
+             data-allow-image-upload="reviews.allowImageUpload"
+             data-name="reviews.name"
+             data-email="reviews.email"
+             data-visible-form-cancel-button="reviews.visibleFormCancelButton"
+             data-review-id="reviews.reviewIdActive"
+             data-submit-fn="reviews.submit(form, reviews.actionUrl)"
+             data-cancel-fn="reviews.cancel(form)"
+             data-moderate="@Model.ModerateReviews.ToLowerString()"
+             data-is-show-user-agreement-text="@SettingsCheckout.IsShowUserAgreementText.ToLowerString()"
+             data-user-agreement-text="@SettingsCheckout.UserAgreementText"></div>
+    }
+    
+</div>

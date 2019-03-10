@@ -1,0 +1,154 @@
+﻿@model AdvantShop.Web.Admin.Models.Cards.CardModel
+
+<form method="POST" action="@(Model.IsEditMode ? Url.Action("Edit") : Url.Action("Add"))" enctype="multipart/form-data" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+
+    <div ng-init="cards.initCard('@Model.CardId', @Model.IsEditMode.ToLowerString(), @Model.CardNumber)">
+        <input name="IsEditMode" type="hidden" value="{{cards.isEditMode}}" />
+        <input name="CardId" type="hidden" value="{{cards.customerId}}" />
+        <input name="CardNumber" type="hidden" value="{{cards.cardNumber}}" />
+    </div>
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <div class="flex">
+                    <div class="m-r-sm">
+                        <h1 class="page-name-block-text sticky-page-name-text">
+                            @if (Model.IsEditMode)
+                            {
+                            <span>Карта</span> <strong>@Html.Raw(Model.Name)</strong>
+                            }
+                            else
+                            {
+                            <strong>@T("Admin.Cards.Edit.NewCard")</strong>
+                            }
+                        </h1>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a class="link-invert" href="@Url.Action("Index")">Все карты</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="inline order-header-item">
+                        <switcher-state checked="@(Model.Blocked ? "true" : "false")" text-off="@T("Admin.Cards.Edit.Blocked")" invert="true" text-on="@T("Admin.Cards.Edit.UnBlocked")" name="Blocked"></switcher-state>
+                    </div>
+                </div>
+            </div>
+            <div class="page-name-block-item-additional">
+                <div class="flex middle-xs">
+                    <a href="" class="link-danger m-r-xs" ng-if="@Model.IsEditMode.ToString().ToLower()" ng-click="cards.deleteCard('@Model.CardId')">Удалить</a>
+                    <div class="dropdown m-r-sm">
+                        <button data-e2e="MainBonus" class="btn btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Основные бонусы
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li>
+                                <ui-modal-trigger data-controller="'ModalAddMainBonusCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                                                  template-url="../areas/admin/content/src/_shared/modal/bonus/MainBonus/addMainBonus.html"
+                                                  resolve="{params:{cardId:'@Model.CardId'}}">
+                                    <a data-e2e="MainBonusAdd" href="">Начислить</a>
+                                </ui-modal-trigger>
+                            </li>
+                            <li>
+                                <ui-modal-trigger data-controller="'ModalSubtractMainBonusCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                                                  template-url="../areas/admin/content/src/_shared/modal/bonus/MainBonus/subtractMainBonus.html"
+                                                  resolve="{params:{cardId:'@Model.CardId'}}">
+                                    <a data-e2e="MainBonusSub" href="">Списать</a>
+                                </ui-modal-trigger>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown m-r-sm">
+                        <button data-e2e="AdditionalBonus" class="btn btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Доп. бонусы
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li>
+                                <ui-modal-trigger data-controller="'ModalAddAdditionBonusCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                                                  template-url="../areas/admin/content/src/_shared/modal/bonus/AdditionBonus/addAdditionBonus.html"
+                                                  resolve="{params:{cardId:'@Model.CardId'}}">
+                                    <a data-e2e="AdditionalBonusAdd" href="">Начислить</a>
+                                </ui-modal-trigger>
+                            </li>
+                            <li>
+                                <ui-modal-trigger data-controller="'ModalSubtractAdditionBonusCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                                                  template-url="../areas/admin/content/src/_shared/modal/bonus/AdditionBonus/subtractAdditionBonus.html"
+                                                  resolve="{params:{cardId:'@Model.CardId'}}">
+                                    <a data-e2e="AdditionalBonusSub" href="">Списать</a>
+                                </ui-modal-trigger>
+                            </li>
+                        </ul>
+                    </div>
+                    <button data-e2e="SaveCard" type="submit" class="btn btn-sm btn-success" data-button-validation disabled ng-disabled="!form.modified">
+                        <i class="fa fa-check"></i>
+                        @T("Admin.Save")
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="ibox">
+                        <div class="ibox-content category-content border_none"  style="min-height:270px;">
+                            @Html.Partial("_CardCommon")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="ibox">
+                        <div class="ibox-content category-content border_none" style="min-height:270px;">
+                            @{
+                                Html.RenderAction("_UserInfo", new { cardId = Model.CardId });
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs">
+            <div class="ibox category-block">
+                <div class="ibox-content category-content border_none">
+                    @{
+                        Html.RenderAction("_AdditionBonus", new { cardId = Model.CardId });
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs">
+            <div class="ibox category-block">
+                <div class="ibox-content category-content border_none">
+                    @{
+                        Html.RenderAction("_LastPurchase", new { cardId = Model.CardId });
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs">
+            <div class="ibox category-block">
+                <div class="ibox-content category-content border_none">
+                    @{
+                        Html.RenderAction("_LastTransaction", new { cardId = Model.CardId });
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,156 @@
+﻿@using FormMethod = System.Web.Mvc.FormMethod
+@model AdvantShop.ViewModel.GiftCertificate.GiftCertificateViewModel
+
+<div class="site-body-cell">
+    <div class="page-title-row details-title-row">
+        <h1 class="preorder-title page-title">@T("GiftCertificate.Index.Header")</h1>
+    </div>
+    @Html.SingleBreadCrumb(Resource.Client_GiftCertificate_Header)
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="col-xs-10">
+                    @using (Html.BeginForm("Index", "GiftCertificate", FormMethod.Post, new { name = "giftCertificate", novalidate = "novalidate" }))
+                    {
+                        <label class="row middle-xs">
+                            <span class="col-xs-4 vertical-interval-small">
+                                <span class="form-field-name input-required vertical-interval-small">@T("GiftCertificate.Index.NameTo"):</span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-small" data-ng-init="giftcertificate.NameTo='@Model.NameTo'">
+                                    @Html.TextBoxFor(m => m.NameTo, new { @class = "input-small", required = "true", data_ng_model = "giftcertificate.NameTo" })
+                                </span>
+                            </span>
+                        </label>
+                        <label class="row middle-xs">
+                            <span class="col-xs-4 vertical-interval-small">
+                                <span class="form-field-name input-required vertical-interval-small">@T("GiftCertificate.Index.NameFrom"):</span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-small" data-ng-init="giftcertificate.NameFrom='@Model.NameFrom'">
+                                    @Html.TextBoxFor(m => m.NameFrom, new { @class = "input-small", required = "true", data_ng_model = "giftcertificate.NameFrom" })
+                                </span>
+                            </span>
+                        </label>
+                        <label class="row middle-xs">
+                            <span class="col-xs-4 vertical-interval-small">
+                                <span class="form-field-name input-required vertical-interval-small">@T("GiftCertificate.Index.Sum"):</span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-small" data-ng-init="giftcertificate.Sum='@Model.Sum'">
+                                    @Html.TextBoxFor(m => m.Sum, new { @class = "input-small", required = "true", type = "number", data_ng_model = "giftcertificate.Sum" })
+                                </span>
+                            </span>
+                        </label>
+                        <label class="row middle-xs">
+                            <span class="col-xs-4 vertical-interval-small">
+                                <span class="form-field-name input-required vertical-interval-small">@T("GiftCertificate.Index.Message"):</span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-small" data-ng-init="giftcertificate.Message='@Model.Message'">
+                                    @Html.TextAreaFor(m => m.Message, new { @class = "input-small", required = "true", data_ng_model = "giftcertificate.Message" })
+                                </span>
+                            </span>
+                        </label>
+                        <label class="row middle-xs">
+                            <span class="col-xs-4 vertical-interval-small">
+                                <span class="form-field-name input-required vertical-interval-small">@T("GiftCertificate.Index.EmailTo"):</span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-small" data-ng-init="giftcertificate.EmailTo='@Model.EmailTo'">
+                                    @Html.TextBoxFor(m => m.EmailTo, new { @class = "input-small", required = "true", type = "email", data_ng_model = "giftcertificate.EmailTo" })
+                                </span>
+                            </span>
+                        </label>
+                        <label class="row middle-xs">
+                            <span class="col-xs-4 vertical-interval-small">
+                                <span class="form-field-name input-required vertical-interval-small">@T("GiftCertificate.Index.EmailFrom"):</span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-small" data-ng-init="giftcertificate.EmailFrom='@Model.EmailFrom'">
+                                    @Html.TextBoxFor(m => m.EmailFrom, new { @class = "input-small", required = "true", type = "email", data_ng_model = "giftcertificate.EmailFrom" })
+                                </span>
+                            </span>
+                        </label>
+
+                        <div class="row middle-xs">
+                            <div class="col-xs-4 vertical-interval-small">
+                                <span class="form-field-name input-required vertical-interval-small">@T("GiftCertificate.Index.PaymentMethod")</span>
+                            </div>
+                            <div class="col-xs-8" data-ng-init="giftcertificate.init('@Model.PaymentKey.ToLower()')">
+                                @foreach (var payment in Model.PaymentMethods)
+                                {
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="payments" value="@payment.PaymentMethodId" checked="@(payment.PaymentMethodId == Model.PaymentMethod)"
+                                                   data-ng-click="giftcertificate.paymentMethodChange('@payment.PaymentKey.ToLower()',@payment.PaymentMethodId)" />
+                                            @Html.Raw(payment.Name)
+                                        </label>
+                                    </div>
+                                }
+                                @Html.HiddenFor(m => m.PaymentMethod)
+                            </div>
+                        </div>
+
+                        <label class="row middle-xs" data-ng-show="giftcertificate.visiblePhone">
+                            <span class="col-xs-4 vertical-interval-small">
+                                <span class="form-field-name input-required vertical-interval-small">@T("GiftCertificate.Index.Phone")</span>
+                            </span>
+                            <span class="col-xs-8">
+                                <span class="form-field-input vertical-interval-small" data-ng-init="giftcertificate.Phone='@Model.Phone'">
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "input-small", required = "true", type = "tel" })
+                                </span>
+                            </span>
+                        </label>
+
+						if (SettingsCheckout.IsShowUserAgreementText)
+                        {
+                            <label class="row middle-xs">
+                                <span class="form-field-input vertical-interval-xsmall col-xs-12">
+                                    @Html.CheckBoxFor(m => m.Agreement, new { required = "required", data_ng_model = "giftcertificate.agreement", @class = "custom-input-native", data_ng_init = "giftcertificate.agreement = false" })
+                                    <span class="custom-input-checkbox"></span>
+                                    @Html.Raw(SettingsCheckout.UserAgreementText)
+                                </span>
+                            </label>
+                        }
+						
+                        if (SettingsMain.EnableCaptchaInGiftCerticate)
+                        {
+                            <label class="row middle-xs">
+                                <span class="col-xs-4">
+                                    <span class="form-field-name vertical-interval-small">@T("Captcha.Code")</span>
+                                </span>
+                                <span class="col-xs-8">
+                                    <span class="form-field-input vertical-interval-small">
+                                        @Html.Captcha("giftCertificate.captcha")
+                                    </span>
+                                </span>
+                            </label>
+                        }
+                        <label class="row middle-xs">
+                            <span class="col-xs-8 col-xs-offset-4">
+                                <span class="form-field-input vertical-interval-small">
+                                    <input type="submit" class="btn btn-small btn-submit" value="@T("GiftCertificate.Index.Buy")" data-button-validation="giftcertificate.send()" />
+                                    <a href="javascript:void(0)" id="printCert" data-ng-click="giftcertificate.previewModal()">@T("GiftCertificate.Index.PreView")</a>
+                                </span>
+                            </span>
+                        </label>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-4 certificate-description">
+            @T("GiftCertificate.Index.Limits")
+            <br />
+            @T("GiftCertificate.Index.MinimalPrice"):
+            @Model.MinimalPriceCertificate <br />
+            @T("GiftCertificate.Index.MaximumPrice"):
+            @Model.MaximalPriceCertificate <br />
+            @T("GiftCertificate.Index.MinimumOrderPrice"):
+            @Model.MinimumOrderPrice <br />
+        </div>
+    </div>
+</div>
+@Html.Action("GiftCertificateModal", new { IsModal = true })

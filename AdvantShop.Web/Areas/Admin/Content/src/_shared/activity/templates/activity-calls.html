@@ -1,0 +1,23 @@
+﻿<div>
+    <table class="table table-striped">
+        <tr>
+            <th>Кто</th>
+            <th>Кому</th>
+            <th>Ответ</th>
+            <th>Дата</th>
+        </tr>
+        <tr ng-if="$ctrl.items != null && $ctrl.items.length > 0" data-ng-repeat="item in $ctrl.items track by $index">
+            <td>{{item.SrcNum}}</td>
+            <td>{{item.DstNum}}</td>
+            <td>
+                <div ng-if="item.CallAnswerDate != null">
+                    <call-record call-id="item.Id" operator-type="item.OperatorType"></call-record>
+                </div>
+            </td>
+            <td class="mail-date">{{item.CallDate}}</td>
+        </tr>
+        <tr ng-if="$ctrl.items == null || $ctrl.items.length == 0">
+            <td colspan="4">Записи отсутсвуют</td>
+        </tr>
+    </table>
+</div>

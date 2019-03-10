@@ -1,0 +1,67 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+$colors-viewer-item-margin: rem-calc(2px);
+
+.color-viewer-item {
+    line-height: 0;
+    font-size: 0;
+    display: inline-block;
+    padding: rem-calc(1px);
+    /*margin: rem-calc(1px);*/
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px transparent solid;
+    vertical-align: middle;
+}
+
+.color-viewer-item, .color-viewer-inner {
+    border-radius: $border-radius-small;
+    position: relative;
+    cursor: pointer;
+}
+
+.color-viewer-alt .color-viewer-inner {
+    width: auto !important;
+    height: auto !important;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1;
+    background: transparent !important;
+    border: 0;
+}
+
+.color-viewer-inner {
+    margin: $colors-viewer-item-margin;
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    background-repeat: no-repeat;
+}
+
+.color-viewer-header {
+    font-size: $font-size-normal;
+    margin-bottom: $vertical-interval-xsmall;
+}
+
+.carousel-colors-wrap {
+    text-align: center;
+    line-height: 0;
+    font-size: 0;
+
+    .carousel-inner {
+        padding: 0 1px;
+    }
+}
+
+.carousel-colors {
+    padding: 0 rem-calc(20px);
+
+    .color-viewer-list {
+        white-space: nowrap;
+    }
+}
+
+.carousel-nav-not-show.carousel-colors {
+    padding: 0;
+}

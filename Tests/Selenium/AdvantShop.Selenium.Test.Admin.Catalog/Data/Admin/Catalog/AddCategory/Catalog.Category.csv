@@ -1,0 +1,6 @@
+CategoryID;ParentCategory;Name;Enabled;SortOrder;UrlPath
+1;0;TestCategory1;true;1;Test-category1
+2;0;TestCategory2;true;2;Test-category2
+3;0;TestCategory3;true;3;Test-category3
+4;0;TestCategory4;true;4;Test-category4
+5;4;PreCategory4;true;5;Pre-category4

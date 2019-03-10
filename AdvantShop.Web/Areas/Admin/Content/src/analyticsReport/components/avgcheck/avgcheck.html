@@ -1,0 +1,36 @@
+﻿<div class="reports-graphic">
+    <div class="clear">
+        <h2 class="reports-title">
+            Средний чек
+        </h2>
+        <div class="pull-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'dd'}" ng-click="$ctrl.changeGroup('dd')">По дням</button>
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'wk'}" ng-click="$ctrl.changeGroup('wk')">По неделям</button>
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'mm'}" ng-click="$ctrl.changeGroup('mm')">По месяцам</button>
+            </div>
+        </div>
+        <div>
+            За выбранный период: <strong>{{$ctrl.AvgData.AvgCheck}}</strong>
+        </div>
+    </div>
+    <canvas class="chart chart-line"
+            chart-data="$ctrl.AvgData.Data"
+            chart-labels="$ctrl.AvgData.Labels"
+            chart-series="$ctrl.AvgData.Series"
+            chart-colors="$ctrl.AvgData.Colors"></canvas>
+</div>
+
+<h2 class="reports-title">
+    Средний чек по городам
+</h2>
+
+<div class="reports-graphic">
+    
+    <canvas id="ordersProfitCount"
+            class="chart chart-horizontal-bar"
+            chart-data="$ctrl.AvgCityData.Data"
+            chart-labels="$ctrl.AvgCityData.Labels"
+            chart-series="$ctrl.AvgCityData.Series"
+            chart-colors="$ctrl.AvgCityData.Colors"></canvas>
+</div>

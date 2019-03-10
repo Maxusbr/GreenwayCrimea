@@ -1,0 +1,40 @@
+﻿@model AdvantShop.Areas.Mobile.Models.Sidebar.SidebarMobileViewModel
+<input id="sidebar__input" type="checkbox" data-ng-model="sbCtrl.sidebarVisible.visible" hidden />
+<label id="sidebar_overlay" for="sidebar__input"></label>
+<aside id="sidebar">
+    <a href="@Url.AbsoluteRouteUrl("Home")" class="head cs-t-4">
+        <img src="./areas/adminmobile/images/uiIcons/avatarUnknown.png" alt="avatar">
+        <span class="username">@Model.StoreName</span>
+    </a>
+    <div class="menu">
+        @if (Model.DisplayCity)
+        {
+            <div data-city-selector-panel></div>
+        }
+        @foreach (var item in Model.Menu)
+        {
+            if (item.NoFollow)
+            { <!--noindex--> }
+            <a class="left cs-br-4 cs-bg-14 inked ink-light" href="@(item.UrlPath == "/" ? Url.AbsoluteRouteUrl("Home") : item.UrlPath)" @Html.Raw(item.Blank ? "target=\"_blank\"" : "") @Html.Raw(item.NoFollow ? "rel=\"nofollow\"" : "")>
+                <span>@item.Name</span>
+            </a>
+            if (item.NoFollow)
+            {<!--/noindex-->}
+        }
+        @*@if (Model.Customer.RegistredUser)
+            {
+                <a href="@Url.AbsoluteRouteUrl("LogOut")" class="cs-l-9 cs-br-4 cs-bg-14 inked ink-light">
+                    <span>Выйти</span>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.AbsoluteRouteUrl("Login")" class="cs-l-9 cs-br-4 cs-bg-14 inked ink-light">
+                    <span>Войти</span>
+                </a>
+                <a href="@Url.AbsoluteRouteUrl("Registration")" class="cs-l-9 cs-br-4 cs-bg-14 inked ink-light">
+                    <span>Зарегестрироваться</span>
+                </a>
+            }*@
+    </div>
+</aside>

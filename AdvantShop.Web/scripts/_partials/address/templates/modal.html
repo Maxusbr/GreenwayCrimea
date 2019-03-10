@@ -1,0 +1,128 @@
+﻿<div>
+    <label class="row middle-xs" data-ng-if="addressList.fields.IsShowCountry === true">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small" data-ng-class="{'input-required': addressList.fields.IsRequiredCountry}" data-translate="Js.Address.Country"></span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <span class="select-custom cs-t-4 icon-down-open-after-abs">
+                    <select class="cs-bg-2" name="addressCountry" id="addressCountry" data-ng-required="addressList.fields.IsRequiredCountry" data-ng-model="addressList.form.country" data-ng-options="countryItem.Name for countryItem in addressList.form.countries"></select>
+                </span>
+            </span>
+        </span>
+    </label>
+
+    <label class="row middle-xs" data-ng-if="addressList.fields.IsShowState === true">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small" data-ng-class="{'input-required': addressList.fields.IsRequiredState}" data-translate="Js.Address.Region"></span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <span class="autocompleter-block" data-field="Name" data-autocompleter data-request-url="/location/GetRegionsAutocomplete" data-template-path="scripts/_common/autocompleter/templates/location.html">
+                    <input type="text" data-autocompleter-input data-ng-model="addressList.form.region" name="addressState" id="addressState" value="" class="input-small" data-ng-required="addressList.fields.IsRequiredState" autocomplete="address-level1" maxlength="70"/>
+                </span>
+            </span>
+        </span>
+    </label>
+
+    <label class="row middle-xs" data-ng-if="addressList.fields.IsShowCity === true">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small" data-ng-class="{'input-required': addressList.fields.IsRequiredCity}" data-translate="Js.Address.City"></span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <span class="autocompleter-block" data-field="Name" data-autocompleter data-request-url="/location/GetCitiesAutocomplete" data-template-path="scripts/_common/autocompleter/templates/location.html">
+                    <input type="text" data-autocompleter-input data-ng-model="addressList.form.city" name="addressCity" id="addressCity" value="" class="input-small" data-ng-required="addressList.fields.IsRequiredCity" autocomplete="address-level2" maxlength="70" />
+                </span>
+            </span>
+        </span>
+    </label>
+
+    <label class="row middle-xs" data-ng-if="addressList.fields.IsShowZip === true">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small" data-ng-class="{'input-required': addressList.fields.IsRequiredZip}" data-translate="Js.Address.Zip"></span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small"><input type="text" data-ng-model="addressList.form.zip" name="addressZip" id="addressZip" value="" class="input-small" data-ng-required="addressList.fields.IsRequiredZip" autocomplete="postal-code" maxlength="70" /></span>
+        </span>
+    </label>
+
+    <label class="row middle-xs" data-ng-if="!addressList.form.isShowFullAddress && addressList.fields.IsShowAddress === true">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small" data-ng-class="{'input-required': addressList.fields.IsRequiredAddress}" data-translate="Js.Address.Address"></span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small"><textarea data-ng-model="addressList.form.street" name="addressDetails" id="addressDetails" class="textarea-small" data-ng-required="addressList.fields.IsRequiredAddress" autocomplete="street-address" maxlength="255"></textarea></span>
+        </span>
+    </label>
+
+    <label class="row middle-xs" data-ng-if="addressList.form.isShowFullAddress && addressList.fields.IsShowAddress === true">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small" data-ng-class="{'input-required': addressList.fields.IsRequiredAddress}" data-translate="Js.Address.Street"></span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <input type="text" data-ng-model="addressList.form.street" value="" class="input-small" data-ng-required="addressList.fields.IsRequiredAddress" autocomplete="street-address" maxlength="255" />
+            </span>
+        </span>
+    </label>
+
+    <div data-ng-if="addressList.form.isShowFullAddress && addressList.fields.IsShowAddress === true">
+
+        <label class="row middle-xs">
+            <span class="col-xs-3">
+                <span class="form-field-name vertical-interval-small" data-ng-class="{'input-required': addressList.fields.IsRequiredAddress}" data-translate="Js.Address.House"></span>
+            </span>
+            <span class="col-xs-9">
+                <span class="form-field-input vertical-interval-small">
+                    <input type="text" data-ng-model="addressList.form.house" value="" class="input-small" data-ng-required="addressList.fields.IsRequiredAddress" maxlength="10"/>
+                </span>
+            </span>
+        </label>
+
+        <label class="row middle-xs">
+            <span class="col-xs-3">
+                <span class="form-field-name vertical-interval-small" data-translate="Js.Address.Apartment"></span>
+            </span>
+            <span class="col-xs-9">
+                <span class="form-field-input vertical-interval-small">
+                    <input type="text" data-ng-model="addressList.form.apartment" value="" class="input-small" maxlength="10"/>
+                </span>
+            </span>
+        </label>
+
+        <label class="row middle-xs">
+            <span class="col-xs-3">
+                <span class="form-field-name vertical-interval-small" data-translate="Js.Address.Structure"></span>
+            </span>
+            <span class="col-xs-9">
+                <span class="form-field-input vertical-interval-small">
+                    <input type="text" data-ng-model="addressList.form.structure" value="" class="input-small" maxlength="10"/>
+                </span>
+            </span>
+        </label>
+
+        <label class="row middle-xs">
+            <span class="col-xs-3">
+                <span class="form-field-name vertical-interval-small" data-translate="Js.Address.Entrance"></span>
+            </span>
+            <span class="col-xs-9">
+                <span class="form-field-input vertical-interval-small">
+                    <input type="text" data-ng-model="addressList.form.entrance" value="" class="input-small" maxlength="10"/>
+                </span>
+            </span>
+        </label>
+
+        <label class="row middle-xs">
+            <span class="col-xs-3">
+                <span class="form-field-name vertical-interval-small" data-translate="Js.Address.Floor"></span>
+            </span>
+            <span class="col-xs-9">
+                <span class="form-field-input vertical-interval-small">
+                    <input type="text" data-ng-model="addressList.form.floor" value="" class="input-small" maxlength="10"/>
+                </span>
+            </span>
+        </label>
+    </div>
+
+</div>

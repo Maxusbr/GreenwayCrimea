@@ -1,0 +1,33 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.Orders.OrderModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "blue", href = "", title = T("AdminMobile.Orders.Index.Orders").ToString() })
+}
+<div id="content" data-ng-controller="OrdersListController as ordersList">
+    <form class="search-wrap" novalidate="novalidate">
+        <div class="search-input-wrapper">
+            <input id="orderNumber" class="search-input" type="search" data-ng-model="ordersList.number" placeholder="@T("AdminMobile.Orders.Index.OrderSearch")" />
+            <div class="search-btn icon-search-before">
+                <input type="submit" data-ng-click="ordersList.search(ordersList.number)" value="" class="search-btn-submit" />
+            </div>
+            <a href="" data-ng-click="ordersList.reset()" class="search-reset icon-cancel-circled-before"></a>
+        </div>
+    </form>
+    <div data-window-scroll="ordersList.getOrders()">
+        <div class="orders" id="orders">
+            <a class="order-item inked ink-dark" data-ng-href="adminmobile/order/{{order.OrderId}}" data-ng-repeat="order in ordersList.orders track by $index">
+                <span class="ordInfo">
+                    <span class="ordNumber">№ {{order.Number}}</span>
+                    <span class="ordFIO">{{order.FirstName}} {{order.LastName}}</span>
+                    <span class="ordDate" data-ng-bind="order.OrderDateFormated"></span>
+                    <span class="status" data-ng-style="{'background-color':'#' + order.Color}"></span>
+                </span>
+                <span class="ordPrice" data-ng-bind="order.SumPrice"></span>
+            </a>
+        </div>
+    </div>
+</div>

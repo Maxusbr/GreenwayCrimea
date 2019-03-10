@@ -1,0 +1,6 @@
+﻿@model AdvantShop.ViewModel.User.ClientCodeViewModel
+
+@if (Model.Code != "0" && Model.Code!= string.Empty)
+{
+    <span class="site-head-userid">@T("User.ClientCode.ClientCode"): @Html.Raw(Model.Code)</span>
+}

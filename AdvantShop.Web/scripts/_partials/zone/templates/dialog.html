@@ -1,0 +1,44 @@
+﻿<div>
+    <div class="zone-dialog-countries">
+        <a href=""
+           class="link-text-decoration-none zone-dialog-country-link"
+           data-ng-repeat="country in zone.data track by $index"
+           data-ng-class="{'zone-dialog-country-selected': country === zone.countrySelected}"
+           data-ng-click="zone.countrySelected = country">
+            <img data-ng-if="country.Iso2 != null && country.Iso2.length > 0" data-ng-src="images/countries/{{country.Iso2}}.png" alt="" class="zone-dialog-country-image" /> {{country.Name}}
+        </a>
+    </div>
+    <div class="zone-dialog-autocomplete-block">
+        <div class="row middle-xs">
+            <div class="col-xs-12 col-md-3">
+                <div class="zone-dialog-text cs-t-3">
+                    {{ ::'Js.Zone.YourCity' | translate }}:
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-9">
+                <form name="zoneDialogForm" novalidate="novalidate">
+                    <div class="row between-xs">
+                        <div class="col-xs-7 col-md">
+                            <div class="zone-dialog-input-wrap" data-field="Name" data-autocompleter data-request-url="/location/GetCitiesAutocomplete"
+                                 data-template-path="scripts/_common/autocompleter/templates/location.html" data-apply-fn="zone.changeCity(value, obj, zone.countrySelected.CountryId)">
+                                <input data-autocompleter-input type="text" class="input-big" name="zoneCity" data-ng-model="zone.zoneCity" data-ng-keyup="zone.keyup($event)" />
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <input class="btn btn-submit btn-big" type="button" value="{{ ::'Js.Zone.Choose' | translate }}" data-ng-click="zone.changeCity(zone.zoneCity, null, zone.countrySelected.CountryId)" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="zone-dialog-cities">
+        <div class="zone-dialog-items">
+            <div class="zone-dialog-item" data-ng-repeat="cities in zone.countrySelected.Columns track by $index">
+                <a class="zone-dialog-item-link" href=""
+                   data-ng-click="zone.changeCity(city.Name, city, zone.countrySelected.CountryId)"
+                   data-ng-repeat="city in cities track by $index" data-ng-bind="city.Name"></a>
+            </div>
+        </div>
+    </div>
+</div>

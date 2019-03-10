@@ -1,0 +1,53 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Добавление статического блока" : "Редактирование статического блока"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div class="form-group row">
+                <label class="col-xs-2 control-label">
+                    <span class="text-required">
+                        Ключ доступа
+                    </span>
+                </label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" ng-model="ctrl.Key" required validation-input-text="Ключ доступа" autofocus
+                           url-generator url-path="ctrl.UrlPath" data-e2e="StaticBlockKey" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 control-label"><span class="text-required">Название</span></label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" ng-model="ctrl.InnerName" required validation-input-text="Название" data-e2e="StaticBlockName" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 control-label">Активность</label>
+                <div class="col-xs-10">
+                    <label class="adv-checkbox-label" data-e2e="StaticBlockEnabled">
+                        <input type="checkbox" ng-model="ctrl.Enabled" class="adv-checkbox-input control-checkbox" />
+                        <span class="adv-checkbox-emul"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 control-label" style="padding-bottom: 15px">Содержание</label>
+                <div class="col-xs">
+                    <a href="service/Academy/50" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                        Видеоурок о Визуальном редакторе
+                    </a>
+                </div>
+
+                <div class="col-xs-12">
+                    <textarea ckeditor="{height: 250}" class="wysiwyg" ng-model="ctrl.Content"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-button-validation-success="ctrl.saveStaticBlock()" data-button-validation>{{ctrl.mode == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

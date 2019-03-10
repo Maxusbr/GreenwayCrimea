@@ -1,0 +1,39 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Списать основные бонусы</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal m-r m-l">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="m-b-xs">
+                            <span class="text-required">Сумма бонуса</span>
+                        </label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.Amount" validation-input-text="Сумма бонуса" required autofocus data-e2e="Amount" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="control-label m-b-xs">
+                            Основание
+                        </label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.Reason"  validation-input-text="Основание"
+                               data-e2e="Reason" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="submit" button-validation button-validation-success="ctrl.subtractBonus(); ctrl.btnLoading = true" ladda="ctrl.btnLoading" data-e2e="bonussubtract">Списать</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

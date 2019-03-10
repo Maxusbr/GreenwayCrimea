@@ -1,0 +1,61 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.RobokassaPaymentModel
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Логин продавца</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.MerchantLogin, new { ng_model = "paymentMethod.Parameters.MerchantLogin", @class = "form-control", required = "required", validation_input_text = "Логин продавца" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Логин продавца">
+            Введите логин продавца, указанный в системе Робокассы
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Пароль 1</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.Password, new { ng_model = "paymentMethod.Parameters.Password", @class = "form-control", required = "required", validation_input_text = "Пароль 1" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Пароль 1">
+            Пароль 1 используется интерфейсом инициализации оплаты
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Пароль 2</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.PasswordNotify, new { ng_model = "paymentMethod.Parameters.PasswordNotify", @class = "form-control", required = "required", validation_input_text = "Пароль 2" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Пароль 2">
+            Пароль 2 используется интерфейсом оповещения о платеже
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Тестовый режим
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.IsTest, new { ng_model = "paymentMethod.Parameters.IsTest", ng_init = "paymentMethod.Parameters.IsTest=" + Model.IsTest.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Передавать данные для чека
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.SendReceiptData, new { ng_model = "paymentMethod.Parameters.SendReceiptData", ng_init = "paymentMethod.Parameters.SendReceiptData=" + Model.SendReceiptData.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>

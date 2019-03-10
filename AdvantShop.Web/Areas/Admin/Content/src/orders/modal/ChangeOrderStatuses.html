@@ -1,0 +1,18 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Изменение статуса заказов</h2>
+</div>
+<div class="modal-body">
+    
+    <div class="form-group">
+        <select data-ng-model="ctrl.status" data-ng-options="s.label for s in ctrl.statuses" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <textarea data-ng-model="ctrl.basis" class="form-control" placeholder="Основание для смены статуса"></textarea>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.changeStatus()">Изменить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

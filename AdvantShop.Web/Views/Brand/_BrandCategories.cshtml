@@ -1,0 +1,44 @@
+﻿@model List<AdvantShop.ViewModel.Brand.BrandCategoryViewModel>
+@if (Model.Count > 0)
+{
+    <div class="menu-dropdown menu-dropdown-accordion menu-dropdown-expanded">
+        <!--''||.icon-down-open-after-abs-->
+        <div class="menu-dropdown-list cs-br-1" data-submenu-container="{'type': 'accordion'}">
+            @foreach (var category in Model)
+            {
+                <div class="menu-dropdown-item submenu-accordion cs-br-1 @Html.Raw(category.SubCategories.Any() ? "parent" : "")" data-submenu-parent>
+                    @if (category.SubCategories.Any())
+                    {
+                        <div class="menu-dropdown-sub ng-hide" data-submenu data-ng-show="submenu.isSubmenuVisible">
+                            @foreach (var subcategory in category.SubCategories)
+                            {
+                                <div class="menu-dropdown-sub-inner">
+                                    <div class="menu-dropdown-sub-columns">
+                                        <div class="menu-dropdown-sub-columns-item">
+                                            <div class="menu-dropdown-sub-block">
+                                                <div class="menu-dropdown-sub-category-name">
+                                                    <a href="@Html.Raw(subcategory.Url)" class="link-text-decoration menu-dropdown-sub-category-link">
+                                                        <span class="menu-dropdown-sub-category-text">@Html.Raw(subcategory.Name)</span>
+                                                        <span class="menu-cat-count cs-t-1">(@subcategory.Count)</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    <div class="menu-dropdown-link-wrap cs-bg-i-7"
+                         @Html.Raw(category.SubCategories.Any() ? "data-ng-click=\"submenuParent.submenu.toggle(); $event.stopPropagation();\" data-ng-class=\"{'icon-right-open-after-abs': submenuParent.submenu.isSubmenuVisible === false, 'icon-down-open-after-abs': submenuParent.submenu.isSubmenuVisible === true }\"" : "")>
+                        <a class="menu-dropdown-link" href="@Html.Raw(category.Url)"
+                           @Html.Raw(category.SubCategories.Any() ? "data-ng-click=\"$event.preventDefault();\"" : "")>
+                            @*<span class="menu-dropdown-icon"><img class="menu-dropdown-icon-img" src="!temp/menu-icon.png" alt="" /></span>*@
+                            <span class="menu-dropdown-link-text">@Html.Raw(category.Name) <span class="menu-cat-count cs-t-1">(@category.Count)</span></span>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

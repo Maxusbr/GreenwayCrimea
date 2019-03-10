@@ -1,0 +1,44 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.IntellectMoneyMainProtocolPaymentModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Номер сайта продавца</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.EshopId, new { ng_model = "paymentMethod.Parameters.EshopId", @class = "form-control", required = "required", validation_input_text = "Номер сайта продавца" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Номер сайта продавца">
+                Номер сайта продавца, на который покупатель должен совершить платеж.
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Способ оплаты
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.DropDownListFor(x => x.Preference, Model.Payments, new {ng_model = "paymentMethod.Parameters.Preference", ng_init = "paymentMethod.Parameters.Preference='" + Model.Preference + "'", @class = "form-control"})
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Способ оплаты">
+                Способ оплаты, который будет выбран при оплате покупки, минуя экран выбора.
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Секретный ключ (Secret Key)</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.SecretKey, new {ng_model = "paymentMethod.Parameters.SecretKey", @class = "form-control", required = "required", validation_input_text = "Секретный ключ (Secret Key)" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Секретный ключ (Secret Key)">
+                Строка символов, используемая для подписи данных передаваемых системой ИнтеллектМани магазину. Эта строка используется для повышения надежности идентификации высылаемого оповещения. Содержание строки известно только системе IntellectMoney и интернет-магазину!
+            </help-trigger>
+        </div>
+    </div>
+
+

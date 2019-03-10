@@ -1,0 +1,17 @@
+﻿@model bool
+
+@if (Model == true)
+{
+    <article class="checkout-block" data-ng-if="checkout.isShowCouponInput">
+        <div class="checkout-block-title h2">
+            @T("Checkout.CheckoutCoupon.CouponTitle")
+        </div>
+        <div class="checkout-block-content">
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    <div data-cards-form data-apply-fn="checkout.applyCoupon()"></div>
+                </div>
+            </div>
+        </div>
+    </article>
+}

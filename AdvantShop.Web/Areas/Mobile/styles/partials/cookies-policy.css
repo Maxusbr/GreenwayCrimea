@@ -1,0 +1,25 @@
+﻿.cookies-policy {
+  position: fixed;
+  bottom: 3.75rem;
+  right: 1.25rem;
+  z-index: 55; }
+
+.cookies-policy-block {
+  box-shadow: 0 0 0.625rem 0 rgba(0, 0, 0, 0.5);
+  padding: 0.3125rem;
+  border-radius: 0.3125rem;
+  font-size: 0.875rem;
+  width: 300px;
+}
+
+.cookies-policy-cell {
+  vertical-align: middle;
+  padding: 0.3125rem; }
+
+.cookies-policy-close {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  font-size: 20px;
+  line-height: 1;
+  font-family: Arial; }

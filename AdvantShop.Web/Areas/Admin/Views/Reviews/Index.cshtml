@@ -1,0 +1,37 @@
+﻿@model AdvantShop.Web.Admin.Models.Reviews.ReviewsFilterModel
+
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                 @T("Admin.Reviews.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger size="middle" data-controller="'ModalAddEditReviewCtrl'" controller-as="ctrl"
+                              template-url="../areas/admin/content/src/reviews/modal/addEditReview/addEditReview.html"
+                              data-on-close="reviews.grid.fetchData()">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="reviewAdd">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Add")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="reviews.gridOnInit(grid)"
+                        grid-options="reviews.gridOptions"
+                        grid-url="'reviews/getreviews'"
+                        grid-search-placeholder="'Поиск по автору, отзывам'"
+                        @Html.Raw(Model.EntityId != 0 ? "grid-params='{entityId: " + Model.EntityId + "}'" : "")
+                        grid-extend-ctrl="reviews">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="reviews.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

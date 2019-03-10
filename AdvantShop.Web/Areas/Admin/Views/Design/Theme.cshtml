@@ -1,0 +1,73 @@
+﻿@model AdvantShop.Web.Admin.Models.Designs.ThemeModel
+
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline m-r-xs middle-cell">
+                Редактирование темы дизайна "@Model.ThemeTitle"
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            @Html.Button(T("Admin.Save"), eButtonType.Simple, eButtonSize.Small, eColorType.Success, attributes: new[] { "ng-click=\"design.saveTheme()\"" })
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content" ng-init="design.initTheme('styles', '@Model.ThemeName', '@Model.Design')">
+
+        <div class="row">
+            <div class="col-3-xs">
+                <div class="design-theme-treeview" style="width: 150px">
+                    <div class="design-theme-treeview-item">
+                        <a href="" ng-click="design.show='styles'" class="link-decoration-none">
+                            <span class="fa fa-folder-open"></span> css
+                        </a>
+                        <div class="design-theme-treeview-sub-item">
+                            <a href="" ng-click="design.show='styles'" class="design-theme-treeview-sub-item-styles">
+                                <span class="fa fa-file-o"></span> styles.css
+                            </a>
+                        </div>
+                    </div>
+                    <div class="design-theme-treeview-item">
+                        <a href="" ng-click="design.show='images'">
+                            <span class="fa fa-folder-open"></span> images
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9-xs">
+                
+                <div ng-switch="design.show">
+                    <div ng-switch-when="styles" class="ng-cloack" style="min-width: 950px">
+                        <ui-ace-textarea ui-ace-options="{mode: 'css'}" ng-model="design.themeCss">
+                            @Html.TextArea("themeCss", Model.CssContent, new {ng_model = "design.themeCss"})
+                        </ui-ace-textarea>
+                    </div>
+                    <div ng-switch-when="images" class="ng-cloack">
+                        <div class="m-b-sm">
+                            <a href=""
+                               ngf-drop
+                               ngf-max-size="5MB"
+                               ngf-select=""
+                               ngf-change="design.addThemeFile($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)">Добавить изображение</a>
+                        </div>
+                        <div class="design-theme-files-item" ng-repeat="item in design.themeFiles track by $index">
+                            <div class="design-theme-files-item-preview">
+                                <img src="{{item.Preview}}" ng-if="item.Preview != null" class="design-theme-files-item-preview-img"/>
+                            </div>
+                            <div>
+                                {{item.Name}}
+                                <a href="" class="fa fa-remove design-theme-files-remove" ng-click="design.removeFile(item)"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

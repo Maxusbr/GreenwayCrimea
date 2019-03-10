@@ -1,0 +1,120 @@
+﻿@using AdvantShop.Web.Admin.Models.Catalog
+@model AdvantShop.Web.Admin.ViewModels.Catalog.AdminCatalog
+@{
+    Layout = "~/Areas/Admin/Views/Catalog/_CatalogLayout.cshtml";
+    ViewBag.CategoryId = Model.CategoryId;
+    ViewBag.CatalogLeftMenuNgCallbackOnInit = "catalog.initCatalogLeftMenu(catalogLeftMenu)";
+}
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block page-name-block-in-catalog  sticky-page-name-inner">
+        <div class="page-name-block-item-main @(Model.BreadCrumbs != null && Model.BreadCrumbs.Any() ? "page-name-block-item-main-with-bread" : "")">
+            <h2 class="page-name-block-text sticky-page-name-text inline content-header inline middle-cell m-r-sm">@Html.Raw(Model.Title)</h2>
+            <a href="@Url.Action("Academy", "Service", new { id = 3 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Категориях
+            </a>
+        </div>
+        <div class="page-name-block-item-additional">
+            @if (Model.ShowMethod == ECatalogShowMethod.Normal)
+            {
+                <span class="header-subtext">
+                    @*@if (Model.CategoryId != 0)
+                        {
+                            <a data-e2e="DeleteCategory" class="link-danger m-l-sm" href="" ng-click="catalog.deleteCategory(@Model.CategoryId)">@T("Admin.Delete")</a>
+                        }*@
+                    <a data-e2e="EditCategory" href="@Url.Action("Edit", "Category", new {id = Model.CategoryId})" class="btn m-l-xs btn-sm btn-success">
+                        @T("Admin.Edit")
+                    </a>
+                </span>
+
+            }
+
+
+            <div class="btn-group m-l-xs">
+                <a data-e2e="AddCategory" href="@Url.Action("Add", "Category", new {parentId = Model.CategoryId})" class="btn btn-sm btn-success">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.AddCategory")
+                </a>
+
+                <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Развернуть</span>
+                </button>
+
+                <ul class="dropdown-menu pull-right">
+                    <li class="dropdown-submenu">
+                        <ui-modal-trigger class="dropdown-menu-link js-menu-link" data-resolve='{data: {categoryId: @(Model.Category != null ? Model.CategoryId.ToString() : "null"), categoryName: "@(Model.Category != null ? Model.Category.Name.Replace("\"", "\\\"") : string.Empty)"}}' data-controller="'ModalAddCategoryListCtrl'" template-url="../areas/admin/content/src/_shared/modal/addCategoryList/addCategoryList.html" size="xs-5">
+                            <a href="" class="dropdown-menu-link js-menu-link">
+                                Категории списком
+                            </a>
+                        </ui-modal-trigger>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="btn-group btn--margin-left">
+                <button data-e2e="AddProduct" class="btn btn-sm btn-success" type="button" ui-modal-trigger data-controller="'ModalAddProductCtrl'"  template-url="../areas/admin/content/src/_shared/modal/addProduct/addProduct.html">
+                        <span class="fa fa-plus"></span>
+                        @T("Admin.AddProduct")
+                </button>
+
+                <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Развернуть</span>
+                </button>
+
+                <ul class="dropdown-menu pull-right">
+                    <li class="dropdown-submenu">
+                        <ui-modal-trigger data-resolve='{data: {categoryId: @(Model.Category != null ? Model.CategoryId.ToString() : "null"), categoryName: "@(Model.Category != null ? Model.Category.Name.Replace("\"", "\\\"") : string.Empty)"}}' class="dropdown-menu-link js-menu-link" data-controller="'ModalAddProductListCtrl'" template-url="../areas/admin/content/src/_shared/modal/addProductList/addProductList.html" size="xs-5">
+                            <a href="" class="dropdown-menu-link js-menu-link">
+                                Товары списком
+                            </a>
+                        </ui-modal-trigger>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="breadcrumb-header-in-catalog">
+        @Html.Partial("_BreadCrumbs", Model.BreadCrumbs)
+    </div>
+</div>
+
+<div class="m-t-sm">
+    @if (Model.Category != null && Model.HasChildCategories)
+    {
+        <categories-block category-id="@Model.CategoryId" photo-height="@(SettingsPictureSize.SmallCategoryImageHeight)px" categorysearch="@Model.CategorySearch" on-delete="catalog.onDeleteChildCategories()"></categories-block>
+    }
+
+    @if (Model.ShowMethod != ECatalogShowMethod.Normal || Model.CategoryId != 0)
+    {
+        if (Model.Category != null)
+        {
+            <div class="m-t">
+                <h2 class="inline content-header">@T("Admin.Catalog.Index.Products")</h2>
+                <ui-modal-trigger class="header-subtext" data-controller="'ModalAddProductCtrl'" controller-as="ctrl" template-url="../areas/admin/content/src/_shared/modal/addProduct/addProduct.html">
+                    <a href="" class="m-r-sm">@T("Admin.AddProduct")</a>
+                </ui-modal-trigger>
+                <a href="@Url.Action("Academy", "Service", new { id = 4 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    Видеоурок о Товарах
+                </a>
+            </div>
+        }
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-row-identificator="'ProductId'"
+                        grid-options="catalog.gridOptions"
+                        grid-params="{categoryId:@Model.CategoryId, showMethod:'@Model.ShowMethod', search: '@Model.Search'}"
+                        grid-on-init="catalog.gridOnInit(grid)"
+                        grid-url="'catalog/getcatalog'"
+                        grid-inplace-url="'catalog/inplaceproduct'"
+                        grid-search-placeholder="'Поиск по наименованию и артикулу'"
+                        grid-on-delete="catalog.onGridDeleteItem()"
+                        grid-selection-mass-apply="catalog.onGridDeleteItem()">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="catalog.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    }
+</div>

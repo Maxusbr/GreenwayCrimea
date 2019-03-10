@@ -1,0 +1,25 @@
+﻿<h2 class="m-b-md clearfix">
+    Лиды
+    <ui-modal-trigger class="pull-right" data-controller="'ModalAddLeadCtrl'" controller-as="ctrl" size="lg" backdrop="static"
+                      resolve="{params: {'customerId': $ctrl.customerId}}"
+                      template-url="../areas/admin/content/src/_shared/modal/addLead/addLead.html">
+        <a class="btn btn-sm btn-action">
+            Создать лид
+        </a>
+    </ui-modal-trigger>
+</h2>
+
+<div class="m-b-lg">
+    <div class="row">
+        <div class="col-xs-12">
+            <ui-grid-custom grid-unique-id="gridLeads"
+                            grid-filter-enabled="false"
+                            grid-pagination-enabled="false"
+                            grid-selection-enabled="false"
+                            grid-params="{customerId: $ctrl.customerId}"
+                            grid-options="$ctrl.gridLeadsOptions"
+                            grid-url="'leads/getLeads'">
+            </ui-grid-custom>
+        </div>
+    </div>
+</div>

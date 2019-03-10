@@ -1,0 +1,17 @@
+﻿@model AdvantShop.ViewModel.Checkout.CheckoutUserViewModel
+
+<article class="checkout-block">
+    <div class="checkout-block-title h2">
+        @T("Checkout.CheckoutUser.CustomerTitle")
+    </div>
+    <div class="checkout-block-content">
+        @if (Model.Customer.RegistredUser)
+        {
+            @Html.Partial("CheckoutUserRegistred", Model)
+        }
+        else
+        {
+            @Html.Partial("CheckoutUserUnRegistred", Model)
+        }
+    </div>
+</article>

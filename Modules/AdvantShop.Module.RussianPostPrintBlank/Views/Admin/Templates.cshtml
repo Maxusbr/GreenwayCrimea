@@ -1,0 +1,14 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>()
+    {
+        url + "modules/RussianPostPrintBlank/content/Scripts/russianPostPrintBlank/russianPostPrintBlankService.js",
+        url + "modules/RussianPostPrintBlank/content/Scripts/russianPostPrintBlank/russianPostPrintBlankTemplatesCtrl.js",
+        url + "modules/RussianPostPrintBlank/content/Styles/admin-style.css"
+    };
+}
+
+<div data-oc-lazy-load="[@(String.Join(", ", scripts.Select(x => "'" + x  + "'")))]">
+    <russian-post-print-blank-templates class="rppb-module"></russian-post-print-blank-templates>
+</div>

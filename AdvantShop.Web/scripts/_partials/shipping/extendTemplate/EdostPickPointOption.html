@@ -1,0 +1,11 @@
+﻿<div data-oc-lazy-load="shippingTemplate.prepereLazyLoadUrl(['https://pickpoint.ru/select/postamat.js', '/scripts/_partials/shipping/extend/pickpoint/pickpoint.js'])">
+    <div data-ng-controller="PickpointCtrl as pickpointPopup">
+        <a href="" data-ng-click="pickpointPopup.open(shippingTemplate.shipping, shippingTemplate.changePrepare);">Выбрать пункт выдачи</a>
+        <div data-ng-bind="shippingTemplate.shipping.PickpointAddress"></div>
+        <div data-ng-if="shippingTemplate.shipping.PickpointAddress == null" class="shipping-extend-error error-color">
+            Необходимо выбрать пункт выдачи
+        </div>
+        <input data-ng-if="shippingTemplate.isSelected" class="shipping-extend-input-hidden" type="text" data-ng-model="shippingTemplate.shipping.PickpointAddress" required readonly />
+    </div>
+</div>
+

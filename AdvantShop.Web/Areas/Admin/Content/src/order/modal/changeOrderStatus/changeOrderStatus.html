@@ -1,0 +1,40 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Смена статуса заказа</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            
+            <div ng-if="!ctrl.showNotifyMsg">
+                <div class="m-b">
+                    Вы действительно хотите изменить статус заказа на "<b>{{ctrl.statusName}}</b>" ?
+                </div>
+                <div class="m-b">
+                    <div class="m-b-xs">Основание для изменения статуса:</div>
+                    <textarea ng-model="ctrl.basis" style="height: 100px;" class="form-control"></textarea>
+                </div>
+            </div>
+            
+            <div ng-if="ctrl.showNotifyEmail || ctrl.showNotifySms ">
+                <div>
+                    <div class="orderstatus-saved">Статус заказа сохранен</div>
+                    <a href="" ng-click="ctrl.notifyStatusChanged()">Уведомить покупателя о смене статуса 
+                    <span ng-if="ctrl.showNotifyEmail">по e-mail</span> 
+                    <span ng-if="ctrl.showNotifyEmail && ctrl.showNotifySms"> и </span> 
+                    <span ng-if="ctrl.showNotifySms">по sms</span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <span ng-if="!ctrl.showNotifyMsg">
+            <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.save()">Сохранить</button>
+            <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+        </span>
+        <span ng-if="ctrl.showNotifyMsg">
+            <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.closeNotify()">Закрыть</button>
+        </span>
+    </div>
+</form>

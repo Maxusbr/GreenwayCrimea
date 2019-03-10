@@ -1,0 +1,91 @@
+﻿StaticPageID;PageName;PageText;SortOrder;AddDate[DATE];ModifyDate[DATE];Enabled;UrlPath
+119;Политика возврата;text here<br />;40;15.06.2012 14:19;15.06.2012 14:22;true;returns
+120;Гарантии;text here<br />;50;15.06.2012 14:20;2012-10-01 18:47:44.057;true;warranty
+129;О магазине;"<p><br />
+Наш интернет-магазин сделан для того, чтобы Вы смогли удобно, без лишних забот найти и заказать то, что Вас интересует. Мы заботимся о том, чтобы ассортимент в нашем интернет-магазине был всегда актуальным, цены доступными, сервис лучшим.<br />
+<br />
+Предлагаем Вам убедится в этом и сделать заказ в нашем интернет-магазине. Вы сможете быстро оплатить и получить заказ. Подробнее о вариантах оплаты и доставки Вы сможете узнать на соответствующих страницах.<br />
+<br />
+Для всех постоянных клиентов мы делаем скидки и заботимся о том, чтобы интернет-магазин Вам нравился и Вы приходили в него снова и снова.</p>
+
+<p><br />
+Наш интернет-магазин сделан для того, чтобы Вы смогли удобно, без лишних забот найти и заказать то, что Вас интересует. Мы заботимся о том, чтобы ассортимент в нашем интернет-магазине был всегда актуальным, цены доступными, сервис лучшим.</p>
+";0;25.06.2012 16:54;04.12.2014 12:20;true;about
+130;Оплата;"<table class=""Oplata"">
+	<tbody>
+		<tr>
+			<td style=""width: 60px; vertical-align: top; text-align: center;"">
+				<img alt=""Наличные при получении"" src=""images/nalich.jpg"" /></td>
+			<td>
+				<strong>Наличные при получении</strong> (вы делаете заказ, оставляете контактную информацию, указываете в пункте Оплата &ndash; &laquo;Наличными&raquo;, при этом варианте оплата осуществляется курьеру при привозе заказа)<br />
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan=""2"">
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td style=""width: 60px; vertical-align: top; text-align: center;"">
+				<img alt=""Безналичный расчет"" src=""images/beznal.jpg"" /></td>
+			<td>
+				<strong>Безналичный расчет (по-счету)</strong>&ndash; такой расчет более всего подходит для организаций. Вы делаете заказ, распечатываете счет на оплату, оплачиваете его и созваниваетесь с нами для уточнения даты получения заказа.<br />
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan=""2"">
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td style=""width: 60px; vertical-align: top; text-align: center;"">
+				<img alt=""Оплата по квитанции Сбербанка"" src=""images/sber.jpg"" /></td>
+			<td>
+				<strong>Оплата по квитанции Сбербанка</strong> &ndash; для оплаты Вам необходимо распечатать и оплатить квитанцию Сбербанка РФ.<br />
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan=""2"">
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td style=""width: 60px; vertical-align: top; text-align: center;"">
+				<img alt=""Оплата по Вашей кредитной карте"" src=""images/cart.jpg"" /></td>
+			<td>
+				<strong>Оплата по Вашей кредитной карте</strong> &ndash; Вы можете оплатить заказ в интернет-магазине, не вставая с места, для этого Вам необходимо выбрать соответствующий вариант оплаты.<br />
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan=""2"">
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td style=""width: 60px; vertical-align: top; text-align: center;"">
+				<img alt=""Оплата с помощью электронных денег"" src=""images/emoney.jpg"" /></td>
+			<td>
+				<strong>Оплата с помощью электронных денег (Яндекс.Деньги, WebMoney)</strong> &ndash; Наш интернет-магазин поддерживает оплату электронными деньгами.</td>
+		</tr>
+	</tbody>
+</table>
+";20;25.06.2012 16:55;26.11.2012 17:54;true;payment
+131;Доставка;"Получить заказ Вы сможете:
+<ul>
+    <li><strong>Курьером</strong> (доставка курьером осуществляется на  следующий день после заказа с 12-00 до 19-00, пожалуйста указывайте  удобное время доставки).
+    <ul class=""UlNoType"">
+        <li>Стоимость доставки определяется от суммы заказа:</li>
+        <li>Заказ до 500р. стоимость доставки 400р.</li>
+        <li>Заказ от 500р до 2000р. стоимость доставки 200р.</li>
+        <li>Заказ свыше 2000р. - доставки бесплатно.</li>
+    </ul>
+    </li>
+    <li class=""UlPadTop10px""><strong>Почта России</strong>
+    <ul class=""UlNoType"">
+        <li>Вы сможете оформить заказ и мы доставим его Почтой России</li>
+    </ul>
+    </li>
+    <li class=""UlPadTop10px""><strong>Само-вывоз</strong>
+    <ul class=""UlNoType"">
+        <li>Вы всегда сможете заехать за заказом сами в рабочие часы нашего офиса. Схема проезда и контакты смотри <a href=""http://demo-premium.advantshop.ru/AuxView.aspx?ID=21"">тут</a>.</li>
+    </ul>
+    </li>
+</ul>
+<p>Вы всегда сможете обсудить способы и цены на доставку с нашими менеджерами.</p>";10;25.06.2012 16:56;25.06.2012 16:58;true;shipping
+132;Контакты;"<div class=""row""> <div class=""col-xs""> <div class=""name-value-blocks""> <div class=""name-value-block""> <div class=""contacts-phone-title"">Наш телефон:</div>  <div class=""contacts-phone"">+7(495) 333-55-77</div> </div>  <div class=""name-value-block""> <div class=""block-name"">Режим работы:</div>  <div class=""block-value"">Ежедневно c 09:00 до 20:00</div> </div>  <div class=""name-value-block""> <div class=""block-name"">Адрес:</div>  <div class=""block-value"">г. Москва, Проспект Мира д 1, офис 14</div> </div>  <div class=""name-value-block""> <div class=""block-name"">Как добраться:</div>  <div class=""block-value"">Станция метро Проспект Мира, ТЦ Мир</div> </div>  <div class=""name-value-block""> <div class=""flexible-maps-container""><script charset=""utf-8"" src=""//api-maps.yandex.ru/services/constructor/1.0/js/?sid=4hDLNDA-2VJxeQ0ETg18SQAdG3o6dQ6L&amp;width=860&amp;height=330""></script></div> </div>  <div class=""name-value-block""> <div class=""block-name"">Данные организации</div>  <div class=""block-value"">ООО &laquo;ДемоМагазин&raquo;</div>  <div class=""block-value"">Директор Сидоров Александр Анатольевич</div>  <div class=""block-value"">ИНН 8549349754, КПП 4657025431</div>  <div class=""block-value"">р/с 405875000045321005 открыт в &laquo;СуперБанк&raquo;</div>  <div class=""block-value"">БИК банка 07565125548,</div>  <div class=""block-value"">к/с 0511458500000000021021</div> </div> </div> </div>  <div class=""col-xs-4""> <div class=""other-contacts name-value-list-block""> <div class=""list-title"">Другие контакты</div>  <div class=""row""> <div class=""list-name col-xs"">Эл.почта</div>  <div class=""list-value col-xs""><a href=""mailto:info@advantshop.ru"">info@advantshop.ru</a></div> </div>  <div class=""row""> <div class=""list-name col-xs"">ICQ</div>  <div class=""list-value col-xs"">784-542-154</div> </div>  <div class=""row""> <div class=""list-name col-xs"">Skype</div>  <div class=""list-value col-xs""><a href=""skype:advantshop.net?chat"">advantshop.net</a></div> </div>  <div class=""row""> <div class=""list-name col-xs"">Бухгалтерия</div>  <div class=""list-value col-xs"">+7 (495) 333-55-88</div> </div>  <div class=""row""> <div class=""list-name col-xs"">Отдел гарантии</div>  <div class=""list-value col-xs"">+7 (495) 333-55-99</div> </div>  </div> </div> </div> ";60;2012-06-25 16:58:32.060;17.08.2015 11:16;true;contacts

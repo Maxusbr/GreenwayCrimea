@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F12F24DE-109D-4766-B797-37295C74FDF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvantShop.Selenium.Test.Admin.Marketing</RootNamespace>
+    <AssemblyName>AdvantShop.Selenium.Test.Admin.Marketing</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="WebDriver, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.Support.3.4.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Certificates\CertificateAddTest.cs" />
+    <Compile Include="Tests\Certificates\CertificatePageTest.cs" />
+    <Compile Include="Tests\Certificates\CertificatesFilterTest.cs" />
+    <Compile Include="Tests\Certificates\CertificatesSortTest.cs" />
+    <Compile Include="Tests\Certificates\CertificatesTest.cs" />
+    <Compile Include="Tests\Coupon\CouponAddTest.cs" />
+    <Compile Include="Tests\Coupon\CouponFilterTest.cs" />
+    <Compile Include="Tests\Coupon\CouponPageTest.cs" />
+    <Compile Include="Tests\Coupon\CouponSortTest.cs" />
+    <Compile Include="Tests\Coupon\CouponsTest.cs" />
+    <Compile Include="Tests\Discount\DiscountsPriceRangeAddEditTest.cs" />
+    <Compile Include="Tests\Discount\DiscountsPriceRangeClientTest.cs" />
+    <Compile Include="Tests\Discount\DiscountsPriceRangeFilterTest.cs" />
+    <Compile Include="Tests\Discount\DiscountsPriceRangePageTest.cs" />
+    <Compile Include="Tests\Discount\DiscountsPriceRangePresentTest.cs" />
+    <Compile Include="Tests\Discount\DiscountsPriceRangeSearchTest.cs" />
+    <Compile Include="Tests\Discount\DiscountsPriceRangeSortTest.cs" />
+    <Compile Include="Tests\Discount\DiscountsPriceRangeTest.cs" />
+    <Compile Include="Tests\Voting\VotingAddEditTest.cs" />
+    <Compile Include="Tests\Voting\VotingAnswers\AnswersPresentTest.cs" />
+    <Compile Include="Tests\Voting\VotingAnswers\AnswersTest.cs" />
+    <Compile Include="Tests\Voting\VotingAnswers\AnswersSortTest.cs" />
+    <Compile Include="Tests\Voting\VotingAnswers\AnswersSearchTest.cs" />
+    <Compile Include="Tests\Voting\VotingAnswers\AnswersPageTest.cs" />
+    <Compile Include="Tests\Voting\VotingAnswers\AnswersFilterTest.cs" />
+    <Compile Include="Tests\Voting\VotingAnswers\AnswersAddEditTest.cs" />
+    <Compile Include="Tests\Voting\VotingFilterTest.cs" />
+    <Compile Include="Tests\Voting\VotingPageTest.cs" />
+    <Compile Include="Tests\Voting\VotingPresentTest.cs" />
+    <Compile Include="Tests\Voting\VotingSearchTest.cs" />
+    <Compile Include="Tests\Voting\VotingSortTest.cs" />
+    <Compile Include="Tests\Voting\VotingTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Category.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Color.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Coupon.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.CouponCategories.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.CouponProducts.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Product.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Property.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Size.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].Certificate.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].PaymentMethod.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].ShippingMethod.csv" />
+    <None Include="Data\Admin\Certificates\AddCertificate\[Order].[Order].csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Category.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Color.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Coupon.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.CouponCategories.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.CouponProducts.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Product.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Property.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Size.csv" />
+    <None Include="Data\Admin\Certificates\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Category.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Color.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Coupon.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.CouponCategories.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.CouponProducts.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Product.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Property.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Size.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\[Order].Certificate.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Certificates\ManyCertificates\[Order].[Order].csv" />
+    <None Include="Data\Admin\Certificates\[Order].Certificate.csv" />
+    <None Include="Data\Admin\Certificates\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Certificates\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Certificates\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Certificates\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Certificates\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Certificates\[Order].PaymentMethod.csv" />
+    <None Include="Data\Admin\Certificates\[Order].ShippingMethod.csv" />
+    <None Include="Data\Admin\Certificates\[Order].[Order].csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Category.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Color.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Coupon.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.CouponCategories.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.CouponProducts.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Product.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Property.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Size.csv" />
+    <None Include="Data\Admin\Coupons\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Category.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Color.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Coupon.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.CouponCategories.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.CouponProducts.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Photo.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Product.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Property.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Size.csv" />
+    <None Include="Data\Admin\Coupons\ManyCoupon\Catalog.Tag.csv" />
+    <None Include="Data\Admin\Discount\Catalog.Category.csv" />
+    <None Include="Data\Admin\Discount\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Discount\Catalog.Product.csv" />
+    <None Include="Data\Admin\Discount\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Discount\DiscountClient\Catalog.Category.csv" />
+    <None Include="Data\Admin\Discount\DiscountClient\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Discount\DiscountClient\Catalog.Product.csv" />
+    <None Include="Data\Admin\Discount\DiscountClient\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Discount\DiscountClient\[Order].OrderPriceDiscount.csv" />
+    <None Include="Data\Admin\Discount\DiscountClient\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Discount\DiscountClient\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Discount\[Order].OrderPriceDiscount.csv" />
+    <None Include="Data\Admin\Discount\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Discount\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\VotingAnswers\Voice.Answer.csv" />
+    <None Include="Data\Admin\VotingAnswers\Voice.VoiceTheme.csv" />
+    <None Include="Data\Admin\VotingAnswers\VotingAnswersAddEdit\Voice.Answer.csv" />
+    <None Include="Data\Admin\VotingAnswers\VotingAnswersAddEdit\Voice.VoiceTheme.csv" />
+    <None Include="Data\Admin\Voting\Voice.Answer.csv" />
+    <None Include="Data\Admin\Voting\Voice.VoiceTheme.csv" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AdvantShop.Web.Infrastructure\AdvantShop.Web.Infrastructure.csproj">
+      <Project>{95339807-58ec-4b9c-8808-0a893f3a2cc6}</Project>
+      <Name>AdvantShop.Web.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantShop.Selenium.Core\AdvantShop.Selenium.Core.csproj">
+      <Project>{a1f7b566-7c19-421f-b002-c6c7b48b13b0}</Project>
+      <Name>AdvantShop.Selenium.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Protractor\Protractor.csproj">
+      <Project>{de9c82c5-ebb3-4a2b-a75e-ce3e68e2c866}</Project>
+      <Name>Protractor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\packages\WebDriver.GeckoDriver.0.16.1\content\geckodriver.exe">
+      <Link>geckodriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

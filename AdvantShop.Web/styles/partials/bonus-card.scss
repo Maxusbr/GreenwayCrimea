@@ -1,0 +1,94 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+.bonus-card-block {
+    display: block;
+    text-decoration: none;
+
+    &:hover, &:active {
+        text-decoration: none;
+    }
+
+    &:before {
+        display: block;
+        margin-bottom: rem-calc(10px);
+        font-size: $font-size-huge;
+        height: rem-calc(50px);
+        width: rem-calc(80px);
+    }
+}
+.bonus-card-block-inline:before {
+    width: rem-calc(27px);
+    height: rem-calc(27px);
+    font-size: rem-calc(15px);
+    margin-right: rem-calc(5px);
+    display: inline-block;
+    line-height: 1.7rem;
+    padding: 0 5px;
+}
+
+.bonus-card-block-inline-after:after {
+    position: absolute;
+    left: 6px;
+    width: rem-calc(27px);
+    height: rem-calc(27px);
+    font-size: rem-calc(15px);
+    margin-right: rem-calc(5px);
+    display: inline-block;
+    line-height: 1.7rem;
+    padding: 0 5px;
+}
+
+.bonus-card-block-inline_without-margin:before{
+    margin-right: 0;
+}
+
+
+.bonus-card-icon-after:after {
+    content: "%";
+    box-shadow: $box-shadow-base;
+    text-align: center;
+    background-color: #fff;
+    color: #c13d35;
+    border-radius: $border-radius-base;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.bonus-card-icon:before {
+    content: "%";
+    box-shadow: $box-shadow-base;
+    text-align: center;
+    background-color: #fff;
+    color: #c13d35;
+    border-radius: $border-radius-base;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.bonus-card-icon-center {
+    margin: 0;
+}
+
+.bonus-card-icon-center:before {
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.bonus-string-sum {
+    display: block;
+    font-size: $font-size-small;
+}
+
+
+.bonus-card-reg {
+    padding-right: 45px;
+}
+
+.checkout-success-bonus-title {
+    font-size: 30px;
+}
+
+.checkout-success-bonus-card-block {
+    background-color: #f8f8f8;
+    padding: 30px 0;
+}

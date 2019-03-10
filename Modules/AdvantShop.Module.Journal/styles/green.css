@@ -1,0 +1,35 @@
+.head-b {
+    border-bottom: 1px solid #139949;
+}
+
+.bottom-tr-r {
+    color: #fff;
+    background: #139949;
+}
+
+.bottom-tr-l {
+    color: #fff;
+    background: #139949;
+}
+
+.cover-content {
+    background-size: cover;
+    background: #52ab46;
+    background-repeat: no-repeat;
+    background: -webkit-linear-gradient(top, #52ab46 0%, #139949 100%);
+    background: linear-gradient(to bottom, #52ab46 0%, #139949 100%);
+}
+
+.cover-top {
+    -ms-box-shadow: #139949 5px 5px 0 0;
+    box-shadow: #139949 5px 5px 0 0;
+}
+
+.cover-middle-left, .cover-middle-right {
+    -ms-box-shadow: #139949 10px 10px 0 0;
+    box-shadow: #139949 10px 10px 0 0;
+}
+
+.cover-bottom {
+    color: #fff;
+}

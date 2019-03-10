@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'advantshopfonts';
+  src: url('../vendors/fontello/font/advantshopfonts.eot?77658544');
+  src: url('../vendors/fontello/font/advantshopfonts.eot?77658544#iefix') format('embedded-opentype'),
+       url('../vendors/fontello/font/advantshopfonts.woff?77658544') format('woff'),
+       url('../vendors/fontello/font/advantshopfonts.ttf?77658544') format('truetype'),
+       url('../vendors/fontello/font/advantshopfonts.svg?77658544#advantshopfonts') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

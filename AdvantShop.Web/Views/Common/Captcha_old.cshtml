@@ -1,0 +1,19 @@
+﻿@model AdvantShop.ViewModel.Common.CaptchaViewModel
+
+<div class="captcha-wrap">
+    <div class="captha-img">
+        @Html.HiddenFor(m => m.CaptchaBase64Text)
+        @if (Model.NgModelSource == null)
+        {
+            @Html.HiddenFor(m => m.CaptchaSource, new { @class = "valid-captchasource" })
+        }
+        else
+        {
+            @Html.HiddenFor(m => m.CaptchaSource, new { @class = "valid-captchasource", data_ng_Model = Model.NgModelSource })
+        }
+        <img src="common/getcaptchatext?captchatext=@Model.CaptchaEncodedBase64Text" alt="" />
+    </div>
+    <div >
+        @Html.TextBox("captchaCode", Model.CaptchaCode, new { @class = "captcha-input input-small", required = "required", minlength = 4, data_ng_model = Model.NgModel })
+    </div>
+</div>

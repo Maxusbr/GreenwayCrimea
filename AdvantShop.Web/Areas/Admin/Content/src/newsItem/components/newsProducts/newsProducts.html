@@ -1,0 +1,31 @@
+﻿<div class="items-list">
+    <div class="item rel-product-item" data-ng-repeat="item in $ctrl.products track by $index">
+        <div class="item-block">
+            <div class="item-block__inner">
+                <div class="clearfix">
+                    <div class="pull-right">
+                        <a href="" ng-click="$ctrl.deleteNewsProduct(item.ProductId)" class="link-invert link-decoration-none  link-grey fa fa-remove categories-block-icon"></a>
+                    </div>
+                </div>
+                <div class="item-block__content">
+                    <figure class="item-block__figure">
+                        <a href="{{item.Url}}" class="item-block__figure-link">
+                            <img ng-src="{{item.ImageSrc}}" alt="" style="max-width: 130px; max-height: 130px;" />
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <div class="item-block__name">
+                <a href="{{item.Url}}" class="item-block__name-link">{{item.ArtNo}} - {{item.Name}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ui-modal-trigger class="header-subtext" size="xs-11" data-controller="'ModalProductsSelectvizrCtrl'" data-controller-as="ctrl"
+                  data-on-close="$ctrl.addProductsModal(result)"
+                  template-url="../areas/admin/content/src/_shared/modal/products-selectvizr/productsSelectvizrModal.html">
+    <a class="btn btn-sm btn-action" href="">
+        Добавить товар
+    </a>
+</ui-modal-trigger>

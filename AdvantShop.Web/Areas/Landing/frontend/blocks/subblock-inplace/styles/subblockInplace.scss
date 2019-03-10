@@ -1,0 +1,170 @@
+﻿.subblock-inplace-button {
+    position: relative;
+
+    &:hover > .subblock-inplace-button-trigger {
+        display: block;
+    }
+}
+
+.subblock-inplace-button-trigger {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 10000;
+    border: 0.0625rem #ccc solid;
+    border-radius: 0 0 0.3125rem 0.3125rem;
+    background: #eee;
+    display: none;
+    margin-right: 20px;
+
+    &:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0.875rem;
+        line-height: 1;
+        height: 18px;
+        width: 18px;
+        border-radius: 0.3125rem;
+        border: 0.0625rem #ccc solid;
+        position: relative;
+        margin: 0.3125rem 0.3125rem;
+        background: #eee url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZmlsbD0iIzcwNzA3MCIgZD0iTTQyMi45NTMsMTc2LjAxOWMwLjU0OS0wLjQ4LDEuMDktMC45NzUsMS42MTItMS40OThsMjEuNzcyLTIxLjc3MmMxMi44ODMtMTIuODgzLDEyLjg4My0zMy43NzEsMC00Ni42NTQNCgkJbC00MC40MzQtNDAuNDM0Yy0xMi44ODMtMTIuODgzLTMzLjc3MS0xMi44ODMtNDYuNjUzLDBsLTIxLjc3MiwyMS43NzJjLTAuNTIzLDAuNTIzLTEuMDE4LDEuMDY0LTEuNDk4LDEuNjEzTDQyMi45NTMsMTc2LjAxOXoiLz48cG9seWdvbiBmaWxsPSIjNzA3MDcwIiBwb2ludHM9IjExNC4zMTcsMzk3LjY4NCAxNTcuMzE3LDQ0MC42ODQgMTA2LjY1OCw0NDguMzQyIDU2LDQ1NiA2My42NTgsNDA1LjM0MSA3MS4zMTYsMzU0LjY4MyIvPjxwb2x5Z29uIGZpbGw9IiM3MDcwNzAiIHBvaW50cz0iMzQ5LjE0MywxMjUuNTM1IDExOC45ODIsMzU1LjY5NCAxMDYuNTQxLDM0My4yNTMgMzM2LjcwMSwxMTMuMDk0IDMyNC4yNiwxMDAuNjUzIDgxLjY1OSwzNDMuMjUzIA0KCQkxNjguNzQ3LDQzMC4zNDEgNDExLjM0OCwxODcuNzQiLz48L2c+PC9zdmc+") center center no-repeat;
+        background-size: 100% 100%;
+    }
+}
+
+.subblock-inplace-modal-container {
+    display: table;
+    width: 100%;
+}
+
+.subblock-inplace-modal-row {
+    display: table-row;
+}
+
+.subblock-inplace-modal-name,
+.subblock-inplace-modal-value {
+    display: table-cell;
+    vertical-align: top;
+    padding-bottom: 15px;
+    padding-top: 8px;
+}
+
+.subblock-inplace-modal-name {
+    padding-right: 10px;
+    padding-top: 8px;
+    width: 150px;
+    vertical-align: middle;
+}
+
+.subblock-inplace-modal-checkbox {
+    display: block;
+}
+
+.subblock-inplace-button-modal-container {
+}
+
+.subblock-inplace-button-modal-floating-wrap,
+.subblock-inplace-button-modal {
+    width: 650px;
+}
+
+.subblock-inplace-button-modal-name {
+    min-width: 165px;
+}
+
+.subblock-inplace-button-modal-checkbox {
+    margin-top: 8px;
+}
+
+.subblock-inplace-btn-cancel,
+.subblock-inplace-btn-confirm,
+.subblock-inplace-btn-apply {
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+    border: 0;
+    font-size: 12px;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.subblock-inplace-btn-cancel {
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #4b4f58;
+
+    &:hover {
+        background-color: lighten(#4b4f58, 5);
+    }
+
+    &:active {
+        background-color: darken(#4b4f58, 5);
+    }
+
+    &:disabled {
+        color: #4b4f58;
+        background-color: #8f959c;
+    }
+}
+
+.subblock-inplace-btn-confirm {
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #0562c1;
+
+    &:hover {
+        background-color: lighten(#0562c1, 5);
+    }
+
+    &:active {
+        background-color: darken(#0562c1, 5);
+    }
+
+    &:disabled {
+        color: #4b4f58;
+        background-color: #8f959c;
+    }
+}
+
+.subblock-inplace-btn-apply {
+    padding: 5px 10px;
+    color: #fff;
+    background-color: #0562c1;
+
+    &:hover {
+        background-color: lighten(#0562c1, 5);
+    }
+
+    &:active {
+        background-color: darken(#0562c1, 5);
+    }
+
+    &:disabled {
+        color: #4b4f58;
+        background-color: #8f959c;
+    }
+}
+
+.subblock-inplace-btn-apply-wrap {
+    text-align: center;
+}
+
+.subblock-inplace-modal-buttons {
+    text-align: right;
+
+    .subblock-inplace-btn-confirm,
+    .subblock-inplace-btn-cancel {
+        margin-left: 15px;
+    }
+}
+
+.subblock-inplace-modal-mar {
+    margin-bottom: 15px;
+}

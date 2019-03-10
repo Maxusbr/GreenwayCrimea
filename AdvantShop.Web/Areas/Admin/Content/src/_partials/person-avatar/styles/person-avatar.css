@@ -1,0 +1,17 @@
+.person-avatar-popover {
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  min-width: 100px; }
+
+.person-avatar-popover-item {
+  padding: 2px 0;
+  margin: 0; }
+
+.person-avatar, .person-avatar-image {
+  height: 70px;
+  width: 70px;
+  display: block;
+  max-width: 70px;
+  max-height: 70px; }

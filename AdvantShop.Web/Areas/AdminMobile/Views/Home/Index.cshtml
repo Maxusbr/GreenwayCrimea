@@ -1,0 +1,51 @@
+﻿@using AdvantShop.Core.Services.Orders
+@model AdvantShop.Areas.AdminMobile.Models.Home.HomeOrdersModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "", href = "", title = T("AdminMobile.Home.Index.SalesPlan").ToString() })
+}
+<div id="content">
+    <div class="monitor_bg inked ink-light">
+        <div class="monitor">
+            <div class="proceeds">
+                <div class="title">
+                    @T("AdminMobile.Home.Index.Revenue") <span class="selector">@Model.CurrentCurrency.Symbol</span>
+                </div>
+                <div class="value">@Model.DailyOrdersSum</div>
+            </div>
+            <div class="completed">
+                <div class="text">@T("AdminMobile.Home.Index.Completed") @Model.PlanPercent.ToString("F2") % (@Model.Sales)</div>
+                <div id="adv-progress-bar">
+                    <div id="bar" style="width:@Model.PlanPercent.ToString("F0")%"></div>
+                </div>
+            </div>
+            <div class="common-stat clear">
+                <div class="visitors">
+                    <div class="stat-name">@T("AdminMobile.Home.Index.Visitors")</div>
+                    <div class="stat-value">@Model.DailyVisitors</div>
+                </div>
+                <div class="orders">
+                    <div class="stat-name">@T("AdminMobile.Home.Index.Orders")</div>
+                    <div class="stat-value">@Model.DailyOrdersCount</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toSections">
+        <a href="@Url.RouteUrl("AdminMobile_Orders")" class="inked ink-dark">
+            @T("AdminMobile.Home.Index.AllOrders") <span class=" value">@Model.AllOrdersCount</span>
+            <span class="arrow icon-right-open-big-after"></span>
+        </a>
+        @foreach (var status in Model.OrderStatuses)
+        {
+            <a href="@Url.RouteUrl("AdminMobile_Orders", new { statusId = status.StatusID })" class="inked ink-dark">
+                @status.StatusName<span class="value">@status.GetOrdersCount()</span>
+                <span class="arrow icon-right-open-big-after"></span>
+            </a>
+        }
+    </div>
+</div>

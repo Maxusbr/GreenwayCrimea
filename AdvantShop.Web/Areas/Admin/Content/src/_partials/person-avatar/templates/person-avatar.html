@@ -1,0 +1,24 @@
+﻿<a href="."
+   popover-trigger="'none'"
+   uib-popover-template="'personAvatarPopover.html'"
+   popover-placement="right"
+   popover-is-open="$ctrl.popoverIsOpen"
+   ng-mouseenter="$ctrl.popoverOpen()"
+   ng-mouseleave="$ctrl.popoverClose()">
+    <span data-ng-transclude class="block"></span>
+    <!--<img class="person-avatar-image" ng-src="{{$ctrl.avatarSrc}}" alt="" />-->
+</a>
+<script type="text/ng-template" id="personAvatarPopover.html">
+    <ul class="person-avatar-popover"
+        ng-mouseenter="$ctrl.popoverOpen()"
+        ng-mouseleave="$ctrl.popoverClose()">
+        <li class="person-avatar-popover-item">
+            <ui-modal-trigger data-controller="'ModalAddAvatarCtrl'" controller-as="ctrl" template-url="../areas/admin/content/src/_shared/modal/addAvatar/addAvatar.html" data-on-close="$ctrl.updateAvatar(result)">
+                <a href="">Загрузить фото</a>
+            </ui-modal-trigger>
+        </li>
+        <li class="person-avatar-popover-item">
+            <a href="../logout">Выход</a>
+        </li>
+    </ul>
+</script>

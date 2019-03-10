@@ -1,0 +1,18 @@
+.manager-info {
+  padding-left: 1.1875rem; }
+
+.manager-name {
+  font-size: 0.875rem;
+  padding-bottom: 0.625rem; }
+
+.manager-position {
+  padding-bottom: 1.25rem; }
+
+.manager-icon-mover:before {
+  left: -22px; }
+
+.manager-no-photo {
+  font-size: 3.625rem; }
+
+.managers-email-dialog, .managers-call-dialog {
+  min-width: 27.5rem; }

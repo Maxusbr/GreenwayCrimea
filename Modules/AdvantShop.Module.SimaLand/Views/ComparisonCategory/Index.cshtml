@@ -1,0 +1,61 @@
+﻿@model AdvantShop.Module.SimaLand.ViewModel.ComparisonCategoryViewModel
+
+<table class="table-ui">
+    <thead>
+        <tr>
+            <th>
+                @if (Model.PrevLevel - 1 >= 0)
+                {
+                    <a class="link-category" data-prev="true" data-categoryId="@Model.PrevCategoryId" data-level="@Model.PrevLevel">←</a>
+                }
+            </th>
+            <th style="width:50%">
+                Категория <b>sima-land.ru</b> (Всего: @Model.TotalCountActive)
+            </th>
+            <th>
+                Создать категорию
+            </th>
+            <th>
+                Категория <b>@Model.Domain</b> (Связей: @Model.TotalCountLink)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 0;
+            foreach (var item in Model.List)
+            {
+                ++index;
+                var is_leaf = "";
+                var link_category = "";
+                var import_category = "";
+                if (item.is_leaf) { is_leaf = "is_leaf"; } else { link_category = "link-category"; }
+                if (item.level == 1) { import_category = "import-category"; }
+                <tr>
+                    <td>@index</td>
+                    <td>
+                        <a class="@link_category @is_leaf" data-prev="false" data-categoryId="@item.id" data-level="@item.level">@item.name</a>
+                    </td>
+                    <td style="font-size: large">
+                        <div class="@import_category">→</div>
+                    </td>
+                    <td>
+                        @if (item.AdvCategoryName == "")
+                        { if (item.is_leaf)
+                            {
+                                <a class="select-category" data-categoryId="@item.id">Выбрать</a>
+                            }
+                        }
+                        else
+                        {
+                            if (item.is_leaf)
+                            {
+                                <a class="select-category  link-advcategory" data-categoryId="@item.id">@item.AdvCategoryName</a>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

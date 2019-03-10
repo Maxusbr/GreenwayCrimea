@@ -1,0 +1,38 @@
+﻿<div class="row m-n">
+    <div style="-webkit-flex-basis: 70px; -ms-flex-preferred-size: 70px; flex-basis: 70px; min-width: 70px;">
+        <!--<a ng-href="customers/edit/{{$ctrl.comment.CustomerId}}">
+            <img ng-src="{{$ctrl.comment.AvatarSrc}}" alt="" />
+        </a>-->
+        <sidebar-user-trigger customer-id="$ctrl.comment.CustomerId">
+            <img ng-src="{{$ctrl.comment.AvatarSrc}}" alt="" />
+        </sidebar-user-trigger>
+    </div>
+    <div class="col-xs">
+
+        <sidebar-user-trigger customer-id="$ctrl.comment.CustomerId">
+            <a href="" class="admin-comment-item-name" ng-bind="$ctrl.comment.Name" data-e2e="commentName"></a>
+        </sidebar-user-trigger>
+
+        <div class="admin-comment-item-date" ng-bind="$ctrl.comment.DateCreatedFormatted"></div>
+        <span class="admin-comment-item-link" ng-click="$ctrl.parent.reply($ctrl.comment)" data-e2e="commentAnswer">Ответить</span>
+        <span class="admin-comment-item-link" ng-if="$ctrl.comment.IsOwner" ng-click="$ctrl.edit($ctrl.comment)" data-e2e="commentEdit">Редактировать</span>
+        <span class="admin-comment-item-link" ng-click="$ctrl.parent.delete($ctrl.comment.Id)" data-e2e="commentDelete">Удалить</span>
+
+        <div ng-if="$ctrl.parent.editingComment != $ctrl.comment.Id" class="admin-comment-item-text" ng-bind-html="$ctrl.comment.Text | linky:'_blank' | nl2br" data-e2e="commentText"></div>
+        <div ng-if="$ctrl.parent.editingComment == $ctrl.comment.Id" class="admin-comment-item-edit">
+            <div class="form-group">
+                <textarea class="form-control r-v" ng-model="$ctrl.text" placeholder="Введите комментарий" required autofocus="$ctrl.texFocus" data-e2e="commentEditText"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-action btn-sm" ng-click="$ctrl.save()" data-e2e="commentSave">Сохранить</button>
+                <button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.cancelEdit()" data-e2e="commentCancel">Отмена</button>
+            </div>
+        </div>
+
+        <div ng-if="$ctrl.comment.ParentComment != null" class="admin-comment-item-answer">
+            ответ на комментарий
+            <a ng-href="customers/edit/{{$ctrl.comment.ParentComment.CustomerId}}" class="admin-comment-item-link"
+               ng-bind="$ctrl.comment.ParentComment.Name" ng-click="$ctrl.parent.showComment($event, $ctrl.comment.ParentId)" data-e2e="commentParentName"></a>
+        </div>
+    </div>
+</div>

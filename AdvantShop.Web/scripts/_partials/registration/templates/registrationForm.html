@@ -1,0 +1,56 @@
+﻿<form name="registrationForm" id="registrationForm">
+    <label class="row middle-xs">
+        <span class="col-xs-4">
+            <span class="form-field-name">{{ ::'Js.Registration.Email' | translate }}</span>
+        </span>
+        <span class="col-xs-8">
+            <span class="form-field-input"><input type="email" data-ng-model="email" name="registrationEmail" id="registrationEmail" value="" class="input-small" required /></span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-4">
+            <span class="form-field-name">{{ ::'Js.Registration.FirstName' | translate }}</span>
+        </span>
+        <span class="col-xs-8">
+            <span class="form-field-input"><input type="text" data-ng-model="name" name="registrationName" id="registrationName" value="" class="input-small" required /></span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-4">
+            <span class="form-field-name">{{ ::'Js.Registration.LastName' | translate }}</span>
+        </span>
+        <span class="col-xs-8">
+            <span class="form-field-input"><input type="text" data-ng-model="surname" name="registrationSurname" id="registrationSurname" value="" class="input-small" required /></span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-4">
+            <span class="form-field-name">{{ ::'Js.Registration.Patronymic' | translate }}</span>
+        </span>
+        <span class="col-xs-8">
+            <span class="form-field-input"><input type="text" data-ng-model="patronymic" name="registrationPatronymic" id="registrationPatronymic" value="" class="input-small" /></span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-4">
+            <span class="form-field-name">{{ ::'Js.Registration.Phone' | translate }}</span>
+        </span>
+        <span class="col-xs-8">
+            <span class="form-field-input"><input type="tel" data-ng-model="phone" name="registrationPhone" id="registrationPhone" value="" class="input-small" required /></span>
+        </span>
+    </label>
+    <div class="row">
+        <label class="col-xs-offset-4 col-xs-8">
+            <span class="form-field-input">
+                <input class="custom-input-native" data-ng-model="subscription" type="checkbox" id="registrationSubscription" name="registrationSubscription" />
+                <span class="custom-input-checkbox"></span>
+                <span class="custom-input-text">{{ ::'Js.Registration.SubscribeToNews' | translate }}</span>
+            </span>
+        </label>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-8">
+            <input type="button" value="{{ ::'Js.Registration.Registrate' | translate }}" class="btn btn-middle btn-action" data-ng-click="createAccount()" />
+        </div>
+    </div>
+</form>

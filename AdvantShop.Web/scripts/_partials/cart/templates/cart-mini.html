@@ -1,0 +1,60 @@
+﻿<div>
+    <div class="cart-mini-block js-cart-mini-block"
+         data-ng-if="cartMiniList.isVisibleCart === true"
+         data-ng-class="{'cart-mini-fixed': cartMiniList.isCartMiniFixed}"
+         data-ng-style="{'left': cartMiniList.isCartMiniFixed === true ? cartMiniList.staticPosition.left : 'auto', 'width': cartMiniList.isCartMiniFixed === true ? cartMiniList.staticPosition.width : 'auto'}">
+        <div class="cart-mini-scrollbar-block" data-window-click="cartMiniList.clickOut(event)">
+            <div class="cart-mini-scrollbar">
+                <ul class="cart-mini-list" data-window-scroll="cartMiniList.windowScroll(event)">
+                    <li class="cart-mini-item" data-ng-repeat="item in cartMiniList.cartData.CartProducts track by $index">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <figure class="cart-mini-photo">
+                                    <a class="cart-mini-photo-link" href="{{::item.Link}}"><img data-ng-src="{{::item.PhotoPath}}" alt="{{::item.PhotoAlt}}" /></a>
+                                </figure>
+                            </div>
+                            <div class="col-xs-9">
+                                <div class="cart-mini-info">
+                                    <div class="cart-mini-name">
+                                        <a href="{{::item.Link}}" class="cart-mini-name-link" data-ng-bind="::item.Name"></a>
+                                    </div>
+                                    <div class="cart-mini-count">
+                                        <span class="cart-mini-count-text cs-t-3">{{ ::'Js.Cart.Amount' | translate }}:</span> <span class="cart-mini-count-value" data-ng-bind="item.Amount"></span>
+                                    </div>
+                                    <div class="cart-mini-price">
+                                        <span class="cart-mini-price-text cs-t-3">{{ ::'Js.Cart.Price' | translate }}:</span> <span class="cart-mini-price-value" data-ng-bind="::item.PriceWithDiscount"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="cart-mini-result-block">
+            <div class="cart-mini-result-row" data-ng-if="cartMiniList.cartData.TotalProductPrice != null" data-ng-show="cartMiniList.cartData.TotalPrice != cartMiniList.cartData.TotalProductPrice">
+                <span class="cart-mini-result-name">{{ ::'Js.Cart.Sum' | translate }}:</span> <span class="cart-mini-result-value" data-ng-bind="cartMiniList.cartData.TotalProductPrice"></span>
+            </div>
+            <div class="cart-mini-result-row" data-ng-if="cartMiniList.cartData.DiscountPrice != null" data-ng-show="cartMiniList.cartData.DiscountPrice != null">
+                <span class="cart-mini-result-name">{{ ::'Js.Cart.Discount' | translate }}:</span> <span class="cart-mini-result-value" data-ng-bind="cartMiniList.cartData.DiscountPrice"></span>
+            </div>
+            <div class="cart-mini-result-row" data-ng-if="cartMiniList.cartData.Certificate != null">
+                <span class="cart-mini-result-name">{{ ::'Js.Cart.Certificate' | translate }}:</span> <span class="cart-mini-result-value" data-ng-bind="cartMiniList.cartData.Certificate"></span>
+            </div>
+            <div class="cart-mini-result-row" data-ng-if="cartMiniList.cartData.Coupon != null">
+                <span class="cart-mini-result-name">{{ ::'Js.Cart.Coupon' | translate }}:</span> <span class="cart-mini-result-value" data-ng-bind="cartMiniList.cartData.Coupon.Price"></span>
+            </div>
+            <div class="cart-mini-result-row" data-ng-if="cartMiniList.cartData.TotalPrice != null">
+                <span class="cart-mini-result-name">{{ ::'Js.Cart.Total' | translate }}:</span> <span class="cart-mini-result-value" data-ng-bind="cartMiniList.cartData.TotalPrice"></span>
+            </div>
+            <div class="cart-mini-buttons">
+                <a data-ng-if="::cartMiniList.cartData.ShowConfirmButtons" href="cart" class="btn btn-buy btn-xsmall">
+                    {{ ::'Js.Cart.Cart' | translate }}
+                </a>
+                <a href="checkout" class="btn btn-action btn-xsmall">
+                    {{ ::'Js.Cart.Checkout' | translate }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

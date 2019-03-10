@@ -1,0 +1,7 @@
+﻿OrderStatusID;StatusName;CommandID;IsDefault;IsCanceled;SortOrder;IsCompleted
+2;Новый;0;true;false;0;false
+3;В обработке;2;false;false;0;false
+4;Отправлен;0;false;false;0;false
+5;Доставлен;0;false;false;0;true
+27;Отменён;1;false;true;0;false
+28;Отменен навсегда;0;false;true;0;false

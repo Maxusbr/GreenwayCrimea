@@ -1,0 +1,74 @@
+﻿<div>
+    <label class="row middle-xs">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small">
+                {{modal.formData.NameFieldTitle}}
+            </span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <input type="text" data-ng-model="modal.formData.Name" name="inplaceName" id="inplaceName" value="" class="input-small" required />
+            </span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small">
+                {{ ::'Js.Inplace.PageH1' | translate }}
+            </span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <input type="text" data-ng-model="modal.formData.H1" name="inplaceH1" id="inplaceH1" value="" class="input-small" />
+                <span class="inplace-modal-note cs-t-3">
+                    {{modal.formData.globalVaribles}}
+                </span>
+            </span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small">
+                {{ ::'Js.Inplace.PageTitle' | translate }}
+            </span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <input type="text" data-ng-model="modal.formData.Title" name="inplaceTitle" id="inplaceTitle" value="" class="input-small" />
+                <span class="inplace-modal-note cs-t-3">
+                    {{modal.formData.globalVaribles}}
+                </span>
+            </span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small">
+                {{ ::'Js.Inplace.PageKeywords' | translate }}
+            </span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <textarea class="textarea-small" data-ng-model="modal.formData.MetaKeywords" name="inplaceMetaKeywords" id="inplaceMetaKeywords"></textarea>
+                <span class="inplace-modal-note cs-t-3">
+                    {{ modal.formData.globalVaribles}}
+                </span>
+            </span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-3">
+            <span class="form-field-name vertical-interval-small">
+                {{ ::'Js.Inplace.PageDescriptions' | translate }}
+            </span>
+        </span>
+        <span class="col-xs-9">
+            <span class="form-field-input vertical-interval-small">
+                <textarea class="textarea-small" data-ng-model="modal.formData.MetaDescription" name="inplaceMetaDescription" id="inplaceMetaDescription"></textarea>
+                <span class="inplace-modal-note cs-t-3">
+                    {{ modal.formData.globalVaribles}}
+                </span>
+            </span>
+        </span>
+    </label>
+</div>

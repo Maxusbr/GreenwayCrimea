@@ -1,0 +1,329 @@
+/**
+ * 	Angular RangeSlider SCSS
+ * 
+ *	Version: 0.0.11
+ *
+ * 	Author: Daniel Crisp, danielcrisp.com
+ *
+ * 	The rangeSlider has been styled to match the default styling
+ * 	of form elements styled using Twitter's Bootstrap
+ * 
+ * 	Originally forked from https://github.com/leongersen/noUiSlider
+ *
+
+	This code is released under the MIT Licence - http://opensource.org/licenses/MIT
+
+	Copyright (c) 2013 Daniel Crisp
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
+
+ */
+/*------------------------------------*\
+    COMPASS IMPORTS
+\*------------------------------------*/
+/*------------------------------------*\
+    SETTINGS
+\*------------------------------------*/
+/*------------------------------------*\
+    THE CSS
+\*------------------------------------*/
+/* line 25, scss/_rangeSlider.scss */
+.ngrs-range-slider {
+    position: relative;
+    display: block;
+    cursor: default;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*------------------------------------*\
+      RUNNER
+  \*------------------------------------*/
+    /*------------------------------------*\
+      JOIN (connects the two handles)
+  \*------------------------------------*/
+    /*------------------------------------*\
+      HANDLE
+  \*------------------------------------*/
+    /*------------------------------------*\
+      HANDLE SPECIFICS
+  \*------------------------------------*/
+    /*------------------------------------*\
+      VALUE LABELS
+  \*------------------------------------*/
+    /*------------------------------------*\
+      ATTACHED VALUE RUNNER
+  \*------------------------------------*/
+    /*------------------------------------*\
+      VERTICAL SLIDER
+  \*------------------------------------*/
+    /*------------------------------------*\
+      FOCUS STATE
+  \*------------------------------------*/
+    /*------------------------------------*\
+      DISABLED STATE
+  \*------------------------------------*/
+}
+    /* line 28, scss/_rangeSlider.scss */
+    /* line 53, scss/_rangeSlider.scss */
+    .ngrs-range-slider .ngrs-runner {
+        position: relative;
+        height: 3px;
+        background: #dbdbdb;
+        box-shadow: inset 0 2px 2px -2px rgba(0,0,0, .5);
+        /*margin: 7px 0;*/
+        margin: 7px 14px 7px 0;
+    }
+    /* line 63, scss/_rangeSlider.scss */
+    .ngrs-range-slider .ngrs-join {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 0;
+        right: 100%;
+        height: 3px;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        box-shadow: inset 0 -2px 2px -2px rgba(0,0,0, .5);
+    }
+    /* line 81, scss/_rangeSlider.scss */
+    .ngrs-range-slider .ngrs-handle {
+        position: absolute;
+        z-index: 2;
+        height: 14px;
+        width: 14px;
+        background: #fff;
+        border-radius: 50%;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        cursor: pointer;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0, .5);
+        /*------------------------------------*\
+      HANDLE ICON
+  \*------------------------------------*/
+    }
+
+.ngrs-value-runner {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    position: relative;
+    ;
+}
+
+/* line 137, scss/_rangeSlider.scss */
+.ngrs-range-slider .ngrs-value {
+}
+    /* line 145, scss/_rangeSlider.scss */
+    .ngrs-range-slider .ngrs-value.ngrs-value-max, .ngrs-range-slider .ngrs-value-min {
+        position: absolute;
+    }
+
+    .ngrs-range-slider .ngrs-value.ngrs-value-max {
+        left: auto;
+        right: 0;
+        text-align: right;
+    }
+
+.ngrs-range-slider .ngrs-value-min {
+    left: 0;
+}
+/* line 153, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-handle-min-down .ngrs-value-min, .ngrs-range-slider.ngrs-handle-max-down .ngrs-value-max {
+    color: #333;
+}
+/* line 160, scss/_rangeSlider.scss */
+.ngrs-range-slider .ngrs-attached-handles {
+    margin: 0 9px;
+    position: relative;
+    /*------------------------------------*\
+      ATTACHED VALUE RUNNER LABELS
+  \*------------------------------------*/
+}
+    /* line 167, scss/_rangeSlider.scss */
+    .ngrs-range-slider .ngrs-attached-handles .ngrs-value-max {
+        text-align: left;
+    }
+    /* line 170, scss/_rangeSlider.scss */
+    .ngrs-range-slider .ngrs-attached-handles .ngrs-value > div {
+        margin: 0 0 0 -50%;
+    }
+/* line 179, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-vertical {
+    width: 28px;
+    margin: 10px auto;
+    /*------------------------------------*\
+      RUNNER
+  \*------------------------------------*/
+    /*------------------------------------*\
+      ATTACHED VALUE RUNNER
+  \*------------------------------------*/
+    /*------------------------------------*\
+      JOIN
+  \*------------------------------------*/
+    /*------------------------------------*\
+      HANDLE
+  \*------------------------------------*/
+    /*------------------------------------*\
+      HANDLE SPECIFICS
+  \*------------------------------------*/
+    /*------------------------------------*\
+      VALUE LABELS
+  \*------------------------------------*/
+    /*------------------------------------*\
+      VERTICAL LEFT SLIDER
+  \*------------------------------------*/
+    /*------------------------------------*\
+      VERTICAL RIGHT SLIDER
+  \*------------------------------------*/
+}
+    /* line 187, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-vertical .ngrs-runner {
+        margin: 9px 0;
+        height: 300px;
+        width: 18px;
+    }
+
+    /* line 197, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-vertical .ngrs-value-runner.ngrs-attached-handles {
+        padding: 4px;
+        position: absolute;
+        top: 0;
+        margin: 9px 0;
+        height: 300px;
+        left: 100%;
+    }
+    /* line 211, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-vertical .ngrs-join {
+        width: 8px;
+        height: auto;
+        top: 0;
+        bottom: 100%;
+        left: 50%;
+        right: auto;
+        margin: 0 0 0 -4px;
+    }
+    /* line 225, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-vertical .ngrs-handle {
+        width: 100%;
+        height: 18px;
+        margin: -9px 0 0 0;
+    }
+
+/*.ngrs-handle-max {
+    margin-left: -14px;
+}*/
+
+/* line 236, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-vertical .ngrs-handle-min i {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFFJREFUeNpiYEAFPFAMB0xIbEYgdoJiRpggM5ICUyBWhZoA0vgMWYEsENsg6ZQE4ldA/AmkkguIHZGNhQKQGBfIBHcgFmTABCxALMJAMQAIMAAcNgVQJ7t7JQAAAABJRU5ErkJggg==");
+}
+/* line 243, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-vertical .ngrs-handle-max i {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeNpiYKAUMAKxDxBL4ZB/xgQk9gHxDyySILF9zEDiNxC/A2JVNAW7gfgtM5TzCYhZgFgCyr8IxNdADGZk+4BYGoi/APEBIP6PzVE8UAwHAAEGAArIDvzRFIA6AAAAAElFTkSuQmCC");
+}
+/* line 253, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-vertical .ngrs-value {
+    top: 0;
+    left: 100%;
+    padding: 0 0 0 5px;
+}
+    /* line 258, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-vertical .ngrs-value.ngrs-value-max {
+        top: auto;
+        bottom: 0;
+        right: auto;
+        text-align: left;
+    }
+/* line 267, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-vertical .ngrs-attached-handles .ngrs-value-max, .ngrs-range-slider.ngrs-vertical .ngrs-attached-handles .ngrs-value-min {
+    margin: -50% 0 0;
+}
+/* line 276, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-vertical.ngrs-left {
+    margin: 10px 0;
+}
+/* line 284, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-vertical.ngrs-right {
+    margin: 10px 0 10px auto;
+    /*------------------------------------*\
+      ATTACHED VALUE RUNNER
+  \*------------------------------------*/
+    /*------------------------------------*\
+      VALUE LABELS
+  \*------------------------------------*/
+}
+    /* line 290, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-vertical.ngrs-right .ngrs-attached-handles {
+        left: 0%;
+    }
+    /* line 298, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-vertical.ngrs-right .ngrs-value {
+        left: auto;
+        right: 100%;
+        padding: 0 5px 0 0;
+        text-align: right;
+    }
+        /* line 304, scss/_rangeSlider.scss */
+        .ngrs-range-slider.ngrs-vertical.ngrs-right .ngrs-value.ngrs-value-max {
+            text-align: right;
+        }
+/* line 316, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-focus {
+}
+/* line 327, scss/_rangeSlider.scss */
+.ngrs-range-slider.ngrs-disabled, .ngrs-range-slider.ngrs-disabled.ngrs-focus {
+    border-color: #ddd;
+    box-shadow: none;
+}
+    /* line 333, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-disabled .ngrs-handle {
+        background: #fff;
+        border-color: #ddd;
+    }
+        /* line 337, scss/_rangeSlider.scss */
+        .ngrs-range-slider.ngrs-disabled .ngrs-handle i {
+            background: none;
+            cursor: default;
+        }
+    /* line 343, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-disabled .ngrs-join {
+        background: #ddd;
+    }
+    /* line 347, scss/_rangeSlider.scss */
+    .ngrs-range-slider.ngrs-disabled .ngrs-value {
+        color: #ddd;
+    }
+
+/*------------------------------------*\
+    TOUCH STATE
+\*------------------------------------*/
+/* line 359, scss/_rangeSlider.scss */
+body.ngrs-touching {
+    -ms-touch-action: none;
+}
+
+.ngrs-runner-dash {
+    text-align: center;
+}
+
+.ngrs-inputs {
+    margin-bottom: 15px;
+}

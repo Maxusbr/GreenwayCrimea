@@ -1,0 +1,45 @@
+﻿@using AdvantShop.ViewModel.Feedback
+@model FeedbackViewModel
+@{
+	Layout = "_Layout.cshtml";
+}
+<!-- CSS -->
+<link rel="stylesheet" media="screen" href="/styles/business/bootstrap.css">
+<link rel="stylesheet" media="screen" href="/styles/business/font-awesome.css">
+<!-- Owl Carousel Assets -->
+<link rel="stylesheet" type="text/css" href="/styles/business/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/styles/business/owl.theme.css">
+<!-- Magnific Popup core CSS file -->
+<link rel="stylesheet" media="screen" href="/styles/business/magnific-popup.css">
+<link rel="stylesheet" media="screen" href="/styles/business/style.css">
+<link rel="stylesheet" type="text/css" href="/styles/business/animate.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" type="text/css" href="/styles/business/google-font.css">
+<link rel="stylesheet" type="text/css" href="/styles/business/google-font1.css">
+
+<link rel="stylesheet" type="text/css" href="/styles/common/validation.css">
+<div id="backimage"></div>
+<!-- start featured -->
+<!-- end featured -->
+@Html.Partial("_HeaderMain")
+
+<div id="wrapper">
+
+	@Html.Partial("_Features")
+
+	@Html.Partial("_StepRegistration")
+
+	@Html.Partial("_Bonuses")
+
+	@Html.Partial("_AdBonus")
+
+	@Html.Partial("_Products")
+
+	@Html.Partial("_Comments")
+
+</div>
+<!-- /.wrapper -->
+
+@Html.Partial("_Footer")
+
+

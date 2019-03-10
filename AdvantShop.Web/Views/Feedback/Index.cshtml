@@ -1,0 +1,143 @@
+﻿@using AdvantShop.ViewModel.Feedback
+@model FeedbackViewModel
+<div class="site-body-cell">
+	<div class="page-title-row brands-title-row">
+		<h1 class="contacts-title page-title">@T("Feedback.Index.FeedbackHeader")</h1>
+	</div>
+	@Html.SingleBreadCrumb(T("Feedback.Index.FeedbackHeader").ToString())
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+				@Html.StaticBlock("feedback")
+				<div class="row">
+					<div class="col-xs-12 col-sm-8" data-ng-init="feedback.curTheme='@Model.MessageType'">
+						@using (Html.BeginForm("Index", "Feedback", FormMethod.Post, new { name = "feedbackForm", novalidate = "novalidate" }))
+						{
+							@Html.AntiForgeryToken()
+							<div class="row feedback-theme-changer">
+								@foreach (var item in (FeedbackType[])Enum.GetValues(typeof(FeedbackType)))
+								{
+									<a href="" class="col-xs feedback-theme-item @(item == Model.MessageType ? "active" : "")" data-ng-class="{active:feedback.isSelectedTheme('@item')}" data-ng-click="feedback.switchTheme('@item')">@item.Localize()</a>
+								}
+								<input type="hidden" id="MessageType" name="MessageType" data-ng-value="feedback.curTheme" />
+							</div>
+
+							<label class="row @(Model.MessageType == FeedbackType.Offer  ? "hidden" : "")" data-ng-class="{hidden:feedback.curTheme === 'Offer'}">
+								<span class="col-xs-12 col-sm-4">
+									<span class="form-field-name vertical-interval-middle">
+										@T("Feedback.Index.OrderNumber")
+									</span>
+								</span>
+								<span class="col-xs-12 col-sm-8">
+									<span class="form-field-input vertical-interval-middle">
+										@Html.TextBoxFor(m => m.OrderNumber, new { @class = "input-small", data_ng_model = "feedback.orderNumber" })
+									</span>
+								</span>
+							</label>
+							<label class="row">
+								<span class="col-xs-12 col-sm-4">
+									<span class="form-field-name vertical-interval-middle input-required">
+										@T("Feedback.Index.Name")
+									</span>
+								</span>
+								<span class="col-xs-12 col-sm-8">
+									<span class="form-field-input vertical-interval-middle">
+										@Html.TextBoxFor(m => m.Name, new { @class = "input-small", required = "true", data_ng_model = "feedback.name" })
+									</span>
+								</span>
+							</label>
+							<label class="row @(Model.MessageType != FeedbackType.Offer  ? "hidden" : "")" data-ng-class="{hidden:feedback.curTheme !== 'Offer'}">
+								<span class="col-xs-12 col-sm-4">
+									<span class="form-field-name vertical-interval-middle input-required">
+										@T("Feedback.Index.SurName")
+									</span>
+								</span>
+								<span class="col-xs-12 col-sm-8">
+									<span class="form-field-input vertical-interval-middle">
+										@Html.TextBoxFor(m => m.LastName, new { @class = "input-small",
+									   required = Model.MessageType == FeedbackType.Offer,
+									   data_ng_required = "feedback.curTheme === 'Offer'", data_ng_model = "feedback.lastname" })
+									</span>
+								</span>
+							</label>
+							<label class="row">
+								<span class="col-xs-12 col-sm-4">
+									<span class="form-field-name vertical-interval-middle input-required">
+										@T("Feedback.Index.Email")
+									</span>
+								</span>
+								<span class="col-xs-12 col-sm-8">
+									<span class="form-field-input vertical-interval-middle">
+										@Html.TextBoxFor(m => m.Email, new { @class = "input-small", required = "true", data_ng_model = "feedback.email", type = "email", pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)$" })
+									</span>
+								</span>
+							</label>
+							<label class="row">
+								<span class="col-xs-12 col-sm-4">
+									<span class="form-field-name vertical-interval-middle input-required">
+										@T("Feedback.Index.Phone")
+									</span>
+								</span>
+								<span class="col-xs-12 col-sm-8">
+									<span class="form-field-input vertical-interval-middle">
+										@Html.TextBoxFor(m => m.Phone, new { @class = "input-small", required = "true", data_ng_model = "feedback.phone", type = "tel" })
+									</span>
+								</span>
+							</label>
+							<label class="row middle-xs @(Model.MessageType == FeedbackType.Offer  ? "hidden" : "")" data-ng-class="{hidden:feedback.curTheme === 'Offer'}">
+								<span class="col-xs-12 col-sm-4">
+									<span class="form-field-name vertical-interval-middle input-required">
+										@T("Feedback.Index.Message")
+									</span>
+								</span>
+								<span class="col-xs-12 col-sm-8">
+									<span class="form-field-input vertical-interval-middle">
+										@Html.TextAreaFor(m => m.Message, new { @class = "textarea-middle",
+											required = Model.MessageType != FeedbackType.Offer,
+											data_ng_required = "feedback.curTheme !== 'Offer'", data_ng_model = "feedback.message" })
+									</span>
+								</span>
+							</label>
+							if (SettingsMain.EnableCaptchaInFeedback)
+							{
+								<label class="row">
+									<span class="col-xs-12 col-sm-4">
+										<span class="form-field-name vertical-interval-middle input-required">
+											@T("Captcha.Code")
+										</span>
+									</span>
+									<span class="col-xs-12 col-sm-8">
+										<span class="form-field-input vertical-interval-middle">
+											@Html.Captcha("feedback.captcha")
+										</span>
+									</span>
+								</label>
+							}
+							if (SettingsCheckout.IsShowUserAgreementText)
+							{
+								<label class="row middle-xs">
+									<span class="col-xs-4"></span>
+									<span class="col-xs-8">
+										<span class="form-field-input vertical-interval-xsmall">
+											@Html.CheckBoxFor(m => m.Agree, new { required = "required", data_ng_model = "feedback.agreement", @class = "custom-input-native" })
+											<span class="custom-input-checkbox"></span>
+											@Html.Raw(SettingsCheckout.UserAgreementText)
+										</span>
+									</span>
+								</label>
+							}
+							<div class="row">
+								<div class="col-xs-12 col-sm-4"></div>
+								<div class="col-xs-12 col-sm-8">
+									<input type="submit" data-button-validation class="btn btn-submit btn-middle" value="@T("Feedback.Index.Submit")">
+									<div class="form-required-explanation">@T("Feedback.Index.RequiredFields")</div>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+				@Html.StaticBlock("feedback_before")
+			</div>
+		</div>
+	</div>
+</div>

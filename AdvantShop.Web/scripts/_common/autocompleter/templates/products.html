@@ -1,0 +1,28 @@
+﻿<div>
+    <a class="row autocompleter-list-item-product border-main" href="{{autocompleterItem.item.Url}}">
+        <div class="col-xs-3">
+            <figure class="autocompleter-product-image-block">
+                <div class="autocompleter-product-image-link">
+                    <img class="autocompleter-product-image" data-ng-src="{{autocompleterItem.item.Photo}}" alt="{{autocompleterItem.item.Name}}">
+                    <div class="prod-gift-icon gift-icon-small" data-ng-if="autocompleterItem.item.Gifts"></div>
+                </div>
+            </figure>
+        </div>
+        <div class="col-xs-9">
+            <div class="autocompleter-product-data">
+                <div class="autocompleter-product-name" data-ng-bind-html="autocompleterItem.item.Name"></div>
+                <div class="autocompleter-product-additional">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="autocompleter-product-additional-block">
+                                <div class="autocompleter-product-price">
+                                    <span class="autocompleter-product-price-text cs-t-3">{{ ::'Js.Autocompleter.Price' | translate }}:</span><span class="autocompleter-product-price-value cs-t-1" data-ng-bind-html="autocompleterItem.item.Price"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

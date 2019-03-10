@@ -1,0 +1,60 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Выберите город доставки</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        <span class="text-required">Страна</span>
+                    </label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" ng-model="ctrl.data.Country" required validation-input-text="Страна" autocompleter on-type="country" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        <span class="text-required">Регион</span>
+                    </label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" ng-model="ctrl.data.Region" required validation-input-text="Регион" autocompleter on-type="city" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        <span class="text-required">Город</span>
+                    </label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" ng-model="ctrl.data.City" required validation-input-text="Город" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        Адрес
+                    </label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" ng-model="ctrl.data.Street" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

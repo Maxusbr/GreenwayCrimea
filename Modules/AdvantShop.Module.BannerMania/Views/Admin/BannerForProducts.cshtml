@@ -1,0 +1,13 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>()
+    {
+        url + "modules/BannerMania/content/Scripts/bannerMania/bannerForProducts.js",
+        url + "modules/BannerMania/content/styles/admin-style.css"
+    };
+}
+
+<div data-oc-lazy-load="[@(String.Join(", ", scripts.Select(x => "'" + x  + "'")))]">
+    <banner-for-products></banner-for-products>
+</div>

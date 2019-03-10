@@ -1,0 +1,20 @@
+﻿[
+    {
+        "title": "XXX",
+        "name":  "blue",
+        "size": "XXX",
+        "selected":  true
+    },
+    {
+        "title": "XL",
+        "name":  "azure",
+        "size": "XL",
+        "selected":  false
+    },
+    {
+        "title": "Картинкой",
+        "name":  "imageTest",
+        "image": "images/examples/track.png",
+        "selected":  false
+    }
+]

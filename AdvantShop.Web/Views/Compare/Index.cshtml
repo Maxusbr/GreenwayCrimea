@@ -1,0 +1,94 @@
+﻿@using AdvantShop.Core.Common.Extensions
+@model AdvantShop.ViewModel.Compare.CompareProductsViewModel
+
+<div class="site-body-cell">
+
+    <div class="page-title-row compare-title-row">
+        <h1 class="compare-title page-title">@T("Compare.Index.ComparisonHeader")</h1>
+    </div>
+
+    @if (Model.Products.Count > 0)
+    {
+        <div class="compareproduct-container compareproduct-container-processing js-compareproduct-container container-fluid">
+            <div class="row">
+                <div class="compareproduct-properties-col col-xs-3">
+                    <ul class="compareproduct-properties js-compareproduct-block js-compareproduct-block-properties">
+                        <li class="compareproduct-properties-row js-compareproduct-block-row" data-row-index="0">
+                            <div class="compareproduct-properties-item">
+                            </div>
+                        </li>
+                        @{ var i = 1; }
+                        @foreach (var prop in Model.Properties)
+                        {
+                            <li class="compareproduct-properties-row js-compareproduct-block-row" data-row-index="@(i++)">
+                                <div class="compareproduct-properties-item">@prop.Name</div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="compareproduct-products-col col-xs-9">
+                    <div class="compareproduct-products-wrapper">
+                        <ul class="compareproduct-product js-compareproduct-block js-compareproduct-block-products">
+                            <li class="compareproduct-product-row js-compareproduct-block-row" data-row-index="0">
+
+                                @foreach (var p in Model.Products)
+                                {
+                                    var productUrl = Url.RouteUrl("Product", new { url = p.UrlPath });
+                                    <div class="compareproduct-product-item js-compareproduct-product-item" data-compare-product-id="@p.ProductId">
+                                        <div class="compareproduct-product-item-wrap">
+                                            <div class="compareproduct-product-name">
+                                                <a href="@productUrl" class="compareproduct-product-name-link">@Html.Raw(p.Name)</a>
+                                            </div>
+                                            <div class="compareproduct-product-sku">@p.ArtNo</div>
+                                            <figure class="compareproduct-product-pic-wrap" style="height: @(SettingsPictureSize.SmallProductImageHeight)px">
+                                                <a href="@productUrl" class="compare-link-picture">
+                                                    <img src="@p.Photo.ImageSrcSmall()" class="compare-picture">
+                                                </a>
+                                            </figure>
+                                            <div class="price-container">
+                                                <div class="price">
+                                                    @Html.Raw(p.PreparedPrice)
+                                                </div>
+                                            </div>
+                                            <div class="compareproduct-product-btns">
+                                                @if (p.BasePrice > 0 && p.Amount > 0)
+                                                {
+                                                    <a href="@productUrl" class="btn btn-small btn-buy icon-bag-before" data-cart-add data-offer-id="@p.OfferId" data-product-id="@p.ProductId" data-amount="@p.Multiplicity.ToInvariantString()">
+                                                        @Model.BuyButtonText
+                                                    </a>
+                                                }
+                                                @if ((p.BasePrice == 0 || p.Amount <= 0) && p.AllowPreorder)
+                                                {
+                                                    <a href="@Url.RouteUrl("preorder", new {offerid = p.OfferId})" data-cart-preorder data-offer-id="@p.OfferId" class="btn btn-small btn-action icon-bag-before">
+                                                        @Model.PreOrderButtonText
+                                                    </a>                                                    
+                                                }
+                                            </div>
+                                            <a href="javascript:void(0);" class="compareproduct-product-remove icon-cancel-circled-before link-text-decoration-none cs-l-5" data-compare-product-id="@p.ProductId" data-compare-remove="@p.OfferId"></a>
+                                        </div>
+                                    </div>
+                                }
+                            </li>
+                            @{ int index = 1; }
+                            @foreach (var prop in Model.Properties)
+                            {
+                                <li class="compareproduct-product-row js-compareproduct-block-row" data-row-index="@(index++)">
+                                    @foreach (var product in Model.Products)
+                                    {
+                                        <div class="compareproduct-product-item js-compareproduct-product-item" data-compare-product-id="@product.ProductId">
+                                            @product.ProductPropertyValues.Where(p => p.PropertyId == prop.PropertyId).Select(p => p.Value).AggregateString(", ")
+                                        </div>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="js-compareproduct-empty compareproduct-empty" @Html.Raw(Model.Products.Count == 0 ? "style=\"display:block;\"" : "")>
+        @T("Compare.Index.EmptyList")
+    </div>
+</div>

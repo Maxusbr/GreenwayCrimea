@@ -1,0 +1,33 @@
+﻿@{
+    var modeisOneColumn = SettingsDesign.MainPageMode == SettingsDesign.eMainPageMode.Default;
+
+    var list = new List<string>()
+    {
+
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/onebuyclick.css",
+        "~/templates/" + SettingsDesign.Template + "/scripts/_partials/cart/styles/cart.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/products-specials.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/common/buttons.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/menu-general.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/menu-header.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/toolbar-top.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/general.css",
+        "~/templates/" + SettingsDesign.Template + "/scripts/_common/carousel/styles/carousel.css",
+        "~/templates/" + SettingsDesign.Template + "/scripts/_partials/product-view/styles/product-view.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/header.css",
+        "~/templates/" + SettingsDesign.Template + "/scripts/_common/autocompleter/styles/autocompleter.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/views/home.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/views/product.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/common/inputs.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/footer-menu.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/footer.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/toolbar-bottom.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/stickers.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/menu-dropdown.css",
+        "~/templates/" + SettingsDesign.Template + "/styles/partials/search.css",
+    };
+
+    Html.AddBundles(list, "main.css");
+
+    Html.AddBundles(list, "main_without_design.css");
+}

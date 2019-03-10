@@ -1,0 +1,109 @@
+﻿@model AdvantShop.Module.StoreReviews.Models.StoreReviewAddViewModel
+@using AdvantShop.Module.StoreReviews.App_LocalResources
+<div class="site-body-cell-no-right">
+    @using (Html.BeginForm("AddReviewPost", "StoreReviews", FormMethod.Post, new { enctype = "multipart/form-data", name = "reviewStoreForm", novalidate = "novalidate", @class = "cs-bg-3 store-reviews-form" }))
+    {
+        <div class="form-title">
+            @StoreReviewsClientPage_ascx.StoreReviews_FormTitle
+        </div>
+        <div class="form-content">
+            @if (Model.ShowRatio)
+            {
+                <div class="row">
+
+                    <span class="col-xs-12">
+                        <span class="form-field-name vertical-interval-xsmall">
+                            @StoreReviewsClientPage_ascx.StoreReviews_Rate
+                        </span>
+                    </span>
+
+                    <div class="col-xs-12 store-rate">
+                        @Html.Action("Rating", "Common", new { objId = 0, rating = 0, readOnly = false, binding = "app.newReviewRate" })
+                        @Html.HiddenFor(x => x.Rate, new { data_ng_value = "app.newReviewRate" })
+                    </div>
+
+                </div>
+            }
+            <label class="row">
+                <span class="col-xs-12">
+                    <span class="form-field-name vertical-interval-xsmall input-required">
+                        @StoreReviewsClientPage_ascx.StoreReviews_FormName
+                    </span>
+                </span>
+                <span class="col-xs-12">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "input-small", required = "true", data_ng_model = "reviewStore.name", data_ng_model_options = "{ debounce: 300 }" })
+                    </span>
+                </span>
+            </label>
+            <label class="row">
+                <span class="col-xs-12">
+                    <span class="form-field-name vertical-interval-xsmall input-required">
+                        @StoreReviewsClientPage_ascx.StoreReviews_ReviewerEmail
+                    </span>
+                </span>
+                <span class="col-xs-12">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        @Html.TextBoxFor(x => x.Email, new { @class = "input-small", required = "true", data_ng_model = "reviewStore.email", data_ng_model_options = "{ debounce: 300 }", type = "email", pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)|(admin)$" })
+                    </span>
+                </span>
+            </label>
+            <label class="row">
+                <span class="col-xs-12">
+                    <span class="form-field-name vertical-interval-xsmall input-required">
+                        @StoreReviewsClientPage_ascx.StoreReviews_Review
+                    </span>
+                </span>
+                <span class="col-xs-12">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        @Html.TextAreaFor(x => x.Text, new { @class = "textarea-xsmall", required = "true", data_ng_model = "reviewStore.review", data_ng_model_options = "{ debounce: 300 }" })
+                    </span>
+                </span>
+            </label>
+            @if (Model.AllowImageUploading)
+            {
+                <label class="row">
+                    <span class="col-xs-12">
+                        <span class="form-field-name vertical-interval-xsmall">
+                            @StoreReviewsClientPage_ascx.StoreReviews_Image
+                        </span>
+                    </span>
+                    <span class="col-xs-12">
+                        <span class="form-field-input vertical-interval-xsmall">
+                            @Html.TextBoxFor(x => x.ReviewerImage, new { type = "file" })
+                        </span>
+                    </span>
+                </label>
+            }
+            @if (Model.IsShowUserAgreementText)
+            {
+                <label class="row">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        @Html.CheckBox("Agreement", new { required = "", data_ng_model = "subscribe.agreement", @class = "custom-input-native", data_ng_init = "subscribe.agreement = false" })
+                        <span class="custom-input-checkbox"></span>
+                        @Html.Raw(Model.UserAgreementText)
+                    </span>
+                </label>
+            }
+            @if (Model.UseCaptcha)
+            {
+                <label class="row">
+                    <span class="col-xs-12">
+                        <span class="form-field-name vertical-interval-xsmall input-required">
+                            @StoreReviewsClientPage_ascx.StoreReviews_Captcha
+                        </span>
+                    </span>
+                    <span class="col-xs-12">
+                        <span class="form-field-input vertical-interval-xsmall">
+                            @Html.Action("Captcha_old", "Common", new { ngModel = "storereviews.captcha" })
+                        </span>
+                    </span>
+                </label>
+            }
+            <div class="add-review-btns-block">
+                <input data-button-validation type="submit" value="@StoreReviewsClientPage_ascx.StoreReviews_Send" class="btn btn-submit btn-middle" />
+                <div class="form-required-explanation">- @Html.Raw(StoreReviewsClientPage_ascx.StoreReviews_RequiredFields)</div>
+            </div>
+        </div>
+    }
+</div>

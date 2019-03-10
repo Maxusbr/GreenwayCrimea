@@ -1,0 +1,58 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title" ng-bind="ctrl.IsNew ? 'Добавить шаблон' : 'Сохранить шаблон'"></h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal m-r m-l">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-4 control-label m-b-xs">
+                        <span class="text-required">Тип</span>
+                    </label>
+                    <div class="col-xs-8">
+                        <select required
+                                class="form-control"
+                                ng-disabled="!ctrl.IsNew"
+                                ng-options="item.Value as item.Text for item in ctrl.SmsTypes"
+                                ng-model="ctrl.SmsTypeId"
+                                ng-change="ctrl.refresh()"
+                                validation-input-text="Выберите тип"
+                                data-e2e="smsType">
+                            <option value="">Выберите тип</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-4 control-label m-b-xs">
+                        <span class="text-required">Сообщение</span>
+                    </label>
+                    <div class="col-xs-8">
+                        <textarea rows="6" class="form-control" ng-model="ctrl.SmsBody" required validation-input-text="Сообщение" data-e2e="SmsBody"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-4 m-b-xs">
+                        <span class="tex-required">Доступные переменные</span>
+                    </label>
+                    <div class="col-xs-8">
+                        <span ng-repeat="variable in ctrl.AvalibleVarible">
+                            <span ng-bind="variable"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="submit" button-validation button-validation-success="ctrl.saveTemplate();"
+                ladda="ctrl.btnLoading" data-e2e="addTemplate" ng-bind="ctrl.IsNew ? 'Добавить' : 'Сохранить'">
+            Добавить
+        </button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

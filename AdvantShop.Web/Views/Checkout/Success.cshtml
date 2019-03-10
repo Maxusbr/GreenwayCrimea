@@ -1,0 +1,40 @@
+﻿@model AdvantShop.ViewModel.Checkout.CheckoutSuccess
+
+@Html.Raw(Model.GoogleAnalyticsString)
+
+<div class="site-body-cell">
+    <div class="checkout-success-content">
+        <div class="page-title-row checkout-success-title-row">
+            <h1 class="checkout-success-title page-title">@T("Checkout.Success.Success")</h1>
+        </div>
+        <div class="checkout-success-content">
+            <div class="checkout-success-content-top vertical-interval-small">
+                @Html.Raw(Model.OrderSuccessTopText)
+                @if (SettingsCheckout.ManagerConfirmed)
+                {
+                    <div>@T("Checkout.Success.TextConfirmByManager")</div>
+                }
+            </div>
+            <div class="vertical-interval-small">
+                <div data-ng-init="checkoutSuccess.getHtml(@Model.Order.OrderID)">
+                    <div data-ng-bind-html="checkoutSuccess.payment.script" class="js-checkout-success"></div>
+                </div>
+            </div>
+            <div class="vertical-interval-small">
+                <a href="@Url.RouteUrl("PrintOrder", new {code = Model.Order.Code})" target="blank">@T("Checkout.Success.PrintOrder")</a>
+            </div>
+            @if (Model.NewBonusAmount != null && Model.Order.BonusCardNumber != null)
+            {
+                <div class="vertical-interval-small checkout-success-bonus-card-block">
+                    <span class="bonus-card-block bonus-card-icon bonus-card-icon-center cs-l-2"></span>
+                    <h2 class="checkout-success-bonus-title">@Model.NewBonusAmount бонусов</h2>
+                    будет начислено на Вашу Бонусную карту № <b>@Model.Order.BonusCardNumber</b> после оплаты данного заказа
+                </div>
+            }
+            @Html.StaticBlock("ordersuccess")
+            @Html.RenderModules("order_success", new { area = "", order = Model.Order })
+            @Html.Raw(Model.SuccessScript)
+        </div>
+
+    </div>
+</div>

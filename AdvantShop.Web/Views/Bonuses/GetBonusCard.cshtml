@@ -1,0 +1,49 @@
+﻿@model AdvantShop.Models.BonusSystemModule.GetBonusCardViewModel
+
+<div class="site-body-cell">
+    <div class="mobile-container-fluid">
+        <div class="page-title-row brands-title-row">
+            <h1 class="brands-title page-title">@T("Module.BonusSystem.GetBonusCardTitle")</h1>
+        </div>
+        @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-9">
+                <div class="site-body-cell-no-left">
+                    @if (!string.IsNullOrEmpty(Model.BonusTextBlock))
+                    {
+                        <div class="loyalty-txt">
+                            @Html.Raw(Model.BonusTextBlock)
+                        </div>
+                    }
+                    
+                    <a href="user/registration" class = "btn btn-big btn-submit">@T("User.Registration.Registration")</a> 
+                    @*<div class="h2">@T("Module.BonusSystem.GetBonusCardHeader")</div>
+                    <div data-bonus-reg data-page="loyaltyprogram" data-is-show-patronymic="@SettingsCheckout.IsShowPatronymic.ToString().ToLower()"></div>*@
+                </div>
+                <div>
+                    @Html.StaticBlock("getbonuscard_bottom")
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="site-body-cell-no-right">
+                    <img src="images/giftcertificate/loyalty_gift.jpg" />
+                    @Html.Raw(Model.BonusRightTextBlock)
+                    @if (Model.Grades != null && Model.Grades.Count > 0)
+                    {
+                        <div>
+                            <div class="h2">@T("Module.BonusSystem.CardGrades")</div>
+                            @foreach (var grade in Model.Grades)
+                            {
+                                <div class="loyalty-row">@T("Module.BonusSystem.CardGradesFormat", grade.BonusPercent.ToString("0.##")+" %", grade.PurchaseBarrier.ToString("f0"), grade.Name)</div>
+                            }
+                        </div>
+                    }
+                    <div>
+                        @Html.StaticBlock("getbonuscard_right")
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>

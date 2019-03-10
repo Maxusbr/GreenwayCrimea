@@ -1,0 +1,104 @@
+﻿@using AdvantShop
+@model AdvantShop.ViewModel.MyAccount.MyAccountViewModel
+
+<div class="col-v-p">
+    <h1 class="myaccount-title page-title">
+        @T("MyAccount.Index.Header")
+    </h1>
+    @Html.SingleBreadCrumb(T("MyAccount.Index.Header").ToString())
+    <div data-tabs data-type="vertical" data-classes-link="">
+    <div class="tabs tabs-vertical" data-tabs>
+        <ul class="tabs-headers tabs-headers--width clear">
+            <li id="orderhistory" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'cs-bg-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'cs-l-4 link-text-decoration-none' : tabHeader.selected}">
+                    @T("MyAccount.OrderHistory.Header")
+                </a>
+            </li>
+            <li id="commoninf" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'cs-bg-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'cs-l-4 link-text-decoration-none' : tabHeader.selected}">
+                    @T("MyAccount.CommonInfo.Header")
+                </a>
+            </li>
+            <li id="addressbook" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'cs-bg-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'cs-l-4 link-text-decoration-none' : tabHeader.selected}">
+                    @T("MyAccount.AddressBook.AddressBook")
+                </a>
+            </li>
+            <li id="changepassword" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'cs-bg-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'cs-l-4 link-text-decoration-none' : tabHeader.selected}">
+                    @T("MyAccount.ChangePassword.ChangePassword")
+                </a>
+            </li>
+            @if (Model.DisplayBonuses)
+            {
+                <li id="bonusTab" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'cs-bg-1' : tabHeader.selected}">
+                    <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'cs-l-4 link-text-decoration-none' : tabHeader.selected}">
+                        @T("MyAccount.BonusCard.Bonuses") @(Model.BonusesAmount > 0 ? "(" + Model.BonusesAmount.ToInvatiant() + " баллов)" : "")
+                    </a>
+                </li>
+            }
+
+            @for (var i = 0; i < Model.Tabs.Count; i++)
+            {
+                var tab = Model.Tabs[i];
+                <li id="tab-m-@(!string.IsNullOrEmpty(tab.TabName) ? tab.TabName : i.ToString())" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'cs-bg-1' : tabHeader.selected}">
+                    <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'cs-l-4 link-text-decoration-none' : tabHeader.selected}">
+                        @tab.Name
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="tabs-content">
+            <div class="tab-content" data-tab-content="orderhistory" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                @Html.Partial("OrderHistory")
+            </div>
+            <div class="tab-content" data-tab-content="commoninf" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                @Html.Action("CommonInfo")
+            </div>
+            <div class="tab-content" data-tab-content="addressbook" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                @Html.Action("AddressBook")
+            </div>
+            <div class="tab-content" data-tab-content="changepassword" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                @Html.Action("ChangePassword")
+            </div>
+
+            @if (Model.DisplayBonuses)
+            {
+                <div class="tab-content" data-tab-content="bonusTab" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                    @Html.Action("BonusCard")
+                </div>
+            }
+            @for (var i = 0; i < Model.Tabs.Count; i++)
+            {
+                var tab = Model.Tabs[i];
+
+                <div class="tab-content" data-tab-content="tab-m-@(!string.IsNullOrEmpty(tab.TabName) ? tab.TabName : i.ToString())" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                    @Html.Action(tab.ActionName, tab.ControllerName, tab.RouteValues)
+                </div>
+            }
+        </div>
+    </div>
+
+    </div>
+
+@if (Model.DisplayChangeEmail)
+{
+    <div data-modal-control id="changetempemail" data-is-open="true" data-cross-enable="false" data-close-out="false">
+        <div class="modal-header" data-modal-header>
+            @T("MyAccount.Index.Attention")
+        </div>
+        <div class="modal-content">
+            @T("MyAccount.Index.EnterContactEmail")
+            <br /><br />
+            Email:<br />
+            <input type="email" id="tempemail" ng-model="myaccount.tempemail" class="input-small" required="" />
+            <div class="error-text" data-ng-if="myaccount.modalWrongNewEmail">
+                @T("MyAccount.Index.WrongEmail")
+            </div>
+        </div>
+        <div class="modal-footer" data-modal-footer>
+            <input type="button" value="@T("MyAccount.Index.ChangeEmail")" ng-click="myaccount.changeTempEmail(myaccount.tempemail)" class="btn btn-small btn-submit" />
+        </div>
+    </div>
+}
+</div>

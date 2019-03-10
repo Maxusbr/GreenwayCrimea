@@ -1,0 +1,51 @@
+﻿
+@model AdvantShop.Web.Admin.Models.ExportFeeds.ExportFeedFields
+<div class="container-fluid" ng-init="exportFeeds.initExportFields(@Model.DefaultExportFields)">
+    <div class="form-group row">
+        <div class="col-xs-12">
+            <div class="row m-b-md">
+                <button type="submit" class="btn btn-sm btn-success" data-e2e="exportSetNone" ng-click="exportFeeds.setNoneExportFeedFields()">@T("Сбросить выбранные")</button>
+                <button type="submit" class="btn btn-sm btn-success m-l-xs" data-e2e="exportSetDefault" ng-click="exportFeeds.setDefaultExportFeedFields()">@T("Установить по умолчанию")</button>
+            </div>
+            @{
+                int index = 0;
+                int i = 0;
+                int j = 0;
+            }
+            @foreach (var item in Model.AllFields)
+            {
+                <div class="container-fluid">
+                    <div class="form-group row">
+                        <div class="col-xs-12">
+                            <div class="setting-label-wrap row">
+                                <span class="align-center index-width">@Html.Raw(index + 1)</span>
+                                <div class="col-xs-4">
+                                    @{
+                                        if (Model.FieldMapping != null && i < Model.FieldMapping.Count && Model.AllFields.ContainsKey(Model.FieldMapping[i].ToString()))
+                                        {
+                                            @Html.DropDownList(index + "ddl", new SelectList(Model.AllFields, "Key", "Value", Model.FieldMapping[i].ToString()),
+                                                new { @class = "form-control", ng_init = "exportFeeds.exportFeedFields[" + index + "]='" + Model.FieldMapping[i].ToString() + "'", ng_model = "exportFeeds.exportFeedFields[" + index + "]" })
+                                            i++;
+                                        }
+                                        else if (Model.ModuleFieldMapping != null && j < Model.ModuleFieldMapping.Count && Model.AllFields.ContainsKey(Model.ModuleFieldMapping[j].StrName))
+                                        {
+                                            @Html.DropDownList(index + "ddl", new SelectList(Model.AllFields, "Key", "Value", Model.ModuleFieldMapping[j].StrName),
+                                                new { @class = "form-control", ng_init = "exportFeeds.exportFeedFields[" + index + "]='" + Model.ModuleFieldMapping[j].StrName + "'", ng_model = "exportFeeds.exportFeedFields[" + index + "]" })
+                                            j++;
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownList(index + "ddl", new SelectList(Model.AllFields, "Key", "Value"),
+                                                new { @class = "form-control", ng_init = "exportFeeds.exportFeedFields[" + index + "]='" + Model.AllFields.ElementAt(0).Key + "'", ng_model = "exportFeeds.exportFeedFields[" + index + "]" })
+                                        }
+                                        index++;
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                }
+        </div>
+    </div>
+</div>

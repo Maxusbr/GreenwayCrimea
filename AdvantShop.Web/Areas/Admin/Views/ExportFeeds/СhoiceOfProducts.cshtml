@@ -1,0 +1,57 @@
+﻿@model AdvantShop.Web.Admin.Models.ExportFeeds.ExportFeedModel
+
+
+
+<div class="container-fluid" ng-init="exportFeeds.init(@Model.Id)">
+    <div class="form-group row">
+        <h2 class="inline content-header col-xs-12">Выбор товаров</h2>
+        <div class="col-xs-2">
+            @T("Admin.ExportFeeed.СhoiceOfProducts.ExportCatalog")
+        </div>
+        <div class="col-xs-10">
+            <div class="block-additional-parameters-value">
+                <label class="adv-radio-label" data-e2e="ExportAllProducts">
+                    @T("Admin.ExportFeeed.СhoiceOfProducts.AllProducts")
+                    @Html.RadioButton("rbExportAllProducts", true, Model.ExportFeedSettings.ExportAllProducts, new { @class = "adv-radio-input", ng_model = "exportFeeds.CommonSettings.ExportAllProducts", ng_value = true.ToLowerString() })
+                    <span class="adv-radio-emul"></span>
+                </label>
+                <label class="adv-radio-label" data-e2e="ExportChoiceCategories">
+                    @T("Admin.ExportFeeed.СhoiceOfProducts.ChoiceOfCategories")
+                    @Html.RadioButton("rbChoiceCategories", false, !Model.ExportFeedSettings.ExportAllProducts, new { @class = "adv-radio-input", ng_model = "exportFeeds.CommonSettings.ExportAllProducts", ng_value = false.ToLowerString() })
+                    <span class="adv-radio-emul"></span>
+                </label>
+
+            </div>
+        </div>
+        <div class="col-xs-6">
+        </div>
+        <div class="col-xs-2">
+        </div>
+    </div>
+
+    <div class="form-group row" ng-if="!exportFeeds.CommonSettings.ExportAllProducts">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-6">
+            <div js-tree tree-ajax="exportfeeds/categoriestree?ExportFeedId=@Model.Id" tree-events="check_node:exportFeeds.treeCallbacks.check_node;select_node:exportFeeds.treeCallbacks.select_node;deselect_node:exportFeeds.treeCallbacks.deselect_node; " tree-plugins="checkbox" tie-selection="false"></div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+
+    </div>  
+    <div class="form-group row" ng-if="exportFeeds.CommonSettings.ExportAllProducts">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-6">
+            Выгрузка всех товаров каталога
+        </div>
+        <div class="col-sm-4">
+        </div>
+
+    </div>
+    <div class="row">
+        <button class="btn btn-sm btn-success" data-e2e="Export" type="button" ng-click="exportFeeds.startExport()">
+            @T("Admin.ExportFeeed.СhoiceOfProducts.Export")
+        </button>
+    </div>
+</div>

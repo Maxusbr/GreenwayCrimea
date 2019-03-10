@@ -1,0 +1,18 @@
+﻿<div class="search-panel cs-bg-13 ng-hide" data-ng-show="spCtrl.active" data-ng-mouseleave="spCtrl.hidePanel()"
+     data-autocompleter
+     data-field="Name"
+     data-link-all="search"
+     data-template-path="./scripts/_common/autocompleter/templates/categoriesProducts.html"
+     data-request-url="search/autocomplete">
+    <input data-autocompleter-input
+           type="search"
+           autocomplete="off"
+           hndlr-enter="spCtrl.search(spCtrl.searchQuery)"
+           placeholder="Поиск"
+           name="q"
+           ng-model="spCtrl.searchQuery"
+           class="search-input" />
+    <a href="" class="search-disable cs-bg-13 cs-l-4-mobile" data-ng-click="spCtrl.search(spCtrl.searchQuery)">
+        <span class="search-disable-i icon-right-open-big-before icon-margin-drop"></span>
+    </a>
+</div>

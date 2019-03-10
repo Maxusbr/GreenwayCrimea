@@ -1,0 +1,11 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@model AdvantShop.Module.Roistat.Models.Admins.RoistatOrderModel
+
+<div class="block-additional-parameters-row">
+    <div class="block-additional-parameters-name">roistat_visit</div>
+    <div class="block-additional-parameters-value">
+        <input type="text" class="form-control" value="@Model.CookieValue" ng-model="order.roistatId"
+               ng-blur="autosaveText.save('rositatId', {entityId: @Model.EntityId, type: 'Order'})"
+               autosave-text data-url="@UrlService.GetUrl("roistat/saveRoistatCookie")"/>
+    </div>
+</div>

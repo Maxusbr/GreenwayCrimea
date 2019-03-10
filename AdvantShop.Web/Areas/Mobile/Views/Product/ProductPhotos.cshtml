@@ -1,0 +1,35 @@
+﻿@model AdvantShop.Areas.Mobile.Models.ProductDetails.ProductPhotosMobileViewModel
+@using System.Linq;
+    @{
+        var labels = @Html.RenderLabels(Model.Product.Recomended, Model.Product.OnSale, Model.Product.BestSeller, Model.Product.New, Model.Discount, customLabels: Model.Labels, warranty: Model.Product.ManufacturerWarranty);
+    }
+    <div class="gallery-photos-mobile details-carousel details-carousel-mobile" data-ng-class="{'details-carousel' : product.carouselHidden}" data-ng-init="product.carouselExist = true">
+        @if (Model.Photos.Count > 0)
+        {
+            <div class="gallery-photos-slider-list-horizontal"
+                 data-ng-init="product.addControlToQueue('carousel')"
+                 data-carousel
+                 data-carousel-class="gallery-photos-slider"
+                 data-visible-max="1"
+                 data-init-fn="product.addCarousel(carousel)"
+                 data-item-select="product.carouselItemSelect(carousel, item, index)"
+                 data-item-select-class="details-carousel-selected"
+                 data-stretch="true">
+                @foreach (var photo in Model.Photos)
+                {
+                    <div class="details-carousel-item" data-parameters="{'colorId':@(photo.ColorID != null ? photo.ColorID.ToString() : "null") ,'main':@photo.Main.ToString().ToLower() ,'previewPath':'@photo.ImageSrcMiddle()' ,'originalPath':'@photo.ImageSrcBig()','title':'@Html.AttributeEncode(photo.Title)', 'PhotoId': @photo.PhotoId }">
+                        <figure class="gallery-photos-item">
+                            <img class="gallery-photos-item-obj" src="@photo.ImageSrcMiddle()" alt="@photo.Alt" title="@photo.Title" />
+                        </figure>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <span class="gallery-picture-labels">@labels</span>
+
+    @if (Model.Product.HasGifts())
+    {
+        <h2>@T("Mobile.Product.ProductPhotos.GiftsTitle")</h2>
+        @Html.Action("ProductGifts", "Product", new { productModel = Model.ProductModel, Area = "" })
+    }

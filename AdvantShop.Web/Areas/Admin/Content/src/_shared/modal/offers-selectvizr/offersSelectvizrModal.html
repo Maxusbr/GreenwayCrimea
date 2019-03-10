@@ -1,0 +1,18 @@
+﻿<div>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Выбор товара</h2>
+    </div>
+    <div class="modal-body">
+        <offers-selectvizr selectvizr-tree-url="ctrl.selectvizrTreeUrl"
+                             selectvizr-grid-url="ctrl.selectvizrGridUrl"
+                             selectvizr-grid-options="ctrl.selectvizrGridOptions"
+                             selectvizr-grid-on-fetch="ctrl.gridOnFetch(grid)"
+                             selectvizr-on-change="ctrl.onChange(categoryId, ids, selectMode)">
+        </offers-selectvizr>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.select()">Выбрать</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</div>

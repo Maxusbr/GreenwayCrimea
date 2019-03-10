@@ -1,0 +1,51 @@
+﻿@import "../_settings.scss";
+@import "../functions/_util.scss";
+
+table {
+    width: 100%;
+    padding: $vertical-interval-xsmall $horizontal-interval-xsmall;
+    margin: 0;
+    border-collapse: collapse;
+    border: 0;
+}
+
+td, th {
+    padding: $vertical-interval-xsmall $horizontal-interval-xsmall;
+    border-width: rem-calc(1px);
+    border-style: solid;
+    border-collapse: collapse;
+}
+
+tr {
+    border-collapse: collapse;
+}
+
+.table-without-borders {
+    border: 0;
+
+    td, th {
+        border: 0;
+    }
+}
+
+.Oplata {
+    border: 0;
+
+    td, th {
+        border: 0;
+    }
+}
+
+/*inplace*/
+table[align="center"] {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table[border="0"] {
+    border: 0;
+
+    td, th {
+        border: 0;
+    }
+}

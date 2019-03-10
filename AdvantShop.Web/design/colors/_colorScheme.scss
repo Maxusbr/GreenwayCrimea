@@ -1,0 +1,183 @@
+﻿@import '../../styles/functions/_list.scss', '../../styles/functions/_prefixer.scss';
+
+@function getDefaultColorValueChange() {
+    @return 5%;
+}
+
+@mixin color-scheme-text($name, $color) {
+    .cs-t-#{$name} {
+        color: $color;
+    }
+}
+
+@mixin color-scheme-link($name, $link, $hover, $active, $selected: null, $isFirst: false) {
+
+
+    @if($isFirst == true) {
+        a {
+            color: $link;
+
+            &:hover {
+                color: $hover;
+            }
+
+            &:active {
+                color: $active;
+            }
+
+            @if($selected != null) {
+                &.cs-selected {
+                    color: $selected;
+                }
+            }
+        }
+    }
+
+    .cs-l-#{$name}, .cs-l-d-#{$name} {
+        color: $link;
+
+        &:hover {
+            color: $hover;
+        }
+
+        &:active {
+            color: $active;
+        }
+
+        @if($selected != null) {
+            &.cs-selected {
+                color: $selected;
+            }
+        }
+        @else {
+            &.cs-selected {
+                color: $hover;
+            }
+        }
+    }
+
+    .cs-l-d-#{$name}, .cs-l-ds-#{$name} {
+        border-bottom-color: $link;
+
+        &:hover {
+            border-bottom-color: $hover;
+        }
+
+        &:active {
+            border-bottom-color: $active;
+        }
+
+        @if($selected != null) {
+            &.cs-selected {
+                color: $selected;
+            }
+        }
+    }
+}
+
+@mixin color-scheme-button($name, $bg, $color, $bgHover,  $colorHover, $bgActive, $colorActive, $bgDisabled: null, $colorDisabled: null) {
+
+    .btn-#{$name} {
+        color: $color;
+        background: $bg;
+
+        &:hover {
+            color: $colorHover;
+            background: $bgHover;
+        }
+
+        &:active {
+            color: $colorActive;
+            background: $bgActive;
+        }
+
+        @if($colorDisabled != null and $bgDisabled != null) {
+            &:disabled, &.btn-disabled {
+                color: $colorDisabled;
+                background: $bgDisabled;
+            }
+        }
+    }
+}
+
+@mixin color-scheme-bg($name, $bg, $bgHover: null, $bgActive: null) {
+
+    .cs-bg-#{$name} {
+        background-color: $bg;
+    }
+
+    @if($bgHover != null or $bgActive != null) {
+
+        .cs-bg-i-#{$name} {
+            background-color: $bg;
+
+            @if($bgHover != null) {
+                &:hover {
+                    background-color: $bgHover;
+                }
+            }
+
+            @if($bgActive != null) {
+                &:active {
+                    background-color: $bgActive;
+                }
+
+                &.cs-selected {
+                    background-color: $bgActive;
+                }
+            }
+        }
+    }
+}
+
+@mixin color-scheme-gradient($name, $angle, $gradient, $angleHover: null, $gradientHover: null, $angleActive: null, $gradientActive: null) {
+    .cs-g-#{$name} {
+        @include linear-gradient($angle, unquote($gradient));
+    }
+
+    @if($gradientHover != null or $gradientActive != null) {
+
+        .cs-g-#{$name}-i {
+
+            @include linear-gradient($angle, unquote($gradient));
+
+            @if($gradientHover != null) {
+                &:hover {
+                    @include linear-gradient($angleHover, unquote($gradientHover));
+                }
+            }
+
+            @if($gradientActive != null) {
+                &:active {
+                    @include linear-gradient($angleActive, unquote($gradientActive));
+                }
+            }
+        }
+    }
+}
+
+@mixin color-scheme-borders-color($name, $leftBorder, $topBorder: null, $rightBorder: null, $bottomBorder: null) {
+    .cs-br-#{$name} {
+
+        @if($leftBorder != null) {
+            @if($topBorder == null && $rightBorder == null && $bottomBorder == null){
+                border-color: $leftBorder !important;
+            }
+            @else{  
+                border-left-color: $leftBorder !important;
+            }
+        }
+
+        @if($topBorder != null) {
+            border-top-color: $topBorder !important;
+        }
+
+        @if($rightBorder != null) {
+            border-right-color: $rightBorder !important;
+        }
+
+        @if($bottomBorder != null) {
+            border-bottom-color: $bottomBorder !important;
+        }
+    }
+}

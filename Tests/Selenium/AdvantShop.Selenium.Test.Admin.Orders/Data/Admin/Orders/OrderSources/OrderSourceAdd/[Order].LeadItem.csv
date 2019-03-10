@@ -1,0 +1,4 @@
+﻿LeadItemId;LeadId;Name;ArtNo;Price;Amount;Weight
+3;2;TestProduct10;10;10;1;10
+4;3;TestProduct11;11;11;1;11
+5;4;TestProduct12;12;12;1;12

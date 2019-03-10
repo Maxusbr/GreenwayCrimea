@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var selected = "";
+    var controller = Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    switch (controller)
+    {
+        case "leads":
+            selected = "leads";
+            break;
+        default:
+            break;
+    }
+}
+
+@section NavMenu {
+
+    <div class="js-header-bottom-wrap">
+        <nav id="header-bottom" class="row navbar-static-top middle-xs navbar white-bg " role="navigation" style="margin-bottom: 0">
+            <div class="col-xs">
+                <div class="row">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown dropdown_custom@(selected == "leads" ? " dropdown_active" : "")">
+                            <a href="@Url.Action("Index", "Leads")" class="dropdown-toggle header-bottom-menu-link">
+                                @T("Admin.Leads.Index.Title")
+                            </a>
+                        </li>
+                        <li class="dropdown dropdown_custom@(selected == "settingscrm" ? " dropdown_active" : "")">
+                            <a href="@Url.Action("Index", "SettingsCrm")" class="dropdown-toggle header-bottom-menu-link">
+                                Настройки
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            @Html.Action("SearchBlock", "Search")
+        </nav>
+    </div>
+}
+@RenderBody()

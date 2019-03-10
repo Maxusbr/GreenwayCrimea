@@ -1,0 +1,14 @@
+﻿<div>
+    <div ng-repeat="(validationType, validationErrors) in directiveData.errors">
+        <div ng-switch="validationType">
+            <div ng-switch-when="required">
+                Не заполнены поля
+            </div>
+            <div ng-switch-when="email">
+                Поля не соответсвуют формату
+            </div>
+        </div>
+        <validation-list validation-type="validationType" validation-errors="validationErrors"></validation-list>
+    </div>
+    Вы можете нажать на ссылку для перехода на нужное поле
+</div>

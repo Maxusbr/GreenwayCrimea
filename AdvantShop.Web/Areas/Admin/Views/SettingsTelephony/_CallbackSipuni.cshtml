@@ -1,0 +1,57 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.IPTelephonySettingsModel
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="CallBackSipuniAccount" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.SipuniAccount")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.CallBackSipuniAccount, new { ng_model = "settingsTelephony.callBackSipuniAccount", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.SipuniAccount")">
+            @T("Admin.Settings.Telephony.CallBack.SipuniAccountNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="CallBackSipuniShortNumber" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.SipuniShortNumber")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.CallBackSipuniShortNumber, new { ng_model = "settingsTelephony.callBackSipuniShortNumber", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.SipuniShortNumber")">
+            @T("Admin.Settings.Telephony.CallBack.SipuniShortNumberNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="CallBackSipuniType" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.SipuniCallBackType")</label>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <select id="CallBackSipuniType" name="CallBackSipuniType" class="form-control" ng-model="settingsTelephony.callBackSipuniType"
+                ng-init="settingsTelephony.callBackSipuniType='@Model.CallBackSipuniType'">
+            <option value="0">@T("Admin.Settings.Telephony.CallBack.SipuniCallBackType.Number")</option>
+            <option value="1">@T("Admin.Settings.Telephony.CallBack.SipuniCallBackType.Tree")</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="CallBackSipuniTree" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.SipuniTree")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.CallBackSipuniTree, new { ng_model = "settingsTelephony.callBackSipuniTree", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.SipuniTree")">
+            @T("Admin.Settings.Telephony.CallBack.SipuniTreeNote")
+        </help-trigger>
+    </div>
+</div>

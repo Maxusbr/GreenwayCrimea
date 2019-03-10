@@ -1,0 +1,7 @@
+﻿<div data-ng-if="parent.Items.length > 0" data-ng-repeat="parent in autocompleterList.parentScope.result track by $index">
+    <div class="search-item-title cs-br-1">{{parent.Title}}</div>
+    <div data-ng-init="group = $index"></div>
+    <div data-ng-repeat="child in parent.Items track by $index">
+        <div data-autocompleter-item data-group-index="group" data-index="$index" data-item="child" data-item-template-path="child.Template"></div>
+    </div>
+</div>

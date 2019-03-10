@@ -1,0 +1,183 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Купон</h2>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            <span class="text-required">Код купона</span>
+                        </label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" ng-model="ctrl.Code" required validation-input-text="Код купона" autofocus data-e2e="couponCode"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Тип купона
+                        </label>
+                        <div class="col-xs-9">
+                            <select ng-model="ctrl.Type" ng-options="s.label for s in ctrl.Types track by s.value" class="form-control" data-e2e="couponType"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            <span class="text-required">Значение</span>
+                        </label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" ng-model="ctrl.Value" required validation-input-text="Значение" data-e2e="couponValue" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Валюта
+                        </label>
+                        <div class="col-xs-9">
+                            <select ng-model="ctrl.CurrencyIso3" ng-options="s.label for s in ctrl.Currencies track by s.value" class="form-control" data-e2e="couponCurrency"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Дата добавления
+                        </label>
+                        <div class="col-xs-9 control-label">
+                            {{ctrl.AddingDateFormatted}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Дата окончания
+                        </label>
+                        <div class="col-xs-9">
+                            <label class="adv-checkbox-label" data-e2e="couponUseExpirationDate">
+                                <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.UseExpirationDate" />
+                                <span class="adv-checkbox-emul"></span>
+                                Бессрочно
+                            </label>
+                            <div class="m-l-xs" style="display: inline-block; width: 250px; position:relative; vertical-align: middle; min-height: 34px;">
+                                <div ng-if="!ctrl.UseExpirationDate">
+                                    <a class="dropdown-toggle" id="expirationDate" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" ng-model="ctrl.ExpirationDate" data-date-time-input="DD.MM.YYYY" data-e2e="couponExpirationDate"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker ng-model="ctrl.ExpirationDate" data-datetimepicker-config="{ dropdownSelector: '#expirationDate', minView: 'day' }" />
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Количество возможных использований
+                        </label>
+                        <div class="col-xs-9">
+                            <label class="adv-checkbox-label control-checkbox" data-e2e="couponUsePosibleUses">
+                                <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.UsePosibleUses" />
+                                <span class="adv-checkbox-emul"></span>
+                                Без ограничений
+                            </label>
+                            <div class="m-l-xs" style="display: inline-block; width: 250px; position:relative; vertical-align: middle; min-height: 34px;">
+                                <input type="text" ng-model="ctrl.PossibleUses" ng-if="!ctrl.UsePosibleUses" class="form-control" data-e2e="couponPosibleUses" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Активен
+                        </label>
+                        <div class="col-xs-9">
+                            <label class="adv-checkbox-label control-checkbox" data-e2e="couponEnabled">
+                                <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.Enabled" />
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Минимальная сумма заказа
+                        </label>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="ctrl.MinimalOrderPrice" class="form-control" data-e2e="couponMinimalOrderPrice" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Категории
+                        </label>
+                        <div class="col-xs-9">
+                            <span ng-if="ctrl.CategoryIds.length == 0" data-e2e="couponCategoriesAll">Все</span>
+                            <span ng-if="ctrl.CategoryIds.length > 0" data-e2e="couponCategoriesList">{{ctrl.CategoryIds.length}} категории(й)</span>
+
+                            <ui-modal-trigger data-controller="'ModalSelectCategoriesCtrl'" controller-as="ctrl"
+                                              template-url="../areas/admin/content/src/_shared/modal/selectCategories/selectCategories.html"
+                                              data-resolve="{'params': { 'selectedIds': ctrl.CategoryIds}}"
+                                              data-on-close="ctrl.selectCategories(result)">
+                                <a href="" data-e2e="couponCategories">(изменить)</a>
+                            </ui-modal-trigger>
+
+                            <a href="" ng-if="ctrl.CategoryIds.length > 0" ng-click="ctrl.resetCategories()" data-e2e="couponCategoriesReset">(сбросить)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-3 control-label">
+                            Товары
+                        </label>
+                        <div class="col-xs-9">
+                            <span ng-if="ctrl.ProductsIds.length == 0" data-e2e="couponProductsAll">Все</span>
+                            <span ng-if="ctrl.ProductsIds.length > 0" data-e2e="couponProductsList">{{ctrl.ProductsIds.length}} товар(ов)</span>
+
+                            <ui-modal-trigger data-controller="'ModalProductsSelectvizrCtrl'" controller-as="ctrl" size="xs-11"
+                                              template-url="../areas/admin/content/src/_shared/modal/products-selectvizr/productsSelectvizrModal.html"
+                                              data-on-close="ctrl.selectProducts(result)"
+                                              data-resolve="{'value': { 'itemsSelected' : ctrl.ProductsIds}}">
+                                <a href="" data-e2e="couponProducts">(изменить)</a>
+                            </ui-modal-trigger>
+
+                            <a href="" ng-if="ctrl.ProductsIds.length > 0" ng-click="ctrl.resetProducts()" data-e2e="couponProductsReset">(сбросить)</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation data-e2e="btnSave">Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

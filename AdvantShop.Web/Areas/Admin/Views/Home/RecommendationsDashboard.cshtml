@@ -1,0 +1,21 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Home.RecommendationsDashboardViewModel
+
+<div class="ibox float-e-margins">
+    <div class="ibox-content recomendations-block">
+        @*<div class="ibox-tools">
+            <a class="dropdown-toggle" href="#" data-toggle="modal" data-target="#statisticsModal">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>*@
+        <h3 class="recommendations-title">@T("Admin.Home.RecommendationsDashboard.Title")</h3>
+        <ul class="recommendations-list">
+            @foreach (var link in Model.News)
+            {
+                <li>
+                    <div class="recommendations-header">@Html.Raw(link.Name)</div>
+                    <a href="@link.LinkSrc" class="recommendations-link" target="_blank">@Html.Raw(link.Description)</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

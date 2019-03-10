@@ -1,0 +1,14 @@
+﻿@model List<AdvantShop.ViewModel.Brand.BrandLetter>
+@foreach (var letter in Model)
+{
+    if (letter.Active)
+    {
+        <a href="" data-ng-click="brand.changeLetter('@letter.Name')" class="letter cs-bg-i-11 cs-br-1 cs-l-6@(letter.Selected ? " cs-selected" : "")">
+            @letter.Name
+        </a>
+    }
+    else
+    {
+        <span class="letter inactive cs-br-1">@Html.Raw(letter.Name)</span>
+    }
+}

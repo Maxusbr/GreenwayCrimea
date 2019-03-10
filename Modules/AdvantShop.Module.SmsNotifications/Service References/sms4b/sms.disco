@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://sms4b.ru/ws/sms.asmx?wsdl" docRef="https://sms4b.ru/ws/sms.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://sms4b.ru/ws/sms.asmx" xmlns:q1="SMS4B" binding="q1:WSSMSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://sms4b.ru/ws/sms.asmx" xmlns:q2="SMS4B" binding="q2:WSSMSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

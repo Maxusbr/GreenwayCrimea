@@ -1,0 +1,9 @@
+﻿@model AdvantShop.ViewModel.News.NewsCategoryListViewModel
+
+<div class="news-categories block">
+    <a href="@Url.AbsoluteRouteUrl("NewsHome")" class="news-menu-link @Html.Raw(Model.Selected == 0 ? "cs-bg-3" : "") link-text-decoration-none">@T("News.NewsBlock.AllNews")</a>
+    @foreach (var category in Model.NewsCategories)
+    {
+        <a href="@Url.AbsoluteRouteUrl("NewsCategory", new { url = category.UrlPath })" class="news-menu-link @Html.Raw(@Model.Selected == @category.NewsCategoryId ? "cs-bg-3" : "") link-text-decoration-none">@Html.Raw(@category.Name)</a>
+    }
+</div>

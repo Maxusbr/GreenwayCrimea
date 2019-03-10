@@ -1,0 +1,46 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.Journal.Domain
+@model AdvantShop.Module.Journal.Models.JournalCoverViewModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html data-ng-strict-di data-ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>Pdf cover</title>
+    <base href="@UrlService.GetUrl()" />
+    <link rel="stylesheet" type="text/css" href="modules/journal/styles/styles.css" />
+    <link rel="stylesheet" type="text/css" href="modules/journal/styles/@(Model.ColorScheme).css" />
+</head>
+<body>
+    <div class="cover-content">
+        @if (!Model.IsBack)
+        {
+            if (!string.IsNullOrWhiteSpace(JournalModuleSetting.CoverTop)) {
+                <div class="cover-top">
+                    <div class="cover-b-content">
+                        @Html.Raw(JournalModuleSetting.CoverTop)
+                    </div>
+                </div>
+            }
+            if (!string.IsNullOrWhiteSpace(JournalModuleSetting.CoverMiddle)) {
+                <div class="cover-middle">
+                    <div class="cover-middle-left">
+                        <div class="cover-b-content">
+                            @Html.Raw(JournalModuleSetting.CoverMiddle)
+                        </div>
+                    </div>
+                    <div class="cover-middle-right">
+                    </div>
+                </div>
+            }
+            if (!string.IsNullOrWhiteSpace(JournalModuleSetting.CoverBottom)) {
+                <div class="cover-bottom">
+                    @Html.Raw(JournalModuleSetting.CoverBottom)
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>

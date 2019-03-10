@@ -1,0 +1,27 @@
+﻿<div class="sortable-row" ng-model="$ctrl.answers" as-sortable="$ctrl.sortableOptions">
+    <div class="row" ng-repeat="item in $ctrl.answers" as-sortable-item ng-cloak>
+        <div class="col-xs-12">
+            <div class="flex payment-row middle-xs between-xs">
+                <div class="flex middle-xs col-xs">
+                    <div class="as-sortable-item-handle" as-sortable-item-handle>
+                        <icon-move />
+                    </div>
+                    <span ng-if="item.AnswerId == 0 || item.AnswerId == null">
+                        <input type="text" class="form-control" ng-model="item.Answer" data-e2e="answerNameAdd" />
+                    </span>
+                    <span class="payment-text" ng-if="item.AnswerId > 0">
+                        <span class="payment-text-grey" data-e2e="answer-{{item.Name}}">{{item.Name}}</span>
+                    </span>
+                </div>
+                <div class="flex middle-xs col-fixed-size-sm" ng-if="item.AnswerId == 0 || item.AnswerId == null">
+                    <button class="btn btn-sm btn-success btn--margin-left" type="button" ng-click="$ctrl.setAnswer(item.Answer,item.FkidTheme)" data-e2e="answerAdd">
+                        <span class="fa fa-plus"></span> Добавить
+                    </button>
+                </div>
+                <div class="flex middle-xs col-fixed-size-ls" ng-if="item.AnswerId > 0">
+                    <a href="" class="fa fa-times link-invert link-decoration-none" ng-click="$ctrl.deleteAnswer(item.AnswerId,item.FkidTheme)" data-e2e="answer-id-{{item.AnswerId}}-delete"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

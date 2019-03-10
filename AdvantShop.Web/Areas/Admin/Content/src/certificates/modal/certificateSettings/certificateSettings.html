@@ -1,0 +1,48 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Настройка подарочных сертификатов</h2>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group row" ng-if="ctrl.settings.Taxes != null">
+            <div class="col-xs-12">
+                <h2>
+                    Налоги
+                </h2>
+                <div ng-repeat="item in ctrl.settings.Taxes">
+                    <label class="adv-checkbox-label">
+                        <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="item.Selected" />
+                        <span class="adv-checkbox-emul"></span>
+
+                        {{item.Text}}
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group row" ng-if="ctrl.settings.PaymentMethods != null">
+            <div class="col-xs-12">
+                <h2>
+                    Методы оплаты
+                </h2>
+                <div ng-repeat="item in ctrl.settings.PaymentMethods">
+                    <label class="adv-checkbox-label">
+                        <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="item.Selected" />
+                        <span class="adv-checkbox-emul"></span>
+                        
+                        {{item.Text}}
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" ladda="ctrl.btnSleep" ladda="btnSleep" type="button" data-button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

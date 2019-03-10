@@ -1,0 +1,9 @@
+﻿@model string
+<div class="cookies-policy" data-cookies-policy-modal="true" data-ng-show="!cookiesPolicy.accepted" data-cookie-name="@Model">
+    <div class="cookies-policy-block link-text-decoration-none cs-bg-3">
+        <div class="cookies-policy-cell cs-t-3">
+            @Html.Raw(SettingsNotifications.CookiesPolicyMessageFormatted)
+        </div>
+        <a href="javascript:void(0)" class="link icon-cancel-before link-text-decoration-none cookies-policy-close cs-t-3" data-ng-click="cookiesPolicy.close()"></a>
+    </div>
+</div>

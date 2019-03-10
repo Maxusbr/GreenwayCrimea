@@ -1,0 +1,128 @@
+﻿.menu-general-item:hover {
+    background-color: #00a3cc;
+}
+
+.menu-general-submenu {
+    padding: 30px;
+    padding-left: 25px;
+    border-radius: 0;
+    background-color: #fff;
+    box-shadow: 0 0 25px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 0 25px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 25px rgba(0,0,0,0.15);
+}
+
+.menu-general-root-link {
+    padding-top: 16px;
+    padding-bottom: 15px;
+}
+
+.menu-general-item {
+    font-size: 13px;
+    color: #232323;
+}
+
+.menu-general-sub-category-parent {
+    margin-bottom: 40px;
+}
+
+.menu-general-sub-category-parent > a {
+    position: relative;
+    color: #afafaf;
+    font-size: 20px;
+    font-weight: 100;
+    padding-bottom: 11px;
+}
+
+.menu-general-sub-category-parent > a::after {
+    position: absolute;
+    content: '';
+    width: 45px;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    /*background: #00a3cc;*/
+    background: #86bf5b;
+}
+
+.menu-general-submenu a:hover {
+    color: #ffb504;
+    text-decoration: none;
+}
+
+.menu-general-sub-cell .menu-general-sub-brand-column {
+    border-left-color: #232323;
+}
+
+.menu-general-submenu a {
+    color: #232323;
+    line-height: 1.6;
+    transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    -moz-transition: all .2s ease-in;
+}
+
+.menu-general-item:before {
+    display: none;
+}
+
+.menu-general-item .menu-general-submenu + .menu-general-root-link .menu-general-root-link-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-top: -10px;
+    display: inline-block;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    z-index: 50;
+    transform: translateX(-10px);
+    opacity: 0;
+    transition: all;
+    transition-delay: 0.11s;
+}
+
+.menu-general-item:hover .menu-general-submenu + .menu-general-root-link .menu-general-root-link-text::after {
+    opacity: 1;
+    transition-delay: 0;
+}
+
+.menu-general-sub-column {
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.menu-general-sub-cell-multiple,
+.menu-general-sub-cell {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.menu-general-item:last-child {
+    vertical-align: middle;
+}
+
+.harmonica-tile-inner {
+    padding-top: 16px;
+    padding-bottom: 15px;
+}
+
+.menu-general-item:first-child .menu-general-root-link {
+    padding-left: 0;
+}
+
+.menu-general-sub-cell .menu-general-sub-brand-column {
+    border-left-color: #e2e3e4;
+}
+
+.menu-general-sub-brand-title {
+    display: inline-block;
+    font-size: 20px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #00a3cc;
+    margin-bottom: 0;
+    font-weight: 100;
+    margin-bottom: 30px;
+}

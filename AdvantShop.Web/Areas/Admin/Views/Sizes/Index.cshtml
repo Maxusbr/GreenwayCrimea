@@ -1,0 +1,33 @@
+﻿<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Sizes.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditSizeCtrl'" controller-as="ctrl"
+                              template-url="../areas/admin/content/src/sizes/modal/addEditSize/addEditSize.html"
+                              data-on-close="sizes.grid.fetchData()">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Sizes.Index.AddSize")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="sizes.gridOnInit(grid)"
+                        grid-options="sizes.gridOptions"
+                        grid-url="'sizes/getsizes'"
+                        grid-inplace-url="'sizes/inplacesize'"
+                        grid-extend-ctrl="sizes">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="sizes.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

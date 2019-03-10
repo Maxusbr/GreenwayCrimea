@@ -1,0 +1,153 @@
+﻿
+@using System.Linq;
+@model AdvantShop.Web.Admin.Models.ExportCategories.ExportCategoriesModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="sticky-page-name" sticky sticky-top="0" ng-init="exportCategories.initExportFields(@Model.DefaultExportFields,'@Model.CsvSeparator','@Model.CsvEncoding')">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.ExportCategories.CategoriesExport")
+            </h1>
+
+        </div>
+        <div class="page-name-block-item-additional">
+            <button data-e2e="ButtonSave" type="submit" class="btn btn-sm btn-success" ng-click="exportCategories.startExport()">
+                @T("Admin.ExportCategories.Export")
+            </button>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-9 col-lg-9 col-wl-12">
+
+        @Html.ValidationSummary()
+
+        <div class="row">
+            <div class="col-xs-3 col-lg-3 col-wl-2">
+                <h2 class="category-title">Основное</h2>
+                <div class="">
+                    Параметры выгрузки
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="ibox category-block">
+                    <div class="ibox-content category-content border_none">
+                        <div>
+                            <div class="row category-row">
+                                <div class="col-xs-2">
+                                    <span class="text-required">@T("Admin.ExportCategories.Settings.CsvSeparator")</span>
+                                </div>
+                                <div class="col-xs-4">
+                                    @if (Model.CsvSeparator != AdvantShop.ExportImport.SeparatorsEnum.Custom.ToString())
+                                    {
+                                        @Html.DropDownListFor(modelItem => Model.CsvSeparator, new SelectList(Model.CsvSeparatorList, "Value", "Key"), new { @class = "form-control", ng_model = "exportCategories.csvSeparator", ng_init = "exportCategories.csvSeparator='" + Model.CsvSeparator + "'" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(modelItem => Model.CsvSeparator,
+                                            new
+                                            {
+                                                @class = "form-control",
+                                                equired = "required",
+                                                ng_model = "exportCategories.csvSeparator",
+                                                ng_init = "exportCategories.CsvSeparator='" + (Model.CsvSeparator == "\t" || Model.CsvSeparator == "\\t" ? "\\t" : Model.CsvSeparator) + "'"
+                                            })
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row category-row">
+                                <div class="col-xs-2">
+                                    <span class="text-required">@T("Admin.ExportCategories.Settings.CsvEncoding")</span>
+                                </div>
+                                <div class="col-xs-4">
+                                    @*, ng_model = "exportCategories.csvEncoding"*@
+                                    @Html.DropDownListFor(modelItem => Model.CsvEncoding, new SelectList(Model.CsvEnconingList, "Value", "Key"), new { @class = "form-control", ng_model = "exportCategories.csvEncoding" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-lg-3 col-wl-2">
+                <h2 class="category-title">@T("Admin.ExportCategories.Settings.ExportFields")</h2>
+                <div class="">
+                    @T("Admin.ExportCategories.Settings.ExportFieldsNote")
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="ibox category-block">
+                    <div class="ibox-content category-content border_none">
+                        <div>
+                            <div class="row category-row">
+                                <div class="col-xs-8">
+                                    @{
+                                        int index = 0;
+                                        int i = 0;
+                                    }
+                                    @foreach (var item in Model.AllFields.Where(item => item.Key != AdvantShop.ExportImport.CategoryFields.None.ToString()))
+                                    {
+                                        <div class="form-group row">
+                                            <div class="col-sm-1">
+                                                @Html.Raw(index + 1)
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="setting-label-wrap">
+                                                    @{
+                                                        if (i < Model.FieldMapping.Count && Model.AllFields.ContainsKey(Model.FieldMapping[i].ToString()))
+                                                        {
+                                                            @Html.DropDownList(index + "ddl", new SelectList(Model.AllFields, "Key", "Value", Model.FieldMapping[i].ToString()),
+                                        new { @class = "form-control", ng_init = "exportCategories.exportCategoriesFields[" + index + "]='" + Model.FieldMapping[i].ToString() + "'", ng_model = "exportCategories.exportCategoriesFields[" + index + "]" })
+                                                            i++;
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DropDownList(index + "ddl", new SelectList(Model.AllFields, "Key", "Value"),
+                                        new { @class = "form-control", ng_init = "exportCategories.exportCategoriesFields[" + index + "]='" + Model.AllFields.ElementAt(0).Key + "'", ng_model = "exportCategories.exportCategoriesFields[" + index + "]" })
+                                                        }
+                                                        index++;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                                        }
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="submit" class="btn btn-sm btn-default" data-e2e="ExportSetNone" ng-click="exportCategories.setNoneExportCategoriesFields()">@T("Admin.ExportCategories.SetNoneExportFields")</button>
+                                    <button type="submit" class="btn btn-sm btn-default" data-e2e="ExportSetDefault" ng-click="exportCategories.setDefaultExportCategoriesFields()">@T("Admin.ExportCategories.SetDefaultExportFields")</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-lg-3 col-wl-2">
+            </div>
+            <div class="col-xs">
+
+                <button class="btn btn-sm btn-success" data-e2e="Export" type="button" ng-click="exportCategories.startExport()">
+                    @T("Admin.ExportFeeed.СhoiceOfProducts.Export")
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

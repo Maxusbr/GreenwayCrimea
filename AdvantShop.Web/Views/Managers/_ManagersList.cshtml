@@ -1,0 +1,65 @@
+﻿@model List<AdvantShop.Customers.Manager>
+
+<div>
+    @{
+        var i = 1;
+    }
+    @foreach (var manager in Model)
+    {
+        if (i % 2 != 0)
+        {
+            @:<div class="row">
+        }
+        <div class="col-xs-6 col-p-v">
+
+            <div class="row">
+            @{
+                <div class="col-xs-3">
+                    <div class="site-body-cell-no-left">
+                        @if (manager.AvatarSrc.IsNotEmpty())
+                        {
+                            <img src="@manager.AvatarSrc" alt="@manager.FullName" title="@manager.FullName" />
+                        }
+                        else
+                        {
+                            <span class="icon-adult-after manager-no-photo cs-t-6"></span>
+                        }
+                    </div>
+                </div>
+            }
+                <div class="col-xs">
+                    <div class="site-body-cell">
+                        <div class="cs-t-6 manager-name">
+                            @Html.Raw(manager.FullName)
+                        </div>
+                        <div class="manager-position">
+                            @Html.Raw(manager.Position)
+                        </div>
+                        <div class="manager-info">
+                            <div class="rel">
+                                <span class="cs-t-6 icon-mail-before-abs manager-icon-mover"></span>
+                                <a href="" class="link-text-decoration-underline" data-ng-click="managers.showEmail(@Html.Raw(manager.ManagerId))">@T("Managers.ManagersList.Write")</a>
+                            </div>
+                            @if (manager.StandardPhone.HasValue)
+                            {
+                                <div class="rel">
+                                    <span class="icon-phone-before-abs cs-t-6 manager-icon-mover"></span>
+                                    @Html.Raw(manager.StandardPhone)
+                                </div>
+                            }
+                            <div>
+                                <a href="javascript:void(0);" class="link-text-decoration-underline" data-ng-click="managers.showCall(@Html.Raw(manager.ManagerId))">@T("Managers.ManagersList.RequestCall")</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        if (i % 2 == 0 || Model.Count == i)
+        {
+            @:</div>
+        }
+        i++;
+    }
+</div>

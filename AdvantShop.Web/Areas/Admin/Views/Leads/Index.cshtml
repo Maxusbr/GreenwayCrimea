@@ -1,0 +1,61 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Leads.LeadsListViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Leads/LeadsLayout.cshtml";
+}
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text m-r-xs inline bottom-cell">
+                <span class="original-header-page">@T("Admin.Leads.Index.Title")</span>
+            </h1>
+            <a href="@Url.Action("Academy", "Service", new { id = 54 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline bottom-cell">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок Что такое CRM?
+            </a>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddLeadCtrl'" controller-as="ctrl" size="lg" backdrop="static"
+                              template-url="../areas/admin/content/src/_shared/modal/addLead/addLead.html">
+                <button class="btn btn-sm btn-success" data-e2e="btnAdd" type="button">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.AddLead")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="m-n">
+        <div class="tasks-navbar">
+            <ul class="nav nav-tabs nav-collapse-tab" collapse-tab>
+                <li class="nav-item ng-tab" ng-class="{'active': leads.leadsParam['DealStatusId'] == null}">
+                    <a href="" ng-click="leads.changeParam(null)">
+                        <span class="fa"></span> @(T("Admin.Leads.Index.All"))
+                    </a>
+                </li>
+                @foreach (var status in Model.DealStatuses)
+                {
+                    <li class="nav-item  ng-tab" ng-class="{'active': leads.leadsParam['DealStatusId'] == @(status.Id)}" data-e2e="@status.Name">
+                        <a href="" ng-click="leads.changeParam(@(status.Id))">
+                            <span class="fa"></span> @status.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="ibox">
+        <div class="ibox-content no-top-border">
+            <ui-grid-custom grid-unique-id="grid"
+                            grid-options="leads.gridOptions"
+                            grid-on-init="leads.gridOnInit(grid)"
+                            grid-url="'leads/getLeads'"
+                            grid-extend-ctrl="leads">
+                <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="leads.grid.gridOptions.TotalString">
+                </ui-grid-custom-footer>
+            </ui-grid-custom>
+        </div>
+    </div>
+</div>

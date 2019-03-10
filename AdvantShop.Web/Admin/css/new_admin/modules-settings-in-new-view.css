@@ -1,0 +1,144 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+@font-face {
+  font-family: 'OpenSans';
+  src: url(../../../Areas/Admin/Content/fonts/OpenSans/OpenSans.ttf); }
+
+@font-face {
+  font-family: 'OpenSans-bold';
+  src: url(../../../Areas/Admin/Content/fonts/OpenSans/OpenSans-bold.ttf); }
+
+@font-face {
+  font-family: 'OpenSans-light';
+  src: url(../../../Areas/Admin/Content/fonts/OpenSans/OpenSans-light.ttf); }
+
+@font-face {
+  font-family: 'OpenSans-italic';
+  src: url(../../../Areas/Admin/Content/fonts/OpenSans/OpenSana-italic.ttf); }
+
+@font-face {
+  font-family: 'OpenSans-semibold';
+  src: url(../../../Areas/Admin/Content/fonts/OpenSans/OpenSans-semibold.ttf); }
+
+@font-face {
+  font-family: 'Circe-Bold';
+  src: url(../../../Areas/Admin/Content/fonts/Circe/Circe-Bold.otf); }
+
+html, body {
+  background: transparent none;
+  font-family: 'Open Sans';
+  color: #676a6c;
+  font-size: 13px; }
+
+td#tabs-contents {
+  border-left: 0;
+  padding: 0 0 0 15px; }
+
+td#tabs-contents > * {
+  background: #fff;
+  padding: 25px 28px;
+  box-sizing: border-box; }
+
+.rowsPost hr {
+  display: none; }
+
+#tabs-headers {
+  margin: 0; }
+
+#tabs-headers > li, #tabs-headers > li:hover, #tabs-headers > li.selected {
+  font-weight: normal;
+  color: #676a6c;
+  display: block;
+  border-radius: 3px;
+  border-width: 0 0 1px 0;
+  border-bottom: 1px transparent solid;
+  padding: 6px 10px 8px 14px; }
+
+#tabs-headers > li:hover, #tabs-headers > li.selected {
+  color: #288dd2;
+  border-bottom-color: #fff;
+  background-color: #dbdcde; }
+
+input[type=submit] {
+  font-family: 'OpenSans-semibold';
+  background-color: #42a6ee;
+  border-color: #42a6ee;
+  color: #FFFFFF;
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 1.5;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  height: auto;
+  min-width: 100px; }
+
+input[type="text"], input[type="password"], textarea, select {
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid #c3c3c3;
+  border-radius: 1px;
+  color: #31373d;
+  display: inline-block;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+  font-size: 14px;
+  box-shadow: none;
+  line-height: 1.42857143;
+  box-shadow: none; }
+  input[type="text"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
+    border-color: #2d9ced;
+    outline: 0;
+    box-shadow: none; }
+
+.js-wysiwyg {
+  margin-top: 217px; }
+
+.rowsPost td {
+  padding-bottom: 18px; }
+
+.spanSettCategory {
+  font-family: "OpenSans";
+  font-size: 21px;
+  color: #2f4050;
+  font-weight: normal; }
+
+.module-in-new-view-header {
+  color: #2f4050; }
+
+.text-floating {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: keep-all;
+  line-break: normal;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto; }
+
+.text-static, .text-overflow {
+  overflow-wrap: normal;
+  /* не поддерживает IE, Firefox; является копией word-wrap */
+  word-wrap: normal;
+  word-break: normal;
+  /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */
+  line-break: auto;
+  /* нет поддержки для русского языка */
+  -webkit-hyphens: manual;
+  -ms-hyphens: manual;
+  hyphens: manual; }
+
+.text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block; }

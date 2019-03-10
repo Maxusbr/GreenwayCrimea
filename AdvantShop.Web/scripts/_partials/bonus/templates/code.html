@@ -1,0 +1,39 @@
+﻿<div>
+    <div data-modal-control
+         data-callback-init="bonusCode.modalInit(modal)"
+         data-modal-class="modal-bonus"
+         data-cross-enable="true"
+         data-close-out="true">
+        <div data-modal-header class="modal-title">
+            <div data-ng-switch="bonusCode.state">
+                <div data-ng-switch-when="form">
+                    {{ ::'Js.Bonus.CodeHasBeenSend' | translate }}
+                </div>
+                <div data-ng-switch-when="success">
+                    {{ ::'Js.Bonus.CardHasBeenApplied' | translate }}
+                </div>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div data-ng-switch="bonusCode.state">
+                <div data-ng-switch-when="form">
+                    <div class="modal-bonus-text">{{ ::'Js.Bonus.EnterCode' | translate }}</div>
+                    <input type="text" class="input-small" value="" data-ng-model="bonusCode.code" autofocus required />
+                </div>
+                <div data-ng-switch-when="success" class="bonus-code-success-text">
+                    {{ ::'Js.Bonus.CardHasBeenAppliedModal' | translate }}
+                </div>
+            </div>
+        </div>
+        <div data-modal-footer class="modal-footer">
+            <div data-ng-switch="bonusCode.state">
+                <div data-ng-switch-when="form">
+                    <input class="btn btn-middle btn-buy" type="submit" value="{{ ::'Js.Bonus.Confirm' | translate }}" data-ng-click="bonusCode.confirm(bonusCode.code)" data-ng-disabled="bonusCode.code == null || bonusCode.code.length === 0">
+                </div>
+                <div data-ng-switch-when="success">
+                    <input class="btn btn-middle btn-buy" type="submit" value="{{ ::'Js.Bonus.Close' | translate }}" data-ng-click="bonusCode.closeModal()">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

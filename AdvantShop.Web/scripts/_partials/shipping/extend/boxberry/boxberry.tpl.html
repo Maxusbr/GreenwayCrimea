@@ -1,0 +1,8 @@
+﻿<div>
+    <a class="btn btn-xsmall btn-submit" href="javascript:void(0)" data-ng-click="boxberry.boxberryOpenWidget()">Выбрать пункт выдачи</a>
+    <div data-ng-bind="boxberry.boxberryDeliveryShipping.PickpointAddress"></div>
+    <div data-ng-if="boxberry.boxberryDeliveryShipping.PickpointAddress == null" class="shipping-extend-error error-color" >
+        Необходимо выбрать пункт выдачи
+    </div>
+    <input data-ng-if="boxberry.boxberryIsSelected" class="shipping-extend-input-hidden" type="text" data-ng-model="boxberry.boxberryDeliveryShipping.PickpointAddress" required readonly />
+</div>

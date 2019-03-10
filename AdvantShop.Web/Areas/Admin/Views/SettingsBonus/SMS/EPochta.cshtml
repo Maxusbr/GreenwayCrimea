@@ -1,0 +1,22 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.BonusSettingsModel
+<div class="form-group row m-b-lg">
+    <div class="col-xs-4 col-xs-offset-3">
+        <a href="https://www.epochta.ru/products/sms/register.php#a_aid=advantshop" target="_blank">Зарегистрироваться</a>
+    </div>
+</div>
+<div class="form-group row m-b-lg">
+    <div class="col-xs-3">
+        Публичный ключ
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.EPochtaPublicKey, new { @class = "form-control", ng_model = "settingBonus.EPochtaPublicKey", textcomplete = "" })
+    </div>
+</div>
+<div class="form-group row m-b-lg">
+    <div class="col-xs-3">
+        Приватный ключ
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.EPochtaPrivateKey, new { @class = "form-control", ng_model = "settingBonus.EPochtaPrivateKey", textcomplete = "" })
+    </div>
+</div>

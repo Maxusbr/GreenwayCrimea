@@ -1,0 +1,84 @@
+﻿@import "../_defFuncValues.scss";
+@import "../_function.scss";
+
+.logo-search-pnl {
+
+    .city-select-input {
+        width: 100%;
+    }
+
+    display: table;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #86bf5b;
+
+    .logo-cell, .search-cell {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .logo-cell {
+        text-align: center;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    .search-cell {
+        padding-left: toEm(25px);
+    }
+}
+
+.catalog-select-placeholder {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    div {
+        width: 48%;
+        display: inline-block;
+    }
+
+    .catalog-select-placeholder {
+        padding-right: 1%;
+        float: left;
+    }
+
+    .catalog-search-placeholder {
+        padding-left: 1%;
+        float: right;
+        position: relative;
+    }
+
+    div + div {
+    }
+}
+
+.catalog-search-btn {
+    position: absolute;
+    width: toEm(39px);
+    height: toEm(39px);
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    right: toEm(5px);
+    border-radius: toEm(5px);
+    margin: auto 0;
+
+    span {
+        width: toEm(16px);
+        height: toEm(19px);
+        position: absolute;
+        display: inline-block;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+}
+
+.catalog-select-placeholder .good-select-block select {
+    height: toEm(48px);
+}

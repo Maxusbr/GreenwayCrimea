@@ -1,0 +1,72 @@
+.modal-background {
+    background-color: #000;
+    top: 0px;
+    height: 100%;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    z-index: 100;
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 40%;
+    margin: 0px auto;
+    background-color: #fff;
+    z-index: 150;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #eaeaea;
+    border-right-color: #bfbfbf;
+    border-bottom-color: #808080;
+    border-left-color: #bfbfbf;
+    display: none;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    border-right: 5px;
+    border: 0;
+}
+
+    .modal .title {
+        font-weight: bold;
+        font-size: 18px;
+        margin-right: 10px;
+        padding: 19px 35px 0 29px;
+    }
+
+    .modal .content {
+        padding: 10px 35px 0 29px;
+        position: relative;
+        /*overflow:auto;*/
+    }
+
+    .modal .cross {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        background: transparent url('../../images/cross.png') no-repeat scroll center center;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .modal .btns {
+        padding: 10px 35px 10px 29px;
+        text-align: right;
+        position: relative;
+    }
+
+        .modal .btns .btn-modal {
+            margin-left: 10px;
+        }
+/*touch style*/
+.mb-touch, .m-touch {
+    position: absolute;
+    bottom: auto;
+}
+

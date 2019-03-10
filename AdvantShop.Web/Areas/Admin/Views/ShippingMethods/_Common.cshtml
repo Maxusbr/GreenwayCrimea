@@ -1,0 +1,288 @@
+﻿@model AdvantShop.Core.Services.Shipping.ShippingMethodAdminModel
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Название метода доставки</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", ng_model = "shippingMethod.name", required = "required", validation_input_text = "Название метода доставки" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Название метода доставки">
+            <p>Это название будет показано в клиентской части магазина.</p>
+            <p>Например: Самовывоз.</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Активен
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.Enabled, new { ng_model = "shippingMethod.enabled", ng_init = "shippingMethod.enabled=" + Model.Enabled.ToLowerString(), @class = "adv-checkbox-input" })
+            <span data-e2e="ShippingEnabled" class="adv-checkbox-emul"></span>
+        </label>
+        @if (!Model.Enabled)
+            {
+            <span class="link-danger">Не активен</span>
+        }
+        <help-trigger class="ng-cloak" data-title="Активен">
+            Включен или выключен метод в данный момент.
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="flex-grow-n col-fixed-size-md">
+        Активность метода для
+        <help-trigger class="ng-cloak" data-title="Города исключения">
+            <div class="help-content">
+                Тут вы можете задать список стран и городов, для которых будет доступен данный метод доставки.
+            </div>
+        </help-trigger>
+    </div>
+    <div class="col-xs-8 relative">
+
+        <div class="m-b-sm ng-cloak" ng-if="shippingMethod.AvailableCountries != null && shippingMethod.AvailableCountries.length != 0">
+            <div data-e2e="ShippingCountry" ng-repeat="item in shippingMethod.AvailableCountries track by $index" class="ng-cloak shipping-location-item">
+                {{$index != 0 ? ", " : ""}} {{item.Name}} <a href="" ng-click="shippingMethod.deleteAvailableCountry(item.CountryId)" data-e2e="ShippingCountryDel" class="link-invert link-decoration-none fa fa-remove"></a>
+            </div>
+        </div>
+
+        <div class="m-b-sm ng-cloak" ng-if="shippingMethod.AvailableCities != null && shippingMethod.AvailableCities.length != 0">
+            <div data-e2e="ShippingCity" ng-repeat="item in shippingMethod.AvailableCities track by $index" class="ng-cloak shipping-location-item">
+                {{item.Name}} <a href="" ng-click="shippingMethod.deleteAvailableCity(item.CityId)" data-e2e="ShippingCityDel" class="link-invert link-decoration-none fa fa-remove"></a>
+            </div>
+        </div>
+
+        <div class="m-b-sm bold ng-cloak" ng-if="(shippingMethod.AvailableCountries == null || shippingMethod.AvailableCountries.length == 0) && (shippingMethod.AvailableCities == null || shippingMethod.AvailableCities.length == 0)">
+            <span class="relative p-r-xs">
+                Все страны, все города
+                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Города и страны">
+                    Тут вы можете задать список стран и городов, для которых будет доступен данный метод оплаты.
+                </help-trigger>
+            </span>
+        </div>
+
+        <div class="row m-b-sm">
+            <div class="col-xs-2">Страны</div>
+            <div class="col-xs-9">
+                <input data-e2e="ShippingCountryName" type="text" class="form-control" ng-model="shippingMethod.newAvailableCountry" style="width: 250px; display: inline-block; vertical-align: top;" autocompleter on-type="country" />
+                <button data-e2e="ShippingCountryAdd" type="button" class="btn btn-sm btn-action" ng-disabled="!shippingMethod.newAvailableCountry" ng-click="shippingMethod.addAvailableCountry()">Добавить страну</button>
+            </div>
+        </div>
+
+        <div class="row m-b-sm">
+            <div class="col-xs-2">Города</div>
+            <div class="col-xs-9">
+                <input data-e2e="ShippingCityName" type="text" class="form-control" ng-model="shippingMethod.newAvailableCity" style="width: 250px; display: inline-block; vertical-align: top;" autocompleter on-type="city"  />
+                <button data-e2e="ShippingCityAdd" type="button" class="btn btn-sm btn-action" ng-disabled="!shippingMethod.newAvailableCity" ng-click="shippingMethod.addAvailableCity()">Добавить город</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Метод недоступен для
+        <help-trigger class="ng-cloak m-l-xs" data-title="Города исключения">
+            <div class="help-content">
+                Тут вы можете задать список стран и городов, для которых не будет доступен данный метод доставки.
+            </div>
+        </help-trigger>
+    </div>
+
+    <div class="col-xs-8 relative">
+        
+        <div class="m-b-sm">
+            <div ng-if="(shippingMethod.ExcludedCities == null || shippingMethod.ExcludedCities.length == 0) && (shippingMethod.ExcludedCountry == null || shippingMethod.ExcludedCountry.length == 0)" class="bold ng-cloak">
+                Нет исключений
+            </div>
+            <div data-e2e="ShippingEnCityList" ng-repeat="item in shippingMethod.ExcludedCountry track by $index" class="ng-cloak shipping-location-item">
+                {{item.Name}} <a href="" ng-click="shippingMethod.deleteExcludedCountry(item.CountryId)" class="link-invert link-decoration-none fa fa-remove"></a>
+            </div>
+            <div data-e2e="ShippingEnCityList" ng-repeat="item in shippingMethod.ExcludedCities track by $index" class="ng-cloak shipping-location-item">
+                {{item.Name}} <a href="" ng-click="shippingMethod.deleteExcludedCity(item.CityId)" class="link-invert link-decoration-none fa fa-remove"></a>
+            </div>
+        </div>
+        
+        <div class="row m-b-sm">
+            <div class="col-xs-2">Страны</div>
+            <div class="col-xs-9">
+                <input data-e2e="ShippingEnCountry" type="text" class="form-control" ng-model="shippingMethod.newExcludedCountry" style="width: 250px; display: inline-block; vertical-align: top;" autocompleter on-type="country" />
+                <button data-e2e="ShippingEnCountryAdd" type="button" class="btn btn-sm btn-action" ng-disabled="!shippingMethod.newExcludedCountry" ng-click="shippingMethod.addExcludedCountry()">Добавить страну</button>
+            </div>
+        </div>
+
+        <div class="row m-b-sm">
+            <div class="col-xs-2">Города</div>
+            <div class="col-xs-9">
+                <input data-e2e="ShippingEnCity" type="text" class="form-control" ng-model="shippingMethod.newExcludedCity" style="width: 250px; display: inline-block; vertical-align: top;" autocompleter on-type="city"/>
+                <button data-e2e="ShippingEnCityAdd" type="button" class="btn btn-sm btn-action" ng-disabled="!shippingMethod.newExcludedCity" ng-click="shippingMethod.addExcludedCity()">Добавить город</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Тип
+    </div>
+    <div class="col-xs-6 relative">
+        @Model.ShippingTypeLocalized
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Описание
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextAreaFor(x => x.Description, new {@class = "form-control", ng_model = "shippingMethod.description"})
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Описание">
+            <p>Описание метода доставки, которое выводится в клиентской части магазина.</p>
+            <p>Например: Курьер, доставка до двери.</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Текст при нулевой стоимости
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ZeroPriceMessage, new { @class = "form-control", ng_model = "shippingMethod.zeroPriceMessage" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Текст при нулевой стоимости">
+            <p>Текст, который будет показан, если стоимость доставки равна нулю.</p>
+            <p>Например: Бесплатно.</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Порядок сортировки
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.SortOrder, new {@class = "form-control", ng_model = "shippingMethod.sortOrder" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Порядок сортировки">
+            Очерёдность вывода метода оплаты. Действует правило "ноль вверху"
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Показывать дополнительные поля
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.DisplayCustomFields, new {ng_model = "shippingMethod.displayCustomFields", ng_init = "shippingMethod.displayCustomFields=" + Model.DisplayCustomFields.ToLowerString(), @class = "adv-checkbox-input"})
+            <span data-e2e="ShippingAddittional" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="Показывать дополнительные поля">
+            <p>Показывать ли для данного метода доставки дополнительные поля.</p>
+            <p>Дополнительные поля для доставки вы можете назначить в "Настройки - Поля в оформлении заказов"</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Показывать индекс
+    </div>
+    <div class="col-xs-6 relative">
+        <label  class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.DisplayIndex, new {ng_model = "shippingMethod.displayIndex", ng_init = "shippingMethod.displayIndex=" + Model.DisplayIndex.ToLowerString(), @class = "adv-checkbox-input"})
+            <span data-e2e="ShippingIndex" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="Показывать индекс">
+            Показывать индекс
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Отображать в карточке товара
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.ShowInDetails, new {ng_model = "shippingMethod.showInDetails", ng_init = "shippingMethod.showInDetails=" + Model.ShowInDetails.ToLowerString(), @class = "adv-checkbox-input"})
+            <span data-e2e="ShippingDetais" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="Отображать в карточке товара">
+            <p>Отображать или нет данный способ доставки в блоке "доставка" в карточке товара.</p>
+            <p>Этой опцией вы можете регулировать, какие методы отображать, какие нет.</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="flex-grow-n col-fixed-size-md">
+        Иконка
+    </div>
+    <div class="col-xs-6 relative">
+        <img ng-if="shippingMethod.icon != null && shippingMethod.icon.length > 0" ng-src="{{shippingMethod.icon}}" class="m-b-sm" />
+        <div>
+            <a href=""
+                accept="image/*"
+                ngf-max-size="15MB"
+                ngf-select=""
+                ngf-change="shippingMethod.uploadIcon($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+                class="picture-uploader-buttons-add">
+                Добавить изображение
+            </a>
+        </div>
+        <div class="ng-cloak m-t-xs" ng-if="shippingMethod.icon == null || shippingMethod.icon.length == 0">
+            Рекомендуемый размер 60 x 32 px <br>Формат может быть только *.gif, *.png или *.jpg
+        </div>
+        <div class="ng-cloak" ng-if="shippingMethod.icon != null && shippingMethod.icon.length > 0">
+            <a href="" class="picture-uploader-buttons-delete link-danger" ng-click="shippingMethod.deleteIcon()">Удалить изображение</a>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Текст при нулевой стоимости
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ZeroPriceMessage, new {@class = "form-control", ng_model = "shippingMethod.zeroPriceMessage"})
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Текст при нулевой стоимости">
+            <p>Текст, который будет показан, если стоимость доставки равна нулю.</p>
+            <p>Например: Бесплатно.</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Налог
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.TaxType, Model.TaxTypes, new { @class = "form-control", ng_model = "shippingMethod.TaxType" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Налог">
+            <p>Налог за доставку</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="flex-grow-n col-fixed-size-md">
+        Методы оплаты, которые доступны при этом методе доставки:
+    </div>
+    <div class="col-xs-6 relative">
+        <div ng-repeat="item in shippingMethod.payments track by $index">
+            <label class="adv-checkbox-label form-label-block">
+                <input type="checkbox" checklist-model="shippingMethod.selectedPaymentMethods" checklist-value="item.PaymentMethodId" class="adv-checkbox-input"/>
+                <span data-e2e="PaymentMethods" class="adv-checkbox-emul"></span>
+                {{item.Name}}
+            </label>
+        </div>
+
+        <input type="hidden" name="payments" value="{{shippingMethod.selectedPaymentMethods}}" />
+    </div>
+</div>

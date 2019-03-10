@@ -1,0 +1,12 @@
+﻿@model BlockModel
+
+<div class="lp-area">
+    <div class="container-fluid">
+        <div class="lp-container">
+            <div class="h-decoration lp-text2">
+                <div class="h-general">Хиты сезона</div>
+            </div>
+            @Html.SubBlock(Model.Block, "productsViewItem")
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿.cart-mini-main-link {
+    padding: 12px 14px;
+    border: 0;
+    border-radius: 50%;
+}
+
+
+.cart-mini__info-wrap {
+    cursor: pointer;
+}
+
+
+.cart-mini:hover div[data-cart-mini-list] + .cart-mini-main-link,
+.cart-mini:hover .cart-mini-main-link {
+    background-color: #ffb504;
+}
+
+.cart-mini:hover div[data-cart-mini-list] + .cart-mini-main-link > svg,
+.cart-mini:hover .cart-mini-main-link > svg {
+    fill: #fff;
+}
+
+.cart-mini__count {
+    position: absolute;
+    color: #000;
+    right: 85%;
+    top: 11px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #ff9e02;
+    width: 23px;
+    height: 23px;
+    box-sizing: border-box;
+    text-align: center;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 10px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.cart-mini__price-total {
+    position: relative;
+    display: inline-block;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.cart-mini__price-total:after {
+    content: "\e800";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    font-family: "advantshopfonts";
+    transform: translateY(-8px);
+    font-size: 9px;
+
+}
+
+.cart-mini-block {
+    top: 100%;
+    border-radius: 0;
+}
+
+.cart-mini-block::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    right: 40px;
+    display: inline-block;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    z-index: 50;
+}
+
+.cart-mini-buttons .btn-action {
+    font-size: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.cart-mini-block.cart-mini-fixed {
+    top: 61px;
+}
+
+.cart-mini-block.cart-mini-fixed:after {
+    opacity: 0;
+    top: 61px;
+}

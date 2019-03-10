@@ -1,0 +1,111 @@
+﻿@import "../functions/_util.scss", "../functions/_prefixer.scss", "../functions/_list.scss", "../_settings.scss";
+
+$input-border-radius: 5px !default;
+$input-border: 1px #e2e3e4 solid !default;
+$input-placeholder-color: #4b4f58 !default;
+
+$input-big: (padding rem-calc(13px), font-size $font-size-xmedium) !default;
+$input-middle: (padding rem-calc(12px), font-size $font-size-normal) !default;
+$input-small: (padding rem-calc(9px), font-size $font-size-normal) !default;
+$input-xsmall: (padding rem-calc(10px), font-size $font-size-normal) !default;
+
+
+$textarea-big: (padding rem-calc(13px), height rem-calc(13px), font-size $font-size-xmedium) !default;
+$textarea-middle: (padding rem-calc(12px), height rem-calc(155px), font-size $font-size-normal) !default;
+$textarea-small: (padding rem-calc(9px), height rem-calc(96px), font-size $font-size-normal) !default;
+$textarea-xsmall: (padding rem-calc(9px), height rem-calc(65px), font-size $font-size-normal) !default;
+
+@mixin input-size($input-size-name, $input-size-params) {
+    .#{$input-size-name} {
+        font-size: list-find-value($input-size-params, font-size);
+        padding: list-find-value($input-size-params, padding);
+    }
+}
+
+@mixin textarea-size($textarea-size-name, $textarea-size-params) {
+    .#{$textarea-size-name} {
+        padding: list-find-value($textarea-size-params, padding);
+        font-size: list-find-value($textarea-size-params, font-size);
+        height: list-find-value($textarea-size-params, height);
+    }
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea{
+    box-sizing: border-box;
+    border-radius: $input-border-radius;
+    border: $input-border;
+    vertical-align: middle;
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: none; //remove styles for invalid input in FF
+    &:focus {
+        outline: none;
+    }
+
+    &[readonly] {
+        background-color: #f9f9f9;
+    }
+
+    &:disabled {
+        background-color: #eee;
+    }
+}
+
+select {
+    box-sizing: border-box;
+    border-radius: $input-border-radius;
+    border: $input-border;
+    vertical-align: middle;
+    width: 100%;
+    box-shadow: none; //remove styles for invalid input in FF
+    &:focus {
+        outline: none;
+    }
+
+    &[readonly] {
+        background-color: #f9f9f9;
+    }
+
+    &:disabled {
+        background-color: #eee;
+    }
+}
+
+textarea {
+    overflow: auto;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
+}
+
+
+@include input-size('input-big', $input-big);
+@include input-size('input-middle', $input-middle);
+@include input-size('input-small', $input-small);
+@include input-size('input-xsmall', $input-xsmall);
+
+@include textarea-size('textarea-big', $textarea-big);
+@include textarea-size('textarea-middle', $textarea-middle);
+@include textarea-size('textarea-small', $textarea-small);
+@include textarea-size('textarea-xsmall', $textarea-xsmall);

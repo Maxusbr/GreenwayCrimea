@@ -1,0 +1,11 @@
+.ui-ace-textarea-wrap {
+  position: relative;
+  height: 600px;
+  background: #fff; }
+
+.ui-ace-textarea-widget {
+  position: absolute !important;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px; }

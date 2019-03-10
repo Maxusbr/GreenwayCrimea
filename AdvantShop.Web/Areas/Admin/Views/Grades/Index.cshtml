@@ -1,0 +1,35 @@
+﻿<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Grades.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditGradeCtrl'" controller-as="ctrl" on-close="grades.grid.fetchData()"
+                              template-url="../areas/admin/content/src/grades/modal/addEditGrade/AddEditGrade.html">
+                <button data-e2e="GradeAdd" class="btn btn-sm btn-success" type="button">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Grades.Index.AddGrade")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="grades.gridOnInit(grid)"
+                        grid-options="grades.gridOptions"
+                        grid-url="'grades/getgrades'"
+                        grid-extend-ctrl="grades"
+                        grid-inplace-url="'grades/inplacegrade'">
+        </ui-grid-custom>
+        <div data-e2e="GoRules">
+            <span  style="color: #f15959;">*</span>
+            Для автоматической смены грейда необходимо добавить правило "Смена грейда" в разделе "@Html.ActionLink("Правила", "Index", "rules", null, new { target = "_blank" })"
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@model AdvantShop.Module.VkMarket.Models.Settings.SettingsModel
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>()
+    {
+        url + "modules/vkMarket/content/js/vkMarketService.js",
+        url + "modules/vkMarket/content/js/vkMarket/vkMarket.js",
+        url + "modules/vkMarket/content/js/vkMarketAuth/vkMarketAuth.js",
+        url + "modules/vkMarket/content/js/vkMarketCategories/vkMarketCategories.js",
+        url + "modules/vkMarket/content/js/vkMarketCategories/modals/ModalAddEditVkCategory.js",
+        url + "modules/vkMarket/content/js/vkMarketExportSettings/vkMarketExportSettings.js",
+    };
+}
+
+<div data-oc-lazy-load="[@(String.Join(", ", scripts.Select(x => "'" + x + "?v=" + Model.Version + "'")))]">
+    <vk-market redirect-url="'@UrlService.GetUrl()'"></vk-market>
+</div>

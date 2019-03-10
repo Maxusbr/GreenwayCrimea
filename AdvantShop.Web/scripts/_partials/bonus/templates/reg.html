@@ -1,0 +1,113 @@
+﻿<div>
+    <form name="bonusRegForm" data-ng-if="!bonusReg.cardAdded" novalidate="novalidate">
+        <div class="row">
+            <div class="col-xs-12">
+                <!--<label class="row middle-xs">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-xsmall">{{ ::'Js.Bonus.LastName' | translate }}</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <span class="form-field-input vertical-interval-xsmall">
+                            <input type="text" data-ng-model="bonusReg.surname" data-ng-model-options="{ debounce: 600 }" data-ng-init="bonusReg.surname = (bonusReg.surname || bonusReg.outsideSurname)" data-ng-pattern="/^[a-zа-я ,.'-]+$/i" name="bonusSurname" id="bonusSurname" value="" class="input-small" required />
+                        </span>
+                    </span>
+                </label>
+                <label class="row middle-xs">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-xsmall">{{ ::'Js.Bonus.FirstName' | translate }}</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <span class="form-field-input vertical-interval-xsmall">
+                            <input type="text" data-ng-model="bonusReg.name" data-ng-model-options="{ debounce: 600 }" data-ng-init="bonusReg.name = (bonusReg.name || bonusReg.outsideName)" data-ng-pattern="/^[a-zа-я ,.'-]+$/i" name="bonusName" id="bonusName" value="" class="input-small" required />
+                        </span>
+                    </span>
+                </label>
+                <label class="row middle-xs" data-ng-if="bonusReg.IsShowPatronymic === true">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-xsmall">{{ ::'Js.Bonus.Patronymic' | translate }}</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <span class="form-field-input vertical-interval-xsmall">
+                            <input type="text" data-ng-model="bonusReg.patronymic"
+                                   data-ng-model-options="{ debounce: 600 }"
+                                   data-ng-init="bonusReg.patronymic = (bonusReg.patronymic || bonusReg.outsidePatronymic)"
+                                   data-ng-pattern="/^[a-zа-я ,.'-]+$/i"
+                                   name="bonusPatronymic"
+                                   id="bonusPatronymic" value="" class="input-small" required />
+                        </span>
+                    </span>
+                </label>
+                <div class="row middle-xs">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-xsmall">{{ ::'Js.Bonus.Sex' | translate }}</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <label class="bonus-form-label vertical-interval-xsmall">
+                            <input class="custom-input-native" value="0" data-ng-model="bonusReg.sex" type="radio" id="bonusMan" name="sex" data-ng-checked="true" checked="checked" />
+                            <span class="custom-input-radio"></span>
+                            <span class="custom-input-text">{{ ::'Js.Bonus.Male' | translate }}</span>
+                        </label>
+                        <label class="bonus-form-label vertical-interval-xsmall">
+                            <input class="custom-input-native" value="1" data-ng-model="bonusReg.sex" type="radio" id="bonusWoman" name="sex" />
+                            <span class="custom-input-radio"></span>
+                            <span class="custom-input-text">{{ ::'Js.Bonus.Female' | translate }}</span>
+                        </label>
+                    </span>
+                </div>
+                <label class="row middle-xs">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-xsmall">{{ ::'Js.Bonus.BirthDate' | translate }}</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <span class="form-field-input vertical-interval-xsmall">
+                            <span class="datetimepicker-wrap">
+                                <input type="text"
+                                       id="bonusBirthdayDatepicker"
+                                       name="bonusBirthday"
+                                       value=""
+                                       class="input-small"
+                                       required
+                                       data-datetimepicker-trigger
+                                       data-ng-model="bonusReg.birthday"
+                                       data-ui-mask="99.99.9999"
+                                       data-format-date="dd.MM.yyyy"
+                                       model-view-value="true" />
+                                <div data-datetimepicker-popup data-datetimepicker-popup-trigger="bonusBirthdayDatepicker" class="datetimepicker-popup ng-hide">
+                                    <datetimepicker data-ng-model="bonusReg.birthday" data-datetimepicker-config="{ startView:'year', minView:'day' }" />
+                                </div>
+                            </span>
+                        </span>
+                    </span>
+                </label>>-->
+                <label class="row middle-xs">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-xsmall">{{ ::'Js.Bonus.Phone' | translate }}</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <span class="form-field-input vertical-interval-xsmall">
+                            <input type="tel" data-ng-model="bonusReg.phone" data-ng-init="bonusReg.phone = (bonusReg.phone || bonusReg.outsidePhone)" name="bonusPhone" id="bonusPhone" value="" class="input-small" data-ui-mask="{{::'Js.Bonus.PhoneMask' | translate }}" data-ui-mask-placeholder="" data-model-view-value="true" required />                            
+                        </span>
+                    </span>
+                </label>
+				<label data-ng-if="bonusReg.isShowUserAgreementText">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        <input type="checkbox" data-ng-model="bonusReg.agreement" name="bonusRegAgreement" id="bonusRegAgreement" value="" class="input-small"
+                               data-ng-init="bonusReg.agreement = false" />
+                        <span class="vertical-interval-middle" data-ng-bind-html="bonusReg.userAgreementText" />
+                    </span>
+                </label>
+                <div data-ng-if="bonusReg.error" data-ng-bind="bonusReg.error" class="bonus-error-text"></div>
+                <div class="vertical-interval-xsmall text-align-right">
+                    <a href=""
+                       class="btn btn-middle btn-submit"
+                       data-ng-class="{'icon-spinner-before icon-animate-spin-before': bonusReg.inProgress}"
+                       data-button-validation="bonusReg.validate()"
+                       data-button-validation-success="bonusReg.register()">{{ ::'Js.Bonus.GetBonusCard' | translate }}</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div data-ng-if="bonusReg.cardAdded">
+        {{ ::'Js.Bonus.BonusCardRegistrationSuccess' | translate }}        
+    </div>
+</div>

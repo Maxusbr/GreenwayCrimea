@@ -1,0 +1,32 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.Leads.LeadsViewModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "blue", href = "", title = Resource.AdminMobile_Leads })
+}
+<div data-ng-controller="LeadsController as leadsCtrl">
+    <div class="search-wrap">
+        <span class="select-custom icon-down-open-after-abs cs-t-4">
+            @Html.DropDownList("ddlLeads", Model.Statuses,
+            new
+            {
+                @class = "cs-bg-2",
+                data_ng_change = "leadsCtrl.FilterByStatus()",
+                data_ng_model = "leadsCtrl.status",
+                data_ng_init = "leadsCtrl.status=''"
+            })
+        </span>
+    </div>
+    <div id="content">
+        <div>
+            <div data-window-scroll="leadsCtrl.onWinScroll()">
+                <div class="orders" id="leads">
+                    <div data-leads></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

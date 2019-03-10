@@ -1,0 +1,26 @@
+﻿@using AdvantShop.Helpers
+@model AdvantShop.ViewModel.Home.TopPanelViewModel
+
+@if (Model.IsTemplatePreview)
+{
+    <div class="storeclosed-top cs-bg-1 cs-t-8">
+        <div class="container">
+            <div class="storeclosed-inner">
+                <div class="storeclosed-col">
+                    Предпросмотр шаблона "@Model.TemplatePreviewName"
+                </div>
+                <div class="storeclosed-col">
+                    @if (Model.HasTemplate)
+                {
+                        @Html.ActionLink("Применить шаблон", "ApplyTemplate", "Common", new { @class = "btn btn-small btn-confirm" })
+                    }
+                    else
+                    {
+                        <a href="@Model.BuyTemplateLink" target="_blank" class="btn btn-small btn-buy icon-bag-before">Купить шаблон</a>
+                    }
+                    @Html.ActionLink("Отменить предпросмотр", "CancelTemplatePreview", "Common", new { @class = "btn btn-small btn-action" })
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,340 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CatalogSettings.CatalogSettingsModel
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.Product")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.DisplayWeight")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.DisplayWeight, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.DisplayWeight" })
+            <span class="adv-checkbox-emul" data-e2e="DisplayWeight"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.DisplayWeight")">
+            <div class="help-content">
+                Отображать или нет графу "вес" в карточке товара.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.DisplayDimensions")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.DisplayDimensions, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.DisplayDimensions" })
+            <span class="adv-checkbox-emul" data-e2e="DisplayDimensions"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.DisplayDimensions")">
+            <div class="help-content">
+                Отображать или нет графу "габариты" в карточке товара.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowStockAvailability")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowStockAvailability, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowStockAvailability" })
+            <span class="adv-checkbox-emul" data-e2e="ShowStockAvailability"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowStockAvailability")">
+            <div class="help-content">
+                Отображать или нет остаток товара (количество) в графе "наличие" у товара. <br>
+                <br>
+                Например: <br>
+                При включённой опции - В наличии (100 шт.)<br>
+                При отключенной опции - В наличии
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.ProductPictures")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.CompressBigImage")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.CompressBigImage, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.CompressBigImage" })
+            <span class="adv-checkbox-emul" data-e2e="CompressBigImage"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.CompressBigImage")">
+            <div class="help-content">
+                Опция определяет, как поступать с большой фотографией товара.
+                <br><br>
+                Если опция <b>включена</b>, то фотография товара будет пережата в соответствии с настройками для (big) большой фотографии.
+                <br><br>
+                Если опция <b>выключена</b>, то фотография будет загружена "как есть".
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.EnableZoom")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableZoom, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.EnableZoom" })
+            <span class="adv-checkbox-emul" data-e2e="EnableZoom"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.EnableZoom")">
+            <div class="help-content">
+                Включает приближение фотографии товара при наведении курсора мыши.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.Reviews")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.AllowReviews")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label" data-e2e="allowReviews">
+            @Html.CheckBoxFor(x => x.AllowReviews, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.AllowReviews" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.AllowReviews")">
+            <div class="help-content">
+                Опция определяет, разрешить или нет добавление отзывов к товарам.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ModerateReviews")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label" data-e2e="moderateReviews">
+            @Html.CheckBoxFor(x => x.ModerateReviews, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ModerateReviews" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ModerateReviews")">
+            <div class="help-content">
+                Если опция <b>включена</b>, отзывы сначала попадут на модерирование, и будут отображены в карточке товара только после проверки администратором.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.DisplayReviewsImage")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label" data-e2e="displayReviewsImage">
+            @Html.CheckBoxFor(x => x.DisplayReviewsImage, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.DisplayReviewsImage" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.DisplayReviewsImage")">
+            <div class="help-content">
+                Опция определяет, показывать или нет изображения к отзывам в клиентской части
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.AllowReviewsImageUploading")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label" data-e2e="allowReviewsImageUploading">
+            @Html.CheckBoxFor(x => x.AllowReviewsImageUploading, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.AllowReviewsImageUploading" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.AllowReviewsImageUploading")">
+            <div class="help-content">
+                Опция определяет, разрешить или нет прикреплять изображения к отзывам из клиентской части.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ReviewImageSize")
+            <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Catalog.ReviewImageSize")">
+                <div class="help-content">
+                    Максимальные размеры изображений отзывов (в пикселях).
+                </div>
+            </help-trigger>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="m-b-xs">
+            @T("Admin.Settings.Catalog.ReviewImageWidth")
+        </div>
+        <div class="input-group m-b-sm">
+            @Html.TextBoxFor(x => x.ReviewImageWidth, new { @class = "form-control", ng_model = "settingsCatalog.ReviewImageWidth" })
+            <span class="paramUnit">px</span>&nbsp;
+        </div>
+        <div class="m-b-xs">
+            @T("Admin.Settings.Catalog.ReviewImageHeight")
+        </div>
+        <div class="input-group">
+            @Html.TextBoxFor(x => x.ReviewImageHeight, new { @class = "form-control", ng_model = "settingsCatalog.ReviewImageHeight" })
+            <span class="paramUnit">px</span>&nbsp;
+        </div>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.Shipping")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowShippingsMethodsInDetails")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.DropDownListFor(x => x.ShowShippingsMethodsInDetails, Model.ShowShippingsMethods, new { @class = "form-control", ng_model = "settingsCatalog.ShowShippingsMethodsInDetails" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Catalog.ShowShippingsMethodsInDetails")">
+            <div class="help-content">
+                Определяет тип отображения вариантов доставки в карточке товара.<br><br>
+                Также у каждого метода доставки есть опция отключения отображения в этом списке.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShippingsMethodsInDetailsCount")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.ShippingsMethodsInDetailsCount, new { @class = "form-control", ng_model = "settingsCatalog.ShippingsMethodsInDetailsCount" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Catalog.ShippingsMethodsInDetailsCount")">
+            <div class="help-content">
+                Определяет количество разрешённых методов доставки для отображения в карточки товара.<br><br>
+                Также у каждого метода доставки есть опция отключения отображения в этом списке.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.CrossUpSale")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.RelatedProductName")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.RelatedProductName, new { @class = "form-control", ng_model = "settingsCatalog.RelatedProductName" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title='@T("Admin.Settings.Catalog.RelatedProductName")'>
+            <div class="help-content">
+                К товару можно привязать 2 списка связанных с ним товаров. Вы можете задать любое название данным спискам.
+                <br>
+                <br>
+                Например: С этим товаром покупают.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.AlternativeProductName")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.AlternativeProductName, new { @class = "form-control", ng_model = "settingsCatalog.AlternativeProductName" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title='@T("Admin.Settings.Catalog.AlternativeProductName")'>
+            <div class="help-content">
+                К товару можно привязать 2 списка связанных с ним товаров. Вы можете задать любое название данным спискам.
+                <br>
+                <br>
+                Например: Похожие товары.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.RelatedProductSourceType")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.DropDownListFor(x => x.RelatedProductSourceType, Model.RelatedProductTypes, new { @class = "form-control", ng_model = "settingsCatalog.RelatedProductSourceType" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title='@T("Admin.Settings.Catalog.RelatedProductSourceType")'>
+            <div class="help-content">
+                Вы можете выбрать, откуда подгружать список товаров.
+                <br>
+                <br>
+                <b>Из списка назначенных товаров</b> - означает показывать товары из списка, который вы задаёте индивидуально для товара.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.RelatedProductsMaxCount")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.RelatedProductsMaxCount, new { @class = "form-control", ng_model = "settingsCatalog.RelatedProductsMaxCount" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title='@T("Admin.Settings.Catalog.RelatedProductsMaxCount")'>
+            <div class="help-content">
+                Максимальное кол-во товаров из назначенной категории
+            </div>
+        </help-trigger>
+    </div>
+</div>

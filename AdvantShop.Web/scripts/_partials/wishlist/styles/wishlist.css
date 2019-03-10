@@ -1,0 +1,14 @@
+.wishlist-control {
+  font-size: 0.75rem; }
+
+.wishlist-checkbox ~ .custom-input-text .wishlist-text-not-added {
+  display: inline; }
+
+.wishlist-checkbox ~ .custom-input-text .wishlist-text-added {
+  display: none; }
+
+.wishlist-checkbox:checked ~ .custom-input-text .wishlist-text-not-added {
+  display: none; }
+
+.wishlist-checkbox:checked ~ .custom-input-text .wishlist-text-added {
+  display: inline; }

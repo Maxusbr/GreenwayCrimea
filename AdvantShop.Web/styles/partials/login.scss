@@ -1,0 +1,24 @@
+﻿@import "../_settings.scss";
+@import "../functions/_util.scss";
+
+.login-block-auth,
+.login-block-registration {
+    padding-top: rem-calc(20px);
+    padding-bottom: rem-calc(20px);
+}
+
+.login-block-registration {
+    border-radius: $border-radius-base;
+    padding-left: rem-calc(40px);
+    padding-right: rem-calc(40px);
+}
+
+.login-block-registration-text {
+    margin-bottom: $margin-value-base;
+}
+
+.login-block-auth {
+    .form-field-name {
+        font-size: $font-size-medium;
+    }
+}

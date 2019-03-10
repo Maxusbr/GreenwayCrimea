@@ -1,0 +1,26 @@
+﻿<div class="subscribe">
+    <div class="stripes top">&nbsp;</div>
+    <div class="subscribe-space" ng-switch="subscribePopup.currentForm">
+        <div ng-switch-when="main">
+            <div class="subscribe-title" data-ng-bind-html="subscribePopup.modalTitle"></div>
+            <div class="subscribe-top" data-ng-bind-html="subscribePopup.modalTopText"></div>
+            <hr/>
+            <div>
+                <label>Ваш e-mail адрес</label>
+                <input type="email" placeholder="Введите ваш e-mail адрес" id="subscribePopupEmail" class="input-small" data-ng-model="subscribePopup.email" required />
+				<label data-ng-if="subscribePopup.isShowUserAgreementText">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        <input type="checkbox" data-ng-model="subscribePopup.agreement" name="subscribePopupAgreement" id="subscribePopupAgreement" value="" class="input-small"
+                               data-ng-init="subscribePopup.agreement = false" />
+                        <span class="vertical-interval-middle" data-ng-bind-html="subscribePopup.userAgreementText" />
+                    </span>
+                </label>
+                <a class="submit" data-ng-click="subscribePopup.subscribe()" data-ng-disabled="modalSubscribePopupForm.$invalid">Подписаться</a>
+            </div>
+            <div data-ng-bind-html="subscribePopup.modalBottomText"></div>
+        </div>
+
+        <div ng-switch-when="final" data-ng-bind-html="subscribePopup.modalFinalText" class="subscribe-final"></div>
+    </div>
+    <div class="stripes bottom">&nbsp;</div>
+</div>

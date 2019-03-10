@@ -1,0 +1,34 @@
+﻿<div>
+    <div class="form-group">
+        <div>
+            <div class="input-group">
+                <div class="input-group-btn" ng-switch="$ctrl.columns.length > 0">
+                    <div class="btn-group" ng-switch-when="true">
+                        <button data-e2e="gridFilterDropdownButton" data-toggle="dropdown" class="btn btn-success dropdown-toggle">Добавить фильтр <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="menuItem in $ctrl.checkVisibleMenuItem($ctrl.columns)">
+                                <a href="" data-e2e="gridFilterDropdownItem" data-e2e-filter-dropdown-name="{{menuItem.name}}" ng-bind="menuItem.filter.placeholder" ng-click="$ctrl.addFilterBlock(menuItem)"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group" ng-switch-when="false">
+                        <button class="btn btn-success dropdown-toggle" type="button">Поиск</button>
+                    </div>
+                </div>
+                <input data-e2e="gridFilterSearch" class="form-control" autofocus type="text" placeholder="{{::$ctrl.gridSearchPlaceholder}}" data-ng-model="$ctrl.gridSearchText" ng-keyup="$ctrl.onApplySearch([{name:'search', value: $ctrl.gridSearchText}])" />
+                <div class="input-group-addon ui-grid-custom-filter-total" ng-if="$ctrl.gridOptions.totalItems != null" ng-bind="'Найдено записей: '+ $ctrl.gridOptions.totalItems"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-wl-3" ng-repeat="blockItem in $ctrl.blocks">
+                <ui-grid-custom-filter-block data-e2e="gridFilterBlock"
+                                             data-e2e-grid-filter-block-name="{{blockItem.name}}"
+                                             class="ibox"
+                                             block-type="blockItem.filter.type"
+                                             item="blockItem"
+                                             on-apply="$ctrl.onApplyBlock(params, item)"
+                                             on-close="$ctrl.onClose(name, item)"></ui-grid-custom-filter-block>
+            </div>
+        </div>
+    </div>
+</div>

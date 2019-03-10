@@ -1,0 +1,7 @@
+﻿CustomerID[GUID];Password;FirstName;LastName;Phone;RegistrationDateTime[DATE];Email;CustomerGroupId;CustomerRole;BonusCardNumber;Rating;StandardPhone;Enabled;InnerId;City
+2C8FB106-8F07-499B-B06F-51B43076F3C1;Qpf0SxOVUjUkWySXOZ16kw==;FirstName1;LastName1;1;19.04.2017 15:37;test@mail.ru1;1;0;530801;0;1;true;12;Москва
+2C8FB106-8F07-499B-B06F-51B43076F3C2;Qpf0SxOVUjUkWySXOZ16kw==;FirstName2;LastName2;2;20.04.2017 15:37;test@mail.ru2;1;0;530802;0;2;true;8;Москва
+2C8FB106-8F07-499B-B06F-51B43076F3C3;Qpf0SxOVUjUkWySXOZ16kw==;FirstName3;LastName3;3;21.04.2017 15:37;test@mail.ru3;1;0;530803;0;3;true;9;Москва
+2C8FB106-8F07-499B-B06F-51B43076F3C4;Qpf0SxOVUjUkWySXOZ16kw==;FirstName4;LastName4;4;22.04.2017 15:37;test@mail.ru4;1;0;530804;0;4;true;10;Москва
+2C8FB106-8F07-499B-B06F-51B43076F3C5;Qpf0SxOVUjUkWySXOZ16kw==;FirstName5;LastName5;5;23.04.2017 15:37;test@mail.ru5;1;0;530805;0;5;true;11;Москва
+CFC2C33B-1E84-415E-8482-E98156341603;Qpf0SxOVUjUkWySXOZ16kw==;Admin;Ad;+7 495 800 200 00 ;23.04.2015 15:37;admin;1;100;NULL;10;NULL;true;15;NULL

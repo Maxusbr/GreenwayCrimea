@@ -1,0 +1,73 @@
+﻿@*@model AdvantShop.Web.Admin.Models.ExportCategories.ExportCategoriesModel*@
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="wrapper" ng-init="exportCategories.initProgress()">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="m-b-md">
+                <div class="sticky-page-name" sticky sticky-top="0">
+                    <div class="page-name-block sticky-page-name-inner">
+                        <div class="page-name-block-item-main">
+                            <h1 class="page-name-block-text sticky-page-name-text">
+                                @T("Admin.ExportCategories.CategoriesExport")
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <uib-progressbar max="exportCategories.progressTotal" value="exportCategories.progressValue"><span style="color:white; white-space:nowrap;">{{exportCategories.progressValue}} / {{exportCategories.progressTotal}}</span></uib-progressbar>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <div class="setting-label-wrap">
+                    Текущий процесс
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <label class="adv-checkbox-label">
+                    <a class="link-decoration-none" ng-href="{{exportCategories.progressCurrentProcess}}" ng-bind="exportCategories.progressCurrentProcessName"></a>
+                    @*<a class="link-invert" href="{{exportCategories.progressCurrentProcess}}">{{exportCategories.progressCurrentProcessName}}</a>*@
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="setting-label-wrap" ng-if="!exportCategories.IsRun">
+                    Данные успешно экспортированы.
+                </div>
+                <div class="setting-label-wrap" ng-if="exportCategories.IsRun">
+                    <a class="link-invert" href="" ng-click="exportCategories.interruptProcess()">Прервать выгрузку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" ng-if="!exportCategories.IsRun">
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <a href="{{exportCategories.FileName}}" class="btn btn-sm btn-default" target="_blank">@T("Скачать файл")</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <a class="link-invert" href="exportCategories">Вернуться к экспорту</a>
+            </div>
+        </div>
+    </div>
+</div>
+

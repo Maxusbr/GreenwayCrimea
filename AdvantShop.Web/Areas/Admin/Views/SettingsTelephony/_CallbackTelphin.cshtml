@@ -1,0 +1,28 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.IPTelephonySettingsModel
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="CallBackTelphinExtension" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.TelphinExtension")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.CallBackTelphinExtension, new { ng_model = "settingsTelephony.callBackTelphinExtension", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.TelphinExtension")">
+            @T("Admin.Telphin.CallBack.ExtensionNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="CallBackTelphinLocalNumber" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.TelphinLocalNumber")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.CallBackTelphinLocalNumber, new { ng_model = "settingsTelephony.callBackTelphinLocalNumber", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.TelphinLocalNumber")">
+            @T("Admin.Telphin.CallBack.LocalNumberNote")
+        </help-trigger>
+    </div>
+</div>

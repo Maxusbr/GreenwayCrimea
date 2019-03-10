@@ -1,0 +1,84 @@
+.tabs-headers {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+.tab-content, .mobile-tab-content {
+  display: none; }
+
+.tab-content-active, .mobile-tab-content-active {
+  display: block; }
+
+.tabs-header-item-link {
+  display: block;
+  line-height: 1; }
+
+.tabs-header-active {
+  /*.tabs-header-item-link {
+        text-decoration: none;
+        border-bottom-width: 0;
+
+        &:hover, &:active {
+            text-decoration: none;
+            border-bottom-width: 0;
+        }
+    }*/ }
+
+.tabs-horizontal {
+  /*.tabs-header-active {
+        border-color: #e2e3e4;
+    }*/ }
+  .tabs-horizontal .tabs-header-item-link {
+    font-size: 1.375rem; }
+  .tabs-horizontal .tabs-header-item {
+    padding: 0.9375rem 1.25rem;
+    border: 0.0625rem solid transparent;
+    border-radius: 0.3125rem;
+    float: left;
+    margin-right: 10px; }
+  .tabs-horizontal .tabs-content {
+    padding: 0.9375rem 1.25rem;
+    font-size: 0.875rem; }
+
+.tabs-vertical {
+  display: table;
+  width: 100%; }
+  .tabs-vertical .tabs-headers,
+  .tabs-vertical .tabs-content {
+    display: table-cell;
+    vertical-align: top; }
+  .tabs-vertical .tabs-headers {
+    width: 25%;
+    padding-right: 0.9375rem; }
+  .tabs-vertical .tabs-header-item-link {
+    font-size: 0.875rem;
+    padding: 0.625rem 0.9375rem; }
+  .tabs-vertical .tabs-header-item {
+    border-radius: 0.3125rem; }
+  .tabs-vertical .tabs-content {
+    padding: 0 0; }
+
+.mobile-details-tabs-header-item {
+  padding: 10px 20px;
+  display: block;
+  font-size: 21px;
+  border-top-width: 1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-style: solid;
+  position: relative;
+  cursor: pointer; }
+
+.mobile-details-tabs-arrow {
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 23px;
+  width: 12px;
+  position: absolute;
+  right: 20px; }
+
+.mobile-tab-content {
+  padding: 0.9375rem 1.25rem; }

@@ -1,0 +1,64 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.ShippingByWeightShippingAdminModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Цена за килограмм доставки</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.PricePerKg, new { @class = "form-control", ng_model = "shippingMethod.Params.PricePerKg", required = "required", validation_input_text = "Цена за килограмм доставки" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Цена за килограмм доставки">
+                Введите цену за килограмм доставки
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Наценка в базовой валюте</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Extracharge, new { @class = "form-control", ng_model = "shippingMethod.Params.Extracharge", required = "required", validation_input_text = "Наценка в базовой валюте" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Наценка в базовой валюте">
+                Введите наценку в базовой валюте
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Срок доставки
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DeliveryTime, new { @class = "form-control", ng_model = "shippingMethod.Params.DeliveryTime" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Срок доставки">
+                Срок доставки, как отрезок времени, в который данный метод доставки сможет доставить товар.<br><br>
+                Например: 1-2 дня.
+            </help-trigger>
+        </div>
+    </div>
+
+
+<div class="shipping-item-settings-header inline content-header m-b-md">
+    Значения параметров товара по умолчанию
+</div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Вес товара</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultWeight, new { ng_model = "shippingMethod.Params.DefaultWeight", @class = "form-control", required = "required", validation_input_text = "Вес товара" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Вес товара">
+                Вес товара примет указанное значение, если у товара данный параметр не был задан.<br /><br />
+                Значение указывается в кг, возможно указать дробное значение.<br /><br />
+                Например: 1 или 0.2 (кг.)
+            </help-trigger>
+        </div>
+    </div>
+

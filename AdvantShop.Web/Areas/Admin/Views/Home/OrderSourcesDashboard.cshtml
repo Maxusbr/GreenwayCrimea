@@ -1,0 +1,18 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Home.OrderSourcesDasboardViewModel
+
+<div class="ibox float-e-margins">
+    <div class="ibox-content sources-orders-block">
+        <h3 class="sources-orders">@T("Admin.Home.OrderSourcesDasboard.Sources")</h3>
+
+        @foreach (var source in Model.OrderSources)
+        {
+            <div>
+                <span data-e2e="source-id-@source.Id">@source.Name</span>
+                <small data-e2e="percent-source-id-@source.Id" class="pull-right source-order-percent">@(source.Percent)%</small>
+            </div>
+            <div class="progress progress-small">
+                <div style="width: @(source.Percent)%" class="progress-bar"></div>
+            </div>
+        }
+    </div>
+</div>

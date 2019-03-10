@@ -1,0 +1,219 @@
+﻿@using AdvantShop.Core.Services.Configuration.Settings
+@using AdvantShop.Core.Services.Orders
+@model AdvantShop.Web.Admin.Models.OrdersEdit.OrderModel
+@{
+    var order = Model.Order;
+    var isDraft = !Model.IsEditMode || Model.Order == null || Model.Order.IsDraft;
+    var customerId = Guid.Empty;
+    string orderStatusId = null;
+
+    if (order != null)
+    {
+        if (order.OrderCustomer != null)
+        {
+            customerId = order.OrderCustomer.CustomerID;
+        }
+
+        orderStatusId = order.OrderStatusId.ToString();
+    }
+    else
+    {
+        var status = Model.OrderStatuses.FirstOrDefault();
+        orderStatusId = status != null ? status.Value : null;
+    }
+}
+
+<form method="POST" action="@(!isDraft ? Url.Action("Edit") : Url.Action("Add"))" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+
+    <div ng-init="order.initOrder(@Model.OrderId, @Model.IsEditMode.ToLowerString(), @isDraft.ToLowerString(), '@customerId', '@Model.StandardPhone')">
+
+        <input name="IsEditMode" type="hidden" value="{{order.isEditMode}}" />
+        <input name="OrderId" type="hidden" value="{{order.orderId}}" />
+        <input name="Order.OrderId" type="hidden" value="{{order.orderId}}" />
+        <input name="Order.IsDraft" type="hidden" value="{{order.isDraft}}" />
+
+        <input name="Order.OrderCustomer.CustomerId" type="hidden" value="{{order.customerId}}" />
+    </div>
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text inline order-header-item order-header-item-name">
+                    @if (Model.IsEditMode)
+                    {
+                        <i class="fa fa-circle item m-l-sm" style="color: #@(order.OrderStatus != null ? order.OrderStatus.Color : "9ccc65")"></i>
+                        <span>@T(!isDraft ? "Admin.Orders.AddEdit.OrderTitle" : "Admin.Orders.AddEdit.OrderDraftTitle", order.Number)</span>
+                    }
+                    else
+                    {
+                        <span>@T("Admin.Orders.AddEdit.CreationOfNewOrder")</span>
+                    }
+                </h1>
+                @if (Model.IsEditMode)
+                {
+                    <div class="inline order-header-item order-header-item-select">
+                        @Html.DropDownListFor(x => x.Order.OrderStatusId, Model.OrderStatuses, new { @class = "orderstatus form-control", ng_model = "order.orderStatus", ng_change = "order.changeStatus()", ng_init = "order.orderStatus='" + orderStatusId + "'; order.orderStatusOld='" + orderStatusId + "'" })
+                    </div>
+                    <div class="inline order-header-item">
+                        <switcher-state checked="@(order.Payed ? "true" : "false")" text-off="@T("Admin.Orders.AddEdit.UnPaid")" text-on="@T("Admin.Orders.AddEdit.Paid")" name="IsPayed"></switcher-state>
+                    </div>
+                }
+                @if (Model.IsEditMode && order != null && Settings1C.Enabled)
+                {
+                    <div class="inline order-header-item order-header-item-single">
+                        <label class="adv-checkbox-label">
+                            @Html.CheckBoxFor(x => x.Order.UseIn1C, new { ng_model = "order.UseIn1C", ng_init = "order.UseIn1C=" + (Model.Order != null ? Model.Order.UseIn1C.ToLowerString() : "false"), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                            Выгружать заказ в 1С
+                        </label>
+                        @{
+                            var status1C = OrderStatus1CService.GetStatus1C(order.OrderID);
+                            if (status1C != null)
+                            {
+                                <div>Статус заказа в 1С: @status1C.Status1C</div>
+                            }
+                        }
+                    </div>
+                }
+            </div>
+            <div class="page-name-block-item-additional">
+                <div>
+                    @if (!isDraft)
+                    {
+                        @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, attributes: new[] { "ng-disabled=\"!form.modified\"", "disabled" })
+                    }
+                    else
+                    {
+                        @Html.Button(T("Admin.Orders.Index.AddOrder"), eButtonType.Save, attributes: new[] { "ng-disabled=\"!order.orderId\"", "disabled" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-9 col-wl-10">
+            <div class="row">
+                @if (Model.IsEditMode)
+                {
+                    <div class="col-xs-12">
+                        <div class="edit-text">
+                            <div class="edit-inner">
+                                <div>
+                                    @T("Admin.Orders.AddEdit.OrderDate"):
+                                    <div class="order-date">
+                                        <div class="dropdown">
+                                            <div class="dropdown-toggle" id="orderDate" role="button" data-toggle="dropdown">
+                                                <div class="input-group">
+                                                    <input type="text" id="Order_OrderDate" name="Order.OrderDate" class="form-control" ng-init="order.date='@order.OrderDate.ToString("dd.MM.yyyy HH:mm:ss")'" ng-model="order.date" data-date-time-input="DD.MM.YYYY HH:mm:ss" />
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <datetimepicker ng-model="order.date" data-datetimepicker-config="{ dropdownSelector: '#orderDate' }" />
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <a href="@Url.AbsoluteRouteUrl("PrintOrder", new {code = order.Code, showMap = "true"})" target="_blank" class="edit item link-decoration-none">@T("Admin.Orders.AddEdit.Print")</a>
+                                    <a href="@Url.Action("ExportOrder", "Analytics", new {orderId = Model.OrderId})" class="edit item link-decoration-none">@T("Admin.Orders.AddEdit.ExportExcel")</a>
+                                    <a href="" ng-click="order.deleteOrder()" class="link-danger item link-decoration-none">@T("Admin.Orders.AddEdit.DeleteOrder")</a>
+                                </div>
+                                @if (SettingsCheckout.ManagerConfirmed)
+                                {
+                                    <div>
+                                        <label class="adv-checkbox-label">
+                                            @Html.CheckBoxFor(x => x.Order.ManagerConfirmed, new { ng_model = "order.ManagerConfirmed", ng_init = "order.ManagerConfirmed=" + (Model.Order != null ? Model.Order.ManagerConfirmed.ToLowerString() : "false"), @class = "adv-checkbox-input" })
+                                            <span class="adv-checkbox-emul"></span>
+                                            @T("Admin.Orders.AddEdit.OrderIsConfirmedAllowPay")
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                @Html.RenderModules("admin_order_top", new { orderId = Model.OrderId })
+
+                <div class="col-xs-12">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            @Html.Partial("_OrderCustomer")
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            @Html.Partial("_OrderItems")
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.IsEditMode)
+            {
+                <div class="row">
+                    <div class="col-xs">
+                        <div class="ibox category-block">
+                            <uib-tabset active uid="orderTabs">
+                                <uib-tab index="1" heading="Обсуждение заказа" classes="ng-tab" removable="true">
+                                    <admin-comments obj-id="order.orderId" type="order" form-visible="true"></admin-comments>
+                                </uib-tab>
+
+                                <uib-tab index="2" heading="История изменений" classes="ng-tab" removable="true">
+                                    <order-status-history data-order-id="@Model.OrderId"></order-status-history>
+                                    <order-history data-order-id="@Model.OrderId"></order-history>
+                                </uib-tab>
+
+                                @if (Model.ShowCrm)
+                                {
+                                    <uib-tab index="3" heading="Задачи" classes="ng-tab" removable="true">
+                                        <tasks-grid obj-id="order.orderId" type="order"></tasks-grid>
+                                    </uib-tab>
+                                }
+
+                                @if (Model.ShowActivity)
+                                {
+                                    <uib-tab index="4" heading="Звонки" classes="ng-tab" removable="true"> 
+                                        <activity-calls data-customer-id="order.customerId" data-standard-phone="order.standardPhone"></activity-calls>
+                                    </uib-tab>
+                                    <uib-tab index="5" heading="Письма" classes="ng-tab" removable="true">
+                                        <activity-emails data-customer-id="order.customerId" data-email="order.email"></activity-emails>
+                                    </uib-tab>
+                                    <uib-tab index="6" heading="SMS" classes="ng-tab" removable="true">
+                                        <activity-smses data-customer-id="order.customerId" data-standard-phone="order.standardPhone"></activity-smses>
+                                    </uib-tab>
+                                }
+
+                                @if (Model.ShowVk && Model.VkUser != null)
+                                {
+                                    <uib-tab index="7" heading="Вконтакте" classes="ng-tab" removable="true">
+                                        <vk-messages data-customer-id="'@Model.VkUser.CustomerId'" data-user-id="@Model.VkUser.Id"></vk-messages>
+                                    </uib-tab>
+                                }
+                            </uib-tabset>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-xs-3 col-wl-2">
+            @Html.Partial("_OrderInfo", Model)
+            @if (Model.IsEditMode)
+            {
+                @Html.Action("ClientInfo", Model)
+
+                if (AdvantShop.Core.Services.Bonuses.BonusSystem.IsActive && (!AdvantShop.Saas.SaasDataService.IsSaasEnabled || AdvantShop.Saas.SaasDataService.CurrentSaasData.BonusSystem))
+                {
+                    @Html.Partial("_ClientBonusCard")
+                }
+            }
+        </div>
+    </div>
+</form>

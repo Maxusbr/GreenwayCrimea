@@ -1,0 +1,48 @@
+﻿@model AdvantShop.Web.Admin.Models.OrdersEdit.OrderModel
+
+<div class="ibox category-block block-additional-parameters">
+    <div class="ibox-content category-content block-additional-parameters-content p-r-lg border_none">
+        <h3 class="category-title">Бонусы</h3>
+        @if (Model.BonusCard != null)
+        {
+            <div class="block-additional-parameters-row">
+                <div>
+                    Номер бонусной карты
+                </div>
+                <div class="block-additional-parameters-value">
+                    <a data-e2e="numberBonusCart" target="_blank" href="@Url.Action("Edit", "Cards", new {id = Model.BonusCard.CardId})">@Model.BonusCard.CardNumber</a>
+                    @if (Model.BonusCard.Blocked)
+                    {
+                        <span class="link-danger">Карта заблокирована</span>
+                    }
+                </div>
+            </div>
+            <div class="block-additional-parameters-row">
+                <div data-e2e="countBonus">
+                    Баллы
+                </div>
+                <div class="block-additional-parameters-value" data-e2e="percentBonus">
+                    @Model.BonusCard.BonusesTotalAmount.ToInvatiant() (@Model.BonusCard.Grade.Name @Model.BonusCard.Grade.BonusPercent.ToInvatiant() %)
+                </div>
+            </div>
+        }
+        else if (Model.Customer != null)
+        {
+            <ui-modal-trigger data-controller="'ModalAddCardCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                              template-url="../areas/admin/content/src/_shared/modal/bonus/cards/addcard.html"
+                              data-resolve="{params:{customerId:'@Model.Customer.Id', firstName:'@Model.Customer.FirstName', lastName:'@Model.Customer.LastName', noredirect:true}}"
+                              data-on-close="order.updateOrderBonusCard()">
+                <a data-e2e="AddCard" class="btn btn-sm btn-success btn--margin-left" href="">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Cards.Index.AddCard")
+                </a>
+            </ui-modal-trigger>
+        }
+        else
+        {
+            <div>
+                Создайте пользователя, чтобы начислить баллы
+            </div>
+        }
+    </div>
+</div>

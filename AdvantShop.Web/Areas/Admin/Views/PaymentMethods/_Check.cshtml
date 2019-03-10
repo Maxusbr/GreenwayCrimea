@@ -1,0 +1,89 @@
+﻿@using AdvantShop.FilePath
+@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.CheckPaymentModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Название компании</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CompanyName, new { ng_model = "paymentMethod.Parameters.CompanyName", @class = "form-control", required = "required", validation_input_text = "Название компании" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Номер телефона</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Phone, new { ng_model = "paymentMethod.Parameters.Phone", @class = "form-control", required = "required", validation_input_text = "Номер телефона" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Страна</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Country, new { ng_model = "paymentMethod.Parameters.Country", @class = "form-control", required = "required", validation_input_text = "Страна" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Штат/Область</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.State, new { ng_model = "paymentMethod.Parameters.State", @class = "form-control", required = "required", validation_input_text = "Штат/Область" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Город</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.City, new { ng_model = "paymentMethod.Parameters.City", @class = "form-control", required = "required", validation_input_text = "Город" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Адрес</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Address, new { ng_model = "paymentMethod.Parameters.Address", @class = "form-control", required = "required", validation_input_text = "Адрес" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Факс
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Fax, new {ng_model = "paymentMethod.Parameters.Fax", @class = "form-control", required = "required", validation_input_text = "Факс" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Телефон в числовом представлении</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.IntPhone, new {ng_model = "paymentMethod.Parameters.BIK", @class = "form-control", @type = "number", required = "required", validation_input_text = "Телефон в числовом представлении" })
+        </div>
+    </div>

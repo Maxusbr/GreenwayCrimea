@@ -1,0 +1,6 @@
+﻿<div class="products-view-video-wrap" data-ng-repeat="video in ::videos.videos track by $index">
+    <div class="products-view-video-item">
+        <div class="video-embed" data-ng-bind-html="video.PlayerCode"></div>
+        <div class="video-description" data-ng-bind="::video.Description"></div>
+    </div>
+</div>

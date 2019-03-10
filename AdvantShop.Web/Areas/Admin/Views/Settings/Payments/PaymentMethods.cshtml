@@ -1,0 +1,40 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.PaymentMethodsSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+<div class="sticky-page-name m-n" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner header-hidden">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                <span class="float-header-page" ng-bind="settings.floatHeader"></span>
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+
+        </div>
+    </div>
+</div>
+
+    <div class="ibox">
+        <uib-tabset active uid="payments" on-select-batch="settings.floatHeader = tab.heading;">
+            <uib-tab index="1" heading="@T("Admin.Settings.PaymentMethods")" classes="ng-tab">
+                <a href="@Url.Action("Academy", "Service", new { id = 39 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline m-b-sm">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    Видеоурок о Способах оплаты
+                </a>
+                <payment-methods-list></payment-methods-list>
+
+            </uib-tab>
+            <div class="js-not-tabs">
+                <ui-modal-trigger data-controller="'ModalAddPaymentMethodCtrl'" controller-as="ctrl"
+                                    template-url="../areas/admin/content/src/paymentMethods/modal/addPaymentMethod/addPaymentMethod.html"
+                                    data-on-close="settings.paymentMethodsList.fetch()">
+                    <button data-e2e="PaymentAdd" class="btn btn-sm btn-success" type="button">
+                        <span class="fa fa-plus"></span> @T("Добавить способ оплаты")
+                    </button>
+                </ui-modal-trigger>
+            </div>
+        </uib-tabset>
+    </div>
+

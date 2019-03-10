@@ -1,0 +1,27 @@
+﻿<div class="js-autocompleter-sub autocompleter-sub cs-bg-9" 
+     data-ng-show="autocompleterList.parentScope.isVisibleAutocomplete" 
+     data-ng-style="{'left' : autocompleterList.parentScope.listPositional.left, 'top' : autocompleterList.parentScope.listPositional.top }"
+     data-ng-mouseenter="autocompleterList.mouseenter()"
+     data-ng-mouseleave="autocompleterList.mouseleave()">
+    <div class="autocompleter-sub-inner" data-window-click="autocompleterList.parentScope.clickOut(event)">
+        <div class="autocompleter-list js-autocompleter-list" data-ng-style="{'max-height': autocompleterList.parentScope.maxHeightList, 'min-height': autocompleterList.parentScope.minHeightList}">
+            <div data-ng-switch="autocompleterList.parentScope.viewMode">
+                <div data-ng-switch-when="default">
+                    <div data-ng-repeat="item in autocompleterList.parentScope.result track by $index">
+                        <div data-autocompleter-item data-item="item" data-index="$index"></div>
+                    </div>
+                </div>
+                <div data-ng-switch-when="additional">
+                    <div data-ng-include="autocompleterList.parentScope.templatePath"></div>
+                </div>
+            </div>
+        </div>
+        <a href="" class="autocompleter-cross" data-ng-click="autocompleterList.parentScope.crossClick($event)"></a>
+    </div>
+    <div class="autocompleter-list-item autocompleter-list-item-footer" data-ng-if="autocompleterList.parentScope.emptyResult === true && autocompleterList.parentScope.showEmptyResultMessage === true" >
+        <div>{{ ::'Js.Autocompleter.NothingFind' | translate }}</div>
+    </div>
+    <div class="autocompleter-list-item autocompleter-list-item-footer" data-ng-if="autocompleterList.parentScope.linkAll != null && autocompleterList.parentScope.emptyResult === false">
+        <a class="autocompleter-list-link-all" data-ng-href="{{autocompleterList.parentScope.linkAll + '?q=' + autocompleterList.parentScope.model.$viewValue}}">{{ ::'Js.Autocompleter.ShowAllResults' | translate }}</a>
+    </div>
+</div>

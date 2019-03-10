@@ -1,0 +1,15 @@
+﻿<div class="shipping-control-select">
+    <span class="select-custom cs-t-4 icon-down-open-after-abs">
+        <select class="cs-bg-2"
+                data-ng-options="point.Address for point in shippingTemplate.shipping.ShippingPoints track by point.Id"
+                data-ng-model="shippingTemplate.shipping.SelectedPoint"
+                data-ng-init="shippingTemplate.dirty = false"
+                data-ng-click="shippingTemplate.dirty = true"
+                data-ng-change="shippingTemplate.dirty === true ? shippingTemplate.changePrepare($event, shippingTemplate.shipping.SelectedPoint) : null"></select>
+    </span>
+    <div class="shipping-item-additional-description">
+        <div data-ng-bind="shippingTemplate.shipping.SelectedPoint.Description"></div>
+        <div data-ng-bind="shippingTemplate.shipping.SelectedPoint.Tel"></div>
+        <div data-ng-bind="shippingTemplate.shipping.SelectedPoint.Scheldule"></div>
+    </div>
+</div>

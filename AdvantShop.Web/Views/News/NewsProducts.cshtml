@@ -1,0 +1,23 @@
+﻿@model AdvantShop.ViewModel.News.NewsProductsViewModel
+           
+@if (Model.HasItems)
+{
+    <div class="block">
+        <div class="block-head">
+            <div class="h3">@T("News.NewsProducts.Products")</div>
+        </div>
+        <div class="block-content">
+            <div class="products-view products-view-tile">
+                <div class="product-view-carousel-list product-view-carousel-list-vertical"
+                     data-carousel
+                     data-carousel-class="product-view-carousel"
+                     data-is-vertical="true"
+                     data-visible-max="3"
+                     data-stretch="false"
+                     data-nav-position="outside">
+                    @Html.Partial("_ProductView", Model.Products)
+                </div>
+            </div>
+        </div>
+    </div>
+}

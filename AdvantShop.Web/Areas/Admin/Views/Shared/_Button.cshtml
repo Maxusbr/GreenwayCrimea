@@ -1,0 +1,23 @@
+﻿@model ButtonModel
+
+
+@if (Model.Type == eButtonType.Save)
+{
+    <button class="btn btn-@Model.SizeCssClass btn-@Model.ColorType.ToString().ToLower()" data-e2e="btnSave@(Model.Name)" type="submit" @(Model.Validation ? "data-button-validation" : "") @Html.Raw(Model.AttibutesString)>
+        <span class="fa fa-check"></span>
+        @Model.Text
+    </button>
+}
+else if (Model.Type == eButtonType.Add)
+{
+    <a class="btn btn-@Model.SizeCssClass btn-@Model.ColorType.ToString().ToLower()" data-e2e="btnAdd@(Model.Name)" href="@Model.Link" @(Model.Validation ? "data-button-validation" : "") @Html.Raw(Model.AttibutesString)>
+        <span class="fa fa-plus"></span>
+        @Model.Text
+    </a>
+}
+else
+{
+    <a class="btn btn-@Model.SizeCssClass.ToString().ToLower() btn-@Model.ColorType.ToString().ToLower()" data-e2e="btn@(Model.Name)" href="@Model.Link" @(Model.Validation ? "data-button-validation" : "") @Html.Raw(Model.AttibutesString)>
+        @Model.Text
+    </a>
+}

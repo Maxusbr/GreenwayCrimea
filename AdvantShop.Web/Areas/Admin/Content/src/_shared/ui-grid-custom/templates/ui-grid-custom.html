@@ -1,0 +1,141 @@
+﻿<div bs-modifiable="false">
+    <ui-grid-custom-filter ng-if="$ctrl.gridFilterEnabled === true"
+                           grid-params="$ctrl._params"
+                           grid-column-defs="$ctrl.gridOptions.columnDefs"
+                           grid-search-text="$ctrl.gridSearchText"
+                           grid-search-placeholder="$ctrl.gridSearchPlaceholder"
+                           grid-options="$ctrl.gridOptions"
+                           on-init="$ctrl.filterInit(filter)"
+                           on-change="$ctrl.filterApply(params, item)"
+                           on-remove="$ctrl.filterRemove(name, item)"></ui-grid-custom-filter>
+
+    
+
+    <div ng-switch="$ctrl.firstLoading">
+        <div ng-switch-when="true">
+            <i class="fa fa-spinner fa-spin fa-fw fa-2x"></i> <span>Загрузка данных ...</span>
+        </div>
+        <div ng-switch-when="false">
+            <div class="ui-grid-custom-wrapper" ng-class="{'ui-grid-custom-selection-wrap': $ctrl.selectionCustom.storageSelectedRows.length > 0, 'ui-grid-custom-processing' : $ctrl.isProcessing}">
+                <div ui-grid="$ctrl.gridOptions" ui-grid-selection ui-grid-pagination ui-grid-auto-resize ui-grid-save-state ui-grid-custom-edit ng-style="$ctrl.getTableHeight()">
+                    <div class="ui-grid-empty-text" ng-if="!$ctrl.gridOptions.data.length && ($ctrl.error == null || $ctrl.error.length === 0)" ng-bind="$ctrl.gridEmptyText"></div>
+                    <div class="ui-grid-error-text" ng-if="$ctrl.error != null && $ctrl.error.length > 0" ng-bind="$ctrl.error"></div>
+                </div>
+                <div ng-transclude="footer"></div>
+            </div>
+            <ui-grid-custom-pagination ng-if="$ctrl.gridOptions.data.length > 0 && $ctrl.gridPaginationEnabled === true"
+                                       grid-total-items="$ctrl.gridOptions.totalItems"
+                                       grid-pagination-page-size="$ctrl.gridOptions.paginationPageSize"
+                                       grid-pagination-page-sizes="$ctrl.gridOptions.paginationPageSizes"
+                                       grid-pagination-current-page="$ctrl.gridOptions.paginationCurrentPage"
+                                       on-change="$ctrl.paginationChange(paginationCurrentPage, paginationPageSize, paginationPageSizes)">
+                <a href="" ng-click="$ctrl.export()" download ng-if="$ctrl.gridShowExport"> Выгрузить в CSV</a>
+            </ui-grid-custom-pagination>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="ui-grid/uiGridViewport">
+        <div role="rowgroup"
+             class="ui-grid-viewport"
+             ng-style="colContainer.getViewportStyle()">
+            <!-- tbody -->
+            <div class="ui-grid-canvas">
+                <div data-e2e="gridRow"
+                     data-e2e-row-index="{{rowRenderIndex}}"
+                     class="ui-grid-row-wrap {{grid.appScope.$ctrl.gridOptions.uiGridCustom.rowClasses(row)}}"
+                     ng-click="grid.appScope.$ctrl.clickRow($event, row, grid.appScope.$ctrl.gridOptions.uiGridCustom.rowClick, grid.appScope.$ctrl.gridOptions.uiGridCustom.rowUrl)"
+                     ng-repeat="(rowRenderIndex, row) in rowContainer.renderedRows track by $index"
+                     ng-style="Viewport.rowStyle(rowRenderIndex)"
+                     ng-class="{'ui-grid-custom-pointer': grid.appScope.$ctrl.gridOptions.uiGridCustom.rowClick != null || grid.appScope.$ctrl.gridOptions.uiGridCustom.rowUrl != null}">
+                    <div class="ui-grid-row ui-grid-custom-group-header"
+                         ng-if="row.entity[grid.appScope.$ctrl.gridOptions.uiGridCustom.groupByField] != null && row.entity[grid.appScope.$ctrl.gridOptions.uiGridCustom.groupByField] !== (rowContainer.renderedRows[$index-1] != null ? rowContainer.renderedRows[$index-1].entity[grid.appScope.$ctrl.gridOptions.uiGridCustom.groupByField] : null)">
+                        <div class="ui-grid-custom-group-header-text" ng-bind="row.entity[grid.appScope.$ctrl.gridOptions.uiGridCustom.groupByField]"></div>
+                    </div>
+                    <ui-grid-custom-row class="ui-grid-custom-row">
+                        <div class="ui-grid-row"
+                             role="row"
+                             ui-grid-row="row"
+                             row-render-index="rowRenderIndex"
+                             ng-mouseenter="grid.appScope.$ctrl.mouseenterRow($event, row)"
+                             ng-mouseleave="grid.appScope.$ctrl.mouseleaveRow($event, row)">
+                        </div>
+                    </ui-grid-custom-row>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="ui-grid/ui-grid-header">
+        <div role="rowgroup"
+             class="ui-grid-header">
+            <!-- theader -->
+            <div class="ui-grid-top-panel">
+                <div class="ui-grid-header-viewport">
+                    <div class="ui-grid-header-canvas">
+                        <div class="ui-grid-header-cell-wrapper"
+                             ng-style="colContainer.headerCellWrapperStyle()">
+                            <div role="row"
+                                 class="ui-grid-header-cell-row">
+                                <div class="ui-grid-header-cell ui-grid-clearfix"
+                                     ng-class="{'ui-grid-custom-edit-enabled': col.colDef.enableCellEdit }"
+                                     data-e2e="gridHeaderCell"
+                                     data-e2e-col-index="{{col.isPinnedLeft() ? -1: $index}}"
+                                     data-e2e-grid-cell="{{grid.appScope.$ctrl.gridUniqueId + '[-1][\'' + col.colDef.name + '\']' }}"
+                                     ng-repeat="col in colContainer.renderedColumns track by col.uid"
+                                     ui-grid-header-cell
+                                     col="col"
+                                     render-index="$index">
+                                </div>
+                                <!--grid.appScope.$ctrl.gridApi.selection.getSelectedCount() > 0-->
+                                <ui-grid-custom-selection ng-if="grid.appScope.$ctrl.gridSelectionEnabled && ((grid.hasLeftContainer() && colContainer.getMargin('left') > 0) || !grid.hasLeftContainer())"
+                                                          ng-show="grid.appScope.$ctrl.selectionCustom.storageSelectedRows.length > 0"
+                                                          class="ui-grid-custom-selection-in-header"
+                                                          grid="grid.appScope.$ctrl"
+                                                          grid-menu-items="grid.appScope.$ctrl.gridOptions.uiGridCustom.selectionOptions"
+                                                          grid-api="grid.appScope.$ctrl.gridApi"
+                                                          grid-options="grid.appScope.$ctrl.gridOptions"
+                                                          grid-params="grid.appScope.$ctrl._params"
+                                                          grid-selection-on-init="grid.appScope.$ctrl.selectionOnInit(selectionCustom)"
+                                                          grid-selection-on-change="grid.appScope.$ctrl.selectionOnChange(rows)"
+                                                          grid-on-request-before="grid.appScope.$ctrl.selectionOnRequestBefore()"
+                                                          grid-on-action="grid.appScope.$ctrl.selectionUpdate(response)"></ui-grid-custom-selection>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="ui-grid/ui-grid-row">
+        <div data-e2e="gridCell"
+             data-e2e-col-index="{{col.isPinnedLeft() ? -1: colRenderIndex}}"
+             data-e2e-grid-cell="{{grid.appScope.$ctrl.gridUniqueId + '['+ rowRenderIndex + '][\'' + col.colDef.name + '\']' }}"
+             ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
+             ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'"
+             class="ui-grid-cell ui-grid-cell-table"
+             ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader, 'ui-grid-custom-edit-enabled': col.colDef.enableCellEdit }"
+             role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
+             ui-grid-cell>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="ui-grid/selectionSelectAllButtons">
+        <div class="ui-grid-selection-row-header-buttons ui-grid-custom-pinned-left">
+            <div class="adv-checkbox-label" data-e2e="gridHeaderCheckboxWrapSelectAll">
+                <input class="adv-checkbox-input" type="checkbox" ng-model="grid.selection.selectAll" data-e2e="gridHeaderCheckboxSelectAll" />
+                <span class="adv-checkbox-emul" ng-click="headerButtonClick($event)"></span>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="ui-grid/selectionRowHeaderButtons">
+        <div class="ui-grid-selection-row-header-buttons js-grid-not-clicked ui-grid-custom-pinned-left ui-grid-custom-checkbox" ng-click="selectButtonClick(row, $event)">
+            <span class="adv-checkbox-label" data-e2e="gridCheckboxWrapSelect">
+                <input class="adv-checkbox-input" type="checkbox" ng-model="row.isSelected" data-e2e="gridCheckboxSelect" />
+                <span class="adv-checkbox-emul"></span>
+            </span>
+        </div>
+    </script>
+</div>

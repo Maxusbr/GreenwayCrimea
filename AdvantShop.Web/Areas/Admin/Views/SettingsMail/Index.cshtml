@@ -1,0 +1,45 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.MailSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "SettingsMail", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="mailSettings.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </div>
+    </div>
+
+    <uib-tabset uid="notifyTab" on-select-batch="mailSettings.floatHeader = tab.heading;">
+        <uib-tab index="'notifications'" heading="@T("Admin.Settings.NotifyEMails.Notifications")" classes="ng-tab">
+            @Html.Partial("_Notifications", Model)
+        </uib-tab>
+        <uib-tab index="'emailsettings'" classes="ng-tab" heading="@T("Admin.Settings.NotifyEMails.EmailSettings")">
+            <uib-tab-heading ng-class="{'tab-warning' : emailSettingsForm.$invalid}">
+                @T("Admin.Settings.NotifyEMails.EmailSettings")
+                <span ng-if="emailSettingsForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!emailSettingsForm.$invalid && emailSettingsForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="emailSettingsForm" validation-tab-index="'emailsettings'">
+                @Html.Partial("_EmailSettings", Model)
+            </ng-form>
+        </uib-tab>
+        <uib-tab index="'formats'" heading="@T("Admin.Settings.NotifyEMails.MailFormats")" classes="ng-tab" removable="true">
+            @Html.Partial("_MailFormats", Model)
+        </uib-tab>
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success btn--margin-left" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" data-e2e="BtnSaveMailSettings" />
+        </div>
+    </uib-tabset>
+}
+
+

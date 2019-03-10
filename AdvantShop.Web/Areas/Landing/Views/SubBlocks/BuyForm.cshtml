@@ -1,0 +1,69 @@
+﻿@model SubBlockModel
+
+<div class="lp-form" novalidate @Model.SubBlock.RenderInplaceNgStyle("subblockInplaceBuyForm") style="@Model.SubBlock.TryGetStyleString()">
+    <div class="lp-form-header">
+        @Html.SubBlock(Model.SubBlock, "buyFormTitleText")
+    </div>
+    <div class="lp-form-caption">
+        @Html.SubBlock(Model.SubBlock, "buyFormSubTitleText")
+    </div>
+    <div @Model.SubBlock.RenderInplaceNgStyle("subblockInplaceBuyForm")
+         style="@Model.SubBlock.TryGetStyleString()"
+         data-buy-one-click-form="true"
+         data-page="@AdvantShop.Orders.BuyInOneclickPage.LandingPage"
+         data-order-type="@AdvantShop.Core.Services.Orders.OrderType.LandingPage"
+         data-offer-id="product.offerSelected.OfferId"
+         @*data-product-id="@product.ProductId"*@
+         data-amount="product.offerSelected.AmountBuy"
+         data-attributes-xml="product.customOptions.xml"
+         data-fields-options="::{IsShowBuyInOneClickComment: false}"
+         data-buy-one-click-valid="product.validate()"
+         data-auto-reset="::3000"></div>
+</div>
+
+<script type="text/ng-template" id="/scripts/_partials/buy-one-click/templates/form.html">
+    <form name="buyoneclickForm" novalidate="novalidate">
+        <div class="lp-form-inputs">
+            <div data-ng-init="buyOneClickForm.form = buyoneclickForm">
+                <div data-ng-switch="buyOneClickForm.success">
+                    <div data-ng-switch-when="false" class="lp-form-default">
+                        @if (Model.SubBlock.TryGetSettingsValue("show_name") == true)
+                        {
+                            <div class="lp-form-block-field">
+                                <input class="lp-form-field" type="text" placeholder="Имя" required data-ng-model="app.customer.name" />
+                            </div>
+                        }
+                        @if (Model.SubBlock.TryGetSettingsValue("show_phone") == true)
+                        {
+                            <div class="lp-form-block-field">
+                                <input class="lp-form-field" type="tel" placeholder="Телефон" required data-ng-model="app.customer.phone" />
+                            </div>
+                        }
+                        @if (Model.SubBlock.TryGetSettingsValue("show_email") == true)
+                        {
+                            <div class="lp-form-block-field">
+                                <input class="lp-form-field" type="email" placeholder="Email" required data-ng-model="app.customer.email" />
+                            </div>
+                        }
+                        @if (Model.SubBlock.TryGetSettingsValue("show_comment") == true)
+                        {
+                            <div class="lp-form-block-field">
+                                <textarea class="lp-form-field" placeholder="Комментарий" data-ng-model="app.customer.comment"></textarea>
+                            </div>
+                        }
+                    </div>
+                    <div data-ng-switch-when="true" class="lp-form-sucess">
+                        <div class="buy-one-click-final-text">
+                            @Html.SubBlock(Model.SubBlock, "buyFormFinalText")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lp-form-submit-block">
+            <div class="btn-wrap">
+                @Html.SubBlock(Model.SubBlock, "buyFormButton")
+            </div>
+        </div>
+    </form>
+</script>

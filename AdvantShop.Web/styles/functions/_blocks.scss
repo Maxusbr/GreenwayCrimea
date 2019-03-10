@@ -1,0 +1,38 @@
+﻿@import "../_settings.scss", "_util.scss", "_prefixer.scss";
+
+$block-margin: 0 0 $margin-value-alt 0 !default;
+$block-head-margin: 0 0 rem-calc(20px) 0 !default;
+$block-content-margin: 0 !default;
+
+$block-alt-margin: 0 0 $margin-value-alt 0 !default;
+$block-alt-head-margin: 0 0 rem-calc(15px) 0 !default;
+$block-alt-content-margin: 0 !default;
+
+@mixin blocks-init() {
+    .block {
+        margin: $block-margin;
+    }
+
+    .block-alt{
+        margin: $block-alt-margin;
+        padding: rem-calc(21px) rem-calc(25px);
+        @include box-sizing(border-box);
+        border-radius: $border-radius-base;
+    }
+
+    .block-head {
+        margin: $block-head-margin;
+    }
+
+    .block-alt-head{
+        margin: $block-alt-head-margin;
+    }
+
+    .block-content {
+        margin: $block-content-margin;
+    }
+
+    .block-alt-content{
+        margin: $block-alt-content-margin;
+    }
+}

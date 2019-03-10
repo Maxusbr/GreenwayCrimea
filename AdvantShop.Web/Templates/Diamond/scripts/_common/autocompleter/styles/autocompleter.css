@@ -1,0 +1,22 @@
+﻿.autocompleter-sub {
+    margin-top: 15px;
+    text-align: left;
+    border-radius: 0;
+}
+
+.autocompleter-sub:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 40px;
+    display: inline-block;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    z-index: 50;
+}
+
+.autocompleter-subб
+.autocompleter-list-item:last-child {
+    border-radius: 0;
+}

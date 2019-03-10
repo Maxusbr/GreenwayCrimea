@@ -1,0 +1,1436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59344E96-1527-4FA3-B7C9-48516A82CC4F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvantShop.Core</RootNamespace>
+    <AssemblyName>AdvantShop.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin, Version=5.14.5506.26196, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxMin.5.14.5506.26202\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.9\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="AuthorizeNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AuthorizeNet.1.8.3\lib\AuthorizeNet.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DiffLib">
+      <HintPath>..\packages\DiffLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Analytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=9e229226d7996434, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Analytics.2.2.0.0\lib\Google.GData.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Client, Version=2.2.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Client.2.2.0.0\lib\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0b4c5df2ebf20876, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Extensions.2.2.0.0\lib\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlDiff, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HtmlDiff.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Analyzers, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Analyzers.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Core, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.FastVectorHighlighter, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.FastVectorHighlighter.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Highlighter, Version=2.3.2.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Highlighter.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Memory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Queries, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Queries.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Regex, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Regex.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.SimpleFacetedSearch, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.SimpleFacetedSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Snowball, Version=2.0.0.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Snowball.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.SpellChecker, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=1.16.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.1.16.1\lib\net45\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit, Version=1.16.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.1.16.1\lib\net45\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Permission">
+      <HintPath>..\packages\Permission.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=2.5.0.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.5.0\lib\net40\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.9.3.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.9.3\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RollbarSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RollbarSharp.1.0.0.0\lib\net45\RollbarSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Framework, Version=0.9.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SquishIt.0.9.9\lib\SquishIt.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VkNet, Version=1.21.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VkNet.1.29.1\lib\net40\VkNet.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YUICompressor.NET.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Attributes\ColorAttribute.cs" />
+    <Compile Include="Common\Attributes\LocalizeAttribute.cs" />
+    <Compile Include="Common\Attributes\CompareAttribute.cs" />
+    <Compile Include="Common\Attributes\ResourceKeyAttribute.cs" />
+    <Compile Include="Common\Captcha\Captcha.cs" />
+    <Compile Include="Common\Captcha\CaptchaService.cs" />
+    <Compile Include="Common\Extensions\Decimals.cs" />
+    <Compile Include="Common\Extensions\Booleans.cs" />
+    <Compile Include="Common\Extensions\TimeSpan.cs" />
+    <Compile Include="Common\Extensions\IDentable.cs" />
+    <Compile Include="Common\Extensions\LocalizedEnum.cs" />
+    <Compile Include="Common\Extensions\NumericExtensions.cs" />
+    <Compile Include="Common\Extensions\PropertyHelper.cs" />
+    <Compile Include="Common\Extensions\ReflectionExt.cs" />
+    <Compile Include="Common\Extensions\TypeHelper.cs" />
+    <Compile Include="Common\RetryTool.cs" />
+    <Compile Include="Controls\ExportFeedControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Data\SQL\ConnectionFactory.cs" />
+    <Compile Include="Data\SQL\Timing.cs" />
+    <Compile Include="Models\Pager.cs" />
+    <Compile Include="Modules\Interfaces\IAdminModuleSettings.cs" />
+    <Compile Include="Modules\Interfaces\ILeadChanged.cs" />
+    <Compile Include="Modules\Interfaces\IModuleBundles.cs" />
+    <Compile Include="Modules\Interfaces\IAdminBundles.cs" />
+    <Compile Include="Modules\Interfaces\IAdminSearch.cs" />
+    <Compile Include="Modules\Interfaces\IContactChange.cs" />
+    <Compile Include="Modules\Interfaces\ICSVExportImport.cs" />
+    <Compile Include="Modules\Interfaces\CustomerAction.cs" />
+    <Compile Include="Modules\Interfaces\ICustomerAction.cs" />
+    <Compile Include="Modules\Interfaces\ICustomerChange.cs" />
+    <Compile Include="Modules\Interfaces\IInplaceEditor.cs" />
+    <Compile Include="Modules\Interfaces\IAdminProductTabs.cs" />
+    <Compile Include="Modules\Interfaces\IRenderAdminModuleByKey.cs" />
+    <Compile Include="Modules\Interfaces\ISiteMap.cs" />
+    <Compile Include="Modules\Interfaces\ISendCustomerNotifications.cs" />
+    <Compile Include="Modules\Interfaces\ISendOrderNotifications.cs" />
+    <Compile Include="Modules\Interfaces\IProductAdminControls.cs" />
+    <Compile Include="Modules\Interfaces\IProductCopy.cs" />
+    <Compile Include="Modules\Interfaces\IProductView.cs" />
+    <Compile Include="Modules\Interfaces\ISearch.cs" />
+    <Compile Include="Modules\Interfaces\IShippingCalculator.cs" />
+    <Compile Include="Modules\Interfaces\IShoppingCartDiscount.cs" />
+    <Compile Include="Modules\Interfaces\IModuleReviews.cs" />
+    <Compile Include="Modules\Interfaces\IPhotoSearcher.cs" />
+    <Compile Include="Modules\Interfaces\IRenderModuleByKey.cs" />
+    <Compile Include="Modules\Interfaces\IVkProduct.cs" />
+    <Compile Include="Modules\ModuleRoute.cs" />
+    <Compile Include="Scheduler\Jobs\DeferredTasksJob.cs" />
+    <Compile Include="Scheduler\Jobs\GenerateExportFeedJob.cs" />
+    <Compile Include="Scheduler\Jobs\GenerateHtmlMapJob.cs" />
+    <Compile Include="Scheduler\Jobs\GenerateXmlMapJob.cs" />
+    <Compile Include="Scheduler\Jobs\SiteMapJob.cs" />
+    <Compile Include="Scheduler\TimeInterval.cs" />
+    <Compile Include="Services\Attachments\Attachment.cs" />
+    <Compile Include="Services\Attachments\AttachmentService.cs" />
+    <Compile Include="Services\Attachments\AttachmentType.cs" />
+    <Compile Include="Services\Bonuses\BonusSystem.cs" />
+    <Compile Include="Services\Bonuses\BonusSystemService.cs" />
+    <Compile Include="Services\Bonuses\LinkedClass.cs" />
+    <Compile Include="Services\Bonuses\Model\AdditionBonus.cs" />
+    <Compile Include="Services\Bonuses\Model\Rules\BaseRule.cs" />
+    <Compile Include="Services\Bonuses\Model\Card.cs" />
+    <Compile Include="Services\Bonuses\Model\Rules\BirthDayRule.cs" />
+    <Compile Include="Services\Bonuses\Model\Rules\CancellationsBonusRule.cs" />
+    <Compile Include="Services\Bonuses\Model\Rules\ChangeGradeRule.cs" />
+    <Compile Include="Services\Bonuses\Model\Rules\CleanExpiredBonusRule.cs" />
+    <Compile Include="Services\Bonuses\Model\Rules\CustomRule.cs" />
+    <Compile Include="Services\Bonuses\Model\Enums\EAdditionBonusStatus.cs" />
+    <Compile Include="Services\Bonuses\Model\Enums\EHistoryAction.cs" />
+    <Compile Include="Services\Bonuses\Model\Enums\EOperationType.cs" />
+    <Compile Include="Services\Bonuses\Model\Enums\EPuchaseState.cs" />
+    <Compile Include="Services\Bonuses\Model\Enums\ERule.cs" />
+    <Compile Include="Services\Bonuses\Model\Grade.cs" />
+    <Compile Include="Services\Bonuses\Model\PersentHistory.cs" />
+    <Compile Include="Services\Bonuses\Model\Rules\NewCardRule.cs" />
+    <Compile Include="Services\Bonuses\Service\PersentHistoryService.cs" />
+    <Compile Include="Services\Bonuses\Model\Purchase.cs" />
+    <Compile Include="Services\Bonuses\Model\RuleLog.cs" />
+    <Compile Include="Services\Bonuses\Service\RuleLogService.cs" />
+    <Compile Include="Services\Bonuses\Model\SmsLog.cs" />
+    <Compile Include="Services\Bonuses\Model\SmsTemplate.cs" />
+    <Compile Include="Services\Bonuses\Model\Transaction.cs" />
+    <Compile Include="Services\Bonuses\Service\AdditionBonusService.cs" />
+    <Compile Include="Services\Bonuses\Service\CardService.cs" />
+    <Compile Include="Services\Bonuses\Service\CustomRuleService.cs" />
+    <Compile Include="Services\Bonuses\Service\GradeService.cs" />
+    <Compile Include="Services\Bonuses\Service\PurchaseService.cs" />
+    <Compile Include="Services\Bonuses\Service\SmsTemplateService.cs" />
+    <Compile Include="Services\Bonuses\Service\TransactionService.cs" />
+    <Compile Include="Services\Bonuses\Sms\Gateways\Sms4BGateway.cs" />
+    <Compile Include="Services\Bonuses\Sms\Gateways\StreamSmsGateway.cs" />
+    <Compile Include="Services\Bonuses\Sms\Gateways\UniSenderGateway.cs" />
+    <Compile Include="Services\Bonuses\Sms\Gateways\EPochtaGateway.cs" />
+    <Compile Include="Services\Bonuses\Sms\Gateways\ISmsGateway.cs" />
+    <Compile Include="Services\Bonuses\Sms\SmsProviderType.cs" />
+    <Compile Include="Services\Bonuses\Sms\ESmsType.cs" />
+    <Compile Include="Services\Bonuses\Sms\SmsService.cs" />
+    <Compile Include="Services\Bonuses\Sms\Gateways\BaseSmsGateway.cs" />
+    <Compile Include="Services\Bonuses\Sms\Template\BaseSmsTemplate.cs" />
+    <Compile Include="Services\Catalog\CatalogItem.cs" />
+    <Compile Include="Services\Catalog\Brand.cs" />
+    <Compile Include="Services\Catalog\BrandService.cs" />
+    <Compile Include="Services\Catalog\Category.cs" />
+    <Compile Include="Services\Catalog\CategoryService.cs" />
+    <Compile Include="Services\Catalog\Color.cs" />
+    <Compile Include="Services\Catalog\ColorService.cs" />
+    <Compile Include="Services\Catalog\Coupon.cs" />
+    <Compile Include="Services\Catalog\CouponService.cs" />
+    <Compile Include="Services\Catalog\CustomOption.cs" />
+    <Compile Include="Services\Catalog\CustomOptionCollection.cs" />
+    <Compile Include="Services\Catalog\CustomOptionsService.cs" />
+    <Compile Include="Services\Catalog\Discount.cs" />
+    <Compile Include="Services\Catalog\DiscountByTime.cs" />
+    <Compile Include="Services\Catalog\EvaluatedCustomOptions.cs" />
+    <Compile Include="Services\Catalog\Extensions.cs" />
+    <Compile Include="Services\Catalog\Offer.cs" />
+    <Compile Include="Services\Catalog\OfferService.cs" />
+    <Compile Include="Services\Catalog\OptionItem.cs" />
+    <Compile Include="Services\Catalog\Photo.cs" />
+    <Compile Include="Services\Catalog\PhotoService.cs" />
+    <Compile Include="Services\Catalog\PriceService.cs" />
+    <Compile Include="Services\Catalog\PriceExtentions.cs" />
+    <Compile Include="Services\Catalog\PriceFormatService.cs" />
+    <Compile Include="Services\Catalog\Product.cs" />
+    <Compile Include="Controls\ProductAdminControl.cs" />
+    <Compile Include="Services\Catalog\ProductDiscount.cs" />
+    <Compile Include="Services\Catalog\ProductExtensions.cs" />
+    <Compile Include="Services\Catalog\ProductLabel.cs" />
+    <Compile Include="Services\Catalog\ProductLandingPageService.cs" />
+    <Compile Include="Services\Catalog\ProductList.cs" />
+    <Compile Include="Services\Catalog\ProductListService.cs" />
+    <Compile Include="Services\Catalog\ProductModel.cs" />
+    <Compile Include="Services\Catalog\ProductOnMain.cs" />
+    <Compile Include="Services\Catalog\ProductProperties.cs" />
+    <Compile Include="Services\Catalog\ProductService.cs" />
+    <Compile Include="Services\Catalog\ProductVideo.cs" />
+    <Compile Include="Services\Catalog\ProductVideoService.cs" />
+    <Compile Include="Services\Catalog\ProductViewModel.cs" />
+    <Compile Include="Services\Catalog\Property.cs" />
+    <Compile Include="Services\Catalog\PropertyGroup.cs" />
+    <Compile Include="Services\Catalog\PropertyGroupService.cs" />
+    <Compile Include="Services\Catalog\PropertyService.cs" />
+    <Compile Include="Services\Catalog\PropertyType.cs" />
+    <Compile Include="Services\Catalog\PropertyValues.cs" />
+    <Compile Include="Services\Catalog\RatingService.cs" />
+    <Compile Include="Services\Catalog\Size.cs" />
+    <Compile Include="Services\Catalog\SizeService.cs" />
+    <Compile Include="Services\Catalog\Tag.cs" />
+    <Compile Include="Services\Catalog\TagService.cs" />
+    <Compile Include="Services\CMS\AdminCommentService.cs" />
+    <Compile Include="Services\CMS\AdminNotificationService.cs" />
+    <Compile Include="Services\CMS\AdminNotification.cs" />
+    <Compile Include="Services\CMS\AdminNotificationType.cs" />
+    <Compile Include="Services\CMS\AdminCommentType.cs" />
+    <Compile Include="Services\CMS\AdvMenuItem.cs" />
+    <Compile Include="Services\CMS\BreadCrumbs.cs" />
+    <Compile Include="Services\CMS\Carousel.cs" />
+    <Compile Include="Services\CMS\CarouselService.cs" />
+    <Compile Include="Services\CMS\AdminComment.cs" />
+    <Compile Include="Services\Configuration\AdvantshopConfigService.cs" />
+    <Compile Include="Services\Configuration\ListItemModel.cs" />
+    <Compile Include="Services\Configuration\ModeConfigService.cs" />
+    <Compile Include="Services\Configuration\ProviderSetting.cs" />
+    <Compile Include="Services\Configuration\Settings\Settings1C.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsApi.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsBank.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsCatalog.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsCheckout.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsDesign.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsFreshdesk.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsGeneral.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsLic.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsLandingPage.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsMail.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsMain.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsMobile.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsCrm.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsManager.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsNotifications.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsVk.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsWebhook.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsTasks.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsNews.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsOAuth.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsPictureSize.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsRitmz.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsSEO.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsSocial.cs" />
+    <Compile Include="Services\Configuration\Settings\SettingsTelephony.cs" />
+    <Compile Include="Services\Configuration\TemplateSetting.cs" />
+    <Compile Include="Services\Configuration\TemplateSettingsProvider.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\BizProcessRuleExtensions.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Customers\BizProcessCustomerRule.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Customers\CustomerFilter.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Reviews\BizProcessReviewAddedRule.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\EFieldType.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\IBizObjectFieldComparer.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\IBizObject.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Leads\BizProcessLeadRule.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Calls\BizProcessCallMissedRule.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\BizProcessExecuter.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Orders\BizProcessOrderRule.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\BizProcessRuleService.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\BizProcessRule.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Calls\CallFieldComparer.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Leads\LeadFilter.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Managers\ManagerFieldComparer.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\IBizObjectFilter.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Managers\ManagerFilter.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\FieldComparer.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Leads\LeadFieldComparer.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Orders\OrderFieldComparer.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Calls\CallFilter.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Orders\OrderFilter.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\Reviews\ReviewFilter.cs" />
+    <Compile Include="Services\Crm\DealStatuses\DealStatus.cs" />
+    <Compile Include="Services\Crm\DealStatuses\DealStatusService.cs" />
+    <Compile Include="Services\Crm\LeadEvent.cs" />
+    <Compile Include="Services\Crm\LeadEventService.cs" />
+    <Compile Include="Services\Crm\Task.cs" />
+    <Compile Include="Services\Crm\TaskGroup.cs" />
+    <Compile Include="Services\Crm\TaskGroupService.cs" />
+    <Compile Include="Services\Crm\TaskPriority.cs" />
+    <Compile Include="Services\Crm\TaskService.cs" />
+    <Compile Include="Services\Crm\TaskStatus.cs" />
+    <Compile Include="Services\CustomerSegments\CustomerSegment.cs" />
+    <Compile Include="Services\CustomerSegments\CustomerSegmentFilter.cs" />
+    <Compile Include="Services\CustomerSegments\CustomerSegmentService.cs" />
+    <Compile Include="Services\Customers\CustomerExtensions.cs" />
+    <Compile Include="Services\Customers\CustomerFieldValue.cs" />
+    <Compile Include="Services\Customers\CustomerFieldType.cs" />
+    <Compile Include="Services\Customers\CustomerField.cs" />
+    <Compile Include="Services\Customers\ManagerRole.cs" />
+    <Compile Include="Services\Customers\CustomerFieldService.cs" />
+    <Compile Include="Services\Customers\ManagerRoleService.cs" />
+    <Compile Include="Services\Customers\ICustomer.cs" />
+    <Compile Include="Services\Customers\EmployeeService.cs" />
+    <Compile Include="Services\Customers\ManagerTask.cs" />
+    <Compile Include="Services\Customers\ManagerTaskService.cs" />
+    <Compile Include="Services\Diagnostics\AdvErrorActionLayoutPattern.cs" />
+    <Compile Include="Services\Diagnostics\Db404Appender.cs" />
+    <Compile Include="Services\Diagnostics\CodeFileAppender.cs" />
+    <Compile Include="Services\Diagnostics\RollbarAppender.cs" />
+    <Compile Include="Services\DownloadableContent\AdminShopNews.cs" />
+    <Compile Include="Services\DownloadableContent\ShopActionsService.cs" />
+    <Compile Include="Services\DownloadableContent\ShopNewsService.cs" />
+    <Compile Include="Services\ExportImport\Enums\ECsvFieldStatus.cs" />
+    <Compile Include="Services\ExportImport\Enums\ECategoryFields.cs" />
+    <Compile Include="Services\ExportImport\ExportServices\CsvExportCategories.cs" />
+    <Compile Include="Services\ExportImport\ImportServices\CsvImportCustomers.cs" />
+    <Compile Include="Services\ExportImport\ImportServices\CsvImportCategories.cs" />
+    <Compile Include="Services\ExportImport\Excel\ExcelExport.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Csv\ExportFeedCsvService.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Csv\ExportFeedCsvCategorySettings.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Csv\ExportFeedCsvCategoryService.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Csv\ExportFeedCsvCategory.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\GoogleMerchantCenter\ExportFeedGoogleMerchantCenterService.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Reseller\ExportFeedResellerService.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\YandexMarket\ExportFeedYandexService.cs" />
+    <Compile Include="Services\ExportImport\Enums\ECustomerFields.cs" />
+    <Compile Include="Services\FullSearch\Core\ESearchDeep.cs" />
+    <Compile Include="Services\FullSearch\Core\Nameof.cs" />
+    <Compile Include="Services\Helpers\FilesStorageService.cs" />
+    <Compile Include="Services\IPTelephony\Zadarma\Zadarma.cs" />
+    <Compile Include="Services\IPTelephony\Zadarma\ZadarmaCallBack.cs" />
+    <Compile Include="Services\IPTelephony\Zadarma\ZadarmaResponse.cs" />
+    <Compile Include="Services\IPTelephony\Zadarma\ZadarmaNotificationDto.cs" />
+    <Compile Include="Services\IPTelephony\Mango\MangoCallBackAnswer.cs" />
+    <Compile Include="Services\IPTelephony\Mango\Mango.cs" />
+    <Compile Include="Services\IPTelephony\Mango\MangoNotificationDto.cs" />
+    <Compile Include="Services\IPTelephony\Mango\MangoCallBack.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\TelphinCallInfoResponse.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\TelphinEvent.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\TelphinCallbackResponse.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\TelphinCallBack.cs" />
+    <Compile Include="Services\IPTelephony\Sipuni\SipuniCallBack.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\TelphinExtension.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\TelphinTokenResponse.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\TelphinRecordInfoResponse.cs" />
+    <Compile Include="Services\Loging\TrafficSource\ActivityTrafficSourceLoger.cs" />
+    <Compile Include="Services\Loging\TrafficSource\ActivityTrafficSourceNullLoger.cs" />
+    <Compile Include="Services\Loging\TrafficSource\OrderTrafficSourceService.cs" />
+    <Compile Include="Services\Loging\TrafficSource\TrafficRuleService.cs" />
+    <Compile Include="Services\Loging\TrafficSource\TrafficSource.cs" />
+    <Compile Include="Services\Loging\TrafficSource\ITrafficSourceLoger.cs" />
+    <Compile Include="Services\Mails\ImapMailService.cs" />
+    <Compile Include="Services\OneC\OneCResponse.cs" />
+    <Compile Include="Services\Orders\CheckoutData.cs" />
+    <Compile Include="Services\Orders\OrderHistory.cs" />
+    <Compile Include="Services\Orders\OrderHistoryService.cs" />
+    <Compile Include="Services\Orders\OrderPriceDiscountService.cs" />
+    <Compile Include="Services\Orders\OrderSourceService.cs" />
+    <Compile Include="Services\Orders\OrderSource.cs" />
+    <Compile Include="Services\Customers\ClientCodeService.cs" />
+    <Compile Include="Services\DownloadableContent\DownloadableContentService.cs" />
+    <Compile Include="Services\ExportImport\CSVField.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\GoogleMerchantCenter\ExportFeedGoogleMerchantCenter.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\BaseExportFeed.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Csv\ExportFeedCsv.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Csv\ExportFeedCsvProduct.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\ExportFeedProductModel.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\GoogleMerchantCenter\ExportFeedGoogleMerchantCenterProduct.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Reseller\ExportFeedReseller.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Reseller\ExportFeedResellerOptions.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\YandexMarket\ExportFeedYandex.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\ExportFeedSettings.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\GoogleMerchantCenter\ExportFeedGoogleMerchantCenterOptions.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\Csv\ExportFeedCsvOptions.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\YandexMarket\ExportFeedYandexOptions.cs" />
+    <Compile Include="Services\InplaceEditor\InplaceEditorService.cs" />
+    <Compile Include="Services\CMS\MenuItemModel.cs" />
+    <Compile Include="Services\CMS\MenuService.cs" />
+    <Compile Include="Services\CMS\Review.cs" />
+    <Compile Include="Services\CMS\ReviewEntity.cs" />
+    <Compile Include="Services\CMS\ReviewService.cs" />
+    <Compile Include="Services\CMS\StaticBlock.cs" />
+    <Compile Include="Services\CMS\StaticBlockService.cs" />
+    <Compile Include="Services\CMS\StaticPage.cs" />
+    <Compile Include="Services\CMS\StaticPageService.cs" />
+    <Compile Include="Services\CMS\Voice.cs" />
+    <Compile Include="Services\CMS\VoiceService.cs" />
+    <Compile Include="Data\ConnectionString.cs" />
+    <Compile Include="Controls\AdvantShopAdminPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AdvantShopPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AdvAsyncTreeNode.cs" />
+    <Compile Include="Controls\AdvDropDownList.cs" />
+    <Compile Include="Controls\AdvGridView.cs" />
+    <Compile Include="Controls\AdvLinkButton.cs" />
+    <Compile Include="Controls\AdvMenuAdmin.cs" />
+    <Compile Include="Controls\AdvPaging.cs" />
+    <Compile Include="Controls\AdvTextBox.cs" />
+    <Compile Include="Controls\Button.cs" />
+    <Compile Include="Controls\CommandTreeView.cs" />
+    <Compile Include="Controls\DropDownListGroup.cs" />
+    <Compile Include="Controls\EnumDataSource.cs" />
+    <Compile Include="Controls\EnumDataSourceView.cs" />
+    <Compile Include="Controls\EValidationType.cs" />
+    <Compile Include="Controls\ExtendedRadioButtonList.cs" />
+    <Compile Include="Controls\IInstallerStep.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Letter.cs" />
+    <Compile Include="Controls\Notify.cs" />
+    <Compile Include="Controls\PageNumberer.cs" />
+    <Compile Include="Controls\PageNumberer2.cs" />
+    <Compile Include="Controls\ParametersControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\PlainCheckBox.cs" />
+    <Compile Include="Controls\RoundedButton.cs" />
+    <Compile Include="ApplicationService.cs" />
+    <Compile Include="Common\Attributes\AttributeHelper.cs" />
+    <Compile Include="Common\Attributes\IAttribute.cs" />
+    <Compile Include="Common\Attributes\CsvFieldsStatusAttribute.cs" />
+    <Compile Include="Common\Attributes\FieldTypeAttribute.cs" />
+    <Compile Include="Common\Attributes\StringNameAttribute.cs" />
+    <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="Caching\CacheNames.cs" />
+    <Compile Include="Common\Compress\CompressContent.cs" />
+    <Compile Include="Common\Compress\HttpCompressStream.cs" />
+    <Compile Include="Common\Compress\HttpConstants.cs" />
+    <Compile Include="Data\DataBaseService.cs" />
+    <Compile Include="Common\Extensions\DateTime.cs" />
+    <Compile Include="Common\Extensions\EnumExtensions.cs" />
+    <Compile Include="Common\Extensions\Enums.cs" />
+    <Compile Include="Common\Extensions\Generic.cs" />
+    <Compile Include="Common\Extensions\Strings.cs" />
+    <Compile Include="Common\Extensions\Threads.cs" />
+    <Compile Include="Common\GlobalStringVariableService.cs" />
+    <Compile Include="Common\HttpHandlers\AdminHandler.cs" />
+    <Compile Include="Common\JsCssTool.cs" />
+    <Compile Include="Common\PerfomanceCounter.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduler\Jobs\ClearExpiredJob.cs" />
+    <Compile Include="Scheduler\Jobs\JobBeAlive.cs" />
+    <Compile Include="Scheduler\Jobs\LicJob.cs" />
+    <Compile Include="Scheduler\Jobs\ReindexJob.cs" />
+    <Compile Include="Scheduler\TaskManager.cs" />
+    <Compile Include="Scheduler\TaskSqlSettings.cs" />
+    <Compile Include="Scheduler\Jobs\UpdateCurrencyJob.cs" />
+    <Compile Include="Modules\Interfaces\IModuleRelatedProducts.cs" />
+    <Compile Include="Modules\Interfaces\IShoppingCart.cs" />
+    <Compile Include="Services\Crm\Lead.cs" />
+    <Compile Include="Services\Crm\LeadItem.cs" />
+    <Compile Include="Services\Crm\LeadService.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\ExportFeedSettingsProvider.cs" />
+    <Compile Include="Services\FullSearch\Category\CategoryDocument.cs" />
+    <Compile Include="Services\FullSearch\Category\CategorySeacher.cs" />
+    <Compile Include="Services\FullSearch\Category\CategoryWriter.cs" />
+    <Compile Include="Services\FullSearch\Product\ProductSeacher.cs" />
+    <Compile Include="Services\FullSearch\Product\ProductWriter.cs" />
+    <Compile Include="Services\Helpers\CRC32.cs" />
+    <Compile Include="Services\FullSearch\Core\BaseDocument.cs" />
+    <Compile Include="Services\FullSearch\Core\BaseSearch.cs" />
+    <Compile Include="Services\FullSearch\Core\BaseSearcher.cs" />
+    <Compile Include="Services\FullSearch\Core\BaseWriter.cs" />
+    <Compile Include="Services\FullSearch\DocumentExtensions.cs" />
+    <Compile Include="Services\FullSearch\Product\ProductDocument.cs" />
+    <Compile Include="Services\FullSearch\Core\SearchException.cs" />
+    <Compile Include="Services\FullSearch\Core\SearchField.cs" />
+    <Compile Include="Services\FullSearch\Core\SearchResult.cs" />
+    <Compile Include="Services\FullSearch\Core\SearchResultItem.cs" />
+    <Compile Include="Services\IPTelephony\Call.cs" />
+    <Compile Include="Services\IPTelephony\CallBack\CallBack.cs" />
+    <Compile Include="Services\IPTelephony\CallBack\CallBackAnswer.cs" />
+    <Compile Include="Services\IPTelephony\CallBack\ECallBackShowMode.cs" />
+    <Compile Include="Services\IPTelephony\CallBack\WorkSchedule.cs" />
+    <Compile Include="Services\IPTelephony\CallNotificationDto.cs" />
+    <Compile Include="Services\IPTelephony\CallService.cs" />
+    <Compile Include="Services\IPTelephony\IPTelephonyOperator.cs" />
+    <Compile Include="Services\IPTelephony\IPTelephonyService.cs" />
+    <Compile Include="Services\IPTelephony\Sipuni\Sipuni.cs" />
+    <Compile Include="Services\IPTelephony\Sipuni\SipuniNotificationDto.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\Telphin.cs" />
+    <Compile Include="Services\IPTelephony\Telphin\TelphinNotificationDto.cs" />
+    <Compile Include="Services\Localization\Language.cs" />
+    <Compile Include="Services\Localization\LanguageService.cs" />
+    <Compile Include="Services\Localization\LocalizationService.cs" />
+    <Compile Include="Services\Localization\LocalizedResource.cs" />
+    <Compile Include="Services\Customers\Department.cs" />
+    <Compile Include="Services\Customers\DepartmentService.cs" />
+    <Compile Include="Services\Customers\Manager.cs" />
+    <Compile Include="Services\Customers\ManagerService.cs" />
+    <Compile Include="Services\Loging\Calls\ActivityCallNullLoger.cs" />
+    <Compile Include="Services\Loging\Calls\ActivityCallLoger.cs" />
+    <Compile Include="Services\Loging\Calls\Call.cs" />
+    <Compile Include="Services\Loging\Calls\FileCallLoger.cs" />
+    <Compile Include="Services\Loging\Calls\ICallLoger.cs" />
+    <Compile Include="Services\Loging\Emails\ActivityEmailNullLoger.cs" />
+    <Compile Include="Services\Loging\Emails\ActivityEmailLoger.cs" />
+    <Compile Include="Services\Loging\Emails\Email.cs" />
+    <Compile Include="Services\Loging\Emails\EmailStatus.cs" />
+    <Compile Include="Services\Loging\Emails\FileEmailLoger.cs" />
+    <Compile Include="Services\Loging\Emails\IEmailLoger.cs" />
+    <Compile Include="Services\Loging\Events\ActivityEventlNullLoger.cs" />
+    <Compile Include="Services\Loging\Events\ActivityEventlLoger.cs" />
+    <Compile Include="Services\Loging\Events\Event.cs" />
+    <Compile Include="Services\Loging\Events\FileEventlLoger.cs" />
+    <Compile Include="Services\Loging\Events\IEventlLoger.cs" />
+    <Compile Include="Services\Loging\IAdvantShopLoger.cs" />
+    <Compile Include="Services\Loging\LogingManager.cs" />
+    <Compile Include="Services\Loging\Smses\ActivitySmsNullLoger.cs" />
+    <Compile Include="Services\Loging\Smses\ActivitySmsLoger.cs" />
+    <Compile Include="Services\Loging\Smses\SmsStatus.cs" />
+    <Compile Include="Services\Loging\Smses\FileSmsLoger.cs" />
+    <Compile Include="Services\Loging\Smses\ISmsLoger.cs" />
+    <Compile Include="Services\Loging\Smses\TestMessage.cs" />
+    <Compile Include="Services\Mails\MailRecipientType.cs" />
+    <Compile Include="Services\MyAccount\MyAccountTab.cs" />
+    <Compile Include="Services\OneC\OneCService.cs" />
+    <Compile Include="Services\Api\ApiResponse.cs" />
+    <Compile Include="Services\Orders\OrderConfirmation.cs" />
+    <Compile Include="Services\Orders\OrderConfirmationService.cs" />
+    <Compile Include="Services\Orders\OrderExtensions.cs" />
+    <Compile Include="Services\Orders\OrderStatisticsData.cs" />
+    <Compile Include="Services\Orders\OrderStatus.cs" />
+    <Compile Include="Services\Orders\OrderStatus1C.cs" />
+    <Compile Include="Services\Orders\OrderStatus1CService.cs" />
+    <Compile Include="Services\Orders\OrderType.cs" />
+    <Compile Include="Services\Orders\OrderStatusService.cs" />
+    <Compile Include="Services\Payment\AbstractPaymentOption.cs" />
+    <Compile Include="Services\Payment\AlfabankUa\AlfabankUa.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\AlfabankUa\AlfabankUaTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Alfabank\Alfabank.cs" />
+    <Compile Include="Services\Payment\Alfabank\AlfabankApiResponse.cs" />
+    <Compile Include="Services\Payment\Alfabank\AlfabankService.cs" />
+    <Compile Include="Services\Payment\Alfabank\AlfabankTemplate.cs" />
+    <Compile Include="Services\Payment\AmazonSimplePay\AmazonResponseUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\AmazonSimplePay\AmazonSimplePay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\AmazonSimplePay\AmazonSimplePayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\AmazonSimplePay\AmazonUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Assist\Assist.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Assist\AssistTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\AuthorizeNet\AuthorizeNet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\AuthorizeNet\AuthorizeNetTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Avangard\Avangard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Avangard\AvangardResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Avangard\AvangardTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\BasePaymentOption.cs" />
+    <Compile Include="Services\Payment\BillUa\BillUa.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\BillUa\BillUaTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Bill\Bill.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Bill\BillTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\BitPay\BitPay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\BitPay\BitPayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Check\Check.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Check\CheckTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\ChronoPay\ChronoPay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\ChronoPay\ChronoPayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\CloudPayments\CloudPayments.cs" />
+    <Compile Include="Services\Payment\CloudPayments\CloudPaymentsTemplate.cs" />
+    <Compile Include="Services\Payment\CyberPlat\CyberPlat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\CyberPlat\CyberPlatTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Dibs\Dibs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Dibs\DibsTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\DirectCredit\DirectCredit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\DirectCredit\DirectCreditTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\eWAY\eWAY.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\eWAY\eWAYTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\GateLine\GateLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\GateLine\GateLineTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\GoogleCheckout\GoogleCheckout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\GoogleCheckout\GoogleCheckoutTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\IntellectMoneyMainProtocol\IntellectMoneyMainProtocol.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\IntellectMoneyMainProtocol\IntellectMoneyMainProtocolTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\IntellectMoney\IntellectMoney.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\IntellectMoney\IntellectMoneyTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Interkassa2\Interkassa2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Interkassa2\Interkassa2Template.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Interkassa\Interkassa.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Interkassa\InterkassaTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Kupivkredit\Kupivkredit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Kupivkredit\KupivkreditTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\LiqPay\LiqPay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\LiqPay\LiqPayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MailRu\MailRu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MailRu\MailRuTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MasterBank\MasterBank.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MasterBank\MasterBankTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MasterBank\RollbackParams.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MoneXy\MoneXy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MoneXy\MoneXyTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Moneybookers\Moneybookers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Moneybookers\MoneybookersTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MoscowBank\MoscowBank.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\MoscowBank\MoscowBankTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\NetPay\NetPay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\NetPay\NetPayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\OnPay\OnPay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\OnPay\OnPayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayAnyWay\PayAnyWay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayAnyWay\PayAnyWayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Paymaster\Paymaster.cs" />
+    <Compile Include="Services\Payment\Paymaster\PaymasterTemplate.cs" />
+    <Compile Include="Services\Payment\PaymentManager.cs" />
+    <Compile Include="Services\Payment\PayOnline\PayOnline.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayOnline\PayOnlineTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayPalExpressCheckout\PayPalExpressCheckout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayPalExpressCheckout\PayPalExpressCheckoutTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayPal\PayPal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayPal\PayPalTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayPoint\PayPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PayPoint\PayPointTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Platron\Platron.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Platron\PlatronResponse.cs" />
+    <Compile Include="Services\Payment\Platron\PlatronTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PSIGate\PSIGate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PSIGate\PSIGateTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Qiwi\Qiwi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Qiwi\QiwiTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Qppi\Qppi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Qppi\QppiTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Rbkmoney\Rbkmoney.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Rbkmoney\RbkmoneyTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Robokassa\Robokassa.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\Robokassa\RobokassaTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\RsbCredit\RsbCredit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\RsbCredit\RsbCreditTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\SagePay\SagePay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\SagePay\SagePayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\SagePay\SagePayUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\SberBankAcquiring\Receipt.cs" />
+    <Compile Include="Services\Payment\SberBankAcquiring\SberbankAcquiringRegisterResponse.cs" />
+    <Compile Include="Services\Payment\SberBankAcquiring\SberBankAcquiringService.cs" />
+    <Compile Include="Services\Payment\SberBankAcquiring\SberBankAcquiring.cs" />
+    <Compile Include="Services\Payment\SberBankAcquiring\SberBankAcquiringTemplate.cs" />
+    <Compile Include="Services\Payment\SberBank\SberBank.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\SberBank\SberBankTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\PaymentMethodAdminModel.cs" />
+    <Compile Include="Services\Payment\Tinkoff\Tinkoff.cs" />
+    <Compile Include="Services\Payment\Tinkoff\TinkoffObjects.cs" />
+    <Compile Include="Services\Payment\Tinkoff\TinkoffReceipt.cs" />
+    <Compile Include="Services\Payment\Tinkoff\TinkoffResponse.cs" />
+    <Compile Include="Services\Payment\Tinkoff\TinkoffService.cs" />
+    <Compile Include="Services\Payment\Tinkoff\TinkoffTemplate.cs" />
+    <Compile Include="Services\Payment\TwoCheckout\TwoCheckout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\TwoCheckout\TwoCheckoutTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\WalletOneCheckout\WalletOneCheckout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\WalletOneCheckout\WalletOneCheckoutTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\WebMoney\WebMoney.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\WebMoney\WebMoneyTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\WebPay\WebPay.cs" />
+    <Compile Include="Services\Payment\WebPay\WebPayTemplate.cs" />
+    <Compile Include="Services\Payment\WorldPay\WorldPay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\WorldPay\WorldPayTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\YandexKassa\YandexKassa.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Payment\YandexKassa\YandexKassaTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Repository\SettingsSearchService.cs" />
+    <Compile Include="Services\Repository\SettingsSearch.cs" />
+    <Compile Include="Services\Repository\LanguageService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Repository\MeasureUnits\MeasureUnits.cs" />
+    <Compile Include="Services\Repository\MeasureUnits\MeasureHelper.cs" />
+    <Compile Include="Services\Saas\SaasFeaturesExclusion.cs" />
+    <Compile Include="Services\Security\AuthorizeAttribute.cs" />
+    <Compile Include="Services\Security\OAuth\Facebook\FacebookOAuth.cs" />
+    <Compile Include="Services\Security\OAuth\Facebook\FacebookUserData.cs" />
+    <Compile Include="Services\Security\OAuth\Google\GoogleOAuth.cs" />
+    <Compile Include="Services\Security\OAuth\Google\GoogleUserData.cs" />
+    <Compile Include="Services\Security\OAuth\Mail\MailOAuth.cs" />
+    <Compile Include="Services\Security\OAuth\Mail\MailUserData.cs" />
+    <Compile Include="Services\Security\OAuth\Mail\MailOAuthToken.cs" />
+    <Compile Include="Services\Security\OAuth\OAuth.cs" />
+    <Compile Include="Services\Security\OAuth\OAuthToken.cs" />
+    <Compile Include="Services\Security\OAuth\Ok\OkOAuth.cs" />
+    <Compile Include="Services\Security\OAuth\Ok\OkUserData.cs" />
+    <Compile Include="Services\Security\OAuth\Vk\VkOAuthToken.cs" />
+    <Compile Include="Services\Security\OAuth\Vk\VkOAuth.cs" />
+    <Compile Include="Services\Security\OAuth\Vk\VkUserData.cs" />
+    <Compile Include="Services\Security\OAuth\Yandex\YandexOAuth.cs" />
+    <Compile Include="Services\Security\OAuth\Yandex\YandexUserData.cs" />
+    <Compile Include="Services\Security\OAuth\OAuthService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\SEO\Error404.cs" />
+    <Compile Include="Services\SEO\Error404Service.cs" />
+    <Compile Include="Services\SEO\GoogleTagManagerContext.cs" />
+    <Compile Include="Services\SEO\MetaData\MetaDataContext.cs" />
+    <Compile Include="Services\Shipping\BaseShippingWithWeight.cs" />
+    <Compile Include="Services\Shipping\Boxberry\BoxberryApiResponse.cs" />
+    <Compile Include="Services\Shipping\Boxberry\BoxberryObjects.cs" />
+    <Compile Include="Services\Shipping\Boxberry\BoxberryTemplate.cs" />
+    <Compile Include="Services\Shipping\Boxberry\BoxberryPointOption.cs" />
+    <Compile Include="Services\Shipping\Boxberry\BoxberryPoint.cs" />
+    <Compile Include="Services\Shipping\Boxberry\BoxberryOption.cs" />
+    <Compile Include="Services\Shipping\Boxberry\BoxberryWidgetOption.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutDeliveryModel.cs" />
+    <Compile Include="Services\Shipping\AbstractShippingOption.cs" />
+    <Compile Include="Services\Shipping\BaseShipping.cs" />
+    <Compile Include="Services\Shipping\BaseShippingOption.cs" />
+    <Compile Include="Services\Shipping\BaseShippingWithCargo.cs" />
+    <Compile Include="Services\Shipping\BaseShippingWithCargoAndCache.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutOption.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutPoint.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutPointOption.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDelivery.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDeliveryApiService.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDeliveryObjects.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDeliveryOption.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDeliveryPoint.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDeliveryPointOption.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDeliveryService.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDeliveryTemplate.cs" />
+    <Compile Include="Services\Shipping\DDelivery\DDeliveryWidgetOption.cs" />
+    <Compile Include="Services\Shipping\DefaultCargoParams.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostBoxberryOption.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostBoxberryPoint.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostCashOnDeliveryBoxberryOption.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostCashOnDeliveryOption.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostCashOnDeliveryPickPointOption.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostOffice.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostOption.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostPickPointOption.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostTarif.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\ActContainer.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\BoxberryOrderContainer.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\BoxberryOrderResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\CalcShipingCostContainer.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\CalcShipingCostResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinApiService.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinBaseObject.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinBoxberryPostCode.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinBoxberryPostCodeResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinBoxberrySelfPickup.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinBoxberrySelfPickupResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinContracts.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinContractsResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinDeliveryRegion.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinDeliveryRegionResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinErrorResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinHermesSelfPickup.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinHermesSelfPickupResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinOrderCourier.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinOrderCourierResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinProduct.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinSelfPickup.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinSelfPickupResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinTransportCompanyOfficeList.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinTransportCompanyOfficeListResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinWarehouse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\GrastinWarehouseResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\HermesOrderContainer.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\HermesOrderResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\MarkContainer.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\OrderInfoContainer.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\OrderInfoResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\RequestForIntakeContainer.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\RequestForIntakeResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\RussianPostOrderContainer.cs" />
+    <Compile Include="Services\Shipping\Grastin\Api\RussianPostOrderResponse.cs" />
+    <Compile Include="Services\Shipping\Grastin\Grastin.cs" />
+    <Compile Include="Services\Shipping\Grastin\GrastinEventWidgetData.cs" />
+    <Compile Include="Services\Shipping\Grastin\GrastinOption.cs" />
+    <Compile Include="Services\Shipping\Grastin\GrastinPoint.cs" />
+    <Compile Include="Services\Shipping\Grastin\GrastinPointOption.cs" />
+    <Compile Include="Services\Shipping\Grastin\GrastinTemplate.cs" />
+    <Compile Include="Services\Shipping\Grastin\GrastinWidgetOption.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\NovaPoshtaOptions.cs" />
+    <Compile Include="Services\Shipping\PointDelivery\PointDelivery.cs" />
+    <Compile Include="Services\Shipping\PointDelivery\PointDeliveryOption.cs" />
+    <Compile Include="Services\Shipping\PointDelivery\PointDeliveryTemplate.cs" />
+    <Compile Include="Services\Shipping\PreOrder.cs" />
+    <Compile Include="Services\Shipping\PreOrderItem.cs" />
+    <Compile Include="Services\Shipping\Boxberry\Boxberry.cs" />
+    <Compile Include="Services\Shipping\Boxberry\BoxberryApiService.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekOption.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekApiService.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekService.cs" />
+    <Compile Include="Services\Shipping\ShippingByOrderPrice\ShippingPriceRange.cs" />
+    <Compile Include="Services\Shipping\ShippingByProductAmount\ShippingAmountRange.cs" />
+    <Compile Include="Services\Shipping\ShippingByRangeWeightAndDistance\DistanceLimit.cs" />
+    <Compile Include="Services\Shipping\ShippingByRangeWeightAndDistance\RangeWeightAndDistanceOption.cs" />
+    <Compile Include="Services\Shipping\ShippingByRangeWeightAndDistance\WeightLimit.cs" />
+    <Compile Include="Services\Shipping\ShippingCache.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekResponse.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutAddressExpress.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutCity.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutCitySuggestions.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutCost.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutDeliveryCost.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutResponse.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutStreet.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutStreetSuggestions.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutTicket.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutRu.cs" />
+    <Compile Include="Services\Shipping\CheckoutRu\CheckoutRuTemplate.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\BoolConverter.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\EnNovaPoshtaDeliveryType.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\NovaPoshtaService.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Request\NovaPoshtaRequest.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Request\NovaRequestArea.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Request\NovaRequestCity.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Request\NovaRequestDelivery.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Request\NovaRequestPrice.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Response\NovaResponse.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Response\NovaResponseArea.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Response\NovaResponseCity.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Response\NovaResponseDelivery.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Response\NovaResponseDeliveryDate.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\Response\NovaResponsePrice.cs" />
+    <Compile Include="Services\Shipping\BaseShippingPoint.cs" />
+    <Compile Include="Services\Shipping\ShippingMethodAdminModel.cs" />
+    <Compile Include="Services\Shipping\UPS\UpsCustomerClassification.cs" />
+    <Compile Include="Services\Shipping\UPS\UpsPackagingType.cs" />
+    <Compile Include="Services\Shipping\UPS\UpsPickupType.cs" />
+    <Compile Include="Services\OptionValidationResult.cs" />
+    <Compile Include="Services\Shipping\YandexDelivery\YandexDeliveryListDto.cs" />
+    <Compile Include="Services\Shipping\YandexDelivery\YandexDelivery.cs" />
+    <Compile Include="Services\Shipping\YandexDelivery\YandexDeliveryPickupWarehouseOption.cs" />
+    <Compile Include="Services\Shipping\YandexDelivery\YandexDeliveryOption.cs" />
+    <Compile Include="Services\Shipping\YandexDelivery\YandexDeliveryPickupPointOption.cs" />
+    <Compile Include="Services\Shipping\YandexDelivery\YandexDeliveryService.cs" />
+    <Compile Include="Services\Shipping\YandexDelivery\YandexDeliveryTemplate.cs" />
+    <Compile Include="Services\Shipping\YandexDelivery\YandexOrder.cs" />
+    <Compile Include="Services\Crm\BusinessProcesses\EBizProcessEventType.cs" />
+    <Compile Include="Services\Taxes\TaxCartItem.cs" />
+    <Compile Include="Services\Trial\ETrackEvent.cs" />
+    <Compile Include="Services\Vk\VkMessagerJobState.cs" />
+    <Compile Include="Services\Vk\VkService.cs" />
+    <Compile Include="Services\Vk\VkMessagerJob.cs" />
+    <Compile Include="Services\Vk\VkUser.cs" />
+    <Compile Include="Services\Vk\VkMessage.cs" />
+    <Compile Include="Services\Vk\VkGroup.cs" />
+    <Compile Include="Services\Vk\VkApiService.cs" />
+    <Compile Include="Services\Webhook\Models\WebhookModel.cs" />
+    <Compile Include="Services\Webhook\Models\WebhookCustomerModel.cs" />
+    <Compile Include="Services\Webhook\Models\WebhookReviewModel.cs" />
+    <Compile Include="Services\Webhook\Models\WebhookLeadModel.cs" />
+    <Compile Include="Services\Webhook\Models\WebhookCallModel.cs" />
+    <Compile Include="Services\Webhook\Models\WebhookOrderModel.cs" />
+    <Compile Include="Services\Webhook\WebhookRepository.cs" />
+    <Compile Include="Services\Webhook\WebhookUrlListProvider.cs" />
+    <Compile Include="Services\Webhook\WebhookUrlList.cs" />
+    <Compile Include="Services\Webhook\WebhookSericeProvider.cs" />
+    <Compile Include="Services\Webhook\EWebhookType.cs" />
+    <Compile Include="Services\Webhook\WebhookExecuter.cs" />
+    <Compile Include="SessionServices.cs" />
+    <Compile Include="Data\SQL\SqlPaging2.cs" />
+    <Compile Include="Data\SQL\Field.cs" />
+    <Compile Include="Data\SQL\FieldFilter.cs" />
+    <Compile Include="Data\SQL\SQLDataAccess.cs" />
+    <Compile Include="Data\SQL\SqlPaging.cs" />
+    <Compile Include="Scheduler\TasksConfig.cs" />
+    <Compile Include="Common\UnhandledExceptionModule.cs" />
+    <Compile Include="UrlRewriter\HttpUrlRewrite.cs" />
+    <Compile Include="UrlRewriter\UrlRewriteExtensions.cs" />
+    <Compile Include="UrlRewriter\UrlService.cs" />
+    <Compile Include="Services\Customers\Contact.cs" />
+    <Compile Include="Services\Customers\Customer.cs" />
+    <Compile Include="Services\Customers\CustomerContext.cs" />
+    <Compile Include="Services\Customers\CustomerGroup.cs" />
+    <Compile Include="Services\Customers\CustomerGroupService.cs" />
+    <Compile Include="Services\Customers\CustomerService.cs" />
+    <Compile Include="Services\Customers\ISubscriber.cs" />
+    <Compile Include="Services\Customers\RecentlyViewService.cs" />
+    <Compile Include="Services\Customers\RoleAction.cs" />
+    <Compile Include="Services\Customers\RoleActionService.cs" />
+    <Compile Include="Services\Customers\Subscription.cs" />
+    <Compile Include="Services\Customers\SubscriptionService.cs" />
+    <Compile Include="Common\Demo.cs" />
+    <Compile Include="Services\Design\DesignService.cs" />
+    <Compile Include="Services\Design\TemplateService.cs" />
+    <Compile Include="Services\Design\Theme.cs" />
+    <Compile Include="Services\Diagnostics\AdvException.cs" />
+    <Compile Include="Services\Diagnostics\ApplicationUptime.cs" />
+    <Compile Include="Services\Diagnostics\Debug.cs" />
+    <Compile Include="Services\Diagnostics\ExcelLog.cs" />
+    <Compile Include="Services\Diagnostics\HtmlSmtpAppender.cs" />
+    <Compile Include="Services\Diagnostics\LogEntry.cs" />
+    <Compile Include="Services\Diagnostics\LogTempData.cs" />
+    <Compile Include="Services\DownloadableContent\DownloadableContent.cs" />
+    <Compile Include="Services\DownloadableContent\DownloadableContentBox.cs" />
+    <Compile Include="Services\DownloadableContent\IDownloadableContent.cs" />
+    <Compile Include="Services\ExportImport\ExportServices\CsvExport.cs" />
+    <Compile Include="Services\ExportImport\ImportServices\CsvImport.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\ExportFeed.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\ExportFeedCategories.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\YandexMarket\ExportFeedYandexProduct.cs" />
+    <Compile Include="Services\ExportImport\ExportFeed\ExportFeedService.cs" />
+    <Compile Include="Services\ExportImport\ExportServices\ExportHtmlMap.cs" />
+    <Compile Include="Services\ExportImport\ExportServices\ExportXmlMap.cs" />
+    <Compile Include="Services\ExportImport\Enums\EProductFields.cs" />
+    <Compile Include="Services\Helpers\FilePath.cs" />
+    <Compile Include="Services\FullSearch\LuceneSearch.cs" />
+    <Compile Include="Services\Helpers\BrowsersHelper.cs" />
+    <Compile Include="Services\Helpers\CommonHelper.cs" />
+    <Compile Include="Services\Helpers\ExcelHelper.cs" />
+    <Compile Include="Services\Helpers\FileHelpers.cs" />
+    <Compile Include="Services\Helpers\HtmlHelper.cs" />
+    <Compile Include="Services\Helpers\MoblieHelper.cs" />
+    <Compile Include="Services\Helpers\NumberToString.cs" />
+    <Compile Include="Services\Helpers\QueryHelper.cs" />
+    <Compile Include="Services\Helpers\SecurityHelper.cs" />
+    <Compile Include="Services\Helpers\SQLDataHelper.cs" />
+    <Compile Include="Services\Helpers\StringHelper.cs" />
+    <Compile Include="Services\Helpers\ValidationHelper.cs" />
+    <Compile Include="Services\Helpers\ValidElement.cs" />
+    <Compile Include="Services\Helpers\XmlHelper.cs" />
+    <Compile Include="Services\Localization\Culture.cs" />
+    <Compile Include="Services\Mails\BreakMessage.cs" />
+    <Compile Include="Services\Mails\BreakMessageService.cs" />
+    <Compile Include="Services\Mails\MailFormat.cs" />
+    <Compile Include="Services\Mails\MailFormatService.cs" />
+    <Compile Include="Services\Mails\MailFormatType.cs" />
+    <Compile Include="Services\Mails\MailParam.cs" />
+    <Compile Include="Services\Mails\MailType.cs" />
+    <Compile Include="Services\Mails\SendMail.cs" />
+    <Compile Include="Modules\AttachedModules.cs" />
+    <Compile Include="Modules\Interfaces\IClientPageModule.cs" />
+    <Compile Include="Modules\Interfaces\IDiscount.cs" />
+    <Compile Include="Modules\Interfaces\ILabel.cs" />
+    <Compile Include="Modules\Interfaces\IModule.cs" />
+    <Compile Include="Modules\Interfaces\IModuleChangeActive.cs" />
+    <Compile Include="Modules\Interfaces\IModuleJob.cs" />
+    <Compile Include="Modules\Interfaces\IModuleSMS.cs" />
+    <Compile Include="Modules\Interfaces\IModuleUrlRewrite.cs" />
+    <Compile Include="Modules\Interfaces\IMyAccountControls.cs" />
+    <Compile Include="Modules\Interfaces\IOrderChanged.cs" />
+    <Compile Include="Modules\Interfaces\IProcessPhoto.cs" />
+    <Compile Include="Modules\Interfaces\IProductTabs.cs" />
+    <Compile Include="Modules\Interfaces\ISendMails.cs" />
+    <Compile Include="Modules\Interfaces\ITab.cs" />
+    <Compile Include="Modules\Module.cs" />
+    <Compile Include="Modules\ModuleBox.cs" />
+    <Compile Include="Modules\ModuleSettings.cs" />
+    <Compile Include="Modules\ModuleSettingsProvider.cs" />
+    <Compile Include="Modules\ModulesExecuter.cs" />
+    <Compile Include="Modules\ModulesRepository.cs" />
+    <Compile Include="Modules\ModulesService.cs" />
+    <Compile Include="Services\News\NewsCategory.cs" />
+    <Compile Include="Services\News\NewsItem.cs" />
+    <Compile Include="Services\News\NewsService.cs" />
+    <Compile Include="Services\Notifications\AdminMessage.cs" />
+    <Compile Include="Services\Notifications\AdminMessageBox.cs" />
+    <Compile Include="Services\Notifications\AdminMessagesService.cs" />
+    <Compile Include="Services\Orders\GiftCertificate.cs" />
+    <Compile Include="Services\Orders\GiftCertificateService.cs" />
+    <Compile Include="Services\Orders\IOrder.cs" />
+    <Compile Include="Services\Orders\IOrderCustomer.cs" />
+    <Compile Include="Services\Orders\IOrderItem.cs" />
+    <Compile Include="Services\Orders\Order.cs" />
+    <Compile Include="Services\Orders\OrderByRequest.cs" />
+    <Compile Include="Services\Orders\OrderByRequestService.cs" />
+    <Compile Include="Services\Orders\OrderCustomer.cs" />
+    <Compile Include="Services\Orders\OrderInformation.cs" />
+    <Compile Include="Services\Orders\OrderItem.cs" />
+    <Compile Include="Services\Orders\OrderPickPoint.cs" />
+    <Compile Include="Services\Orders\OrderPriceDiscount.cs" />
+    <Compile Include="Services\Orders\OrderService.cs" />
+    <Compile Include="Services\Orders\OrderStatisticsService.cs" />
+    <Compile Include="Services\Orders\ShoppingCart.cs" />
+    <Compile Include="Services\Orders\ShoppingCartItem.cs" />
+    <Compile Include="Services\Orders\ShoppingCartService.cs" />
+    <Compile Include="Services\Orders\StatusInfo.cs" />
+    <Compile Include="Services\Payment\Cash.cs" />
+    <Compile Include="Services\Payment\COD.cs" />
+    <Compile Include="Services\Payment\ICreditPaymentMethod.cs" />
+    <Compile Include="Services\Payment\Payment.cs" />
+    <Compile Include="Services\Payment\PaymentAdditionalInfo.cs" />
+    <Compile Include="Services\Payment\PaymentDetails.cs" />
+    <Compile Include="Services\Payment\PaymentFormHandler.cs" />
+    <Compile Include="Services\Payment\PaymentGiftCertificate.cs" />
+    <Compile Include="Services\Payment\PaymentIcons.cs" />
+    <Compile Include="Services\Payment\PaymentMethod.cs" />
+    <Compile Include="Services\Payment\PaymentModel.cs" />
+    <Compile Include="Services\Payment\PaymentService.cs" />
+    <Compile Include="Services\Payment\PickPoint.cs" />
+    <Compile Include="Services\Payment\YandexMoney\YandexMoney.cs" />
+    <Compile Include="Services\Payment\YandexMoney\YandexMoneyTemplate.cs" />
+    <Compile Include="Services\Payment\YesCredit\YesCredit.cs" />
+    <Compile Include="Services\Payment\YesCredit\YesCreditTemplate.cs" />
+    <Compile Include="Services\Payment\ZPayment\ZPayment.cs" />
+    <Compile Include="Services\Payment\ZPayment\ZPaymentTemplate.cs" />
+    <Compile Include="Services\Repository\City.cs" />
+    <Compile Include="Services\Repository\CityService.cs" />
+    <Compile Include="Services\Repository\Country.cs" />
+    <Compile Include="Services\Repository\CountryService.cs" />
+    <Compile Include="Services\Repository\Currencies\Currency.cs" />
+    <Compile Include="Services\Repository\Currencies\CurrencyInfo.cs" />
+    <Compile Include="Services\Repository\Currencies\CurrencyService.cs" />
+    <Compile Include="Services\Repository\GeoIpData.cs" />
+    <Compile Include="Services\Repository\GeoIpService.cs" />
+    <Compile Include="Services\Repository\IpZone.cs" />
+    <Compile Include="Services\Repository\IpZoneContext.cs" />
+    <Compile Include="Services\Repository\IpZoneModel.cs" />
+    <Compile Include="Services\Repository\IpZoneService.cs" />
+    <Compile Include="Services\Repository\Region.cs" />
+    <Compile Include="Services\Repository\RegionService.cs" />
+    <Compile Include="Services\Saas\SaasData.cs" />
+    <Compile Include="Services\Saas\SaasDataService.cs" />
+    <Compile Include="Services\Saas\ESaasProperty.cs" />
+    <Compile Include="Services\Security\ActionValidator.cs" />
+    <Compile Include="Services\Security\AuthorizeService.cs" />
+    <Compile Include="Services\Security\RoleAccess.cs" />
+    <Compile Include="Services\Security\Secure.cs" />
+    <Compile Include="Services\SEO\Crawler.cs" />
+    <Compile Include="Services\SEO\GoogleAnalyticsData.cs" />
+    <Compile Include="Services\SEO\GoogleAnalyticsService.cs" />
+    <Compile Include="Services\SEO\GoogleAnalyticsString.cs" />
+    <Compile Include="Services\SEO\GoogleTagManager.cs" />
+    <Compile Include="Services\SEO\MetaInfo.cs" />
+    <Compile Include="Services\SEO\MetaInfoService.cs" />
+    <Compile Include="Services\SEO\RedirectSeo.cs" />
+    <Compile Include="Services\SEO\RedirectSeoService.cs" />
+    <Compile Include="Services\SEO\SiteMapData.cs" />
+    <Compile Include="Services\SEO\SiteMapService.cs" />
+    <Compile Include="Services\Shipping\ShippingPaymentGeoMaping.cs" />
+    <Compile Include="Services\Shipping\IShippingMethod.cs" />
+    <Compile Include="Services\Shipping\Edost\Edost.cs" />
+    <Compile Include="Services\Shipping\Edost\EdostTemplate.cs" />
+    <Compile Include="Services\Shipping\EmsPost\EmsPost.cs" />
+    <Compile Include="Services\Shipping\EmsPost\EmsPostTemplate.cs" />
+    <Compile Include="Services\Shipping\EmsPost\EmsPostService.cs" />
+    <Compile Include="Services\Shipping\ShippingByOrderPrice\ShippingByOrderPrice.cs" />
+    <Compile Include="Services\Shipping\ShippingByOrderPrice\ShippingByOrderPriceTemplate.cs" />
+    <Compile Include="Services\Shipping\ShippingByProductAmount\ShippingByProductAmount.cs" />
+    <Compile Include="Services\Shipping\ShippingByProductAmount\ShippingByProductAmountTemplate.cs" />
+    <Compile Include="Services\Shipping\ShippingByRangeWeightAndDistance\ShippingByRangeWeightAndDistance.cs" />
+    <Compile Include="Services\Shipping\ShippingByRangeWeightAndDistance\ShippingByRangeWeightAndDistanceTemplate.cs" />
+    <Compile Include="Services\Shipping\ShippingByShippingCost\ShippingByShippingCost.cs" />
+    <Compile Include="Services\Shipping\ShippingByShippingCost\ShippingByShippingCostTemplate.cs" />
+    <Compile Include="Services\Shipping\ShippingByWeight\ShippingByWeight.cs" />
+    <Compile Include="Services\Shipping\ShippingByWeight\ShippingByWeightTemplate.cs" />
+    <Compile Include="Services\Shipping\Sdek\Sdek.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekObjects.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekOrderInfoReport.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekOrderStatusInfo.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekRequest.cs" />
+    <Compile Include="Services\Shipping\Sdek\SdekTemplate.cs" />
+    <Compile Include="Services\Shipping\FedEx\FedEx.cs" />
+    <Compile Include="Services\Shipping\FedEx\FedExTemplate.cs" />
+    <Compile Include="Services\Shipping\FixedRate\FixeRateShipping.cs" />
+    <Compile Include="Services\Shipping\FixedRate\FixeRateShippingTemplate.cs" />
+    <Compile Include="Services\Shipping\FreeShipping\FreeShipping.cs" />
+    <Compile Include="Services\Shipping\ShippingIcons.cs" />
+    <Compile Include="Services\Shipping\ShippingManager.cs" />
+    <Compile Include="Services\Shipping\ShippingMethod.cs" />
+    <Compile Include="Services\Shipping\ShippingMethodService.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\NovaPoshta.cs" />
+    <Compile Include="Services\Shipping\NovaPoshta\NovaPoshtaTemplate.cs" />
+    <Compile Include="Services\Shipping\SelfDelivery\SelfDelivery.cs" />
+    <Compile Include="Services\Shipping\SelfDelivery\SelfDeliveryTemplate.cs" />
+    <Compile Include="Services\Shipping\UPS\TrustAllCertificatePolicy.cs" />
+    <Compile Include="Services\Shipping\UPS\UPS.cs" />
+    <Compile Include="Services\Shipping\UPS\UpsTemplate.cs" />
+    <Compile Include="Services\Shipping\USPS\Usps.cs" />
+    <Compile Include="Services\Shipping\USPS\UspsTemplate.cs" />
+    <Compile Include="Services\Statistic\ApplicationLogEntry.cs" />
+    <Compile Include="Services\Statistic\CommonStatistic.cs" />
+    <Compile Include="Services\Statistic\InternalServices.cs" />
+    <Compile Include="Services\Statistic\StatisticData.cs" />
+    <Compile Include="Services\Statistic\StatisticService.cs" />
+    <Compile Include="Services\Taxes\OrderTax.cs" />
+    <Compile Include="Services\Taxes\Tax.cs" />
+    <Compile Include="Services\Taxes\TaxServices.cs" />
+    <Compile Include="Services\Tools\ProgressStatistic.cs" />
+    <Compile Include="Services\Trial\Achievement.cs" />
+    <Compile Include="Services\Trial\AchievementLevel.cs" />
+    <Compile Include="Services\Trial\TrialEvents.cs" />
+    <Compile Include="Services\Trial\TrialService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BlException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

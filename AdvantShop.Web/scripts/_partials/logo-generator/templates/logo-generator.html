@@ -1,0 +1,263 @@
+﻿<div>
+    <div class="logo-generator" data-ng-if="$ctrl.isLoaded">
+        <div data-tabs class="tabs tabs-horizontal logo-generator-tabs">
+            <ul class="tabs-headers clear logo-generator-tabs__header">
+                <li id="tabLogo" class="tabs-header-item" data-tab-header="" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+                    <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                        Логотип
+                    </a>
+                </li>
+                <li id="tabSlogan" class="tabs-header-item" data-tab-header="" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+                    <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                        Слоган
+                    </a>
+                </li>
+            </ul>
+            <div class="tabs-content">
+                <div class="tab-content" data-tab-content="tabLogo" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                    <form name="logoGeneratorForm" novalidate="novalidate">
+                        <div>
+                            <div class="row middle-xs">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="form-field-name vertical-interval-middle">
+                                        Текст логотипа
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="form-field-input vertical-interval-middle">
+                                        <input class="input input-small" type="text" value="" data-ng-model="$ctrl.logo.text" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row middle-xs">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="form-field-name vertical-interval-middle">
+                                        Шрифт
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="form-field-input vertical-interval-middle">
+                                        <span class="logo-generator__fons-size" data-ng-bind="$ctrl.logo.font.fontFamily"></span>
+                                        <button type="button" data-ng-click="$ctrl.showFontsModal('modalLogoGeneratorLogoFonts', 'logo')" class="btn btn-xsmall btn-action">Выбрать</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row middle-xs">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="form-field-name vertical-interval-middle">
+                                        Размер шрифта
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="form-field-input vertical-interval-middle">
+                                        <div class="logo-generator__spinbox" 
+                                             data-spinbox 
+                                             data-value="$ctrl.logo.style.fontSize" 
+                                             data-step="1" 
+                                             data-max="100" 
+                                             data-min="12"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row middle-xs">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="form-field-name vertical-interval-middle">
+                                        Цвет текста
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="form-field-input vertical-interval-middle">
+                                        <color-picker class="logo-generator__color-picker" 
+                                                      data-ng-model="$ctrl.colorPickerLogoValue" 
+                                                      data-ng-change="$ctrl.test()"
+                                                      data-options="$ctrl.colorPickerOptions"
+                                                      data-api="$ctrl.colorPickerLogoApi"
+                                                      data-event-api="$ctrl.colorPickerLogoEventApi"></color-picker>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row middle-xs">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="form-field-name vertical-interval-middle">
+                                        Размещение по горизонтали
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="form-field-input vertical-interval-middle">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="select-custom cs-t-4 icon-down-open-after-abs">
+                                                    <select class="select cs-bg-2" data-ng-model="$ctrl.logo.style.textAlign">
+                                                        <option value="left">Слева</option>
+                                                        <option value="center" selected>По центру</option>
+                                                        <option value="right">Справа</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-content" data-tab-content="tabSlogan" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                    <form name="logoGeneratorForm_Slogan" novalidate="novalidate">
+                        <div>
+                            <div class="row middle-xs">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="form-field-name vertical-interval-middle">
+                                        Добавить слоган
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="form-field-input vertical-interval-middle">
+                                        <label>
+                                            <input class="custom-input-native" type="checkbox" value="" data-ng-model="$ctrl.isUseSlogan" />
+                                            <span class="custom-input-checkbox"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="$ctrl.isUseSlogan">
+                                <div class="row middle-xs">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-field-name vertical-interval-middle">
+                                            Текст слогана
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-field-input vertical-interval-middle">
+                                            <input class="input input-small" type="text" value="" data-ng-model="$ctrl.slogan.text" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row middle-xs">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-field-name vertical-interval-middle">
+                                            Шрифт
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-field-input vertical-interval-middle">
+                                            <span class="logo-generator__fons-size" data-ng-bind="$ctrl.slogan.font.fontFamily"></span>
+                                            <button data-ng-click="$ctrl.showFontsModal('modalLogoGeneratorSloganFonts', 'slogan')" class="btn btn-xsmall btn-action">Выбрать</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row middle-xs">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-field-name vertical-interval-middle">
+                                            Размер шрифта
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-field-input vertical-interval-middle">
+                                            <div class="logo-generator__spinbox" 
+                                                 data-spinbox 
+                                                 data-value="$ctrl.slogan.style.fontSize" 
+                                                 data-step="1" data-max="100" data-min="5"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row middle-xs">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-field-name vertical-interval-middle">
+                                            Отступ
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-field-input vertical-interval-middle">
+                                            <div class="logo-generator__spinbox" 
+                                                 data-spinbox 
+                                                 data-value="$ctrl.slogan.marginValue" 
+                                                 data-update-fn="$ctrl.setSloganMargin(value)"
+                                                 data-step="1" data-max="100" data-min="0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row middle-xs">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-field-name vertical-interval-middle">
+                                            Цвет текста
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-field-input vertical-interval-middle">
+                                            <color-picker class="logo-generator__color-picker" 
+                                                          data-ng-model="$ctrl.colorPickerSloganValue" 
+                                                          data-options="$ctrl.colorPickerOptions"
+                                                          data-api="$ctrl.colorPickerSloganApi"
+                                                          data-event-api="$ctrl.colorPickerSloganEventApi"></color-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row middle-xs">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-field-name vertical-interval-middle">
+                                            Размещение
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-field-input vertical-interval-middle">
+                                            <div class="row">
+                                                <div class="col-xs">
+                                                    <div class="vertical-interval-small">По вертикали</div>
+                                                    <div class="select-custom cs-t-4 icon-down-open-after-abs">
+                                                        <select class="select cs-bg-2" data-ng-model="$ctrl.slogan.style.verticalAlign">
+                                                            <option value="bottom" selected>Снизу</option>
+                                                            <option value="top">Сверху</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs">
+                                                    <div class="vertical-interval-small">По горизонтали</div>
+                                                    <div class="select-custom cs-t-4 icon-down-open-after-abs">
+                                                        <select class="select cs-bg-2" data-ng-model="$ctrl.slogan.style.textAlign">
+                                                            <option value="left">Слева</option>
+                                                            <option value="center" selected>По центру</option>
+                                                            <option value="right">Справа</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <modal-control id="modalLogoGeneratorLogoFonts" data-is-floating="true" class="modal-logo-generator-fonts">
+        <div class="modal-header" data-modal-header="">
+            Выбор шрифта для логотипа
+        </div>
+        <div class="modal-content modal-content-logo-generator-fonts" data-ng-if="$ctrl.isActive">
+            <logo-generator-fonts data-on-select="$ctrl.onSelectLogoFont(font)"
+                                  data-fonts-list="$ctrl.fonts.items"
+                                  data-logo="$ctrl.logo"
+                                  data-slogan="$ctrl.slogan"
+                                  data-is-use-slogan="$ctrl.isUseSlogan"
+                                  data-language="$ctrl.logoLanguage"
+                                  data-obj-type="logo"></logo-generator-fonts>
+        </div>
+    </modal-control>
+    <modal-control id="modalLogoGeneratorSloganFonts" data-is-floating="true" class="modal-logo-generator-fonts">
+        <div class="modal-header" data-modal-header="">
+            Выбор шрифта для cлогана
+        </div>
+        <div class="modal-content modal-content-logo-generator-fonts" data-ng-if="$ctrl.isActive">
+            <logo-generator-fonts data-on-select="$ctrl.onSelectSlogonFont(font)"
+                                  data-fonts-list="$ctrl.fonts.items"
+                                  data-logo="$ctrl.logo"
+                                  data-slogan="$ctrl.slogan"
+                                  data-is-use-slogan="$ctrl.isUseSlogan"
+                                  data-language="$ctrl.sloganLanguage"
+                                  data-obj-type="slogan"></logo-generator-fonts>
+        </div>
+    </modal-control>
+</div>

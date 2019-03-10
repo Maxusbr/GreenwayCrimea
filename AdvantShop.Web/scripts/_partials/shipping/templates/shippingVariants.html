@@ -1,0 +1,32 @@
+﻿<div>
+    <div data-ng-switch="shippingVariants.isProgress" ng-model="shippingList.selectShipping" required>
+        <div data-ng-switch-default>
+            <div data-ng-switch="shippingVariants.type">
+                <div data-ng-switch-when="Always">
+                    <div data-ng-switch="shippingVariants.items.length > 0">
+                        <ul class="shipping-variants" data-ng-switch-when="true">
+                            <li class="shipping-variants-row" data-ng-repeat="item in shippingVariants.items track by $index">
+                                <div class="shipping-variants-cell shipping-variants-name">
+                                    <span bind-html-compile="item.Name"></span>
+                                    <span data-ng-bind-html="(item.DeliveryTime != null && item.DeliveryTime.length > 0 ? '(' + item.DeliveryTime + ')' : '')"></span>
+                                </div>
+                                <div class="shipping-variants-cell  shipping-variants-value">
+                                    <span data-ng-bind="item.Rate"></span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div data-ng-switch-when="false">Нет подходящих способов доставки</div>
+                    </div>
+                </div>
+                <div data-ng-switch-when="ByClick">
+                    <a href="" data-ng-click="shippingVariants.calcShippings()">{{ ::'Js.Shipping.CalculateShippings' | translate }}</a>
+                </div>
+            </div>
+        </div>
+        <div data-ng-switch-when="true">
+            <div>
+                <span class="icon-spinner-before icon-animate-spin-before">{{ ::'Js.Shipping.Loading' | translate }}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@using AdvantShop.Catalog
+@model ESortOrder
+<div class="products-view-sort">
+    <span class="products-view-sort-text cs-t-3">@T("Catalog.Sorting.SortBy"):</span>
+    <a class="products-view-sort-link@(Model == ESortOrder.NoSorting ? " products-view-sort-selected cs-br-1" : "")" href="" data-catalog-filter-sort data-asc="@(ESortOrder.NoSorting)" data-desc="@(ESortOrder.NoSorting)">
+        @T("Catalog.Sorting.SortByNoSorting")
+    </a>
+    <a class="products-view-sort-link@(Model == ESortOrder.AscByName ? " products-view-sort-selected cs-br-1 asc" : "")@(Model == ESortOrder.DescByName ? " products-view-sort-selected cs-br-1 desc" : "")" href="" data-catalog-filter-sort data-asc="@(ESortOrder.AscByName)" data-desc="@(ESortOrder.DescByName)">
+        @T("Catalog.Sorting.SortByName")
+    </a>
+    <a class="products-view-sort-link@(Model == ESortOrder.AscByPrice ? " products-view-sort-selected cs-br-1 asc" : "")@(Model == ESortOrder.DescByPrice ? " products-view-sort-selected cs-br-1 desc" : "")" href="" data-catalog-filter-sort data-asc="@(ESortOrder.AscByPrice)" data-desc="@(ESortOrder.DescByPrice)">
+        @T("Catalog.Sorting.SortByPrice")
+    </a>
+    <a class="products-view-sort-link@(Model == ESortOrder.AscByAddingDate ? " products-view-sort-selected cs-br-1 asc" : "")@(Model == ESortOrder.DescByAddingDate ? " products-view-sort-selected cs-br-1 desc" : "")" href="" data-catalog-filter-sort data-asc="@(ESortOrder.DescByAddingDate)" data-desc="@(ESortOrder.AscByAddingDate)">
+        @T("Catalog.Sorting.SortByDatetime")
+    </a>
+    <a class="products-view-sort-link@(Model == ESortOrder.AscByRatio ? " products-view-sort-selected cs-br-1 asc" : "")@(Model == ESortOrder.DescByRatio ? " products-view-sort-selected cs-br-1 desc" : "")" href="" data-catalog-filter-sort data-asc="@(ESortOrder.DescByRatio)" data-desc="@(ESortOrder.AscByRatio)">
+        @T("Catalog.Sorting.SortByRating")
+    </a>
+</div>

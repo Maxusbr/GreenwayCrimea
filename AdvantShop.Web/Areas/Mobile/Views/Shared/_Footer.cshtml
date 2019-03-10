@@ -1,0 +1,16 @@
+﻿<footer id="footer" class="container-fluid">
+    <div class="pre-footer">
+        <div class="container-fluid">
+            @Html.StaticBlock("mobile_footer_socialbuttons")
+        </div>
+    </div>
+    <div class="panel no-borders">
+        @Html.StaticBlock("mobile_footer_text")
+    </div>
+    <div class="panel no-borders">
+        <div class="footer-links clear">
+            <a class="footer-link" rel="nofollow" href="@(Request.Path + AdvantShop.Helpers.QueryHelper.ChangeQueryParam(Request.QueryString.ToString(), 
+                                         new [] { "forcedDesktop", "forcedMobile" }, new[] { "true", null }))">@T("Checkout.Success.FullVersionWebsite")</a>
+        </div>
+    </div>
+</footer>

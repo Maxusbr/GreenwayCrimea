@@ -1,0 +1,96 @@
+﻿@import "../../../../styles/functions/_util.scss";
+@import "../../../../styles/_settings.scss";
+
+.telephony-form {
+    position: fixed;
+    bottom: rem-calc(60px);
+    right: rem-calc(20px);
+    z-index: 50;
+}
+
+.telephony-form-block, .telephony-form-trigger {
+    box-shadow: 0 0 rem-calc(10px) 0 rgba(0,0,0, .5);
+    padding: rem-calc(5px);
+}
+
+.telephony-form-block {
+    display: table;
+    border-radius: $border-radius-base;
+    font-size: $font-size-medium;
+}
+
+.telephony-form-trigger {
+    display: none;
+    border-radius: 50%;
+    height: 52px;
+    width: 52px;
+    line-height: 52px;
+    font-size: 45px;
+    text-align: center;
+    cursor: pointer;
+    padding: rem-calc(5px);
+
+    &:before {
+        margin: 0;
+    }
+
+    &:hover:before {
+        animation-name: tada;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+}
+
+.telephony-form-cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding: rem-calc(5px);
+}
+
+.telephony-form-close {
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+    font-size: 20px;
+    line-height: 1;
+    font-family: Arial;
+}
+
+.telephony-form-compact {
+
+    .telephony-form-block {
+        display: none;
+    }
+
+    .telephony-form-trigger {
+        display: block;
+    }
+}
+
+.telephony-copyright {
+    position: absolute;
+    top: 100%;
+    font-size: 12px;
+    right: 0;
+}
+
+@keyframes tada {
+    0% {
+    }
+
+    10%, 20% {
+        transform: rotate(-3deg);
+    }
+
+    30%, 50%, 70%, 90% {
+        transform: rotate(3deg);
+    }
+
+    40%, 60%, 80% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}

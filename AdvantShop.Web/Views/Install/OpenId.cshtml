@@ -1,0 +1,157 @@
+﻿@model AdvantShop.ViewModel.Install.InstallOpenIdModel
+@{
+    Layout = "~/Views/Install/Layout.cshtml";
+}
+
+<h1>
+    @Resource.Install_UserContols_OpenidParagrafView_h1
+</h1>
+<div class="install-payment">
+    @using (Html.BeginForm("openid", "install", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="error">
+            @Html.ValidationSummary()
+        </div>
+        <div class="h2">
+            @Resource.Install_UserContols_OpenidParagrafView_h2
+        </div>
+        <div class="group">
+            <p>
+                @Resource.Install_UserContols_OpenidParagrafView_Email
+            </p>
+            <div class="str">
+                @Html.TextBoxFor(x => x.Login, new { @class = "txt valid-required valid-login" })
+            </div>
+        </div>
+        <div class="group">
+            <p>
+                @Resource.Install_UserContols_OpenidParagrafView_Pass
+            </p>
+            <div class="str">
+                @Html.PasswordFor(x => x.Pass, new { @class = "txt valid-required valid-comparesource", autocomplete = "off" })
+            </div>
+        </div>
+        <div class="group">
+            <p>
+                @Resource.Install_UserContols_OpenidParagrafView_RepeatPass
+            </p>
+            <div class="str">
+                @Html.PasswordFor(x => x.PassRepeat, new { @class = "txt valid-required valid-comparesource", autocomplete = "off" })
+            </div>
+        </div>
+        <h2>
+            @Resource.Install_UserContols_OpenidParagrafView_h2_2
+        </h2>
+        if (Model.ShowYandex)
+        {
+            <fieldset class="group simple">
+                <legend>
+                    <label>
+                        @Html.CheckBoxFor(x => x.Yandex)
+                        <img src="images/install/icons/yandex.png" />
+                        Yandex
+                    </label>
+                </legend>
+            </fieldset>
+        }
+        if (Model.ShowMailRu)
+        {
+            <fieldset class="group simple">
+                <legend>
+                    <label>
+                        @Html.CheckBoxFor(x => x.MailRu)
+                        <img src="images/install/icons/mail_ru.png" />
+                        Mail.ru
+                    </label>
+                </legend>
+            </fieldset>
+        }
+        if (Model.ShowGoogle)
+        {
+            <fieldset class="group">
+                <legend>
+                    <label>
+                        @Html.CheckBoxFor(x => x.Google)
+                        <img src="images/install/icons/google.png" />
+                        Google
+                    </label>
+                </legend>
+                <div class="block-options">
+                    <p>
+                        Client Id
+                    </p>
+                    <div class="str">
+                        @Html.TextBoxFor(x => x.GoogleClientId, new { @class = "txt valid-required" })
+                    </div>
+                    <p>
+                        Application Secret
+                    </p>
+                    <div class="str">
+                        @Html.TextBoxFor(x => x.GoogleClientSecret, new { @class = "txt valid-required" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+        if (Model.ShowFacebook)
+        {
+            <fieldset class="group">
+                <legend>
+                    <label>
+                        @Html.CheckBoxFor(x => x.Facebook)
+                        <img src="images/install/icons/facebook.png" />
+                        Facebook
+                    </label>
+                </legend>
+                <div class="block-options">
+                    <p>
+                        Client Id
+                    </p>
+                    <div class="str">
+                        @Html.TextBoxFor(x => x.FacebookClientId, new { @class = "txt valid-required" })
+                    </div>
+                    <p>
+                        Application Secret
+                    </p>
+                    <div class="str">
+                        @Html.TextBoxFor(x => x.FacebookApplicationSecret, new { @class = "txt valid-required" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+        if (Model.ShowVk)
+        {
+            <fieldset class="group">
+                <legend>
+                    <asp:CheckBox runat="server" ID="chbVk" />
+                    <label>
+                        @Html.CheckBoxFor(x => x.Vk)
+                        <img src="images/install/icons/vk.png" />
+                        Вконтакте
+                    </label>
+                </legend>
+                <div class="block-options">
+                    <p>
+                        @Resource.Admin_CommonSettings_HeadOAuthVKappid
+                    </p>
+                    <div class="str">
+                        @Html.TextBoxFor(x => x.VkAppId, new { @class = "txt valid-required" })
+                    </div>
+                    <p>
+                        @Resource.Admin_CommonSettings_HeadOAuthVKSecretKey
+                    </p>
+                    <div class="str">
+                        @Html.TextBoxFor(x => x.VkSecret, new { @class = "txt valid-required" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+
+        <div class="step-btns">
+            <span class="btn-c">
+                <a href="@Model.BackUrl" class="btn btn-back">@Resource.Installer_Back</a>
+                <input type="submit" class="btn btn-next" value="@Resource.Installer_Next" />
+            </span>
+        </div>
+    }
+</div>

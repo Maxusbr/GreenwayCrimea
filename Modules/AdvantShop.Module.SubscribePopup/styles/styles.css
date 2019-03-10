@@ -1,0 +1,122 @@
+.subscribePopup-dialog {
+    width: 360px;
+    font: 12px/1.2 Arial, Helvetica, sans-serif;
+    color: #000;
+}
+
+.subscribePopup-dialog .modal-content {
+    padding: 0;
+}
+
+.stripes.top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.stripes {
+    background: url("../pictures/stripes.gif") repeat scroll 0 0 #fff;
+    height: 8px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.subscribe-space {
+    background: none repeat scroll 0 0 #fff;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.stripes.bottom {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.subscribe .subscribe-title {
+    font-size: 22px;
+    letter-spacing: -1px;
+    line-height: 20px;
+    margin: 0 0 15px;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.subscribe .subscribe-top {
+    color: #aaa;
+    line-height: 16px;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+.subscribe hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ccc -moz-use-text-color -moz-use-text-color;
+    border-image: none;
+    border-right: 0 none;
+    border-style: dotted none none;
+    border-width: 1px 0 0;
+    margin: 0 0 10px;
+}
+
+.subscribe label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subscribe input[type="email"] {
+    background: -moz-linear-gradient(center top , #fff, #f9f9f9) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 1px rgba(150, 150, 150, 0.1) inset;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 20px;
+    outline: 0 none;
+    padding: 10px;
+    width: 100%;
+}
+
+.subscribe input[type="email"]:invalid {
+    border-color: #FF0000;
+}
+
+.subscribe .submit:before {
+    background-color: #ccd0d5;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px #909193 inset, 0 1px 0 #fff;
+    content: "";
+    display: block;
+    height: 100%;
+    left: -8px;
+    padding: 8px;
+    position: absolute;
+    top: -8px;
+    width: 100%;
+    z-index: -1;
+}
+
+.subscribe .submit, .subscribe .submit:hover {
+    background-color: #3bb3e0;
+    background-image: -moz-linear-gradient(center bottom , rgb(44, 160, 202) 0%, rgb(62, 184, 229) 100%);
+    border: 1px solid #186f8f;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 #7fd2f1 inset, 0 1px 0 #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    height: 38px;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+    display: inline-block;
+    line-height: 38px;
+    text-align: center;
+}
+.subscribe-final {
+    text-align: center;
+    padding: 25px 0;
+}

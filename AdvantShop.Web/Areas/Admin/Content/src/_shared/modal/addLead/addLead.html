@@ -1,0 +1,244 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Новый лид</h2>
+    </div>
+    <div class="modal-body task-modal-content-new-item">
+        <div class="form-horizontal m-r m-l">
+            <div class="form-group">
+                <h2 class="m-n bold">
+                    Покупатель
+                </h2>
+            </div>
+
+            <div class="form-group" ng-if="ctrl.customerId != null">
+                <div class="row">
+                    <div class="col-xs-12">
+                        Выбран покупатель <a href="customers/edit/{{ctrl.customerId}}{{ctrl.clientCode ? ('?code=' + ctrl.clientCode) : ''}}" target="_blank" data-e2e="LeadCustomer">{{ctrl.firstName}} {{ctrl.lastName}} {{ctrl.phone}} {{ctrl.email}} {{ctrl.clientCode}}</a>
+                        <a class="link-invert link-decoration-none fa fa-remove" href="" ng-click="ctrl.clearCustomer()" data-e2e="LeadCustomerDelete"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <label class="col-xs-12 control-label m-b-xs">
+                                Фамилия
+                            </label>
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" ng-model="ctrl.lastName" autofocus
+                                       uib-typeahead="item for items in ctrl.findCustomer($viewValue)"
+                                       typeahead-on-select="ctrl.selectCustomer($item)"
+                                       typeahead-template-url="../areas/admin/content/src/_shared/modal/addLead/find-customer.html"
+                                       data-e2e="LeadLastName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <label class="col-xs-12 control-label m-b-xs">
+                                <span class="text-required">Имя</span>
+                            </label>
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" ng-model="ctrl.firstName" required validation-input-text="Имя"
+                                       uib-typeahead="item for items in ctrl.findCustomer($viewValue)"
+                                       typeahead-on-select="ctrl.selectCustomer($item)"
+                                       typeahead-template-url="../areas/admin/content/src/_shared/modal/addLead/find-customer.html"
+                                       data-e2e="LeadFirstName" />
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-xs-4">
+                         <div class="row">
+                            <label class="col-xs-12 control-label m-b-xs">
+                                Отчество
+                            </label>
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" ng-model="ctrl.patronymic"
+                                       uib-typeahead="item for items in ctrl.findCustomer($viewValue)"
+                                       typeahead-on-select="ctrl.selectCustomer($item)"
+                                       typeahead-template-url="../areas/admin/content/src/_shared/modal/addLead/find-customer.html"
+                                       data-e2e="LeadPatronymic" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <label class="col-xs-12 control-label m-b-xs">
+                                <span class="text-required">Телефон</span>
+                            </label>
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" ng-model="ctrl.phone" required validation-input-text="Телефон"
+                                       uib-typeahead="item for items in ctrl.findCustomer($viewValue)"
+                                       typeahead-on-select="ctrl.selectCustomer($item)"
+                                       typeahead-template-url="../areas/admin/content/src/_shared/modal/addLead/find-customer.html"
+                                       data-e2e="LeadPhoneNum" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <label class="col-xs-12 control-label m-b-xs">
+                                Email
+                            </label>
+                            <div class="col-xs-12">
+                                <input type="email" class="form-control" ng-model="ctrl.email"
+                                       pattern="^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)|(admin)$"
+                                       uib-typeahead="item for items in ctrl.findCustomer($viewValue)"
+                                       typeahead-on-select="ctrl.selectCustomer($item)"
+                                       typeahead-template-url="../areas/admin/content/src/_shared/modal/addLead/find-customer.html"
+                                       validation-input-text="Email"
+                                       data-e2e="LeadEmail" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6" ng-repeat="customerField in ctrl.customerFields track by $index">
+                        <div class="row">
+                            <label class="col-xs-12 control-label m-b-xs">
+                                <span ng-class="{'text-required' : customerField.Required}">{{customerField.Name}}</span>
+                            </label>
+                            <div class="col-xs-12 m-b-xs" ng-switch="customerField.FieldType">
+                                <div ng-switch-when="0">
+                                    <select ng-model="customerField.Value" ng-options="s.Value as s.Text for s in customerField.Values" class="form-control" validation-input-text="{{customerField.Name}}">
+                                    </select>
+                                </div>
+                                <div ng-switch-when="1">
+                                    <input type="text" ng-model="customerField.Value" class="form-control" ng-required="customerField.Required" validation-input-text="{{customerField.Name}}"/>
+                                </div>
+                                <div ng-switch-when="2">
+                                    <input type="text" validation-input-float ng-model="customerField.Value" ng-value="customerField.Value" class="form-control" ng-required="customerField.Required" validation-input-text="{{customerField.Name}}"/>
+                                </div>
+                                <div ng-switch-when="3">
+                                    <textarea ng-model="customerField.Value" class="form-control" ng-required="customerField.Required" validation-input-text="{{customerField.Name}}"></textarea>
+                                </div>
+                                <div ng-switch-when="4">
+                                    <div class="dropdown">
+                                        <div class="dropdown-toggle" id="{{customerField.containerId}}" role="button" data-toggle="dropdown">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" ng-model="customerField.Value" ng-required="customerField.Required" validation-input-text="{{customerField.Name}}"
+                                                       data-date-time-input="DD.MM.YYYY"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                            <datetimepicker ng-model="customerField.Value" data-datetimepicker-config="customerField.datetimepickerConfig" />
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="divider-form"></div>
+            </div>
+            
+            <div class="form-group">
+                <h2 class="m-n bold">
+                    Лид
+                </h2>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        Товары
+                    </label>
+                    <div class="col-xs-10 control-label">
+
+                        <div class="m-b" ng-if="ctrl.products == null || ctrl.products.length == 0" data-e2e="LeadNoProducts">
+                            Нет товаров
+                        </div>
+                        <div class="m-b" ng-if="ctrl.products != null && ctrl.products.length > 0">
+                            <table class="table table-striped table-striped-custom" data-e2e="LeadAddItemsTable">
+                                <tr>
+                                    <th>Наименование</th>
+                                    <th style="width: 90px">Кол-во</th>
+                                    <th style="width: 120px">Цена</th>
+                                    <th style="width: 30px"></th>
+                                </tr>
+                                <tr ng-repeat="item in ctrl.products track by $index">
+                                    <td data-e2e="LeadItemArtNoName">{{item.ArtNo}} - {{item.Name}}</td>
+                                    <td style="width: 90px">
+                                        <input type="number" class="form-control" ng-model="item.Amount" ng-change="ctrl.changeProductAmount()" data-e2e="LeadItemAmount" />
+                                    </td>
+                                    <td><span data-e2e="LeadItemPrice" ng-bind-html="item.PreparedPrice | sanitize"></span></td>
+                                    <td><a data-e2e="LeadItemRemove" href="" ng-click="ctrl.removeTempProduct($index)" class="link-invert link-decoration-none fa fa-remove"></a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <ui-modal-trigger size="xs-11" data-controller="'ModalOffersSelectvizrCtrl'" data-controller-as="ctrl"
+                                          data-on-close="ctrl.addItems(result)"
+                                          template-url="../areas/admin/content/src/_shared/modal/offers-selectvizr/offersSelectvizrModal.html">
+                            <a class="btn btn-sm btn-success" href="" data-e2e="LeadItemAdd">
+                                Добавить
+                            </a>
+                        </ui-modal-trigger>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        Описание
+                    </label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" ng-model="ctrl.description" data-e2e="LeadDescription" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row middle-xs">
+                    <label class="col-xs-2 control-label">
+                        Бюджет
+                    </label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" ng-model="ctrl.sum" ng-readonly="ctrl.products != null && ctrl.products.length > 0" data-e2e="LeadSum" validation-input-float validation-input-text="Бюджет"/>
+                    </div>
+                    <div class="col-xs-1 control-label" data-e2e="LeadCurrency">
+                        {{ctrl.currencySymbol}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        Этап сделки
+                    </label>
+                    <div class="col-xs-4">
+                        <select ng-model="ctrl.dealStatus" ng-options="s as s.label for s in ctrl.statuses" class="form-control" data-e2e="LeadDealStatus">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        Менеджер
+                    </label>
+                    <div class="col-xs-4">
+                        <select ng-model="ctrl.manager" ng-options="s as s.label for s in ctrl.managers" class="form-control" data-e2e="LeadManager">
+                            <option value="">Выберите менеджера</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="submit" button-validation button-validation-success="ctrl.addLead(); ctrl.btnLoading = true" ladda="ctrl.btnLoading" data-e2e="LeadAdd">Добавить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

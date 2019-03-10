@@ -1,0 +1,20 @@
+﻿@model AdvantShop.Module.SimaLand.ViewModel.FeedbackViewModel
+<div id="fbmodal_form">
+    <div>
+        <span class="input-label">ФИО</span>
+        <input id="clientName" type="text" placeholder="Имя" value="@Model.Name"/>
+        <span class="input-label">Email</span>
+        <input id="clientEmail" type="email" placeholder="Email" value="@Model.Email" />
+        <span class="input-label">Телефон</span>
+        <input id="clientPhone" type="tel" placeholder="Телефон" value="@Model.Phone" />
+
+        <span class="input-label">Сообщение</span>
+        <textarea id="message" placeholder="Сообщение..." />
+        <div class="control-wrap">
+            <span id="#errMes"></span>
+            <input id="fbmodal_send" class="" type="button" value="Отправить" />
+            <input id="fbmodal_close" class="" type="button" value="Закрыть" />
+        </div>
+    </div>
+</div>
+<div id="overlay"></div>

@@ -1,0 +1,22 @@
+﻿<div class="lp-admin-panel">
+    <div class="lp-container">
+        <div class="lp-admin-panel-inner">
+            <div class="lp-admin-panel-item">
+                <a href="./adminv2" class="link-decoration-none lp-admin-panel-link icon-left"></a>
+            </div>
+            <div class="lp-admin-panel-item">
+                <a href="javascript:void(0)" class="link-decoration-none lp-admin-panel-link icon-cog"></a>
+            </div>
+            <div class="lp-admin-panel-item">
+                <input type="checkbox" name="inplaceEnabled" id="inplaceEnabled" 
+                       data-ng-init="inplaceLandingSwitch.inplaceEnabled=true" 
+                       class="lp-admin-panel-state-edit"
+                       checked="checked" 
+                       data-ng-model="inplaceLandingSwitch.inplaceEnabled" 
+                       data-inplace-landing-switch data-ng-change="inplaceLandingSwitch.change(inplaceLandingSwitch.inplaceEnabled)" />
+
+                <label class="lp-admin-panel-link icon-eye lp-admin-panel-edit" for="inplaceEnabled"></label>
+            </div>
+        </div>
+    </div>
+</div>

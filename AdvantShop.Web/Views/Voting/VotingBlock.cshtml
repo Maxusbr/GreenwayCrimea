@@ -1,0 +1,38 @@
+﻿<!--noindex-->
+<form name="votingForm" class="block voting ng-hide" novalidate data-ng-controller="VotingCtrl as voting">
+    <header class="block-head">
+        <div class="h2">@T("Voting.VotingBlock.VotingHeader")</div>
+    </header>
+    <div class="block-content">
+        <div class="voting-question" data-ng-bind="::voting.data.Question"></div>
+        <div data-ng-if="!voting.isShowResult">
+            <ul class="voting-answers">
+                <li class="voting-answers-row" data-ng-repeat="item in ::voting.data.Answers track by $index">
+                    <label>
+                        <input type="radio" class="custom-input-native" name="voting" data-ng-value="item.AnswerId" data-ng-model="voting.votingSelectedId" />
+                        <span class="custom-input-radio"></span>
+                        <span class="custom-input-text" data-ng-bind="::item.Text"></span>
+                    </label>
+                </li>
+            </ul>
+            <div>
+                <input type="button" class="btn btn-small btn-action" value="@T("Voting.VotingBlock.Vote")" data-ng-click="voting.send(voting.votingSelectedId)">
+                <input type="button" class="btn btn-small btn-action" value="@T("Voting.VotingBlock.Results")" data-ng-if="voting.data.isVoted || voting.data.IsHaveNullVoice" data-ng-click="voting.resultShow()">
+            </div>
+        </div>
+        <div data-ng-if="voting.isShowResult">
+            <ul class="voting-results">
+                <li class="voting-results-row" data-ng-repeat="item in voting.data.Result.Rows track by $index">
+                    <div class="voting-results-text" data-ng-bind="::item.Text"></div>
+                    <div class="voting-results-progress">
+                        <div class="voting-results-progressbar-wrap"><div class="voting-results-progressbar" data-ng-style="{'width': item.Value + '%'}" data-ng-class="{'cs-bg-6' : item.Selected, 'cs-bg-1': !item.Selected}"></div></div><div class="voting-results-value" data-ng-bind='item.Value + "%"'></div>
+                    </div>
+                </li>
+            </ul>
+            <div class="voting-results-total">
+                <span class="voting-results-total-text">@T("Voting.VotingBlock.AllVotes"):</span> <span class="voting-results-total-value" data-ng-bind="voting.data.Result.Count"></span>
+            </div>
+        </div>
+    </div>
+</form>
+<!--/noindex-->

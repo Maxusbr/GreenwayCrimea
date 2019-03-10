@@ -1,0 +1,51 @@
+﻿@model AdvantShop.ViewModel.Home.MainPageProductsViewModel
+
+@Html.RenderModules("mainpage_products_before")
+<div class="products-specials-container">
+    @if (Model.BestSellers.Products.Count > 0)
+    {
+        <article class="products-specials-block products-specials-best cs-br-1">
+            <header class="products-specials-header">
+                <div class="h2 h-inline products-specials-best-h">@T("Home.MainPageProducts.BestSellersTitle")</div><a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "best"})" class="products-specials-more">@T("Home.MainPageProducts.BestSellersAllLink")</a>
+            </header>
+            <div class="row products-view products-view-tile row">
+                @Html.Partial("_ProductView", Model.BestSellers)
+            </div>
+        </article>
+    }
+    @if (Model.NewProducts.Products.Count > 0)
+    {
+        <article class="products-specials-block products-specials-new cs-br-1">
+            <header class="products-specials-header">
+                <div class="h2 h-inline products-specials-new-h">@T("Home.MainPageProducts.NewProductsTitle")</div><a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "new"})" class="products-specials-more">@T("Home.MainPageProducts.NewProductsAllLink")</a>
+            </header>
+            <div class="row products-view products-view-tile">
+                @Html.Partial("_ProductView", Model.NewProducts)
+            </div>
+        </article>
+    }
+    @if (Model.Sales.Products.Count > 0)
+    {
+        <article class="products-specials-block products-specials-discount cs-br-1">
+            <header class="products-specials-header">
+                <div class="h2 h-inline products-specials-discount-h">@T("Home.MainPageProducts.SalesTitle")</div><a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "sale"})" class="products-specials-more">@T("Home.MainPageProducts.SalesAllLink")</a>
+            </header>
+            <div class="row products-view products-view-tile">
+                @Html.Partial("_ProductView", Model.Sales)
+            </div>
+        </article>
+    }
+    @foreach (var productList in Model.ProductLists)
+    {
+        <article class="products-specials-block products-specials-list cs-br-1">
+            <header class="products-specials-header">
+                <div class="h2 h-inline">@Html.Raw(productList.Title)</div>
+                <a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "list", list = productList.Id })" class="products-specials-more">@T("Home.MainPageProducts.AllProducts")</a>
+            </header>
+            <div class="products-view products-view-tile row">
+                @Html.Partial("_ProductView", productList)
+            </div>
+        </article>
+    }
+</div>
+@Html.RenderModules("mainpage_products")

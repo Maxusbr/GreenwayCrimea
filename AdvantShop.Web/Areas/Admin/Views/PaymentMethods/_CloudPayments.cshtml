@@ -1,0 +1,67 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.CloudPaymentsPaymentModel
+@{
+    var sites = new List<SelectListItem>()
+    {
+        new SelectListItem() {Text = "cloudpayments.ru", Value = "cloudpayments.ru"},
+        new SelectListItem() {Text = "cloudpayments.kz", Value = "cloudpayments.kz"},
+    };
+
+    var taxationSystems = new List<SelectListItem>()
+    {
+        new SelectListItem() {Text = "Общая система налогообложения", Value = "0"},
+        new SelectListItem() {Text = "Упрощенная система налогообложения (Доход)", Value = "1"},
+        new SelectListItem() {Text = "Упрощенная система налогообложения (Доход минус Расход)", Value = "2"},
+        new SelectListItem() {Text = "Единый налог на вмененный доход", Value = "3"},
+        new SelectListItem() {Text = "Единый сельскохозяйственный налог", Value = "4"},
+        new SelectListItem() {Text = "Патентная система налогообложения", Value = "5"},
+    };
+}
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Платежный шлюз</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.Site, sites, new { ng_model = "paymentMethod.Parameters.Site", @class = "form-control", required = "required", validation_input_text = "Платежный шлюз" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Идентификатор сайта (publicId)</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.PublicId, new { ng_model = "paymentMethod.Parameters.PublicId", @class = "form-control", required = "required", validation_input_text = "Идентификатор сайта (publicId)" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Секертный ключ (API Secret)</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.APISecret, new { ng_model = "paymentMethod.Parameters.ApiSecret", @class = "form-control", required = "required", validation_input_text = "Секертный ключ (API Secret)" })
+    </div>
+</div>
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Передавать данные для чека
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.SendReceiptData, new {ng_model = "paymentMethod.Parameters.SendReceiptData", ng_init = "paymentMethod.Parameters.SendReceiptData=" + Model.SendReceiptData.ToLowerString(), @class = "adv-checkbox-input"})
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Cистема налогообложения
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.TaxationSystem, taxationSystems, new { ng_model = "paymentMethod.Parameters.TaxationSystem", @class = "form-control" })
+    </div>
+</div>

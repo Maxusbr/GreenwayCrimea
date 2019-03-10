@@ -1,0 +1,73 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Добавление города" : "Редактирование города"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">
+                            Название
+                        </span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" data-e2e="CityName" class="form-control" ng-model="ctrl.entity.Name" required validation-input-text="Город" autofocus />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">                            
+                            Регион
+                        </span>
+                    </label>
+                    <div class="col-xs-9">
+                        <select data-e2e="CityRegion" class="form-control" ng-model="ctrl.entity.RegionId" ng-options="item.RegionId as item.Name for item in ctrl.regions"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Основной город</label>
+                    <div class="col-xs-9">
+                        <label data-e2e="CityMain" class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.entity.DisplayInPopup" class="adv-checkbox-input control-checkbox" />
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Номер телефона</label>
+                    <div class="col-xs-9">
+                        <input type="text" data-e2e="CityPhone" class="form-control input-small" ng-model="ctrl.entity.PhoneNumber"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Номер телефона в мобильной версии</label>
+                    <div class="col-xs-9">
+                        <input type="text" data-e2e="CityMobilePhone" class="form-control input-small" ng-model="ctrl.entity.MobilePhoneNumber" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Порядок сортировки</label>
+                    <div class="col-xs-9">
+                        <input type="number" data-e2e="CitySort" ng-model="ctrl.entity.CitySort" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-e2e="btnSave" class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-button-validation-success="ctrl.saveCity()" data-button-validation>{{ctrl.mode == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button data-e2e="btnCancel" class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

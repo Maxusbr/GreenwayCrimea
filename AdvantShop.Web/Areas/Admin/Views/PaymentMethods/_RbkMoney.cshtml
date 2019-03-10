@@ -1,0 +1,29 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.RbkMoneyPaymentModel
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Номер сайта продавца</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.EshopId, new { ng_model = "paymentMethod.Parameters.EshopId", @class = "form-control", required = "required", validation_input_text = "Номер сайта продавца" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Номер сайта продавца">
+            Номер сайта продавца, на который покупатель должен совершить платеж.
+        </help-trigger>
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Способ оплаты
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.Preference, Model.RbkPaymentTypes, new { ng_model = "paymentMethod.Parameters.Preference", ng_init = "paymentMethod.Parameters.Preference='" + Model.Preference + "'", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Способ оплаты">
+            Способ оплаты, который будет выбран при оплате покупки, минуя экран выбора.
+        </help-trigger>
+    </div>
+</div>
+

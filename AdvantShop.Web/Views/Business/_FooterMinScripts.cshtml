@@ -1,0 +1,76 @@
+﻿@using AdvantShop.Core
+
+@Html.Raw(
+	JsCssTool.MiniJs(new List<string>
+	{
+		//"~/vendors/jquery/jquery-2.1.4.js",
+		"~/vendors/angular/angular.min.js",
+		"~/vendors/angular/angular-cookies.js",
+		"~/vendors/angular/angular-sanitize.js",
+		"~/vendors/angular/angular-sanitize.js",
+
+		"~/vendors/angular/i18n/angular-locale_" + SettingsMain.Language +".js",
+
+		"~/vendors/angular-cache/angular-cache.js",
+
+		"~/vendors/angular-bind-html-compile/angular-bind-html-compile.js",
+
+		"~/userfiles/" + SettingsMain.Language +".js",
+
+		"~/scripts/_partials/address/address.js",
+		"~/scripts/_partials/address/controllers/addressListController.js",
+		"~/scripts/_partials/address/directives/addressDirectives.js",
+		"~/scripts/_partials/address/services/addressService.js",
+
+		"~/scripts/_partials/cookies-policy/cookiesPolicy.js",
+		"~/scripts/_partials/cookies-policy/controllers/cookiesPolicyController.js",
+		"~/scripts/_partials/cookies-policy/directives/cookiesPolicyDirectives.js",
+
+		"~/scripts/_partials/videos/videos.js",
+		"~/scripts/_partials/videos/controllers/videoscontroller.js",
+		"~/scripts/_partials/videos/directives/videosdirective.js",
+
+		"~/scripts/_common/validation/validation.js",
+		"~/scripts/_common/validation/directives/validationDirectives.js",
+
+		"~/scripts/feedback/feedback.js",
+		"~/scripts/feedback/controllers/feedbackController.js",
+
+		"~/scripts/_common/tabs/tabs.js",
+		"~/scripts/_common/tabs/controllers/tabsController.js",
+		"~/scripts/_common/tabs/controllers/tabHeaderController.js",
+		"~/scripts/_common/tabs/controllers/tabContentController.js",
+		"~/scripts/_common/tabs/directives/tabsDirectives.js",
+		"~/scripts/_common/tabs/services/tabsService.js",
+
+		"~/scripts/_common/urlhelper/urlHelperService.js",
+		//
+		"~/scripts/_common/input/input.js",
+		"~/scripts/_common/input/directives/inputDirectives.js",
+
+		"~/scripts/_common/readmore/readmore.js",
+		"~/scripts/_common/readmore/controllers/readmoreController.js",
+		"~/scripts/_common/readmore/directives/readmoreComponent.js",
+		"~/scripts/_common/readmore/constants/readmoreConstant.js",
+
+		"~/vendors/ocLazyLoad/ocLazyLoad.js",
+		"~/vendors/magnific-popup/magnific-popup.min.js",
+
+		"~/areas/mobile/scripts/_common/tableResponsive/tableResponsive.js",
+
+		//common scripts
+		"~/vendors/toaster/toaster.js",
+
+		////
+
+		"~/scripts/_common/dom/dom.js",
+		"~/scripts/_common/dom/services/domService.js",
+
+		"~/scripts/_common/modal/modal.js",
+		"~/scripts/_common/modal/services/modalService.js",
+		"~/scripts/_common/modal/controllers/modalController.js",
+		"~/scripts/_common/modal/directives/modalDirectives.js",
+
+		//from mobile min
+		"~/scripts/appmin.js",
+	}, "mobile.js"))

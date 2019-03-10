@@ -1,0 +1,230 @@
+﻿@using AdvantShop.Core.Services.IPTelephony;
+@model AdvantShop.Web.Admin.Models.Settings.IPTelephonySettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+    var culture = AdvantShop.Localization.Culture.CurrentCulture();
+    var offset = (int)culture.DateTimeFormat.FirstDayOfWeek;
+    var hours = new List<SelectListItem>();
+    for (int i = 0; i < 24; i++)
+    {
+        hours.Add(new SelectListItem { Text = i.ToString().PadLeft(2, '0'), Value = string.Format("{0}:00:00", i.ToString().PadLeft(2, '0')) });
+    }
+}
+<div class="form-horizontal">
+    @using (Html.BeginForm("Index", "SettingsTelephony", FormMethod.Post, new { name = "form", enctype = "multipart/form-data", novalidate = "novalidate" }))
+    {
+        <div class="sticky-page-name m-n" sticky sticky-top="0">
+            <div class="page-name-block sticky-page-name-inner header-hidden">
+                <div class="page-name-block-item-main">
+                    <h1 class="page-name-block-text sticky-page-name-text">
+                        <span class="float-header-page" ng-bind="settingsTelephony.floatHeader"></span>
+                    </h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <input type="submit" class="btn btn-sm btn-success" value="@T("Admin.Save")" data-button-validation disabled ng-disabled="!form.modified" />
+                </div>
+            </div>
+        </div>
+
+        @Html.AntiForgeryToken()
+        @*<div class="error">
+                @Html.ValidationSummary()
+            </div>*@
+
+        <uib-tabset uid="telephonyTab" on-select-batch="settingsTelephony.floatHeader = tab.heading;">
+            <uib-tab index="'telephony'" classes="ng-tab" heading="@T("Admin.Settings.Telephony")">
+
+                <div class="row m-b-lg">
+                    <div class="col-xs-12">
+                        <a href="@Url.Action("Academy", "Service", new { id = 59 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                            Видеоурок о IP телефонии
+                        </a>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3">
+                        <div class="setting-label-wrap">
+                            <label for="CurrentIPTelephonyOperatorType" class="form-label-block">@T("Admin.Settings.Telephony.Operator")</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        @Html.DropDownListFor(x => x.CurrentIPTelephonyOperatorType, Model.IPTelephonyOperatorTypes, new { @class = "form-control", ng_model = "settingsTelephony.curOperator", ng_init = "settingsTelephony.curOperator='" + Model.CurrentIPTelephonyOperatorType.ToString() + "'" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3">
+                        <div class="setting-label-wrap">
+                            <label for="PhonerLiteActive" class="form-label-block">@T("Admin.Settings.Telephony.PhonerLite")</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="adv-checkbox-label form-label-block">
+                            @Html.CheckBoxFor(x => x.PhonerLiteActive, new { ng_model = "settingsTelephony.phonerLiteActive", ng_init = "settingsTelephony.phonerLiteActive=" + Model.PhonerLiteActive.ToString().ToLower(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                        <help-trigger class="ng-cloak word-spacing" data-title="@T("Admin.Settings.Telephony.PhonerLite")">
+                            @T("Admin.Settings.Telephony.PhonerLiteNote")
+                        </help-trigger>
+                    </div>
+                </div>
+
+                <div class="ng-hide" ng-show="settingsTelephony.curOperator == '@EOperatorType.Sipuni.ToString()'">
+                    @Html.Partial("_Sipuni", Model)
+                </div>
+                <div class="ng-hide" ng-show="settingsTelephony.curOperator == '@EOperatorType.Mango.ToString()'">
+                    @Html.Partial("_Mango", Model)
+                </div>
+                <div class="ng-hide" ng-show="settingsTelephony.curOperator == '@EOperatorType.Telphin.ToString()'">
+                    @Html.Partial("_Telphin", Model)
+                </div>
+                <div class="ng-hide" ng-show="settingsTelephony.curOperator == '@EOperatorType.Zadarma.ToString()'">
+                    @Html.Partial("_Zadarma", Model)
+                </div>
+
+                @*CallBack head*@
+
+                <div class="setting-title ng-hide" ng-show="settingsTelephony.curOperator != '@EOperatorType.None.ToString()'">
+                    <h3>
+                        <label for="CallBackEnabled" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.Title")</label>
+                        <label class="adv-checkbox-label form-label-block m-l">
+                            @Html.CheckBoxFor(x => x.CallBackEnabled, new { ng_model = "settingsTelephony.callBackEnabled", @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </h3>
+                </div>
+
+                <div class="ng-hide" ng-show="settingsTelephony.callBackEnabled">
+
+                    <div class="ng-hide" ng-show="settingsTelephony.curOperator == '@EOperatorType.Sipuni.ToString()'">
+                        @Html.Partial("_CallbackSipuni", Model)
+                    </div>
+                    <div class="ng-hide" ng-show="settingsTelephony.curOperator == '@EOperatorType.Mango.ToString()'">
+                        @Html.Partial("_CallbackMango", Model)
+                    </div>
+                    <div class="ng-hide" ng-show="settingsTelephony.curOperator == '@EOperatorType.Telphin.ToString()'">
+                        @Html.Partial("_CallbackTelphin", Model)
+                    </div>
+                    <div class="ng-hide" ng-show="settingsTelephony.curOperator == '@EOperatorType.Zadarma.ToString()'">
+                        @Html.Partial("_CallbackZadarma", Model)
+                    </div>
+
+                    @*Callback settings*@
+
+                    <div class="ng-hide" ng-show="settingsTelephony.curOperator != '@EOperatorType.None.ToString()'">
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">
+                                <div class="setting-label-wrap">
+                                    <label for="CallBackShowMode" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.ShowMode")</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                @Html.DropDownListFor(x => x.CallBackShowMode, Model.CallBackShowModes, new { @class = "form-control", ng_model = "settingsTelephony.callBackShowMode", ng_init = "settingsTelephony.callBackShowMode='" + Model.CallBackShowMode + "'" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">
+                                <div class="setting-label-wrap">
+                                    <label for="CallBackTimeInterval" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.TimeInterval")</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 relative">
+                                @Html.TextBoxFor(x => x.CallBackTimeInterval, new { ng_model = "settingsTelephony.callBackTimeInterval", @class = "form-control" })
+                                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.TimeInterval")">
+                                    @T("Admin.Settings.Telephony.CallBack.TimeIntervalNote")
+                                </help-trigger>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">
+                                <div class="setting-label-wrap">
+                                    <label for="CallBackWorkTimeText" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.WorkTimeText")</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12 relative">
+                                        @Html.TextBoxFor(x => x.CallBackWorkTimeText, new { ng_model = "settingsTelephony.callBackWorkTimeText", @class = "form-control" })
+                                        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.WorkTimeText")">
+                                            @T("Admin.Settings.Telephony.CallBack.WorkTimeTextNote")
+                                        </help-trigger>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <span class="help-block">
+                                            @T("Admin.Settings.Telephony.CallBack.WorkTimeTextHelp")
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">
+                                <div class="setting-label-wrap">
+                                    <label for="CallBackNotWorkTimeText" class="form-label-block">@T("Admin.Settings.Telephony.CallBack.NotWorkTimeText")</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 relative">
+                                @Html.TextBoxFor(x => x.CallBackNotWorkTimeText, new { ng_model = "settingsTelephony.callBackNotWorkTimeText", @class = "form-control" })
+                                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.NotWorkTimeText")">
+                                    @T("Admin.Settings.Telephony.CallBack.NotWorkTimeTextNote")
+                                </help-trigger>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">
+                                <div class="setting-label-wrap">
+                                    <label class="form-label-block">@T("Admin.Settings.Telephony.CallBack.WorkSchedule")</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-wl-2 work-schedule relative">
+                                <input type="text" id="ScheduleSerialized" name="ScheduleSerialized" value="{{settingsTelephony.schedule}}" hidden ng-init="settingsTelephony.schedule = @Model.ScheduleSerialized" />
+                                @for (int i = 0; i < 7; i++)
+                                {
+                                    var day = (DayOfWeek)(i + offset < 7 ? i + offset : i + offset - 7);
+                                    var from = Model.Schedule.Get(day).From.ToString();
+                                    var to = Model.Schedule.Get(day).To.ToString();
+                                    <div class="day-row">
+                                        <label class="adv-checkbox-label form-label-block">
+                                            @Html.CheckBox("chkEnabled" + day, new { ng_model = "settingsTelephony.schedule." + day + ".Enabled", ng_init = "settingsTelephony.schedule." + day + ".Enabled = " + Model.Schedule.Get(day).Enabled.ToString().ToLower(), @class = "adv-checkbox-input" })
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                        <label for="@("chkEnabled" + day)" class="day-name">@culture.DateTimeFormat.GetShortestDayName(day): </label>
+                                        @Html.DropDownList("ddlHoursFrom" + day, new SelectList(hours, "Value", "Text", from), new
+                                   {
+                                       @class = "form-control day-hour",
+                                       ng_model = "settingsTelephony.schedule." + day + ".From",
+                                       ng_init = "settingsTelephony.schedule." + day + ".From = '" + from + "'"
+                                   })
+                                        <span>:00</span>
+                                        <span> - </span>
+                                        @Html.DropDownList("ddlHoursTo" + day, new SelectList(hours, "Value", "Text", to), new
+                                   {
+                                       @class = "form-control day-hour",
+                                       ng_model = "settingsTelephony.schedule." + day + ".To",
+                                       ng_init = "settingsTelephony.schedule." + day + ".To = '" + to + "'"
+                                   })
+                                        <span>:00</span>
+                                    </div>
+                                }
+                                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.CallBack.WorkSchedule")">
+                                    @T("Admin.Settings.Telephony.CallBack.WorkScheduleNote")
+                                </help-trigger>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </uib-tab>
+            <div class="js-not-tabs">
+                <input type="submit" class="btn btn-sm btn-success btn--margin-left" value="@T("Admin.Save")" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </uib-tabset>
+    }
+</div>

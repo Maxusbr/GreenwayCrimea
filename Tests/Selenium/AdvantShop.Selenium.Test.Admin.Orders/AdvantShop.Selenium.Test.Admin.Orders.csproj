@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B2C4750B-AB46-4F43-A551-7F0CA03B9A86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvantShop.Selenium.Test.Admin.Orders</RootNamespace>
+    <AssemblyName>AdvantShop.Selenium.Test.Admin.Orders</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="WebDriver, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.Support.3.4.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Orders\OrdersExport\OrdersExportTest.cs" />
+    <Compile Include="Tests\Orders\OrderSources\OrderSourceAddEditTest.cs" />
+    <Compile Include="Tests\Orders\OrderSources\OrderSourcePaginationAndView.cs" />
+    <Compile Include="Tests\Orders\OrderSources\OrderSourceSearchFilter.cs" />
+    <Compile Include="Tests\Orders\OrderSources\OrderSourceSelectDelete.cs" />
+    <Compile Include="Tests\Orders\OrderSources\OrderSourceSort.cs" />
+    <Compile Include="Tests\Orders\OrderStatus\OrderStatusTest.cs" />
+    <Compile Include="Tests\Orders\OrderStatus\OrderStatusSortTest.cs" />
+    <Compile Include="Tests\Orders\OrderStatus\OrderStatusPresentTest.cs" />
+    <Compile Include="Tests\Orders\OrderStatus\OrderStatusSearchTest.cs" />
+    <Compile Include="Tests\Orders\OrderStatus\OrderStatusPageTest.cs" />
+    <Compile Include="Tests\Orders\OrderStatus\OrderStatusFilterTest.cs" />
+    <Compile Include="Tests\Orders\OrderStatus\OrderStatusAddEditTest.cs" />
+    <Compile Include="Tests\Orders\Order\OrderAdd.cs" />
+    <Compile Include="Tests\Orders\Order\OrdersFiltersTest.cs" />
+    <Compile Include="Tests\Orders\Order\OrdersGridTest.cs" />
+    <Compile Include="Tests\Orders\Order\OrdersPresent.cs" />
+    <Compile Include="Tests\Orders\Order\OrdersSearchTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Admin\Orders\Catalog.Category.csv" />
+    <None Include="Data\Admin\Orders\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Orders\Catalog.Product.csv" />
+    <None Include="Data\Admin\Orders\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Catalog.Category.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Catalog.Product.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Customers.City.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Customers.Contact.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Customers.Country.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Customers.Customer.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\Customers.Region.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\[Order].OrderCustomer.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\OrderGrid\[Order].[Order].csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Catalog.Category.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Catalog.Product.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Customers.City.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Customers.Contact.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Customers.Country.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Customers.Customer.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\Customers.Region.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\[Order].OrderCustomer.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\OrdersExport\[Order].[Order].csv" />
+    <None Include="Data\Admin\Orders\OrderSources\Catalog.Category.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\Catalog.Product.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\Catalog.Category.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\Catalog.Product.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].Lead.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].LeadCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].LeadItem.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceAdd\[Order].[Order].csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\Catalog.Category.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\Catalog.Product.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].Lead.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].LeadCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].LeadItem.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\OrderSourceEdit\[Order].[Order].csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].Lead.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].LeadCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].LeadItem.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\OrderSources\[Order].[Order].csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\Catalog.Category.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\Catalog.Product.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\OrderStatusAddEdit\[Order].[Order].csv" />
+    <None Include="Data\Admin\Orders\OrderStatus\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\Order\Catalog.Category.csv" />
+    <None Include="Data\Admin\Orders\Order\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Orders\Order\Catalog.Product.csv" />
+    <None Include="Data\Admin\Orders\Order\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Orders\Order\Customers.Customer.csv" />
+    <None Include="Data\Admin\Orders\Order\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Orders\Order\Customers.Managers.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].Lead.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].LeadCurrency.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].LeadItem.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].PaymentMethod.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].ShippingMethod.csv" />
+    <None Include="Data\Admin\Orders\Order\[Order].[Order].csv" />
+    <None Include="Data\Admin\Orders\[Order].Lead.csv" />
+    <None Include="Data\Admin\Orders\[Order].LeadCurrency.csv" />
+    <None Include="Data\Admin\Orders\[Order].LeadItem.csv" />
+    <None Include="Data\Admin\Orders\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Orders\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Orders\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Orders\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Orders\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Orders\[Order].PaymentMethod.csv" />
+    <None Include="Data\Admin\Orders\[Order].ShippingMethod.csv" />
+    <None Include="Data\Admin\Orders\[Order].[Order].csv" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AdvantShop.Web.Infrastructure\AdvantShop.Web.Infrastructure.csproj">
+      <Project>{95339807-58ec-4b9c-8808-0a893f3a2cc6}</Project>
+      <Name>AdvantShop.Web.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantShop.Selenium.Core\AdvantShop.Selenium.Core.csproj">
+      <Project>{a1f7b566-7c19-421f-b002-c6c7b48b13b0}</Project>
+      <Name>AdvantShop.Selenium.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Protractor\Protractor.csproj">
+      <Project>{de9c82c5-ebb3-4a2b-a75e-ce3e68e2c866}</Project>
+      <Name>Protractor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\packages\WebDriver.GeckoDriver.0.16.1\content\geckodriver.exe">
+      <Link>geckodriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

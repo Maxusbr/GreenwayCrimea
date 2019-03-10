@@ -1,0 +1,36 @@
+﻿@model string
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Files.Index.Title")
+            </h1>
+            <span>Доступные расширения файлов : </span> <b>@Model</b>
+        </div>
+        <div class="page-name-block-item-additional">
+
+            <file-uploader class="picture-uploader-middle"
+                           accept="@Model"
+                           upload-url="/files/uploadFile"
+                           on-update="files.grid.fetchData()"
+                           show-result=false>
+            </file-uploader>
+
+        </div>
+
+    </div>
+</div>
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="files.gridOnInit(grid)"
+                        grid-options="files.gridOptions"
+                        grid-url="'files/getfiles'"
+                        grid-inplace-url="'files/renamefile'"
+                        grid-search-placeholder="'@T("Admin.Files.Index.Search")'"
+                        grid-extend-ctrl="files">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="colors.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

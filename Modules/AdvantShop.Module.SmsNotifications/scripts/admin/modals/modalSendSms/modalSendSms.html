@@ -1,0 +1,42 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Отправка смс</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            
+            <div class="text-danger m-b" ng-if="ctrl.error != null">{{ctrl.error}}</div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Номер телефона</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.phone" required validation-input-text="Номер телефона"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Смс текст</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <textarea class="form-control" ng-model="ctrl.text" required validation-input-text="Смс текст" style="height: 100px" autofocus/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden">
+                <input type="text" ng-model="ctrl.customerId"/>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.send()" data-button-validation ng-if="ctrl.error == null">Отправить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

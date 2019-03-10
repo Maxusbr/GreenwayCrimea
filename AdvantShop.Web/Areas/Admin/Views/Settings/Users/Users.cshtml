@@ -1,0 +1,70 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Settings.UsersViewModel
+
+<div class="sticky-page-name m-b-sm" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline m-r-xs bottom-cell">
+                @T("Admin.Settings.Users")
+            </h1>
+            <a href="@Url.Action("Academy", "Service", new { id = 38 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline bottom-cell">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Сотрудниках
+            </a>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditUserCtrl'" controller-as="ctrl" on-close="settingsUsers.gridUsers.fetchData(); settingsUsers.getSaasDataInformation();"
+                              template-url="../areas/admin/content/src/settings/modal/addEditUser/AddEditUser.html">
+                <button class="btn btn-sm btn-success" type="button" data-e2e="btnAdd"
+                        disabled ng-disabled="!settingsUsers.gridUsersInited || !settingsUsers.enableEmployees">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Settings.Users.AddUser")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+<div>
+    @if (Model.ManagersLimitation)
+    {
+        <p>
+            @*@T("Admin.Settings.Users.ManagersLimitation.Managers")*@
+            @T("Admin.Settings.Users"): <span ng-bind="settingsUsers.gridUsers.gridOptions.ManagersCount">@Model.EmployeesCount</span>/@Model.EmployeesLimit
+            @Html.ActionLink(T("Admin.Settings.Users.ManagersLimitation.IncreaseTariff").ToString(), "ChangeTariff", "Service")
+        </p>
+    }
+    <p>
+        <label class="adv-checkbox-label" data-e2e="showManagers">
+            <input type="checkbox" class="adv-checkbox-input control-checkbox"
+                   ng-model="settingsUsers.showManagersPage"
+                   ng-click="settingsUsers.changeManagersPageState()" />
+            <span class="adv-checkbox-emul"></span>
+            @T("Admin.Settings.Users.ShowManagersPage")
+        </label>
+
+        @Html.ActionLink(T("Admin.Settings.Users.GoToManagersPage").ToString(), "Index", "Managers", new { area = "" }, new { @class = "m-l", ng_if = "settingsUsers.showManagersPage" })
+    </p>
+
+    @*<p>
+        <label class="adv-checkbox-label" data-e2e="snableManagersModule">
+            <input type="checkbox" class="adv-checkbox-input control-checkbox"
+                   ng-model="settingsUsers.enableManagersModule"
+                   ng-click="settingsUsers.changeEnableManagersModuleState()" />
+            <span class="adv-checkbox-emul"></span>
+            @T("Admin.Settings.Users.EnableManagersModule")
+        </label>
+    </p> // always true according SPRIN-929*@
+</div>
+
+
+<ui-grid-custom grid-unique-id="gridUsers"
+                grid-row-identificator="'AssociatedManagerId'"
+                grid-on-init="settingsUsers.gridUsersOnInit(grid)"
+                grid-selection-mass-apply="settingsUsers.getSaasDataInformation()"
+                grid-options="settingsUsers.gridUsersOptions"
+                grid-url="'users/getusers'"
+                grid-inplace-url="'users/inplaceuser'"
+                grid-extend-ctrl="settingsUsers"
+                grid-search-placeholder="'@T("Admin.Settings.Users.GridUsers.SearchPlaceholder")'">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsUsers.gridUsers.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

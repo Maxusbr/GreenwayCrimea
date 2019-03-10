@@ -1,0 +1,10 @@
+﻿<div>
+    <div class="quickview-loading-text icon-spinner-before icon-animate-spin-before" data-ng-if="!quickview.contentLoaded">{{ ::'Js.Quickview.Loading' | translate }}</div>
+    <div data-onload="quickview.contentLoaded = true;" data-ng-include="quickview.url"></div>
+    <a href="" class="icon-left-open-before quickview-arrows-prev cs-l-4 link-text-decoration-none"
+       data-ng-show="quickview.itemData.siblings != null && quickview.itemData.siblings[0] != quickview.productId"
+       data-ng-click="quickview.prev()"></a>
+    <a href="" class="icon-right-open-before  quickview-arrows-next cs-l-4 link-text-decoration-none"
+       data-ng-show="quickview.itemData.siblings !=null && quickview.itemData.siblings[quickview.itemData.siblings.length-1] != quickview.productId"
+       data-ng-click="quickview.next()"></a>
+</div>

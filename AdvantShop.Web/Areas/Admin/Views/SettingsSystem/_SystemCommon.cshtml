@@ -1,0 +1,394 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SystemSettingsModel
+
+<div class="setting-title-top">
+    <h3>@T("Admin.Settings.SystemSettings.Common")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.LogoImageAlt, T("Admin.Settings.SystemSettings.LogoImageAlt"))
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.LogoImageAlt, new { @class = "form-control", ng_model = "settingsSystem.LogoImageAlt" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title='@T("Admin.Settings.SystemSettings.LogoImageAlt")'>
+            @T("Admin.Settings.SystemSettings.LogoImageAltNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.AdminDateFormat, T("Admin.Settings.SystemSettings.AdminDateFormat"))
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.AdminDateFormat, new { @class = "form-control", ng_model = "settingsSystem.AdminDateFormat" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title='@T("Admin.Settings.SystemSettings.AdminDateFormat")'>
+            @T("Admin.Settings.SystemSettings.AdminDateFormatNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ShortDateFormat, T("Admin.Settings.SystemSettings.ShortDateFormat"))
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ShortDateFormat, new { @class = "form-control", ng_model = "settingsSystem.ShortDateFormat" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title='@T("Admin.Settings.SystemSettings.ShortDateFormat")'>
+            @T("Admin.Settings.SystemSettings.ShortDateFormatNote")
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.IsStoreClosed, T("Admin.Settings.SystemSettings.IsStoreClosed"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.IsStoreClosed, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.IsStoreClosed=" + Model.IsStoreClosed.ToLowerString(), ng_model = "settingsSystem.IsStoreClosed" })
+            <span data-e2e="IsStoreClosed" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.IsStoreClosed")'>
+            @T("Admin.Settings.SystemSettings.IsStoreClosedNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.EnableInplace, T("Admin.Settings.SystemSettings.EnableInplace"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableInplace, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.EnableInplace=" + Model.EnableInplace.ToLowerString(), ng_model = "settingsSystem.EnableInplace" })
+            <span data-e2e="EnableInplace" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.EnableInplace")'>
+            @T("Admin.Settings.SystemSettings.EnableInplaceNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.DisplayToolBarBottom, T("Admin.Settings.SystemSettings.DisplayToolBarBottom"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.DisplayToolBarBottom, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.DisplayToolBarBottom=" + Model.DisplayToolBarBottom.ToLowerString(), ng_model = "settingsSystem.DisplayToolBarBottom" })
+            <span data-e2e="DisplayToolBar" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.DisplayToolBarBottom")'>
+            @T("Admin.Settings.SystemSettings.DisplayToolBarBottomNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.DisplayCityInTopPanel, T("Admin.Settings.SystemSettings.DisplayCityInTopPanel"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.DisplayCityInTopPanel, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.DisplayCityInTopPanel=" + Model.DisplayCityInTopPanel.ToLowerString(), ng_model = "settingsSystem.DisplayCityInTopPanel" })
+            <span data-e2e="CityInTopPanel" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.DisplayCityInTopPanel")'>
+            @T("Admin.Settings.SystemSettings.DisplayCityInTopPanelNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ShowCopyright, T("Admin.Settings.SystemSettings.ShowCopyright"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowCopyright, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.ShowCopyright=" + Model.ShowCopyright.ToLowerString(), ng_model = "settingsSystem.ShowCopyright" })
+            <span data-e2e="ShowCopyright" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.ShowCopyright")'>
+            @T("Admin.Settings.SystemSettings.ShowCopyrightNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.SystemSettings.FilesSize")
+        </div>
+    </div>
+    <div class="col-xs-6" ng-init="settingsSystem.showFileStorageRecalc = @((SettingsMain.CurrentFilesStorageLastUpdateTime < DateTime.Now.AddHours(-1) || CustomerContext.CurrentCustomer.IsVirtual).ToLowerString())">
+        @Html.Label(Model.FilesSizeFormatted)
+        <a href="" data-e2e="StorageRecalc" ng-click="settingsSystem.fileStorageRecalc()" ng-show="settingsSystem.showFileStorageRecalc">Пересчитать</a>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>Капча</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.EnableCaptchaInCheckout, "Показывать в оформлении заказа")
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableCaptchaInCheckout, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.EnableCaptchaInCheckout" })
+            <span data-e2e="CaptchaInCheckout" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.EnableCaptcha")'>
+            @T("Admin.Settings.SystemSettings.EnableCaptchaNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.EnableCaptchaInRegistration, "Показывать при регистрации")
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableCaptchaInRegistration, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.EnableCaptchaInRegistration" })
+            <span data-e2e="CaptchaInRegistration" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.EnableCaptcha")'>
+            @T("Admin.Settings.SystemSettings.EnableCaptchaNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.EnableCaptchaInPreOrder, "Показывать в покупке под заказ")
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableCaptchaInPreOrder, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.EnableCaptchaInPreOrder" })
+            <span data-e2e="CaptchaInPreOrder" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.EnableCaptcha")'>
+            @T("Admin.Settings.SystemSettings.EnableCaptchaNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.EnableCaptchaInGiftCerticate, "Показывать в покупке подарочного сертификата")
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableCaptchaInGiftCerticate, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.EnableCaptchaInGiftCerticate" })
+            <span data-e2e="CaptchaInCerticate" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.EnableCaptcha")'>
+            @T("Admin.Settings.SystemSettings.EnableCaptchaNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.EnableCaptchaInFeedback, "Показывать на странице \"Отправить сообщение\"")
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableCaptchaInFeedback, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.EnableCaptchaInFeedback" })
+            <span data-e2e="CaptchaInFeedback" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.EnableCaptcha")'>
+            @T("Admin.Settings.SystemSettings.EnableCaptchaNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.EnableCaptcha, "На других страницах")
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableCaptcha, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.EnableCaptcha" })
+            <span data-e2e="EnableCaptcha" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.EnableCaptcha")'>
+            @T("Admin.Settings.SystemSettings.EnableCaptchaNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CaptchaMode, "Алфавит")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.DropDownListFor(x => x.CaptchaMode, Model.CaptchaModes, new { @class = "form-control", ng_model = "settingsSystem.CaptchaMode" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CaptchaLength, "Кол-во символов")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.CaptchaLength, new { @class = "form-control", ng_model = "settingsSystem.CaptchaLength" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title='Кол-во символов'>
+            Количество символов в капче. По умолчанию - 0, будет код от 5 символов, усложнясь и меняя кол-во каждый раз.
+            При изменении на 0, код с новой длиной появится только у новых пользователей или по истечению сессии в браузере (можно открыть в другом браузере).
+        </help-trigger>
+    </div>
+</div>
+
+@if (!Model.IsTrial)
+{
+    <div class="setting-title">
+        <h3>@T("Admin.Settings.SystemSettings.License")</h3>
+    </div>
+    <fieldset ng-disabled="@Model.IsSaas.ToString().ToLower()">
+        <div class="form-group row">
+            <div class="col-xs-3">
+                <div class="setting-label-wrap">
+                    @Html.LabelFor(x => x.LicKey, T("Admin.Settings.SystemSettings.LicKey"))
+                </div>
+            </div>
+            <div class="col-xs-6 relative">
+                @Html.TextBoxFor(x => x.LicKey, new { @class = "form-control", ng_model = "settingsSystem.LicKey" })
+                @if (!Model.IsSaas)
+                {
+                    <a href="" data-e2e="CheckLicKey" ng-click="settingsSystem.checkLicense()">@T("Admin.Settings.SystemSettings.CheckLicense")</a>
+                }
+            </div>
+        </div>
+    </fieldset>
+}
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ActiveLic, T("Admin.Settings.SystemSettings.ActiveLic"))
+        </div>
+    </div>
+    <div class="col-xs-6" ng-init="settingsSystem.ActiveLic=@Model.ActiveLic.ToLowerString()">
+        @Html.Label("lblActiveLicense", T("Admin.Settings.SystemSettings.IsActiveLicense"), new { @class = "adv-checkbox-input", ng_if = "settingsSystem.ActiveLic" })
+        @Html.Label("lblActiveLicense", T("Admin.Settings.SystemSettings.IsNotActiveLicense"), new { @class = "adv-checkbox-input", ng_if = "!settingsSystem.ActiveLic" })
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SystemSettings.Other")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.AdditionalHeadMetaTag, T("Admin.Settings.SystemSettings.AdditionalHeadMetaTag"))
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.AdditionalHeadMetaTag, new { @class = "form-control", ng_model = "settingsSystem.AdditionalHeadMetaTag" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title='@T("Admin.Settings.SystemSettings.AdditionalHeadMetaTag")'>
+            @T("Admin.Settings.SystemSettings.AdditionalHeadMetaTagNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a data-e2e="AdditionalHeadTag" href="http://www.advantshop.net/help/pages/add-tag-head" target="_blank">Инструкция. Дополнительный тег в Head</a>
+        </div>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SystemSettings.CustomersNotifications")</h3>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ShowUserAgreementText, T("Admin.Settings.Checkout.ShowUserAgreementTextField"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowUserAgreementText, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.ShowUserAgreementText" })
+            <span data-e2e="ShowUserAgreement" class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.UserAgreementText, T("Admin.Settings.Checkout.UserAgreementText"))
+        </div>
+    </div>
+    <div class="col-xs-9">
+        @Html.TextAreaFor(x => x.UserAgreementText, new { @class = "wysiwyg", ckeditor = "", ng_model = "settingsSystem.UserAgreementText" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.DisplayCityBubble, T("Admin.Settings.SystemSettings.DisplayCityBubble"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.DisplayCityBubble, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.DisplayCityBubble" })
+            <span data-e2e="DisplayCityBubble" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak p-l-sm" data-title='@T("Admin.Settings.SystemSettings.DisplayCityBubble")'>
+            @T("Admin.Settings.SystemSettings.DisplayCityBubbleNote")
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ShowCookiesPolicyMessage, T("Admin.Settings.SystemSettings.ShowCookiesPolicyMessage"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowCookiesPolicyMessage, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.ShowCookiesPolicyMessage" })
+            <span data-e2e="CookiesPolicy" class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CookiesPolicyMessage, T("Admin.Settings.SystemSettings.CookiesPolicyMessage"))
+        </div>
+    </div>
+    <div class="col-xs-9">
+        @Html.TextAreaFor(x => x.CookiesPolicyMessage, new { @class = "wysiwyg", ckeditor = "", ng_model = "settingsSystem.CookiesPolicyMessage" })
+        <p>Переменная #STORE_URL# будет заменена на URL магазина</p>
+    </div>
+</div>

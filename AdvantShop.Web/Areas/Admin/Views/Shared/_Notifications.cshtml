@@ -1,0 +1,16 @@
+﻿@using AdvantShop.Core.Controls;
+@model List<Notify>
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <div class="ibox static-notify">
+            <div class="ibox-content p-xs-x2">
+                <span class="label label-@(item.NotifyType.ToString().ToLower()) m-r">
+                    @(item.NotifyType == NotifyType.Error ? "Ошибка" : "Внимание")
+                </span>
+                <span>@Html.Raw(item.Message)</span>
+            </div>
+        </div>
+    }
+}

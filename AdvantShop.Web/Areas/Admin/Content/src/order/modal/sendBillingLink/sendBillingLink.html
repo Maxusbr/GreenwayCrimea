@@ -1,0 +1,41 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Письмо со ссылкой на оплату</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="ng-cloak text-danger m-b-sm" ng-if="ctrl.error != null || ctrl.error.length == 0">
+                {{ctrl.error}}
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        <span class="text-required">
+                            Тема письма
+                        </span>
+                    </label>
+                    <div class="col-xs-10 control-label">
+                        <input type="text" ng-model="ctrl.subject" class="form-control" required autofocus validation-input-text="Тема письма"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        <span class="text-required">
+                            Текст письма
+                        </span>
+                    </label>
+                    <div class="col-xs-10 control-label">
+                        <textarea ng-model="ctrl.text" class="wysiwyg" ckeditor="{height: 250}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.send()" data-button-validation>Отправить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

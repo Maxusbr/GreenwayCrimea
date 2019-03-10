@@ -1,0 +1,10 @@
+﻿@using AdvantShop.Saas
+@using AdvantShop.Trial
+
+<span class="@(!CustomerContext.CurrentCustomer.IsVirtual ? "version" : "")">
+    @SettingsGeneral.SiteVersion @(TrialService.IsTrialEnabled 
+                                    ? "(trial)" 
+                                    : (SaasDataService.IsSaasEnabled 
+                                        ? "(saas)" 
+                                        : (!SaasDataService.IsSaasEnabled && !TrialService.IsTrialEnabled ? "(license)" : "")))
+</span>

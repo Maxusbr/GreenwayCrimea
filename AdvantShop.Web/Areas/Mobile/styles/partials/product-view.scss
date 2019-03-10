@@ -1,0 +1,116 @@
+﻿@import '../../../../styles/functions/_util.scss';
+
+.products-view-meta {
+    font-size: 12px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.products-view-meta-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: block;
+}
+
+.products-view-meta-item {
+    padding: 0 10px;
+    margin: 0;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    display: inline-block;
+    vertical-align: middle;
+
+    &:first-child {
+        padding-left: 0;
+        border-left: 0;
+    }
+}
+
+.products-view-tile .products-view-item {
+    padding-left: 0 !important;
+}
+
+.products-view-labels {
+    margin-top: 5px;
+}
+
+.products-view-label {
+    margin-bottom: rem-calc(5px);
+    color: #fff;
+    font-weight: bold;
+
+    .products-view-label-inner + .products-view-label-inner {
+        margin: 0 0 rem-calc(5px) rem-calc(5px);
+    }
+}
+
+
+.products-view-label-inner {
+    border-radius: 5px;
+    padding: rem-calc(5px) rem-calc(10px);
+    display: inline-block;
+}
+
+.products-view-label-best {
+    background-color: #cd0303;
+}
+
+.products-view-label-new {
+    background-color: #b3be08;
+}
+
+.products-view-label-discount {
+    background-color: #cd0303;
+}
+
+.products-view-label-recommend {
+    background-color: #58a9fd;
+}
+
+.products-view-label-sales {
+    background-color: #58a9fd;
+}
+
+.products-view-label-warranty {
+    background-color: #cd0303;
+}
+
+.products-view-label-gift {
+    background-color: #cd0303;
+}
+
+.prod-gift-icon {
+    $height: 233px;
+    $width: 253px;
+    height: $height/3.88;
+    width: $width/3.88;
+    background: url('../../../../images/misc/giftIcon.png') no-repeat top left / 100% 100%;
+    vertical-align: middle;
+    display: inline-block;
+    bottom: 0;
+    right: 0;
+}
+
+.prod-cell .prod-gift-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.products-view-table .prod-gift-icon {
+    bottom: auto;
+    width: rem-calc(30px);
+    height: rem-calc(28px);
+    margin-top: rem-calc(-28px);
+}
+
+.tiles-table .products-view-labels {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.prod-photo-inner {
+    position: relative;
+}

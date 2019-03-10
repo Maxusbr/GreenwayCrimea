@@ -1,0 +1,17 @@
+﻿@model AdvantShop.ViewModel.Catalog.ChangeModeViewModel
+<div class="products-view-variants" data-product-view-change-mode data-name="@Model.Name" data-view-mode="@Model.ViewMode">
+    <a href="" title="@T("Catalog.ChangeMode.Tile")"
+       class="products-view-variants-item products-view-variants-tile icon-th-large-before"
+       data-ng-click="changeMode.setView(changeMode.name, 'tile')"
+       data-ng-class="{'products-view-variants-selected  cs-br-1': changeMode.current === 'tile'}"></a>
+
+    <a href="" title="@T("Catalog.ChangeMode.List")"
+       class="products-view-variants-item products-view-variants-list icon-menu-before"
+       data-ng-click="changeMode.setView(changeMode.name, 'list')"
+       data-ng-class="{'products-view-variants-selected  cs-br-1': changeMode.current === 'list'}"></a>
+
+    <a href="" title="@T("Catalog.ChangeMode.Table")"
+       class="products-view-variants-item products-view-variants-table icon-list-before"
+       data-ng-click="changeMode.setView(changeMode.name, 'table')"
+       data-ng-class="{'products-view-variants-selected  cs-br-1': changeMode.current === 'table'}"></a>
+</div>

@@ -1,0 +1,75 @@
+﻿<div>
+    <div class="row">
+        <div class="col-xs-7">
+            <div class="blocks-constructor-table">
+                <div class="blocks-constructor-table-row">
+                    <div class="blocks-constructor-table-name blocks-constructor-table-name-bg">
+                        Шаблон
+                    </div>
+                    <div class="blocks-constructor-table-value">
+                        <select data-ng-model="$ctrl.modalData.settings.template_selected" data-ng-options="item.key as item.name for item in $ctrl.modalData.settings.templates"></select>
+                    </div>
+                </div>
+                <div class="blocks-constructor-table-row">
+                    <div class="blocks-constructor-table-name blocks-constructor-table-name-bg">
+                        Фон блока
+                    </div>
+                    <div class="blocks-constructor-table-value">
+                        <background-picker on-update="$ctrl.modalData.onUpdateBackground(cssString)" data-colors="$ctrl.backgroundColors"></background-picker>
+                    </div>
+                </div>
+                <div class="blocks-constructor-table-row">
+                    <div class="blocks-constructor-table-name blocks-constructor-table-name-bg">
+                        Отображать цену
+                    </div>
+                    <div class="blocks-constructor-table-value">
+                        <input type="checkbox" data-ng-model="$ctrl.modalData.settings.show_price" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs">
+            <div class="blocks-constructor-table">
+                <div class="blocks-constructor-table-row">
+                    <div class="blocks-constructor-table-name">
+                        Фоновая картинка
+                    </div>
+                    <div class="blocks-constructor-table-value">
+                        <div data-ng-switch="$ctrl.modalData.settings.background_image != null && $ctrl.modalData.settings.background_image.length > 0">
+                            <div class="blocks-constructor-bg-img-buttons" data-ng-switch-when="false">
+                                <button class="blocks-constructor-btn-apply"
+                                        ng-model="$ctrl.backgroundImage"
+                                        ngf-select=""
+                                        ngf-change="$ctrl.onUploadFileBackground({$file: $file})"
+                                        ngf-max-height="1000"
+                                        ngf-max-size="10MB"
+                                        ngf-pattern="'image/*'"
+                                        ngf-accept="'image/*'">
+                                    Загрузить картинку
+                                </button>
+                            </div>
+                            <div class="blocks-constructor-bg-img-buttons" data-ng-switch-when="true">
+                                <figure class="blocks-constructor-bg-img-wrap">
+                                    <img data-ng-src="{{$ctrl.modalData.settings.background_image}}" alt="" />
+                                </figure>
+                                <button class="blocks-constructor-btn-apply"
+                                        ng-model="$ctrl.backgroundImage"
+                                        ngf-select=""
+                                        ngf-change="$ctrl.onUpdateFileBackground({$file: $file})"
+                                        ngf-max-height="1000"
+                                        ngf-max-size="10MB"
+                                        ngf-pattern="'image/*'"
+                                        ngf-accept="'image/*'">
+                                    Обновить
+                                </button>
+                                <button class="blocks-constructor-btn-remove" data-ng-click="$ctrl.onDeleteFileBackground()">
+                                    Удалить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

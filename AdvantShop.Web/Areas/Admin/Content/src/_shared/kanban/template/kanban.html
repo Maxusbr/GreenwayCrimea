@@ -1,0 +1,52 @@
+﻿<div class="ibox">
+    <div class="ibox-content no-top-border p-xs-x2 p-b-n clearfix">
+        <ui-grid-custom-filter grid-column-defs="$ctrl.kanbanColumnDefs"
+                               grid-params="$ctrl._params"
+                               on-init="$ctrl.filterInit(filter)"
+                               on-change="$ctrl.filterApply(params, item)"
+                               on-remove="$ctrl.filterRemove(name, item)">
+        </ui-grid-custom-filter>
+    </div>
+</div>
+<div id="kanban" 
+     class="relative">
+    <div class="kanban-scrollable" ng-class="{'kanban-scrollable-activated dragscroll': $ctrl.kanbanScrollable}">
+        <div class="row kanban-row" ng-class="[$ctrl.kanbanRowClasses]">
+            <div ng-repeat="column in $ctrl.kanbanObj.Columns"
+                 class="col-xs kanban-skeleton-column"
+                 ng-class="[$ctrl.kanbanColumnClasses, column.Class]"
+                 data-columnindex="{{$index}}"
+                 id="column{{$index}}">
+                <div class="kanban-column-wrap" ng-class="$ctrl.kanbanColumnWrapClasses">
+                    <div class="kanban-column-header clearfix" sticky sticky-top="70" data-e2e="columnHeader">
+                        <span ng-style="column.HeaderStyle">{{column.Name}}
+                            <span ng-if="column.CardsPerColumn > 0" data-e2e="CardsPerColumn">{{column.TotalCardsCount}}</span><span class="m-l pull-right" ng-if="column.TotalString" data-e2e="columnTotal">{{column.TotalString}}</span>
+                        </span>
+                    </div>
+                    <div data-ng-if="$ctrl.kanbanObj.TotalCardsCount !== 0" class="kanban-column">
+                        <div class="kanban-task-wrap"      
+                            as-sortable="$ctrl._sortOptions"
+                            ng-class="{'kanban-task-wrap-calc': column.Page < column.TotalPagesCount}"
+                            data-ng-model="column.Cards">
+                            <div ng-repeat="card in column.Cards"
+                                 as-sortable-placeholder as-sortable-item>
+                                <div as-sortable-item-handle class="kanban-task"                        
+                           data-e2e-cell="{{$index}}" ng-style="column.CardStyle">
+                                    <kanban-card card="card" />
+                                </div>
+                            </div>
+                        </div>
+                        <button data-e2e="Load{{$index}}" type="button" class="kanban-btn" ng-if="column.Page < column.TotalPagesCount" ng-click="$ctrl.fetchColumnData($index)">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            Загрузить еще
+                        </button>
+                    </div>
+                    <div class="kanban__not-tasks" data-ng-if="$ctrl.kanbanObj.TotalCardsCount === 0">
+                        <!-- && $index === 0 -->
+                        <kanban-card-empty sales-funnel-id="$ctrl.kanbanParams.SalesFunnelid" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

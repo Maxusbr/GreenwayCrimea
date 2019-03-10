@@ -1,0 +1,44 @@
+﻿ <div ng-cloak>
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    @T("Admin.Subscription.Index.Title")
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button"  data-e2e="subscriptionImport"            
+                    ngf-max-size="150MB"
+                    ngf-select=""
+                    ngf-change="subscription.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)">
+                    <span class="fa"></span> @T("Admin.Subscribe.Index.Import")
+                </button>
+                <a class="btn btn-sm btn-success btn--margin-left" href="@Url.Action("Export", "Subscription")" data-e2e="subscriptionExport">
+                    <span class="fa"></span> @T("Admin.Subscribe.Index.Export")
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="ibox">
+        <div class="ibox-content">
+            <ui-grid-custom grid-unique-id="grid"
+                            grid-row-identificator="'Id'"
+                            grid-options="subscription.gridOptions"
+                            grid-on-init="subscription.gridOnInit(grid)"
+                            grid-url="'Subscription/getSubscribes'"
+                            grid-inplace-url="'Subscription/InplaceSubscription'"
+                            grid-extend-ctrl="subscription">
+                <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="subscription.grid.gridOptions.TotalString">
+                </ui-grid-custom-footer>
+            </ui-grid-custom>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .ui-grid-cell-contents, .ui-grid-header-cell-primary-focus{
+        text-align:center;
+    }
+    .onoffswitch-inner-on{
+        padding-right: 20px !important;
+    }
+</style>

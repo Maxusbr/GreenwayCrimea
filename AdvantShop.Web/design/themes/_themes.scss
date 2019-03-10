@@ -1,0 +1,59 @@
+@import "../../styles/functions/_util.scss";
+@import "../../styles/functions/_list.scss";
+@import "../../styles/functions/_prefixer.scss";
+
+@mixin theme-background($bgTop, $bgBottom, $blurHeight: rem-calc(100px)) {
+
+    $bgTopHeight: list-find-value($bgTop, 'height');
+    $bgTopVal: list-find-value($bgTop, 'bg');
+
+    $bgBottomHeight: list-find-value($bgBottom, 'height');
+    $bgBottomVal: list-find-value($bgBottom, 'bg');
+
+
+    .design-background-top,
+    .design-background-bottom {
+        z-index: 0;
+    }
+
+    .toolbar-bottom-enabled {
+        .design-background-bottom {
+            /*comment because get white margin to bottom page*/
+            /*margin-bottom: rem-calc(40px);*/
+        }
+    }
+
+
+    @if($bgTop != null) {
+        .design-background-top {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: $bgTopHeight;
+            background: $bgTopVal;
+
+            &:after {
+                position: absolute;
+                content: "";
+                display: block;
+                height: $blurHeight;
+                top: 100%;
+                transform: translateY(-50%);
+                left: 0;
+                right: 0;
+                @include linear-gradient('to bottom', rgba(255,255,255, 0) 0%, rgba(255,255,255, 1) 40%, rgba(255,255,255, 1) 60%, rgba(255,255,255, 0) 100%);
+            }
+        }
+    }
+
+    @if($bgBottom != null) {
+        //ie10 bug flexbox, because use relative in bottom
+        .design-background-bottom {
+            margin-top: -$bgBottomHeight;
+            height: $bgBottomHeight;
+            background: $bgBottomVal;
+            position: relative;
+        }
+    }
+}

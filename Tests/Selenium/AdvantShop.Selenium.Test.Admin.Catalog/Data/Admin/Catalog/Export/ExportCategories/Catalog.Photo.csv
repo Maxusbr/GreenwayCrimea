@@ -1,0 +1,11 @@
+PhotoId;ObjId;Type;PhotoName;ModifiedDate[DATE];Main
+1;1;Product;281.jpg;19.06.2007 20:05;true
+2;2;Product;284.jpg;20.06.2007 20:05;true
+3;3;Product;342.jpg;21.06.2007 20:05;true
+4;4;Product;348.jpg;22.06.2007 20:05;true
+5;5;Product;349.jpg;23.06.2007 20:05;true
+6;6;Product;350.jpg;24.06.2007 20:05;true
+7;7;Product;351.jpg;25.06.2007 20:05;true
+8;8;Product;353.jpg;26.06.2007 20:05;true
+9;9;Product;358.jpg;27.06.2007 20:05;true
+10;10;Product;360.jpg;28.06.2007 20:05;true

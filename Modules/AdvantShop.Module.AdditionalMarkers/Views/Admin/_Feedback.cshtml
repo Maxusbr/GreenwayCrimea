@@ -1,0 +1,15 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.AdditionalMarkers
+@using AdvantShop.Module.AdditionalMarkers.Service
+@{ 
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+    {
+        url + "modules/" + AdditionalMarkers.ModuleStringId + "/content/scripts/feedback/feedback-promo.js",
+        url + "modules/" + AdditionalMarkers.ModuleStringId + "/content/styles/admin-style.css"
+    };
+}
+
+<div data-oc-lazy-load="[@String.Join(",",scripts.Select(x => "'" + x + "?" + ModuleSettings.Version + "'"))]">
+    <feedback-promo></feedback-promo>
+</div>

@@ -1,0 +1,175 @@
+﻿<div id="CheckoutCart" style="height: 100%;">
+   <div class="checkout-cart-wrap" data-ng-if="checkout.showCart">
+        <article class="checkout-cart cs-bg-4" data-transformer data-offset-top="61" data-checkout-responsive="true" data-container-limit="CheckoutCart" data-limit-pos="true">
+            <div>
+                <div class="form-title">@T("Checkout.CheckoutCart.CartHeader")</div>
+                <div class="checkout-cart-content">
+                    <ul class="checkout-cart-items" data-ng-if="checkout.Cart.Items.length < 5">
+                        <li class="checkout-cart-item-row" data-ng-repeat="item in checkout.Cart.Items track by $index">
+                            <div class="checkout-cart-item-cell checkout-cart-item-cell-name">
+                                <div class="checkout-cart-item checkout-cart-name">
+                                    <a data-ng-href="{{::item.Link}}" data-ng-bind="::item.Name"></a>
+                                    <div class="checkout-cart-item-count cs-t-3">@T("Checkout.CheckoutCart.Amount"): <span data-ng-bind="item.Amount"></span></div>
+                                    <ul class="checkout-cart-item-properties" data-ng-if="item.ColorName || item.SizeName || item.SelectedOptions.length > 0">
+                                        <li class="cart-full-properties-item" data-ng-if="item.ColorName">
+                                            <div class="cart-full-properties-name" data-ng-bind="(checkout.Cart.ColorHeader + ':')"></div>
+                                            <div class="cart-full-properties-value" data-ng-bind="item.ColorName"></div>
+                                        </li>
+                                        <li class="cart-full-properties-item" data-ng-if="item.SizeName">
+                                            <div class="cart-full-properties-name" data-ng-bind="(checkout.Cart.SizeHeader + ':')"></div>
+                                            <div class="cart-full-properties-value" data-ng-bind="item.SizeName"></div>
+                                        </li>
+                                        <li class="cart-full-properties-item" data-ng-if="item.SelectedOptions.length > 0" data-ng-repeat="option in item.SelectedOptions track by $index">
+                                            <div class="cart-full-properties-name" data-ng-bind="(option.CustomOptionTitle + ':')"></div>
+                                            <div class="cart-full-properties-value">
+                                                <span data-ng-bind="option.OptionTitle"></span>
+                                                <span data-ng-bind="option.OptionText"></span>
+                                                <span data-ng-bind="option.FormatPrice"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="checkout-cart-item-cell checkout-cart-item-cell-value">
+                                <div class="checkout-cart-item checkout-cart-price" data-ng-bind="::item.Price"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="checkout-cart-generated-field" data-ng-if="checkout.Cart.Cost != null">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3">@T("Checkout.CheckoutCart.OrderCost")</div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price" data-ng-bind="checkout.Cart.Cost"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-generated-field" data-ng-if="checkout.Cart.Delivery != null">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3">@T("Checkout.CheckoutCart.DeliveryCost")</div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price" data-ng-bind="checkout.Cart.Delivery"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-generated-field" data-ng-if="checkout.Cart.Payment != null">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3" data-ng-bind="checkout.Cart.Payment.Key"></div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price" data-ng-bind="checkout.Cart.Payment.Value"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-generated-field" data-ng-if="checkout.Cart.Discount != null">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3">@T("Checkout.CheckoutCart.Discount") (<span class="cart-full-discount">-<span data-ng-bind="checkout.Cart.Discount.Key"></span>%</span>)</div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price">- <span data-ng-bind="checkout.Cart.Discount.Value"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-generated-field" data-ng-if="checkout.Cart.Certificate != null">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3">@T("Checkout.CheckoutCart.Certificate")</div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price">
+                                    <span data-ng-bind="checkout.Cart.Certificate"></span>
+                                    <a href="" data-cards-remove data-type="certificate" data-apply-fn="checkout.deleteCard()"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-generated-field" data-ng-if="checkout.Cart.Coupon != null">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3">@T("Checkout.CheckoutCart.Coupon")</div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price">
+                                    - <span data-ng-bind="checkout.Cart.Coupon.Price"></span> <span data-ng-if="checkout.Cart.Coupon.Percent != null">(<span data-ng-bind="checkout.Cart.Coupon.Percent"></span>%)</span>
+                                    <img data-ng-if="checkout.Cart.Coupon.NotApplied" src="images/misc/q.png" title="@T("Checkout.CheckoutCart.CouponNotApplied")">
+                                    <a href="" data-cards-remove data-type="coupon" data-apply-fn="checkout.deleteCard()"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-generated-field checkout-tax" data-ng-if="checkout.Cart.Taxes != null" data-ng-repeat="item in checkout.Cart.Taxes track by $index">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3" data-ng-bind="item.Key"></div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price" data-ng-bind="item.Value"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-generated-field" data-ng-if="checkout.Cart.Bonuses != null">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3">@T("Checkout.CheckoutCart.Bonuses")</div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price">- <span data-ng-bind="checkout.Cart.Bonuses"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-result cs-bg-2">
+                        <div class="row middle-xs between-xs">
+                            <div class="col-xs">
+                                <div class="checkout-result-text cs-t-4">@T("Checkout.CheckoutCart.Total")</div>
+                            </div>
+                            <div>
+                                <div class="checkout-cart-result-price cs-t-4" data-ng-bind="checkout.Cart.Result"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-generated-field" data-ng-if="checkout.Cart.BonusPlus != null">
+                        <div class="checkout-cart-generated-row">
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-name">
+                                <div class="checkout-cart-generated-field-text cs-t-3">@T("Checkout.CheckoutCart.BonusPlus")</div>
+                            </div>
+                            <div class="checkout-cart-generated-cell checkout-cart-generated-value">
+                                <div class="checkout-cart-generated-field-price">+ <span data-ng-bind="checkout.Cart.BonusPlus"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-verify" data-ng-if="::checkout.Cart.ShowInCart">
+                        <a href="cart">@T("Checkout.CheckoutCart.GoToCart")</a>
+                    </div>
+                    <div class="checkout-cart-oneclick" data-ng-if="::checkout.Cart.BuyOneClickEnabled">
+                        <div class="checkout-cart-oneclick-wrap">
+                            <a href="" class="cs-l-d-1 link-dotted-invert" data-buy-one-click-trigger="true" data-buy-one-click-modal="modalBuyOneClickInCheckout">
+                                @SettingsCheckout.BuyInOneClickLinkText
+                                <div id="modalBuyOneClickInCheckout" class="modal ng-hide"
+                                     data-modal-control
+                                     data-modal-class="buy-one-click-dialog"
+                                     data-callback-close="buyOneClickTrigger.modalCallbackClose(modalScope)">
+                                    <div data-modal-header class="modal-header">
+                                        @T("Product.BuyInOneClick.BuyInOneClickHeader")
+                                    </div>
+                                    <div class="modal-content">
+                                        <div data-buy-one-click-form="true"
+                                             data-form-init="buyOneClickTrigger.formInit(form)"
+                                             data-success-fn="buyOneClickTrigger.successFn(result)"
+                                             data-page="@AdvantShop.Orders.BuyInOneclickPage.Checkout"
+                                             data-order-type="@AdvantShop.Core.Services.Orders.OrderType.OneClick">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

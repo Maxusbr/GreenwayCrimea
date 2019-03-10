@@ -1,0 +1,93 @@
+﻿@model AdvantShop.ViewModel.Checkout.BillingViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML>
+<html data-ng-strict-di data-ng-app="app" @Html.GetNgController()>
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="AdVantShop.NET">
+    <meta name="format-detection" content="telePhone=no">
+    <title>@Html.GetPageTitle()</title>
+    <base href="@UrlService.GetUrl()" />
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Keywords" content="@Html.GetPageKeywords()" />
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+    @Html.Partial("_Head")
+</head>
+<body class="cs-t-1 text-floating">
+    <div id="layout">
+        <div class="site-body-cell mobile-content-padding" style="max-width: 900px; margin:10px auto;">
+            <div class="col-xs-3 site-head-logo-block site-head-logo">
+                @Html.Action("Logo", "Common")
+            </div>
+            <div class="page-title-row checkout-title-row">
+                <h1 class="checkout-title page-title">@Model.Header</h1>
+            </div>
+            @if (!(Model.Order.Payed || Model.Order.OrderStatus.IsCanceled))
+            {
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-p-v" data-ng-init="checkout.setOrderId(@Model.Order.OrderID)">
+                            @using (Html.BeginForm("IndexPost", "Checkout", FormMethod.Post, new { name = "checkoutForm", novalidate = "novalidate", @class = "billing-form" }))
+                {
+                    if (SettingsCheckout.ManagerConfirmed && !Model.Order.ManagerConfirmed)
+                    {
+                                    <div class="checkout-not-confirmed">
+                                        @T("Checkout.Billing.NotConfirmed")
+                                    </div>
+                                }
+                                else
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Action("CheckoutPayment")
+                                    <div class="checkout-result">
+                                        @T("Checkout.CheckoutSummary.SumText"): <span class="checkout-result-price" data-ng-bind="checkout.Cart.Result"></span>
+                                    </div>
+                                    if (SettingsCheckout.IsShowUserAgreementText)
+                                    {
+                                        <div class="checkout-agree">
+                                            <label>
+                                                <input class="custom-input-native" type="checkbox" id="agree" name="agree" data-ng-model="checkout.agree" required ng-true-value="true" ng-false-value="false" />
+                                                <span class="custom-input-checkbox"></span>
+                                                <span class="custom-input-text">@Html.Raw(SettingsCheckout.UserAgreementText)</span>
+                                            </label>
+                                        </div>
+                                    }
+
+                                    <div @Html.Raw(SettingsCheckout.IsShowUserAgreementText ? "ng-show='checkout.agree === true' class='ng-hide'" : "")>
+                                        <div class="js-checkout-success"></div>
+                                    </div>
+
+
+                                }
+                            }
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-p-v" id="rightCell">
+                            @Html.Action("CheckoutCart")
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (Model.IsMobile)
+        {
+            <footer id="footer" class="container-fluid">
+                <div class="panel no-borders">
+                    <div class="footer-links clear">
+                        <a class="footer-link" rel="nofollow" href="@(Request.Path + AdvantShop.Helpers.QueryHelper.ChangeQueryParam(Request.QueryString.ToString(),
+                            new [] { "forcedDesktop", "forcedMobile" }, new[] { "true", null }))">@T("Checkout.Success.FullVersionWebsite")</a>
+                    </div>
+                </div>
+            </footer>
+            @Html.Partial("~/Areas/Mobile/Views/Shared/_FooterMobileScripts.cshtml")
+        }
+        else
+        {
+            @Html.Partial("_FooterScripts")
+        }
+    </div>
+</body>
+</html>

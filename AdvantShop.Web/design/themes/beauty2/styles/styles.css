@@ -1,0 +1,36 @@
+.design-background-top,
+.design-background-bottom {
+  z-index: 0; }
+
+.toolbar-bottom-enabled .design-background-bottom {
+  /*comment because get white margin to bottom page*/
+  /*margin-bottom: rem-calc(40px);*/ }
+
+.design-background-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 38.25rem;
+  background: url("../images/main.jpg") no-repeat center top; }
+  .design-background-top:after {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 6.25rem;
+    top: 100%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 40%, white 60%, rgba(255, 255, 255, 0) 100%); }
+
+.design-background-bottom {
+  margin-top: -10.5rem;
+  height: 10.5rem;
+  background: url("../images/footer.jpg") no-repeat center bottom;
+  position: relative; }
+
+.site-footer-top-level,
+.footer-bottom-level {
+  background: transparent none; }

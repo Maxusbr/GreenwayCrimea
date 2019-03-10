@@ -1,0 +1,422 @@
+﻿@using AdvantShop.Core.Services.Catalog
+@using AdvantShop.FilePath
+@model AdvantShop.ViewModel.PaymentReceipt.BillViewModel
+@{
+    Layout = null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <base href="@UrlService.GetUrl()" />
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+    <link href="./styles/views/bill.css" rel="stylesheet" type="text/css" />
+    <link href="./userfiles/extra.css" rel="stylesheet" type="text/css" />
+    <title>
+        @T("PaymentReceipt.Bill.Title")
+    </title>
+</head>
+<script type="text/javascript">
+    function position_this_window() {
+        var x = (screen.availWidth - 770) / 2;
+        window.resizeTo(770, 770);
+        window.moveTo(Math.floor(x), 50);
+    }
+</script>
+    <script language="JavaScript" type="text/javascript">
+        var money;
+        var price;
+        var rub, kop;
+        var litera = sotny = desatky = edinicy = minus = "";
+        var k = 0, i, j;
+        N = ["", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять",
+            "", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать",
+            "", "десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто",
+            "", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот",
+            "тысяч", "тысяча", "тысячи", "тысячи", "тысячи", "тысяч", "тысяч", "тысяч", "тысяч", "тысяч",
+            "миллионов", "миллион", "миллиона", "миллиона", "миллиона", "миллионов", "миллионов", "миллионов", "миллионов", "миллионов",
+            "миллиардов", "миллиард", "миллиарда", "миллиарда", "миллиарда", "миллиардов", "миллиардов", "миллиардов", "миллиардов", "миллиардов"];
+
+        var M = new Array(10);
+        for (j = 0; j < 10; ++j)
+            M[j] = new Array(N.length);
+
+        for (i = 0; i < N.length; i++)
+            for (j = 0; j < 10; j++)
+                M[j][i] = N[k++];
+
+        var R = new Array("рублей", "рубль", "рубля", "рубля", "рубля", "рублей", "рублей", "рублей", "рублей", "рублей");
+        var K = new Array("копеек", "копейка", "копейки", "копейки", "копейки", "копеек", "копеек", "копеек", "копеек", "копеек");
+
+        function num2str(money, target) {
+            rub = "", kop = "";
+            money = money.replace(",", ".");
+
+            if (isNaN(money)) { document.getElementById(target).innerHTML = "Не числовое значение"; return }
+            if (money.substr(0, 1) == "-") { money = money.substr(1); minus = "минус " }
+            else minus = "";
+            money = Math.round(money * 100) / 100 + "";
+
+            if (money.indexOf(".") != -1) {
+                rub = money.substr(0, money.indexOf("."));
+                kop = money.substr(money.indexOf(".") + 1);
+                if (kop.length == 1) kop += "0";
+            }
+            else rub = money;
+
+            if (rub.length > 12) { document.getElementById(target).innerHTML = "Слишком большое число"; return }
+
+            ru = propis(price = rub, R);
+            ko = propis(price = kop, K);
+            ko != "" ? res = ru + " " + ko : res = ru;
+            ru == "Ноль " + R[0] && ko != "" ? res = ko : 0;
+            kop == 0 ? res += " ноль " + K[0] : 0;
+            document.getElementById(target).innerHTML = (minus + ru).substr(0, 1).toUpperCase() + (minus + ru).substr(1);
+        }
+
+        function propis(price, D) {
+            litera = "";
+            for (i = 0; i < price.length; i += 3) {
+                sotny = desatky = edinicy = "";
+                if (n(i + 2, 2) > 10 && n(i + 2, 2) < 20) {
+                    edinicy = " " + M[n(i + 1, 1)][1] + " " + M[0][i / 3 + 3];
+                    i == 0 ? edinicy += D[0] : 0;
+                }
+                else {
+                    edinicy = M[n(i + 1, 1)][0];
+                    (edinicy == "один" && (i == 3 || D == K)) ? edinicy = "одна" : 0;
+                    (edinicy == "два" && (i == 3 || D == K)) ? edinicy = "две" : 0;
+                    i == 0 && edinicy != "" ? 0 : edinicy += " " + M[n(i + 1, 1)][i / 3 + 3];
+                    edinicy == " " ? edinicy = "" : (edinicy == " " + M[n(i + 1, 1)][i / 3 + 3]) ? 0 : edinicy = " " + edinicy;
+                    i == 0 ? edinicy += " " + D[n(i + 1, 1)] : 0;
+                    (desatky = M[n(i + 2, 1)][2]) != "" ? desatky = " " + desatky : 0;
+                }
+                (sotny = M[n(i + 3, 1)][3]) != "" ? sotny = " " + sotny : 0;
+                if (price.substr(price.length - i - 3, 3) == "000" && edinicy == " " + M[0][i / 3 + 3]) edinicy = "";
+                litera = sotny + desatky + edinicy + litera;
+            }
+            if (litera == " " + R[0]) return "ноль" + litera;
+            else return litera.substr(1);
+        }
+
+        function n(start, len) {
+            if (start > price.length) return 0;
+            else return Number(price.substr(price.length - start, len));
+        }
+    </script>
+<body onload="position_this_window();window.print();">
+    <div class="Vnimanie">
+        @T("PaymentReceipt.Bill.Attention")
+    </div>
+    <br />
+    <div class="Obrazech">
+        @T("PaymentReceipt.Bill.Example")
+    </div>
+    <br />
+    <table class="TableRekvizit">
+        <tr>
+            <td rowspan="2" colspan="2">
+                <div>@Model.PayeesBank</div>
+                <div class="BankPoluchatel">Банк получателя</div>
+            </td>
+            <td>БИК</td>
+            <td style="border-bottom-width: 0;">@Model.Bik</td>
+        </tr>
+        <tr>
+            <td>Сч. №</td>
+            <td style="border-top-width: 0;">@Model.CorrespondentAccount
+            </td>
+        </tr>
+        <tr>
+            <td class="INN">
+                ИНН @Model.Inn
+            </td>
+            <td class="KPP">
+                <div runat="server" id="divKPP">
+                    КПП @Model.Kpp
+                </div>
+            </td>
+            <td rowspan="2">Сч. №</td>
+            <td rowspan="2">@Model.TransactAccount</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>@Model.CompanyName</div>
+                <div class="Poluchatel">Получатель</div>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <h1>
+        Счет № @Model.OrderNumber от @Model.OrderDate
+    </h1>
+    <br />
+    <hr class="HrBlack" />
+    <table style="width: 100%">
+        <tr>
+            <td>Поставщик:</td>
+            <td class="Rekviziti">@Model.Vendor</td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px;">
+                Грузоотправитель:
+            </td>
+            <td class="Rekviziti">
+                @Model.Vendor
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px;">Покупатель:&nbsp;</td>
+            <td class="Rekviziti" style="padding-top: 10px;">@Model.Buyer</td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px;">
+                Грузополучатель:
+            </td>
+            <td class="Rekviziti" style="padding-top: 10px;">
+                @Model.Buyer
+            </td>
+        </tr>
+    </table>
+    <br />
+    <center>
+        <table cellspacing="1" cellpadding="4" width="100%" bgcolor="#aaaaaa" border="0"
+                class="Spisok">
+            <tbody>
+                <tr class="Zag" bgcolor="white">
+                    <td><font class="sc">№</font></td>
+                    <td width="30%">
+                        <font class="sc">@T("PaymentReceipt.Bill.JobName")</font>
+                    </td>
+                    <td>
+                        <font class="sc">@T("PaymentReceipt.Bill.Count")</font>
+                    </td>
+                    <td>
+                        <font class="sc">@T("PaymentReceipt.Bill.Price")</font>
+                    </td>
+                    <td>
+                        <font class="sc">@T("PaymentReceipt.Bill.Unit")</font>
+                    </td>
+                    <td width="15%">
+                        <font class="sc">@T("PaymentReceipt.Bill.Sum")</font>
+                    </td>
+                </tr>
+                @for (int i = 0; i < Model.OrderItems.Count; i++)
+                {
+                    var item = Model.OrderItems[i];
+                    <tr bgcolor="white">
+                        <td>
+                            <font class="sc">@(i + 1)</font>
+                        </td>
+                        <td>
+                            <font class="sc"><div class="Bill_PaymentReciept_ArtNo" style="font-weight: bold">@item.ArtNo, </div><b>@item.Name</b></font>
+                        </td>
+                        <td>
+                            <font class="sc">@item.Amount</font>
+                        </td>
+                        <td>
+                            <font class="sc">@(item.Price.RoundAndFormatPrice(Model.RenderCurrency, Model.OrderCurrency.CurrencyValue))</font>
+                        </td>
+                        <td>
+                            <font class="sc">@(item.Unit)</font>
+                        </td>
+                        <td style="text-align: right">
+                            <font class="sc">@((item.Price * item.Amount).RoundAndFormatPrice(Model.RenderCurrency, Model.OrderCurrency.CurrencyValue))</font>
+                        </td>
+                    </tr>
+                }
+                @for (int i = 0; i < Model.OrderCertificates.Count; i++)
+                {
+                    var item = Model.OrderCertificates[i];
+                    <tr bgcolor="white">
+                        <td>
+                            <font class="sc">@(i + 1)</font>
+                        </td>
+                        <td>
+                            <font class="sc"><b>@T("PaymentReceipt.Bill.GiftCertificate"): item.CertificateCode</b></font>
+                        </td>
+                        <td>
+                            <font class="sc">1</font>
+                        </td>
+                        <td>
+                            <font class="sc">@(item.Sum.RoundAndFormatPrice(Model.RenderCurrency, Model.OrderCurrency.CurrencyValue))</font>
+                        </td>
+                        <td style="text-align: right">
+                            <font class="sc">
+                                @(item.Sum.RoundAndFormatPrice(Model.RenderCurrency, Model.OrderCurrency.CurrencyValue))
+                            </font>
+                        </td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Model.ShippingCost))
+                {
+                    <tr bgcolor="white">
+                        <td>
+                            <font class="sc">@(Model.OrderItems.Count + 1)</font>
+                        </td>
+                        <td colspan="4">
+                            <font class="sc"><b><nobr>Услуги по доставке</nobr></b></font>
+                        </td>
+                        <td style="text-align: right">
+                            <font class="sc">
+                                @Model.ShippingCost
+                            </font>
+                        </td>
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Model.PaymentCost))
+                {
+                    <tr bgcolor="white">
+                        <td>
+                            <font class="sc">@(Model.OrderItems.Count + (!string.IsNullOrEmpty(Model.ShippingCost) ? 2 : 1))</font>
+                        </td>
+                        <td colspan="5">
+                            <font class="sc"><b><nobr>Наценка на метод оплаты</nobr></b></font>
+                        </td>
+                        <td style="text-align: right">
+                            <font class="sc">
+                                @Model.PaymentCost
+                            </font>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </center>
+    <br />
+    <table class="Rekviziti" cellspacing="0" cellpadding="5" width="100%" border="0">
+        <tbody>
+            <tr bgcolor="white">
+                <td align="right" width="82%">
+                    <font class="sc">
+                        <b>
+                            @T("PaymentReceipt.Bill.Total"):
+                        </b>
+                    </font>
+                </td>
+                <td align="right" width="18%">
+                    <font class="sc"><b>@Model.ProductsCost</b></font>
+                </td>
+            </tr>
+            @if (Model.Taxes != null && Model.Taxes.Count > 0)
+            {
+                foreach (var tax in Model.Taxes)
+                {
+                    <tr>
+                        <td align="right" width="82%">
+                            <font class="sc"><b>@((tax.ShowInPrice ? T("Core.Tax.IncludeTax").ToString() : "") + " " + tax.Name)</b></font>
+                        </td>
+                        <td align="right" width="18%">
+                            <font class="sc"><b>@(tax.Sum.FormatPrice(Model.OrderCurrency))</b></font>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td align="right" width="82%">
+                        <font class="sc"><b>@T("PaymentReceipt.Bill.NDSAlreadyIncluded")</b></font>
+                    </td>
+                    <td align="right" width="18%">
+                        <font class="sc"><b>Без НДС</b></font>
+                    </td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.DiscountCost))
+            {
+                <tr>
+                    <td align="right" width="82%">
+                        <font class="sc"><b>@T("PaymentReceipt.Bill.TotalDiscount")</b></font>
+                    </td>
+                    <td align="right" width="18%">
+                        <font class="sc"><b>@Model.DiscountCost</b></font>
+                    </td>
+                </tr>
+            }
+            <tr bgcolor="white">
+                <td align="right" width="82%">
+                    <font class="sc"><b>@T("PaymentReceipt.Bill.Paid")</b></font>
+                </td>
+                <td align="right" width="18%">
+                    <font class="sc"><b>@Model.TotalCost</b></font>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <div>
+        Всего наименований 
+        @(Model.OrderItems.Count + Model.OrderCertificates.Count + (!string.IsNullOrEmpty(Model.ShippingCost) ? 1 : 0) + (!string.IsNullOrEmpty(Model.PaymentCost) ? 1 : 0)), 
+        на сумму @Model.TotalCost
+    </div>
+    <div class="Rekviziti">
+        <table style="font-weight: bold;" border="0">
+            <tr>
+                <td>
+                    <div class="cat" id="str">
+                    </div>
+                </td>
+                <td>
+                    &nbsp;<span class="cat">@Model.TotalKop</span>
+                </td>
+            </tr>
+        </table>
+        <hr class="HrBlack" />
+        <table width="100%">
+            <tbody>
+                <tr style="font-weight: bold;">
+                    <td>Руководитель</td>
+                    <td style="padding: 0 20px; text-align: center;">@Model.PosDirector</td>
+                    <td style="padding: 0 20px; text-align: center;">
+                        <div style="height: 0px; position: relative; z-index: 0;">
+                            <div style="position: absolute; top: 0px; left: 0px; width: 100%; text-align: center; z-index: 0;">
+                                @if (Model.StampImageName.IsNotEmpty())
+                                {
+                                    <img src="@FoldersHelper.GetPath(FolderType.Pictures, Model.StampImageName, false)"/>
+                                }
+                            </div>
+                        </div>
+                        <div style="position: relative; z-index: 1;">______________________</div>
+                    </td>
+                    <td style="padding: 0 20px; text-align: center; text-decoration: underline;">@Model.Director</td>
+                </tr>
+                <tr style="font-size: 10px; text-align: center; height: 24px;">
+                    <td></td>
+                    <td>должность</td>
+                    <td><div style="position: relative; z-index: 1;">подпись</div></td>
+                    <td>расшифровка подписи</td>
+                </tr>
+                <tr style="font-weight: bold;">
+                    <td>Бухгалтер</td>
+                    <td style="padding: 0 20px; text-align: center;">@Model.PosAccountant</td>
+                    <td style="padding: 0 20px; text-align: center;">
+                        <div style="position: relative; z-index: 1;">______________________</div>
+                    </td>
+                    <td style="padding: 0 20px; text-align: center; text-decoration: underline;">@Model.Accountant</td>
+                </tr>
+                <tr style="font-size: 10px; text-align: center; height: 24px;">
+                    <td></td>
+                    <td></td>
+                    <td><div style="position: relative; z-index: 1;">подпись</div></td>
+                    <td>расшифровка подписи</td>
+                </tr>
+                <tr style="font-weight: bold;">
+                    <td>Ответственный</td>
+                    <td style="padding: 0 20px; text-align: center;">@Model.PosManager</td>
+                    <td style="padding: 0 20px; text-align: center;">
+                        <div style="position: relative; z-index: 1;">______________________</div>
+                    </td>
+                    <td style="padding: 0 20px; text-align: center; text-decoration: underline;">@Model.Manager</td>
+                </tr>
+                <tr style="font-size: 10px; text-align: center; height: 24px;">
+                    <td></td>
+                    <td>должность</td>
+                    <td><div style="position: relative; z-index: 1;">подпись</div></td>
+                    <td>расшифровка подписи</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>num2str('@Model.IntPartPrice', 'str');</script>
+</body>
+</html>

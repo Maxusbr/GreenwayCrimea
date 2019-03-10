@@ -1,0 +1,13 @@
+﻿Id;Name;SortOrder;Main;Type
+1;Корзина интернет магазина;0;true;ShoppingCart
+2;Оффлайн;10;true;Offline
+3;В один клик;20;true;OneClick
+4;Посадочная страница;30;true;LandingPage
+5;Мобильная версия;40;true;Mobile
+6;По телефону;50;true;Phone
+7;Онлайн консультант;60;true;LiveChat
+8;Социальные сети;70;true;SocialNetworks
+9;Нашли дешевле;80;true;FindCheaper
+10;Брошенные корзины;90;true;AbandonedCart
+11;Обратный звонок;100;true;Callback
+12;Другое;110;true;None

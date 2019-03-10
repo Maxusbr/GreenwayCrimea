@@ -1,0 +1,29 @@
+﻿<div>
+    <div class="row">
+        <div class="col-xs-3">
+            <ul class="blocks-constructor-modal-categories">
+                <li class="blocks-constructor-modal-categories-item" data-ng-repeat="category in $ctrl.data track by $index">
+                    <a href="" class="blocks-constructor-modal-categories-item-link link-decoration-none" data-ng-class="{'blocks-constructor-modal-category-selected': category === $ctrl.categorySelected }" data-ng-bind="::category.Category" data-ng-click="$ctrl.selectCategory(category)"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs">
+            <div class="row">
+                <div class="col-xs-6" data-ng-repeat="block in $ctrl.categorySelected.Blocks track by $index">
+                    <div class="blocks-constructor-modal-block">
+                        <figure class="blocks-constructor-modal-block-pic">
+                            <img class="blocks-constructor-modal-block-image" data-ng-src="{{block.Picture}}" alt="{{block.Name}}" />
+                        </figure>
+                        <div class="blocks-constructor-modal-block-descr" data-ng-bind="block.Description"></div>
+                        <div class="blocks-constructor-btn-apply-wrap">
+                            <input class="blocks-constructor-btn-apply" type="button" value="Добавить" data-ng-click="$ctrl.onApply({blockName: block.Name, sortOrder: $ctrl.modalData.sortOrder })" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blocks-constructor-modal-categories-buttons"> 
+        <input type="button" class="blocks-constructor-btn-cancel" data-modal-close="" value="Отмена" />
+    </div>
+</div>

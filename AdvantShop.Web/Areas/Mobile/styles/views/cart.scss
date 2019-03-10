@@ -1,0 +1,26 @@
+﻿@import "../_defFuncValues.scss";
+@import "../_function.scss";
+
+.select-cart {
+    width: 70px;
+    margin-bottom: toEm(5px);
+    .good-select-emulate {
+        padding-right: toEm(20px);
+        padding-left: 0;
+    }
+    .good-select-block {
+        width: toEm(60px);
+    }
+}
+
+.cart-amount-error {
+    position: relative;
+    left: 0;
+    transform: none;
+}
+
+.cart-full-mobile-coupon {
+    input[type='text'] {
+        margin-bottom: toEm(10px);
+    }
+}

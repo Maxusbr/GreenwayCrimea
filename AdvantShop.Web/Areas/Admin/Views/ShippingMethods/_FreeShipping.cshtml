@@ -1,0 +1,15 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.FreeShippingShippingAdminModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span>Срок доставки</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DeliveryTime, new { ng_model = "shippingMethod.Params.DeliveryTime", @class = "form-control" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Срок доставки">
+                Срок доставки, как отрезок времени, в который данный метод доставки сможет доставить товар.<br><br>
+                Например: 1-2 дня.
+            </help-trigger>
+        </div>
+    </div>

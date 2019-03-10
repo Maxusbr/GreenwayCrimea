@@ -1,0 +1,89 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.Tasks.TaskViewModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@{
+    var task = Model.Task;
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "blue ordSum-bg", href = Url.RouteUrl("AdminMobile_Tasks"), title = T("AdminMobile.Tasks.Tasks") })
+}
+<div id="content" data-ng-controller="TaskViewController as taskCtrl">
+    <div class="orderCustomerInfo">
+        <div class="customer">
+            <div class="name">@Html.Raw(@task.Name)</div>
+            <div class="date">@task.DateCreated.ToString(SettingsMain.AdminDateFormat)</div>
+        </div>
+    </div>
+    <div class="total-info">
+        <div class="row clear">
+            <div class="clear">
+                <div class="name">@T("AdminMobile.Tasks.Task.Status"):</div>
+                <div class="value">
+                    <span class="select-custom icon-down-open-after-abs cs-t-4">
+                        @Html.DropDownList("ddlStatus", Model.Statuses, new
+                        {
+                            @class = "cs-bg-2",
+                            data_ng_change = "taskCtrl.changeStatus()",
+                            data_ng_model = "taskCtrl.status",
+                            data_ng_init = "taskCtrl.status='" + (int)task.Status + "'; taskCtrl.taskId='" + task.TaskId + "'"
+                        })
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row clear">
+            <div class="clear">
+                <div class="name">@T("AdminMobile.Tasks.Task.AppointedManager"):</div>
+                <div class="value">
+                    @task.AppointedManager.LastName @task.AppointedManager.FirstName
+                </div>
+            </div>
+            @if (!string.IsNullOrEmpty(task.AppointedManager.StandardPhone.ToString()))
+            {
+                <div class="customer">
+                    <div class="phone"><a href="tel:@task.AppointedManager.StandardPhone.ToString()">@task.AppointedManager.StandardPhone.ToString()</a></div>
+                </div>
+            }
+        </div>
+        <div class="row clear">
+            <div class="name">@T("AdminMobile.Tasks.Task.DueDate"):</div>
+            <div class="value">
+                @task.DueDate.ToString(SettingsMain.ShortDateFormat)
+            </div>
+        </div>
+        <div class="row clear">
+            <div class="ordInfoName">@T("AdminMobile.Tasks.Task.Description"):</div>
+            <div class="ordInfoValue">@Html.Raw(task.Description)</div>
+        </div>
+        @if (Model.Order != null)
+        {
+            <div class="row clear">
+                <div class="ordInfoName">
+                    <a href="@Url.RouteUrl("AdminMobile_Order", new { orderId = Model.Order.OrderId })">
+                        @T("AdminMobile.Tasks.Task.OrderNumber") @Model.Order.Number
+                    </a>
+                </div>
+            </div>
+        }
+        @if (task.ClientCustomer != null)
+        {
+            <div class="row clear">
+                <div class="clear">
+                    <div class="name">@T("AdminMobile.Tasks.Task.Client"):</div>
+                    <div class="value">
+                        @task.ClientCustomer.LastName @task.ClientCustomer.FirstName
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(task.ClientCustomer.Phone))
+                {
+                    <div class="customer">
+                        <div class="phone"><a href="tel:@task.ClientCustomer.Phone">@task.ClientCustomer.Phone</a></div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

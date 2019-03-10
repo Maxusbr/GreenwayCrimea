@@ -1,0 +1,44 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Время доставки</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Дата доставки
+                    </label>
+                    <div class="col-xs-9">
+                        <div class="dropdown pull-right">
+                            <a class="dropdown-toggle" id="deiveryDate" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" ng-model="ctrl.deliveryDate" data-date-time-input="DD.MM.YYYY"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker ng-model="ctrl.deliveryDate" data-datetimepicker-config="{ dropdownSelector: '#deiveryDate', minView: 'day', modelType: 'DD.MM.YYYY' }" />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Время доставки
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" placeholder="с 9 до 12" ng-model="ctrl.deliveryTime" maxlength="255" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

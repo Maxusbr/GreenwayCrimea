@@ -1,0 +1,201 @@
+﻿@using AdvantShop.Payment
+@model AdvantShop.Core.Services.Payment.PaymentMethodAdminModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Название метода оплаты</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Name, new {ng_model = "paymentMethod.name", @class = "form-control", required = "required", validation_input_text = "Название метода оплаты" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Название метода оплаты">
+                <p>Это название будет показано в клиентской части магазина.</p>
+                <p>Например: Оплата пластиковой картой.</p>
+            </help-trigger>
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Активен
+        </div>
+        <div class="col-xs-6 relative">
+            <label class="adv-checkbox-label form-label-block">
+                @Html.CheckBoxFor(x => x.Enabled, new { ng_model = "paymentMethod.enabled", ng_init = "paymentMethod.enabled=" + Model.Enabled.ToLowerString(), @class = "adv-checkbox-input" })
+                <span data-e2e="PaymentEnabled" class="adv-checkbox-emul"></span>
+                @if (!Model.Enabled)
+                {
+                    <span class="link-danger">Не активен</span>
+                }
+            </label>
+            <help-trigger class="ng-cloak" data-title="Активен">
+                Включен или выключен метод в данный момент.
+            </help-trigger>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <div class="flex-grow-n col-fixed-size-md">
+            Активность метода для
+        </div>
+        <div  class="col-xs-8 relative">
+
+            <div class="m-b-sm ng-cloak" ng-if="paymentMethod.AvailableCountries != null && paymentMethod.AvailableCountries.length != 0">
+                <div data-e2e="PaymentNameCountry" ng-repeat="item in paymentMethod.AvailableCountries track by $index" class="ng-cloak shipping-location-item">
+                    {{$index != 0 ? ", " : ""}} {{item.Name}} <a href="" ng-click="paymentMethod.deleteAvailableCountry(item.CountryId)" data-e2e="PaymentCountryDel" class="link-invert link-decoration-none fa fa-remove"></a>
+                </div>
+            </div>
+
+            <div class="m-b-sm ng-cloak" ng-if="paymentMethod.AvailableCities != null && paymentMethod.AvailableCities.length != 0">
+                <div data-e2e="PaymentNameCity" ng-repeat="item in paymentMethod.AvailableCities track by $index" class="ng-cloak shipping-location-item">
+                    {{item.Name}} <a href="" ng-click="paymentMethod.deleteAvailableCity(item.CityId)" data-e2e="PaymentCityDel" class="link-invert link-decoration-none fa fa-remove"></a>
+                </div>
+            </div>
+
+            <div class="m-b-sm bold ng-cloak" ng-if="(paymentMethod.AvailableCountries == null || paymentMethod.AvailableCountries.length == 0) && (paymentMethod.AvailableCities == null || paymentMethod.AvailableCities.length == 0)">
+                <span  class="relative p-r-xs">
+                    Все страны, все города
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Города и страны">
+                        Тут вы можете задать список стран и городов, для которых будет доступен данный метод оплаты.
+                    </help-trigger>
+                </span>
+            </div>
+
+
+            <div class="row m-b-sm">
+                <div class="col-xs-2">Страны</div>
+                <div class="col-xs-9">
+                    <input type="text" data-e2e="PaymentCountry" class="form-control" ng-model="paymentMethod.newAvailableCountry" style="width: 250px; display: inline-block; vertical-align: top;" autocompleter on-type="country" />
+                    <button type="button" data-e2e="PaymentCountryAdd" class="btn btn-sm btn-action" ng-disabled="!paymentMethod.newAvailableCountry" ng-click="paymentMethod.addAvailableCountry()">Добавить страну</button>
+                </div>
+            </div>
+
+            <div class="row m-b-sm">
+                <div class="col-xs-2">Города</div>
+                <div class="col-xs-9">
+                    <input type="text" data-e2e="PaymentCity" class="form-control" ng-model="paymentMethod.newAvailableCity" style="width: 250px; display: inline-block; vertical-align: top;" autocompleter on-type="city"  />
+                    <button type="button" data-e2e="PaymentCityAdd" class="btn btn-sm btn-action" ng-disabled="!paymentMethod.newAvailableCity"  ng-click="paymentMethod.addAvailableCity()">Добавить город</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Тип
+        </div>
+        <div class="col-xs-6 relative">
+            @Model.PaymentTypeLocalized
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="flex-grow-n col-fixed-size-md">
+            Описание
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextAreaFor(x => x.Description, new {ng_model = "paymentMethod.description", @class = "form-control"})
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Описание">
+                <p>Описание метода оплаты, которое выводится в клиентской части магазина.</p>
+                <p>Например: Оплата наличными курьеру при получении посылки.</p>
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Порядок сортировки
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.SortOrder, new {ng_model = "paymentMethod.sortOrder", @class = "form-control" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Порядок сортировки">
+                Очерёдность вывода метода оплаты. Действует правило "ноль вверху"
+            </help-trigger>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="flex-grow-n col-fixed-size-md">
+            Иконка
+        </div>
+        <div class="col-xs-6 relative">
+            <img ng-if="paymentMethod.icon != null && paymentMethod.icon.length > 0" ng-src="{{paymentMethod.icon}}" class="m-b-sm" />
+            <div>
+                <a href=""
+                   accept="image/*"
+                   ngf-max-size="15MB"
+                   ngf-select=""
+                   ngf-change="paymentMethod.uploadIcon($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+                   class="picture-uploader-buttons-add">
+                    Добавить изображение
+                </a>
+            </div>
+            <div class="ng-cloak m-t-xs" ng-if="paymentMethod.icon == null || paymentMethod.icon.length == 0">
+                Рекомендуемый размер 60 x 32 px <br>Формат может быть только *.gif, *.png или *.jpg
+            </div>
+            <div class="ng-cloak" ng-if="paymentMethod.icon != null && paymentMethod.icon.length > 0">
+                <a href="" class="picture-uploader-buttons-delete link-danger" ng-click="paymentMethod.deleteIcon()">Удалить изображение</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Тип наценки
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.DropDownListFor(x => x.ExtrachargeType, Model.ExtrachargeTypes, new {ng_model = "paymentMethod.extrachargeType", ng_init = "paymentMethod.extrachargeType='" + Model.ExtrachargeType + "'", @class = "form-control"})
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Тип наценки">
+                <p>Тут вы указываете тип наценки на метод оплаты, если она есть.</p>
+                <p>Фиксированная - это фиксированное число, скажем 100 руб.</p>
+                <p>Процентная - это процент от суммы к оплате, скажем 3%.</p>
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Наценка
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Extracharge, new {ng_model = "paymentMethod.extracharge", @class = "form-control"})
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Наценка">
+                <p>Тут вы указываете саму наценку на метод оплаты, если она есть.</p>
+                <p>Фиксированная - это фиксированное число, скажем "100" руб.</p>
+                <p>Процентная - это процент от суммы к оплате, скажем "3" %.</p>
+            </help-trigger>
+        </div>
+    </div>
+
+
+@if (Model.ShowCurrency)
+{
+
+        <div class="form-group row middle-xs">
+            <div class="flex-grow-n col-fixed-size-md">
+                Валюта, в которой производится оплата
+            </div>
+            <div class="col-xs-6 relative">
+                @Html.DropDownListFor(x => x.CurrencyId, Model.Currencies, new {ng_model = "paymentMethod.currencyId", ng_init = "paymentMethod.currencyId='" + Model.CurrencyId + "'", @class = "form-control"})
+                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Валюта, в которой производится оплата">
+                    <p>Данная опция отвечает за назначение валюты, в которой работает данный метод оплаты.</p>
+                    <p>Например, если у вас каталог в долларах США, а счет вам нужно выставить в рублях.</p>
+                </help-trigger>
+            </div>
+        </div>
+
+}

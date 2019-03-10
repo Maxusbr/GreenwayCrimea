@@ -1,0 +1,260 @@
+﻿@using AdvantShop.Core.Services.Catalog
+@model AdvantShop.ViewModel.PaymentReceipt.CheckViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+    <title>
+        @T("PaymentReceipt.Check.Title")
+    </title>
+    <style type="text/css">
+        body {
+            font-family: Verdana, Arial, Helvetica, Sans-serif;
+            font-size: 11px;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+    <link href="/userfiles/extra.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        function position_this_window() {
+            window.resizeTo(670, 700);
+            var x = (screen.availWidth - 670) / 2;
+            window.moveTo(Math.floor(x), 50);
+        }
+    </script>
+</head>
+<body onload="position_this_window();window.print();">
+    <table cellspacing="0" cellpadding="0" style="width: 600px; background-color: #ffffff;" summary="Order details">
+        <tr>
+            <td>
+                <table cellspacing="0" cellpadding="0" style="width: 100%; border: none;" summary="Summary">
+                    <tr>
+                        <td style="width: 100%;">
+                            <table cellspacing="0" cellpadding="2" width="100%" summary="Details">
+                                <tr>
+                                    <td valign="top">
+                                        <strong style="font-size: 28px; text-transform: uppercase;">Invoice</strong>
+                                        <br />
+                                        <br />
+                                        <strong>Date:</strong>
+                                        @Model.OrderDate<br />
+                                        <strong>Order id:</strong>
+                                        @Model.OrderId<br />
+                                        <strong>Order status:</strong> Queued<br />
+                                        <strong>Payment method:</strong><br />
+                                        Check (manual processing)<br />
+                                        <strong>Delivery method:</strong><br />
+                                        @Model.ShippingMethod
+                                    </td>
+                                    <td valign="bottom" align="right">
+                                        <strong>@Model.CompanyName</strong><br />
+                                        @Model.Address,
+                                        @Model.City<br />
+                                        @Model.State,
+                                        @Model.Country<br />
+                                        CALL US:
+                                        @Model.CompanyPhone<br />
+                                        International:
+                                        @Model.InterPhone<br />
+                                        Fax:
+                                        @Model.CompanyFax<br />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <hr style="border: 0px none; border-bottom: 2px solid #58595b; margin: 2px 0px 17px 0px;
+                padding: 0px; height: 0px;" />
+                <table cellspacing="0" cellpadding="0" style="width: 45%; border: 0px none; margin-bottom: 15px;"
+                        summary="Address">
+                    <tr>
+                        <td nowrap="nowrap"><strong>Name:</strong></td>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone:</strong></td>
+                        <td>@Model.Phone</td>
+                    </tr>
+                    <tr>
+                        <td><strong>E-mail:</strong></td>
+                        <td>@Model.Email</td>
+                    </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" style="width: 100%; border: 0px none; margin-bottom: 30px;" summary="Addresses">
+                    <tr>
+                        <td style="width: 45%; height: 25px;">
+                            <strong>Billing Address</strong>
+                        </td>
+                        <td width="10%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 45%; height: 25px;">
+                            <strong>Shipping Address</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="4">
+                            <img src="images/spacer.gif" style="height: 2px; width: 100%; background: #58595b none;" alt="" />
+                        </td>
+                        <td>
+                            <img height="2" src="images/spacer.gif" width="1" alt="" />
+                        </td>
+                        <td height="4">
+                            <img src="images/spacer.gif" style="height: 2px; width: 100%; background: #58595b none;" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table cellspacing="0" cellpadding="0" style="width: 100%; border: none;" summary="Billing Address">
+                                <tr>
+                                    <td><strong>Address:</strong></td>
+                                    <td>@Model.BillingAddress<br /></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>City:</strong></td>
+                                    <td>@Model.BillingCity</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>State:</strong></td>
+                                    <td>@Model.BillingState</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Country:</strong></td>
+                                    <td>@Model.BillingCountry</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Zip/Postal code:</strong></td>
+                                    <td>@Model.BillingZip</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <table cellspacing="0" cellpadding="0" width="100%" border="0" summary="Shipping Address">
+                                <tr>
+                                    <td><strong>Address:</strong></td>
+                                    <td>@Model.ShippingAddress<br /></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>City:</strong></td>
+                                    <td>@Model.ShippingCity</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>State:</strong></td>
+                                    <td>@Model.ShippingState</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Country:</strong></td>
+                                    <td>@Model.ShippingCountry</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Zip/Postal code:</strong></td>
+                                    <td>@Model.ShippingZip</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-size: 14px; font-weight: bold; text-align: center">
+                    Products ordered
+                </p>
+                <table cellspacing="0" cellpadding="3" width="100%" border="1" summary="Products">
+                    <tr>
+                        <th width="60" bgcolor="#cccccc">
+                            #
+                        </th>
+                        <th bgcolor="#cccccc">
+                            Product
+                        </th>
+                        <th nowrap="nowrap" width="100" bgcolor="#cccccc" align="center">
+                            Item price
+                        </th>
+                        <th width="60" bgcolor="#cccccc">
+                            Quantity
+                        </th>
+                        <th width="60" bgcolor="#cccccc">
+                            Total
+                        </th>
+                    </tr>
+                    @for (int i = 0; i < Model.OrderItems.Count; i++)
+                    {
+                        var item = Model.OrderItems[i];
+                        <tr>
+                            <td align="center">
+                                @(i+1)
+                            </td>
+                            <td>
+                                <b><nobr>@item.Name</nobr></b>
+                            </td>
+                            <td align="right" nowrap="nowrap">
+                                <span class="currency">@(item.Price.RoundAndFormatPrice(Model.RenderCurrency, Model.OrderCurrency.Rate))</span>&nbsp;&nbsp;
+                            </td>
+                            <td align="center">
+                                @item.Amount
+                            </td>
+                            <td align="right" nowrap="nowrap" style="padding-right: 5px;">
+                                <span class="currency">@((item.Price * item.Amount).RoundAndFormatPrice(Model.RenderCurrency, Model.OrderCurrency.Rate))</span>
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+                <table cellspacing="0" cellpadding="0" width="100%" border="0" summary="Total">
+                    <tr>
+                        <td style="padding-right: 3px; height: 20px; width: 100%; text-align: right;">
+                            <strong>Subtotal:</strong>
+                        </td>
+                        <td style="white-space: nowrap; padding-right: 5px; height: 20px; text-align: right;">
+                            <span class="currency">@Model.SubTotal</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-right: 3px; height: 20px; width: 100%; text-align: right;">
+                            <strong>Shipping cost:</strong>
+                        </td>
+                        <td style="white-space: nowrap; padding-right: 5px; height: 20px; text-align: right;">
+                            <span class="currency">@Model.ShippingCost</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-right: 3px; height: 20px; width: 100%; text-align: right;">
+                            <strong>Discount:</strong>
+                        </td>
+                        <td style="white-space: nowrap; padding-right: 5px; height: 20px; text-align: right;">
+                            <span class="currency">@Model.Discount</span>
+                        </td>
+                    </tr>
+                    <asp:Literal ID="literalTaxCost" runat="server"></asp:Literal>
+                    <tr>
+                        <td height="4" colspan="2">
+                            <img src="images/spacer.gif" style="height: 2px; width: 100%; background: #58595b none;" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-right: 3px; height: 25px; background: #cccccc none; width: 100%; text-align: right;">
+                            <strong>Total:</strong>
+                        </td>
+                        <td style="white-space: nowrap; padding-right: 5px; height: 25px; background: #cccccc none;
+                        text-align: right;">
+                            <strong><span class="currency">@Model.Total</span></strong>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; padding-top: 30px; font-size: 12px;">
+                Thank you for your purchase!
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

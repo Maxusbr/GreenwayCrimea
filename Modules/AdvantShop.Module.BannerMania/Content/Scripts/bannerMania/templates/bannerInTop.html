@@ -1,0 +1,59 @@
+﻿<div class="container-fluid">
+
+    <h3 class="m-b">Баннер в шапке</h3>
+
+    <div class="m-b-md" ng-show="$ctrl.ImagePath != ''">
+        Текущее изображение <br /><br />
+        <a href="../userfiles/Modules/BannerMania/Content/Pictures/BannerInTop/{{$ctrl.ImagePath}}" target="_blank">
+            <img src="../userfiles/Modules/BannerMania/Content/Pictures/BannerInTop/{{$ctrl.ImagePath}}" style="max-width: 600px; max-height: 250px;" />
+        </a>
+    </div>
+    <div for="file" class="btn btn-sm btn-success m-b-md" ngf-select="" ngf-change="$ctrl.selectFile($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)" ngf-accept="'.jpg,.jpeg,.png,.gif'" style="vertical-align: initial;">
+        Выберите изображение
+    </div>
+
+    <help-trigger class="ng-cloak word-spacing" data-title="Загрузка изображения">
+        Рекомендуемая высота изображения - не более 170 пикс, ширина - 1200-1600 пикс. <br /><br />
+        Доступные типы файлов для загрузки: jpeg, jpg, png и gif. <br />
+        Уточнение - файлы gif не пережимаются, поэтому перед загрузкой файла проверьте размер файла по ширине и высоте в пикс, чтобы он корректно отображался.
+    </help-trigger>
+
+    <input ng-show="$ctrl.ImagePath != ''" type="button" class="btn btn-sm btn-danger m-b-md" style="vertical-align: initial; margin-left: 25px;" ng-click="$ctrl.deleteImage()" value="Удалить изображение" />
+
+    <div class="m-b-md bannermania">
+        <a href="../modules/bannermania/content/banners.zip" target="_blank">Загрузить архив с примерами баннеров</a>
+        <help-trigger class="ng-cloak word-spacing" data-title="Загрузить архив с примерами баннеров">
+            Мы подготовили для Вас готовые баннеры на выбор. Также вы можете загрузить другие изображения на свое усмотрение.
+        </help-trigger>
+    </div>
+    <div class="row m-b-md" style="vertical-align: middle;line-height: 34px;">
+        <div class="col-sm-4">
+            Укажите ссылку
+            <help-trigger class="ng-cloak word-spacing" data-title="Укажите ссылку">
+                Укажите ссылку, которая будет установлена на баннере для перехода при клике.
+            </help-trigger>
+        </div>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" ng-model="$ctrl.URL" style="width: 300px; height: 34px;" />
+        </div>
+    </div>
+    <div class="row m-b-md">
+        <div class="col-sm-4">
+            Показывать только на главной странице
+        </div>
+        <div class="col-sm-8">
+            <input type="checkbox" ng-model="$ctrl.OnlyOnMainPage" />
+        </div>
+    </div>
+    <div class="row m-b-md">
+        <div class="col-sm-4">
+            Открывать в новом окне
+        </div>
+        <div class="col-sm-8">
+            <input type="checkbox" ng-model="$ctrl.TargetBlank" />
+        </div>
+    </div>
+    <div class="m-b-md">
+        <input type="button" ng-click="$ctrl.saveChanges()" class="btn btn-sm btn-success" value="Сохранить" />
+    </div>
+</div>

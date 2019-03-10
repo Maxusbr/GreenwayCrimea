@@ -1,0 +1,29 @@
+﻿<form novalidate name="addEditCustomerFieldValueForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новое значение" : "Редактирование значения"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.form = addEditCustomerFieldValueForm">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Значение</span>
+            </label>
+            <div class="col-xs-9">
+                <input data-e2e="customerFieldValueValue" type="text" class="form-control" ng-model="ctrl.value" required validation-input-text="Значение" autofocus />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Порядок сортировки</label>
+            <div class="col-xs-9">
+                <input type="text" data-e2e="customerFieldValueSortOrder" ng-model="ctrl.sortOrder" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-e2e="btnSave"
+                data-button-validation-success="ctrl.save()" data-button-validation ladda="ctrl.btnSleep"
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !addEditCustomerFieldValueForm.modified)"
+                ng-bind="ctrl.mode == 'add' ? 'Добавить' : 'Сохранить'"></button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

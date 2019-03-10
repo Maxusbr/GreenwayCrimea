@@ -1,0 +1,94 @@
+﻿<form novalidate name="addEditRuleForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новое условие" : "Редактирование условия"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.addEditRuleForm = addEditRuleForm">
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">
+                    <span class="text-required">Параметр</span>
+                </label>
+                <div class="col-xs-10">
+                    <select ng-model="ctrl.field" class="form-control" ng-change="ctrl.setParamValues(ctrl.field)" 
+                            ng-options="s.name for s in ctrl.fields" required validation-input-text="Параметр" data-e2e="BizRuleParam">
+                        <option value="">Не выбрано</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">
+                    <span ng-class="{'text-required': ctrl.field != null && ctrl.fieldComparer.Type != 3}">Значение</span>
+                </label>
+                <div class="col-xs-10">
+                    <div ng-if="!ctrl.paramValuesEmpty()">
+                        <select ng-model="ctrl.fieldComparer.Value" ng-options="s.value as s.label for s in ctrl.compareValues"
+                                class="form-control" ng-required="ctrl.field != null" validation-input-text="Значение" data-e2e="BizRuleParamValueSelect">
+                            <option value="">Не выбрано</option>
+                        </select>
+                    </div>
+                    <div ng-if="ctrl.paramValuesEmpty()" ng-switch="ctrl.fieldComparer.Type">
+                        <!-- equal -->
+                        <div class="row" ng-switch-when="1">
+                            <div class="col-xs-12" ng-switch="ctrl.field.fieldType">
+                                <input ng-switch-when="date" type="text" class="form-control" ng-model="ctrl.fieldComparer.Value" ng-required="ctrl.field != null" validation-input-text="Значение" data-e2e="BizRuleParamValue"
+                                       ui-mask="99.99.9999" model-view-value="true" placeholder="ДД.ММ.ГГГГ" />
+                                <input ng-switch-default type="text" class="form-control" ng-model="ctrl.fieldComparer.Value" ng-required="ctrl.field != null" validation-input-text="Значение" data-e2e="BizRuleParamValue" />
+                                <a data-e2e="BizRuleRange" href="" ng-click="ctrl.fieldComparer.Type = 2" ng-if="ctrl.field.fieldType == 'number' || ctrl.field.fieldType == 'date'">Указать диапазон</a>
+                            </div>
+                        </div>
+                        <!-- range -->
+                        <div ng-switch-when="2" ng-switch="ctrl.field.fieldType">
+                            <div class="row" ng-switch-when="date">
+                                <span class="col-xs-1">От&nbsp;</span>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" ng-model="ctrl.fieldComparer.DateFrom" ng-required="ctrl.field != null && ctrl.fieldComparer.DateTo == null" 
+                                           validation-input-text="Диапазон (от или до)" ui-mask="99.99.9999" model-view-value="true" placeholder="ДД.ММ.ГГГГ" />
+                                </div>
+                                <span class="col-xs-1">До&nbsp;</span>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" ng-model="ctrl.fieldComparer.DateTo" ui-mask="99.99.9999" model-view-value="true" placeholder="ДД.ММ.ГГГГ" />
+                                </div>
+                            </div>
+                            <div class="row" ng-switch-default>
+                                <span class="col-xs-1">От&nbsp;</span>
+                                <div class="col-xs-5">
+                                    <input type="number" class="form-control" ng-model="ctrl.fieldComparer.From" data-e2e="BizRuleParamValueFrom" ng-required="ctrl.field != null && ctrl.fieldComparer.To == null" validation-input-text="Диапазон (от или до)" />
+                                </div>
+                                <span class="col-xs-1">До&nbsp;</span>
+                                <div class="col-xs-5">
+                                    <input type="number" class="form-control" ng-model="ctrl.fieldComparer.To" data-e2e="BizRuleParamValueTo" />
+                                </div>
+                            </div>
+                            <a href="" ng-click="ctrl.fieldComparer.Type = 1">Указать точное значение</a>
+                        </div>
+                        <!-- flag -->
+                        <div ng-switch-when="3">
+                            <label class="adv-checkbox-label">
+                                <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.fieldComparer.Flag" />
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+                        <!-- contains -->
+                        <div class="row" ng-switch-when="4">
+                            <div class="col-xs-2">
+                                Содержит
+                            </div>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" ng-model="ctrl.fieldComparer.Value" ng-required="ctrl.field != null" validation-input-text="Значение" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button"
+                data-button-validation-success="ctrl.apply()" data-button-validation
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !addEditRuleForm.modified)" data-e2e="BizRuleParamValueOk">Применить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()" data-e2e="BizRuleParamValueCancel">Отмена</button>
+    </div>
+</form>

@@ -1,0 +1,31 @@
+﻿@model AdvantShop.Web.Admin.Models.ExportFeeds.ExportFeedSettingsResellerModel
+
+@Html.HiddenFor(x => Model.CsvSeparator, new { @class = "form-control", ng_model = "exportFeeds.AdvancedSettings.CsvSeparator", ng_init = "exportFeeds.AdvancedSettings.CsvSeparator='" + Model.CsvSeparator + "'" })
+@Html.HiddenFor(x => Model.CsvColumSeparator, new { @class = "form-control", ng_model = "exportFeeds.AdvancedSettings.CsvColumSeparator", ng_init = "exportFeeds.AdvancedSettings.CsvColumSeparator='" + Model.CsvColumSeparator + "'" })
+@Html.HiddenFor(x => Model.CsvPropertySeparator, new { @class = "form-control", ng_model = "exportFeeds.AdvancedSettings.CsvPropertySeparator", ng_init = "exportFeeds.AdvancedSettings.CsvPropertySeparator='" + Model.CsvPropertySeparator + "'" })
+
+@Html.HiddenFor(x => Model.CsvEnconing, new { @class = "form-control", ng_model = "exportFeeds.AdvancedSettings.CsvEnconing", ng_init = "exportFeeds.AdvancedSettings.CsvEnconing='" + Model.CsvEnconing + "'" })
+@Html.HiddenFor(x => Model.CsvCategorySort, new { @class = "form-control", ng_model = "exportFeeds.AdvancedSettings.CsvCategorySort", ng_init = "exportFeeds.AdvancedSettings.CsvCategorySort='" + Model.CsvCategorySort.ToLowerString() + "'" })
+
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ResellerCode, T("Admin.ExportFeeed.SettingsReseller.ResellerCode"))
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => Model.ResellerCode, new { @class = "form-control", ng_model = "exportFeeds.AdvancedSettings.ResellerCode", ng_init = "exportFeeds.AdvancedSettings.ResellerCode='" + Model.ResellerCode + "'", @disabled = "disabled" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CsvSeparator, T("Admin.ExportFeeed.SettingsReseller.RecomendedPriceMargin"))
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => Model.RecomendedPriceMargin, new { @class = "form-control", required = "required", ng_model = "exportFeeds.AdvancedSettings.RecomendedPriceMargin", validation_input_text = T("Admin.ExportFeeed.SettingsCsv.RecomendedPriceMargin") })
+    </div>
+</div>

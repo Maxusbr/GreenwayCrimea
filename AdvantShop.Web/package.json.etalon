@@ -1,0 +1,35 @@
+{
+  "name": "advantshop",
+  "version": "5.0.0",
+  "description": "Set of npm packages for AdvantShop",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^3.0.0",
+    "es6-promise": "^4.1.1",
+    "gulp": "^3.9.1",
+    "gulp-watch": "^4.3.11",
+    "gulp-batch": "^1.0.5",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-juice": "^0.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-pngquant": "^5.0.1",
+    "run-sequence": "^2.1.0",
+    "pretty-bytes": "^4.0.2",
+    "gulp-cached": "^1.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified \" && exit 1",
+    "v": "node -v"
+  },
+  "keywords": [
+    "npm",
+    "AdvantShop"
+  ],
+  "author": "AdvantShop Team",
+  "license": "ISC"
+}

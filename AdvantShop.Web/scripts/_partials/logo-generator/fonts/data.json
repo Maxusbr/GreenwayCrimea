@@ -1,0 +1,459 @@
+﻿{
+  "items": [
+    {
+      "link": "https://fonts.googleapis.com/css?family=Roboto+Mono&amp;subset=cyrillic",
+      "fontFamily": "Roboto Mono",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&amp;subset=cyrillic",
+      "fontFamily": "Open Sans Condensed",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=PT+Sans&amp;subset=cyrilli",
+      "fontFamily": "PT Sans",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=PT+Serif&amp;subset=cyrillic",
+      "fontFamily": "Roboto Slab",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=PT+Serif&amp;subset=cyrillic",
+      "fontFamily": "PT Serif",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Exo+2&amp;subset=cyrillic",
+      "fontFamily": "Exo 2",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&amp;subset=cyrillic",
+      "fontFamily": "Yanone Kaffeesatz",
+      "languages": [ "latin", "cyrillic" ]
+    },
+	{
+      "link": "https://fonts.googleapis.com/css?family=Lobster&amp;subset=cyrillic",
+      "fontFamily": "Lobster",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=EB+Garamond&amp;subset=cyrillic",
+      "fontFamily": "EB Garamond",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic",
+      "fontFamily": "Poiret One",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Old+Standard+TT&amp;subset=cyrillic",
+      "fontFamily": "Old Standard TT",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Marck+Script&amp;subset=cyrillic",
+      "fontFamily": "Marck Script",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Alice&amp;subset=cyrillic",
+      "fontFamily": "Alice",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Forum&amp;subset=cyrillic",
+      "fontFamily": "Forum",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Cormorant&amp;subset=cyrillic",
+      "fontFamily": "Cormorant",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Pangolin&amp;subset=cyrillic",
+      "fontFamily": "Pangolin",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Ubuntu&amp;subset=cyrillic",
+      "fontFamily": "Ubuntu",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "./scripts/_partials/logo-generator/fonts/source/AstakhovDished/font.css",
+      "fontFamily": "AstakhovDished",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "./scripts/_partials/logo-generator/fonts/source/KuricaLapoi1.3/font.css",
+      "fontFamily": "Kurica Lapoi 1.3",
+      "languages": [ "cyrillic" ]
+    },
+    {
+      "link": "./scripts/_partials/logo-generator/fonts/source/Krabuler/font.css",
+      "fontFamily": "Krabuler",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "./scripts/_partials/logo-generator/fonts/source/Dobrozrachniy/font.css",
+      "fontFamily": "Dobrozrachniy",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "./scripts/_partials/logo-generator/fonts/source/Fakedes_Outline/font.css",
+      "fontFamily": "Fakedes Outline",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "./scripts/_partials/logo-generator/fonts/source/JazzBall/font.css",
+      "fontFamily": "Jazz Ball",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "./scripts/_partials/logo-generator/fonts/source/Pelmeshka/font.css",
+      "fontFamily": "Pelmeshka",
+      "languages": [ "latin", "cyrillic" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Slabo+27px",
+      "fontFamily": "Slabo 27px",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Indie+Flower",
+      "fontFamily": "Indie Flower",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Anton",
+      "fontFamily": "Anton",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Cabin",
+      "fontFamily": "Cabin",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Fjalla+One",
+      "fontFamily": "Fjalla One",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Pacifico",
+      "fontFamily": "Pacifico",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Abril+Fatface",
+      "fontFamily": "Abril Fatface",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Bree+Serif",
+      "fontFamily": "Bree Serif",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Abel",
+      "fontFamily": "Abel",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display",
+      "fontFamily": "Sedgwick Ave Display",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Gloria+Hallelujah",
+      "fontFamily": "Gloria Hallelujah",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Sedgwick+Ave",
+      "fontFamily": "Sedgwick Ave",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Amatic+SC",
+      "fontFamily": "Amatic SC",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Josefin+Slab",
+      "fontFamily": "Josefin Slab",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Poiret+One",
+      "fontFamily": "Poiret One",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Cinzel",
+      "fontFamily": "Cinzel",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Satisfy",
+      "fontFamily": "Satisfy",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Yellowtail",
+      "fontFamily": "Yellowtail",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Zilla+Slab",
+      "fontFamily": "Zilla Slab",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Great+Vibes",
+      "fontFamily": "Great Vibes",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Vidaloka",
+      "fontFamily": "Vidaloka",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Handlee",
+      "fontFamily": "Handlee",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Kreon",
+      "fontFamily": "Kreon",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Sacramento",
+      "fontFamily": "Sacramento",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Coming+Soon",
+      "fontFamily": "Coming Soon",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Damion",
+      "fontFamily": "Damion",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Playball",
+      "fontFamily": "Playball",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Monoton",
+      "fontFamily": "Monoton",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Homemade+Apple",
+      "fontFamily": "Homemade Apple",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Marck+Script",
+      "fontFamily": "Marck Script",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Bonbon",
+      "fontFamily": "Bonbon",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Flavors",
+      "fontFamily": "Flavors",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Metal+Mania",
+      "fontFamily": "Metal Mania",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Londrina+Shadow",
+      "fontFamily": "Londrina Shadow",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Cormorant+Upright",
+      "fontFamily": "Cormorant Upright",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Astloch",
+      "fontFamily": "Astloch",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Devonshire",
+      "fontFamily": "Devonshire",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Ribeye+Marrow",
+      "fontFamily": "Ribeye Marrow",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Akronim",
+      "fontFamily": "Akronim",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Ewert",
+      "fontFamily": "Ewert",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Henny+Penny",
+      "fontFamily": "Henny Penny",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Nosifer",
+      "fontFamily": "Nosifer",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Sancreek",
+      "fontFamily": "Sancreek",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Rye",
+      "fontFamily": "Rye",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Sail",
+      "fontFamily": "Sail",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Finger+Paint",
+      "fontFamily": "Finger Paint",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Bungee+Shade",
+      "fontFamily": "Bungee Shade",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Meddon",
+      "fontFamily": "Meddon",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Shojumaru",
+      "fontFamily": "Shojumaru",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Yesteryear",
+      "fontFamily": "Yesteryear",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Fredericka+the+Great",
+      "fontFamily": "Fredericka the Great",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Cinzel+Decorative",
+      "fontFamily": "Cinzel Decorative",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff",
+      "fontFamily": "Herr Von Muellerhoff",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Seaweed+Script",
+      "fontFamily": "Seaweed Script",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Rouge+Script",
+      "fontFamily": "Rouge Script",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Clicker+Script",
+      "fontFamily": "Clicker Script",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Leckerli+One",
+      "fontFamily": "Leckerli One",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Rancho",
+      "fontFamily": "Rancho",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister",
+      "fontFamily": "Love Ya Like A Sister",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Frijole",
+      "fontFamily": "Frijole",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Kameron",
+      "fontFamily": "Kameron",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Gochi+Hand",
+      "fontFamily": "Gochi Hand",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Nothing+You+Could+Do",
+      "fontFamily": "Nothing You Could Do",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Cabin+Sketch",
+      "fontFamily": "Cabin Sketch",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Bangers",
+      "fontFamily": "Bangers",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Bevan",
+      "fontFamily": "Bevan",
+      "languages": [ "latin" ]
+    },
+    {
+      "link": "https://fonts.googleapis.com/css?family=Caveat",
+      "fontFamily": "Caveat",
+      "languages": [ "latin" ]
+    }
+  ]
+}

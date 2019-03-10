@@ -1,0 +1,19 @@
+﻿@model IEnumerable<AdvantShop.Module.AdditionalMarkers.Models.Marker>
+
+<div class="am-module-markers-wrapper" id="markers-wrapper" style="display:none">
+    @foreach (var marker in Model)
+    {
+        var openNewTab = marker.OpenNewTab ? "_blank" : "_self";
+        <div class="products-view-label">
+            <a href="@marker.Url" 
+               target="@openNewTab"
+               style="color: white;" 
+               popover-trigger="'mouseenter'" 
+               popover-placement="auto right"
+               popover-append-to-body="true" 
+               uib-popover-html="'@marker.Description'">
+                <span class="products-view-label-inner" style="background:#@marker.Color; color:#@marker.ColorName">@marker.Name</span>
+            </a>
+        </div>
+    }
+</div>

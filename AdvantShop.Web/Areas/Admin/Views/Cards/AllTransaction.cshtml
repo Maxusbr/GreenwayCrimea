@@ -1,0 +1,120 @@
+﻿@using AdvantShop.Core.Services.Bonuses.Model.Enums
+@model AdvantShop.Web.Infrastructure.Admin.FilterResult<AdvantShop.Core.Services.Bonuses.Model.Transaction>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <h2 class="m-b-sm clearfix">История транзакций</h2>
+        <div class="m-b">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" style="width: 10%">
+                                    Дата и время
+                                </th>
+                                <th colspan="3" style="width: 25%; text-align: center">
+                                    Основные баллы
+                                </th>
+                                <th colspan="3" style="width: 25%; text-align: center">
+                                    Дополнительные баллы
+                                </th>
+                                <th rowspan="2" style="width: 30%">
+                                    Комментарий
+                                </th>
+                                <th rowspan="2" style="width: 15%">
+                                    Номер продажи
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="text-align: center">
+                                    Потрачено
+                                </th>
+                                <th style="text-align: center">
+                                    Начислено
+                                </th>
+                                <th style="text-align: center">
+                                    Сальдо
+                                </th>
+                                <th style="text-align: center">
+                                    Потрачено
+                                </th>
+                                <th style="text-align: center">
+                                    Начислено
+                                </th>
+                                <th style="text-align: center">
+                                    Сальдо
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DataItems)
+                            {
+                                <tr data-e2e="TransactionId-@item.Id">
+                                    <td data-e2e="TransactionDate">
+                                        @item.CreateOn.ToString("dd.MM.yyyy HH:mm:ss")
+                                    </td>
+                                    <td data-e2e="TransactionMainBonusesUsed" @*style="color: @(item.OType == EOperationType.AddMainBonus ? "#08c" : "#cc3b3b")"*@>
+                                        @if (item.OperationType == EOperationType.SubtractMainBonus || item.OperationType == EOperationType.SubtractAfiliate)
+                                        {
+                                            @("-" + item.Amount.ToString("F2"))
+                                        }
+                                    </td>
+                                    <td data-e2e="TransactionMainBonusesAdded">
+                                        @if (item.OperationType == EOperationType.AddMainBonus || item.OperationType == EOperationType.AddAfiliate)
+                                        {
+                                            @("+" + item.Amount.ToString("F2"))
+                                        }
+                                    </td>
+                                    <td data-e2e="TransactionMainBonusesSaldo">
+                                        @if (item.OperationType == EOperationType.AddMainBonus
+    || item.OperationType == EOperationType.SubtractMainBonus
+    || item.OperationType == EOperationType.AddAfiliate
+    || item.OperationType == EOperationType.SubtractAfiliate)
+                                        {
+                                            @item.Balance.ToString("F2")
+                                        }
+                                    </td>
+                                    <td data-e2e="TransactionAdditionBonusesUsed">
+                                        @if (item.OperationType == EOperationType.SubtractAdditionBonus)
+                                        {
+                                            @("-" + item.Amount.ToString("F2"))
+                                        }
+                                    </td>
+                                    <td data-e2e="TransactionAdditionBonusesAdded">
+                                        @if (item.OperationType == EOperationType.AddAdditionBonus)
+                                        {
+                                            @("+" + item.Amount.ToString("F2"))
+                                        }
+                                    </td>
+                                    <td data-e2e="TransactionAdditionBonusesSaldo">
+                                        @if (item.OperationType == EOperationType.AddAdditionBonus || item.OperationType == EOperationType.SubtractAdditionBonus)
+                                        {
+                                            @item.Balance.ToString("F2")
+                                        }
+                                    </td>
+                                    <td data-e2e="TransactionComment">
+                                        @item.Basis
+                                    </td>
+                                    <td data-e2e="PurchaseId">
+                                        @item.PurchaseId
+                                    </td>
+                                </tr>
+                            }
+                            @if (Model.DataItems.Count < 1)
+                            {
+                                <tr>
+                                    <td colspan="9">
+                                        Ни одной записи не найдено
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @Html.BootstrapPager(Model.PageIndex, index => Url.Action("AllTransaction", "Cards", new { CardId = ViewBag.CardId, pageIndex = index }), Model.TotalItemsCount)
+            
+            </div>
+        </div>
+    </div>
+</div>

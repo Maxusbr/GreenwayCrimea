@@ -1,0 +1,135 @@
+.main-title {
+  text-align: center;
+  margin: 10px 0; }
+
+h1, h2, h3 {
+  font-weight: bold;
+  font-size: 1.4em; }
+
+h4, h5, h6 {
+  font-style: normal; }
+
+h1, h2, h3, h3, h4, h5, h6 {
+  font-weight: normal;
+  margin: 0;
+  padding: 0; }
+
+p {
+  font-size: 0.93333em;
+  font-family: sans-serif; }
+
+.row .half-cell {
+  display: table-cell;
+  width: 50%;
+  box-sizing: border-box; }
+  .row .half-cell.l {
+    padding-right: 0.66667em; }
+  .row .half-cell.r {
+    padding-left: 0.66667em; }
+  .row .half-cell.middle {
+    vertical-align: middle; }
+
+.panel {
+  padding: 0.66667em 1.33333em;
+  display: block;
+  border-top-width: 1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-style: solid;
+  position: relative; }
+  .panel.back-link {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 15px 20px; }
+  .panel.header {
+    font-size: 1.26667em; }
+    .panel.header .panel-add-link {
+      font-size: 0.625em;
+      line-height: 2.25em;
+      float: right; }
+  .panel.no-borders {
+    border: none; }
+  .panel .panel-arrow {
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 19px;
+    width: 12px;
+    position: absolute; }
+    .panel .panel-arrow.ar-l {
+      left: 15px; }
+    .panel .panel-arrow.ar-r {
+      right: 15px; }
+  .panel.selected .panel-arrow {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg); }
+
+.bigBtnsPanel [class*="col-"] {
+  border-width: 1px;
+  border-style: solid; }
+
+.bigBtnsPanel [class*="col-"]:first-child {
+  border-left-width: 0; }
+
+.bigBtnsPanel [class*="col-"]:last-child {
+  border-right-width: 0;
+  border-left-width: 0; }
+
+.bigBtnsPanel .row + .row [class*="col-"] {
+  border-top-width: 0; }
+
+.bigBtnsPanel .panel-btn {
+  padding: 20px 0;
+  display: block;
+  text-align: center; }
+
+.bigBtnsPanel .panel-btn-icon {
+  padding: 0.4em;
+  width: 1.86667em;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  margin-bottom: 0.66667em;
+  line-height: 0; }
+
+.bigBtnsPanel .panel-btn-text {
+  font-size: 0.93333em;
+  font-weight: bold; }
+
+.form-input-value {
+  margin-bottom: 0.86667em; }
+
+.input-required:after {
+  content: "*";
+  position: absolute;
+  top: 0;
+  color: red;
+  right: -12px; }
+
+.input-required-block {
+  display: block; }
+
+/*tools*/
+.table-wide {
+  width: 100%; }
+
+.icon-margin-drop:before, .icon-margin-drop:after {
+  margin: 0 !important; }
+
+.clear:after {
+  clear: both; }
+
+.clear:after, .clear:before {
+  content: "";
+  display: table; }
+
+.no-margin {
+  margin: 0 !important; }
+
+.center-aligner {
+  text-align: center; }
+
+.rel {
+  position: relative; }

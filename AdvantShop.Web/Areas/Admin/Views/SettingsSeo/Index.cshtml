@@ -1,0 +1,74 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SEOSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "SettingsSeo", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", novalidate = "novalidate" }))
+{
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settingsSeo.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified"/>
+            </div>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+        
+    <uib-tabset uid="seoTab" on-select-batch="settingsSeo.floatHeader = tab.heading;">
+        <uib-tab index="'seoParams'" classes="ng-tab" heading="@T("Admin.Settings.SEO.SEOSettings")">
+            <uib-tab-heading ng-class="{'tab-warning' : seoParamsForm.$invalid}">
+                @T("Admin.Settings.SEO.SEOSettings")
+                <span ng-if="seoParamsForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!seoParamsForm.$invalid && seoParamsForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="seoParamsForm" validation-tab-index="'seoParams'">
+                @Html.Partial("_SEOSettings", Model)
+            </ng-form>
+        </uib-tab>
+        <uib-tab index="'seoRobotTxt'" classes="ng-tab" heading="@T("Admin.Settings.SEO.RobotsTxt")">
+            <uib-tab-heading ng-class="{'tab-warning' : seoRobotTxtForm.$invalid}">
+                @T("Admin.Settings.SEO.RobotsTxt")
+                <span ng-if="seoRobotTxtForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!seoRobotTxtForm.$invalid && seoRobotTxtForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="seoRobotTxtForm" validation-tab-index="'seoRobotTxt'">
+                @Html.Partial("_RobotsTxt", Model)
+            </ng-form>
+        </uib-tab>
+        <uib-tab index="'seoGA'" classes="ng-tab" heading="@T("Admin.Settings.SEO.GoogleAnalytics")">
+            <uib-tab-heading ng-class="{'tab-warning' : seoGAForm.$invalid}">
+                @T("Admin.Settings.SEO.GoogleAnalytics")
+                <span ng-if="seoGAForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!seoGAForm.$invalid && seoGAForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="seoGAForm" validation-tab-index="'seoGA'">
+                @Html.Partial("_GoogleAnalytics", Model)
+            </ng-form>
+        </uib-tab>
+        <uib-tab index="'seoOpenGraph'" classes="ng-tab" heading="@T("Admin.Settings.SEO.OpenGraph")">
+            <uib-tab-heading ng-class="{'tab-warning' : seoOpenGraphForm.$invalid}">
+                @T("Admin.Settings.SEO.OpenGraph")
+                <span ng-if="seoOpenGraphForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!seoOpenGraphForm.$invalid && seoOpenGraphForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="seoOpenGraphForm" validation-tab-index="'seoOpenGraph'">
+                @Html.Partial("_OpenGraph", Model)
+            </ng-form>
+        </uib-tab>
+        <uib-tab index="'seo301'" heading="@T("Admin.Settings.System.301Redirects")" classes="ng-tab">
+            @Html.Partial("_301Redirects", Model)
+        </uib-tab>
+        <uib-tab index="'seo404'" heading="@T("Admin.Settings.System.Error404")" classes="ng-tab">
+            @Html.Partial("_Error404", Model)
+        </uib-tab>
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success btn--margin-left" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" data-e2e="settingsSeoSave" />
+        </div>
+    </uib-tabset>
+}

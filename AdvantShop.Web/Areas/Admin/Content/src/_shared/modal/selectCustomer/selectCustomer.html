@@ -1,0 +1,18 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Выбор покупателя</h2>
+</div>
+<div class="modal-body">
+    <div>
+        <ui-grid-custom grid-unique-id="selectUserGrid"
+                        grid-options="ctrl.gridOptions"
+                        grid-url="'customers/getcustomers'"
+                        grid-params="{all: true}"
+                        grid-selection-enabled="false"
+                        grid-extend-ctrl="ctrl">
+        </ui-grid-custom>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

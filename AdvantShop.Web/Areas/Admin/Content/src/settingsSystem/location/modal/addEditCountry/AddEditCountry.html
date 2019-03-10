@@ -1,0 +1,72 @@
+﻿<form name="addEditCountryForm" novalidate="novalidate">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Добавление страны" : "Редактирование страны"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">
+                            Название
+                        </span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" data-e2e="CountryName" class="form-control" ng-model="ctrl.entity.Name" required validation-input-text="Страна" autofocus />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label"><span class="text-required">Iso2</span></label>
+                    <div class="col-xs-9">
+                        <input type="text" data-e2e="CountryIso2" class="form-control" ng-model="ctrl.entity.Iso2" required validation-input-text="Iso2" pattern=".{2}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label"><span class="text-required">Iso3</span></label>
+                    <div class="col-xs-9">
+                        <input type="text" data-e2e="CountryIso3" class="form-control" ng-model="ctrl.entity.Iso3" required validation-input-text="Iso3" pattern=".{3}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Основная страна</label>
+                    <div class="col-xs-9">
+                        <label data-e2e="CountryDisplay" class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.entity.DisplayInPopup" class="adv-checkbox-input control-checkbox" />
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Телефонный код</label>
+                    <div class="col-xs-9">
+                        <div class="input-group">
+                            <span class="input-group-addon font-bold">+</span>
+                            <input data-e2e="CountryCode" type="number" class="form-control" ng-model="ctrl.entity.DialCode" validation-input-text="Телефонный код" />
+                        </div>   
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Порядок сортировки</label>
+                    <div class="col-xs-9">
+                        <input data-e2e="CountrySortOrder" type="number" ng-model="ctrl.entity.SortOrder" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-e2e="btnSave" class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-button-validation-success="ctrl.saveCountry()" data-button-validation>{{ctrl.mode == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button data-e2e="btnCancel" class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

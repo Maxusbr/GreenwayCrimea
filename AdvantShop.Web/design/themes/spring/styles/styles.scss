@@ -1,0 +1,15 @@
+@import "../../_themes.scss", "../../../../styles/functions/_util.scss", "../../../../styles/_settings.scss";
+
+
+$bgTop: (height rem-calc(916px), bg (url('../images/background-top.jpg') no-repeat center top));
+$bgBottom: (height rem-calc(965px), bg (url('../images/background-bottom.jpg') no-repeat center bottom));
+
+@include theme-background($bgTop, $bgBottom);
+
+.site-footer-top-level {
+    background-color: transparent;
+}
+
+.site-body-inner {
+    min-height: rem-calc(477px);
+}

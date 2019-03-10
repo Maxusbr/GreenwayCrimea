@@ -1,0 +1,9 @@
+﻿<div class="subblock-inplace-button-modal-container">
+    <!--<div class="subblock-inplace-modal-container">-->
+        <ng-include src="modalData.templateUrlByType"></ng-include>
+        <div class="blocks-constructor-modal-categories-buttons">
+            <input type="button" class="subblock-inplace-btn-confirm" data-ng-click="modalData.onApply(modalData.subblockId, modalData.settings)" value="Применить" />
+            <input type="button" class="subblock-inplace-btn-cancel" data-modal-close="" data-modal-close-callback="modalData.onCancel()" value="Отмена" />
+        </div>
+    <!--</div>-->
+</div>

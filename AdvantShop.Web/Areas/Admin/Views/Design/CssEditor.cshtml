@@ -1,0 +1,27 @@
+﻿@model string
+
+<form name="form" novalidate="novalidate">
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    Редактор стилей
+                </h1>
+                <div><a href="@Url.Action("Index", "Design")">Вернуться назад</a></div>
+            </div>
+            <div class="page-name-block-item-additional">
+                @Html.Button(T("Admin.Save"), eButtonType.Simple, eButtonSize.Small, eColorType.Success, attributes: new[] { "ng-disabled=\"!form.modified\"", "disabled", "ng-click=\"csseditor.save()\"" })
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="adv-panel-info col-xs-6 col-wl-4">
+                <div>Внимание! Используйте дополнительные стили с осторожностью.<br> Используйте файл, только если вы хорошо владеете навыками работы с CSS.</div>
+            </div>
+        </div>
+    </div>
+    <ui-ace-textarea ui-ace-options="{mode: 'css'}" ng-model="csseditor.text">
+        @Html.TextArea("value", Model, new { ng_model = "csseditor.text" })
+    </ui-ace-textarea>
+</form>

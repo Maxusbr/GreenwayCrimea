@@ -1,0 +1,536 @@
+﻿@model AdvantShop.ViewModel.Install.InstallPaymentModel
+@{
+    Layout = "~/Views/Install/Layout.cshtml";
+}
+
+<div class="install-payment">
+    @using (Html.BeginForm("payment", "install", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="error">
+            @Html.ValidationSummary()
+        </div>
+        
+        <fieldset class="group simple">
+            <legend>
+                <label>@Html.CheckBoxFor(x => x.Cash) @Resource.Install_UserContols_PaymentView_Cash</label>
+            </legend>
+        </fieldset>
+        if (Model.ShowFizBank)
+        {
+            <fieldset class="group simple">
+                <legend>
+                    <label>@Html.CheckBoxFor(x => x.FizBank) @Resource.Install_UserContols_PaymentView_BankTransferFiz</label>
+                </legend>
+            </fieldset>
+        }
+        if (Model.ShowUrBank)
+        {
+            <fieldset class="group simple">
+                <legend>
+                    <label>@Html.CheckBoxFor(x => x.UrBank) @Resource.Install_UserContols_PaymentView_BankTransferUr</label>
+                </legend>
+            </fieldset>
+        }
+        if (Model.ShowCreditCard)
+        {
+            <fieldset class="group">
+                <legend>
+                    <label>@Html.CheckBoxFor(x => x.CreditCard) @Resource.Install_UserContols_PaymentView_CreditCard</label>
+                </legend>
+                <div class="block-options">
+                    <p class="do">
+                        @Resource.Install_UserContols_PaymentView_Agregator
+                    </p>
+                    <label> @Html.RadioButtonFor(x => x.CreditcardType, "Robokassa", new { Name = "CreditCardType", @class = "paymentVariant" }) Robokassa</label>
+                    <label> @Html.RadioButtonFor(x => x.CreditcardType, "Assist", new { Name = "CreditCardType", @class = "paymentVariant" }) Assist</label>
+                    <label> @Html.RadioButtonFor(x => x.CreditcardType, "Platron", new { Name = "CreditCardType", @class = "paymentVariant" }) Platron</label>
+                    <label> @Html.RadioButtonFor(x => x.CreditcardType, "ZPayment", new { Name = "CreditCardType", @class = "paymentVariant" }) Zpayment</label>
+                    <div class="list-methods" id="credit">
+                        <div class="robokassa">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_RobokassaCreditCardLogin
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.LoginRobokassaCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_RobokassaCreditCardPass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PasswordRobokassaCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="assist" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_ShopID
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.ShopIdAssistCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_Login
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.LoginAssistCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_Pass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PassAssistCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="platron" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        <span>
+                                            @Resource.Install_UserContols_PaymentView_PlatronCreditCard_IdSeller
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.SellerIdPlatronCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        <span>
+                                            @Resource.Install_UserContols_PaymentView_PlatronCreditCard_Payment
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PaySystemCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        <span>
+                                            @Resource.Install_UserContols_PaymentView_PlatronCreditCard_PaymentPass
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PayPassCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="zpayment" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_Poket
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PayPoketCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_UserPass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PassZpaymentCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_SecretKey
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.SecretKeyZpaymentCreditcard, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.CreditCard)
+                </div>
+            </fieldset>
+        }
+
+        if (Model.ShowEMony)
+        {
+            <fieldset class="group" id="divElectronMoney">
+                <legend>
+                    <label>@Html.CheckBoxFor(x => x.EMoney) @Resource.Install_UserContols_PaymentView_ElectronMoney</label>
+                </legend>
+                <div class="block-options">
+                    <p class="do">
+                        @Resource.Install_UserContols_PaymentView_Agregator
+                    </p>
+                    <label> @Html.RadioButtonFor(x => x.EMoneyType, "Robokassa", new {Name = "EMoneyType", @class = "paymentVariant"}) Robokassa</label>
+                    <label> @Html.RadioButtonFor(x => x.EMoneyType, "Assist", new { Name = "EMoneyType", @class = "paymentVariant" }) Assist</label>
+                    <label> @Html.RadioButtonFor(x => x.EMoneyType, "Platron", new { Name = "EMoneyType", @class = "paymentVariant" }) Platron</label>
+                    <label> @Html.RadioButtonFor(x => x.EMoneyType, "ZPayment", new { Name = "EMoneyType", @class = "paymentVariant" }) Zpayment</label>
+                    <div class="list-methods" id="electron">
+                        <div class="robokassa">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_RobokassaCreditCardLogin
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.LoginRobokassaElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_RobokassaCreditCardPass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PassRobokassaElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="assist" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_ShopID
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.ShopIdAssistElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_Login
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.LoginAssistElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_Pass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PassAssistElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="platron" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_PlatronCreditCard_IdSeller
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.SellerIdPlatronElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_PlatronCreditCard_Payment
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PaySystemElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_PlatronCreditCard_PaymentPass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PayPassElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="zpayment" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_Poket
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PayPoketElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_UserPass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PassZpaymentElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_SecretKey
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.SecretKeyZpaymentElectronMoney, new {@class = "txt valid-required"})
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.EMoney)
+                </div>
+            </fieldset>
+        }
+
+        if (Model.ShowTerminals)
+        {
+            <fieldset class="group">
+                <legend>
+                    <label>@Html.CheckBoxFor(x => x.Terminals) @Resource.Install_UserContols_PaymentView_Terminals</label>
+                </legend>
+                <div class="block-options">
+                    <p class="do">
+                        @Resource.Install_UserContols_PaymentView_Agregator
+                    </p>
+                    <label> @Html.RadioButtonFor(x => x.TerminalType, "Robokassa", new { Name = "TerminalType", @class = "paymentVariant" }) Robokassa</label>
+                    <label> @Html.RadioButtonFor(x => x.TerminalType, "Assist", new { Name = "TerminalType", @class = "paymentVariant" }) Assist</label>
+                    <label> @Html.RadioButtonFor(x => x.TerminalType, "Platron", new { Name = "TerminalType", @class = "paymentVariant" }) Platron</label>
+                    <label> @Html.RadioButtonFor(x => x.TerminalType, "ZPayment", new { Name = "TerminalType", @class = "paymentVariant" }) Zpayment</label>
+
+                    <div class="list-methods" id="terminal">
+                        <div class="robokassa">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_RobokassaCreditCardLogin
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.LoginRobokassaTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_RobokassaCreditCardPass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PassRobokassaTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="assist" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_ShopID
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.ShopIdAssistTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_Login
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.LoginAssistTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_AssistCreditCard_Pass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PassAssistTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="platron" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_PlatronCreditCard_IdSeller
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.SellerIdPlatronTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_PlatronCreditCard_Payment
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PaySystemTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_PlatronCreditCard_PaymentPass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PayPassTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="zpayment" style="display: none">
+                            <table class="subform">
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_Poket
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PayPoketTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_UserPass
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.PassZpaymentTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">
+                                        @Resource.Install_UserContols_PaymentView_ZpaymentCreditCard_SecretKey
+                                    </td>
+                                    <td>
+                                        <div class="str">
+                                            @Html.TextBoxFor(x => x.SecretKeyZpaymentTerminals, new { @class = "txt valid-required" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </fieldset>
+        }
+
+        if (Model.ShowIphone)
+        {
+            <fieldset class="group">
+                <legend>
+                    <label>@Html.CheckBoxFor(x => x.Iphone) @Resource.Install_UserContols_PaymentView_ByIPnone</label>
+                </legend>
+                <div class="block-options">
+                    <div id="divIPhone" class="block-options">
+                        <p class="do">
+                            @Resource.Install_UserContols_PaymentView_Agregator
+                        </p>
+                        <label> @Html.RadioButtonFor(x => x.IphoneType, "Robokassa", new { Name = "Iphone", @class = "paymentVariant" }) Robokassa</label>
+                        <div class="list-methods" id="terminal">
+                            <div class="robokassa">
+                                <table class="subform">
+                                    <tr>
+                                        <td class="param-name">
+                                            @Resource.Install_UserContols_PaymentView_RobokassaCreditCardLogin
+                                        </td>
+                                        <td>
+                                            <div class="str">
+                                                @Html.TextBoxFor(x => x.LoginRobokassaIPhone, new { @class = "txt valid-required" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="param-name">
+                                            @Resource.Install_UserContols_PaymentView_RobokassaCreditCardPass
+                                        </td>
+                                        <td>
+                                            <div class="str">
+                                                @Html.TextBoxFor(x => x.PassRobokassaIPhone, new { @class = "txt valid-required" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.Iphone)
+            </fieldset>
+        }
+        <p>
+            @Html.Raw(Resource.Install_UserContols_PaymentView_Warning)
+        </p>
+        <div class="step-btns">
+            <span class="btn-c">
+                <a href="@Model.BackUrl" class="btn btn-back">@Resource.Installer_Back</a>
+                <input type="submit" class="btn btn-next" value="@Resource.Installer_Next" />
+            </span>
+        </div>
+    }
+</div>

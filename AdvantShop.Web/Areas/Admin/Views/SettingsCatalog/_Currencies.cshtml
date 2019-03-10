@@ -1,0 +1,82 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CatalogSettings.CatalogSettingsModel
+
+
+<div class="sticky-page-name m-b-md">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Settings.Catalog.Currencies")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <button class="btn btn-sm btn-success" type="button" ng-click="settingsCatalog.updateCb()">
+                <span class="fa fa-plus"></span>
+                @T("Admin.Settings.Catalog.UpdateCB")
+            </button>
+
+            <ui-modal-trigger data-controller="'ModalAddEditCurrencyCtrl'" controller-as="ctrl" on-close="settingsCatalog.gridCurrencies.fetchData()"
+                              template-url="../areas/admin/content/src/settingsCatalog/modal/addEditCurrency/AddEditCurrency.html">
+                <button class="btn btn-sm btn-success" type="button">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Settings.Catalog.AddCurrency")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<ui-grid-custom grid-unique-id="gridCurrencies"
+                grid-row-identificator="'CurrencyId'"
+                grid-on-init="settingsCatalog.gridCurrenciesOnInit(grid)"
+                grid-options="settingsCatalog.gridCurrenciesOptions"
+                grid-url="'settingsCatalog/GetCurrenciesPaging'"
+                grid-inplace-url="'settingsCatalog/CurrencyInplace'"
+                grid-extend-ctrl="settingsCatalog">
+</ui-grid-custom>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.Currencies")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.DefaultCurrency")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.DropDownListFor(x => x.DefaultCurrencyIso3, Model.Currencies, new { @class = "form-control", ng_model = "settingsCatalog.DefaultCurrencyIso3" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.AllowToChangeCurrency")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.AllowToChangeCurrency, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.AllowToChangeCurrency" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.AutoUpdateCurrencies")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.AutoUpdateCurrencies, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.AutoUpdateCurrencies" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+<div>
+    <a href="http://www.advantshop.net/help/pages/currency" target="_blank">Инструкция. Настройка параметров валюты в магазине</a>
+</div>

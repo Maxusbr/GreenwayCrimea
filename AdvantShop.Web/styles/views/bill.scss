@@ -1,0 +1,89 @@
+﻿body {
+	font-family: Tahoma; font-size: 12px; color: black;
+	background-color: white;
+	border-style: none; border-color: inherit; border-width: 0; margin: 5px;	
+}
+h1{
+	margin: 0px; padding: 0px; font-size: 14px;
+}
+table td{
+	padding:0px; /* cellpadding="0" */
+	vertical-align: top;
+} 
+table {
+	font-family: Tahoma; 
+	color: black; font-size: 12px;
+	border: 0px; /* border="0" */
+	border-collapse:collapse; /* cellspacing="0" */
+}
+
+/*счет*/
+.Vnimanie{
+	text-align:center; font-size:11px;
+}
+.Obrazech{
+	font-weight:bold; text-align:center
+}
+.Rekviziti{
+	font-weight:bold
+}
+.Podcherkivanie{
+	border-bottom:1px black solid; width:130px
+}
+.OtstupPodpis{
+	padding-left:20px;
+}
+table.Spisok td{
+	border:1px black solid;
+	border-collapse:collapse;
+}
+table.Spisok{
+	width:100%;
+}
+table.Spisok td{
+	padding:2px;
+}
+table.Spisok tr.Zag{
+	text-align:center; 
+	font-weight:bold; 
+	height:30px;
+}
+tr.Zag td{
+	vertical-align:middle
+}
+.TAKolvo{
+	text-align:right
+}
+.TASumma{
+	text-align:right
+}
+.BorderBlack{
+	border:1px black solid;
+	border-collapse:collapse;
+}
+table.TableRekvizit td{
+	border:1px black solid;
+	border-collapse:collapse;
+	padding:1px;
+}
+table.TableRekvizit{
+	width:500px;
+}
+.BankPoluchatel{
+	font-size:10px;
+}
+.KPP{
+	padding-left:10px; border-collapse:collapse;border-width:0px 0px 1px 1px;
+}
+.INN{
+	border-width:0px 1px 1px;
+}
+.Poluchatel{
+	font-size:10px;
+}
+.TableInTableRekvizit{
+	width: 100%; border:0px; border-collapse:collapse;
+}
+.HrBlack{
+	color:black
+}

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		<meta charset="utf-8" />
+        <title>Магазин временно недоступен</title>
+        <!--<title>This store is currently closed</title>-->
+        <style type="text/css" >
+            body {margin: 0px; padding: 0px; font-family: Tahoma;}
+            #dvErrContainer {margin-left: 20px; margin-top: 20px; text-align: center;}
+            #dvErrContainer .ErrDescription {margin-top: 10px; color: #1886C5; font: bold 18px Arial;}
+            #dvErrContainer .ErrNotify {height: 19px; font-family: arial; font-size: 13px; margin-top: 11px;}
+            .ErrTextCss {width: 90%; height: 200px; background-color: Gray; text-align: left; padding: 10px; margin-top: 20px; color: White;}
+            a {color:#1886C5; font-family:Arial;}
+        </style>
+    </head>
+    <body>
+        <div id="dvErrContainer">
+            <div class="ErrDescription">Магазин в настоящее время недоступен</div>
+            <!--<div class="ErrNotify">Узнайте подробнее о <a href="http://www.advantshop.net/help/pages/app-offline" target="_blank" rel="nofollow">возможных причинах</a></div>-->
+			<div class="ErrNotify">Если вы являетесь владельцем данного магазина перейдите в личный кабинет</div>
+        </div>
+        <iframe src="http://www.advantshop.net/appoffline.aspx" width="0" height="0" style="border:none"></iframe>
+        <!--
+        <div id="dvErrContainer">
+            <div class="ErrDescription">This store is currently closed</div>
+            <div class="ErrNotify">Please check back in a little while.</div>
+        </div>
+        -->
+
+        <!--  
+    
+        // Bug fix for ie6, make sure you have at least 512 bytes of content
+
+        Adding additional hidden content so that IE Friendly Errors don't prevent
+        this message from displaying (note: it will show a "friendly" 404
+        error if the content isn't of a certain size).
+    
+        -->
+    </body>
+</html>

@@ -1,0 +1,87 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Цена товара</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Артикул</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.ArtNo" autofocus required validation-input-text="Артикул" data-e2e="AddArtNo" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Размер
+                    </label>
+                    <div class="col-xs-9">
+                        <select class="form-control" ng-model="ctrl.SizeId" ng-options="s.label for s in ctrl.Sizes track by s.value" data-e2e="AddSize"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Цвет
+                    </label>
+                    <div class="col-xs-9">
+                        <select class="form-control" ng-model="ctrl.ColorId" ng-options="s.label for s in ctrl.Colors track by s.value" data-e2e="AddColor"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Цена</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.BasePrice" required validation-input-text="Цена" data-e2e="AddPrice" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Закупочная цена
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.SupplyPrice" data-e2e="AddSupplyPrice" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Количество</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.Amount" required validation-input-text="Количество" data-e2e="AddAmount" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Главная
+                    </label>
+                    <div class="col-xs-9">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" ng-model="ctrl.Main" class="adv-checkbox-input control-checkbox" data-e2e="MainSelect" />
+                            <span class="adv-checkbox-emul" data-e2e="MainClick"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

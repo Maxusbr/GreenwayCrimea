@@ -1,0 +1,62 @@
+﻿$bgAction: #f85f23;
+$bgSubmit: #ffad23;
+$coefficientColor: 5;
+
+.btn-wrap{
+    display: inline-block;
+    vertical-align: middle;
+}
+.btn {
+    display: inline-block;
+    vertical-align: middle;
+    border: 0;
+    font-size: 18px;
+    /*text-transform: uppercase;*/
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    padding: 9px 20px 10px;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.btn-upper {
+    text-transform: uppercase;
+}
+
+.btn-expand {
+    width: 100%;
+}
+
+.btn-action {
+    background: $bgAction;
+
+    &:hover {
+        background: lighten($bgAction, $coefficientColor);
+    }
+
+    &:active {
+        background: darken($bgAction, $coefficientColor);
+    }
+
+    &.btn-shadown {
+        box-shadow: 0 3px 7px 0 rgba(213,70,14, .72);
+    }
+}
+
+.btn-submit {
+    background-color: $bgSubmit;
+
+    &:hover {
+        background: lighten($bgSubmit, $coefficientColor);
+    }
+
+    &:active {
+        background: darken($bgSubmit, $coefficientColor);
+    }
+
+    &.btn-shadown {
+        box-shadow: 0 3px 7px 0 rgba(213,70,14, .72);
+    }
+}

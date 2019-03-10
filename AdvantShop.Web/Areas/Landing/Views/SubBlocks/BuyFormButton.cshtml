@@ -1,0 +1,13 @@
+﻿@model SubBlockModel
+           
+<input type="button"
+       data-button-validation
+       data-button-validation-success="buyOneClickForm.send()"
+       style="@Model.SubBlock.TryGetStyleString()"
+       class="btn btn-submit btn-upper btn-shadown btn-expand"
+       data-ng-if="buyOneClickForm.success === false"
+       value="@(Model.InPlace ? "{{subblockInplaceButton.settings.text}}" : Model.SubBlock.TryGetSettingsValue("text"))"
+       @Model.SubBlock.RenderInplaceNgStyle("subblockInplaceButton")/>
+
+
+<a data-ng-if="buyOneClickForm.success && buyOneClickForm.showRedirectButton" class="btn btn-middle btn-action" data-ng-href="{{buyOneClickForm.result.url}}">{{ ::'Js.BuyOneClick.Close' | translate }}</a>

@@ -1,0 +1,54 @@
+.brand-county-select {
+  padding: 0.66667em 0; }
+
+.brand-county-name {
+  margin-bottom: 0.66667em; }
+
+.brands-title-row {
+  display: none; }
+
+.breads {
+  display: none; }
+
+.brand-item-inner {
+  text-align: center; }
+
+.brand-item {
+  margin-bottom: 1em;
+  padding-top: 15px; }
+
+.row .brand-item:first-child {
+  margin-top: 1em; }
+
+.abc {
+  text-align: center; }
+  .abc .letter {
+    border-width: 1px;
+    border-style: solid;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    max-width: 60px;
+    min-width: 34px;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    font-size: 1.06667em; }
+    .abc .letter.all {
+      display: block;
+      margin: 0 auto 0.66667em auto;
+      text-align: center;
+      border-color: transparent; }
+    .abc .letter:hover {
+      border-color: transparent;
+      text-decoration: none; }
+    .abc .letter.inactive {
+      outline: none;
+      color: #d5d3d3;
+      display: none; }
+    .abc .letter.cs-selected {
+      border-color: transparent; }
+  .abc .letter + .letter {
+    margin-left: 1px; }
+
+.brand-item .brand-navigation {
+  display: none; }

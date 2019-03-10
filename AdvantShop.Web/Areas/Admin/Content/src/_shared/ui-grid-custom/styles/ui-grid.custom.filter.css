@@ -1,0 +1,21 @@
+.ui-grid-filter-block {
+  border: 1px #e7eaec solid;
+  padding: 15px;
+  position: relative;
+  margin-top: 15px; }
+
+.ui-grid-filter-block-title-text, .ibox-content .ui-grid-filter-block-title-text {
+  margin-top: 0; }
+
+.ui-grid-filter-block-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer; }
+
+.ui-grid-filter-text {
+  font-size: 12px; }
+
+.ui-grid-custom-filter-total {
+  font-size: 12px;
+  background-color: #fff; }

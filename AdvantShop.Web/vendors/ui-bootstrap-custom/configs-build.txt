@@ -1,0 +1,3 @@
+bootstrap-custom build{
+	popover
+}

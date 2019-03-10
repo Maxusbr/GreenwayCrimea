@@ -1,0 +1,131 @@
+﻿<div>
+    <div class="ng-hide" data-ng-class="cartMFull.cartData !== undefined ? '' : 'ng-hide'" data-ng-switch="cartMFull.cartData.CartProducts.length > 0">
+        <div data-ng-switch-when="true">
+            <div class="cart-full-mobile panel cs-br-1" data-ng-repeat="item in cartMFull.cartData.CartProducts track by $index">
+                <div class="cart-full-mobile-photo">
+                    <a class="cart-full-mobile-photo-link" href="{{item.Link}}">
+                        <img data-ng-src="{{item.PhotoPath}}" alt="{{item.PhotoAlt}}" />
+                    </a>
+                </div>
+                <div class="cart-full-mobile-body">
+                    <a href="{{item.Link}}" class="cart-full-mobile-name-link cs-l-d-1" data-ng-bind="item.Name"></a>
+                    <div class="cart-full-mobile-item-cost" data-ng-bind="item.Cost"></div>
+                    <ul class="cart-full-mobile-properties" data-ng-if="item.ColorName || item.SizeName || item.SelectedOptions.length > 0">
+                        <li class="cart-full-mobile-properties-item" data-ng-if="item.ColorName">
+                            <span class="cart-full-mobile-properties-name" data-ng-bind="(cartMFull.cartData.ColorHeader + ':')"></span>
+                            <span class="cart-full-mobile-properties-value" data-ng-bind="item.ColorName"></span>
+                        </li>
+                        <li class="cart-full-mobile-properties-item" data-ng-if="item.SizeName">
+                            <span class="cart-full-mobile-properties-name" data-ng-bind="(cartMFull.cartData.SizeHeader + ':')"></span>
+                            <span class="cart-full-mobile-properties-value" data-ng-bind="item.SizeName"></span>
+                        </li>
+                        <li class="cart-full-mobile-properties-item" data-ng-if="item.SelectedOptions.length > 0" data-ng-repeat="option in item.SelectedOptions track by $index">
+                            <div class="cart-full-mobile-properties-name" data-ng-bind="(option.CustomOptionTitle + ':')"></div>
+                            <div class="cart-full-mobile-properties-value" data-ng-bind="(option.OptionTitle)"></div>
+                        </li>
+                    </ul>
+                    <div class="cart-amount-error-wrap"><span class="cart-amount-error" data-ng-bind="item.Avalible"></span></div>
+                    <div class="cart-amount-error-wrap"><span class="cart-amount-error" data-ng-if="item.Avalible == '' && item.AvailableAmount == 0">{{ ::'Js.Cart.PreOrder' | translate }}</span></div>
+                </div>
+                <div class="cart-full-mobile-inputs">
+                    <!--<span class="select-cart select-custom icon-down-open-after-abs cs-t-4">
+                        <select class="cs-bg-2" data-ng-model="item.Amount"
+                                data-ng-change="cartMFull.updateAmount(item.Amount, item.ShoppingCartItemId)"
+                                ng-options="item for item in cartMFull.getOptions(item.MinAmount, item.Multiplicity, item.Amount, item.AvailableAmount)"></select>
+                    </span>--> 
+                    <div class="cart-full-amount-control" ng-if="!item.FrozenAmount" data-spinbox data-value="item.Amount" data-proxy="item.ShoppingCartItemId" data-update-fn="cartMFull.updateAmount(value, proxy)" data-step="item.Multiplicity" data-max="item.MaxAmount" data-min="item.MinAmount"></div>
+                    <div class="cart-full-amount-control" ng-if="item.FrozenAmount" data-ng-bind="item.Amount"></div>
+                    <!--<div class="cart-amount-error-wrap">
+                        <span class="cart-amount-error cart-amount-error-mobile" data-ng-bind="item.Avalible"></span>
+                    </div>-->
+                    <span data-ng-bind="item.Unit"></span>
+                    <a href="" data-ng-click="cartMFull.remove(item.ShoppingCartItemId)" class="cart-full-mobile-remove icon-margin-drop icon-cancel-circled-before link-text-decoration-none cs-l-3" title="Удалить"></a>
+                </div>
+            </div>
+
+            <div class="panel no-borders" data-ng-if="cartMFull.cartData.CouponInputVisible">
+                <div class="cart-full-mobile-coupon">
+                    <div class="cart-full-mobile-coupon-text">{{ ::'Js.Cart.CouponCode' | translate }}</div>
+                    <div data-cards-form data-apply-fn="cartMFull.refresh()"></div>
+                </div>
+            </div>
+
+            <div class="panel no-borders" data-ng-if="cartMFull.cartData.BonusPlus != null">
+                <div class="cart-full-bonus">
+                    {{ ::'Js.Cart.BonusPlus' | translate }}
+                    + <span data-ng-bind="cartMFull.cartData.BonusPlus"></span>
+                </div>
+            </div>
+            <div class="panel no-borders" data-ng-if="cartMFull.moduleHtml.length > 1">
+                <div class="cart-full-mobile">
+                    <div data-ng-bind-html="cartMFull.moduleHtml"></div>
+                </div>
+            </div>
+            <!--<div class="panel cs-br-1">
+                <label>
+                    <input class="custom-input-native" type="checkbox" />
+                    <span class="custom-input-checkbox"></span>
+                    <span class="custom-input-text"> В кредит за <span>1267 рублей в месяц</span></span>
+                </label>
+            </div>-->
+
+            <div class="panel cs-br-1">
+                <div data-ng-if="cartMFull.cartData.TotalProductPrice != null"  data-ng-show="cartMFull.cartData.TotalPrice != cartMFull.cartData.TotalProductPrice">
+                    <span class="cart-full-mobile-summary-name">
+                        {{ ::'Js.Cart.Sum' | translate }}:
+                    </span>
+                    <span class="cart-full-mobile-summary-price" data-ng-bind="cartMFull.cartData.TotalProductPrice"></span>
+                </div>
+                <div data-ng-if="cartMFull.cartData.DiscountPrice != null"  data-ng-show="cartMFull.cartData.DiscountPrice != null">
+                    <span class="cart-full-mobile-summary-name">
+                        {{ ::'Js.Cart.Discount' | translate }}:
+                    </span>
+                    <span class="cart-full-mobile-summary-price" data-ng-bind="cartMFull.cartData.DiscountPrice"></span>
+                </div>
+                <div data-ng-if="cartMFull.cartData.Certificate != null">
+                    <span class="cart-full-mobile-summary-name">
+                        {{ ::'Js.Cart.Certificate' | translate }}:
+                    </span>
+                    <span class="cart-full-mobile-summary-price">
+                        <span data-ng-bind="cartMFull.cartData.Certificate"></span>
+                        <a href="" data-cards-remove data-type="certificate" data-apply-fn="cartMFull.refresh()"></a>
+                    </span>
+                </div>
+                <div data-ng-if="cartMFull.cartData.Coupon != null">
+                    <span class="cart-full-mobile-summary-name">
+                        {{ ::'Js.Cart.Coupon' | translate }}:
+                    </span>
+                    <span class="cart-full-mobile-summary-price">
+                        - <span data-ng-bind="cartMFull.cartData.Coupon.Price"></span>
+                        <a href="" data-cards-remove data-type="coupon" data-apply-fn="cartMFull.refresh()"></a>
+                    </span>
+                </div>
+                <div>
+                    <span class="cart-full-mobile-result-name">
+                        {{ ::'Js.Cart.Total' | translate }}:
+                    </span>
+                    <span class="cart-full-mobile-result-price" data-ng-bind="cartMFull.cartData.TotalPrice"></span>
+                </div>
+
+            </div>
+
+            <div class="cart-full-error panel cs-br-1" data-ng-if="cartMFull.cartData.Valid != ''" data-ng-bind="cartMFull.cartData.Valid">
+
+            </div>
+            <div class="cart-full-mobile-buttons">
+                <a data-ng-href="{{cartMFull.cartData.Valid == '' ? (cartMFull.cartData.MobileIsFullCheckout ? 'checkout' : 'mobile/checkoutmobile/index') :''}}" data-ng-class="{'btn-disabled': cartMFull.cartData.Valid != ''}" class="btn btn-middle btn-submit" data-ng-disabled="">{{ ::'Js.Cart.Checkout' | translate }}</a>
+            </div>
+        </div>
+        <div data-ng-switch-when="false">
+            <div class="cart-full-empty">
+                {{ ::'Js.Cart.EmptyCart' | translate }}
+            </div>
+        </div>
+    </div>
+    
+    <div class="cart-full-loading" data-ng-class="cartMFull.cartData !== undefined ? 'ng-hide' : ''">
+        <span class="icon-arrows-ccw-before cart-full-loading-text">
+            {{ ::'Js.Cart.Loading' | translate }}
+        </span>
+    </div>
+</div>

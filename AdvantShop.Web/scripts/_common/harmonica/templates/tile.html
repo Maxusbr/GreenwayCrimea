@@ -1,0 +1,15 @@
+﻿<li class="harmonica-tile js-harmonica-tile {{::harmonicaTile.cssClasses.harmonicaClassTile}}" data-ng-hide="!harmonicaTile.isVisibleTile">
+    <div class="harmonica-tile-inner" data-ng-if="harmonicaTile.isVisibleTile">
+        <span class="icon-dot-3-before harmonica-tile-dots" data-window-click="harmonicaTile.clickOut(event)"></span>
+        <div class="js-harmonica-tile-list harmonica-tile-list {{::harmonicaTile.cssClasses.harmonicaClassTileSubmenu}}"
+             data-ng-class="{'harmonica-tile-submenu-active': harmonicaTile.isVisibleTileSubmenu}"
+             data-ng-if="harmonicaTile.hoverTileSubmenu">
+            <div class="harmonica-tile-row {{::harmonicaTile.cssClasses.harmonicaClassTileRow}}"
+                 data-ng-repeat="link in ::harmonicaTile.links track by $index"
+                 data-ng-show="link.linkScope.isVisibleInTile">
+                <a class="harmonica-tile-link {{::harmonicaTile.cssClasses.harmonicaClassTileLink}}" href="{{::link.linkHref}}" data-ng-bind="::link.linkText"></a>
+            </div>
+        </div>
+    </div>
+</li>
+

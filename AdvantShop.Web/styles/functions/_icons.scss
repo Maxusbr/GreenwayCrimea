@@ -1,0 +1,172 @@
+﻿$icons-margin: .2em !default;
+$icons-width: 1em !default;
+$icons-opacity: 1 !default;
+$icons-3d: false !default;
+$icons-font-size: 16px !default;
+
+@mixin icon-init() {
+    [class^="icon-"]:before,
+    [class^="icon-"]:after,
+    [class*=" icon-"]:before,
+    [class*=" icon-"]:after {
+        @include icon-base();
+    }
+
+    .icon-animate-spin {
+        animation: spin 2s infinite linear;
+        display: inline-block;
+    }
+
+    .icon-animate-spin-after:after, .icon-animate-spin-before:before {
+        animation: spin 2s infinite linear;
+        display: inline-block;
+        text-shadow: none;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0);
+        }
+
+        to {
+            transform: rotate(359deg);
+        }
+    }
+}
+
+@mixin icon-base() {
+    font-family: "advantshopfonts";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: $icons-width;
+    line-height: 1;
+    text-align: center;
+    opacity: $icons-opacity;
+    //For safety - reset parent styles, that can break glyph codes
+    font-variant: normal;
+    text-transform: none;
+    //fix buttons height, for twitter bootstrap
+    /*line-height: 1em;*/
+    //Animation center compensation - margins should be symmetric
+    //remove if not needed
+    //margin-left: .2em;
+    //you can be more comfortable with increased icons size
+    //font-size: 120%;
+    @if($icons-3d == true) {
+        text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
+    }
+}
+
+@mixin icons($list-icons) {
+    $iconsAll: ();
+    $iconsBeforeAll: ();
+    $iconsAfterAll: ();
+    $iconsAbs: ();
+    $iconsAbsBefore: ();
+    $iconsAbsAfter: ();
+    $iconsAbsBeforeOffset: ();
+    $iconsAbsAfterOffset: ();
+    $isSingle: false;
+
+    @each $icon in $list-icons {
+        $icon-name: null;
+        $icon-content: null;
+
+        @if($isSingle != true) {
+            @if(length($icon) == 1) {
+                $icon-name: nth($list-icons, 1);
+                $icon-content: nth($list-icons, 2);
+                $isSingle: true;
+            }
+            @else {
+                $icon-name: nth($icon, 1);
+                $icon-content: nth($icon, 2);
+            }
+
+            .icon-#{$icon-name}-before:before,
+            .icon-#{$icon-name}-after:after,
+            .icon-#{$icon-name}-before-abs:before,
+            .icon-#{$icon-name}-after-abs:after,
+            .icon-#{$icon-name}-before-abs-offset:before,
+            .icon-#{$icon-name}-after-abs-offset:after {
+                content: '#{$icon-content}';
+            }
+
+            $iconsAll: append($iconsBeforeAll,'.icon-#{$icon-name}-before:before,.icon-#{$icon-name}-after:after,.icon-#{$icon-name}-before-abs:before,.icon-#{$icon-name}-after-abs:after,.icon-#{$icon-name}-before-abs-offset:before,.icon-#{$icon-name}-after-abs-offset:after', comma);
+            $iconsBeforeAll: append($iconsBeforeAll,'.icon-#{$icon-name}-before:before,.icon-#{$icon-name}-before-abs:before,.icon-#{$icon-name}-before-abs-offset:before', comma);
+            $iconsAfterAll: append($iconsAfterAll,'.icon-#{$icon-name}-after:after,.icon-#{$icon-name}-after-abs:after,.icon-#{$icon-name}-after-abs-offset:after', comma);
+            $iconsAbs: append($iconsAbs,'.icon-#{$icon-name}-before-abs:before,.icon-#{$icon-name}-after-abs:after, .icon-#{$icon-name}-before-abs-offset:before,.icon-#{$icon-name}-after-abs-offset:after', comma);
+            $iconsAbsBefore: append($iconsAbsBefore,'.icon-#{$icon-name}-before-abs:before', comma);
+            $iconsAbsAfter: append($iconsAbsAfter,'.icon-#{$icon-name}-after-abs:after', comma);
+            $iconsAbsBeforeOffset: append($iconsAbsBeforeOffset,'.icon-#{$icon-name}-before-abs-offset:before', comma);
+            $iconsAbsAfterOffset: append($iconsAbsAfterOffset,'.icon-#{$icon-name}-after-abs-offset:after', comma);
+        }
+    }
+
+    #{$iconsBeforeAll} {
+        margin-right: $icons-margin;
+    }
+
+    #{$iconsAfterAll} {
+        margin-left: $icons-margin;
+    }
+
+    #{$iconsAbs} {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #{$iconsAbsBefore} {
+        left: 0;
+    }
+
+    #{$iconsAbsAfter} {
+        right: 0;
+    }
+
+    #{$iconsAbsBeforeOffset} {
+        right: 100%;
+    }
+
+    #{$iconsAbsAfterOffset} {
+        left: 100%;
+    }
+}
+
+
+@mixin icon($icon-name, $icon-content) {
+    .icon-#{$icon-name}-before:before,
+    .icon-#{$icon-name}-after:after,
+    .icon-#{$icon-name}-before-abs:before,
+    .icon-#{$icon-name}-after-abs:after {
+        content: "#{$icon-content}";
+    }
+
+    .icon-#{$icon-name}-before-abs:before,
+    .icon-#{$icon-name}-after-abs:after,
+    .icon-#{$icon-name}-before-abs-offset:before,
+    .icon-#{$icon-name}-after-abs-offset:after {
+        position: absolute;
+        margin-top: -($icons-font-size/2);
+    }
+
+    .icon-#{$icon-name}-before-abs-offset:before {
+        right: 100%;
+    }
+
+    .icon-#{$icon-name}-after-abs-offset:after {
+        left: 100%;
+    }
+
+    .icon-#{$icon-name}-before-abs:before {
+        left: 0;
+    }
+
+    .icon-#{$icon-name}-after-abs:after {
+        right: 0;
+    }
+}

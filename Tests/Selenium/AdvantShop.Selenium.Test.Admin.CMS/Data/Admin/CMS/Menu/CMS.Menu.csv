@@ -1,0 +1,17 @@
+﻿MenuItemID;MenuItemName;MenuItemUrlPath;MenuItemUrlType;SortOrder;ShowMode;Enabled;Blank;NoFollow;MenuType;MenuItemParentID
+1;Main Menu1;pages/Main_Menu1;2;10;0;true;false;false;0;NULL
+2;Main Menu2_Blank;pages/Main_Menu2_Blank;2;20;0;true;true;false;0;NULL
+3;Main Menu3;pages/Main_Menu3;2;30;0;true;false;false;0;2
+4;Bottom Menu1;pages/Bottom_Menu1;2;10;0;true;false;false;1;NULL
+5;Bottom Menu2;pages/Bottom_Menu2;2;20;0;true;false;false;1;NULL
+6;Bottom Menu3_Blank;pages/Bottom_Menu3_Blank;2;30;0;true;true;false;1;5
+7;Mobile Menu1;pages/Mobile_Menu1;2;10;0;true;false;false;2;NULL
+8;Mobile Menu2;pages/Mobile_Menu2;2;20;0;true;false;false;2;NULL
+9;Main Menu4_Disabled;pages/Main_Menu4_Disabled;2;40;0;false;false;false;0;NULL
+10;Bottom Menu4_Disabled;pages/Bottom_Menu2_Disabled;2;40;0;false;false;false;1;NULL
+11;Mobile Menu3_Disabled;pages/Mobile_Menu3_Disabled;2;30;0;false;false;false;2;NULL
+12;Main SubMenu5_Disabled;pages/Main_SubMenu5_Disabled;2;50;0;false;false;false;0;1
+13;Bottom SubMenu1_Disabled;pages/Bottom_SubMenu1_Disabled;2;50;0;false;false;false;1;4
+14;Main Menu6;pages/Main_Menu6;2;60;0;true;false;false;0;NULL
+15;Bottom Menu5;pages/Bottom_Menu5;2;60;0;true;false;false;1;NULL
+16;Bottom Menu6_Parent;pages/Bottom_Menu6_Parent;2;70;0;true;false;false;1;4

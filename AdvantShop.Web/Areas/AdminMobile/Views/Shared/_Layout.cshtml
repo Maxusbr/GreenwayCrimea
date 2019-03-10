@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app" data-ng-controller="HomeCtrl">
+<head>
+    <link rel="apple-touch-icon" href="/areas/adminmobile/images/onScreenIcon/icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/areas/adminmobile/images/onScreenIcon/icon-72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/areas/adminmobile/images/onScreenIcon/icon-72@2x.png" />
+    <title>@Html.GetPageTitle()</title>
+    <base href="@UrlService.GetUrl()" />
+    <meta charset="utf-8">
+    <meta content="Dynamic" name="document-state">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport">
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="Keywords" content="@Html.GetPageKeywords()" />
+    @Html.Partial("_Head")
+</head>
+<body data-ng-controller="sidebarCtrl as sbCtrl" data-ng-class="{'sidebar_open' : sbCtrl.sidebarVisible.visible }">
+    <div id="layout">
+        @RenderSection("Header", false)
+        @RenderBody()
+    </div>
+    @RenderSection("Sidebar", false)
+    @Html.Partial("_BottomScripts")
+</body>
+</html>

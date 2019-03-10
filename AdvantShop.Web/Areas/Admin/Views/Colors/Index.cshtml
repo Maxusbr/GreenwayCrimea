@@ -1,0 +1,33 @@
+﻿<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Colors.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditColorCtrl'" controller-as="ctrl"
+                              template-url="../areas/admin/content/src/colors/modal/addEditColor/addEditColor.html"
+                              data-on-close="colors.grid.fetchData()">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Colors.Index.AddColor")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="colors.gridOnInit(grid)"
+                        grid-options="colors.gridOptions"
+                        grid-url="'colors/getcolors'"
+                        grid-inplace-url="'colors/inplacecolor'"
+                        grid-search-placeholder="'Поиск по названию'"
+                        grid-extend-ctrl="colors">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="colors.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

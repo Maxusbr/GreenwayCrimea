@@ -1,0 +1,19 @@
+﻿
+<article class="checkout-block">
+    <div class="checkout-block-title h2">
+        @T("Checkout.CheckoutPayment.PaymentMethods")
+    </div>
+    <div class="checkout-block-content">
+        <div class="checkout-block-content-inner">
+            <div data-payment-list 
+                 data-anchor="checkoutpayment" 
+                 data-items="checkout.Payment.option" 
+                 data-select-payment="checkout.ngSelectPayment" 
+                 data-count-visible-items="::7" 
+                 data-change="checkout.changePayment(payment)"
+                 data-is-progress="checkout.paymentLoading"
+                 data-icon-height="@(SettingsPictureSize.PaymentIconHeight)px"
+                 data-icon-width="@(SettingsPictureSize.PaymentIconWidth)px"></div>
+        </div>
+    </div>
+</article>

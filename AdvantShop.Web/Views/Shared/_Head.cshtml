@@ -1,0 +1,86 @@
+﻿@using AdvantShop.Customers
+@using AdvantShop.Trial
+@using AdvantShop.Design
+
+@Html.Raw(SettingsSEO.CustomMetaString)
+@if (UrlService.GetUrl().Contains("on-advantshop.net"))
+{
+    <meta name="robots" content="noindex,nofollow">
+}
+
+@{
+    Html.AddBundles(new List<string>
+    {
+        "~/vendors/qazy/qazyOpt.js",
+        "~/vendors/jquery/jquery-2.1.4.js"
+    }, "_head.js");
+}
+@Html.RenderJsBundle("_head.js")
+
+@* Critical CSS. It should be <14kb *@
+<style>.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important}form{display:block}</style>
+
+@{
+    var isShowDesignConstructor = CustomerContext.CurrentCustomer.CustomerRole == Role.Administrator || AdvantShop.Demo.IsDemoEnabled || TrialService.IsTrialEnabled;
+    var cssBundle = "main.css";
+    
+    if (isShowDesignConstructor == false)
+    {
+        Html.AddBundles(new List<string>()
+        {
+            "~/" + DesignService.GetDesign("colorscheme") + "/styles/styles.css",
+            "~/" + DesignService.GetDesign("theme") + "/styles/styles.css",
+            "~/" + DesignService.GetDesign("background") + "/styles/styles.css"
+        }, cssBundle);
+    }
+    else
+    {
+        cssBundle = "main_without_design.css";
+        <link rel="stylesheet" href="@(UrlService.GetUrl() + DesignService.GetDesign("colorscheme") + "/styles/styles.css")" data-builder-stylesheet data-builder-type="colorScheme" />
+        <link rel="stylesheet" href="@(UrlService.GetUrl() + DesignService.GetDesign("theme") + "/styles/styles.css")" data-builder-stylesheet data-builder-type="theme" />
+        <link rel="stylesheet" href="@(UrlService.GetUrl() + DesignService.GetDesign("background") + "/styles/styles.css")" data-builder-stylesheet data-builder-type="background" />
+    }
+
+    Html.AddBundles(new List<string>
+    {
+        "~/styles/font.css",
+
+        "~/vendors/flexboxgrid/flexboxgrid.css",
+        "~/vendors/flexboxgrid/ext/flexboxgridExt.css",
+
+        "~/vendors/normalize/normalize.css",
+        "~/styles/general.css",
+
+        "~/styles/common/buttons.css",
+        "~/styles/common/headers.css",
+        "~/styles/common/icons.css",
+        "~/styles/common/custom-input.css",
+        "~/styles/common/inputs.css",
+
+        "~/styles/partials/breads.css",
+        "~/styles/partials/gallery.css",
+        "~/styles/partials/header.css",
+        "~/styles/partials/menu-dropdown.css",
+        "~/styles/partials/menu-header.css",
+        "~/styles/partials/menu-general.css",
+        "~/styles/partials/price.css",
+        "~/styles/partials/toolbar-top.css",
+
+        "~/scripts/_common/carousel/styles/carousel.css",
+        "~/scripts/_common/rating/styles/rating.css",
+        "~/scripts/_common/tabs/styles/tabs.css",
+
+        "~/scripts/_partials/cart/styles/cart.css",
+        "~/scripts/_partials/product-view/styles/product-view.css",
+
+        "~/styles/views/product.css",
+        "~/styles/views/home.css",
+
+    }, cssBundle);
+}
+@Html.Partial("_HeadStylesTemplate")
+@Html.Action("MetaData", "Common")
+@Html.RenderCssBundle(cssBundle)
+@Html.RenderModules("headStyles")
+@Html.RenderModules("head")
+@Html.StaticBlock("head", onlyContent: true)

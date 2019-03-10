@@ -1,0 +1,67 @@
+﻿@using System.Web.Mvc.Html
+@model AdvantShop.Web.Admin.Models.Settings.CrmSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "SettingsCrm", FormMethod.Post, new { name = "form", enctype = "multipart/form-data", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settings.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </div>
+    </div>
+    <uib-tabset active uid="'crm'" on-select-batch="settings.floatHeader = tab.heading;">
+
+        <uib-tab index="crm_settings" heading="@T("Admin.Settings.Crm.Header")" classes="ng-tab">
+            <div class="m-b-md">
+                <h3 class="inline middle-cell m-r-xs">@T("Admin.Settings.SettingsCrm.CommunicationWithActions")</h3>
+                <a href="@Url.Action("Academy", "Service", new { id = 57 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    Видеоурок о настройке CRM
+                </a>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-3">
+                    @T("Admin.Settings.SettingsCrm.StageSuccessful")
+                </div>
+                <div class="col-xs-4">
+                    @Html.DropDownListFor(x => x.FinalDealStatusId, Model.DealStatuses, new {@class = "form-control", ng_model = "setting.FinalDealStatusId"})
+                </div>
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Статус заказа, если заказ создается из лида
+                </div>
+                <div class="col-xs-4">
+                    @Html.DropDownListFor(x => x.OrderStatusIdFromLead, Model.OrderStatuses, new {@class = "form-control", ng_model = "setting.OrderStatusIdFromLead"})
+                </div>
+            </div>
+
+            <h3 class="m-b-md">Список этапов</h3>
+            <div bs-modifiable="false">
+                <deal-statuses></deal-statuses>
+            </div>
+        </uib-tab>
+
+        <uib-tab index="'vk'" classes="ng-tab" heading="Интеграция с ВКонтакте">
+            <div class="setting-title">
+                <h3>Интеграция с ВКонтакте</h3>
+            </div>
+            <vk-auth redirect-url="'@(UrlService.GetUrl())'"></vk-auth>
+        </uib-tab>
+
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" data-e2e="SettingsCrmSave" />
+        </div>
+    </uib-tabset>
+}

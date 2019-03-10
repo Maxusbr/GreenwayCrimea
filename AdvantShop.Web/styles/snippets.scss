@@ -1,0 +1,129 @@
+﻿.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clear:after, .clear:before {
+    content: "";
+    display: table;
+}
+
+.clear:after {
+    clear: both;
+}
+
+.rel {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.big-z {
+    z-index: 100;
+}
+
+.flexible-maps-container {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.flexible-maps-container iframe,
+.flexible-maps-container object,
+.flexible-maps-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.flexible-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+
+    &.noPadding {
+        padding: 0;
+    }
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.center-aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .align-item {
+        flex: none;
+    }
+}
+
+.text-floating {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: keep-all;
+    line-break: normal;
+    hyphens: auto;
+}
+
+.text-static {
+    overflow-wrap: normal; /* не поддерживает IE, Firefox; является копией word-wrap */
+    word-wrap: normal;
+    word-break: normal; /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */
+    line-break: auto; /* нет поддержки для русского языка */
+    hyphens: manual;
+}
+
+.text-overflow {
+    @extend .text-static;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+
+.scaling-svg-container {
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 100%;
+
+    svg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+}
+
+.no-font-boost {
+    max-height: 999999px;
+}

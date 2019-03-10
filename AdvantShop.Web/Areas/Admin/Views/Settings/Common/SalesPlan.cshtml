@@ -1,0 +1,35 @@
+﻿@using AdvantShop.Repository.Currencies
+@model AdvantShop.Web.Admin.Models.Settings.CommonSettingsModel
+@{
+    var currency = CurrencyService.Currency(SettingsCatalog.DefaultCurrencyIso3).Symbol;
+}
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Index.SalesPlan")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SalesPlan, T("Admin.Settings.SalesPlanSettings.SalesPlan"))
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="form-inline">
+            @Html.TextBoxFor(x => x.SalesPlan, new { @class = "form-control input-small", ng_model = "settings.salesPlan" }) @currency
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ProfitPlan, T("Admin.Settings.SalesPlanSettings.ProfitPlan"))
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="form-inline">
+            @Html.TextBoxFor(x => x.ProfitPlan, new { @class = "form-control input-small", ng_model = "settings.profitPlan" }) @currency
+        </div>
+    </div>
+</div>

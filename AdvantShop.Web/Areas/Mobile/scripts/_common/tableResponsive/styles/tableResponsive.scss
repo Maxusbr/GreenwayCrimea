@@ -1,0 +1,84 @@
+﻿/*
+	Max width before this PARTICULAR table gets nasty
+	This query will take effect for any screen smaller than 760px
+	and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    .table-responsive-transform {
+        /* Force table to not be like tables anymore */
+        display: block;
+        width: 100% !important;
+
+        thead, tbody, th, td:not(.table-responsive-cell-ignore), tr {
+            display: block;
+            width: auto;
+        }
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        tr {
+            border-width: 1px;
+        }
+
+        tr + tr {
+            margin-top: 10px;
+        }
+
+        td:not(.table-responsive-cell-ignore) {
+            /* Behave  like a "row" */
+            margin-top: -1px;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        td:not(.table-responsive-cell-ignore):before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: normal;
+            content: attr(data-label);
+        }
+
+        td.table-responsive-header-colspan {
+            padding-left: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+
+    .table-responsive-scroll-wrap {
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        &::-webkit-scrollbar:vertical {
+            width: 12px;
+        }
+
+        &::-webkit-scrollbar:horizontal {
+            height: 12px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, .5);
+            border-radius: 10px;
+            border: 2px solid #ffffff;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+    }
+}

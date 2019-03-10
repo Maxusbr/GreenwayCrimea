@@ -1,0 +1,115 @@
+.shipping-payment-list {
+  padding: 0;
+  margin: 0 0 15px;
+  list-style: none;
+  display: table;
+  width: 100%; }
+  .shipping-payment-list .shipping-control-range {
+    width: 70px; }
+  .shipping-payment-list > .shipping-payment-item:nth-child(2) .shipping-payment-field {
+    padding-top: 15px; }
+
+.shipping-payment-list-wrapper {
+  position: relative;
+  padding-bottom: 50px; }
+  .shipping-payment-list-wrapper.loaded {
+    padding-bottom: 0; }
+  .shipping-payment-list-wrapper:after {
+    left: 50%;
+    bottom: 10px;
+    position: absolute;
+    font-size: 35px !important; }
+  .shipping-payment-list-wrapper.loaded:after {
+    display: none; }
+
+.shipping-payment-item {
+  display: table-row; }
+
+.shipping-payment-body {
+  display: table-row-group; }
+
+.shipping-payment-head, .shipping-payment-field {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px; }
+
+.shipping-payment-head {
+  font-weight: bold;
+  font-size: 14px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0; }
+
+.shipping-payment-field:first-child {
+  border-radius: 5px 0 0 5px; }
+
+.shipping-payment-field:last-child {
+  border-radius: 0 5px 5px 0; }
+
+.shipping-payment-radio {
+  text-align: center;
+  width: 30px; }
+  .shipping-payment-radio .custom-input-radio {
+    margin: 0; }
+
+.shipping-payment-icon {
+  margin-right: 5px;
+  vertical-align: middle; }
+
+.shipping-payment-city {
+  font-size: 18px;
+  margin-bottom: 5px; }
+
+.shipping-payment-zone-button {
+  padding-left: 10px; }
+
+.shipping-payment-use-cart {
+  font-size: 14px; }
+
+.shipping-payment-autocomplete {
+  position: relative; }
+
+.shipping-payment-additional {
+  margin-top: 5px;
+  display: block; }
+
+.shipping-payment-head-radio-payment {
+  width: 22px; }
+
+@media (max-width: 480px) {
+  .shipping-payment-icon-cell {
+    display: block;
+    padding-bottom: 5px; }
+  .shipping-main-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 10px 0; }
+  .shipping-payment-city {
+    text-align: center;
+    margin: 10px 0; }
+  .shipping-payment-zone-button {
+    padding: 10px 0; }
+  .shipping-payment-use-cart {
+    padding-left: 15px; }
+  .shipping-payment-radio-payment, .shipping-payment-field-description, .shipping-payment-head-description, .shipping-payment-head-radio-payment, .shipping-payment-field:first-child, .shipping-payment-item .shipping-payment-head:first-child {
+    display: none; }
+  .shipping-payment-radio {
+    padding: 0; }
+  .shipping-payment-list {
+    font-size: 12px; }
+  .shipping-payment-head {
+    font-size: 12px;
+    padding-top: 15px; } }
+
+.shipping-payment-item .shipping-payment-head:first-child {
+  width: 7%; }
+
+.shipping-payment-item .shipping-payment-head:last-child {
+  width: 40%; }
+
+/*.shipping-payment-item .shipping-payment-head {
+    width: 20%;
+}*/

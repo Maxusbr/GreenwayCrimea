@@ -1,0 +1,81 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.TasksSettingsModel
+
+<div class="m-b-lg">
+    <h3>@T("Admin.Settings.Tasks.Common")</h3>
+    <div class="form-group row">
+        <div class="col-xs-2">
+            <div class="setting-label-wrap">
+                @T("Admin.Settings.Tasks.DefaultTaskGroup")
+            </div>
+        </div>
+        <div class="col-xs-4">
+            @Html.DropDownListFor(x => x.DefaultTaskGroupId, Model.TaskGroups, "Не указан", new { @class = "form-control", ng_model = "settings.defaultTaskGroupId" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-2">
+            <div class="setting-label-wrap">
+                Открывать задачу из push уведомления
+            </div>
+        </div>
+        <div class="col-xs-4" ng-init="settings.webNotificationInNewTab = '@Model.WebNotificationInNewTab.ToString()'">
+            <label class="adv-checkbox-label m-r">
+                @Html.RadioButtonFor(x => x.WebNotificationInNewTab, false, new { @class = "adv-radio-input", ng_model = "settings.webNotificationInNewTab" })
+                В той же вкладке
+                <span class="adv-radio-emul"></span>
+            </label>
+            <label class="adv-checkbox-label">
+                @Html.RadioButtonFor(x => x.WebNotificationInNewTab, true, new { @class = "adv-radio-input", ng_model = "settings.webNotificationInNewTab" })
+                В новой вкладке
+                <span class="adv-radio-emul"></span>
+            </label>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <h3 class="m-r-xs inline middle-cell">@T("Admin.Settings.Tasks.BizProcesses")</h3>
+    <a href="@Url.Action("Academy", "Service", new { id = 49 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+        Видеоурок о Бизнес процессах
+    </a>
+</div>
+
+@if (!AdvantShop.Saas.SaasDataService.IsSaasEnabled || AdvantShop.Saas.SaasDataService.CurrentSaasData.BizProcess)
+{
+    <div class="setting-title">
+        @T("Admin.Settings.Tasks.AutoTaskAssignment")
+    </div>
+    foreach (var eventType in Model.EventTypes)
+    {
+        <div class="m-b-lg">
+            <h4 class="clearfix">
+                @eventType.Localize()
+                <ui-modal-trigger class="pull-right" data-controller="'ModalAddEditRuleCtrl'" controller-as="ctrl" size="lg"
+                                  on-close="settingsTasks.grid@(@eventType)Rules.fetchData()" data-resolve="{event:{type:'@eventType'}}"
+                                  template-url="../areas/admin/content/src/settingsTasks/modal/addEditRule/AddEditRule.html">
+                    <button class="btn btn-sm btn-success" type="button" data-e2e-settings-task-rule="@(@eventType)">
+                        <span class="fa fa-plus"></span>
+                        @T("Admin.Settings.Tasks.BizProcesses.AddRule")
+                    </button>
+                </ui-modal-trigger>
+            </h4>
+            <ui-grid-custom grid-unique-id="grid@(@eventType)Rules"
+                            grid-on-init="settingsTasks.grid@(@eventType)Rules = grid"
+                            grid-filter-enabled="false"
+                            grid-pagination-enabled="false"
+                            grid-selection-enabled="false"
+                            grid-params="{eventType:'@eventType'}"
+                            grid-options="settingsTasks.grid@(@eventType)RulesOptions"
+                            grid-url="'bizprocessrules/getbizprocessrules'"
+                            grid-extend-ctrl="settingsTasks"
+                            grid-empty-text="'@T("Admin.Settings.Tasks.BizProcesses.Empty")'">
+            </ui-grid-custom>
+        </div>
+    }
+}
+else
+{
+    <span> Недоступно на текущем тарифе</span>
+}

@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html data-ng-strict-di data-ng-app="app" @Html.GetNgController()>
+<head>
+    <meta charset="utf-8">
+    <title>@Html.GetPageTitle()</title>
+    <base href="@UrlService.GetAdminUrl()" />
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="Keywords" content="@Html.GetPageKeywords()" />
+    <link rel="canonical" href="@UrlService.GetCanonicalUrl()" />
+    <style>
+        .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {display: none !important;}
+        form {display: block;}
+    </style>
+    <script>
+        console.time('htmlPerf');
+    </script>
+    @Html.Action("Favicon", "Common", new { area = "" })
+    @Html.Partial("~/Areas/Admin/Views/Shared/_HeaderScripts.cshtml")
+    @Html.RenderModules("admin_head")
+</head>
+<body>
+    <div id="wrapper">
+        @Html.AntiForgeryToken()
+        @Html.Action("LeftMenu", "Common", new {area = "adminv2" })
+        <div id="page-wrapper" class="gray-bg">
+            @Html.Partial("~/Areas/Admin/Views/Common/TopMenu.cshtml")
+            @if (IsSectionDefined("NavMenu"))
+            {
+                @RenderSection("NavMenu", false)
+            }
+            else
+            {
+                @Html.Action("NavMenu", "Common", new {area = "adminv2" })
+            }
+            <div class="wrapper wrapper-content">
+                @Html.GetNotifications()
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            @RenderSection("footer", false)
+            <footer class="site-footer">
+                <div class="container-fluid">
+                    <div class="row between-xs middle-xs">
+                        <div class="xol-xs">
+                            <a href="common/oldversion" style="display:none">Предыдущая версия панели</a>
+                        </div>
+                        <div class="xol-xs">
+                            @Html.Partial("~/Areas/Admin/Views/Shared/_Version.cshtml")
+                            <a href="https://www.advantshop.net?utm_source=advantshop&utm_medium=site&utm_campaign=footer" target="_blank">AdvantShop</a> <span>&copy; 2017</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        console.time('jsPerf');
+    </script>
+    @Html.Partial("~/Areas/Admin/Views/Shared/_FooterScripts.cshtml")
+    @Html.RenderModules("admin_body_end")
+    @Html.GetNotifyMessages()
+    <sidebar-user-container></sidebar-user-container>
+    @Html.Action("Counter", "Common", new {area = "adminv2" })
+    <script>
+    function getNg1Hooks(selector, injectorPlease, callback) {
+        function tryEl(el) {
+            try {
+                if (!injectorPlease && angular.getTestability) {
+                    var $$testability = angular.getTestability(el);
+                    if ($$testability) {
+
+                        if (callback != null) {
+                            callback({ $$testability: $$testability });
+                        }
+
+                        return { $$testability: $$testability };
+                    }
+                } else {
+                    var $injector = angular.element(el).injector();
+                    if ($injector) {
+                        return { $injector: $injector };
+                    }
+                }
+            } catch (err) {
+                setTimeout(function () { getNg1Hooks(selector, injectorPlease, callback) }, 100);
+            }
+        }
+        function trySelector(selector) {
+            var els = document.querySelectorAll(selector);
+            for (var i = 0; i < els.length; i++) {
+                var elHooks = tryEl(els[i]);
+                if (elHooks) {
+                    return elHooks;
+                }
+            }
+        }
+
+        if (selector) {
+            return trySelector(selector);
+        } else if (window.__TESTABILITY__NG1_APP_ROOT_INJECTOR__) {
+            var $injector = window.__TESTABILITY__NG1_APP_ROOT_INJECTOR__;
+            var $$testability = null;
+            try {
+                $$testability = $injector.get('$$testability');
+            } catch (e) { }
+            return { $injector: $injector, $$testability: $$testability };
+        } else {
+            return tryEl(document.body) ||
+                trySelector('[ng-app]') || trySelector('[ng\\:app]') ||
+                trySelector('[ng-controller]') || trySelector('[ng\\:controller]');
+        }
+    };
+
+    getNg1Hooks('html', undefined, function (hooks) {
+        hooks.$$testability.whenStable(function () {
+            console.timeEnd('jsPerf');
+        });
+    })
+
+    </script>
+    <script>
+        console.timeEnd('htmlPerf');
+    </script>
+</body>
+</html>

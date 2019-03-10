@@ -1,0 +1,96 @@
+﻿@using AdvantShop.Repository.Currencies
+@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.ShippingByRangeWeightAndDistanceShippingAdminModel
+
+
+    <div class="form-group row">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span>Базовая стоимость</span>
+        </div>
+        <div class="col-xs-8 relative">
+            <shipping-by-weight-limit method-id="@Model.ShippingMethodId"
+                                      weight-limit="@Model.WeightLimit"
+                                      currency-label="@(CurrencyService.CurrentCurrency.Symbol)">
+            </shipping-by-weight-limit>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Учет расстояния
+        </div>
+        <div class="col-xs-2 relative">
+            <label class="adv-checkbox-label">
+                @Html.CheckBoxFor(x => x.UseDistance, new { ng_model = "shippingMethod.Params.UseDistance", ng_init = "shippingMethod.Params.UseDistance=" + Model.UseDistance.ToLowerString(), @class = "adv-checkbox-input" })
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak m-l-xs" data-title="Учет расстояния">
+                Учет расстояния
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span>Максимальное расстояние</span>
+        </div>
+        <div class="col-xs-2 relative">
+            @Html.TextBoxFor(x => x.MaxDistance, new { ng_model = "shippingMethod.Params.MaxDistance", @class = "form-control" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Максимальное расстояние">
+                Максимальное расстояние доставки в км
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span>В зависимости от расстояния</span>
+        </div>
+        <div class="col-xs-8 relative">
+            <shipping-by-distance-limit method-id="@Model.ShippingMethodId"
+                                        distance-limit="@Model.DistanceLimit"
+                                        currency-label="@(CurrencyService.CurrentCurrency.Symbol)">
+            </shipping-by-distance-limit>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span>Срок доставки</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DeliveryTime, new { ng_model = "shippingMethod.Params.DeliveryTime", @class = "form-control" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Срок доставки">
+                Срок доставки, как отрезок времени, в который данный метод доставки сможет доставить товар.<br><br>
+                Например: 1-2 дня.
+            </help-trigger>
+        </div>
+    </div>
+
+
+<div class="shipping-item-settings-header inline content-header m-b-md">
+    Значения параметров товара по умолчанию
+</div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Вес товара</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultWeight, new { ng_model = "shippingMethod.Params.DefaultWeight", @class = "form-control", required = "required", validation_input_text = "Вес товара" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Вес товара">
+                Вес товара примет указанное значение, если у товара данный параметр не был задан.<br /><br />
+                Значение указывается в кг, возможно указать дробное значение.<br /><br />
+                Например: 1 или 0.2 (кг.)
+            </help-trigger>
+        </div>
+    </div>
+

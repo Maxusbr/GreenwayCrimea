@@ -1,0 +1,8 @@
+﻿@model int
+
+@if (Model != 0)
+{
+    <div class="details-row details-custom-options">
+        <div data-custom-options data-product-id="@Model" data-init-fn="product.customOptionsInitFn(customOptions)" data-change-fn="product.customOptionsChange(item)"></div>
+    </div>
+}

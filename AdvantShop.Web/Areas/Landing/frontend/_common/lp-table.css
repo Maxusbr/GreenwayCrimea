@@ -1,0 +1,44 @@
+@charset "UTF-8";
+/*>480 - смартфоны*/
+/*>768 - планшеты*/
+/*>992 - нетбуки, ноутбуки*/
+/*>1200 - десктоп*/
+.lp-table {
+  font-family: 'Clear Sans Light'; }
+
+.lp-table__head {
+  display: none;
+  font-size: 16px; }
+
+.lp-table__body {
+  font-size: 14px; }
+
+.lp-table__row {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
+.lp-table__header, .lp-table__cell {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--main-border-color); }
+
+.lp-table__header {
+  font-weight: bold; }
+
+.lp-table__cell_last:last-child {
+  border-bottom-width: 0; }
+
+.lp-table__cell-title {
+  font-weight: bold; }
+
+@media (min-width: 62em) {
+  .lp-table__row {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--main-border-color); }
+  .lp-table__header, .lp-table__cell {
+    border-bottom-width: 0; }
+  .lp-table__cell_last:last-child {
+    border-bottom-width: 1px; }
+  .lp-table__cell-title {
+    font-weight: normal; } }

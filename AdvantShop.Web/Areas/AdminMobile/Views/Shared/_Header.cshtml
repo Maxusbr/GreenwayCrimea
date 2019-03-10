@@ -1,0 +1,14 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.Home.HeaderModel
+<div id="header" class="@Model.ClassName">
+    <h1 class="nav-root">@Model.Title</h1>
+    @if (string.IsNullOrEmpty(Model.Href))
+    {
+        <div class="toggle_sidebar" id="sidebar_trigger" data-ng-controller="sidebarCtrl as sbCtrl" data-ng-click="sbCtrl.toggleSidebar()">
+            <div class="@(Model.AnyNews ? "icon-warning-empty-before attention" : "icon-menu-before") toggle-sidebar-icon icon-margin-drop"></div>
+        </div>
+    }
+    else
+    {
+        <a class="returnArrow inked ink-light icon-margin-drop" href="@Model.Href"></a>
+    }
+</div>

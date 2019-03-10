@@ -1,0 +1,86 @@
+﻿@import "../functions/_icons.scss";
+
+//--ICONS
+//$icons-margin: .2em;
+//$icons-width: 1em;
+//$icons-opacity: 1;
+//$icons-3d: false;
+
+@include icon-init();
+
+
+$icons: (
+    down-open "\e800",
+    left-open "\e801",
+    right-open "\e802",
+    up-open "\e803",
+    equalizer "\e804",
+    spinner "\e80b",
+    dot "\e809",
+    ok "\e80d",
+    star "\e80e",
+    heart  "\e80f",
+    bag "\e810",
+    menu "\e80c",
+    down  "\e812",
+    left "\e813",
+    right  "\e814",
+    up "\e815",
+    th-large "\e816",
+    th-list "\e817",
+    left-thin "\e818",
+    right-thin "\e819",
+    up-thin "\e81a",
+    down-thin "\e81b",
+    down-1 "\e81c",
+    left-1 "\e81d",
+    right-1 "\e81e",
+    up-1 "\e81f",
+    search "\e820",
+    mail "\e821",
+    dot-3 "\e822",
+    ellipsis "\e823",
+    camera "\e824",
+    arrows-ccw "\e825",
+    cancel "\e829",
+    cancel-circled "\e828",
+    tw "\e808",
+    vk "\e807",
+    fb "\e806",
+    print "\e80a",
+    phone "\e826",
+    alert "\e811",
+    down-open-big "\e830",
+    left-open-big "\e831",
+    right-open-big "\e832",
+    up-open-big "\e833",
+    adult "\e834",
+    level-up "\e838",
+    chart-line "\e836",
+    chart-bar "\e835",
+    list "\e839",
+    rss-squared "\e83a",
+    pencil "\e83b",
+    warning-empty "\e83c",
+    trash "\e83d",
+    plus-circled "\e83e",
+    down-circle "\e805",
+    up-circle "\e841",
+    left-circle "\e83f",
+    right-circle "\e840",
+    mobile "\e842",
+    plus "\e843",
+    minus "\e844",
+    basket "\e845",
+    mail-1 "\e846",
+    phone-1 "\e847",
+    question "\e848" 
+    );
+
+@include icons($icons);
+
+.icon-no-margin {
+    &:after, &:before {
+        margin: 0;
+    }
+}

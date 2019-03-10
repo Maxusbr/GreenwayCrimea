@@ -1,0 +1,15 @@
+﻿<div class="{{::modal.modalOverlayClass}}"
+     data-ng-class="::{'adv-modal': modal.isFloating === false, 'adv-modal-floating': modal.isFloating === true, 'adv-modal-active' : modal.isOpen === true, 'adv-modal-background' : modal.backgroundEnable === true, 'adv-modal-in-iframe': modal.inIframe === true}"
+     data-ng-show="modal.isOpen"
+     data-ng-click="modal.modalClickOut($event)">
+    <form name="form" class="adv-modal-inner {{::modal.modalClass}}" novalidate="novalidate">
+        <a href=""
+           class="adv-modal-close icon-cancel-after link-text-decoration-none adv-close-outside"
+           data-ng-click="modal.close()"
+           data-ng-if="::modal.crossEnable === true"
+           data-translate="Js.Modal.Close"></a>
+        <!--data-ng-class="{'close-outside cs-l-4' : modal.headerExist === false || modal.headerExist == null }"-->
+        <div class="js-modal-transclude">
+        </div>
+    </form>
+</div>

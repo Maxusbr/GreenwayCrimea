@@ -1,0 +1,85 @@
+﻿@import '../_settings.scss';
+
+$link-dotted-border-width: 1px !default;
+$text-decoration-link: none !default;
+$text-decoration-hover: underline !default;
+
+@mixin links-init() {
+    a {
+        text-decoration: $text-decoration-link;
+
+        &:hover {
+            text-decoration: $text-decoration-hover;
+        }
+    }
+
+    .link-text-decoration-invert {
+        text-decoration: $text-decoration-hover;
+
+        &:hover {
+            text-decoration: $text-decoration-link;
+        }
+    }
+
+    .link-text-decoration-none {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:active {
+            text-decoration: none;
+        }
+    }
+
+    .link-text-decoration-underline {
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active {
+            text-decoration: underline;
+        }
+    }
+}
+
+@mixin links-dotted() {
+    .link-dotted, .link-dotted-invert {
+        text-decoration: none;
+        border-bottom-style: dotted;
+        border-bottom-width: $link-dotted-border-width;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .link-dotted {
+        @if($text-decoration-link == none) {
+            border-bottom-color: transparent;
+        }
+
+        &:hover {
+            @if($text-decoration-hover == none) {
+                border-bottom-color: transparent;
+            }
+        }
+    }
+
+
+    .link-dotted-invert {
+
+        @if($text-decoration-link != none) {
+            border-bottom-color: transparent;
+        }
+
+        &:hover {
+            @if($text-decoration-hover != none) {
+                border-bottom-color: transparent;
+            }
+        }
+    }
+}

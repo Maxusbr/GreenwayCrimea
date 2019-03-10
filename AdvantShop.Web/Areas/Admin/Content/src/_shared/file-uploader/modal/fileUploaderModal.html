@@ -1,0 +1,14 @@
+﻿<form name="modalPictureUploaderForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Загрузка изображения по ссылке</h2>
+    </div>
+    <div class="modal-body">
+        <div class="m-b"><span class="text-required">Введите ссылку на изображение:</span></div>
+        <input type="url" data-e2e="imgByHrefLinkText" class="form-control" ng-model="ctrl.url" ng-keypress="$event.keyCode === 13 && ctrl.save(ctrl.url)" />
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" data-e2e="imgByHrefBtnSave" data-ng-click="ctrl.save(ctrl.url)" disabled ng-disabled="!modalPictureUploaderForm.modified">Сохранить</button>
+        <button class="btn btn-default btn-cancel" data-e2e="imgByHrefBtnCancel" type="button" ng-click="ctrl.dismiss()">Отмена</button>
+    </div>
+</form>

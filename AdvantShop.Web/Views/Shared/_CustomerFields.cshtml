@@ -1,0 +1,116 @@
+﻿@using AdvantShop.Customers;
+@model AdvantShop.ViewModel.Common.CustomerFieldsViewModel
+
+@if (Model != null)
+{
+    <div hidden data-ng-init="@Model.GetName() = @Model.CustomerFieldsSerialized"></div>
+    for (int i = 0; i < Model.CustomerFields.Count; i++)
+    {
+        var field = Model.CustomerFields[i];
+        var nameAttr = Model.GetName(i, "Value");
+        var idAttr = nameAttr.RemoveSymvolsExt("_");
+        <label class="row middle-xs">
+            <span class="@Model.CssParamName">
+                <span class="form-field-name vertical-interval-xsmall@(field.Required ? " input-required" : string.Empty)">@field.Name:</span>
+            </span>
+            <span class="@Model.CssParamValue">
+                <span class="form-field-input vertical-interval-xsmall">
+                    
+                    @if (field.FieldType == CustomerFieldType.Text)
+                    {
+                        <span class="">
+                            
+                            @Html.TextBox(nameAttr, field.Value, new
+                            {
+                                @class = "input-small",
+                                data_ng_model = nameAttr,
+                                ng_required = field.Required.ToLowerString(),
+                                data_ng_model_options = "{ debounce: 300 }",
+                                data_ng_blur = Model.NgChangeFunc
+                            })
+                        </span>
+                    }
+                    else if (field.FieldType == CustomerFieldType.Number)
+                    {
+                        <span class="">
+                            @*if value is empty, default value is 0*@
+                            @*@Html.TextBox(Model.GetName(i), field.Value, new
+                            {
+                                @type = "number",
+                                @class = "input-small",
+                                data_ng_model = Model.GetNgModel(i, "Value"),
+                                data_ng_required = field.Required.ToLowerString(),
+                                data_ng_model_options = "{ debounce: 300, allowInvalid:true }",
+                                data_ng_blur = Model.NgChangeFunc
+                            })*@
+                            <input type="number" class="input-small" data-ng-model="@nameAttr" data-ng-model-options="{ debounce: 300 }"
+                                   data-ng-required="@field.Required.ToLowerString()" id="@idAttr" name="@nameAttr" data-ng-blur="@Model.NgChangeFunc"
+                                   @Html.Raw(field.Value.IsNotEmpty() ? string.Format("value=\"{0}\"", field.Value.HtmlEncode()) : string.Empty)>
+                        </span>
+                    }
+                    else if (field.FieldType == CustomerFieldType.TextArea)
+                    {
+                        <span class="">
+                            @Html.TextArea(nameAttr, field.Value, new
+                            {
+                                @class = "textarea-small", 
+                                data_ng_model = nameAttr, 
+                                ng_required = field.Required.ToLowerString(), 
+                                data_ng_model_options = "{ debounce: 300 }",
+                                data_ng_blur = Model.NgChangeFunc
+                            })
+                        </span>
+                    }
+                    else if (field.FieldType == CustomerFieldType.Date)
+                    {
+                        <span class="datetimepicker-wrap">
+                            <input type="text" id="@idAttr" name="@nameAttr" value="@field.Value.HtmlEncode()" class="input-small"
+                                   data-ng-model="@nameAttr" data-ng-required="@field.Required.ToLowerString()" data-ng-model-options="{ debounce: 300 }"
+                                   data-datetimepicker-trigger data-ui-mask="99.99.9999" data-format-date="dd.MM.yyyy" model-view-value="true" />
+                            <div data-datetimepicker-popup data-datetimepicker-popup-trigger="@idAttr" class="datetimepicker-popup ng-hide">
+                                <datetimepicker data-ng-model="@nameAttr" data-datetimepicker-config="{ minView: 'day' }" />
+                            </div>
+                        </span>
+                    }
+                    else if (field.FieldType == CustomerFieldType.Select)
+                    {
+                        var fieldValues = field.Values;
+                        var selectedValue = "";
+
+                        if (field.Value != null)
+                        {
+                            selectedValue = field.Value;
+                            if (fieldValues.Find(x => x.Value == selectedValue) == null)
+                            {
+                                fieldValues.Insert(0, new SelectListItem() { Text = selectedValue, Value = selectedValue });
+                            }
+                        }
+                        else
+                        {
+                            var firstValue = fieldValues.FirstOrDefault();
+                            selectedValue = firstValue != null ? firstValue.Value : "";
+                        }
+
+                        <span class="select-custom cs-t-4 icon-down-open-after-abs">
+                            @Html.DropDownList(nameAttr, fieldValues, new
+                            { 
+                                @class = "cs-bg-2", 
+                                data_ng_model = nameAttr, 
+                                ng_required = field.Required.ToLowerString(), 
+                                data_ng_init = nameAttr + "='" + selectedValue + "'", 
+                                data_ng_model_options = "{ debounce: 300 }",
+                                data_ng_change = Model.NgChangeFunc
+                            })
+                        </span>
+                    }
+
+                    @Html.Hidden(Model.GetName(i, "Id"), field.Id)
+                    @Html.Hidden(Model.GetName(i, "Name"), field.Name)
+                    @Html.Hidden(Model.GetName(i, "FieldType"), field.FieldType)
+                    @Html.Hidden(Model.GetName(i, "SortOrder"), field.SortOrder)
+                    @Html.Hidden(Model.GetName(i, "Required"), field.Required)
+                </span>
+            </span>
+        </label>
+    }
+}

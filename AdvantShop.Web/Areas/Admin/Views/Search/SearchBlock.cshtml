@@ -1,0 +1,33 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Common.SearchViewModel
+
+<div class="col-xs-3 col-wl-2">
+    <form role="search" class="row end-lg search-header" method="post" action="search" data-ng-controller="SearchBlockCtrl as search">
+        <div class="header-search-field-wrap col-lg col-md col-xs">
+            @*<ui-modal-trigger data-controller="'ModalSearchCtrl'" data-controller-as="ctrl" template-url="../areas/admin/content/src/_shared/modal/search/search.html" data-size="xs-12" window-class="search-modal">
+                    <a href="" class="link-decoration-none header-search-field">
+                        <i for="top-search" class="fa fa-search search-input-icon"></i>
+                        @T("Admin.SearchBlock.SearchPlaceholder")
+                    </a>
+                </ui-modal-trigger>*@
+            @*<input placeholder="@T("Admin.SearchBlock.SearchPlaceholder")" class="form-control" name="search" id="top-search" autocomplete="off"
+                value="@Model.Search"
+                data-ng-model="search.q"
+                uib-typeahead="item for item in search.find($viewValue)"
+                typeahead-template-url="../areas/admin/content/src/_shared/search/search.html" />*@
+            <div class="search-input-wrap">
+                <input type="text"
+                       class="search-input"
+                       placeholder="@T("Admin.SearchBlock.SearchPlaceholder")"
+                       value="@Model.Search"
+                       ng-model="search.q"
+                       uib-typeahead="item for items in search.find($viewValue)"
+                       typeahead-should-select="search.shouldSelect()"
+                       typeahead-template-url="../areas/admin/content/src/_shared/search/templates/search-item.html"
+                       typeahead-popup-template-url="../areas/admin/content/src/_shared/search/templates/search-popup.html"
+                       typeahead-is-open="test"
+                       typeahead-min-length="2"
+                       typeahead-wait-ms="300" />
+            </div>
+        </div>
+    </form>
+</div>

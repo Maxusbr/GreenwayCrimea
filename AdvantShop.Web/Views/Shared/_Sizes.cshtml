@@ -1,0 +1,15 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.SizesViewModel
+
+<div class="sizes-viewer-list text-static">
+    @if (Model.HeaderText.IsNotEmpty())
+    {
+        <div class="sizes-viewer-header">
+            @Model.HeaderText
+        </div>
+    }
+    <div data-sizes-viewer
+         data-sizes="@Model.NgSizes"
+         data-size-selected="@Model.NgSizeSelected"
+         data-init-sizes="@Model.NgInitSizes"
+         data-change-size="@Model.NgChangeSize"></div>
+</div>

@@ -1,0 +1,307 @@
+﻿@using AdvantShop.Module.OrderNow.Service;
+@model AdvantShop.Module.OrderNow.ViewModel.SettingViewmodel
+<span class="spanSettCategory">Закажи сейчас</span>
+<table class="ONtable">
+    <tr>
+        <td>
+            <lable>Текст уведомления</lable>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help lowres">
+                    <header class="help-header">
+                        Текст уведомления
+                    </header>
+                    <div class="help-content">
+                        В данном поле редактируется текст уведомления. Отредактируйте текст, используя переменные.<br />
+                        Доступные переменные:<br />
+                        #TODAY# - выводит слово "сегодня"<br />
+                        #TOMORROW# - выводит слово "завтра" <br />
+                        #2DAYS# - выводит дату, которая соответствует дню послезавтра (на пример: @DateTime.Now.AddDays(2).ToShortDateString())<br />
+                        #3DAYS# - выводит дату, которая соответствует дню после послезавтра (на пример: @DateTime.Now.AddDays(3).ToShortDateString())<br />
+                        #NDAYS# - выводит дату, которая соответствует дню через промежуток, указанный в #NDAYS# (на пример: @DateTime.Now.AddDays(ModuleSettings.Ndays).ToShortDateString())<br />
+                        #DATE#  - выводит количество часов и минут, до установленного времени в поле "Время точки отсчета"
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <textarea class="ONtxtOutputText js-ONtxtOutputText">@Model.OutputText</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <lable>Текст уведомления после завершения времени показа основного уведомления</lable>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help lowres">
+                    <header class="help-header">
+                        Текст уведомления после завершения времени показа основного уведомления
+                    </header>
+                    <div class="help-content">
+                        В данном поле редактируется текст, который выводится, если завершилось время показа, указанное в "Настройка времени показа уведомления".
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <textarea class="ONtxtOutputText js-ONtxtOutputTimeoutText">@Model.OutputTimeoutText</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Доступные переменные:</label>
+        </td>
+        <td>
+            #TODAY#, #TOMORROW#, #2DAYS#, #3DAYS#, #NDAYS#, #DATE#
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>#NDAYS#:</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        #NDAYS#
+                    </header>
+                    <div class="help-content">
+                        Установите значение для переменной #NDAYS#
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <input style="width:29em;" type="text" class="ONndays js-ONndays" value="@Model.Ndays" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Иконка</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Иконка
+                    </header>
+                    <div class="help-content">
+                        Если вы установите иконку, она будет выводиться по умолчанию слева от текста уведомления в карточке товара
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            @if (!@Model.IconUsed)
+            {
+                <button type="button" class="ONaddIcon" id="btnONaddPicture" onclick="btnaddpicture()">
+                    <span class="ONplus"></span>
+                    Добавить иконку
+                </button>
+                <input type="file" id="ONupload" style="display:none;" onchange="fileuploadimage()" onclick="fileclick()" />
+            }
+            else
+            {
+
+                var cachebreaker = DateTime.Now.ToString().Replace(".", "").Replace("/", "").Replace(" ", "");
+
+                <div style="background:url(../modules/ordernow/content/images/icon.png?@cachebreaker) no-repeat; width:@(Model.IconHeight)px; height:@(Model.IconHeight)px; background-size: @(Model.IconHeight)px; overflow: hidden;">
+                    <div style="position: relative" class="picture-block">
+                        <img src="../modules/ordernow/content/images/icon.png" style="visibility: hidden;">
+                        <img src="images/deletebtn.png"
+                             alt="Удалить"
+                             class="delete-picture"
+                             style="position: absolute;top: 5px;right: 5px;"
+                             onclick="deletePicture()">
+                    </div>
+                </div>
+            }
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <label><a href="~/modules/ordernow/content/icons.zip">Загрузить архив с иконками</a></label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Загрузить архив с иконками
+                    </header>
+                    <div class="help-content">
+                        Мы подготовили для Вас набор готовых иконок на выбор. Также вы можете загрузить другие изображения на свое усмотрение.
+                    </div>
+                </article>
+            </div>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Высота иконки (px)</label>
+        </td>
+        <td>
+            <input style="width:29em;" type="text" class="ONiconHeight js-ONiconHeight" value="@Model.IconHeight" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Выводить уведомление</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Выводить уведомление
+                    </header>
+                    <div class="help-content">
+                        Установите место расположения вывода мотивирующего к покупке уведомления.
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <select class="ONshowAt js-ONshowAt" style="width: 30.892em;">
+                <option @(Model.ShowAt == "Над рейтингом" ? "selected" : string.Empty)>Над рейтингом</option>
+                <option @(Model.ShowAt == "Под ценой" ? "selected" : string.Empty)>Под ценой</option>
+                <option @(Model.ShowAt == "Под вариантами доставки" ? "selected" : string.Empty)>Под вариантами доставки</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Время точки отсчета</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Время точки отсчета
+                    </header>
+                    <div class="help-content">
+                        Установите время в формате ЧЧ:ММ, до которого будет идти отсчет. Вы можете уведомить клиента, что до наступления этого времени заказ будет отправлен максимально быстро.
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <input style="width:29em;" type="text" class="ONTimeoutTime js-ONTimeoutTime js-validateTime" onkeydown="Validate();" onkeyup="Validate();" value="@Model.TimeoutTime" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                <label>Настройка времени показа уведомления</label>
+                <div data-plugin="help" class="help-block">
+                    <div class="help-icon js-help-icon"></div>
+                    <article class="bubble help js-help">
+                        <header class="help-header">
+                            Настройка времени показа уведомления
+                        </header>
+                        <div class="help-content">
+                            Установите время, когда Вам нужно показывать уведомление о быстрой доставке. Чаще всего это рабочие часы магазина. Т.е. уведомление о том, что осталось 22 часа 37 минут предпочтительнее не показывать, так как ограничение по времени достаточно отложено и сам смысловой триггер логики модуля не сработает на покупателе.
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </td>
+        <td>
+            <label>с</label> <input style="width:3em;margin:0 0.4em;" onkeydown="Validate();" onkeyup="Validate();" type="text" class="ONShowStart js-ONShowStart js-validateTime" value="@Model.ShowStart" />
+            <label>до</label> <input style="width:3em;margin:0 0.4em;" onkeydown="Validate();" onkeyup="Validate();" type="text" class="ONShowFinish js-ONShowFinish js-validateTime" value="@Model.ShowFinish" />
+        </td>
+    </tr>
+    <tr>
+        <td class="ONcheck">
+            <label>Учитывать выходные</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Учитывать выходные
+                    </header>
+                    <div class="help-content">
+                        Если данная настройка активна - то текст уведомления не будет показываться по субботам и воскресениям.
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <input type="checkbox" class="ONIncludeWeekends js-ONIncludeWeekends" @(Model.IncludeWeekends ? "checked" : string.Empty) />
+        </td>
+    </tr>
+    <tr>
+        <td class="ONcheck">
+            <label>Учитывать наличие</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Учитывать наличие
+                    </header>
+                    <div class="help-content">
+                        Если данная настройка активна - то текст уведомления не будет показываться у товаров с остатком 0.
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <input type="checkbox" class="ONCheckAvailability js-ONCheckAvailability" @(Model.CheckAvailability ? "checked" : string.Empty) />
+        </td>
+    </tr>
+    <tr>
+        <td class="ONcheck">
+            <label>Выводить на странице корзины</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Выводить на странице корзины
+                    </header>
+                    <div class="help-content">
+                        Если данная настройка активна - то текст уведомления будет выводиться на странице корзины.
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <input type="checkbox" class="ONShowInCart js-ONShowInCart" @(Model.ShowInCart ? "checked" : string.Empty) />
+        </td>
+    </tr>
+    <tr>
+        <td class="ONcheck">
+            <label>Выводить на странице оформления заказа</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Выводить на странице оформления заказа
+                    </header>
+                    <div class="help-content">
+                        Если данная настройка активна - то текст уведомления будет выводиться на странице оформления заказа.
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <input type="checkbox" class="ONShowInOrderConfirm js-ONShowInOrderConfirm" @(Model.ShowInOrderConfirm ? "checked" : string.Empty) />
+        </td>
+    </tr>
+    <tr>
+        <td class="ONcheck">
+            <label>Показывать в мобильной версии</label>
+            <div data-plugin="help" class="help-block">
+                <div class="help-icon js-help-icon"></div>
+                <article class="bubble help js-help">
+                    <header class="help-header">
+                        Показывать в мобильной версии
+                    </header>
+                    <div class="help-content">
+                        Текст уведомления будет показываться на странице товара
+                    </div>
+                </article>
+            </div>
+        </td>
+        <td>
+            <input type="checkbox" class="ONshowMobile js-ONshowMobile" @(Model.ShowMobile ? "checked" : string.Empty) />
+        </td>
+    </tr>
+</table>
+
+<input type="button" class="ONsaveChanges" value="Сохранить" onclick="saveSettings()" />
+
+<div id="snackbar"></div>

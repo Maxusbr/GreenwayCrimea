@@ -1,0 +1,56 @@
+/*
+	Max width before this PARTICULAR table gets nasty
+	This query will take effect for any screen smaller than 760px
+	and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  .table-responsive-transform {
+    /* Force table to not be like tables anymore */
+    display: block;
+    width: 100% !important;
+    /* Hide table headers (but not display: none;, for accessibility) */ }
+    .table-responsive-transform thead, .table-responsive-transform tbody, .table-responsive-transform th, .table-responsive-transform td:not(.table-responsive-cell-ignore), .table-responsive-transform tr {
+      display: block;
+      width: auto; }
+    .table-responsive-transform thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px; }
+    .table-responsive-transform tr {
+      border-width: 1px; }
+    .table-responsive-transform tr + tr {
+      margin-top: 10px; }
+    .table-responsive-transform td:not(.table-responsive-cell-ignore) {
+      /* Behave  like a "row" */
+      margin-top: -1px;
+      position: relative;
+      padding-left: 50%; }
+    .table-responsive-transform td:not(.table-responsive-cell-ignore):before {
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: normal;
+      content: attr(data-label); }
+    .table-responsive-transform td.table-responsive-header-colspan {
+      padding-left: 5px;
+      text-align: center;
+      font-weight: bold; }
+  .table-responsive-scroll-wrap {
+    overflow: auto; }
+    .table-responsive-scroll-wrap::-webkit-scrollbar {
+      -webkit-appearance: none; }
+    .table-responsive-scroll-wrap::-webkit-scrollbar:vertical {
+      width: 12px; }
+    .table-responsive-scroll-wrap::-webkit-scrollbar:horizontal {
+      height: 12px; }
+    .table-responsive-scroll-wrap::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      border: 2px solid #ffffff; }
+    .table-responsive-scroll-wrap::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: #ffffff; } }

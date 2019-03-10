@@ -1,0 +1,20 @@
+﻿
+<table class="table table-striped" style="max-width: 800px">
+    <tr>
+        <th>Менеджер</th>
+        <th>E-mail</th>
+        <th>Число заказов</th>
+        <th>Число обработанных заказов</th>
+        <th>Сумма заказов</th>
+    </tr>
+    <tr ng-repeat="item in $ctrl.Managers track by $index">
+        <td><a href="customers/edit/{{item.CustomerId}}" target="_blank">{{item.Name}}</a></td>
+        <td>{{item.Email}}</td>
+        <td>{{item.OrdersCountAssign}}</td>
+        <td>{{item.OrdersCount}}</td>
+        <td>{{item.OrdersSum}}</td>
+    </tr>
+    <tr ng-if="$ctrl.Managers == null || $ctrl.Managers.length == 0">
+        <td colspan="5">Нет данных</td>
+    </tr>
+</table>

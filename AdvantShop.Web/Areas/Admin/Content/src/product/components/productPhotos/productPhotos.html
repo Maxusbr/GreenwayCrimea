@@ -1,0 +1,105 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="inline product-setting-title content-header">Фотографии</h2>
+            <ui-modal-trigger data-controller="'ModalPictureUploaderCtrl'" on-close="$ctrl.uploadByLink(result)" controller-as="ctrl" template-url="../areas/admin/content/src/_shared/picture-uploader/modal/pictureUploaderModal.html">
+                <span ng-click="$ctrl.open()">
+                    <a data-e2e="imgByHref" href="" class="picture-uploader-buttons-add word-spacing">Добавить изображение по ссылке</a>
+                </span>
+            </ui-modal-trigger>
+            <a href="" accept="image/*" multiple ngf-max-size="15MB" ngf-select="" ngf-change="$ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)" class="picture-uploader-buttons-add word-spacing">
+                Добавить изображение
+            </a>
+            <span ng-if="$ctrl.showGoogleImageSearch" class="word-spacing">
+                <google-image-search uploadbylink-url="product/uploadpicturesbylink" uploadbylink-params="{'type': 'product', 'objId': $ctrl.productId }" on-apply="$ctrl.updateListPhotos(result)" select-mode="multiple"></google-image-search>
+            </span>
+            <span ng-if="$ctrl.showBingImageSearch" class="word-spacing">
+                <bing-image-search uploadbylink-url="product/uploadpicturesbylink" uploadbylink-params="{'type': 'product', 'objId': $ctrl.productId }" on-apply="$ctrl.updateListPhotos(result)" select-mode="multiple"></bing-image-search>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="form-group middle-xs row">
+        <div class="col-xs-2">
+            <div class="setting-label-wrap">
+                <label for="filterByColor">Фильтр по цвету</label>
+            </div>
+        </div>
+        <div class="col-xs-3 col-wl-2">
+            <select class="form-control" ng-model="$ctrl.filterColorId"
+                    ng-options="s.value as s.label for s in $ctrl.allPhotoColors"
+                    ng-change="$ctrl.filterPhotos()"
+                    data-e2e="PhotoFilterColor">
+            </select>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="form-group row">
+        <div class="col-xs-12">
+            <div class="product-pic-list" id="productPhotosSortable">
+                <div class="sortable-row" as-sortable="$ctrl.sortableOptions" ng-model="$ctrl.photos">
+                    <div class="product-pic-list-item"
+                         ng-class="{'product-pic-list-item-main': item.Main}"
+                         data-ng-repeat="item in $ctrl.photos"
+                         data-as-sortable-item
+                         data-e2e="PhotoImg">
+                        <div class="product-block" as-sortable-item-handle>
+                            <div class="product-block-content">
+                                <figure class="product-block-figure">
+                                    <div class="product-block-figure-link">
+                                        <img ng-src="{{item.ImageSrc}}" class="product-block-figure-img" alt="{{item.Description}}" title="{{item.Description}}" style="max-width: 130px; max-height: 130px" />
+                                    </div>
+                                </figure>
+                            </div>
+                            <div class="product-block-state clearfix" no-drag>
+                                <div class="pull-left">
+                                    <div class="product-block-main-state">
+                                        <label class="adv-checkbox-label">
+                                            <span class="italic hover-padding-left">Главное фото</span>
+                                            <input class="adv-checkbox-input absolute" type="checkbox" ng-model="item.Main" ng-disabled="item.Main" ng-click="$ctrl.changeMainPhoto(item.PhotoId)" data-e2e="MainPhotoInput">
+                                            <span class="adv-checkbox-emul adv-checkbox-emul--white adv-checkbox-emul--hover-check" data-e2e="MainPhoto"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="pull-right picture-hover-effect">
+                                    <ui-modal-trigger data-controller="'ModalEditPhotoCtrl'" controller-as="ctrl"
+                                                      data-resolve="{'PhotoId': item.PhotoId}"
+                                                      template-url="../areas/admin/content/src/product/components/productPhotos/modal/editPhoto.html"
+                                                      data-e2e="PhotoItemEdit">
+                                        <a class="link-invert  link-decoration-none pic-hover-color fa fa-pencil categories-block-icon" href=""></a>
+                                    </ui-modal-trigger>
+
+                                    <a ng-click="$ctrl.deletePhoto(item.PhotoId)" class="link-invert link-decoration-none pic-hover-color fa fa-remove categories-block-icon" href="" data-e2e="PhotoItemDelete"></a>
+                                </div>
+                            </div>
+                            <div class="product-pic-list-item-overlay"></div>
+                        </div>
+                        <div class="product-color-select-wrap">
+                            <select class="form-control"
+                                    ng-model="item.ColorId"
+                                    ng-options="s.value as s.label for s in $ctrl.photoColors"
+                                    ng-change="$ctrl.changePhotoColor(item.PhotoId, item.ColorId)" 
+                                    data-e2e="PhotoColor">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="product-pic-list-item" no-drag>
+                        <a href="" accept="image/*" multiple ngf-max-size="15MB" ngf-select="" ngf-change="$ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)">
+                            <div class="product-block">
+                                <div class="product-block-content product-block-content--max-height">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve" width="61px" height="61px">
+                                        <polygon points="42,19 23,19 23,0 19,0 19,19 0,19 0,23 19,23 19,42 23,42 23,23 42,23 " fill="#eaeced" />
+                                        <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

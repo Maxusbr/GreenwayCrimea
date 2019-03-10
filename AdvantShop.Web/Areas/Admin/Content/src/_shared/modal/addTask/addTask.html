@@ -1,0 +1,91 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Новая задача</h2>
+    </div>
+    <div class="modal-body task-modal-content-new-item">
+        <div class="form-horizontal m-r m-l">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        <span class="text-required">Название</span>
+                    </label>
+                    <div class="col-xs-10">
+                        <input data-e2e="newtaskName" type="text" class="form-control" placeholder="Введите название задачи" ng-model="ctrl.name" required autofocus validation-input-text="Название">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label"><span class="text-required">Исполнитель</span></label>
+                    <div class="col-xs-4">
+                        <select data-e2e="newtaskAssigned" ng-model="ctrl.assignedManagerId" ng-options="s.value as s.label for s in ctrl.managers" class="form-control" convert-to-number required validation-input-text="Исполнитель">
+                            <option value="">Выберите исполнителя</option>
+                        </select>
+                    </div>
+                    <label class="col-xs-2 control-label">Срок исполнения</label>
+                    <div class="dropdown col-xs-4">
+                        <a class="dropdown-toggle" id="dueDate" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <div class="input-group">
+                                <input data-e2e="newtaskDuedate" type="text" class="form-control" ng-model="ctrl.dueDate" data-date-time-input="DD.MM.YYYY HH:mm"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                            <datetimepicker ng-model="ctrl.dueDate" data-datetimepicker-config="{ dropdownSelector: '#dueDate' }" />
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label"><span class="text-required">Описание</span></label>
+                    <div class="col-xs-10">
+                        <textarea data-e2e="newtaskDescription" class="form-control r-v" rows="12" ng-model="ctrl.description" required validation-input-text="Описание" />
+                    </div>
+                </div>  
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label"><span class="text-required">Проект</span></label>
+                    <div class="col-xs-4">
+                        <select data-e2e="newtaskGroup" ng-model="ctrl.taskGroupId" ng-options="s.value as s.label for s in ctrl.taskGroups" class="form-control" convert-to-number 
+                                required validation-input-text="Проект">
+                            <option value="">Выберите проект</option>
+                        </select>
+                    </div>
+                    <label class="col-xs-2 control-label">Приоритет</label>
+                    <div class="col-xs-4">
+                        <select data-e2e="newtaskPriority" ng-model="ctrl.priority" ng-options="s.value as s.label for s in ctrl.priorities" convert-to-number class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label">Приложения</label>
+                    <div class="col-xs-10">
+                        <ol ng-if="ctrl.attachments.length > 0">
+                            <li ng-repeat="attachment in ctrl.attachments track by $index">
+                                <span ng-bind="attachment.name"></span>
+                                <a href="" ng-click="ctrl.deleteAttachment(attachment.name)" class="fa fa-times link-invert link-decoration-none" title="Удалить"></a>
+                            </li>
+                        </ol>
+                        <figure class="">
+                            <button data-e2e="newtaskAttachments" class="btn btn-action btn-sm" type="button" ngf-drop ngf-max-size="15MB" ngf-select="" multiple
+                                    ngf-change="ctrl.addAttachments($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event);" ladda="ctrl.loadingFiles">
+                                <i class="fa fa-upload"></i>&nbsp;&nbsp;<span class="bold">Прикрепить файл</span>
+                            </button>
+                            <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                                <div class="help-content" ng-bind-html="ctrl.filesHelpText">
+                                </div>
+                            </help-trigger>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-e2e="TaskAdd" class="btn btn-save btn-primary" type="submit" button-validation button-validation-success="ctrl.addTask(); ctrl.btnLoading = true" ladda="ctrl.btnLoading">Добавить</button>
+        <button data-e2e="TaskCancel" class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

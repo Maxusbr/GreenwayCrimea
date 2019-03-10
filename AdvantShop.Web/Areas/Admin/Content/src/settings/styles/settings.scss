@@ -1,0 +1,107 @@
+﻿.settings-wrap {
+    padding: 4px;
+}
+
+.settings-title {
+    font-family: 'OpenSans-bold';
+    padding: 0 13px;
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+
+.setting-label-wrap > label {
+    font-weight: normal;
+}
+
+.setting-title-top {
+    margin-bottom: 20px;
+}
+
+.setting-title {
+  margin:33px 0 20px 0; 
+}
+
+.setting-title__m-t-md {
+  margin-top: 20px;
+}
+
+.setting-favicon-wrap {
+    margin-bottom: 5px;
+}
+
+.setting-param {
+    display: flex;
+}
+
+.is-sticky .settings-title {
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+    left: 70px !important;
+    background: #2f4050;
+    z-index: 899;
+}
+
+.header-btn-setting {
+    height: 0;
+}
+.header-btn-setting input {
+    display: none;
+}
+
+.is-sticky .header-btn-setting {
+    z-index: 900;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70px;
+    background: #2f4050;
+}
+
+.is-sticky .header-btn-setting input {
+    display: inline-block;
+}
+
+.payment-row {
+    background: #fff;
+    border: 1px solid #c3c3c3;
+    padding: 4px 9px;
+    padding-left: 0;
+    margin-bottom: -1px;
+}
+
+.shipping-icon,
+.payment-icon {
+    width: 52px;
+    margin-right: 20px;
+}
+
+.shipping-text,
+.payment-text {
+    color: #2f4050;
+}
+
+.shipping-text-grey,
+.payment-text-grey {
+    color: #9ea3a6;
+}
+
+.shipping-settings-link,
+.payment-settings-link {
+    margin-right: 40px;
+}
+
+.shipping-switcher,
+.payment-switcher {
+    font-size: 0;
+}
+
+.shipping-switcher .switcher-state-trigger,
+.payment-switcher .switcher-state-trigger {
+    font-size: 13px;
+}
+
+ .shipping-row .as-sortable-item-handle,
+ .payment-row .as-sortable-item-handle {
+     margin-right: 9px;
+ }

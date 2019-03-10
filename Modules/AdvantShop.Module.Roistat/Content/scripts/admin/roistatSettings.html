@@ -1,0 +1,110 @@
+﻿<div class="container-fluid">
+
+    <h3 class="m-b">
+        Настройки модуля
+    </h3>
+
+    <div class="m-b-lg">
+        <div class="m-b-xs">
+            <label class="adv-radio-label m-r-sm">
+                <input type="radio" class="adv-radio-input hidden" name="haveAccount" ng-model="$ctrl.haveAccount" value="false"/>
+                <span class="adv-radio-emul"></span>
+                <span>Зарегистрироваться в Roistat</span>
+            </label>
+        </div>
+        <div class="m-b-xs">
+            <label class="adv-radio-label">
+                <input type="radio" class="adv-radio-input hidden" name="haveAccount" ng-model="$ctrl.haveAccount" value="true"/>
+                <span class="adv-radio-emul"></span>
+                <span>У меня уже есть аккаунт в Roistat</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="m-b-md" ng-if="$ctrl.haveAccount == 'false'">
+        Зарегистрируйтесь в Roistat и получите бонусы на счет.
+        <div class="m-t-sm">
+            <a href="https://cloud.roistat.com/referral/register?email={{$ctrl.settings.Email}}&referral_code=advantshop" target="_blank" 
+               class="btn btn-md btn-success" ng-click="$ctrl.register()">
+                Зарегистрироваться
+            </a>
+        </div>
+    </div>
+
+    <div ng-if="$ctrl.haveAccount == 'true'">
+
+        <div class="form-group row">
+            <div class="col-xs-12 relative">
+                Код счетчика
+                <help-trigger class="m-l-xs">
+                    Код счетчика отображается в личном кабинете Roistat в разделе Настройки - Код счетчика. Скопируйте его в магазин.
+                </help-trigger>
+            </div>
+        </div>
+
+        <div class="form-group row m-b-lg">
+            <div class="col-xs-12">
+                <textarea ng-model="$ctrl.settings.RoistatScript" class="form-control" rows="10"></textarea>
+            </div>
+        </div>
+
+        <div class="m-b-sm">
+            Вы можете указать логин и пароль чтобы защитить передаваемые данные
+            <help-trigger class="m-l-xs">
+                Логин и пароль должны совпадать с логином и паролем в настройках интеграции Roistat (Каталог интеграций - Интеграция со сделками).
+            </help-trigger>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-2">
+                Логин
+            </div>
+            <div class="col-xs-5 relative">
+                <input type="text" ng-model="$ctrl.settings.RoistatLogin" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-2">
+                Пароль
+            </div>
+            <div class="col-xs-5 relative">
+                <input type="text" ng-model="$ctrl.settings.RoistatPassword" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-2">
+                Урл с выгрузкой сделок
+            </div>
+            <div class="col-xs-10">
+                {{$ctrl.settings.OrdersUrl}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-2">
+                Ссылка на сделку в CRM
+            </div>
+            <div class="col-xs-10">
+                {{$ctrl.settings.OrderViewUrl}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-2">
+                Ссылка на контакт в CRM
+            </div>
+            <div class="col-xs-10">
+                {{$ctrl.settings.CustomerViewUrl}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <a href="" class="btn btn-sm btn-success" ng-click="$ctrl.saveSettings()">Сохранить изменения</a>
+            </div>
+        </div>
+    </div>
+
+</div>

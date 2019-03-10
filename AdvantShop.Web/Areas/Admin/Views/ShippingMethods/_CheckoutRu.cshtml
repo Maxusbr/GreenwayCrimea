@@ -1,0 +1,31 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.CheckoutRuShippingAdminModel
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Идентификационный ключ клиента</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ClientId, new { ng_model = "shippingMethod.Params.ClientId", @class = "form-control", required = "required", validation_input_text = "Идентификационный ключ клиента" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Идентификационный ключ клиента">
+            Идентификационный ключ - параметр, который отвечает за связку магазина и сервиса. <br><br>
+            Ключ можно найти в личном кабинете Checkout, вкладка "Настройка - выбрать ваш магазин - Интеграция"
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Группировать по типу доставки
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.Grouping, new { ng_model = "shippingMethod.Params.Grouping", ng_init = "shippingMethod.Params.Grouping=" + Model.Grouping.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+
+        <help-trigger class="ng-cloak" data-title="Группировать по типу доставки">
+            Группировать по типу доставки
+        </help-trigger>
+    </div>
+</div>

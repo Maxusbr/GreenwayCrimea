@@ -1,0 +1,70 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.Attendance.AttendanceModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "blue", href = "", title = T("AdminMobile.Attendance.Index.Attendance").ToString() })
+}
+<div id="content">
+    @if (!string.IsNullOrEmpty(Model.ChartData))
+    {
+        <div class="graph-wrapper">
+            <div id="chartWeek" style="width: 99%; height: 190px;" data-plugin="chart"
+                 data-chart="@Model.ChartData"
+                 data-chart-options="{xaxis : {mode: 'time',timeformat: '%d %b',min: @Model.Min,max: @Model.Max}}">
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="graph-wrapper">
+            @T("AdminMobile.Attendance.Index.GaNotEnabled")
+        </div>
+    }
+</div>
+<div id="footer">
+    <table class="data-chart">
+        <tr>
+            <td>
+                <div class="cell-wrapper">
+                    <div class="viewed">@Model.PagesToday</div>
+                    <div class="text">@T("AdminMobile.Attendance.Index.PagesToday")</div>
+                </div>
+            </td>
+            <td>
+                <div class="cell-wrapper">
+                    <div class="visitors">@Model.VisitorsToday</div>
+                    <div class="text">@T("AdminMobile.Attendance.Index.VisitorsToday")</div>
+                </div>
+            </td>
+            <td>
+                <div class="cell-wrapper">
+                    <div class="visits">@Model.VisitsToday</div>
+                    <div class="text">@T("AdminMobile.Attendance.Index.VisitsToday")</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="cell-wrapper">
+                    <div class="viewed">@Model.PagesYesterday</div>
+                    <div class="text">@T("AdminMobile.Attendance.Index.PagesYesterday")</div>
+                </div>
+            </td>
+            <td>
+                <div class="cell-wrapper">
+                    <div class="visitors">@Model.VisitorsYesterday</div>
+                    <div class="text">@T("AdminMobile.Attendance.Index.VisitorsYesterday")</div>
+                </div>
+            </td>
+            <td>
+                <div class="cell-wrapper">
+                    <div class="visits">@Model.VisitsYesterday</div>
+                    <div class="text">@T("AdminMobile.Attendance.Index.VisitsYesterday")</div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

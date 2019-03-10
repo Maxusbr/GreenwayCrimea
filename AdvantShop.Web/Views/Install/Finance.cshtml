@@ -1,0 +1,155 @@
+﻿@model AdvantShop.ViewModel.Install.InstallFinanceModel
+@{
+    Layout = "~/Views/Install/Layout.cshtml";
+}
+@using (Html.BeginForm("finance", "install", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="error">
+        @Html.ValidationSummary()
+    </div>
+    @Html.AntiForgeryToken()
+    <h1>@Resource.Install_UserContols_FinanceView_h1</h1>
+    <div class="h2">@Resource.Install_UserContols_FinanceView_h2</div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_FinanceView_Plan
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.SalesPlan, new { @class = "txt valid-money" })
+            @Html.ValidationMessageFor(model => model.SalesPlan)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_FinanceView_PlanPrib
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.ProfitPlan, new { @class = "txt valid-money" })
+            @Html.ValidationMessageFor(model => model.ProfitPlan)
+        </div>
+    </div>
+    <div class="group">
+        <div class="str">
+            @Html.CheckBoxFor(x => x.AmountLimitation) @Resource.Install_UserContols_FinanceView_CheckAvalible
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_FinanceView_MinSum
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.MinimalOrderPrice, new { @class = "txt valid-money" })
+            @Html.ValidationMessageFor(model => model.MinimalOrderPrice)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_FinanceView_MaxSumCertificate
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.MaximalPriceCertificate, new { @class = "txt valid-money" })
+            @Html.ValidationMessageFor(model => model.MaximalPriceCertificate)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_FinanceView_MinSumCertificate
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.MinimalPriceCertificate, new { @class = "txt valid-money" })
+            @Html.ValidationMessageFor(model => model.MinimalPriceCertificate)
+        </div>
+    </div>
+    @*if (Model.ShowBankSettings)
+    {
+         <div id="divBankSettings">
+             <div class="h2">
+                 @Resource.Install_UserContols_FinanceView_h2_2
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_CompanyName 
+                 </p>
+                 <div class="str">
+                     @Html.TextBoxFor(x => x.CompanyName, new {@class = "txt"})
+                 </div>
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_Address 
+                 </p>
+                 <div class="str">
+                     @Html.TextBoxFor(x => x.CompanyAddress, new {@class = "txt"})
+                 </div>
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_INN
+                 </p>
+                 <div class="str">
+                     @Html.TextBoxFor(x => x.Inn, new {@class = "txt"})
+                 </div>
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_KPP
+                 </p>
+                 <div class="str">
+                     @Html.TextBoxFor(x => x.Kpp, new {@class = "txt"})
+                 </div>
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_RachetniChet
+                 </p>
+                 <div class="str">
+                     @Html.TextBoxFor(x => x.Rs, new {@class = "txt"})
+                 </div>
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_BankName
+                 </p>
+                 <div class="str">
+                     @Html.TextBoxFor(x => x.BankName, new {@class = "txt"})
+                 </div>
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_KorrecpChet
+                 </p>
+                 <div class="str">
+                     @Html.TextBoxFor(x => x.Ks, new {@class = "txt"})
+                 </div>
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_Bik
+                 </p>
+                 <div class="str">
+                     @Html.TextBoxFor(x => x.Bik, new {@class = "txt"})
+                 </div>
+             </div>
+             <div class="group">
+                 <p>
+                     @Resource.Install_UserContols_FinanceView_CompanyPechat
+                 </p>
+                 <div class="container-logo">
+                     <asp:Image runat="server" ID="imgPechat" />
+                     @if (!string.IsNullOrEmpty(Model.StampUrl))
+                     {
+                         <img src="@Model.StampUrl" alt="" />
+                     }
+                 </div>
+                 <input type="file" name="stamp" class="file-upload"/>
+                 @Html.ValidationMessageFor(model => model.StampUrl)
+             </div>
+         </div>
+    }*@
+    <div class="step-btns">
+        <span class="btn-c">
+            <a href="@Model.BackUrl" class="btn btn-back">@Resource.Installer_Back</a>
+            <input type="submit" class="btn btn-next" value="@Resource.Installer_Next" />
+        </span>
+    </div>
+}

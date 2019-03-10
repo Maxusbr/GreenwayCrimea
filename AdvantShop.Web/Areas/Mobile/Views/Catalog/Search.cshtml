@@ -1,0 +1,33 @@
+﻿@model  AdvantShop.Areas.Mobile.Models.Catalog.SearchMobileModel
+
+<div id="content">
+    <div class="page-title-row catalog-title-row">
+        <div class="catalog-title page-title h2">
+            @(string.IsNullOrWhiteSpace(Model.Q)
+                  ? T("Search.Index.EnterSearchTerm")
+                  : T("Search.Index.Found", Model.Pager.TotalItemsCount + Model.Categories.Categories.Count, @Model.Q))
+        </div>
+    </div>
+
+    @Html.Partial("CategoryList", Model.Categories)
+
+    @if (Model.HasProducts)
+    {
+        <div class="panel no-borders">
+            <div class="catalog-sort-pnl" ng-controller="CatalogFilterMobileCtrl as catalogFilter">
+                @Html.Partial("_Sorting", Model.SortingList)
+                @Html.Partial("_ViewMode", Model.ViewMode)
+            </div>
+        </div>
+        @Html.Partial(Model.ViewMode == "list" ? "_ProductViewList" : "_ProductViewTile", Model.Products)
+        <div class="panel no-borders">
+            @Html.Paging(Model.Pager, "center-aligner")
+        </div>
+    }
+    else
+    {
+        <div class="panel no-borders">
+            @T("Search.Index.NothingFound")
+        </div>
+    }
+</div>

@@ -1,0 +1,209 @@
+﻿@model AdvantShop.Web.Admin.Models.Tags.TagModel
+
+<form method="POST" action="@(Model.IsEditMode ? Url.Action("Edit") : Url.Action("Add"))" enctype="multipart/form-data" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => Model.Id)
+    @Html.HiddenFor(x => Model.IsEditMode)
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    @if (Model.IsEditMode)
+                    {
+                        <span>Тег</span> <strong>@Html.Raw(Model.Name)</strong>
+                    }
+                    else
+                    {
+                        <strong>@T("Новый тег")</strong>
+                    }
+                </h1>
+                <ul class="breadcrumb">
+                    <li>
+                        <a class="link-invert" href="@Url.Action("Index")">Все теги</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-name-block-item-additional">
+                <a href="" class="link-danger m-r-xs" ng-if="@Model.IsEditMode.ToString().ToLower()" ng-click="tags.deleteTag(@Model.Id)">Удалить</a>
+                <button data-e2e="SaveTag" type="submit" class="btn btn-sm btn-success" data-button-validation disabled ng-disabled="!form.modified">
+                    <i class="fa fa-check"></i>
+                    @T("Admin.Save")
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-xs-2 col-lg-2 col-wl-2">
+                    <h2 class="category-title">Основное</h2>
+                    <div class="">
+                    </div>
+                </div>
+                <div class="col-xs col-lg-10 col-wl-10">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-lg-2">
+                                        Название тега <span class="text-required"></span>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control required", url_generator_enabled = Model.UrlPath.IsNotEmpty() ? "false" : "true", url_generator = "", url_path = "tags.UrlPath", required = "required", ng_model = "tags.Name", validation_input_text="Название тега" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-lg-2">
+                                        <label for="Enabled" class="form-label-block">Активность</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <label class="adv-checkbox-label form-label-block">
+                                            @Html.CheckBoxFor(x => x.Enabled, new {ng_model = "tags.enabled", ng_init = "tags.enabled=" + Model.Enabled.ToString().ToLower(), @class = "adv-checkbox-input"})
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-lg-2">
+                                        <label for="VisibilityForUsers" class="form-label-block">Видимость для пользователей</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <label class="adv-checkbox-label form-label-block">
+                                            @Html.CheckBoxFor(x => x.VisibilityForUsers, new { ng_model = "tags.visibilityForUsers", ng_init = "tags.visibilityForUsers=" + Model.VisibilityForUsers.ToString().ToLower(), @class = "adv-checkbox-input" })
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-lg-2">
+                                        <label for="SortOrder" class="form-label-block">Сортировка</label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        @Html.TextBoxFor(x => x.SortOrder, new { ng_model = "tags.sortOrder", @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-lg-2">
+                                        Описание
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextAreaFor(x => x.Description, new { @class = "wysiwyg", ckeditor = "", ng_model = "tags.Description" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-lg-2">
+                                        Краткое описание
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextAreaFor(x => x.BriefDescription, new { @class = "wysiwyg", ckeditor = "", ng_model = "tags.BriefDescription" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* SEO*@
+            <div class="row">
+                <div class="col-xs-2 col-lg-2 col-wl-2">
+                    <h2 class="category-title">SEO</h2>
+                    <div class="">
+                        SEO параметры заполняются автоматически по шаблону, указанному в настройках.<br />
+                    </div>
+                </div>
+                <div class="col-xs col-lg-10 col-wl-10">
+                    <div class="ibox brand-block">
+                        <div class="ibox-content brand-content border_none">
+
+                            <div>
+                                <div class="row category-row">
+                                    <div class="col-lg-2">
+                                        Синоним для URL запроса <span class="text-required"></span>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        @Html.TextBoxFor(x => x.UrlPath, new { @class = "form-control required", ng_model = "tags.UrlPath", id = "URL", required = "required", validation_input_text="Синоним для URL запроса" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-offset-2">
+                                    <label class="adv-checkbox-label">
+                                        @Html.CheckBoxFor(x => x.DefaultMeta, new { ng_model = "tags.defaultMeta", ng_init = "tags.defaultMeta=" + Model.DefaultMeta.ToString().ToLower(), @class = "adv-checkbox-input" })
+                                        <span class="adv-checkbox-emul" data-e2e="tagDefaultMeta"></span>
+                                        Использовать Meta по умолчанию
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="brand-seo-custom-block ng-cloak m-t-md" ng-if="!tags.defaultMeta">
+                                <div>
+                                    <div class="row category-row">
+                                        <div class="col-lg-2">
+                                            @T("Admin.Category.Index.SeoTitle")
+                                        </div>
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", ng_model = "tags.SeoTitle", ng_disabled = "tags.defaultMeta", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Tag }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row">
+                                        <div class="col-lg-2">
+                                            @T("Admin.Category.Index.SeoH1")
+                                        </div>
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(x => x.SeoH1, new { @class = "form-control", ng_model = "tags.SeoH1", ng_disabled = "tags.defaultMeta", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Tag }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row">
+                                        <div class="col-lg-2">
+                                            @T("Admin.Category.Index.SeoKeywords")
+                                        </div>
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", ng_model = "tags.SeoKeywords", ng_disabled = "tags.defaultMeta", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Tag }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row">
+                                        <div class="col-lg-2">
+                                            @T("Admin.Category.Index.SeoDescription")
+                                        </div>
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(x => x.SeoDescription, new { @class = "form-control", ng_model = "tags.SeoDescription", ng_disabled = "tags.defaultMeta", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Tag }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-offset-2">
+                                        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.Tag })
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

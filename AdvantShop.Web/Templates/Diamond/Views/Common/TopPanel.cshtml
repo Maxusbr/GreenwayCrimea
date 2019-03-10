@@ -1,0 +1,106 @@
+﻿@using AdvantShop.Helpers
+@model AdvantShop.ViewModel.Home.TopPanelViewModel
+
+@if (SettingsMain.IsStoreClosed)
+{
+    <div class="storeclosed-top cs-bg-1 cs-t-4">
+        <div class="storeclosed-text-align">@T("Common.TopPanel.StoreClosed")</div>
+    </div>
+}
+
+@if (Model.IsTemplatePreview)
+{
+    <div class="storeclosed-top cs-bg-1 cs-t-4">
+        <div class="container">
+            <div class="storeclosed-inner">
+                <div class="storeclosed-col">
+                    Предпросмотр шаблона "@Model.TemplatePreviewName"
+                </div>
+                <div class="storeclosed-col">
+                    @if (Model.HasTemplate)
+                {
+                        @Html.ActionLink("Применить шаблон", "ApplyTemplate", "Common", new { @class = "btn btn-small btn-confirm" })
+                    }
+                    else
+                    {
+                        <a href="@Model.BuyTemplateLink" target="_blank" class="btn btn-small btn-buy icon-bag-before">Купить шаблон</a>
+                    }
+                    @Html.ActionLink("Отменить предпросмотр", "CancelTemplatePreview", "Common", new { @class = "btn btn-small btn-action" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!--noindex-->
+<div class="toolbar-top">
+    <div class="container container-fluid">
+        <aside class="row middle-xs between-xs">
+            @if (Model.IsShowCity)
+            {
+                <div class="toolbar-top-item" data-popover-control data-popover-id="zonePopover" data-popover-trigger="null" data-popover-trigger-hide="null">
+                    <span class="cs-t-3">@T("Common.TopPanel.LocationYourCity"):</span>
+                    <a class="link-dotted-invert" href="" data-zone-dialog-trigger>
+                        <span data-zone-current data-ng-bind="zone.City" data-start-val="{City: '@Model.CurrentCity'}">@Model.CurrentCity</span>
+                    </a>
+                </div>
+            }
+
+            <div>
+                @Html.Action("MenuTop", "Common")
+            </div>
+
+            <div>
+                <div class="row middle-xs">
+
+                    @if (Model.IsShowCurrency)
+                    {
+                        <div class="toolbar-top-item curency-item">
+                            <span data-ng-controller="currencyController as curCtrl" class="top-panel-select text-static select-custom select-custom--slim icon-down-open-after-abs">
+                                @Html.DropDownList("ddlCurrency", Model.Currencies, new { data_ng_change = "curCtrl.changeCurrency(curCtrl.currency)", data_ng_model = "curCtrl.currency", data_ng_init = "curCtrl.currency = '" + Model.CurrentCurrency.Iso3 + "'", @class = "cs-bg-9" })
+                            </span>
+                        </div>
+                    }
+
+                    @if (Model.IsShowDesignConstructor)
+                    {
+                        <div class="toolbar-top-item">
+                            <a href="" class="link-dotted-invert icon-equalizer-before-abs-offset toolbar-top-link toolbar-top-link-transformer" data-builder-trigger>@T("Common.TopPanel.DesignConstructor")</a>
+                        </div>
+                    }
+
+                    <div class="toolbar-top-item">
+                        @if (!Model.IsRegistered)
+                        {
+                            <a class="cs-l-3 toolbar-top-link-alt" href="@Url.AbsoluteRouteUrl("Login")">@T("Common.TopPanel.Login")</a>
+                            <a class="cs-l-3 toolbar-top-link-alt" href="@Url.AbsoluteRouteUrl("Registration")">@T("Common.TopPanel.Registration")</a>
+                        }
+                        else
+                        {
+                            <a class="cs-l-3 toolbar-top-link-alt" href="@Url.AbsoluteRouteUrl("MyAccount")">@T("Common.TopPanel.MyAccount")</a>
+                            <a class="cs-l-3 toolbar-top-link-alt" href="@Url.AbsoluteRouteUrl("Logout")">@T("Common.TopPanel.LogOut")</a>
+                        }
+                        @if (Model.IsShowAdminLink)
+                        {
+	                        var cookie = CommonHelper.GetCookie("oldadmin");
+	                        var isOldAdmin = cookie != null && cookie.Value == "true";
+                            <a class="cs-l-3 toolbar-top-link-alt" href="@UrlService.GetUrl(isOldAdmin ? "admin" : "adminv2")">@T("Common.TopPanel.Administration")</a>
+                        }
+                        @if (Model.IsDemoEnabled && !Model.IsShowAdminLink)
+                        {
+                            <a class="cs-l-3 toolbar-top-link-alt" href="" data-modal-open="modalDemoMode">@T("Common.TopPanel.Administration")</a>
+                            <span hidden data-demo-modal data-demo-modal-id="modalDemoMode" data-demo-modal-url="http://trial.advantshop.net"></span>
+                        }
+                    </div>
+                    @if (Model.IsShowWishList)
+                    {
+                        <div class="toolbar-top-item">
+                            @T("Common.TopPanel.WishList"): <a href="@Url.AbsoluteRouteUrl("WishList")" class="wishlist-head-link">@Model.WishCount</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+<!--/noindex-->

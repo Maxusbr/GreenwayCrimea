@@ -1,0 +1,89 @@
+﻿@import '../../../styles/_variable.scss';
+
+.lead-title {
+    color: $color-base;
+    font-family: "OpenSans-bold";
+    font-size: 21px;
+    line-height: 32px;
+}
+
+.add-event-dropdown {
+    position: absolute;
+    left: 0;
+    height: 37px;
+}
+
+.input-add-event-wrap {
+    width: 100%;
+}
+
+.add-even-btn-wrap {
+    position: absolute;
+    right: 0;
+    width: 100px;
+}
+
+.add-even-btn-wrap > .btn-success {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.input-add-event {
+    height: 37px;
+    padding-left: 85px;
+    padding-right: 200px;
+}
+
+.add-event-dropdown .btn-default {
+    height: 37px;
+    width: 75px;
+    border-radius: 0;
+    border: 1px solid #c3c3c3 !important;
+    color: #7f7f7f;
+}
+
+.lead-time i {
+    font-size: 16px;
+    color: #7f7f7f;
+}
+
+h3.lead-customer-title {
+    margin-top: 0;
+}
+
+.email-body pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    border: none;
+    background: none;
+}
+
+.leads-kanban-column {
+    min-width: 330px;
+}
+
+.leads-kanban-column-complete .kanban-column-wrap {
+    background-color: #fefcdb;
+}
+
+.crm-old-status, .crm-new-status {
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 3px;
+    background-color: #e3eefb;
+}
+
+.leads-count-label {
+    position: absolute;
+    top: 32%;
+    right: 13px;
+    vertical-align: top;
+    display: inline-block;
+    font-size: 12px;
+    color: #676a6c;
+    margin: -5px 0 0 5px;
+}

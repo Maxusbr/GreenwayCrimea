@@ -1,0 +1,91 @@
+﻿@using AdvantShop.Saas
+@using AdvantShop.Trial
+
+<div class="client-block flex middle-xs center-xs">
+    @if (CustomerContext.CurrentCustomer.IsAdmin || CustomerContext.CurrentCustomer.IsVirtual)
+    {
+        <div class="current-customer">
+            <ul class="nav navbar-nav">
+                <li class="dropdown inline arrow-custom-popover">
+
+                    <div class="balance-wrap">
+                        @if (TrialService.IsTrialEnabled)
+                        {
+                            <div class="relative">
+                                <span>
+                                    <span class="balance-inner">
+                                        Тестовый период:
+                                        <!--todo добавить красный жирный стиль по условие меньше 1 -->
+
+                                        <span class="balance-value @(TrialService.LeftDay< 1 ? "balance-value-warning" :"")">@(TrialService.LeftDayString)</span>
+                                        <span ng-mouseenter="saasMenu = true"
+                                              ng-mouseleave="saasMenu = false" class="btn-lk-wrap">
+                                            <a href="service/tariffs" target="_parent" class="btn btn-sm btn-success btn-lk m-l-xs arrow-right"
+                                               popover-is-open="saasMenu"
+                                               uib-popover-template="'saasMenu.html'"
+                                               popover-trigger="'none'"
+                                               popover-placement="bottom-center">
+                                                Пополнить
+                                            </a>
+                                        </span>
+                                    </span>
+                                </span>
+                            </div>
+                        }
+                        @if (SaasDataService.IsSaasEnabled)
+                        {
+                            <div class="relative">
+                                <span>
+                                    <span class="balance-inner">
+                                        Баланс:
+                                        <span class="balance-value">@(SaasDataService.CurrentSaasData.BalanceFormating)</span>
+                                        <span ng-mouseenter="saasMenu = true"
+                                              ng-mouseleave="saasMenu = false" class="btn-lk-wrap">
+                                            <a href="service/tariffs" target="_parent" class="btn btn-sm btn-success btn-lk m-l-xs arrow-right"
+                                               popover-is-open="saasMenu"
+                                               uib-popover-template="'saasMenu.html'"
+                                               popover-trigger="'none'"
+                                               popover-placement="bottom-center">
+                                                Пополнить
+                                            </a>
+                                        </span>
+                                    </span>
+                                </span>
+                            </div>
+                        }
+                    </div>
+                    <script type="text/ng-template" id="saasMenu.html">
+                        <ul class="list-group popover-menu-list">
+                            <li class="list-group-item header-top-right-submenu-link">
+                                <a class="balance-link" href="service/tariffs">
+                                    <div class="dropdown-menu-content-header">Пополнить баланс</div>
+                                </a>
+                            </li>
+                            @if (!TrialService.IsTrialEnabled && !string.IsNullOrEmpty(SaasDataService.CurrentSaasData.Name))
+                            {
+                                <li class="list-group-item">
+                                    <a class="balance-link" target="_parent" href="service/changetariff">
+                                        <div class="dropdown-menu-content-header">Сменить тариф</div>
+                                    </a>
+                                </li>
+                            }
+                            <li class="list-group-item header-top-right-submenu-link">
+                                <a class="balance-link" href="@SaasDataService.GetMyAccountLink()" target="_blank">
+                                    <div class="dropdown-menu-content-header">Личный кабинет</div>
+                                </a>
+                            </li>
+                            @if (!TrialService.IsTrialEnabled)
+                            {
+                                <li class="list-group-item header-top-right-submenu-link">
+                                    <a class="balance-link" href="service/resetsaasfromadmin">
+                                        <div class="dropdown-menu-content-header">Обновить данные</div>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </script>
+                </li>
+            </ul>
+        </div>
+    }
+</div>

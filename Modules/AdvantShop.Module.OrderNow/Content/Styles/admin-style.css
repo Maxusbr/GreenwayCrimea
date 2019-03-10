@@ -1,0 +1,199 @@
+﻿.ONtxtOutputText {
+    width: 29em;
+    height: 4em;
+}
+
+.ONaddIcon {
+    position: relative;
+    background-color: #2d9cee;
+    border-color: #2d9cee;
+    color: #FFFFFF;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-left: 3px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-family: 'OpenSans-semibold';
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    user-select: none;
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot?v=4.6.3');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.6.3') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.6.3') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.lowres {
+    width:56em;
+}
+
+@media screen and (max-width:1263px) {
+    .lowres {
+        min-width:30em;
+        max-width:45em;
+    }
+}
+.ONplus {
+
+    display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; position: relative; left: -4px;
+}
+    .ONplus::before {
+        content: "\f067";
+        box-sizing: border-box;
+    }
+
+.ONtable {
+    border-collapse: initial;
+    border-spacing: 1.5em;
+}
+
+    .ONtable input[type=checkbox] {
+        position: relative;
+        top: 0.28em;
+    }
+
+    .ONtable td{
+        width:50%;
+    }
+
+.ONcheck {
+    height:2em;
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    position: absolute;
+}
+
+    
+    #snackbar.show {
+        visibility: visible; 
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+
+.ONsaveChanges {
+    position: relative;
+    background-color: #42a6ee;
+    border-color: #42a6ee;
+    color: #FFFFFF;
+    border-radius: 3px;
+    text-decoration: none;
+    font-family: 'OpenSans-semibold';
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.help-block:hover .bubble {
+    display: block;
+    top: -1.43em;
+    left: 0.2em;
+}
+
+    .help-block:hover .bubble .help-header::after {
+        top: 0.7em;
+        left: -2em;
+        width: 8px;
+        content: "";
+        position: absolute;
+        border: 1em solid transparent;
+        border-right: 1em solid #00a2eb;
+    }
+
+.delete-picture {
+    display: none;
+    cursor: pointer;
+}
+
+.picture-block:hover > .delete-picture {
+    display: block;
+}
+

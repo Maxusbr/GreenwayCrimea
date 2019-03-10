@@ -1,0 +1,18 @@
+﻿@model AdvantShop.Core.Services.Catalog.ProductViewModel
+
+<div class="site-body-cell">
+    <div class="page-title-row wishlist-title-row">
+        <h1 class="wishlist-title page-title">@T("Wishlist.Index.WishListHeader")</h1>
+    </div>
+    @if (Model.Products.Any())
+    {
+        <div class="products-view products-view-list products-view-container" data-ng-init="wishlistPage.countObj.count = @Model.Products.Count" data-ng-hide="wishlistPage.countObj.count === 0">
+            <div class="col-xs-12" data-wishlist-wrapper="[data-product-view-item]">
+                @Html.Partial("_ProductView", Model)
+            </div>
+        </div>
+    }
+    <div data-ng-hide="wishlistPage.countObj.count > 0" class="wishlist-empty  @(Model.Products.Any() ? "ng-hide" : "")">
+        @T("Wishlist.Index.EmptyList")
+    </div>
+</div>

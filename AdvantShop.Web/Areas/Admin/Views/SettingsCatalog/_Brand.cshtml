@@ -1,0 +1,44 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CatalogSettings.CatalogSettingsModel
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Catalog.Brands")</h3>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.BrandsPerPage")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.BrandsPerPage, new { @class = "form-control", ng_model = "settingsCatalog.BrandsPerPage" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowProductsInBrand")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowProductsInBrand, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowProductsInBrand" })
+            <span class="adv-checkbox-emul" data-e2e="ShowProductsInBrand"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Catalog.ShowCategoryTreeInBrand")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.ShowCategoryTreeInBrand, new { @class = "adv-checkbox-input", ng_model = "settingsCatalog.ShowCategoryTreeInBrand" })
+            <span class="adv-checkbox-emul" data-e2e="ShowCategoryTreeInBrand"></span>
+        </label>
+    </div>
+</div>
+

@@ -1,0 +1,74 @@
+.shop-reviews {
+  margin-bottom: 20px; }
+
+.shop-reviews-review-wrap + .shop-reviews-review-wrap {
+  margin-top: 15px; }
+
+.shop-reviews-name {
+  display: inline-block;
+  font-size: 18px;
+  margin-right: 5px; }
+
+.shop-reviews-date {
+  display: inline-block;
+  font-size: 12px; }
+
+.shop-reviews-review-header {
+  margin: 10px 0; }
+
+.shop-reviews-review-text {
+  margin-bottom: 5px; }
+
+.shop-reviews-rating {
+  display: inline-block;
+  position: relative;
+  top: 3px; }
+
+.page-all {
+  float: right; }
+
+.add-review-btns-block {
+  margin-top: 20px; }
+
+.shop-reviews-review-image {
+  padding-bottom: 10px; }
+
+@media (max-width: 480px) {
+  .shop-reviews-review-header .review-item-name, .shop-reviews-review-header .rating, .shop-reviews-review-header .review-item-date {
+    display: block; }
+  .shop-reviews-review-header .review-item-name {
+    padding: 0; }
+  .shop-reviews-review-header .rating {
+    margin: 6px 0 10px -5px; }
+  .shop-reviews-review-header .review-item-date {
+    padding: 0;
+    margin: 5px 0; }
+  .form-field .form-field-name-alt {
+    margin: 7px 0;
+    display: inline-block; }
+  .review-inputs-row .form-field-name-alt {
+    margin: 7px 0;
+    display: inline-block; }
+  .review-form-block .review-form-button {
+    text-align: right;
+    margin-top: 7px; }
+  .review-form-block .review-form-header {
+    margin-bottom: 10px;
+    text-align: center; }
+  .store-reviews-form {
+    margin: 10px 0;
+    border-radius: 5px; }
+    .store-reviews-form .form-title {
+      text-align: center;
+      padding: 10px 0; }
+    .store-reviews-form .form-required-explanation {
+      display: none; }
+    .store-reviews-form .add-review-btns-block {
+      padding: 20px;
+      margin: 0;
+      text-align: right; }
+    .store-reviews-form .form-field-name {
+      margin: 5px 0;
+      display: inline-block; }
+  .reviews-list .col-xs-12 {
+    padding: 0; } }

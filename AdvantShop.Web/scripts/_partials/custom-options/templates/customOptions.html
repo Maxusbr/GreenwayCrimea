@@ -1,0 +1,61 @@
+﻿<div>
+    <form name="customOptionsForm" novalidate="novalidate">
+        <div class="custom-options-list" data-ng-init="customOptions.customOptionsForm = customOptionsForm">
+            <div class="custom-options-row" data-ng-repeat="item in ::customOptions.items track by $index">
+                <div class="custom-options-name">
+                    <span data-ng-bind="item.Title"></span>
+                </div>
+                <div class="custom-options-value" data-ng-switch="item.InputType">
+                    <div data-ng-switch-when="0" data-ng-init="item.SelectedOptions = item.IsRequired ? item.Options[0] : 0">
+                        <span class="select-custom cs-t-8 icon-down-open-after-abs">
+                            <select class="cs-bg-2" data-ng-model="item.SelectedOptions" data-ng-required="item.IsRequired" data-ng-options="option.OptionText for option in ::item.Options" data-ng-click="dirty=true" data-ng-change="dirty === true ? customOptions.change(item): null">
+                               <option value="" data-ng-if="!item.IsRequired">{{ ::'Js.CustomOptions.NotSelected' | translate }}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div data-ng-switch-when="1" data-ng-init="item.SelectedOptions = item.IsRequired ? item.Options[0] : null">
+                        <div>
+                            <label data-ng-if="::!item.IsRequired">
+                                <input class="custom-input-native" data-ng-model="item.SelectedOptions" type="radio" data-ng-change="customOptions.change(item)" />
+                                <span class="custom-input-radio"></span>
+                                <span class="custom-input-text">{{ ::'Js.CustomOptions.NotSelected' | translate }}</span>
+                            </label>
+                        </div>
+                        <div data-ng-repeat="option in ::item.Options track by $index">
+                            <label>
+                                <input class="custom-input-native"
+                                       data-ng-value="option"
+                                       data-ng-model="item.SelectedOptions"
+                                       type="radio"
+                                       data-ng-change="customOptions.change(item)" />
+                                <span class="custom-input-radio"></span>
+                                <span class="custom-input-text" data-ng-bind="::option.OptionText"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div data-ng-switch-when="2">
+                        <div data-ng-repeat="option in ::item.Options track by $index">
+                            <label>
+                                <input class="custom-input-native"
+                                       type="checkbox"
+                                       data-ng-value="option"
+                                       data-ng-init="item.SelectedOptions = item.SelectedOptions != null"
+                                       data-ng-model="item.SelectedOptions"
+                                       data-ng-required="item.IsRequired"
+                                       data-ng-change="customOptions.change(item)" />
+                                <span class="custom-input-checkbox"></span>
+                                <span class="custom-input-text" data-ng-bind="::option.OptionText"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div data-ng-switch-when="3">
+                        <input type="text" class="input-small" data-ng-model="item.SelectedOptions.OptionText" data-ng-required="item.IsRequired" data-ng-change="customOptions.eventDebounce(item)" />
+                    </div>
+                    <div data-ng-switch-when="4">
+                        <textarea class="textarea-small" data-ng-model="item.SelectedOptions.OptionText" data-ng-required="item.IsRequired" data-ng-change="customOptions.eventDebounce(item)"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

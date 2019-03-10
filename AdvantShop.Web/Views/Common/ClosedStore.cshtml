@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@Html.GetPageTitle()</title>
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="Keywords" content="@Html.GetPageKeywords()" />
+</head>
+<body>
+    @Html.StaticBlock("store_closed")
+    
+    <div style="position: fixed; bottom: 0px; right: 0px; margin:0px 10px 10px 0px ">
+        <a href="adv-admin.aspx">Войти</a>
+    </div>
+</body>
+</html>

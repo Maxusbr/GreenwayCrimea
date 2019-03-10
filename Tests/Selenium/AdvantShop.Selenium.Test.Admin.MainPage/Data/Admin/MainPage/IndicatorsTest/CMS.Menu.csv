@@ -1,0 +1,38 @@
+﻿MenuItemID;MenuItemParentID;MenuItemName;MenuItemIcon;MenuItemUrlPath;MenuItemUrlType;SortOrder;ShowMode;Enabled;Blank;NoFollow;MenuType
+1;NULL;О магазине;NULL;pages/about;2;10;0;true;false;false;0
+2;NULL;Доставка и Оплата;NULL;shipping-payment;2;40;0;true;false;false;0
+3;NULL;Контакты;NULL;pages/contacts;2;60;0;true;false;false;0
+4;NULL;Бренды;NULL;manufacturers;5;30;0;true;false;false;0
+5;NULL;Скидки;NULL;productlist/sale;5;20;0;true;false;false;0
+6;NULL;Блог;NULL;blog;5;50;0;true;false;false;0
+7;1;Наши менеджеры;NULL;managers;5;0;0;true;false;false;0
+8;1;Отзывы о магазине;NULL;storereviews;5;0;0;true;false;false;0
+10;NULL;Информация;NULL;56;2;10;0;true;false;false;1
+11;10;Бонусная программа;NULL;getbonuscard;2;50;0;true;false;false;1
+12;NULL;Мы в соц сетях;NULL;;5;30;0;true;true;false;1
+13;12;Наша группа Вконтакте;344177.ico;http://vk.com/advantshop;5;1;0;true;true;false;1
+14;12;Наша страница в Facebook;341556.ico;http://www.facebook.com/AdVantShop.NET;5;2;0;true;true;false;1
+15;10;О магазине;NULL;pages/about;2;10;0;true;false;false;1
+16;10;Бренды;NULL;manufacturers;2;20;0;true;false;false;1
+17;10;Доставка и Оплата;NULL;shipping-payment;2;30;0;true;false;false;1
+18;10;Блог;NULL;blog;2;40;0;true;false;false;1
+19;NULL;Личный кабинет;NULL;;5;20;0;true;false;false;1
+20;19;Вход;NULL;login;5;100;2;true;false;false;1
+21;19;Регистрация;NULL;registration;5;110;2;true;false;false;1
+22;19;Забыли пароль?;NULL;fogotpassword;5;120;2;true;false;false;1
+23;19;Общая информация;NULL;myaccount;5;200;1;true;false;false;1
+24;19;Адресная книга;NULL;myaccount#?tab=addressbook;5;210;1;true;false;false;1
+25;19;История заказов;NULL;myaccount#?tab=orderhistory;5;220;1;true;false;false;1
+26;19;Смена пароля;NULL;myaccount#?tab=changepassword;5;230;1;true;false;false;1
+27;10;Контакты;NULL;pages/contacts;2;60;0;true;false;false;1
+28;12;Анонсы, новости, события;4628410164613.ico;https://twitter.com/AdVantShop;5;0;0;true;true;false;1
+31;NULL;Главная;NULL;/;5;0;0;true;false;false;2
+32;NULL;О магазние;NULL;pages/about;5;10;0;true;false;false;2
+33;NULL;Новости;NULL;news;5;15;0;true;false;false;2
+34;NULL;Скидки;NULL;productlist/sale;5;20;0;true;false;false;2
+35;NULL;Бренды;NULL;manufacturers;5;30;0;true;false;false;2
+36;NULL;Доставка и оплата;NULL;shipping-payment;5;35;0;true;false;false;2
+37;NULL;Блог;NULL;blog;5;50;0;true;false;false;2
+38;NULL;Отзывы о магазине;NULL;storereviews;5;60;0;true;false;false;2
+39;NULL;Контакты;NULL;pages/contacts;2;65;0;true;false;false;2
+41;NULL;Каталог;NULL;catalog;5;5;0;true;false;false;2

@@ -1,0 +1,140 @@
+﻿@using AdvantShop.Catalog
+@using AdvantShop.Core.Services.Catalog
+@using AdvantShop.FilePath
+@model AdvantShop.Areas.AdminMobile.Models.Leads.LeadViewModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "blue ordSum-bg", href = Url.RouteUrl("AdminMobile_Leads"), title = T("AdminMobile.Leads.Leads") })
+}
+
+<div id="content" data-ng-controller="LeadsController as leadsCtrl">
+    <div class="orderCustomerInfo">
+        <div class="customer">
+            <div class="name">@T("AdminMobile.Leads.Lead.ItemNum") @Model.Lead.Id</div>
+            <div class="date">@Model.Lead.CreatedDate.ToString(SettingsMain.AdminDateFormat)</div>
+        </div>
+    </div>
+    <div class="total-info">
+        <div class="row clear">
+            <div class="clear">
+                <div class="name">@T("AdminMobile.Leads.Lead.Status"):</div>
+                <div class="value">
+                    <span class="select-custom icon-down-open-after-abs cs-t-4">
+                        @Html.DropDownList("ddlStatus", Model.Statuses, new
+                        {
+                            @class = "cs-bg-2",
+                            data_ng_change = "leadsCtrl.changeStatus()",
+                            data_ng_model = "leadsCtrl.status",
+                            data_ng_init = "leadsCtrl.status='" + Model.Lead.DealStatusId + "'; leadsCtrl.Id='" + Model.Lead.Id + "'"
+                        })
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row clear">
+            <div class="clear">
+                <div class="name">@T("AdminMobile.Leads.Lead.Manager"):</div>
+                <div class="value">
+                    @if (Model.Manager != null && !Model.CurrentCustomer.IsAdmin)
+                    {
+                        @(Model.Manager.LastName + " " + Model.Manager.FirstName)
+                    }
+                    else
+                    {
+                        <span class="select-custom icon-down-open-after-abs cs-t-4">
+                            @Html.DropDownList("manager", Model.Managers, new
+                            {
+                                @class = "cs-bg-2",
+                                data_ng_change = "leadsCtrl.changeManager()",
+                                data_ng_model = "leadsCtrl.manager",
+                                data_ng_init = "leadsCtrl.manager='" + (Model.Lead.ManagerId != null ? Model.Lead.ManagerId.ToString() : "") + "'; leadsCtrl.Id='" + Model.Lead.Id + "'"
+                            })
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row clear">
+            <div class="name">@T("AdminMobile.Leads.Lead.Client"):</div>
+            <div class="value">
+                @if (Model.Customer != null)
+                {
+                    @Html.Raw(Model.Customer.LastName + " " + Model.Customer.FirstName)
+                    if (!string.IsNullOrEmpty(Model.Customer.Phone))
+                    {
+                        <div class="phone">
+                            <a href="tel:@Model.Customer.StandardPhone">@Model.Customer.Phone</a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    @Html.Raw(Model.Lead.FirstName + " " + Model.Lead.Email)
+                    if (!string.IsNullOrEmpty(Model.Lead.Phone))
+                    {
+                        <div class="phone">
+                            <a href="tel:@Model.Lead.Phone">@Model.Lead.Phone</a>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        
+        @if (Model.Lead.LeadItems != null && Model.Currency != null && Model.Lead.LeadItems.Count > 0)
+        {
+            <div class="all-order-positions">
+                @foreach (var item in Model.Lead.LeadItems)
+                {
+                <div class="order-position">
+                    <div class="img-wrap">
+                        @if (item.ProductId != null)
+                        {
+                            var product = ProductService.GetProduct((int) item.ProductId);
+                            if (product != null)
+                            {
+                                <img src="@FoldersHelper.GetImageProductPath(ProductImageType.XSmall, product.Photo, true)" alt="" />
+                            }
+                        }
+                    </div>
+                    <div class="description">
+                        <div class="name">
+                            @item.ArtNo, @Html.Raw(item.Name)
+                            @Html.Raw(!string.IsNullOrEmpty(item.Color) ? "<div>" + SettingsCatalog.ColorsHeader + ": " + item.Color + "</div>" : "")
+                            @Html.Raw(!string.IsNullOrEmpty(item.Size) ? "<div>" + SettingsCatalog.SizesHeader + ": " + item.Size + "</div>" : "")
+                        </div>
+                        <div class="addInfo">
+                            @item.Amount @T("AdminMobile.Leads.Lead.PCS") @T("AdminMobile.Leads.Lead.By") @(item.Price.FormatPrice(Model.Currency))
+                        </div>
+                    </div>
+                    <div class="price">@((item.Price*item.Amount).FormatPrice(Model.Currency))</div>
+                </div>
+                }
+            </div>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.Lead.Comment))
+        {
+            <div class="row clear">
+                <div class="ordInfoName">
+                    @T("AdminMobile.Leads.Lead.CustomerComment"):
+                </div>
+                <div class="ordInfoValue">
+                    @Html.Raw(Model.Lead.Comment)
+                </div>
+            </div>
+        }
+        
+        <div class="row">
+            <a class="btn-action" data-ng-click="leadsCtrl.createOrder()" href="">@T("AdminMobile.Leads.Lead.CreateOrder")</a>
+        </div>
+        
+        @*<div class="row">
+            <a class="btn-action" data-ng-click="leadsCtrl.createTask()" href="">@T("AdminMobile.Leads.Lead.InWork")</a>
+        </div>*@
+
+    </div>
+</div>

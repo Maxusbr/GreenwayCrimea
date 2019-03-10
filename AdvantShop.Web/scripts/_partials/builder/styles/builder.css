@@ -1,0 +1,58 @@
+.builder-dialog {
+  max-width: 34.375rem; }
+
+.builder-right-block {
+  padding-left: 2.5rem; }
+
+.builder-structure {
+  margin-bottom: 1.0625rem; }
+
+.builder-structure-head {
+  height: 0.75rem; }
+
+.builder-structure-body {
+  height: 1.875rem; }
+
+.builder-structure-half-body {
+  height: 0.8125rem; }
+
+.builder-structure-block {
+  border: 1px #0662c1 dashed;
+  margin: 0.0625rem;
+  background-color: #fff; }
+
+.builder-structure-item {
+  width: 5.9375rem;
+  border: 5px #fff solid;
+  display: inline-block;
+  vertical-align: middle;
+  outline: 1px solid #eee; }
+
+.builder-checkbox {
+  margin: 0; }
+
+.builder-checkbox-native:checked ~ .builder-structure-item {
+  border-color: #f8c312; }
+
+.builder-structure-text {
+  font-size: 0.6875rem;
+  line-height: 1.1; }
+
+.builder-structure-default {
+  padding-right: 0.3125rem; }
+
+.builder-structure-twocolumns {
+  padding-left: 0.3125rem; }
+
+.builder-structure-item .row {
+  margin: 0; }
+
+.builder-structure-item .col-xs-12, .builder-structure-item .col-xs-6, .builder-structure-item .col-xs-3, .builder-structure-item .col-xs-4, .builder-structure-item .col-xs-8 {
+  padding: 0; }
+
+.builder-structure > .row > .col-xs-3 {
+  padding: 0;
+  margin-top: 10px; }
+
+.builder-logo-generator {
+  padding-left: 40px; }

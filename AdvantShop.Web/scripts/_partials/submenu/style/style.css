@@ -1,0 +1,15 @@
+﻿[data-submenu]  {
+    opacity: 0;
+    display: none;
+}
+
+[data-submenu].show-submenu {
+    display: block !important;
+    opacity: 1;
+}
+
+[data-submenu].visible-submenu {
+    display: block!important;
+    opacity: 0;
+    visibility: hidden;
+}

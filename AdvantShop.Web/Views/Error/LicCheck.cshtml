@@ -1,0 +1,23 @@
+﻿@model AdvantShop.Models.Error.LicCheckModel
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AdVantShop</title>
+    <meta name="generator" content="AdVantShop.NET">
+</head>
+<body>
+    <form action="@UrlService.GetAbsoluteLink("error/liccheck")" method="POST">
+        <div>
+            <label>Введите ключ @Html.TextBoxFor(m => m.Key)</label>
+            <input type="submit" value="Check license key"  />
+
+
+            @T("Error.NotFound.BackToMainPage", Url.RouteUrl("Home"))
+            <span>@Model.Msg</span>
+        </div>
+    </form>
+</body>
+</html>

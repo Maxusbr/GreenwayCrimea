@@ -1,0 +1,82 @@
+﻿@model AdvantShop.Web.Admin.Models.Grastin.OrderActionsModel
+
+@{ 
+    var rnd = new Random().NextDouble();
+}
+
+@if (Model.ShowSendOrderForGrasting)
+{
+    <ui-modal-trigger size="lg" data-controller="'ModalSendOrderGrastinCtrl'" data-controller-as="ctrl"
+                      data-resolve="{ obj: { orderId: $ctrl.orderId }}"
+                      data-on-close="$ctrl.grastinUpdateActionsAndSummary()"
+                      template-url="@("grastin/getformsendorderforgrastin?orderid=" + Model.OrderId + "&rnd=" + rnd)">
+        <a href="" class="m-t-xs m-b-xs block fs-xs">
+            @T("Admin.Grastin.OrderActions.SendToGrastin")
+        </a>
+    </ui-modal-trigger>
+}
+
+@if (Model.ShowSendOrderForRussianPost)
+{
+    <ui-modal-trigger size="lg" data-controller="'ModalSendOrderGrastinCtrl'" data-controller-as="ctrl"
+                      data-resolve="{ obj: { orderId: $ctrl.orderId }}"
+                      data-on-close="$ctrl.grastinUpdateActionsAndSummary()"
+                      template-url="@("grastin/getformsendorderforrussianpost?orderid=" + Model.OrderId + "&rnd=" + rnd)">
+        <a href="" class="m-t-xs m-b-xs block fs-xs">
+            @T("Admin.Grastin.OrderActions.SendToGrastinPostRF")
+        </a>
+    </ui-modal-trigger>
+}
+
+@if (Model.ShowSendOrderForBoxberry)
+{
+    <ui-modal-trigger size="lg" data-controller="'ModalSendOrderGrastinCtrl'" data-controller-as="ctrl"
+                      data-resolve="{ obj: { orderId: $ctrl.orderId }}"
+                      data-on-close="$ctrl.grastinUpdateActionsAndSummary()"
+                      template-url="@("grastin/getformsendorderforboxberry?orderid=" + Model.OrderId + "&rnd=" + rnd)">
+        <a href="" class="m-t-xs m-b-xs block fs-xs">
+            @T("Admin.Grastin.OrderActions.SendToGrastinBoxberry")
+        </a>
+    </ui-modal-trigger>
+}
+
+@if (Model.ShowSendOrderForHermes)
+{
+    <ui-modal-trigger size="lg" data-controller="'ModalSendOrderGrastinCtrl'" data-controller-as="ctrl"
+                      data-resolve="{ obj: { orderId: $ctrl.orderId }}"
+                      data-on-close="$ctrl.grastinUpdateActionsAndSummary()"
+                      template-url="@("grastin/getformsendorderforhermes?orderid=" + Model.OrderId + "&rnd=" + rnd)">
+        <a href="" class="m-t-xs m-b-xs block fs-xs">
+            @T("Admin.Grastin.OrderActions.SendToGrastinHermes")
+        </a>
+    </ui-modal-trigger>
+}
+
+@if (Model.ShowSendRequestForIntake)
+{
+    <ui-modal-trigger size="lg" data-controller="'ModalSendRequestGrastinForIntakeCtrl'" data-controller-as="ctrl"
+                      data-resolve="{ obj: { orderId: $ctrl.orderId }}"
+                      @*data-on-close="$ctrl.grastinUpdateActions()"*@
+                      template-url="@("grastin/getformsendrequestforintake?orderid=" + Model.OrderId + "&rnd=" + rnd)">
+        <a href="" class="m-t-xs m-b-xs block fs-xs">
+            @T("Admin.Grastin.OrderActions.SendToGrastinForOrderPicking")
+        </a>
+    </ui-modal-trigger>
+}
+
+@if (Model.ShowSendRequestForAct)
+{
+    <ui-modal-trigger size="lg" data-controller="'ModalSendRequestGrastinForActCtrl'" data-controller-as="ctrl"
+                      data-resolve="{ obj: { orderId: $ctrl.orderId }}"
+                      @*data-on-close="$ctrl.grastinUpdateActions()"*@
+                      template-url="@("grastin/getformsendrequestforact?orderid=" + Model.OrderId + "&rnd=" + rnd)">
+        <a href="" class="m-t-xs m-b-xs block fs-xs">
+            @T("Admin.Grastin.OrderActions.ReceiveFromGrastinAct")
+        </a>
+    </ui-modal-trigger>
+}
+
+@if (Model.ShowSendRequestForMark)
+{
+    <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.grastinOrderPrintMark()">@T("Admin.Grastin.OrderActions.ReceiveFromGrastinOrderMarking")</a>
+}

@@ -1,0 +1,88 @@
+﻿div.ui-grid-cell .ui-grid-custom-edit-field.ng-valid {
+    border-color: transparent;
+    background-color: transparent;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    display: inline;
+    max-width: 100%;
+    transition: none;
+}
+
+div.ui-grid-cell .ui-select-toggle,
+div.ui-grid-cell .ui-select-container {
+    border-color: transparent;
+    background-color: transparent;
+    height: 32px;
+}
+
+div.ui-grid-cell .ui-select-toggle {
+    padding-left: 6px;
+}
+
+div.ui-grid-cell .caret {
+    display: none;
+}
+
+div.ui-grid-cell .input-ghost {
+    width: auto !important;
+}
+
+.ui-grid-row:hover .ui-grid-custom-edit-field.ng-valid,
+div.ui-grid-cell .ui-grid-custom-edit-field.ng-valid:focus {
+    background-color: #fff;
+    border-color: #ccc;
+    /*display: block;*/ /*FF bug in grid - not fire blur event*/
+    width: 100% !important;
+    padding: 6px;
+}
+
+.ui-grid-row:hover,
+div.ui-grid-cell .ui-select-match.btn-default-focus {
+    .ui-select-toggle {
+        background-color: #fff;
+        border-color: #ccc;
+    }
+
+    .caret {
+        display: block;
+    }
+}
+
+
+.ui-grid-row:hover .input-ghost,
+div.ui-grid-cell .input-ghost:focus,
+div.ui-grid-cell .input-ghost.ng-invalid {
+    width: 100% !important;
+}
+
+.ui-grid-cell-contents a.link {
+    color: #337ab7;
+    text-decoration: underline;
+}
+
+.ui-grid-cell-contents a.link:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.ui-grid-top-panel {
+    font-family: "OpenSans-semibold";
+}
+
+.ui-grid-custom-edit-enabled {
+    .ui-grid-cell-contents:not(.ui-grid-custom-edit-block) {
+        padding-left: 9px;
+    }
+}
+
+.ui-grid-custom-edit-number {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+}
+
+.ui-grid-custom-edit-form .form-control.ui-select-toggle {
+    font-size: 13px;
+    font-family: 'OpenSans';
+}

@@ -1,0 +1,30 @@
+﻿<div>
+    <div class="ng-cloak" data-ng-if="addressList.isLoaded">
+        <div data-ng-switch="addressList.items.length > 0">
+            <ul class="address-list" data-ng-switch-when="true">
+                <li class="address-list-item" data-ng-repeat="item in addressList.items track by $index">
+                    <label class="row middle-xs">
+                        <span class="col-xs">
+                            <span class="address-list-change-text">
+                                <span data-ng-if="addressList.type ==='change'">
+                                    <input data-ng-model="addressList.addressSelected" data-ng-value="item" class="custom-input-native" type="radio" name="addressListChange" data-ng-change="addressList.change(item)">
+                                    <span class="custom-input-radio"></span>
+                                </span>
+                                <span data-ng-bind="item.AggregatedAddress"></span>
+                            </span>
+                        </span>
+                        <span class="end-xs col-xs-4 col-sm-3 end-xs text-align-right">
+                            <span class="address-controls">
+                                <a class="address-controls-item" href="" data-ng-click="addressList.edit(item)" data-translate="Js.Address.Edit"></a>
+                                <!--<a class="address-controls-item cs-l-5" href="" data-ng-click="addressList.remove(item.ContactID, $index)" data-translate="Js.Address.Delete"></a>-->
+                            </span>
+                        </span>
+                    </label>
+                </li>
+            </ul>
+            <div class="address-list" data-ng-switch-when="false">
+                <input type="button" value="{{ ::'Js.Address.Add' | translate}}" class="btn btn-middle btn-action" data-ng-click="addressList.add()" />
+            </div>
+        </div>
+    </div>
+</div>

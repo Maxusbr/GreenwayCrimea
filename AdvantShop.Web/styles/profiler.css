@@ -1,0 +1,61 @@
+.pf {
+    font-family: "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Helvetica Neue", Helvetica, Arial;
+    margin: 15px auto;
+    max-width: 1000px;
+}
+
+.pf-item {
+    display: table-row;
+}
+
+    .pf-item:nth-child(odd) {
+        background-color: #FEFFFF;
+    }
+
+    .pf-item:nth-child(odd) {
+        background-color: #F2F5F9;
+    }
+
+    .pf-item:hover {
+        background-color: #E6F5E6;
+    }
+
+        .pf-item:hover .pf-name .pf-params {
+            display: block;
+        }
+
+.pf-title {
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0 0 10px 0;
+}
+
+    .pf-title span {
+        font-size: 12px;
+        color: #999;
+    }
+
+.pf-name {
+    display: table-cell;
+    padding: 5px;
+    word-break: break-word;
+}
+
+    .pf-name .pf-params {
+        color: #999;
+        padding: 3px 0;
+        display: none;
+        word-break: break-all;
+    }
+
+.pf-time {
+    display: table-cell;
+    width: 80px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+    .pf-time span {
+        color: #999;
+        font-weight: normal;
+    }

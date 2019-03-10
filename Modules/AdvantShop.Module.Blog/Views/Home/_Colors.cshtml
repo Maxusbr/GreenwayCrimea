@@ -1,0 +1,33 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ColorsViewModel
+
+@if (Model.HeaderText.IsNotEmpty())
+{
+    <div class="color-viewer-header">
+        @Model.HeaderText
+    </div>
+}
+@if (Model.EnabledSlider)
+{
+    //data-carousel
+    @:<div class="carousel carousel-colors-wrap" data-carousel data-stretch="false" data-carousel-class="carousel-colors" data-init-on-load="true" data-initilaze-to="@Model.InitilazeTo">
+    @:<div class="carousel-inner">
+}
+<div class="color-viewer-list js-color-viewer-slider"
+     data-colors-viewer
+     data-color-selected="@Model.NgColorSelected"
+     data-init-colors="@Model.NgInitColors"
+     data-change-color="@Model.NgChangeColor"
+     data-colors="::@Model.NgColors"
+     data-color-width="::'@(Model.ColorWidth)px'"
+     data-color-height="::'@(Model.ColorHeight)px'"
+     data-multiselect="@Model.Multiselect.ToString().ToLower()"
+     data-image-type="@Model.ImageType"></div>
+@if (Model.EnabledSlider)
+{
+    @:</div>
+    <div class="carousel-nav">
+        <button class="carousel-nav-prev"></button>
+        <button class="carousel-nav-next"></button>
+    </div>
+    @:</div>
+}

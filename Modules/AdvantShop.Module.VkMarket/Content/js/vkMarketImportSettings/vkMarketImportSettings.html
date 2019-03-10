@@ -1,0 +1,15 @@
+﻿
+<div class="container-fluid">
+    <h3 class="m-b-md">Импорт товаров и категорий из ВКонтакте</h3>
+    <div class="form-group row">
+        <div class="col-xs-12">
+            <a href="" class="btn btn-sm btn-success" ng-click="$ctrl.import()">Импортировать</a> 
+            
+            <div ng-if="$ctrl.Total != null && $ctrl.Total != 0" class="m-t-md" style="width: 350px">
+                <uib-progressbar max="$ctrl.Total" value="$ctrl.Total">
+                    <span style="color:white; white-space:nowrap;"><span ng-bind="$ctrl.Percent"></span> %</span>
+                </uib-progressbar>
+            </div>
+        </div>
+    </div>
+</div>

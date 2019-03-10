@@ -1,0 +1,23 @@
+﻿@import "../../_common/variables.scss";
+
+.lp-menu-header {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.lp-menu-header__item {
+    padding: 10px;
+    margin: 0;
+}
+
+.lp-menu-header__link {
+    font-size: 14px;
+}
+@media #{$viewport-sm} {
+    .lp-menu-header {
+        flex-direction: row;
+    }
+}

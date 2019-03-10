@@ -1,0 +1,13 @@
+﻿@model AdvantShop.ViewModel.StaticPage.StaticPageViewModel
+
+<div id="content">
+    <div class="panel no-borders">
+        <h1>
+            @Html.GetPageH1()
+        </h1>
+        <div class="block-usr-txt">
+            @Html.Raw(Model.Text)
+        </div>
+        @Html.Action("SocialButtons", "Common", new { area = "" })
+    </div>
+</div>

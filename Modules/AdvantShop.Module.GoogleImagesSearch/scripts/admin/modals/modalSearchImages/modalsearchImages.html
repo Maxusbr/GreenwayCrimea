@@ -1,0 +1,27 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Поиск изображений в интернете</h2>
+    </div>
+    <div class="modal-body">
+        <div class="text-danger google-images-search-error" ng-if="ctrl.error != null" ng-bind="ctrl.error"></div>
+        <div class="row">
+            <div class="col-xs-3 google-images-search-text-item" ng-repeat="item in ctrl.images track by $index">
+                <label class="google-images-search-picture">
+                    <input type="checkbox" class="google-images-search-state" checklist-value="item.link" checklist-model="ctrl.value" ng-change="ctrl.change(item.link)">
+                    <img ng-src="{{item.image.thumbnailLink}}" title="{{item.title}}" />
+                </label>
+                <div class="google-images-search-text">
+                    <span ng-bind="item.image.height"></span>
+                    x
+                    <span ng-bind="item.image.width"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="submit" ng-click="ctrl.findMore();">Найти еще</button>
+        <button class="btn btn-save btn-primary" type="submit" ng-click="ctrl.add()" ladda="ctrl.btnLoading">Добавить выбранные</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

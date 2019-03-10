@@ -1,0 +1,433 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CheckoutSettingsModel
+
+<a href="@Url.Action("Academy", "Service", new { id = 33 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline">
+    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+    Видеоурок о Параметрах заказа
+</a>
+<div class="setting-title setting-title__m-t-md">
+    <h3>@T("Admin.Settings.Checkout.CheckoutSettings")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.AmountLimitation")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.AmountLimitation, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.AmountLimitation"})
+            <span data-e2e="AmountLimitation" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Checkout.AmountLimitation")">
+            <div class="help-content">
+                Если опция <b>включена</b>, то нельзя оформить заказ на количество большее, чем есть (указано) у товара в графе количество.<br>
+                <br>
+                Если <b>выключена</b>, то количество заказываемого товара может быть любым.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.OutOfStockAction")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.DropDownListFor(x => x.OutOfStockAction, Model.OutOfStockActions, new { @class = "form-control", ng_model = "settingsCheckout.OutOfStockAction"})
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Checkout.OutOfStockAction")">
+            <div class="help-content">
+                При выбранных вариантах <b>Создавать заказ</b>, <b>Создавать лид</b> - переход на отдельную страницу, где будет применяться соответствующая опция.
+                <br>
+                При выбранном варианте <b>Разрешить добавлять в корзину</b> - пользователю будет разрешено добавить отсутствующий товар в корзину наравне с остальными товарами.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ProceedToPayment")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.ProceedToPayment, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.ProceedToPayment" })
+            <span data-e2e="ProceedToPayment" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Checkout.ProceedToPayment")">
+            <div class="help-content">
+                Опция определяет вызывать ли сразу переход к системе оплаты.
+                <br>
+                <br>
+                Если опция <b>включена</b>, то на последнем шаге оформления заказа, клиента автоматически перенаправит на форму платежной системы.
+                <br>
+                <br>
+                Если опция <b>выключена</b>, то на последнем шаге оформления заказа, клиенту покажется сообщение о завершении оплаты и кнопка "перейти к оплате".
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.MinimalOrderPriceForDefaultGroup")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.MinimalOrderPriceForDefaultGroup, new {@class = "form-control input-small", ng_model = "settingsCheckout.MinimalOrderPriceForDefaultGroup"})
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Checkout.MinimalOrderPriceForDefaultGroup")">
+            <div class="help-content">
+                Параметр определяет минимальную сумму заказа, ниже которой нельзя оформить заказ.<br>
+                <br>
+                Если сумма заказа в корзине будет ниже, чем указанное значение, клиенту покажется сообщение с уведомлением.
+            </div>
+        </help-trigger>
+    </div>
+    <div class="col-xs-5">
+        <a data-e2e="MinimalPriceCustomerGroups" href="@Url.Action("Index", "CustomerGroups")" class="m-l-md">Указать для других групп</a>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ManagerConfirmed")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.ManagerConfirmed, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.ManagerConfirmed" })
+            <span data-e2e="ManagerConfirmed" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Checkout.ManagerConfirmed")">
+            <div class="help-content">
+                Запрещать оплату заказа до подтверждения менеджером.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ShowShoppingCartNumber")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label" ng-if="@Model.EnableLogingInTariff">
+            @Html.CheckBoxFor(x => Model.ShowClientId, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.ShowClientId" })
+            <span data-e2e="ShowClientId" class="adv-checkbox-emul"></span>
+        </label>
+        <label  ng-if="@(!Model.EnableLogingInTariff)">
+            @T("Admin.Settings.NotInTariff")
+        </label>
+
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.BuyInOneClickSetings")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.BuyInOneClick")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.BuyInOneClick, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.BuyInOneClick"})
+            <span data-e2e="BuyInOneClick" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Checkout.BuyInOneClick")">
+            <div class="help-content">
+                Опция определяет <b>включить</b> или <b>выключить</b> возможность покупки товаров с использованием формы "Купить в один клик".
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.BuyInOneClickDisableInCheckout")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.BuyInOneClickDisableInCheckout, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.BuyInOneClickDisableInCheckout"})
+            <span data-e2e="OneClickDisableInCheckout" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Checkout.BuyInOneClickDisableInCheckout")">
+            <div class="help-content">
+                Опция определяет <b>включить</b> или <b>выключить</b> возможность покупки товаров с использованием формы "Купить в один клик" на странице оформления заказа.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.BuyInOneClickLinkText")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.BuyInOneClickLinkText, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickLinkText" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Checkout.BuyInOneClickLinkText")">
+            <div class="help-content">
+                Текст ссылки "Купить в один клик"
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.BuyInOneClickFirstText")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextAreaFor(x => x.BuyInOneClickFirstText, new { @class = "form-control input-small", rows = "10", ng_model = "settingsCheckout.BuyInOneClickFirstText" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" style="top: 4%;" data-title="@T("Admin.Settings.Checkout.BuyInOneClickFirstText")">
+            <div class="help-content">
+                Текст, который покажется вверху формы 'Покупка в один клик'
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.BuyInOneClickButtonText")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.BuyInOneClickButtonText, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickButtonText" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Checkout.BuyInOneClickButtonText")">
+            <div class="help-content">
+                Текст, который будет отображаться на кнопке офомляющей заказ.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.BuyInOneClickAction")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.DropDownListFor(x => x.BuyInOneClickAction, Model.BuyInOneClickActions, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickAction"})
+
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.BuyInOneClickDefaultShippingMethod")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.DropDownListFor(x => x.BuyInOneClickDefaultShippingMethod, Model.ShippingMethods, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickDefaultShippingMethod"})
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.BuyInOneClickDefaultPaymentMethod")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.DropDownListFor(x => x.BuyInOneClickDefaultPaymentMethod, Model.PaymentMethods, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickDefaultPaymentMethod"})
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.GiftCertificateSettings")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.EnableGiftCertificateService")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.EnableGiftCertificateService, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.EnableGiftCertificateService"})
+            <span data-e2e="EnableCertificate" class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.DisplayPromoTextbox")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.DisplayPromoTextbox, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.DisplayPromoTextbox"})
+            <span data-e2e="DisplayPromoTextbox" class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.MinimalPriceCertificate")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.MinimalPriceCertificate, new { @class = "form-control input-small", ng_model = "settingsCheckout.MinimalPriceCertificate" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.MaximalPriceCertificate")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.MaximalPriceCertificate, new { @class = "form-control input-small", ng_model = "settingsCheckout.MaximalPriceCertificate" })
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.GiftsSettings")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.MultiplyGiftsCount")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.MultiplyGiftsCount, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.MultiplyGiftsCount"})
+            <span data-e2e="MultiplyGiftsCount" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Checkout.MultiplyGiftsCount")">
+            <div class="help-content">
+                Если опция <b>включена</b>, при добавлении в корзину товара с подарками, количество подарков будет соответствовать количеству добавленных товаров,<br>
+                <b>выключена</b> - подарок будет в корзине в единственном экземпляре.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.PringOrderSettings")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.PrintOrderShowStatusInfo")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.PrintOrder_ShowStatusInfo, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.PrintOrder_ShowStatusInfo"})
+            <span data-e2e="ShowStatusInfo" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Checkout.PrintOrderShowStatusInfo")">
+            <div class="help-content">
+                Опция определяет выводить или нет строчку со статусом заказа на распечатке заказа.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.PrintOrderShowMap")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.PrintOrder_ShowMap, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.PrintOrder_ShowMap"})
+            <span data-e2e="ShowMap" class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.Checkout.PrintOrderShowMap")">
+            <div class="help-content">
+                Опция определяет отображать или нет карту по адресу клиента на распечатке заказа.<br>
+                <br>
+                В некоторых случаях карта может быть удобна, например курьеру.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.PrintOrderMapType")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.DropDownListFor(x => x.PrintOrder_MapType, Model.MapTypes, new { @class = "form-control input-small", ng_model = "settingsCheckout.PrintOrder_MapType", @disabled = "disabled" })
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.OrderNumberSettings")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.NextOrderNumber")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        @Html.TextBoxFor(x => x.NextOrderNumber, new {@class = "form-control input-small", ng_model = "settingsCheckout.NextOrderNumber"})
+    </div>
+    <div class="col-xs-3">
+        <a href="" data-e2e="NextOrderNumber" ng-click="settingsCheckout.changeOrderId(settingsCheckout.NextOrderNumber)">Изменить</a>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs">
+        Используйте опцию аккуратно, только если хотите, чтобы номер заказа начинался с другого числа. <br/>Новый номер должен быть обязательно больше номера последнего заказа.
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.OrderNumberFormat")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.OrderNumberFormat, new { @class = "form-control input-small", ng_model = "settingsCheckout.OrderNumberFormat" })
+        <br>@T("Admin.Settings.Checkout.OrderNumberFormatComment")
+    </div>
+</div>
+
+
+
+
+

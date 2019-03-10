@@ -1,0 +1,30 @@
+﻿<div class="ngrs-range-slider">
+    <div class="ngrs-inputs" ng-show="showInputs">
+        <div class="row between-xs middle-xs">
+            <div class="col-xs-4">
+                <input class="input-small" name="filteredModelMin" type="number" data-ng-model="modelMin" data-ng-keyup="inputChange($event)" data-ng-blur="blurMin()" />
+            </div>
+            <div class="col-xs-4">
+                <div class="ngrs-runner-dash">-</div>
+            </div>
+            <div class="col-xs-4">
+                <input class="input-small" name="filteredModelMax" type="number" data-ng-model="modelMax" data-ng-keyup="inputChange($event)"  data-ng-blur="blurMax()"/>
+            </div>
+        </div>
+    </div>
+    <div class="ngrs-runner">
+        <div class="ngrs-handle ngrs-handle-min"><i></i></div>
+        <div class="ngrs-handle ngrs-handle-max"><i></i></div>
+        <div class="ngrs-join cs-bg-10"></div>
+    </div>
+    <div class="ngrs-value-runner" ng-show="showValues">
+        <div class="row between-xs">
+            <div>
+                <div class="ngrs-value ngrs-value-min"><div data-ng-bind="(attachHandleValues ? filteredModelMin : min) + ((attachHandleValues ? filteredModelMin : min) != null ? caption : null)"></div></div>
+            </div>
+            <div>
+                <div class="ngrs-value ngrs-value-max"><div data-ng-bind="(attachHandleValues ? filteredModelMax : max) + ((attachHandleValues ? filteredModelMax : max) != null ? caption : null)"></div></div>
+            </div>
+        </div>
+    </div>
+</div>

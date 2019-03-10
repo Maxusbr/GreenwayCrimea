@@ -1,0 +1,43 @@
+﻿<ng-form name="shippingbydistancelimit">
+    <div>
+        <div class="row middle-xs m-b-md">
+            <span class="col-xs-3">
+                До: <input type="text" validation-input-float ng-model="$ctrl.Amount" class="form-control inline" style="width: 70px;" /> км
+            </span>
+            <span class="col-xs-4">
+                Стоимость: <input type="text" validation-input-float ng-model="$ctrl.Price" class="form-control inline" style="width: 70px" />
+            </span>
+            <span class="col-xs-2">
+
+                <label class="adv-checkbox-label form-label-block p-l-md">
+                    за км
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="$ctrl.PerUnit">
+                    <span class="adv-checkbox-emul adv-checkbox-emul--right"></span>
+                </label>
+            </span>
+            <span class="col-xs">
+                <button type="button" ng-disabled="$ctrl.Amount == null || $ctrl.Price == null" ng-click="$ctrl.addRange()" class="btn btn-sm btn-action">Добавить</button>
+            </span>
+        </div>
+
+        <div class="m-b-md">
+            <div class="row" ng-repeat="item in $ctrl.ranges track by $index">
+                <div class="col-xs-3">
+                    До: {{item.Amount | number}} км
+                </div>
+                <div class="col-xs-4">
+                    {{item.Price | number}} {{$ctrl.currencyLabel}}
+                </div>
+                <div class="col-xs-2">
+                    {{item.PerUnit ? "за км" : "" }}
+                </div>
+                <div class="col-xs">
+                    <a href="" ng-click="$ctrl.deleteRange($index)" class="link-invert link-decoration-none fa fa-remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="distanceLimit" value="{{$ctrl.distanceLimit}}" />
+        <input type="text" ng-model="$ctrl.update" class="hidden" />
+    </div>
+</ng-form>

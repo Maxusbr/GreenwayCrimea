@@ -1,0 +1,42 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Добавить запись</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">
+                            Откуда
+                        </span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.RedirectFrom" required validation-input-text="Откуда" autofocus />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Куда</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.RedirectTo" validation-input-text="Куда"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Артикул товара</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.ProductArtNo"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-button-validation-success="ctrl.save301Red()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

@@ -1,0 +1,2 @@
+ManagerId;CustomerId[GUID];DepartmentId;Position;Active
+1;CFC2C33B-1E84-415E-8482-E98156342819;2;position3;true

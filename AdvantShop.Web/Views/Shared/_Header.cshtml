@@ -1,0 +1,23 @@
+﻿<div class="container container-fluid site-head-inner">
+    <div class="row middle-xs">
+        <div class="col-xs-3 site-head-logo-block site-head-logo">
+            @Html.Action("Logo", "Common")
+        </div>
+        <div class="col-xs-5 site-head-menu-col">
+            @Html.StaticBlock("headerСenterBlock", "header-static-block-center")
+            @Html.Action("MenuTop", "Common")
+            @if (SettingsDesign.SearchBlockLocation == SettingsDesign.eSearchBlockLocation.TopMenu)
+            {
+                @Html.Action("SearchBlock", "Search")
+            }
+            @Html.StaticBlock("headerСenterBlockAlt", "header-static-block-center-alt")
+        </div>
+        <div class="col-xs site-head-phone-col">
+            @Html.StaticBlock("headerRightBlock", "header-static-block-right")
+            @Html.Action("ShoppingCart", "Cart")
+            @Html.RenderModules("site_top_right")
+            <div class="cs-t-1 site-head-phone" data-zone-current data-ng-bind-html="zone.Phone" data-start-val="{Phone: '@Html.GetCityPhone(true)'}">@Html.GetCityPhone()</div>
+            @Html.StaticBlock("email", "static-block-email-header")
+        </div>
+    </div>
+</div>

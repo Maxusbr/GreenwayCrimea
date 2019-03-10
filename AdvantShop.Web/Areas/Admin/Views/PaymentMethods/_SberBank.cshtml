@@ -1,0 +1,80 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.SberBankPaymentModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Название компании</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CompanyName, new { ng_model = "paymentMethod.Parameters.CompanyName", @class = "form-control", required = "required", validation_input_text = "Название компании" })
+            @*<help-trigger class="ng-cloak help-trigger-icon-abs" data-title="титл">
+                сообщение
+            </help-trigger>*@
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Расчетный счет</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.TransAccount, new { ng_model = "paymentMethod.Parameters.TransAccount", @class = "form-control", required = "required", validation_input_text = "Расчетный счет" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">ИНН</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Inn, new { ng_model = "paymentMethod.Parameters.Inn", @class = "form-control", required = "required", validation_input_text = "ИНН" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            КПП
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Kpp, new { ng_model = "paymentMethod.Parameters.Kpp", @class = "form-control", validation_input_text = "КПП" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Название банка</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.BankName, new { ng_model = "paymentMethod.Parameters.BankName", @class = "form-control", required = "required", validation_input_text = "Название банка" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Корреспондентский счёт</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CorAccount, new { ng_model = "paymentMethod.Parameters.CorAccount", @class = "form-control", required = "required", validation_input_text = "Корреспондентский счёт" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">БИК</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Bik, new { ng_model = "paymentMethod.Parameters.Bik", @class = "form-control", required = "required", validation_input_text = "БИК" })
+        </div>
+    </div>
+

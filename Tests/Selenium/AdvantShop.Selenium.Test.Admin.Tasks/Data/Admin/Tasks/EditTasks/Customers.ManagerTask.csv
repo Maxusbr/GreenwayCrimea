@@ -1,0 +1,2 @@
+TaskId;AssignedManagerId;AppointedManagerId;Name;Description;Status;DueDate;DateCreated[DATE];DateModified[DATE];OrderId;CustomerId[GUID]
+1;3;3;test0;new test0;0;2015-04-06 00:00:00.000;06.04.2015 16:29;06.04.2015 16:29;NULL;CFC2C33B-1E84-415E-8482-E98156341603

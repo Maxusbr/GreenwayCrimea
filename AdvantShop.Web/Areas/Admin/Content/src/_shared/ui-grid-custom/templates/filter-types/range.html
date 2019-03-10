@@ -1,0 +1,15 @@
+﻿<div>
+    <div class="row">
+        <div class="col-xs-6">
+            <input type="number" data-e2e="gridFilterItemRangeFrom" class="form-control" min="–2147483648" max="2147483647"
+                   ng-model="$ctrl.item.filter.term.from"
+                   ng-keyup="$ctrl.apply([{name: $ctrl.item.filter.rangeOptions.from.name, value: $ctrl.item.filter.term.from},{name: $ctrl.item.filter.rangeOptions.to.name, value: $ctrl.item.filter.term.to}], $ctrl.item, true)" />
+        </div>
+        <div class="col-xs-6">
+            <input type="number" data-e2e="gridFilterItemRangeTo" class="form-control" min="–2147483648" max="2147483647"
+                   ng-model="$ctrl.item.filter.term.to" 
+                   ng-keyup="$ctrl.apply([{name: $ctrl.item.filter.rangeOptions.from.name, value: $ctrl.item.filter.term.from},{name: $ctrl.item.filter.rangeOptions.to.name, value: $ctrl.item.filter.term.to}], $ctrl.item, true)" />
+        </div>
+    </div>
+</div>
+

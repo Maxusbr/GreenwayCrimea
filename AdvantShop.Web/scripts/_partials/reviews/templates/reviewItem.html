@@ -1,0 +1,9 @@
+﻿<li class="review-item" data-review-item data-review-id="{{reviewId}}">
+    <span class="review-item-name color-scheme-text-сhameleon">{{author}}     !!{{actionUrl}}!!</span>
+    <span class="review-item-date cs-t-3"><time datetime="">{{date}}</time></span>
+    <div class="review-item-text" data-ng-transclude></div>
+    <div class="review-item-buttons">
+        <a href="" class="review-item-button" data-review-reply data-review-id="{{reviewId}}">{{ ::'Js.Review.Respond' | translate }}</a>
+        <a href="" class="review-item-button" data-ng-if="isAdmin" data-review-delete data-review-id="{{reviewId}}" data-action-url="{{actionUrl}}">{{ ::'Js.Review.Delete' | translate }}</a>
+    </div>
+</li>

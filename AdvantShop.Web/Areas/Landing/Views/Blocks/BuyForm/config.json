@@ -1,0 +1,105 @@
+﻿{
+  "name": "buyForm",
+  "type": "buyForm",
+  "description": "Форма заказа и картинка",
+  "category": "Шапки",
+  "picture": null,
+  "subblocks": [
+    {
+      "name": "pictureTitleText",
+      "type": "html",
+      "placeholder": "<span class=\"lp-text2\">Набор фотоальбомов</span> <span class=\"lp-text3\">Image Art</span>"
+    },
+    {
+      "name": "picture",
+      "type": "picture",
+      "settings": {
+        "src": "images/main.png",
+        "class": "lp-slide-picture"
+      }
+    },
+    {
+      "name": "price",
+      "description": "Цена товара",
+      "type": "price",
+      "settings": {
+        "old_price": "37 000",
+        "new_price": "27 999",
+        "currency": "руб"
+      }
+    },
+    {
+      "name": "buyFormTitleText",
+      "type": "html",
+      "placeholder": "Оставьте заявку"
+    },
+    {
+      "name": "buyFormSubTitleText",
+      "type": "html",
+      "placeholder": "И наш менеджер перезвонит вам в ближайшее время"
+    },
+    {
+      "name": "buyForm",
+      "type": "buyForm",
+      "settings": {
+        "show_name": true,
+        "name_required": true,
+        "show_phone": true,
+        "phone_required": true,
+        "show_email": true,
+        "email_required": true,
+        "show_comment": true,
+        "comment_required": true,
+        "first_text": "текст текст текст",
+        "final_text": "финал финал финал",
+        "style": {
+          "background": "#f85f23",
+          "color": "#ffffff",
+          "border-radius": "15px",
+          "box-shadow": "0 3px 7px 0 #f85f23"
+        }
+      }
+    },
+    {
+      "name": "buyFormButton",
+      "description": "Кнопка оставить заявку",
+      "type": "button",
+      "settings": {
+        "text": "Оставить заявку",
+        "style": {
+          "background": "#ffad23",
+          "color": "#ffffff",
+          "border-radius": "15px",
+          "box-shadow": "0 3px 7px 0 rgba(213, 70, 14, 0.72)"
+        }
+      }
+    }
+  ],
+  "settings": {
+    "templates": [
+      {
+        "name": "Обложка 1",
+        "key": "cover1"
+      },
+      {
+        "name": "Обложка 2",
+        "key": "cover2"
+      },
+      {
+        "name": "Обложка 3",
+        "key": "cover3"
+      },
+      {
+        "name": "Обложка 4",
+        "key": "cover4"
+      }
+    ],
+    "template_selected": "cover1",
+    "show_price": true,
+    "background_image": null,
+    "background_color": "linear-gradient(to bottom, #edeae5 0%, #efebe2 31%, #f2ebe1 31%, #f0ece1 36%, #f3ece2 37%, #f5ede0 54%, #f4eddd 57%, #f6efdf 58%, #f9eedc 69%, #f8f0dd 74%, #faefdb 74%, #feefd8 100%)",
+    "style": {
+      "background": "linear-gradient(to bottom, #edeae5 0%, #efebe2 31%, #f2ebe1 31%, #f0ece1 36%, #f3ece2 37%, #f5ede0 54%, #f4eddd 57%, #f6efdf 58%, #f9eedc 69%, #f8f0dd 74%, #faefdb 74%, #feefd8 100%)"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.Sidebar.SidebarModel
+<div id="sidebar_overlay" data-ng-controller="sidebarCtrl as sbCtrl" data-ng-click="sbCtrl.toggleSidebar()"></div>
+<aside id="sidebar">
+    <a href="@Url.RouteUrl("AdminMobile_Home")" class="head">
+        <img src="./areas/adminmobile/images/uiIcons/avatarUnknown.png">
+        <span class="username">@Model.Customer.LastName</span>
+    </a>
+    <div class="menu">
+        <a href="@Url.AbsoluteRouteUrl("AdminMobile_Home")" class="left inked ink-light">
+            <span class="f-icon icon-th-list-before"></span>
+            <span class="txt">@T("AdminMobile.Sidebar.Sidebar.ToMainPage")</span>
+        </a>
+        @if (Model.ShowOrders)
+        {
+            <a href="@Url.AbsoluteRouteUrl("AdminMobile_Orders", new {statusId = (int?) null})" class="left inked ink-light">
+                <span class="f-icon icon-bag-before"></span>
+                <span class="txt">@T("AdminMobile.Sidebar.Sidebar.ToOrders")</span>
+                @if (Model.OrdersCount > 0)
+                {
+                    <span class="newOrders">@Model.OrdersCount</span>
+                }
+            </a>
+        }
+        @if (Model.ShowTasks)
+        {
+            <a href="@Url.AbsoluteRouteUrl("AdminMobile_Tasks")" class="left inked ink-light">
+                <span class="f-icon icon-list-before"></span>
+                <span class="txt">@T("AdminMobile.Sidebar.Sidebar.ToTasks")</span>
+                @if (Model.TasksCount > 0)
+                {
+                    <span class="newOrders">@Model.TasksCount</span>
+                }
+            </a>
+        }
+        @if (Model.ShowLeads)
+        {
+            <a href="@Url.AbsoluteRouteUrl("AdminMobile_Leads")" class="left inked ink-light">
+                <span class="f-icon icon-list-before"></span>
+                <span class="txt">@T("AdminMobile.Sidebar.Sidebar.ToLeads")</span>
+                @if (Model.LeadsCount > 0)
+                {
+                    <span class="newOrders">@Model.LeadsCount</span>
+                }
+            </a>
+        }
+        @if (Model.ShowOrders)
+        {
+            <a href="@Url.AbsoluteRouteUrl("AdminMobile_Graphics")" class="left inked ink-light">
+                <span class="f-icon icon-chart-line"></span>
+                <span class="txt">@T("AdminMobile.Sidebar.Sidebar.ToGraphics")</span>
+            </a>
+            <a href="@Url.AbsoluteRouteUrl("AdminMobile_Attendance")" class="left inked ink-light">
+                <span class="f-icon icon-chart-bar"></span>
+                <span class="txt">@T("AdminMobile.Sidebar.Sidebar.ToVisitors")</span>
+            </a>
+        }
+        <a href="@UrlService.GetUrl()" class="left inked ink-light">
+            <span class="f-icon icon-export"></span>
+            <span class="txt">@T("AdminMobile.Sidebar.Sidebar.ToStore")</span>
+        </a>
+        <a href="@Url.AbsoluteRouteUrl("AdminMobile_Logout")" class="inked ink-light">
+            <span class="f-icon icon-level-up-before"></span>
+            <span class="txt">@T("AdminMobile.Sidebar.Sidebar.Logout")</span>
+        </a>
+    </div>
+</aside>

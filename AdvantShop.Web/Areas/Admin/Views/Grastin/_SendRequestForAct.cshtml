@@ -1,0 +1,39 @@
+﻿@model AdvantShop.Web.Admin.Models.Grastin.SendRequestForAct
+
+<form novalidate="novalidate">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">@T("Admin.Grastin.ReceiveAct")</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        @T("Admin.Grastin.Contract")
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.DropDownListFor(x => x.ContractId, Model.Contracts, new { ng_model = "ctrl.contractId", @class = "form-control", required = "required", validation_input_text = T("Admin.Grastin.Contract") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        @T("Admin.Grastin.NumberOfSeats")
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.Seats, new { ng_model = "ctrl.seats", @class = "form-control", @type = "number", required = "required", validation_input_text = T("Admin.Grastin.NumberOfSeats") })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" button-validation-success="ctrl.send(); ctrl.btnLoading = true" ladda="ctrl.btnLoading" data-button-validation>@T("Admin.Grastin.Receive")</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">@T("Admin.Grastin.Cancel")</button>
+    </div>
+</form>

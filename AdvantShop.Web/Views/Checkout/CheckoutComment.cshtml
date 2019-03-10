@@ -1,0 +1,17 @@
+﻿@model AdvantShop.Orders.CheckoutData
+
+@if (SettingsCheckout.IsShowUserComment)
+{
+    <article class="checkout-block">
+        <div class="checkout-block-title h2">
+            @T("Checkout.CheckoutComment.Comments")
+        </div>
+        <div class="checkout-block-content">
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    @Html.TextAreaFor(x => x.CustomerComment, new { @class = "textarea-small", data_ng_model = "checkout.comment", data_ng_blur = "checkout.commentSave(checkout.comment)" })
+                </div>
+            </div>
+        </div>
+    </article>
+}

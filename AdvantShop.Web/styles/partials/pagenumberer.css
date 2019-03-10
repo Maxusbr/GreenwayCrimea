@@ -1,0 +1,27 @@
+.pagenumberer {
+  font-size: 1rem;
+  margin-bottom: 1.875rem; }
+  .pagenumberer.center {
+    text-align: center; }
+
+.pagenumberer-item {
+  padding: 0.625rem 0.9375rem;
+  line-height: 1;
+  border: 1px solid transparent;
+  display: inline-block;
+  vertical-align: middle; }
+
+.pagenumberer-selected {
+  border-color: #e2e3e4;
+  border-radius: 0.3125rem; }
+
+.pagenumberer-next,
+.pagenumberer-prev {
+  text-decoration: none; }
+  .pagenumberer-next:hover,
+  .pagenumberer-prev:hover {
+    text-decoration: none; }
+
+.pagenumberer-next-text,
+.pagenumberer-prev-text {
+  display: none; }

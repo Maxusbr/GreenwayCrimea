@@ -1,0 +1,103 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.OnPayPaymentModel
+
+
+    <div class="form-group row">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Адрес платежной формы</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.FormPay, new { ng_model = "paymentMethod.Parameters.FormPay", @class = "form-control", required = "required", validation_input_text = "Адрес платежной формы" })
+            <div>
+                http://secure.onpay.ru/pay/@(Model.FormPay)
+            </div>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Адрес платежной формы">
+                Логин для API и платежной формы
+            </help-trigger>
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Пароль для API (secret_key)</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.SecretKey, new { ng_model = "paymentMethod.Parameters.SecretKey", @class = "form-control", required = "required", validation_input_text = "Пароль для API (secret_key)" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Пароль для API">
+                Пароль для API (secret_key)
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Метод отправки запросов в API</span>
+        </div>
+        <div class="col-xs-6">
+            <span class="m-b-sm">
+                <label class="adv-radio-label">
+                    GET
+                    @Html.RadioButton("SendMethod", "GET", Model.SendMethod == "GET", new { @class = "adv-radio-input", ng_model = "shippingMethod.Params.SendMethod" })
+                    <span class="adv-radio-emul"></span>
+                </label>
+            </span>
+            <span class="m-b-sm">
+                <label class="adv-radio-label">
+                    POST
+                    @Html.RadioButton("SendMethod", "POST", Model.SendMethod == "POST", new { @class = "adv-radio-input", ng_model = "shippingMethod.Params.SendMethod" })
+                    <span class="adv-radio-emul"></span>
+                </label>
+            </span>
+            <help-trigger class="ng-cloak" data-title="Метод отправки запросов в API">
+                Метод отправки запросов в API
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Валюта платежа</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CurrencyLabel, new { ng_model = "paymentMethod.Parameters.CurrencyLabel", @class = "form-control", required = "required", validation_input_text = "Валюта платежа" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Валюта платежа">
+                Выберите валюту платежа, в которой будет происходить оплата
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Курс валюты</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CurrencyValue, new {ng_model = "paymentMethod.Parameters.CurrencyValue", @class = "form-control", required = "required", validation_input_text = "Курс валюты" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Курс валюты">
+                Курс валюты платежа по отношению к валюте магазина
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Подпись MD5</span>
+        </div>
+        <div class="col-xs-6">
+            <label class="adv-checkbox-label form-label-block">
+                @Html.CheckBoxFor(x => x.CheckMd5, new { ng_model = "paymentMethod.Parameters.CheckMd5", ng_init = "paymentMethod.Parameters.CheckMd5=" + Model.CheckMd5.ToLowerString(), @class = "adv-checkbox-input", required = "required", validation_input_text = "Подпись MD5" })
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak" data-title="Подпись MD5">
+                Подпись MD5 для отправки платежных запросов
+            </help-trigger>
+        </div>
+    </div>
+

@@ -1,0 +1,20 @@
+﻿@model RatingViewModel
+<ul class="rating"
+    data-rating
+    data-max="5"
+    data-readonly="@Model.ReadOnly.ToString().ToLower()"
+    data-current="@Model.Rating"
+    @if (!string.IsNullOrEmpty(Model.Binding)) {
+        @:data-ng-model='@Model.Binding'
+    } 
+    data-obj-id="@Model.ObjId"
+    data-url="@Model.Url"
+    data-ng-class="{'rating-readonly': rating.readonly === true}">
+    @for (var i = 0; i < 5; i++)
+    {
+        <li class="rating-item icon-star-before"
+            data-index="@i"
+            data-ng-init="rating.items[@i] = {isHover: false, isSelected: @(Model.Rating - 1 < @i).ToString().ToLower()}"
+            data-ng-class="{'rating-item-selected': @i <= rating.current - 1, 'rating-item-hover': rating.items[@i].isHover}"></li>
+    }
+</ul>

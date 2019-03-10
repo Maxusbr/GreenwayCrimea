@@ -1,0 +1,29 @@
+﻿<ng-form name="shippingbyorderprice">
+    <div>
+        <div class="m-b-md">
+            <span class="inline">
+                От: <input type="text" validation-input-float ng-model="$ctrl.orderPrice" class="form-control inline" style="width: 110px;" />
+            </span>
+            <span class="inline m-l-sm">
+                Стоимость доставки: <input type="text" validation-input-float ng-model="$ctrl.shippingPrice" class="form-control inline" style="width: 110px" />
+            </span>
+            <span class="inline m-l-sm">
+                <button type="button" ng-disabled="$ctrl.orderPrice == null || $ctrl.shippingPrice == null" class="btn btn-action" ng-click="$ctrl.addRange()">Добавить</button>
+            </span>
+        </div>
+
+        <div class="m-b-md">
+
+            <div class="m-b-xs" ng-repeat="item in $ctrl.ranges track by $index">
+
+                От: {{item.orderPrice | number}} {{$ctrl.currencyLabel}} - Стоимость доставки: {{item.shippingPrice | number}} {{$ctrl.currencyLabel}}
+                <a href="" ng-click="$ctrl.deleteRange($index)" class="link-invert link-decoration-none fa fa-remove"></a>
+            </div>
+
+        </div>
+
+        <input type="hidden" name="priceRanges" value="{{$ctrl.priceRanges}}" />
+        <input type="text" ng-model="$ctrl.update" class="hidden" />
+
+    </div>
+</ng-form>

@@ -1,0 +1,88 @@
+﻿<div class="subblock-inplace-modal-container">
+    <div class="subblock-inplace-modal-row">
+        <div class="subblock-inplace-modal-name subblock-inplace-button-modal-name">
+            Текст
+        </div>
+        <div class="subblock-inplace-modal-value">
+            <input type="text" data-ng-model="$ctrl.settings.text" data-ng-keyup="$ctrl.changeText($ctrl.settings.text)" />
+        </div>
+    </div>
+    <div class="subblock-inplace-modal-row">
+        <div class="subblock-inplace-modal-name">
+            Цвет фона
+        </div>
+        <div class="subblock-inplace-modal-value">
+            <div class="subblock-inplace-modal-mar">
+                <div class="color-viewer-list"
+                     data-colors-viewer
+                     data-color-selected="$ctrl.backgroundColorSelected"
+                     data-change-color="$ctrl.selectBackgroundColor(event, color)"
+                     data-colors="$ctrl.backgroundColorsArray"
+                     data-start-selected-colors=""
+                     data-color-width="::'18px'"
+                     data-color-height="::'18px'"></div>
+            </div>
+            <div class="subblock-inplace-modal-mar">
+                <label>
+                    <input type="checkbox" data-ng-model="$ctrl.isUseCustomBackgroundColor" /> Указать свой цвет фона
+                </label>
+            </div>
+            <div data-ng-if="$ctrl.isUseCustomBackgroundColor">
+                <color-picker ng-model="$ctrl.backgroundColor"
+                              color-picker-swatch-bootstrap="false"
+                              color-picker-format="'hex'"
+                              color-picker-alpha="false"
+                              color-picker-swatch-only="false"
+                              color-picker-case="'lower'"
+                              color-picker-on-change="$ctrl.changeBackgroundColor($event, color)"></color-picker>
+            </div>
+        </div>
+    </div>
+    <div class="subblock-inplace-modal-row">
+        <div class="subblock-inplace-modal-name">
+            Цвет текста
+        </div>
+        <div class="subblock-inplace-modal-value">
+            <div class="subblock-inplace-modal-mar">
+                <div class="color-viewer-list"
+                     data-colors-viewer
+                     data-color-selected="$ctrl.textColorSelected"
+                     data-change-color="$ctrl.selectTextColor(event, color)"
+                     data-colors="$ctrl.textColorsArray"
+                     data-start-selected-colors=""
+                     data-color-width="::'18px'"
+                     data-color-height="::'18px'"></div>
+            </div>
+            <div class="subblock-inplace-modal-mar">
+                <label>
+                    <input type="checkbox" data-ng-model="$ctrl.isUseCustomTextColor" /> Указать свой цвет текста
+                </label>
+            </div>
+            <div data-ng-if="$ctrl.isUseCustomTextColor">
+                <color-picker ng-model="$ctrl.textColor"
+                              color-picker-swatch-bootstrap="false"
+                              color-picker-format="'hex'"
+                              color-picker-alpha="false"
+                              color-picker-swatch-only="false"
+                              color-picker-case="'lower'"
+                              color-picker-on-change="$ctrl.changeTextColor($event, color)"></color-picker>
+            </div>
+        </div>
+    </div>
+    <div class="subblock-inplace-modal-row">
+        <div class="subblock-inplace-modal-name">
+            Округление, px
+        </div>
+        <div class="subblock-inplace-modal-value">
+            <input type="number" class="lp-input-number" min="0" data-ng-model="$ctrl.borderRadiusParsed" data-ng-change="$ctrl.processStylesChange('border-radius', $ctrl.borderRadiusParsed + 'px')" />
+        </div>
+    </div>
+    <div class="subblock-inplace-modal-row">
+        <div class="subblock-inplace-modal-name">
+            Использовать тень
+        </div>
+        <div class="subblock-inplace-modal-value">
+            <input type="checkbox" class="subblock-inplace-modal-checkbox" data-ng-model="$ctrl.isUseShadow" data-ng-init="$ctrl.isUseShadow = $ctrl.settings.style['box-shadow'] != null" data-ng-change="$ctrl.useShadow($ctrl.isUseShadow)" />
+        </div>
+    </div>
+</div>

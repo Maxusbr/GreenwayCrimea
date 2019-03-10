@@ -1,0 +1,49 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+$h1-size: $font-size-xbig !default;
+$h1-weight: normal !default;
+$h1-margin: 0 0 rem-calc(20px) 0 !default;
+
+$h2-size: $font-size-large !default;
+$h2-weight: normal !default;
+$h2-margin: 0 0 rem-calc(16px) 0 !default;
+
+$h3-size: $font-size-xmedium !default;
+$h3-weight: normal !default;
+$h3-margin: 0 0 rem-calc(12px) 0 !default;
+
+.h-inline {
+    display: inline-block;
+}
+
+h1, .h1 {
+    font-size: $h1-size;
+    font-weight: $h1-weight;
+    margin: $h1-margin;
+}
+
+h2, .h2 {
+    font-size: $h2-size;
+    font-weight: $h2-weight;
+    margin: $h2-margin;
+}
+
+h3, .h3 {
+    font-size: $h3-size;
+    font-weight: $h3-weight;
+    margin: $h3-margin;
+}
+
+h1, h2, h3, h4, h5, h6,   .h1, .h2, .h3, .h4, .h5, .h6 {
+    line-height: 1.2;
+    &.no-margin {
+        margin:0;
+    }
+}
+
+.subheader {
+    color: #c3c3c3;
+    font-size: rem-calc(12px);
+    line-height: 1;
+    margin: 0 0 $vertical-interval-middle 0;
+}

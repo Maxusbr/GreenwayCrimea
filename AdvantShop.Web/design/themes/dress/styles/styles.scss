@@ -1,0 +1,30 @@
+@import "../../_themes.scss", "../../../../styles/functions/_util.scss", "../../../../styles/_settings.scss";
+
+
+$bgTop: (height rem-calc(916px), bg (url('../images/background-top.jpg') no-repeat center top));
+
+@include theme-background($bgTop, null);
+
+.site-footer {
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        z-index: 0;
+    }
+
+    &:before {
+        background: url('../images/background-bottom-left.png') no-repeat left bottom;
+        height: 447px;
+        width: 295px;
+        left: 50%;
+        margin-left: -900px;
+    }
+
+    &:after {
+        background: url('../images/background-bottom-right.png') no-repeat 600px bottom;
+        height: 459px;
+        left: 50%;
+        right: 0;
+    }
+}

@@ -1,0 +1,45 @@
+﻿@model AdvantShop.Core.Services.Shipping.ShippingMethodAdminModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+<form method="POST" action="@Url.Action("Edit")" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.ShippingMethodId)
+    @Html.HiddenFor(x => x.ModelType)
+
+    <div class="ibox">
+        <div class="ibox-content">
+            <div class="sticky-page-name" sticky sticky-top="0">
+                <div class="page-name-block sticky-page-name-inner">
+                    <div class="page-name-block-item-main">
+                        <h1 class="page-name-block-text sticky-page-name-text">
+                            Метод доставки - "@Model.Name"
+                        </h1>
+                        <div data-e2e="ShippingReturn" class="m-t-sm">
+                            <a href="@Url.Action("ShippingMethods", "Settings")">Вернуться назад</a>
+                        </div>
+                    </div>
+                    <div class="page-name-block-item-additional">
+                        <button type="submit" data-e2e="ShippingAdd" class="btn btn-sm btn-success" data-button-validation disabled ng-disabled="!form.modified">
+                            <i class="fa fa-check"></i> @T("Admin.Save")
+                        </button>
+                        <a href="" class="link-danger m-l-sm" ng-click="shippingMethod.deleteMethod()">@T("Admin.Delete")</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-t" ng-init="shippingMethod.init(@Model.ShippingMethodId, '@Model.Icon')">         
+                @Html.Partial("_Common", Model)
+
+                @if (Model.ShippingViewPath != null)
+                {
+                    <div class="shipping-item-settings-header inline content-header m-b-md">
+                        Настройки метода
+                    </div>
+                    @Html.Partial(Model.ShippingViewPath, Model)
+                }
+            </div>
+        </div>
+    </div>
+</form>

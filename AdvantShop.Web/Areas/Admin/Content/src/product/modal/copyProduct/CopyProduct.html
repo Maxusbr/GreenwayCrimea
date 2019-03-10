@@ -1,0 +1,16 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Добавление копии товара</h2>
+</div>
+<div class="modal-body">
+    <div class="m-b">
+        Название товара:
+    </div>
+    <div>
+        <input type="text" placeholder="" ng-model="ctrl.name" class="form-control" required="required" autofocus ng-keyup="$event.keyCode === 13 && ctrl.copyProduct()" />
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.btnLoading = true; ctrl.copyProduct();" ladda="ctrl.btnLoading">Добавить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

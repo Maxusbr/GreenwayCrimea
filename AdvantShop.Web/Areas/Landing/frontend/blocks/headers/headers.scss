@@ -1,0 +1,31 @@
+﻿.h-general {
+    font-size: 35px;
+    position: relative;
+    text-align:center;
+}
+
+.h-decoration {
+    position: relative;
+    display: block;
+    text-align: center;
+
+    &:before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        left: 0;
+        right: 0;
+        border: solid 1px;
+        border-width: 1px 0;
+        z-index: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .h-general {
+        background-color: #fff;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: inline-block;
+    }
+}

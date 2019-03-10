@@ -1,0 +1,181 @@
+﻿@using AdvantShop.Trial
+@using AdvantShop.Saas
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var action = Request.RequestContext.RouteData.Values["action"].ToString().ToLower();
+    var controller = Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    var currentsaasData = SaasDataService.CurrentSaasData;
+    var enabledSaas = SaasDataService.IsSaasEnabled;
+}
+<div class="wrapper">
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="settings-wrap">
+                <div class="header-alt settings-title sticky-page-name-text sticky-page-name">
+                    <span class="original-header-page">@T("Admin.Settings.Header")</span>
+                </div>
+                <div class="aside-menu">
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(action == "index" && controller == "settings" ? "selected" : "")" href="@Url.Action("Index", "Settings")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.Index")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingscatalog" ? "selected" : "")" href="@Url.Action("Index", "SettingsCatalog")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.Catalog")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingscheckout" ? "selected" : "")" href="@Url.Action("Index", "SettingsCheckout")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.Checkout")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingscustomers" ? "selected" : "")" href="@Url.Action("Index", "SettingsCustomers")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.Customers")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingsnews" ? "selected" : "")" href="@Url.Action("Index", "SettingsNews")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.News")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(action == "shippingmethods" || controller == "shippingmethods" ? "selected" : "")" href="@Url.Action("ShippingMethods", "Settings")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.ShippingMethods")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(action == "paymentmethods" || controller == "paymentmethods" ? "selected" : "")" href="@Url.Action("PaymentMethods", "Settings")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.PaymentMethods")
+                            </div>
+                        </div>
+                    </a>
+                    @if (!enabledSaas || currentsaasData.MobileVersion)
+                    {
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(action == "mobileversion" ? "selected" : "")" href="@Url.Action("MobileVersion", "Settings")">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">
+                                    @T("Admin.Settings.MobileVersion")
+                                </div>
+                            </div>
+                        </a>
+                    }
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingstasks" ? "selected" : "")" href="@Url.Action("Index", "SettingsTasks")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.Tasks")
+                            </div>
+                        </div>
+                    </a>
+                    @if (!enabledSaas || currentsaasData.HaveCrm)
+                    {
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingscrm" ? "selected" : "")" href="@Url.Action("Index", "SettingsCrm")">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">
+                                    @T("Admin.Settings.CRM")
+                                </div>
+                            </div>
+                        </a>
+                    }
+                    @if (!enabledSaas || currentsaasData.BonusSystem)
+                    {
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingsbonus" ? "selected" : "")" href="@Url.Action("Index", "SettingsBonus")">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">
+                                    @T("Admin.Settings.Bonuses")
+                                </div>
+                            </div>
+                        </a>
+                    }
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(action == "userssettings" ? "selected" : "")" href="@Url.Action("UsersSettings", "Settings")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.Users")
+                            </div>
+                        </div>
+                    </a>
+                    @if (!enabledSaas || currentsaasData.HaveTelephony)
+                    {
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingstelephony" ? "selected" : "")" href="@Url.Action("Index", "SettingsTelephony")">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">
+                                    @T("Admin.Settings.Telephony")
+                                </div>
+                            </div>
+                        </a>
+                    }
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingsmail" ? "selected" : "")" href="@Url.Action("Index", "SettingsMail")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.NotifyEMails")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingsseo" ? "selected" : "")" href="@Url.Action("Index", "SettingsSeo")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.SEO")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingssocial" ? "selected" : "")" href="@Url.Action("Index", "SettingsSocial")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.Social")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingsapi" ? "selected" : "")" href="@Url.Action("Index", "SettingsApi")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.System.API")
+                            </div>
+                        </div>
+                    </a>
+                    <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none @(controller == "settingssystem" ? "selected" : "")" href="@Url.Action("Index", "SettingsSystem")">
+                        <div class="aside-menu-inner">
+                            <div class="aside-menu-name">
+                                @T("Admin.Settings.System")
+                            </div>
+                        </div>
+                    </a>
+                    @if (TrialService.IsTrialEnabled)
+                    {
+                        <ui-modal-trigger data-controller="'ModalClearDataCtrl'" controller-as="ctrl"
+                                          template-url="../areas/admin/content/src/settings/modal/clearData/ClearData.html">
+                            <a class="aside-menu-row settigs-menu-row link-invert link-danger" href="">
+                                <div class="aside-menu-inner">
+                                    <div class="aside-menu-name">
+                                        @T("Admin.Settings.ClearData")
+                                    </div>
+                                </div>
+                            </a>
+                        </ui-modal-trigger>
+                    }
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-10 animated1 fadeInRight1">
+            <div class="ibox">
+                <div class="ibox-content settings-block">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

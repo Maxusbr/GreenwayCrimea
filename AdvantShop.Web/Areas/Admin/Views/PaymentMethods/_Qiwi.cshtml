@@ -1,0 +1,103 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.QiwiPaymentModel
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Числовой идентификатор провайдера</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.ProviderId, new { ng_model = "paymentMethod.Parameters.ProviderId", @class = "form-control", required = "required", validation_input_text = "Числовой идентификатор провайдера" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Числовой идентификатор провайдера">
+                Это ваш логин в личный кабинет. Обычно 6-ти значное число.
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Rest ID</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.RestId, new { ng_model = "paymentMethod.Parameters.RestId", @class = "form-control", required = "required", validation_input_text = "Rest ID" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Rest ID">
+                <p>Идентификатор для протокола.</p>
+                <p>Получить можно из личного кабинета в системе оплаты.</p>
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Пароль Rest ID</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Password, new { ng_model = "paymentMethod.Parameters.Password", @class = "form-control", required = "required", validation_input_text = "Пароль Rest ID" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Пароль Rest ID">
+                <p>Обратите вримание, что это не пароль от личного кабинета, это отдельный, специальный пароль.</p>
+                <p>Получить пароль можно в личном кабинете системы оплаты, при получении параметра Rest ID.</p>
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Пароль оповещения</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.PasswordNotify, new { ng_model = "paymentMethod.Parameters.PasswordNotify", @class = "form-control", required = "required", validation_input_text = "Пароль оповещения" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="ЧПароль оповещения">
+                <p>Используется интерфейсом оповещения о платеже.</p>
+                <p>Получить пароль можно в личном кабинете системы оплаты в настройках Pull (REST) протокола.</p>
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Название магазина</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.ProviderName, new { ng_model = "paymentMethod.Parameters.ProviderName", @class = "form-control", required = "required", validation_input_text = "Название магазина" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Название магазина">
+                <p>Название магазина - Это название магазина, тут всё просто.</p>
+                <p>Название должно быть кратким, оно будет отображаться на странице оплаты когда пользователь уже перейдет на сайт qiwi для оплаты.</p>
+                <p>Например: Бижутерия "Кики".</p>
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">ISO код валюты</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CurrencyCode, new { ng_model = "paymentMethod.Parameters.CurrencyCode", @class = "form-control", required = "required", validation_input_text = "ISO код валюты" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="ISO код валюты">
+                Выберите валюту платежа, в которой будет происходить оплата
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Курс валюты</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CurrencyValue, new { ng_model = "paymentMethod.Parameters.CurrencyValue", @class = "form-control", required = "required", validation_input_text = "Курс валюты" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Курс валюты">
+                Курс валюты по отношению к валюте магазина
+            </help-trigger>
+        </div>
+    </div>
+

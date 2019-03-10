@@ -1,0 +1,33 @@
+﻿@model AdvantShop.ViewModel.Home.CarouselViewModel
+<div class="carousel-main-wrap col-xs first-xs">
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-main-list text-static"
+                 data-carousel
+                 data-carousel-class="carousel-main"
+                 data-stretch="false"
+                 data-dots="true"
+                 data-dots-class="carousel-main-dots"
+                 data-dots-item-class="cs-bg-i-1 carousel-main-dots-item"
+                 data-prev-class="carousel-main-prev icon-left-circle-after"
+                 data-next-class="carousel-main-next icon-right-circle-after"
+                 data-speed="@Model.Speed"
+                 data-auto="true"
+                 data-auto-pause="@Model.Pause"
+                 data-visible-max="1">
+                @foreach (var slider in @Model.Sliders)
+                {
+                    <div class="carousel-main-item">
+                        <a href="@(slider.Url.IsNotEmpty() ? slider.Url : "javascript:void(0)")" class="@(slider.Url.IsNotEmpty() ? "carousel-main-link" : "carousel-main-link-noop")" @Html.Raw(slider.Blank ? "target=\"_blank\"" : string.Empty)>
+                            <img src="@slider.Picture.ImageSrc()" alt="@Html.Encode(slider.Picture.Description)" @Html.InplaceImageCarousel(slider.CarouselId, slider.Url.IsEmpty() && !slider.Enabled) />
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="carousel-nav-prev"></button>
+            <button class="carousel-nav-next"></button>
+        </div>
+    </div>
+</div>

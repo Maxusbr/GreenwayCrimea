@@ -1,0 +1,26 @@
+﻿@model AdvantShop.ViewModel.Common.SocialButtonsViewModel
+<div class="social-btns">
+    @if (Model.Mode == "custom")
+    {
+        @Html.Raw(SettingsSocial.SocialShareCustomCode)
+    }
+    else if (Model.Mode == "default_ru-RU")
+    {
+        <div class="share42init"></div>
+        <script type="text/javascript" src="scripts/_common/share42/share42.js?1"></script>
+    }
+    else
+    {
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_facebook"></a>
+        <a class="addthis_button_twitter"></a>
+        <a class="addthis_button_pinterest_share"></a>
+        <a class="addthis_button_google_plusone_share"></a>
+        <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" defer>var addthis_config = { "data_track_addressbar": true };</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e2582ed5550ffee" defer></script>
+    <!-- AddThis Button END -->
+    }
+</div>

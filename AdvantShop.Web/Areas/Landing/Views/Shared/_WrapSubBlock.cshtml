@@ -1,0 +1,85 @@
+﻿@using AdvantShop.App.Landing.Controllers.Domain
+@model SubBlockModel
+
+@{
+    var content = string.IsNullOrEmpty(Model.ViewPath)
+            ? Html.Raw(Model.SubBlock.ContentHtml)
+            : Html.Partial(Model.ViewPath, Model);
+
+    var landingPageId = LpService.CurrentLanding.Id;
+    var noPhotoSrc = "areas/landing/frontend/images/nophoto.jpg";
+}
+
+@if (Model.InPlace)
+{
+    <subblock-inplace data-sublock-id="@Model.SubBlock.Id"
+                      data-name="@Model.SubBlock.Name"
+                      data-type="@Model.SubBlock.Type"
+                      data-sort-order="@Model.SubBlock.SortOrder"
+                      data-settings="@Model.SubBlock.Settings">
+
+        @if (Model.SubBlock.Type == "html")
+        {
+            <div data-inplace-rich contenteditable="true" data-inplace-url="landinginplace/updateSubBlockContent" data-inplace-params="{subBlockId : @Model.SubBlock.Id}" placeholder="Нажмите сюда, чтобы добавить описание">
+                @content
+            </div>
+        }
+        else if (Model.SubBlock.Type == "picture" || Model.SubBlock.Type == "logo")
+        {
+            var imageSrc = Model.SubBlock.TryGetSettingsValue("src");
+
+            <div class="inplace-landing-inline"
+                 data-inplace-landing-image
+                 data-ngf-drop=""
+                 accept="image/*"
+                 data-ngf-accept="'image/*'"
+                 data-ngf-change="inplaceLandingImage.fileDrop($files, $event, $rejectedFiles)"
+                 data-inplace-url="landinginplace/processpictute"
+                 data-inplace-params="{lpId: @landingPageId, blockId: @Model.SubBlock.LandingBlockId, subblockId: @Model.SubBlock.Id, nophoto:'@noPhotoSrc', settings: {{subblockInplace.settings}}}"
+                 data-inplace-image-buttons-visible="{'add': false, 'update': true, 'delete' : true, 'permanentVisible': false}">
+                <img src="@(imageSrc != null ? imageSrc : noPhotoSrc )" class="@Model.SubBlock.TryGetSettingsValue("class")" alt="" />
+            </div>
+        }
+        else if (Model.SubBlock.Type == "button")
+        {
+            <div class="btn-wrap subblock-inplace-button" data-subblock-inplace-button data-ng-init="subblockInplaceButton.settings = subblockInplace.settings; subblockInplaceButton.subblockId = subblockInplace.sublockId;">
+                @content
+                <i class="subblock-inplace-button-trigger" data-ng-click="subblockInplaceButton.showModal('modalButton_@(Model.SubBlock.Id)')"></i>
+            </div>
+        }
+        else if (Model.SubBlock.Type == "price")
+        {
+            <div class="subblock-inplace-price" data-subblock-inplace-price data-ng-init="subblockInplacePrice.settings = subblockInplace.settings; subblockInplacePrice.subblockId = subblockInplace.sublockId;">
+                @content
+                <i class="subblock-inplace-button-trigger" data-ng-click="subblockInplacePrice.showModal('modalPrice_@(Model.SubBlock.Id)')"></i>
+            </div>
+        }
+        else if (Model.SubBlock.Type == "buyForm")
+        {
+            <div class="subblock-inplace-button" data-subblock-inplace-buy-form data-ng-init="subblockInplaceBuyForm.settings = subblockInplace.settings; subblockInplaceBuyForm.subblockId = subblockInplace.sublockId;">
+                @content
+                <i class="subblock-inplace-button-trigger" data-ng-click="subblockInplaceBuyForm.showModal('modalBuyForm_@(Model.SubBlock.Id)')"></i>
+            </div>
+        }
+        else
+        {
+            @content
+        }
+
+    </subblock-inplace>
+}
+else
+{
+    if (Model.SubBlock.Type == "picture" || Model.SubBlock.Type == "logo")
+    {
+        var imageSrc = Model.SubBlock.TryGetSettingsValue("src");
+        if (imageSrc != null)
+        {
+            <img src="@imageSrc" class="@Model.SubBlock.TryGetSettingsValue("class")" alt="" />
+        }
+    }
+    else
+    {
+        @content
+    }
+}

@@ -1,0 +1,69 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.YandexKassaPaymentModel
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">ShopId</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ShopId, new { ng_model = "paymentMethod.Parameters.ShopId", @class = "form-control", required = "required", validation_input_text = "ShopId" })
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">ScId</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ScId, new { ng_model = "paymentMethod.Parameters.ScId", @class = "form-control", required = "required", validation_input_text = "ScId" })
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Способ оплаты
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.YaPaymentType, Model.YaPaymentTypes, new { ng_model = "paymentMethod.Parameters.YaPaymentType", ng_init = "paymentMethod.Parameters.YaPaymentType='" + Model.YaPaymentType + "'", @class = "form-control" })
+    </div>
+</div>
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Пароль (для NVP/MD5)</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.Password, new { ng_model = "paymentMethod.Parameters.Password", @class = "form-control", required = "required", validation_input_text = "Пароль (для NVP/MD5)" })
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Демо режим
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.DemoMode, new { ng_model = "paymentMethod.Parameters.DemoMode", ng_init = "paymentMethod.Parameters.DemoMode=" + Model.DemoMode.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Передавать данные для чека
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.SendReceiptData, new { ng_model = "paymentMethod.Parameters.SendReceiptData", ng_init = "paymentMethod.Parameters.SendReceiptData=" + Model.SendReceiptData.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+Id;Email;Subscribe;SubscribeDate[DATE];UnsubscribeDate[DATE];UnsubscribeReason
+4;testmail1@test.ru;true;20.07.2017 10:54;NULL;NULL
+5;testmail2@test.ru;true;19.07.2017 10:54;NULL;NULL
+6;testmail3@test.ru;true;18.07.2017 10:54;NULL;NULL
+7;testmail4@test.ru;true;17.07.2017 10:54;NULL;NULL
+8;testmail5@test.ru;true;16.07.2017 10:54;NULL;NULL
+9;testmail6@test.ru;true;15.07.2017 10:54;NULL;NULL
+10;testmail7@test.ru;true;14.07.2017 10:54;NULL;NULL
+11;testmail8@test.ru;true;13.07.2017 10:54;NULL;NULL
+12;testmail9@test.ru;true;12.07.2017 10:54;NULL;NULL
+13;testmail10@test.ru;true;11.07.2017 10:54;NULL;NULL
+14;testmail11@test.ru;false;10.07.2017 10:54;30.06.2017 10:54;NULL
+15;testmail12@test.ru;false;09.07.2017 10:54;01.07.2017 10:54;NULL
+16;testmail13@test.ru;false;08.07.2017 10:54;02.07.2017 10:54;NULL
+17;testmail14@test.ru;false;07.07.2017 10:54;03.07.2017 10:54;NULL
+18;testmail15@test.ru;false;06.07.2017 10:54;04.07.2017 10:54;NULL
+19;testmail16@test.ru;false;05.07.2017 10:54;05.07.2017 10:54;NULL
+20;testmail17@test.ru;false;04.07.2017 10:54;06.07.2017 10:54;Reason1
+21;testmail18@test.ru;false;03.07.2017 10:54;07.07.2017 10:54;Reason2
+22;testmail19@test.ru;false;02.07.2017 10:54;08.07.2017 10:54;Reason3
+23;testmail20@test.ru;false;01.07.2017 10:54;09.07.2017 10:54;Reason4
+24;testmail21@test.ru;false;30.06.2017 10:54;10.07.2017 10:54;Reason5
+25;testmail22@test.ru;false;29.06.2017 10:54;11.07.2017 10:54;Reason6
+26;testmail23@test.ru;false;28.06.2017 10:54;12.07.2017 10:54;Reason7
+27;testmail24@test.ru;false;27.06.2017 10:54;13.07.2017 10:54;Reason8
+28;testmail25@test.ru;false;26.06.2017 10:54;14.07.2017 10:54;Reason9
+29;testmail26@test.ru;false;25.06.2017 10:54;15.07.2017 10:54;Reason10
+30;testmail27@test.ru;false;24.06.2017 10:54;16.07.2017 10:54;Reason11
+31;testmail28@test.ru;false;23.06.2017 10:54;17.07.2017 10:54;Reason12
+32;testmail29@test.ru;false;22.06.2017 10:54;18.07.2017 10:54;Reason13
+33;testmail30@test.ru;false;21.06.2017 10:54;19.07.2017 10:54;Reason14
+34;testmail31@test.ru;false;20.06.2017 10:54;20.07.2017 10:54;Reason15
+35;testmail32@test.ru;false;19.06.2017 10:54;21.07.2017 10:54;Reason16
+36;testmail33@test.ru;false;18.06.2017 10:54;22.07.2017 10:54;Reason17
+37;testmail34@test.ru;false;17.06.2017 10:54;23.07.2017 10:54;Reason18
+38;testmail35@test.ru;false;16.06.2017 10:54;24.07.2017 10:54;Reason19
+39;testmail36@test.ru;false;15.06.2017 10:54;25.07.2017 10:54;Reason20
+40;testmail37@test.ru;false;14.06.2017 10:54;26.07.2017 10:54;Reason21
+41;testmail38@test.ru;false;13.06.2017 10:54;27.07.2017 10:54;Reason22
+42;testmail39@test.ru;false;12.06.2017 10:54;28.07.2017 10:54;Reason23
+43;testmail40@test.ru;false;11.06.2017 10:54;29.07.2017 10:54;Reason24
+44;testmail41@test.ru;false;10.06.2017 10:54;30.07.2017 10:54;Reason25
+45;testmail42@test.ru;false;09.06.2017 10:54;31.07.2017 10:54;Reason26
+46;testmail43@test.ru;false;08.06.2017 10:54;01.08.2017 10:54;Reason27
+47;testmail44@test.ru;false;07.06.2017 10:54;02.08.2017 10:54;Reason28
+48;testmail45@test.ru;false;06.06.2017 10:54;03.08.2017 10:54;Reason29
+49;testmail46@test.ru;false;05.06.2017 10:54;04.08.2017 10:54;Reason30
+50;testmail47@test.ru;false;04.06.2017 10:54;05.08.2017 10:54;Reason31
+51;testmail48@test.ru;false;03.06.2017 10:54;06.08.2017 10:54;Reason32
+52;testmail49@test.ru;false;02.06.2017 10:54;07.08.2017 10:54;Reason33
+53;testmail50@test.ru;false;01.06.2017 10:54;08.08.2017 10:54;Reason34
+54;testmail51@test.ru;false;31.05.2017 10:54;09.08.2017 10:54;Reason35
+55;testmail52@test.ru;false;30.05.2017 10:54;10.08.2017 10:54;Reason36
+56;testmail53@test.ru;false;29.05.2017 10:54;11.08.2017 10:54;Reason37
+57;testmail54@test.ru;false;28.05.2017 10:54;12.08.2017 10:54;Reason38
+58;testmail55@test.ru;false;27.05.2017 10:54;13.08.2017 10:54;Reason39
+59;testmail56@test.ru;false;26.05.2017 10:54;14.08.2017 10:54;Reason40
+60;testmail57@test.ru;false;25.05.2017 10:54;15.08.2017 10:54;Reason41
+61;testmail58@test.ru;false;24.05.2017 10:54;16.08.2017 10:54;Reason42
+62;testmail59@test.ru;false;23.05.2017 10:54;17.08.2017 10:54;Reason43
+63;testmail60@test.ru;false;22.05.2017 10:54;18.08.2017 10:54;Reason44
+64;testmail61@test.ru;false;21.05.2017 10:54;19.08.2017 10:54;Reason45
+65;testmail62@test.ru;false;20.05.2017 10:54;20.08.2017 10:54;Reason46
+66;testmail63@test.ru;false;19.05.2017 10:54;21.08.2017 10:54;Reason47
+67;testmail64@test.ru;false;18.05.2017 10:54;22.08.2017 10:54;Reason48
+68;testmail65@test.ru;false;17.05.2017 10:54;23.08.2017 10:54;Reason49
+69;testmail66@test.ru;false;16.05.2017 10:54;24.08.2017 10:54;Reason50
+70;testmail67@test.ru;false;15.05.2017 10:54;25.08.2017 10:54;Reason51
+71;testmail68@test.ru;false;14.05.2017 10:54;26.08.2017 10:54;Reason52
+72;testmail69@test.ru;false;13.05.2017 10:54;27.08.2017 10:54;Reason53
+73;testmail70@test.ru;false;12.05.2017 10:54;28.08.2017 10:54;Reason54
+74;testmail71@test.ru;false;11.05.2017 10:54;29.08.2017 10:54;Reason55
+75;testmail72@test.ru;false;10.05.2017 10:54;30.08.2017 10:54;Reason56
+76;testmail73@test.ru;false;09.05.2017 10:54;31.08.2017 10:54;Reason57
+77;testmail74@test.ru;false;08.05.2017 10:54;01.09.2017 10:54;Reason58
+78;testmail75@test.ru;false;07.05.2017 10:54;02.09.2017 10:54;Reason59
+79;testmail76@test.ru;false;06.05.2017 10:54;03.09.2017 10:54;Reason60
+80;testmail77@test.ru;false;05.05.2017 10:54;04.09.2017 10:54;Reason61
+81;testmail78@test.ru;false;04.05.2017 10:54;05.09.2017 10:54;Reason62
+82;testmail79@test.ru;false;03.05.2017 10:54;06.09.2017 10:54;Reason63
+83;testmail80@test.ru;false;02.05.2017 10:54;07.09.2017 10:54;Reason64
+84;testmail81@test.ru;false;01.05.2017 10:54;08.09.2017 10:54;Reason65
+85;testmail82@test.ru;false;30.04.2017 10:54;09.09.2017 10:54;Reason66
+86;testmail83@test.ru;false;29.04.2017 10:54;10.09.2017 10:54;Reason67
+87;testmail84@test.ru;false;28.04.2017 10:54;11.09.2017 10:54;Reason68
+88;testmail85@test.ru;false;27.04.2017 10:54;12.09.2017 10:54;Reason69
+89;testmail86@test.ru;false;26.04.2017 10:54;13.09.2017 10:54;Reason70
+90;testmail87@test.ru;false;25.04.2017 10:54;14.09.2017 10:54;Reason71
+91;testmail88@test.ru;false;24.04.2017 10:54;15.09.2017 10:54;Reason72
+92;testmail89@test.ru;false;23.04.2017 10:54;16.09.2017 10:54;Reason73
+93;testmail90@test.ru;false;22.04.2017 10:54;17.09.2017 10:54;Reason74
+94;testmail91@test.ru;false;21.04.2017 10:54;18.09.2017 10:54;Reason75
+95;testmail92@test.ru;false;20.04.2017 10:54;19.09.2017 10:54;Reason76
+96;testmail93@test.ru;false;19.04.2017 10:54;20.09.2017 10:54;Reason77
+97;testmail94@test.ru;false;18.04.2017 10:54;21.09.2017 10:54;Reason78
+98;testmail95@test.ru;false;17.04.2017 10:54;22.09.2017 10:54;Reason79
+99;testmail96@test.ru;false;16.04.2017 10:54;23.09.2017 10:54;Reason80
+100;testmail97@test.ru;false;15.04.2017 10:54;24.09.2017 10:54;Reason81
+101;testmail98@test.ru;false;14.04.2017 10:54;25.09.2017 10:54;Reason82
+102;testmail99@test.ru;false;13.04.2017 10:54;26.09.2017 10:54;Reason83
+103;testmail100@test.ru;false;12.04.2017 10:54;27.09.2017 10:54;Reason84
+104;testmail101@test.ru;false;11.04.2017 10:54;28.09.2017 10:54;Reason85

@@ -1,0 +1,41 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CatalogSettings.CatalogSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "SettingsCatalog", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settingsCatalog.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified"/>
+            </div>
+        </div>
+    </div>
+
+    <uib-tabset active uid="catalogTab" on-select-batch="settingsCatalog.floatHeader = tab.heading;">
+        <uib-tab index="'common'" heading="@T("Admin.Settings.Catalog.Common")" classes="ng-tab">
+            @Html.Partial("_CatalogCommon", Model)
+        </uib-tab>
+        <uib-tab index="'product'" heading="@T("Admin.Settings.Catalog.Product")" classes="ng-tab">
+            @Html.Partial("_Product", Model)
+        </uib-tab>
+        <uib-tab index="'search'" heading="@T("Admin.Settings.Catalog.Search")" classes="ng-tab">
+            @Html.Partial("_Search", Model)
+        </uib-tab>
+        <uib-tab index="'brand'" heading="@T("Admin.Settings.Catalog.Brands")" classes="ng-tab">
+            @Html.Partial("_Brand", Model)
+        </uib-tab>
+        <uib-tab index="'currency'" heading="@T("Admin.Settings.Catalog.Currencies")" classes="ng-tab">
+            @Html.Partial("_Currencies", Model)
+        </uib-tab>
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success btn--margin-left" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" data-e2e="SettingsCatalogSave" />
+        </div>
+    </uib-tabset>
+}

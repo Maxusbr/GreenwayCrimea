@@ -1,0 +1,58 @@
+﻿.ui-grid-custom-selection-wrap {
+
+    .ui-grid-header-cell {
+        visibility: hidden;
+    }
+
+    .ui-grid-pinned-container-left .ui-grid-header-cell {
+        visibility: visible;
+    }
+}
+
+.ui-grid-custom-selection-action {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ui-grid-custom-checkbox-selection-part {
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 2px;
+        right: 3px;
+        height: 1px;
+        background-color: #000;
+        transform: translateY(-50%);
+    }
+}
+
+.ui-grid-custom-selection-count {
+    font-weight: bold;
+}
+
+.ui-grid-custom-selection-info {
+    margin-left: 5px;
+    line-height: 1;
+}
+
+.ui-grid-custom-checkbox {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .adv-checkbox-label {
+        line-height: 0;
+        font-size: 0;
+    }
+}
+.ui-grid-custom-selection-action-link > ui-modal-trigger{
+    display: block;
+    padding: 3px 20px;
+    margin: -3px -20px;
+}

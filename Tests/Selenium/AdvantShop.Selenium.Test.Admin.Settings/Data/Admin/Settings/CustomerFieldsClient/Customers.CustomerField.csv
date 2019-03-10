@@ -1,0 +1,11 @@
+Id;Name;FieldType;SortOrder;Required;Enabled;ShowInClient
+1;Customer Field 1;0;1;false;true;true
+2;Customer Field 2;1;2;true;true;true
+3;Customer Field 3;2;3;true;true;true
+4;Customer Field 4;3;4;false;true;true
+5;Customer Field 5;1;5;false;true;true
+6;Customer Field 6;1;6;false;true;false
+7;Customer Field 7;1;7;false;false;false
+8;Customer Field 8;1;8;false;false;false
+9;Customer Field 9;1;9;false;false;false
+10;Customer Field 10;1;10;false;false;false

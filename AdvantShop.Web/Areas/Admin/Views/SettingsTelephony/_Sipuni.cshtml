@@ -1,0 +1,46 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.IPTelephonySettingsModel
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="SipuniApiKey" class="form-label-block">@T("Admin.Settings.Telephony.Sipuni.ApiKey")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.SipuniApiKey, new { ng_model = "settingsTelephony.sipuniApiKey", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.Sipuni.ApiKey")">
+            @T("Admin.Settings.Telephony.Sipuni.ApiKeyNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label class="form-label-block">@T("Admin.Settings.Telephony.Sipuni.ServiceUrl")</label>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <span>@(SettingsMain.SiteUrl)/sipuni/pushnotification</span>
+        <help-trigger class="ng-cloak word-spacing" data-title="@T("Admin.Settings.Telephony.Sipuni.ServiceUrl")">
+            @T("Admin.Settings.Telephony.Sipuni.ServiceUrlNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="SipuniConsiderInnerCalls" class="form-label-block">@T("Admin.Settings.Telephony.Sipuni.ConsiderInnerCalls")</label>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.SipuniConsiderInnerCalls, new { ng_model = "settingsTelephony.sipuniConsiderInnerCalls", ng_init = "settingsTelephony.sipuniConsiderInnerCalls=" + Model.SipuniConsiderInnerCalls.ToString().ToLower(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak word-spacing" data-title="@T("Admin.Settings.Telephony.Sipuni.ConsiderInnerCalls")">
+            @T("Admin.Settings.Telephony.Sipuni.ConsiderInnerCallsNote")
+        </help-trigger>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model AdvantShop.ViewModel.Wishlist.WishListBlockViewModel
+@if (Model.Mode == "product")
+{
+    @:<div class="block-exuding-row">
+}
+<label class="wishlist-control cs-l-2"
+       data-wishlist-control
+       data-ng-class="{'wishlist-state-add': wishlistControl.isAdded, 'wishlist-state-not-add': !wishlistControl.isAdded}">
+    <input type="checkbox"
+           class="custom-input-native wishlist-checkbox"
+           data-ng-init="wishlistControl.isAdded = @Model.Checked.ToString().ToLower(); @(Model.NgNameCallbackInit + "(wishlistControl)")"
+           data-ng-model="wishlistControl.isAdded"
+           data-ng-change="wishlistControl.change(@Model.NgOfferId)" />
+    <span class="icon-heart-after"></span>
+    <span class="custom-input-text">
+        <span class="wishlist-text-not-added">@T("Wishlist.WishListBlock.AddToWishList")</span>
+        <span class="wishlist-text-added">@T("Wishlist.WishListBlock.InWishList") (<a href="@Url.AbsoluteRouteUrl("wishlist")">@T("Wishlist.WishListBlock.GoToWishList")</a>)</span>
+    </span>
+</label>
+@if (Model.Mode == "product")
+{
+    @:</div>
+}

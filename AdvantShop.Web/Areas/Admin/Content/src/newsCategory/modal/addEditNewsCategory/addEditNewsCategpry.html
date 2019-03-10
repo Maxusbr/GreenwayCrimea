@@ -1,0 +1,67 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title" ng-if="ctrl.mode == 'add'">Добавить категорию новостей</h2>
+        <h2 class="modal-header-title" ng-if="ctrl.mode == 'edit'">Редактировать категорию новостей</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">
+                    Название категории
+                </span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" data-e2e="NewsCategoryName" class="form-control" ng-model="ctrl.Name" required validation-input-text="Название категории" autofocus
+                       url-generator url-path="ctrl.UrlPath" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label"><span class="text-required">Синоним для URL запроса</span></label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.UrlPath" required validation-input-text="Синоним для URL запроса"
+                       id="UrlPath" name="UrlPath" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Сортировка</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.SortOrder" data-e2e="NewsCategorySort" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">H1</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.H1" data-e2e="NewsCategoryH1" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Meta заголовок</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.Title" data-e2e="NewsCategoryTitle" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Meta ключевые слова</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.MetaKeywords" data-e2e="NewsCategoryMetaKey" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Meta описание</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.MetaDescription" data-e2e="NewsCategoryMetaDesc" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label"></label>
+            <div class="col-xs-9">
+                Доступные переменные для SEO: #STORE_NAME#, #NEWSCATEGORY_NAME#
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" data-e2e="BtnSave" type="button" ladda="ctrl.btnSleep" data-button-validation-success="ctrl.saveNewsCategory()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

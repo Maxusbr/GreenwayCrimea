@@ -1,0 +1,11 @@
+﻿{
+  "key": "Default",
+  "name": "Default template",
+  "description": "Шаблон по-умолчанию",
+  "picture": "",
+  "blocks": [
+    "header",
+    "buyForm",
+    "productsView"
+  ]
+}

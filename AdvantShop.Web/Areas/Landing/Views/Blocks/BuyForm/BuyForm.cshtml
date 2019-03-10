@@ -1,0 +1,93 @@
+﻿@model BlockModel
+
+@{
+    var templateSelected = Model.Block.TryGetSettingsValue("template_selected");
+}
+
+<div class="lp-area lp-main-block">
+    <div class="container-fluid">
+        @if (templateSelected == "cover1")
+        {
+            <div class="lp-container">
+                <div class="row">
+                    <div class="col-xs-12 col-md lp-col">
+                        <div class="lp-area-inner">
+                            <div class="h-general lp-slide-header">
+                                @Html.SubBlock(Model.Block, "pictureTitleText")
+                            </div>
+                            <div class="lp-slide-block">
+                                <figure class="lp-slide-figure">
+                                    @Html.SubBlock(Model.Block, "picture")
+                                </figure>
+                            </div>
+                        </div>
+                        @if (Model.Block.TryGetSettingsValue("show_price") == true)
+                        {
+                            @Html.SubBlock(Model.Block, "price")
+                        }
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <div class="lp-area-inner">
+                            @Html.SubBlock(Model.Block, "buyForm")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (templateSelected == "cover2")
+        {
+            <div class="lp-container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="lp-area-inner">
+                            <div class="h-general lp-slide-header">
+                                Оставь заявку на продукт
+                            </div>
+                            <div>
+                                Только сегодня и только сейчас, купил веник и получи совок в подарок!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="lp-area-inner">
+                            @Html.SubBlock(Model.Block, "buyForm")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (templateSelected == "cover2")
+        {
+            <div class="lp-container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="lp-area-inner">
+                            <div class="h-general lp-slide-header">
+                                Оставь заявку на продукт
+                            </div>
+                            <div>
+                                Только сегодня и только сейчас, купил веник и получи совок в подарок!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="lp-area-inner">
+                            Тут видео
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (templateSelected == "cover4")
+        {
+            <div class="lp-buyForm-compact">
+                <div class="h-general lp-slide-header">
+                    @Html.SubBlock(Model.Block, "pictureTitleText")
+                </div>
+                <div class="lp-area-inner">
+                    @Html.SubBlock(Model.Block, "buyForm")
+                </div>
+            </div>
+        }
+    </div>
+</div>

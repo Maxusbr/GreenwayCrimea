@@ -1,0 +1,103 @@
+﻿@model AdvantShop.Web.Admin.Models.ExportFeeds.ExportFeedSettingsCsvModel
+
+
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CsvEnconing, T("Admin.ExportFeeed.SettingsCsv.CsvEnconing"))
+        </div>
+    </div>
+    <div class="col-xs-5 col-wl-4">
+        @Html.DropDownListFor(x => x.CsvEnconing, new SelectList(Model.CsvEnconingList, "Key", "Value"), new { @class = "form-control", ng_model = "exportFeeds.AdvancedSettings.CsvEnconing", ng_init = "exportFeeds.AdvancedSettings.CsvEnconing='" + Model.CsvEnconing + "'" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CsvSeparator, T("Admin.ExportFeeed.SettingsCsv.CsvSeparator"))
+        </div>
+    </div>
+    <div class="col-xs-5 col-wl-4">
+        @Html.DropDownListFor(x => x.CsvSeparator, new SelectList(Model.CsvSeparatorList, "Key", "Value"),
+            new
+            {
+                @class = "form-control",
+                ng_model = "exportFeeds.AdvancedSettings.CsvSeparator",
+                ng_init = "exportFeeds.AdvancedSettings.CsvSeparator='" + (Model.CsvSeparator == "\t" || Model.CsvSeparator == "\\t" ? "\\t" : Model.CsvSeparator) + "'"
+            })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            <span class="text-required text-required-abs relative">
+             @Html.LabelFor(x => x.CsvColumSeparator, T("Admin.ExportFeeed.SettingsCsv.CsvColumSeparator"))
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-5 col-wl-4">
+        @Html.TextBoxFor(x => x.CsvColumSeparator, new { @class = "form-control", required = "required", ng_model = "exportFeeds.AdvancedSettings.CsvColumSeparator", validation_input_text = T("Admin.ExportFeeed.SettingsCsv.CsvColumSeparator") })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            <span class="text-required text-required-abs">
+                <span>
+                    @Html.LabelFor(x => x.CsvPropertySeparator, T("Admin.ExportFeeed.SettingsCsv.CsvPropertySeparator"))
+                </span>
+               
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-5 col-wl-4">
+        @Html.TextBoxFor(x => x.CsvPropertySeparator, new { @class = "form-control", required = "required", ng_model = "exportFeeds.AdvancedSettings.CsvPropertySeparator", validation_input_text = T("Admin.ExportFeeed.SettingsCsv.CsvPropertySeparator") })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CsvExportNoInCategory, T("Admin.ExportFeeed.SettingsCsv.CsvExportNoInCategory"))
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label" data-e2e="CsvExportNoInCategory">
+            @Html.CheckBoxFor(x => x.CsvExportNoInCategory, new { @class = "adv-checkbox-input", ng_init = "exportFeeds.AdvancedSettings.CsvExportNoInCategory=" + Model.CsvExportNoInCategory.ToLowerString(), ng_model = "exportFeeds.AdvancedSettings.CsvExportNoInCategory" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CsvCategorySort, T("Admin.ExportFeeed.SettingsCsv.CsvCategorySort"))
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label" data-e2e="CsvCategorySort">
+            @Html.CheckBoxFor(x => x.CsvCategorySort, new { @class = "adv-checkbox-input", ng_init = "exportFeeds.AdvancedSettings.CsvCategorySort=" + Model.CsvCategorySort.ToLowerString(), ng_model = "exportFeeds.AdvancedSettings.CsvCategorySort" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3 col-wl-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.AllOffersToMultiOfferColumn, T("Admin.ExportFeeed.SettingsCsv.AllOffersToMultiOfferColumn"))
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label" data-e2e="AllOffersToMultiOfferColumn">
+            @Html.CheckBoxFor(x => x.AllOffersToMultiOfferColumn, new { @class = "adv-checkbox-input", ng_model = "exportFeeds.AdvancedSettings.AllOffersToMultiOfferColumn" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+

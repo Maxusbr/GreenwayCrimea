@@ -1,0 +1,11 @@
+﻿{
+  "key": "Main",
+  "name": "Main template",
+  "description": "",
+  "picture": "",
+  "blocks": [
+    "header",
+    "buyForm",
+    "productsView"
+  ]
+}

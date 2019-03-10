@@ -1,0 +1,18 @@
+.readmore-content {
+  overflow: hidden;
+  transition-property: max-height;
+  transition-timing-function: linear;
+  transition-delay: 0;
+  position: relative; }
+
+.readmore-expanded .readmore-content {
+  max-height: 2000px !important; }
+
+.readmore-link {
+  text-decoration: underline; }
+  .readmore-link:hover {
+    text-decoration: none; }
+
+.readmore-unvisible {
+  position: absolute;
+  visibility: hidden; }

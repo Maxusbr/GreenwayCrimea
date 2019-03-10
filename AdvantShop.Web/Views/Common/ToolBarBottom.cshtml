@@ -1,0 +1,78 @@
+﻿@model AdvantShop.ViewModel.Common.ToolBarBottomViewModel
+<!--noindex-->
+<div class="toolbar-bottom">
+    <div class="footer-container container-fluid">
+        <div class="row between-xs">
+            @if (Model.DisplayRecentlyView || Model.DisplayCompare || Model.DisplayWishList)
+            {
+                <div class="col-xs-5 toolbar-bottom-links">
+                    @if (Model.DisplayRecentlyView)
+                    {
+                        @Html.Action("RecentlyViewed", "RecentlyViews")
+                    }
+
+                    @if (Model.DisplayCompare)
+                    {
+                        <div class="toolbar-bottom-block">
+                            <a href="@Url.AbsoluteRouteUrl("Compare")" class="toolbar-bottom-link toolbar-bottom-link-with-icon-left link-dotted-invert"><span class="toolbar-bottom-count toolbar-bottom-count-left" data-compare-count data-start-count="@Model.CompareCount" data-ng-bind="compareCount.countObj.count">@Model.CompareCount</span>@T("Common.ToolBarBottom.CompareCart")</a>
+                        </div>
+                    }
+                    @if (Model.DisplayWishList)
+                    {
+                        <div class="toolbar-bottom-block wishlist-bottom-block">
+                            <a href="@Url.AbsoluteRouteUrl("WishList")" class="toolbar-bottom-link toolbar-bottom-link-with-icon-left link-dotted-invert"><span class="toolbar-bottom-count toolbar-bottom-count-left" data-wishlist-count data-start-count="@Model.WishlistCount" data-ng-bind="wishlistCount.countObj.count">@Model.WishlistCount</span>@T("Common.ToolBarBottom.Wishlist")</a>
+                        </div>
+                    }
+                </div>
+            }
+            @if (Model.DisplayInplace)
+            {
+                <div class="col-xs toolbar-bottom-inplace">
+                    <div class="toolbar-bottom-align-center">
+                        <div class="toolbar-bottom-block">
+                            <label class="custom-iphone-checkbox">
+                                <input type="checkbox" name="inplaceEnabled" id="inplaceEnabled" @Html.Raw(SettingsMain.EnableInplace ? "data-ng-init=\"inplaceEnabled=true\" checked=\"checked\"" : "") data-ng-model="inplaceEnabled" data-inplace-switch data-ng-change="inplaceSwitch.change(inplaceEnabled)" />
+                                <span class="custom-iphone-checkbox-slider">
+                                    <span class="custom-iphone-checkbox-on">@T("Common.ToolBarBottom.EditingModeOn")</span>
+                                    <span class="custom-iphone-checkbox-off">@T("Common.ToolBarBottom.EditingModeOff")</span>
+                                    <span class="custom-iphone-checkbox-block"></span>
+                                </span>
+                            </label>
+                            <label for="inplaceEnabled" class="toolbar-bottom-label">@T("Common.ToolBarBottom.EditingMode")</label>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.DisplayCart)
+            {
+                <div class="col-xs toolbar-bottom-cart">
+                    <div class="toolbar-bottom-align-right">
+                        <div class="toolbar-bottom-block" id="cartToolbar">
+                            <a href="@Url.RouteUrl("Cart")" class="toolbar-bottom-link toolbar-bottom-link-with-icon-right link-dotted-invert">@T("Common.ToolBarBottom.Cart")<span class="toolbar-bottom-count  toolbar-bottom-count-right" data-cart-count data-ng-bind-html="cartCount.getValue()">@Model.CartCount</span></a>
+                        </div>
+                        <div class="toolbar-bottom-slim">
+                            <a class="btn btn-xsmall toolbar-bottom-btn-confirm @(Model.CartCount == 0 ? "toolbar-bottom-btn-confirm-disabled" : "")"
+                               data-cart-confirm
+                               data-ng-class="{'toolbar-bottom-btn-confirm-disabled': cartConfirm.cartData.TotalItems === 0}"
+                               data-ng-click="cartConfirm.cartData.TotalItems === 0 && $event.preventDefault()"
+                               data-ng-href="{{cartConfirm.cartData.TotalItems != 0 ? '@(Model.isCart ? Url.RouteUrl("Checkout"): Url.RouteUrl("Cart") )' : null}}">@T("Common.ToolBarBottom.GoToCheckout")</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="toolbar-bottom-garant"></div>
+<div id="popoverCartToolbar" class="toolbar-bottom-module adv-popover text-align-left text-static ng-hide"
+     data-popover
+     data-popover-is-can-hover="true"
+     data-popover-position="top"
+     data-popover-is-fixed="true"
+     data-popover-show-on-load="false"
+     data-popover-overlay-enabled="false">
+    <div data-module data-key="minicartmessage">
+        @Html.RenderModules("minicartmessage")
+    </div>
+</div>
+<!--/noindex-->

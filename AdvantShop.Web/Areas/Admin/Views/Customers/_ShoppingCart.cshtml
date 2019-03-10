@@ -1,0 +1,112 @@
+﻿@using AdvantShop.Catalog;
+@model AdvantShop.Web.Admin.Models.Customers.CustomersModel
+@{ 
+    var cart = Model.ShoppingCart;
+}
+
+<div class="ibox category-block">
+    <div class="ibox-content category-content border_none">
+        <h2 class="m-b-md clearfix">
+            Корзина
+            <a href="" class="pull-right m-l-xs btn btn-sm btn-action" ng-click="customer.createOrderFromCart()" ladda="customer.addingOrder">Создать заказ</a>
+            <ui-modal-trigger class="pull-right" data-controller="'ModalAddLeadCtrl'" controller-as="ctrl" size="lg" backdrop="static"
+                              resolve="{params: {'customerId': '@Model.CustomerId', 'fromCart': true, 'clientCode': '@(Model.Customer.Code.IsNotEmpty() ? Model.Customer.Code : string.Empty)'}}"
+                              template-url="../areas/admin/content/src/_shared/modal/addLead/addLead.html">
+                <a class="btn btn-sm btn-action">Создать лид</a>
+            </ui-modal-trigger>
+        </h2>
+        <div class="m-b-lg">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Товар</th>
+                            <th>Цена за ед.</th>
+                            <th>Количество</th>
+                            <th>Стоимость</th>
+                        </tr>
+                        @foreach (var item in cart)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="row between-xs middle-xs">
+                                        <div class="col-xs-2">
+                                            <a href="@Url.Action("Edit", "Product", new { id = item.Offer.ProductId })">
+                                                <img src="@item.Offer.Photo.ImageSrcXSmall()" />
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            <a href="@Url.Action("Edit", "Product", new { id = item.Offer.ProductId })">
+                                                @item.Offer.Product.Name
+                                            </a>
+                                            @if (item.Offer.Color != null)
+                                            {
+                                                <div>@SettingsCatalog.ColorsHeader: @item.Offer.Color.ColorName</div>
+                                            }
+                                            @if (item.Offer.Size != null)
+                                            {
+                                                <div>@SettingsCatalog.SizesHeader: @item.Offer.Size.SizeName</div>
+                                            }
+                                            @if (item.AttributesXml.IsNotEmpty())
+                                            {
+                                                var selectedOptions = CustomOptionsService.DeserializeFromXml(item.AttributesXml, item.Offer.Product.Currency.Rate);
+                                                foreach (var option in selectedOptions)
+                                                {
+                                                    <div>@option.CustomOptionTitle: @option.OptionTitle @option.FormatPrice</div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    @item.PriceWithDiscount.FormatPrice()
+                                </td>
+                                <td>
+                                    @item.Amount @item.Offer.Product.Unit
+                                </td>
+                                <td>
+                                    @((item.PriceWithDiscount * item.Amount).FormatPrice())
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="4">
+                                <div class="pull-right">
+                                    @if (cart.TotalDiscount > 0)
+                                    {
+                                        <div class="text-right">
+                                            <span>Сумма:</span> <span>@cart.TotalPrice.FormatPrice()</span>
+                                        </div>
+                                        if (cart.Coupon != null)
+                                        {
+                                            <div class="text-right">
+                                                <span>Купон "@cart.Coupon.Code":</span>
+                                                <span>-@cart.TotalDiscount.FormatPrice() @(cart.Coupon.Type == CouponType.Percent ? string.Format("({0}%)", cart.Coupon.Value) : string.Empty)</span>
+                                            </div>
+                                        }
+                                        if (cart.Certificate != null)
+                                        {
+                                            <div class="text-right">
+                                                <span>Сертификат "@cart.Certificate.CertificateCode":</span>
+                                                <span>-@cart.TotalDiscount.FormatPrice()</span>
+                                            </div>
+                                        }
+                                    }
+                                    @if (cart.DiscountPercentOnTotalPrice > 0)
+                                    {
+                                        <div class="text-right">
+                                            <span>Скидка:</span> <span>@PriceFormatService.FormatDiscountPercent(cart.TotalPrice, cart.DiscountPercentOnTotalPrice, 0, true)</span>
+                                        </div>
+                                    }
+                                    <div class="text-right">
+                                        <b>Итого:</b> <b>@((cart.TotalPrice - cart.TotalDiscount).FormatPrice())</b>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

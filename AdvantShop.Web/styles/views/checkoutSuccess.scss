@@ -1,0 +1,11 @@
+﻿@import "../functions/_util.scss", "../_settings.scss";
+
+.checkout-success-content-top {
+    font-size: $font-size-xmedium;
+}
+
+.checkout-success-content {
+    min-height: rem-calc(300px);
+    text-align: center;
+    padding: 0 0 rem-calc(200px) 0;
+}

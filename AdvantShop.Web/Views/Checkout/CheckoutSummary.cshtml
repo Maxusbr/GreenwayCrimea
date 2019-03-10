@@ -1,0 +1,47 @@
+﻿<div class="checkout-result">
+    <div>
+        @T("Checkout.CheckoutSummary.SumText"): <span class="checkout-result-price" data-ng-bind="checkout.Cart.Result"></span>
+    </div>
+    <div class="checkout-bonus-result" data-ng-show="checkout.Cart.BonusPlus != null">
+        @T("Checkout.CheckoutSummary.BonusPlus"): +<span class="checkout-result-price" data-ng-bind="checkout.Cart.BonusPlus"></span>
+    </div>
+</div>
+
+@if (SettingsCheckout.IsShowUserAgreementText)
+{
+    <div class="checkout-agree">
+        <label>
+            <input class="custom-input-native" type="checkbox" id="agree" name="agree" data-ng-model="checkout.agree" required />
+            <span class="custom-input-checkbox custom-input-checkbox__abs"></span>
+            <span class="custom-input-text custom-input-text__indent">@Html.Raw(SettingsCheckout.UserAgreementText)</span>
+        </label>
+    </div>
+}
+@if (SettingsMain.EnableCaptchaInCheckout)
+{
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-input-name input-required">
+                        @T("Checkout.CheckoutSummary.Captcha")
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="form-input-value">
+                        @Html.Captcha("checkout.captcha")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    <input type="submit"
+           value="@T("Checkout.CheckoutSummary.ConfirmButtonText")"
+           class="btn btn-big btn-submit"
+           data-button-validation="!((checkout.userUnRegType === 'oldCustomer' || (checkout.checkoutNewCustomerForm != null && checkout.checkoutNewCustomerForm.$invalid)) || checkoutForm.$invalid)"
+           data-button-validation-start="checkout.checkoutNewCustomerForm.$setSubmitted(); checkout.checkoutNewCustomerForm.$setDirty();"
+           data-button-validation-success="checkout.submitOrder(clickEvent)"
+           data-button-validation-forms="['checkoutNewCustomerForm', 'checkoutForm']" />
+</div>

@@ -1,0 +1,12 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Home.SalesPlanDashboardViewModel
+
+<div class="ibox float-e-margins">
+    <div class="ibox-content sales-plan-block">
+        <h3 class="sales-plan-title">@T("Admin.Home.SalesPlanDasboard.Sales"):</h3>
+        <h2 data-e2e="totalSales" class="total-sales">@Model.Sales</h2>
+        <div class="progress progress-mini">
+            <div style="width: @(Model.PlanPercent)%" class="progress-bar"></div>
+        </div>
+        <small data-e2e="plannedSales" class="sales-target">@T("Admin.Home.SalesPlanDasboard.Planned"): @Model.PlannedSales</small>
+    </div>
+</div>

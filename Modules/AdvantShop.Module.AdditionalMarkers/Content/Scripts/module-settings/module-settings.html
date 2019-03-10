@@ -1,0 +1,155 @@
+﻿<div class="container-fluid">
+    <div class="row col-xs-12">
+        <h3>Настройки</h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-7">
+            <form role="form" name="markerForm" novalidate class="form-inline">
+                <div class="row m-b-md">
+                    <div class="col-xs-6" ng-style="{'visibility': !$ctrl.changeIdentity && $ctrl.newMarker.MarkerId > 0 ? 'visible' : 'hidden'}">
+                        Идентификатор
+                    </div>
+                    <div class="col-xs-6">
+                        <span ng-show="!$ctrl.changeIdentity && $ctrl.newMarker.MarkerId > 0">cl{{$ctrl.newMarker.MarkerId}}</span>
+                        <input type="number" ng-show="$ctrl.changeIdentity" class="form-control" name="name" ng-model="$ctrl.newMarker.MarkerId" placeholder="Идентификатор" required />
+                        <span class="fa fa-pencil" ng-show="!$ctrl.changeIdentity && $ctrl.newMarker.MarkerId > 0" style="cursor: pointer" ng-click="$ctrl.editIdentity()"></span>
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Название маркера
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" name="name" ng-model="$ctrl.newMarker.Name" placeholder="Название маркера" required/>
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Цвет маркера
+                    </div>
+                    <div class="col-xs-6">
+                        <color-picker ng-model="$ctrl.newMarker.Color"
+                                      options="$ctrl.colorPickerOptions"
+                                      validation-input-text="Цвет"
+                                      api="$ctrl.colorPickerApi"
+                                      event-api="$ctrl.colorPickerEventApi">
+                        </color-picker>
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Цвет текста маркера
+                    </div>
+                    <div class="col-xs-6">
+                        <color-picker ng-model="$ctrl.newMarker.ColorName"
+                                      options="$ctrl.colorPickerOptionsN"
+                                      validation-input-text="Цвет названия"
+                                      api="$ctrl.colorPickerApiN"
+                                      event-api="$ctrl.colorPickerEventApiN">
+                        </color-picker>
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-2">
+                        Ссылка
+                        <help-trigger>
+                            Укажите ссылку маркера, чтобы при клике переходить на указанную ссылку
+                        </help-trigger>
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="adv-checkbox-label form-label-block">
+                            <input type="checkbox" ng-model="$ctrl.newMarker.OpenNewTab" class="adv-checkbox-input" /> Открывать в новой вкладке
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="$ctrl.newMarker.Url" placeholder="Ссылка" />
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Описание
+                        <help-trigger>
+                            Укажите описание маркера, и данный текст будет отображаться при наведении курсора на маркер (действует только в основной версии сайта)
+                            <img src="../modules/additionalmarkers/content/images/help/disc.gif"/>
+                        </help-trigger>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="$ctrl.newMarker.Description" placeholder="Описание" />
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Порядок сортировки
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" ng-model="$ctrl.newMarker.SortOrder" class="form-control" placeholder="Порядок сортировки" />
+                    </div>
+                </div>
+
+                <div class="row m-b-md">
+                    <input type="button" class="btn btn-sm btn-success" ng-click="$ctrl.addMarker(markerForm, $ctrl.newMarker)" value="Добавить" ng-show="$ctrl.newMarker.MarkerId == -1" />
+                    <input type="button" class="btn btn-sm btn-success" ng-click="$ctrl.editMarker(markerForm, $ctrl.newMarker)" value="Изменить" ng-show="$ctrl.newMarker.MarkerId !== -1" />
+                    <input type="button" class="btn btn-sm btn-success" ng-click="$ctrl.cancelEdit()" value="Отменить" ng-show="$ctrl.newMarker.MarkerId !== -1" />
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-5 preview-marker">
+            <div class="products-view-label" ng-hide="$ctrl.newMarker.Name === '' || $ctrl.newMarker.Name.length === undefined">
+                <a href="{{$ctrl.newMarker.Url}}" ng-show="$ctrl.newMarker.Url.length > 0"
+                   target="{{$ctrl.newMarker.OpenNewTab ? '_blank' :'_self'}}">
+                    <span class="products-view-label-inner"
+                          popover-trigger="'mouseenter'"
+                          popover-placement="auto right"
+                          popover-append-to-body="true"
+                          uib-popover="{{$ctrl.newMarker.Description}}"
+                          style="background:#{{$ctrl.newMarker.Color}}; color:#{{$ctrl.newMarker.ColorName}}">{{$ctrl.newMarker.Name}}</span>
+                </a>
+                <span class="products-view-label-inner" ng-show="$ctrl.newMarker.Url == null || $ctrl.newMarker.Url.length == 0"
+                      popover-trigger="'mouseenter'"
+                      popover-placement="auto right"
+                      popover-append-to-body="true"
+                      uib-popover="{{$ctrl.newMarker.Description}}"
+                      style="background:#{{$ctrl.newMarker.Color}}; color:#{{$ctrl.newMarker.ColorName}}">{{$ctrl.newMarker.Name}}</span>
+            </div>
+            <div class="preview-marker-label" ng-hide="$ctrl.newMarker.Name.length > 0">
+                PREVIEW MARKER
+                <br>
+                Тут отобразится добавляемый маркер
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="ng-hide" ng-show="$ctrl.markers.length > 0">
+            <h3>Созданные маркеры <small ng-click="$ctrl.showCsvId =!$ctrl.showCsvId" style="cursor:pointer; font-size: 75%"><span ng-show="!$ctrl.showCsvId">Показать csv идентификатор</span><span ng-show="$ctrl.showCsvId">Скрыть csv идентификатор</span></small></h3>
+        </div>
+        <div class="ng-hide" ng-show="$ctrl.markers.length == 0">
+            <h3>Пока не создано ни одного маркера</h3>
+        </div>
+        <div class="col-xs-12">
+            <div class="admin-marker" ng-repeat="marker in $ctrl.markers | orderBy:'SortOrder':false" ng-class="$ctrl.newMarker.MarkerId == marker.MarkerId ? 'select-marker-to-edit' : ''">
+                    <div class="csv-id" ng-show="$ctrl.showCsvId">cl{{marker.MarkerId}}</div>
+                <div class="products-view-label">
+                    <a href="{{marker.Url}}" ng-show="marker.Url.length > 0"
+                       target="{{marker.OpenNewTab ? '_blank' : '_self'}}">
+                        <span class="products-view-label-inner"
+                              popover-trigger="'mouseenter'"
+                              popover-placement="auto right"
+                              popover-append-to-body="true"
+                              uib-popover="{{marker.Description}}"
+                              style="background:#{{marker.Color}}; color:#{{marker.ColorName}}">{{marker.Name}}</span>
+                    </a>
+                    <span class="products-view-label-inner" ng-show="marker.Url == null || marker.Url.length == 0"
+                          popover-trigger="'mouseenter'"
+                          popover-placement="auto right"
+                          popover-append-to-body="true"
+                          uib-popover="{{marker.Description}}"
+                          style="background:#{{marker.Color}}; color:#{{marker.ColorName}}">{{marker.Name}}</span>
+                </div>
+                <span class="fa fa-pencil" ng-click="$ctrl.edit(marker)"></span>
+                <span href="" class="fa fa-remove" ng-click="$ctrl.removeMarker(marker)"></span>
+            </div>
+        </div>
+    </div>
+</div>

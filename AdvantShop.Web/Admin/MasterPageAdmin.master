@@ -1,0 +1,326 @@
+﻿<%@ Master Language="C#" Inherits="Admin.MasterPageAdmin" CodeBehind="MasterPageAdmin.master.cs" %>
+
+<%@ Import Namespace="System.Globalization" %>
+<%@ Import Namespace="AdvantShop.Core.UrlRewriter" %>
+<%@ Import Namespace="AdvantShop.Customers" %>
+<%@ Import Namespace="Resources" %>
+<%@ Import Namespace="AdvantShop.Saas" %>
+
+<%@ Register Src="~/Admin/UserControls/MasterPage/Favicon.ascx" TagName="Favicon" TagPrefix="adv" %>
+<%@ Register Src="~/Admin/UserControls/LastAdminMessages.ascx" TagName="LastAdminMessages" TagPrefix="adv" %>
+<%@ Register Src="~/Admin/UserControls/MasterPage/StoreLanguage.ascx" TagName="StoreLanguage" TagPrefix="adv" %>
+<%@ Register TagPrefix="adv" TagName="Search" Src="~/admin/UserControls/MasterPage/AdminSearch.ascx" %>
+<%@ Register TagPrefix="adv" TagName="CurrentSaasData" Src="~/admin/UserControls/MasterPage/CurrentSaasData.ascx" %>
+<%@ Register TagPrefix="adv" TagName="TrialBlock" Src="~/admin/UserControls/MasterPage/TrialBlock.ascx" %>
+<%@ Register TagPrefix="adv" TagName="SaasBlock" Src="~/admin/UserControls/MasterPage/SaasBlock.ascx" %>
+<%@ Register TagPrefix="adv" TagName="LicBlock" Src="~/admin/UserControls/MasterPage/LicBlock.ascx" %>
+<%@ Register TagPrefix="adv" TagName="MyAccountLink" Src="~/admin/UserControls/MasterPage/MyAccountLink.ascx" %>
+<%@ Register TagPrefix="adv" TagName="AchievementsHelp" Src="~/admin/UserControls/Achievements/AchievementsHelp.ascx" %>
+<%@ Register TagPrefix="adv" TagName="TelephonyScript" Src="~/admin/UserControls/MasterPage/TelephonyScript.ascx" %>
+<%@ Register TagPrefix="adv" TagName="TelephonyHeadScript" Src="~/admin/UserControls/MasterPage/TelephonyHeadScript.ascx" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <asp:Literal ID="headMeta" runat="server" />
+    <asp:Literal runat="server" ID="lBase" />
+    <adv:Favicon ID="Favicon" runat="server" ForAdmin="True" />
+    <asp:Literal ID="headStyle" runat="server" EnableViewState="False" />
+    <adv:TelephonyHeadScript runat="server" />
+    <asp:Literal ID="headScript" runat="server" EnableViewState="False" />
+    <script src="js/plugins/d3/d3.js"></script>
+    <script src="js/plugins/d3/nv.d3.js"></script>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Head" runat="server" />
+    <script type="text/javascript">!function () { "use strict"; function e(e, t, n) { e.addEventListener ? e.addEventListener(t, n, !1) : e.attachEvent && e.attachEvent("on" + t, n) } function t(e) { return window.localStorage && localStorage.font_css_cache && localStorage.font_css_cache_file === e } function n() { if (window.localStorage && window.XMLHttpRequest) if (t(o)) c(localStorage.font_css_cache); else { var e = new XMLHttpRequest; e.open("GET", o, !0), e.onreadystatechange = function () { 4 === e.readyState && (c(e.responseText), localStorage.font_css_cache = e.responseText, localStorage.font_css_cache_file = o) }, e.send() } else { var n = document.createElement("link"); n.href = o, n.rel = "stylesheet", n.type = "text/css", document.getElementsByTagName("head")[0].appendChild(n), document.cookie = "font_css_cache" } } function c(e) { var t = document.createElement("style"); t.setAttribute("type", "text/css"), t.styleSheet ? t.styleSheet.cssText = e : t.innerHTML = e, document.getElementsByTagName("head")[0].appendChild(t) } var o = "../styles/font.css?v=2"; window.localStorage && localStorage.font_css_cache || document.cookie.indexOf("font_css_cache") > -1 ? n() : e(window, "load", n) }();</script>
+    <script src="../areas/admin/content/vendors/angular/angular.min.js"></script> <%-- using angular for exec seletium tests--%>
+</head>
+<body id="bodyId" runat="server">
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="Server" EnablePartialRendering="true" ID="ScriptManager1"
+            ScriptMode="Release">
+        </asp:ScriptManager>
+        <div id="storeClosed" runat="server" class="admin-store-closed"><%= Resource.Client_MasterPage_StoreClosed %></div>
+        <div class="justify top">
+            <div class="justify-item top-part">
+                <a href="default.aspx">
+                    <img class="logo-develop" src="<%= UrlService.GetAbsoluteLink("admin/images/new_admin/logo.png") %>"
+                        alt="" /></a> <a data-bubble-call="showcase" class="icon-get-out return-client-lnk" href="<%= UrlService.GetAbsoluteLink("/") %>">
+                            <%=AdvantShop.Configuration.SettingsMain.SiteUrl %></a>
+                <asp:HyperLink runat="server" ID="hlEditBindings" Target="_blank"><%= Resource.Admin_MasterPageAdmin_BindDomain %></asp:HyperLink>
+                <asp:LinkButton runat="server" ID="lbNewAdmin" Text="Новая версия (бета)" OnClick="lbNewAdmin_Click"></asp:LinkButton>
+            </div>
+            <div class="justify-item top-part justify-item--max-width">
+                <adv:LicBlock runat="server" />
+                <adv:TrialBlock runat="server" ForAdmin="True" />
+                <adv:SaasBlock runat="server" />
+            </div>
+            <div class="justify-item top-part">
+                <a href="#" class="js-show-help btn btn-middle btn-add">Помощь</a>
+                <adv:MyAccountLink runat="server" />
+                <adv:StoreLanguage runat="server" ID="StoreLanguage" />
+                <asp:HyperLink ID="adminMessages" runat="server" NavigateUrl="AdminMessages.aspx" Style="display: none;"
+                    data-plugin="tooltip" data-tooltip-text="<%$ Resources:Resource, Admin_AdminMessages_MessagesAdvantshop %>" />
+                <asp:HyperLink ID="adminReviews" runat="server" NavigateUrl="reviews.aspx" data-plugin="tooltip"
+                    data-tooltip-text="<%$ Resources:Resource, Admin_MasterPageAdmin_Reviews %>" />
+                <adv:CurrentSaasData runat="server" ID="saasData" />
+                <div class="top-part-right dropdown-menu-parent icon-profile dropdown-arrow-light dropdown-user">
+                    <a href="EditCustomer.aspx?customerid=<%= CustomerContext.CurrentCustomer.Id %>"><%= CustomerContext.CurrentCustomer.LastName %></a>
+                    <div class="dropdown-menu-wrap">
+                        <ul class="dropdown-menu">
+                            <%if (Customers != null && Customers.HasRoleAction(RoleAction.Customers))
+                                {%>
+                            <li class="dropdown-menu-item">
+                                <a href="EditCustomer.aspx?customerid=<%= Customers.Id %>"><%= Resource.Admin_MasterPageAdmin_Profile %></a>
+                            </li>
+                            <%} %>
+                            <li class="dropdown-menu-item">
+                                <asp:LinkButton ID="lnkExitAlt" runat="server" CausesValidation="False" OnClick="lnkExit_Click"
+                                    Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Exit %>" />
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <asp:LinkButton ID="lnkExit" data-plugin="tooltip" data-tooltip-text='<%$ Resources:Resource, Admin_MasterPageAdmin_Exit %>'
+                    runat="server" CssClass="top-part-right off-lnk" CausesValidation="False" OnClick="lnkExit_Click" />
+            </div>
+        </div>
+        <section class="site-main">
+            <div class="justify main-menu-container">
+                <div class="justify-item main-menu-wrap">
+                    <adv:AdvMenuAdmin ID="MenuAdmin" runat="server" EnableViewState="False">
+                        <Items>
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_HomePage %>" NavigateUrl="default.aspx"
+                                ImageUrl="images/new_admin/main-menu/home.png" />
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Catalog %>" NavigateUrl="Catalog.aspx"
+                                ImageUrl="images/new_admin/main-menu/catalog.png">
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_CategoryAndProducts %>"
+                                    NavigateUrl="Catalog.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdminCatalog_FirstPageProducts %>"
+                                    NavigateUrl="ProductsOnMain.aspx?type=New">
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdminCatalog_BestSellers %>"
+                                        NavigateUrl="ProductsOnMain.aspx?type=Best" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdminCatalog_New %>"
+                                        NavigateUrl="ProductsOnMain.aspx?type=New" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdminCatalog_Discount %>"
+                                        NavigateUrl="ProductsOnMain.aspx?type=Sale" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ProductLists %>"
+                                        NavigateUrl="ProductLists.aspx" />
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Brands %>" NavigateUrl="Brands.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Directory %>" NavigateUrl="Properties.aspx">
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ProductProperties %>"
+                                        NavigateUrl="Properties.aspx" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ColorDictionary %>"
+                                        NavigateUrl="Colors.aspx" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_SizeDictionary %>"
+                                        NavigateUrl="Sizes.aspx" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_Tags_Header %>"
+                                        NavigateUrl="Tags.aspx" />
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Import %>" NavigateUrl="ImportCSV.aspx">
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ImportProducts %>"
+                                        NavigateUrl="ImportCSV.aspx" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ImportCategories %>"
+                                        NavigateUrl="ImportCSVCategories.aspx" />
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Export %>" NavigateUrl="ExportFeed.aspx">
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ExportProducts %>"
+                                        NavigateUrl="ExportFeed.aspx" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ExportCategories %>"
+                                        NavigateUrl="ExportCategories.aspx" />
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_PriceRegulation %>"
+                                    NavigateUrl="PriceRegulation.aspx" Value="priceregulation"></asp:MenuItem>
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Reviews %>" NavigateUrl="Reviews.aspx" />
+                                <asp:MenuItem Text="Product" NavigateUrl="Product.aspx" Value="notvisible" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Value="orders" Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Orders %>"
+                                NavigateUrl="OrderSearch.aspx" ImageUrl="images/new_admin/main-menu/orders.png">
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Orders %>" NavigateUrl="OrderSearch.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_OrderStatuses %>"
+                                    NavigateUrl="OrderStatuses.aspx" />
+                                <asp:MenuItem Text="Источники заказов"
+                                    NavigateUrl="OrderSources.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_OrderByRequest %>"
+                                    NavigateUrl="OrderByRequest.aspx" />
+                                <asp:MenuItem NavigateUrl="StatisticsOrdersExportCsv.aspx" Text="<%$ Resources:Resource, Admin_Statistics_ExportOrdersHeader %>" />
+                                <asp:MenuItem Text="ViewOrder" Enabled="False" NavigateUrl="ViewOrder.aspx" Value="notvisible" />
+                                <asp:MenuItem Text="EditOrder" Enabled="False" NavigateUrl="EditOrder.aspx" Value="notvisible" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Users %>" NavigateUrl="CustomerSearch.aspx"
+                                ImageUrl="images/new_admin/main-menu/buyers.png">
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Buyers %>" NavigateUrl="CustomerSearch.aspx?role=User" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Moderators %>" NavigateUrl="CustomerSearch.aspx?role=Moderator" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Administrators %>" NavigateUrl="CustomerSearch.aspx?role=Administrator" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_CustomersGroups %>"
+                                    NavigateUrl="CustomersGroups.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_SubscribeList %>"
+                                    NavigateUrl="Subscription.aspx" />
+                            </asp:MenuItem>
+                            <%--<asp:MenuItem Text="CRM" NavigateUrl="Leads.aspx" ImageUrl="images/new_admin/main-menu/crm.png">
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Leads %>" NavigateUrl="Leads.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ManagersTasks%>" NavigateUrl="ManagersTasks.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Managers%>" NavigateUrl="Managers.aspx">
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Managers%>" NavigateUrl="Managers.aspx" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Departments%>" NavigateUrl="Departments.aspx" />
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Calls %>" NavigateUrl="Calls.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_MissedCalls %>" NavigateUrl="Calls.aspx?Type=Missed" />
+                            </asp:MenuItem>--%>
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_CMS %>" NavigateUrl="StaticPages.aspx"
+                                ImageUrl="images/new_admin/main-menu/cms.png">
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_MainMenu %>" NavigateUrl="Menu.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_NewsMenuRoot %>"
+                                    NavigateUrl="NewsAdmin.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_NewsCategory %>"
+                                    NavigateUrl="NewsCategory.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Carousel %>" NavigateUrl="Carousel.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_AuxPagesMenuItem %>"
+                                    NavigateUrl="StaticPages.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_PageParts %>" NavigateUrl="StaticBlocks.aspx" />
+                                <asp:MenuItem Text="StaticPage" NavigateUrl="StaticPage.aspx" Value="notvisible" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Module %>" NavigateUrl="ModulesManager.aspx"
+                                ImageUrl="images/new_admin/main-menu/modules.png" Value="modules" />
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Design %>" NavigateUrl="DesignConstructor.aspx"
+                                ImageUrl="images/new_admin/main-menu/themes.png">
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_DesignConstructor %>"
+                                    NavigateUrl="DesignConstructor.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_TemplateSettings %>"
+                                    NavigateUrl="TemplateSettings.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_StylesEditor %>"
+                                    NavigateUrl="StylesEditor.aspx" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Marketing %>" NavigateUrl="Discount_PriceRange.aspx"
+                                ImageUrl="images/new_admin/main-menu/marketing.png">
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_DiscountMethods %>"
+                                    NavigateUrl="Discount_PriceRange.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Coupons %>" NavigateUrl="Coupons.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Certificate %>"
+                                    NavigateUrl="Certificates.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_SendMessage %>"
+                                    NavigateUrl="SendMessage.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_YandexMarket %>"
+                                    NavigateUrl="ExportFeed.aspx?type=YandexMarket" Value="YandexMarket" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_GoogleBase %>"
+                                    NavigateUrl="ExportFeed.aspx?type=GoogleMerchentCenter" Value="GoogleMerchentCenter" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_LandingPage %>"
+                                    NavigateUrl="LandingPage.aspx" Value="LandingPage" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_BonusSystem %>"
+                                    NavigateUrl="BonusSystemAdmin.aspx" Value="BonusSystem" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Resellers %>"
+                                    NavigateUrl="Resellers.aspx" Value="Resellers" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Voting %>" NavigateUrl="Voting.aspx">
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Voting %>" NavigateUrl="Voting.aspx" />
+                                    <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_VotingHistory %>"
+                                        NavigateUrl="VotingHistory.aspx" />
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="Statistics.aspx" Text="<%$ Resources:Resource, Admin_Statistics_Header %>">
+                                    <asp:MenuItem NavigateUrl="Statistics.aspx" Text="<%$ Resources:Resource, Admin_Statistics_ExportСonsolidatedReport %>" />
+                                    <asp:MenuItem NavigateUrl="StatisticsProductsExportCsv.aspx" Text="<%$ Resources:Resource, Admin_Statistics_ExportProductsHeader %>" />
+                                    <asp:MenuItem NavigateUrl="StatisticsCustomersExportCsv.aspx" Text="<%$ Resources:Resource, Admin_Statistics_ExportCustomersHeader %>" />
+                                    <asp:MenuItem NavigateUrl="StatisticsOrdersExportCsv.aspx" Text="<%$ Resources:Resource, Admin_Statistics_ExportOrdersHeader %>" />
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="SiteMapGenerate.aspx" Text="<%$ Resources:Resource, Admin_SiteMapGenerate_Header %>" />
+                                <asp:MenuItem NavigateUrl="SiteMapGenerateXML.aspx" Text="<%$ Resources:Resource, Admin_SiteMapGenerateXML_Header %>" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Settings %>" NavigateUrl="CommonSettings.aspx"
+                                ImageUrl="images/new_admin/main-menu/options.png">
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Common %>" NavigateUrl="CommonSettings.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_CheckoutFields %>" NavigateUrl="CheckoutFields.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_PaymentMethod %>"
+                                    NavigateUrl="PaymentMethod.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_ShippingMethod %>"
+                                    NavigateUrl="ShippingMethod.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Countries %>" NavigateUrl="Country.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Currency %>" NavigateUrl="Currencies.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Taxes%>" NavigateUrl="Taxes.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_MailFormat %>"
+                                    NavigateUrl="MailFormat.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Localizations %>" NavigateUrl="Localizations.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_301Redirects %>"
+                                    NavigateUrl="301Redirects.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_RootFiles_Header %>" NavigateUrl="RootFiles.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_LogError404 %>" NavigateUrl="LogError404.aspx" />
+                                <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_BugTracker %>" NavigateUrl="LogViewer.aspx" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="<%$ Resources:Resource, Admin_MasterPageAdmin_Achievements %>" NavigateUrl="Achievements.aspx"
+                                ImageUrl="images/new_admin/main-menu/achievements.png" Value="achievement"></asp:MenuItem>
+                        </Items>
+                    </adv:AdvMenuAdmin>
+                </div>
+                <adv:Search runat="server" ID="search" />
+            </div>
+            <div class="content-wrap">
+                <div class="content-top">
+                    <%--<%=Submenu %>--%>
+                    <%--<menu class="neighbor-menu neighbor-catalog">
+                            <li class="neighbor-menu-item selected"><a href="OrderSearch.aspx">
+                                <%= Resource.Admin_MasterPageAdmin_Orders%></a></li>
+                            <li class="neighbor-menu-item"><a href="OrderStatuses.aspx">
+                                <%= Resource.Admin_MasterPageAdmin_OrderStatuses%></a></li>
+                            <li class="neighbor-menu-item"><a href="OrderByRequest.aspx">
+                                <%= Resource.Admin_MasterPageAdmin_OrderByRequest%></a></li>
+                            <li class="neighbor-menu-item"><a href="ExportOrdersExcel.aspx">
+                                <%= Resource.Admin_MasterPageAdmin_OrdersExcelExport%></a></li>
+                        </menu>
+                        <div class="panel-add">
+                            <a href="EditOrder.aspx?OrderID=addnew" class="panel-add-lnk">
+                                <%= Resource.Admin_MasterPageAdmin_Add %>
+                                <%= Resource.Admin_MasterPageAdmin_Order %></a>
+                        </div>--%>
+                </div>
+                <asp:ContentPlaceHolder ID="cphMain" runat="server" />
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="left-cell">
+                <a href="http://advantshop.net">AdVantShop.NET</a> powered by ITM Company 2006-<%= DateTime.Now.Year %>
+            </div>
+            <div class="center-cell">
+                <a class="mobile-link" href="<%= UrlService.GetAbsoluteLink("adminmobile") %>" <%= !SaasDataService.IsSaasEnabled || (SaasDataService.IsSaasEnabled && SaasDataService.CurrentSaasData.HaveMobileAdmin) ? string.Empty :"style=\"display:none;\""  %>><%= Resource.Admin_MasterPageAdmin_MobileAdmin %></a>
+            </div>
+            <div class="right-cell">
+                <a href="#" class="js-show-help">Помощь</a>
+                <span class="version"><%=AdvantShop.Configuration.SettingsGeneral.SiteVersion%></span>
+            </div>
+        </footer>
+        <adv:LastAdminMessages ID="LastAdminMessages" runat="server" />
+        <adv:AchievementsHelp ID="AchievementsHelp" runat="server" AchievementsHelpType="Admin" />
+        <!--[if (gte IE 6)&(lte IE 8)]>
+            <script src="<%= UrlService.GetAbsoluteLink("admin/js/fix/selectivizr.js") %>"></script>
+        <![endif]-->
+        <!--[if lte IE 8]>
+            <script src="<%= UrlService.GetAbsoluteLink("admin/js/fix/excanvas.compiled.js") %>"></script>
+        <![endif]-->
+        <script type="text/javascript">
+            $(function () {
+                $.fn.datepicker.defaults.format = "<%= CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern.ToLower() %>";
+            });
+        </script>
+        <asp:Literal ID="bottomScript" runat="server" EnableViewState="False"></asp:Literal>
+    </form>
+    <form id="helpForm" target="helpIframe" method="post" action="http://www.advantshop.net/help/searchInternal.aspx" style="display: none;">
+        <input type="hidden" name="siteversion" value="<%= AdvantShop.Configuration.SettingsGeneral.SiteVersion %>" />
+        <input type="hidden" name="lickey" value="<%= AdvantShop.Configuration.SettingsLic.LicKey %>" />
+        <input type="hidden" name="siteurl" value="<%= UrlService.GetUrl() %>" />
+    </form>
+    <!--ckeditor_при_минификации_падает!-->
+    <script type="text/javascript">
+        window.CKEDITOR_BASEPATH = '<%= UrlService.GetUrl("vendors/ckeditor/") %>';
+    </script>
+    <script src="../vendors/ckeditor/ckeditor.js?v=5.0"></script>
+    <script src="js/ckeditorInit.js"></script>
+    <!--ckeditor-->
+
+    <adv:TelephonyScript runat="server" />
+    <div id="showcase" class="bubble" data-plugin="bubble" data-autobind="false">
+        <%= Resources.Resource.Admin_Bubble_ShopHere %>
+    </div>
+    <div id="notify" style="position: fixed; top: 110px; right: 5px; min-width: 350px;">
+    </div>
+</body>
+</html>

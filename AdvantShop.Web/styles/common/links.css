@@ -1,0 +1,51 @@
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+.link-text-decoration-invert {
+  text-decoration: underline; }
+  .link-text-decoration-invert:hover {
+    text-decoration: none; }
+
+.link-text-decoration-none {
+  text-decoration: none; }
+  .link-text-decoration-none:hover {
+    text-decoration: none; }
+  .link-text-decoration-none:active {
+    text-decoration: none; }
+
+.link-text-decoration-underline {
+  text-decoration: underline; }
+  .link-text-decoration-underline:hover {
+    text-decoration: underline; }
+  .link-text-decoration-underline:active {
+    text-decoration: underline; }
+
+.link-dotted, .link-dotted-invert {
+  text-decoration: none;
+  border-bottom-style: dotted;
+  border-bottom-width: 1px; }
+  .link-dotted:hover, .link-dotted-invert:hover {
+    text-decoration: none; }
+
+.link-dashed, .link-dashed-invert {
+  text-decoration: none;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px; }
+  .link-dashed:hover, .link-dashed-invert:hover {
+    text-decoration: none; }
+
+.link-dotted, .link-dashed {
+  border-bottom-color: transparent; }
+
+.link-dotted-invert:hover, .link-dashed-invert:hover {
+  border-bottom-color: transparent; }
+
+.link-dotted-none, .link-dashed-none {
+  border-bottom-color: transparent; }
+
+.link-return {
+  font-size: 1rem;
+  margin-top: 0.9375rem;
+  display: inline-block; }

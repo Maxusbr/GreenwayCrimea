@@ -1,0 +1,21 @@
+﻿<div class="container-fluid admin-product-tab">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="inline product-setting-title content-header">
+                Дополнительные маркеры
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="admin-marker" ng-repeat="marker in $ctrl.markers">
+                <div class="products-view-label">
+                    <span class="products-view-label-inner" ng-class="marker.Selected ? '' : 'admin-marker-not-selected'"
+                          ng-style="{'background' : '#{{marker.Color}}', 'color' : '#{{marker.ColorName}}'}"
+                          ng-click="$ctrl.link($ctrl.pID,marker)">{{marker.Name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+Id;Email;Subscribe;SubscribeDate[DATE];UnsubscribeDate[DATE];UnsubscribeReason
+4;testmail1@test.ru;true;20.07.2017 10:54;NULL;NULL
+5;testmail2@test.ru;true;19.07.2017 10:54;NULL;NULL
+6;testmail3@test.ru;true;18.07.2017 10:54;NULL;NULL
+7;testmail4@test.ru;true;17.07.2017 10:54;NULL;NULL
+8;testmail5@test.ru;true;16.07.2017 10:54;NULL;NULL
+9;testmail6@test.ru;true;15.07.2017 10:54;NULL;NULL
+10;testmail7@test.ru;true;14.07.2017 10:54;NULL;NULL
+11;testmail8@test.ru;true;13.07.2017 10:54;NULL;NULL
+12;testmail9@test.ru;true;12.07.2017 10:54;NULL;NULL
+13;testmail10@test.ru;true;11.07.2017 10:54;NULL;NULL
+14;testmail11@test.ru;false;10.07.2017 10:54;30.06.2017 10:54;NULL
+15;testmail12@test.ru;false;09.07.2017 10:54;01.07.2017 10:54;NULL
+16;testmail13@test.ru;false;08.07.2017 10:54;02.07.2017 10:54;NULL
+17;testmail14@test.ru;false;07.07.2017 10:54;03.07.2017 10:54;NULL
+18;testmail15@test.ru;false;06.07.2017 10:54;04.07.2017 10:54;NULL
+19;testmail16@test.ru;false;05.07.2017 10:54;05.07.2017 10:54;NULL
+20;testmail17@test.ru;false;04.07.2017 10:54;06.07.2017 10:54;Reason1
+21;testmail18@test.ru;false;03.07.2017 10:54;07.07.2017 10:54;Reason2
+22;testmail19@test.ru;false;02.07.2017 10:54;08.07.2017 10:54;Reason3
+23;testmail20@test.ru;false;01.07.2017 10:54;09.07.2017 10:54;Reason4
+24;testmail21@test.ru;false;30.06.2017 10:54;10.07.2017 10:54;Reason5
+25;testmail22@test.ru;false;29.06.2017 10:54;11.07.2017 10:54;Reason6

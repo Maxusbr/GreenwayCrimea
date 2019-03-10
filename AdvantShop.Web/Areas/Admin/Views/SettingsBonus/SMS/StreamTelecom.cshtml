@@ -1,0 +1,17 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.BonusSettingsModel
+<div class="form-group row m-b-lg">
+    <div class="col-xs-3">
+        Логин для смс системы
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.StreamSmsLogin, new { @class = "form-control", ng_model = "settingBonus.StreamSmsLogin", textcomplete = "" })
+    </div>
+</div>
+<div class="form-group row m-b-lg">
+    <div class="col-xs-3">
+        Пароль для смс системы
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.StreamSmsPassword, new { @class = "form-control", ng_model = "settingBonus.StreamSmsPassword", textcomplete = "" })
+    </div>
+</div>

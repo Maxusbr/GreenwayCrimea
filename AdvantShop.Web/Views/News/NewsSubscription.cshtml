@@ -1,0 +1,27 @@
+﻿<form novalidate name="subscribeForm" class="subscribe-block cs-bg-3" data-ng-controller="SubscribeCtrl as subscribe">
+    <div class="row middle-xs" ng-init="subscribe.form=subscribeForm">
+        <div class="col-xs-3 subscribe-block-text">
+            @SettingsNews.MainPageText
+        </div>
+        <div class="col-xs-6 subscribe-block-field">
+            <input name="subscribeEmailField" placeholder="@T("News.NewsSubscription.Email")" type="email" value="" class="input-big" required data-ng-model="subscribe.subscribeEmail" data-ng-model-options="{ debounce: 100 }" />
+        </div>
+        <div class="col-xs-3 subscribe-block-button">
+            <input type="submit" class="btn btn-action btn-big btn-expander btn-subscribe" value="@T("News.NewsSubscription.Subscibe")"
+                   data-button-validation
+                   data-button-validation-success="subscribe.subscribeSend(subscribe.subscribeEmail)">
+        </div>
+    </div>
+    @if (SettingsCheckout.IsShowUserAgreementText)
+    {
+        <div class="row middle-xs">
+            <label class="col-xs subscribe-block-field">
+                <span class="form-field-input vertical-interval-xsmall">
+                    @Html.CheckBox("Agree", new { data_ng_model = "subscribe.agree", @class = "custom-input-native", data_ng_init = "subscribe.agree = false" })
+                    <span class="custom-input-checkbox"></span>
+                    @Html.Raw(SettingsCheckout.UserAgreementText)
+                </span>
+            </label>
+        </div>
+    }
+</form>

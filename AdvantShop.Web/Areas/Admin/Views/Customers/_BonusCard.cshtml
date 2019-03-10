@@ -1,0 +1,41 @@
+﻿@model AdvantShop.Web.Admin.Models.Customers.CustomersModel
+
+<div class="ibox category-block block-additional-parameters">
+    <div class="ibox-content category-content block-additional-parameters-content p-r-lg border_none">
+        <h3 class="category-title">Бонусы</h3>
+        @if (Model.BonusCardNumber > 0)
+        {
+            <div class="block-additional-parameters-row">
+                <div>
+                    Номер бонусной карты
+                </div>
+                <div class="block-additional-parameters-value">
+                    <a href="@Url.Action("Edit", "Cards", new {id = Model.CustomerId})">@Model.BonusCardNumber</a>
+                    @if (Model.BonusCardBlocked)
+                    {
+                        <span class="link-danger">Карта заблокирована</span>
+                    }
+                </div>
+            </div>
+            <div class="block-additional-parameters-row">
+                <div>
+                    Баллы
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Model.BonusAmount.ToInvatiant() (@Model.GradeName @Model.BonusPercent.ToInvatiant() %)
+                </div>
+            </div>
+        }
+        else
+        {
+            <ui-modal-trigger data-controller="'ModalAddCardCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                              template-url="../areas/admin/content/src/_shared/modal/bonus/cards/addcard.html"
+                              data-resolve="{params:{customerId:'@Model.CustomerId',firstName:'@Model.Customer.FirstName',lastName:'@Model.Customer.LastName'}}">
+                <a data-e2e="AddCard" class="btn btn-sm btn-success btn--margin-left" href="">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Cards.Index.AddCard")
+                </a>
+            </ui-modal-trigger>
+        }
+    </div>
+</div>

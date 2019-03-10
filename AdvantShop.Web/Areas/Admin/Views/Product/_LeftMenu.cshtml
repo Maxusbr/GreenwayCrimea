@@ -1,0 +1,102 @@
+﻿@model AdvantShop.Web.Admin.Models.Products.AdminProductModel
+
+<div>
+    <div class="aside-menu" id="product-aside" transformer data-container-limit="leftAsideProduct" data-offset-top="88" data-limit-pos="true">
+        <a transformer-mutable class="product-aside-menu-image-link" ng-click="product.goToPhotos()" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-image" style="height: @(SettingsPictureSize.SmallProductImageHeight)px;">
+                <img src="@Model.PhotoSrc()" alt="" ng-src="{{product.mainPhotoSrc}}" ng-init="product.mainPhotoSrc='@Model.PhotoSrc()'" />
+            </div>
+        </a>
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#main" du-smooth-scroll du-scrollspy offset="230">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Основное
+                </div>
+            </div>
+        </a>
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#price" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Цена и наличие
+                </div>
+            </div>
+        </a>
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#delivery" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Доставка
+                </div>
+            </div>
+        </a>
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#photos" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Фотографии
+                </div>
+            </div>
+        </a>
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#video" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Видео
+                </div>
+            </div>
+        </a>
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#description" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Описание
+                </div>
+            </div>
+        </a>
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#properties" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Свойства товара
+                </div>
+            </div>
+        </a>
+        @*@if (Model.HasCustomOptions)
+        {*@
+            <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#customoptions" du-smooth-scroll du-scrollspy offset="103">
+                <div class="aside-menu-inner">
+                    <div class="aside-menu-name">
+                        Дополнительные опции
+                    </div>
+                </div>
+            </a>
+        @*}*@
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#SEO" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    SEO
+                </div>
+            </div>
+        </a>
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#lists" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Списки
+                </div>
+            </div>
+        </a>
+
+        <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#landing" du-smooth-scroll du-scrollspy offset="103">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    Посадочная страница
+                </div>
+            </div>
+        </a>
+        @for (int i = 0; i < Model.TabModules.Count; i++)
+            {
+            <a class="aside-menu-row product-aside-link settigs-menu-row link-invert link-decoration-none" href="product/edit/@(Model.ProductId)#tab@(i)" du-smooth-scroll du-scrollspy offset="103">
+                <div class="aside-menu-inner">
+                    <div class="aside-menu-name">
+                        @Html.Raw(Model.TabModules[i].Title)
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

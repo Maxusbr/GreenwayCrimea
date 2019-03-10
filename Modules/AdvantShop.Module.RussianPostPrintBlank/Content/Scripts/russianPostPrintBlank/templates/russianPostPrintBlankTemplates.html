@@ -1,0 +1,333 @@
+﻿
+
+<div style="padding: 10px 0px 0px 10px;">
+    <span class="spanSettCategory">Печать бланков Почты РФ</span>
+
+    <div ng-switch="$ctrl.ViewType">
+        <div ng-switch-when="templatesList">
+            <div style="float: right; padding-bottom: 15px;">
+                <input type="button" class="btn btn-sm btn-success" value="Создать шаблон" ng-click="$ctrl.showCreatingTemplate()" />
+            </div>
+            <table id="templatesListTable" class="table-ui-center">
+                <tr>
+                    <th style="width: 40%;">Название шаблона</th>
+                    <th>Тип бланка</th>
+                    <th>Редактировать</th>
+                    <th>Удалить</th>
+                </tr>
+
+                <tr ng-repeat="template in $ctrl.TemplatesList">
+                    <td>{{ template.Name }}</td>
+                    <td>{{ template.TypeName }}</td>
+                    <td><input type="button" class="btn btn-sm btn-success" value="Редактировать" style="min-width: 100px;" ng-click="$ctrl.changeTemplate(template.TemplateID)" /></td>
+                    <td><input type="button" class="btn btn-sm btn-danger" value="Удалить" style="min-width: 100px;" ng-click="$ctrl.deleteTemplate(template.TemplateID, template.Name)" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div ng-switch-when="editTemplate" style="padding-top: 10px;">
+            <div ng-if="$ctrl.editMode == 1">
+                Выберите тип создаваемого шаблона: &nbsp;
+                <select name="selectCreateTemplate" id="selectCreateTemplate"
+                        ng-model="$ctrl.currentTemplateType"
+                        ng-init="$ctrl.currentTemplateType = $ctrl.availableTemplateTypes[0]; $ctrl.changeTemplateTypeOfCreate();"
+                        ng-options="option.Name for option in $ctrl.availableTemplateTypes track by option.Type"
+                        ng-selected="option.Type == $ctrl.currentTemplateType.Type"
+                        ng-change="$ctrl.changeTemplateTypeOfCreate()"
+                        style="width: 280px;"></select>
+            </div>
+
+            <div ng-switch="$ctrl.currentTemplate.Type" style="padding-top: 15px;">
+                <div ng-switch-when="1" class="tables">
+                    <table class="table-ui" style="display: inline-block; border: none;">
+                        <tr>
+                            <th style="font-weight: bold;">
+                                Укажите данные
+                            </th>
+                        </tr>
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                 <span class="text-required">Название шаблона</span> <br />
+                                <input type="text" ng-model="$ctrl.currentTemplate.TemplateName" value="{{ $ctrl.currentTemplate.TemplateName }}" required="required" maxlength="35" style="width: 350px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-box-field">
+                                Тип отправления <br />
+                                <input id="PackageType" name="PackageType" type="radio" value="package" ng-model="$ctrl.currentTemplate.Content.PackageType" ng-checked="$ctrl.currentTemplate.Content.PackageType == 'package'" /> Посылка <br />
+                                <input id="PackageType" name="PackageType" type="radio" value="wardrobes" ng-model="$ctrl.currentTemplate.Content.PackageType" ng-checked="$ctrl.currentTemplate.Content.PackageType == 'wardrobes'" /> Бандероль <br />
+                                <input id="PackageType" name="PackageType" type="radio" value="firstClass" ng-model="$ctrl.currentTemplate.Content.PackageType" ng-checked="$ctrl.currentTemplate.Content.PackageType == 'firstClass'" /> Отправление 1-м классом
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Фамилия <br />
+                                <input name="LastName" type="text" ng-model="$ctrl.currentTemplate.Content.LastName" value="{{ $ctrl.currentTemplate.Content.LastName }}" id="LastName" style="width: 350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Имя <br />
+                                <input name="Name" type="text" ng-model="$ctrl.currentTemplate.Content.Name" value="{{ $ctrl.currentTemplate.Content.Name }}" id="Name" style="width: 350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Отчество <br />
+                                <input name="Patronymic" type="text" ng-model="$ctrl.currentTemplate.Content.Patronymic" value="{{ $ctrl.currentTemplate.Content.Patronymic }}" id="Patronymic" style="width: 350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Регион <br />
+                                <input name="Region" type="text" ng-model="$ctrl.currentTemplate.Content.Region" value="{{ $ctrl.currentTemplate.Content.Region }}" id="Region" style="width: 350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Город <br />
+                                <input name="City" type="text" ng-model="$ctrl.currentTemplate.Content.City" value="{{ $ctrl.currentTemplate.Content.City }}" id="City" style="width: 350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Улица <br />
+                                <input name="Street" type="text" ng-model="$ctrl.currentTemplate.Content.Street" value="{{ $ctrl.currentTemplate.Content.Street }}" id="Street" style="width: 350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Дом <br />
+                                <input name="House" type="text" ng-model="$ctrl.currentTemplate.Content.House" value="{{ $ctrl.currentTemplate.Content.House }}" id="House" style="width: 350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Квартира <br />
+                                <input name="Apartment" type="text" ng-model="$ctrl.currentTemplate.Content.Apartment" value="{{ $ctrl.currentTemplate.Content.Apartment }}" id="Apartment" style="width: 350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Почтовый код <br />
+                                <input name="PostalCode" type="text" ng-model="$ctrl.currentTemplate.Content.PostalCode" value="{{ $ctrl.currentTemplate.Content.PostalCode }}" id="PostalCode" style="width: 350px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div ng-switch-when="2" class="tables">
+                    <table class="table-ui" style="display: inline-block; width: 540px; border: none;">
+                        <tr>
+                            <th style="font-weight: bold;" colspan="2">
+                                Данные для Описи вложения Ф.107
+                            </th>
+                        </tr>
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                <span class="text-required">Название шаблона</span> &nbsp;
+                                <input type="text" ng-model="$ctrl.currentTemplate.TemplateName" value="{{ $ctrl.currentTemplate.TemplateName }}" required="required" maxlength="35" style="width: 530px;">
+                            </td>
+                        </tr>
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                ФИО, наименование юридического лица &nbsp;
+                                <input id="OrganizationName" name="OrganizationName" type="text" ng-model="$ctrl.currentTemplate.Content.OrganizationName" value="{{ $ctrl.currentTemplate.Content.OrganizationName }}" maxlength="35" style="width: 530px;">
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                <input id="UseTrackNumber" type="checkbox" name="UseTrackNumber" ng-model="$ctrl.currentTemplate.Content.UseTrackNumber" ng-checked="{{ $ctrl.currentTemplate.Content.UseTrackNumber == true }}">
+                                Заполнить поле «Почтовый идентификатор» из заказа
+                                <help-trigger class="ng-cloak word-spacing" data-title="Поле «Почтовый идентификатор»">
+                                    Значение данного поля будет формироваться из значения поля "Номер отслеживания" (трек-номер) в заказе
+                                </help-trigger>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div ng-switch-when="3" class="tables">
+                    <span class="text-required">Название шаблона</span> &nbsp;
+                    <input type="text" ng-model="$ctrl.currentTemplate.TemplateName" value="{{ $ctrl.currentTemplate.TemplateName }}" required="required" maxlength="35" style="width: 450px;">
+                    <br /><br />
+                    <table class="table-ui" style="display: inline-block; border: none; padding-top: 10px;">
+                        <tr>
+                            <th style="font-weight: bold;">
+                                Укажите данные
+                            </th>
+                            <th style="font-weight: bold;">
+                                Дополнительные поля для формы 112
+                            </th>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Фамилия <br />
+                                <input name="LastName" type="text" ng-model="$ctrl.currentTemplate.Content.LastName" value="{{ $ctrl.currentTemplate.Content.LastName }}" id="LastName" style="width:250px;" />
+                            </td>
+                            <td class="text-box-field" style="text-align: center;">
+                                Первая строка сообщения (макс. 35 символов)<br />
+                                <input name="FirstMessageString" id="FirstMessageString" type="text" ng-model="$ctrl.currentTemplate.Content.FirstMessageString" value="{{ $ctrl.currentTemplate.Content.FirstMessageString }}" maxlength="35" style="width:350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Имя <br />
+                                <input name="Name" type="text" ng-model="$ctrl.currentTemplate.Content.Name" value="{{ $ctrl.currentTemplate.Content.Name }}" style="width:250px;" />
+                            </td>
+                            <td class="text-box-field" style="text-align: center;">
+                                Вторая строка сообщения (макс. 35 символов)<br />
+                                <input name="SecondMessageString" id="SecondMessageString" type="text" ng-model="$ctrl.currentTemplate.Content.SecondMessageString" value="{{ $ctrl.currentTemplate.Content.SecondMessageString }}" maxlength="35" style="width:350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Отчество <br />
+                                <input name="Patronymic" id="Patronymic" type="text" ng-model="$ctrl.currentTemplate.Content.Patronymic" value="{{ $ctrl.currentTemplate.Content.Patronymic }}" style="width:250px;" />
+                            </td>
+                            <td class="text-box-field">
+                                <input id="COD" type="checkbox" name="COD" ng-model="$ctrl.currentTemplate.Content.COD" ng-checked="{{ $ctrl.currentTemplate.Content.COD == true }}" />
+                                Отметка о наложенном платеже
+                                <br />
+                                <input id="DeliveryHome" type="checkbox" name="DeliveryHome" ng-model="$ctrl.currentTemplate.Content.DeliveryHome" ng-checked="{{ $ctrl.currentTemplate.Content.DeliveryHome == true }}" />
+                                Отметка о доставке на дом
+                                <br />
+                                <input id="Notification" type="checkbox" name="Notification" ng-model="$ctrl.currentTemplate.Content.Notification" ng-checked="{{ $ctrl.currentTemplate.Content.Notification == true }}" />
+                                Отметка об уведомлении
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Регион <br />
+                                <input name="Region" type="text" id="Region" ng-model="$ctrl.currentTemplate.Content.Region" value="{{ $ctrl.currentTemplate.Content.Region }}" style="width:250px;" />
+                            </td>
+                            <td class="text-box-field">
+                                <input id="UseReceiverName" type="checkbox" name="UseReceiverName" ng-model="$ctrl.currentTemplate.Content.UseReceiverName" ng-checked="{{ $ctrl.currentTemplate.Content.UseReceiverName == true }}" />
+                                Использовать отдельное имя получателя перевода по Ф112
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Город <br />
+                                <input name="City" type="text" id="City" ng-model="$ctrl.currentTemplate.Content.City" value="{{ $ctrl.currentTemplate.Content.City }}" style="width:250px;" />
+                            </td>
+                            <td class="text-box-field" style="text-align: center;">
+                                Отдельное имя получателя перевода <br />
+                                <input name="ReceiverName" type="text" id="ReceiverName" ng-model="$ctrl.currentTemplate.Content.ReceiverName" value="{{ $ctrl.currentTemplate.Content.ReceiverName }}" style="width:350px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Улица <br />
+                                <input name="Street" type="text" id="Street" ng-model="$ctrl.currentTemplate.Content.Street" value="{{ $ctrl.currentTemplate.Content.Street }}" style="width:250px;" />
+                            </td>
+                            <td class="text-box-field">
+                                <input id="NoSendingAddress" type="checkbox" ng-model="$ctrl.currentTemplate.Content.NoSendingAddress" ng-checked="{{ $ctrl.currentTemplate.Content.NoSendingAddress == true }}" />
+                                Не отправлять данные адреса отправителя перевода по Ф112
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Дом <br />
+                                <input name="House" type="text" id="House"  ng-model="$ctrl.currentTemplate.Content.House" value="{{ $ctrl.currentTemplate.Content.House }}" style="width:250px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Квартира <br />
+                                <input name="Apartment" type="text" id="Apartment" ng-model="$ctrl.currentTemplate.Content.Apartment" value="{{ $ctrl.currentTemplate.Content.Apartment }}" style="width:250px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Почтовый код <br />
+                                <input name="PostalCode" type="text" id="PostalCode" ng-model="$ctrl.currentTemplate.Content.PostalCode" value="{{ $ctrl.currentTemplate.Content.PostalCode }}" style="width:250px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Телефон (мобильный)<br />
+                                <input name="Phone" id="Phone" type="text" ng-model="$ctrl.currentTemplate.Content.Phone" value="{{ $ctrl.currentTemplate.Content.Phone }}" style="width:250px;" />
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table-ui" style="display: inline-block; border: none;">
+                        <tr class="rowsPost">
+                            <th style="font-weight: bold; width: 260px;">
+                                Банковские данные:
+                            </th>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                ИНН<br />
+                                <input name="Inn" type="text" id="Inn" ng-model="$ctrl.currentTemplate.Content.Inn" value="{{ $ctrl.currentTemplate.Content.Inn }}" style="width:250px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Корреспондентский счет <br />
+                                <input name="CorrespondentAccount" type="text" id="CorrespondentAccount" ng-model="$ctrl.currentTemplate.Content.CorrespondentAccount" value="{{ $ctrl.currentTemplate.Content.CorrespondentAccount }}" style="width:250px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Расчетный счет<br />
+                                <input name="CheckingAccount" type="text" id="CheckingAccount" ng-model="$ctrl.currentTemplate.Content.CheckingAccount" value="{{ $ctrl.currentTemplate.Content.CheckingAccount }}" style="width:250px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                Название банка<br />
+                                <input name="BankName" type="text" id="BankName" ng-model="$ctrl.currentTemplate.Content.BankName" value="{{ $ctrl.currentTemplate.Content.BankName }}" style="width:250px;" />
+                            </td>
+                        </tr>
+
+                        <tr class="rowsPost">
+                            <td class="text-box-field">
+                                БИК банка<br />
+                                <input name="BankCode" type="text" id="BankCode" ng-model="$ctrl.currentTemplate.Content.BankCode" value="{{ $ctrl.currentTemplate.Content.BankCode }}" style="width:250px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="padding-top: 15px;">
+                <input type="button" ng-if="$ctrl.editMode == 0" class="btn btn-sm btn-success" value="Сохранить" ng-click="$ctrl.editTemplate($ctrl.currentTemplate.TemplateId)" />
+                <input type="button" ng-if="$ctrl.editMode == 1" class="btn btn-sm btn-success" value="Создать" ng-click="$ctrl.createTemplate()" />
+                <input type="button" class="btn btn-sm btn-success" value="Отмена" ng-click="$ctrl.cancelEdit()" />
+            </div>
+        </div>
+
+        <div ng-switch-when="templatesListEmpty" style="padding-top: 10px;">
+            <span style="font-size: 18px;">Созданные шаблоны не найдены</span><br />
+            <div style="padding-top: 15px;">
+                <input type="button" class="btn btn-sm btn-success" value="Создать шаблон" ng-click="$ctrl.showCreatingTemplate()" />
+            </div>
+        </div>
+    </div>
+</div>

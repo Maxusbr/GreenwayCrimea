@@ -1,0 +1,26 @@
+User-agent: Yandex 
+Disallow: /  
+
+User-agent: Googlebot 
+Disallow: *?type=*
+Disallow: *?page=*
+Disallow: *?letter=*
+Disallow: *prop=
+Disallow: *brandid=*
+Disallow: *pricefrom=*
+Disallow: *priceto=*
+Disallow: /newscategory$
+Disallow: /fogotpassword 
+Disallow: /compare
+Disallow: /myaccount
+Disallow: /checkout
+Disallow: /registration
+Disallow: /cart
+Disallow: /wishlist
+Disallow: /checkout/billing
+Disallow: /preorder/*
+Disallow: *?brand=*
+Disallow: *?redirectTo=*
+Disallow: /search
+Clean-param: forcedDesktop /
+Clean-param: forcedMobile /

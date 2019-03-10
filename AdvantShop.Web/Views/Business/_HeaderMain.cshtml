@@ -1,0 +1,54 @@
+﻿@model AdvantShop.ViewModel.Feedback.FeedbackViewModel
+<section id="go-home" class="pad-t-50">
+	<div class="container">
+		<div class="row">
+			<div class="introducing text-center col-sm-12">
+				<h1 class="text-center">Начать свой бизнес</h1>
+				<h3>Станьте партнером компании <strong>GREENWAY</strong></h3>
+				<h2>и зарабатывайте от 30.000 рублей уже в первый месяц</h2>
+			</div>
+			<div class="col-md-12 wow fadeInUp featured-img featured-inner" data-wow-delay="0.4s">
+				<div class="row">
+					<div class="col-sm-offset-1 col-sm-8">
+						<div class="video-container">
+							<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/sjZCUGx-cwI"></iframe>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="row">
+							@using (Html.BeginForm("Index", "Business", FormMethod.Post, new { name = "firstcontactform", novalidate = "novalidate" }))
+							{
+								@Html.AntiForgeryToken()
+								<input type="hidden" id="firstMessageType" name="MessageType" value="Offer">
+								<input type="hidden" id="firstIsLanding" name="IsLanding" value="true">
+								<div class="col-sm-12">
+									<div class="gold shadow3d">
+										<h3>Запрос</h3>
+										<h4>на сотрудничество</h4>
+										<fieldset>
+											@Html.TextBoxFor(m => m.Name, new { required = "true", data_ng_model = "feedback.name", placeholder = "Имя" })
+											@*<input name="Name" type="text" required="required" id="firstname" size="30" value="" placeholder="Имя">*@
+											<br>
+											@Html.TextBoxFor(m => m.Email, new { required = "true", data_ng_model = "feedback.email",
+										   placeholder = "Email", type="email",
+										   pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)$"})
+											@*<input name="Email" type="text" required="required" id="firstemail" size="30" value="" placeholder="Email">*@
+											<br>
+											@Html.TextBoxFor(m => m.Phone, new { required = "true", data_ng_model = "feedback.phone", type = "tel", placeholder = "Телефон" })
+											@*<input name="Phone" type="text" required="required" id="firstphone" size="30" value="" placeholder="Телефон">*@
+											<br>
+											<button type="submit" data-button-validation value="Submit">Отправить</button>
+										</fieldset>
+									</div>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+				<!-- /.inner row -->
+			</div>
+			<!-- /.row -->
+		</div>
+	</div>
+	<!-- /.container -->
+</section>

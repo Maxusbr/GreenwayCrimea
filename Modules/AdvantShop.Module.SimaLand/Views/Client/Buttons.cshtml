@@ -1,0 +1,11 @@
+﻿@model System.Collections.Generic.List<AdvantShop.Module.SimaLand.ViewModel.ButtonsViewModel>
+
+<div id="simalandButtons" style="display:none">
+    @foreach (var tag in Model)
+    {
+        <div class="products-view-label">
+            <a href="@tag.Href" style="color: white"><span class="products-view-label-inner products-view-label-discount" style="background:@tag.Color">@tag.Tag.Name</span></a>
+        </div>
+    }
+    
+</div>

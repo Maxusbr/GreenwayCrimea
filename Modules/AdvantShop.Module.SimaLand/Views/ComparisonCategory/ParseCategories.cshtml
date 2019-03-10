@@ -1,0 +1,21 @@
+﻿@model AdvantShop.Module.SimaLand.ViewModel.SimalandCategoryToParseViewModel
+<table class="table-ui">
+    <thead>
+        <tr>
+            <th>
+                Категория <b>Sima-land.ru</b> <span class="total-count-parse-category">Всего: @Model.TotalCountCategories</span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model.Categories)
+        {
+        <tr>
+            <td>
+                @c.name
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

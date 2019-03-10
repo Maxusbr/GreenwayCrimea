@@ -1,0 +1,78 @@
+﻿<form novalidate name="addEditTaxForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новый налог" : "Редактирование налога"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.form = addEditTaxForm">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Название</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input data-e2e="taxName" type="text" class="form-control" ng-model="ctrl.name" required validation-input-text="Название" autofocus/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Активен
+                    </label>
+                    <div class="col-xs-9">
+                        <label class="adv-checkbox-label" data-e2e="taxEnabled">
+                            <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.enabled"/>
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Ставка
+                    </label>
+                    <div class="col-xs-9">
+                        <input data-e2e="taxRate" type="number" class="form-control" ng-model="ctrl.rate" required validation-input-text="Ставка"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Тип
+                    </label>
+                    <div class="col-xs-9">
+                        <select ng-model="ctrl.taxType" ng-options="s.label for s in ctrl.TaxTypes" class="form-control" data-e2e="taxType"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Налог по умолчанию
+                    </label>
+                    <div class="col-xs-9">
+                        <label class="adv-checkbox-label" data-e2e="taxIsDefault">
+                            <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.isDefault"/>
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-e2e="taxButtonSave" 
+                data-button-validation-success="ctrl.save()" data-button-validation ladda="ctrl.btnSleep"
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !addEditTaxForm.modified)"
+                ng-bind="ctrl.mode == 'add' ? 'Добавить' : 'Сохранить'"></button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

@@ -1,0 +1,66 @@
+﻿@model List<AdvantShop.Core.Services.Bonuses.Model.AdditionBonus>
+<div>
+    <h2 class="m-b-sm clearfix">Дополнительные бонусы</h2>
+    <div class="m-b">
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="viewTableAdditionalBonus" class="table table-striped table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>
+                                Название
+                            </th>
+                            <th>
+                                Сумма
+                            </th>
+                            <th>
+                                Описание
+                            </th>
+                            <th>
+                                Действует от
+                            </th>
+                            <th>
+                                Действует включительно до
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr data-e2e="AdditionBonusId-@item.Id">
+                                <td data-e2e="AdditionBonusName">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td data-e2e="AdditionBonusAmount">
+                                    @item.Amount.ToInvatiant()
+                                </td>
+                                <td data-e2e="AdditionBonusDescription">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td data-e2e="AdditionBonusStartDate">
+                                    @if (item.StartDate.HasValue) {
+                                       @item.StartDate.Value.ToString("dd MM yyyy")
+                                    }
+                                </td>
+                                <td data-e2e="AdditionBonusEndDate">
+                                    @if (item.EndDate.HasValue)
+                                    {
+                                        @item.EndDate.Value.ToString("dd MM yyyy")
+                                    }                                   
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Count < 1)
+                        {
+                            <tr>
+                                <td colspan="5">
+                                    Ни одной записи не найдено
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Списать дополнительные бонусы</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal m-r m-l">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label m-b-xs">
+                        <span class="text-required">Выберите бонус</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <select ng-model="ctrl.additionId" class="form-control" required validation-input-text="Бонус" ng-options="item.Id as (item.Name||'не указано') +' ('+ item.Amount +')' for item in ctrl.additionBonuses"><option value="">Выберите</option></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label m-b-xs">
+                        <span class="text-required">Сумма</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.amount" required validation-input-text="Сумма" data-e2e="amount" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="row">
+                    <label class="col-xs-3 control-label m-b-xs">
+                        Основание
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.reason" validation-input-text="Основание" data-e2e="Reason" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="submit" button-validation button-validation-success="ctrl.subctractBonus(); ctrl.btnLoading = true" ladda="ctrl.btnLoading" data-e2e="subctractBonus">Списать</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

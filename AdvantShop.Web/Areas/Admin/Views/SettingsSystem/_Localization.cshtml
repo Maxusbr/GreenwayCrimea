@@ -1,0 +1,59 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SystemSettingsModel
+
+<div ng-cloak>
+    <div class="sticky-page-name m-b" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="hidden-sticky-title">Системные настройки / </span>@(T("Admin.Settings.System.Localization"))
+                </h1>
+                <div class="m-t-sm m-b-sm sticky-hidden">
+                    <select class="form-control inline vertical-middle" ng-model="settingsSystem.langLocalization" ng-change="settingsSystem.changeSelectLanguage()" ng-value="1" style="width: 155px;">
+                        <option value="1">Русский</option>
+                        <option value="2">Английский</option>
+                    </select>
+                    @*<span class="m-l-md inline vertical-middle">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" class="adv-checkbox-input"
+                                   name="active301"
+                                   ng-click="settingsSystem.changeSelectLanguage()"
+                                   ng-model="settingsSystem.AllLocalization">
+                            <span class="adv-checkbox-emul"></span>
+                            <span>Показывать все ресурсы</span>
+                        </label>
+                    </span>*@
+                </div>
+            </div>
+            <div class="page-name-block-item-additional">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button" ng-click="settingsSystem.startExportlocalization()">
+                    <span class="fa"></span> @(T("Admin.Settings.System.301Redirects.Export"))
+                </button>
+                <file-uploader class="picture-uploader-middle"
+                               accept=".csv"
+                               start-src=""
+                               upload-url="/localization/import"
+                               upload-params=""                               
+                               on-update="settingsSystem.updateLocalizationGrid()"
+                               title-upload-button="@(T("Admin.Settings.System.301Redirects.Import"))" 
+                               style="display: inline-block;">
+                </file-uploader>
+                <ui-modal-trigger data-controller="'ModalAddEditLocalizationCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/settingsSystem/modal/addEditLocalization/addEditLocalization.html"
+                                  data-on-close="settingsSystem.gridLocalization.fetchData()">
+                    <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                        <span class="fa fa-plus"></span> @(T("Admin.Settings.System.Localization.Add"))
+                    </button>
+                </ui-modal-trigger>
+            </div>
+        </div>
+    </div>
+
+    <ui-grid-custom grid-unique-id="gridLocalization"
+                    grid-options="settingsSystem.gridOptionsLocalization"
+                    grid-on-init="settingsSystem.gridLocalizationOnInit(grid)"
+                    grid-url="'Localization/GetLocalizations'"
+                    grid-params="{ 'Value': settingsSystem.langLocalization, 'ChangeAll': settingsSystem.AllLocalization }"
+                    grid-inplace-url="'Localization/AddEditLocalization'"
+                    grid-extend-ctrl="settingsSystem">
+    </ui-grid-custom>
+</div>

@@ -1,0 +1,18 @@
+.link-decoration-invert,
+.link-decoration-none,
+.link-decoration-none:hover,
+.link-text-decoration-none,
+.link-text-decoration-none:hover {
+  text-decoration: none; }
+
+.link-decoration-invert:hover {
+  text-decoration: underline; }
+
+.link-dotted, .link-dotted-invert {
+  border-bottom: 1px transparent dotted; }
+
+.link-dotted {
+  border-bottom-color: #fff; }
+
+.link-dotted:hover {
+  border-bottom-color: transparent; }

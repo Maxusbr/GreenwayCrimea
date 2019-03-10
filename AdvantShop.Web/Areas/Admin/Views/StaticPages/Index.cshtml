@@ -1,0 +1,31 @@
+﻿
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.StaticPages.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <a href="@Url.Action("Add", "StaticPages")">
+                <button class="btn btn-sm btn-success btn--margin-left" data-e2e="btnAdd" type="button">
+                    <span class="fa fa-plus"></span> @T("Admin.StaticPages.Index.AddStaticPages")
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-row-identificator="'StaticPageId'"
+                        grid-on-init="staticPages.gridOnInit(grid)"
+                        grid-options="staticPages.gridOptions"
+                        grid-url="'staticPages/getStaticPages'"
+                        grid-inplace-url="'staticPages/InplaceStaticPage'"
+                        grid-extend-ctrl="staticPages">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="staticPages.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

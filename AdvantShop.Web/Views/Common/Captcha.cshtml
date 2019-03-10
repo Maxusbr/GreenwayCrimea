@@ -1,0 +1,32 @@
+﻿@using BotDetect
+@model AdvantShop.ViewModel.Common.CaptchaViewModel
+@{
+    var captchaSource = new MvcCaptcha("CaptchaSource")
+    {
+        CodeStyle = CodeStyle.Alphanumeric,
+        Locale = "en-US",
+        CodeLength = SettingsMain.CaptchaLength
+    };
+
+    var hint = "";
+
+    switch (SettingsMain.CaptchaMode)
+    {
+        case CaptchaMode.Numeric:
+            captchaSource.CodeStyle = CodeStyle.Numeric;
+            break;
+        case CaptchaMode.AlphaNumericRu:
+            captchaSource.Locale = "ru";
+            hint = "* буквы на русском языке";
+            break;
+    }
+}
+@Html.Captcha(captchaSource)
+<div class="captcha-txt">
+    @Html.TextBox("CaptchaCode", null, new {@class = "input-small", required = "required", data_ng_model = Model.NgModel ?? "CaptchaCode"})
+</div>
+@if (hint != "")
+{
+    <div class="captcha-hint">@hint</div>
+}
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />

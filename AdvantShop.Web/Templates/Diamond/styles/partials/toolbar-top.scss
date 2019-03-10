@@ -1,0 +1,30 @@
+﻿
+.toolbar-top {
+    background-color: #00a3cc;
+    color: #fff;
+    border-bottom: 1px solid #0092b7;
+}
+
+.toolbar-top-link-alt, 
+.toolbar-top-link, 
+.toolbar-top-item a {
+    color: #fff;
+}
+
+.toolbar-top-link-alt:hover {
+    text-decoration: none;
+} 
+
+.toolbar-top-link-alt:hover,
+.toolbar-top-link-alt:active, 
+.toolbar-top-link:hover, 
+.toolbar-top-link:active, 
+.toolbar-top-item a:hover, 
+.toolbar-top-item a:active {
+    color: #fff;
+}
+
+.toolbar-top-item {
+    padding: 11px 0;
+    color: #fff;
+}

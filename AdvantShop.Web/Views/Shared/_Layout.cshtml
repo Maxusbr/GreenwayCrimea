@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html data-ng-strict-di data-ng-app="app" @Html.GetNgController() @Html.Raw(SettingsMain.EnableInplace && InplaceEditorService.DisplayInplace() ? "class=\"inplace-enabled\"" : "")>
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="AdVantShop.NET">
+    <meta name="format-detection" content="telePhone=no">
+    <title>@Html.GetPageTitle()</title>
+    <base href="@UrlService.GetUrl()" />
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="Keywords" content="@Html.GetPageKeywords()"/>
+    @Html.GetCanonicalTag()
+    @Html.Partial("_Head")
+    @Html.Action("Favicon", "Common")
+</head>
+<body class="cs-t-1 text-floating @Html.GetToolbarClass()">
+    @Html.GoggleTagManagerCounter()
+    <div hidden>@Html.StaticBlock("LiveCounter")</div>
+    @Html.Action("GoogleAnalytics", "Common")
+    @Html.RenderModules("body_start")
+    <div class="stretch-container">
+        <header class="site-head">
+            @Html.Action("TopPanel", "Common")
+            @Html.StaticBlock("TopHeader")
+            @Html.Partial("_Header")
+        </header>
+        <main class="stretch-middle site-body">
+            <div class="container container-fluid site-body-inner js-site-body-inner cs-bg-7">
+                @Html.Action("MenuBlock", "Common")
+                @RenderBody()
+            </div>
+        </main>
+        <div class="site-footer-wrap">
+            @Html.Partial("_Footer")
+            @Html.Action("ToolBarBottom", "Common")
+            @Html.GetMiniProfiler()
+        </div>
+        <div class="scroll-to-top" data-scroll-to-top>
+            <div class="icon-up-open-before to-top-icon cs-t-1"></div>
+        </div>
+    </div>
+    @Html.Action("ZonePopover", "Common")
+    @Html.Action("DiscountByTime", "Common")
+    @Html.GetNotifyMessages()
+    <div class="design-background-bottom"></div>
+    <div class="design-background-top"></div>
+    <div id="theme-container">
+        <div class="theme-left">
+        </div>
+        <div class="theme-right">
+        </div>
+    </div>
+    @Html.Action("Telephony", "Common")
+    @Html.Action("CookiesPolicy", "Common")
+    @Html.Partial("_FooterScripts")
+    @Html.RenderModules("body_end")
+    @Html.StaticBlock("liveoperator")
+    @Html.Action("TrialBuilder", "Common")
+</body>
+</html>

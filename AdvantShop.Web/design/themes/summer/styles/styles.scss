@@ -1,0 +1,11 @@
+@import "../../_themes.scss", "../../../../styles/functions/_util.scss", "../../../../styles/_settings.scss";
+
+
+$bgTop: (height rem-calc(674px), bg (url('../images/background-top.jpg') no-repeat center top));
+$bgBottom: (height rem-calc(715px), bg (url('../images/background-bottom.jpg') no-repeat center bottom));
+
+@include theme-background($bgTop, $bgBottom);
+
+.site-footer-top-level, .footer-bottom-level {
+    background-color: transparent;
+}

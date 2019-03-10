@@ -1,0 +1,2 @@
+Id;TaskGroupId;AssignedManagerId;AppointedManagerId;Name;Description;Status;Priority;DueDate[DATE];OrderId;CustomerId[GUID];DateCreated[DATE];DateModified[DATE];Accepted;DateAppointed[DATE];IsAutomatic;IsDeferred;SortOrder
+11111;1;3;3;test1;new test1;0;0;12.11.2016 13:58;NULL;CFC2C33B-1E84-415E-8482-E98156341603;12.11.2016 13:58;12.11.2016 13:58;false;12.11.2016 13:58;false;false;1

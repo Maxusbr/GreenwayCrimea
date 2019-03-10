@@ -1,0 +1,65 @@
+﻿@model AdvantShop.Web.Admin.Models.Rules.RuleModel
+
+    <form method="POST" action="@Url.Action("Edit")" novalidate="novalidate" name="form">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.RuleType)
+        @Html.HiddenFor(x => x.ModelType)
+
+        <div class="ibox">
+            <div class="ibox-content">
+                <div class="sticky-page-name" sticky sticky-top="0">
+                    <div class="page-name-block sticky-page-name-inner">
+                        <div class="page-name-block-item-main">
+                            <h1 class="page-name-block-text sticky-page-name-text">
+                                Правило - "@Model.RuleType.Localize()"
+                            </h1>
+                            <div class="m-t-sm">
+                                <a data-e2e="ReturnRules" href="@Url.Action("Index", "Rules")">Вернуться назад</a>
+                            </div>
+                        </div>
+                        <div class="page-name-block-item-additional">
+                            <button data-e2e="SaveRules" type="submit" class="btn btn-sm btn-success" data-button-validation disabled ng-disabled="!form.modified">
+                                <i class="fa fa-check"></i> @T("Admin.Save")
+                            </button>
+                            <a data-e2e="DelRules" href="" class="link-danger m-l-sm" ng-click="rules.deleteRule('@Model.RuleType')">@T("Admin.Delete")</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-t">
+                    <div class="form-group row middle-xs">
+                        <div class="flex-grow-n col-fixed-size-md">
+                            <span class="text-required">Название</span>
+                        </div>
+                        <div class="col-xs-6 relative">
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", ng_model = "rule.name", required = "required", validation_input_text = "Название" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row middle-xs">
+                        <div class="flex-grow-n col-fixed-size-md">
+                            Активен
+                        </div>
+                        <div class="col-xs-6 relative">
+                            <label class="adv-checkbox-label form-label-block">
+                                @Html.CheckBoxFor(x => x.Enabled, new { ng_model = "rule.enabled", ng_init = "rule.enabled=" + Model.Enabled.ToLowerString(), @class = "adv-checkbox-input" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                            @if (!Model.Enabled)
+            {
+                                <span class="link-danger">Не активен</span>
+                            }
+                            <help-trigger class="ng-cloak" data-title="Активен">
+                                Включен или выключен в данный момент.
+                            </help-trigger>
+                        </div>
+                    </div>
+
+                    @if (Model.ShippingViewPath != null)
+                    {
+                        @Html.Partial(Model.ShippingViewPath, Model)
+                    }
+                </div>
+            </div>
+        </div>
+    </form>

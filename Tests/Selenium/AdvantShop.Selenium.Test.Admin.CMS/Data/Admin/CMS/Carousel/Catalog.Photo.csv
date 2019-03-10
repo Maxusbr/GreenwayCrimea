@@ -1,0 +1,7 @@
+PhotoId;ObjId;Type;PhotoName;ModifiedDate[DATE];Description;PhotoSortOrder;Main;OriginName
+4312;1;Carousel;4312.jpg;09.04.2015 16:22;teg1;0;true;3971.jpg
+4313;2;Carousel;4313.jpg;09.04.2015 16:22;teg2;0;true;3972.jpg
+4421;3;Carousel;4421.jpg;21.09.2015 10:04;teg3;0;true;slide.jpg
+4425;4;Carousel;4425.jpg;24.09.2015 14:04;teg4;0;true;girl_long.jpg
+4426;5;Carousel;4426.jpg;24.09.2015 14:05;teg5;0;true;dog_long.jpg
+4427;6;Carousel;4427.jpg;24.09.2015 14:05;teg6;0;true;iphone_long.jpg

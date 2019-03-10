@@ -1,0 +1,57 @@
+﻿<div class="row">
+    <div class="col-xs-12" ng-switch="callback.currentForm">
+        <div ng-switch-when="main">
+            <label class="row middle-xs">
+                <span class="col-xs">
+                    {{callback.modalText}}
+                </span>
+            </label>
+            <label class="row middle-xs">
+                <span class="col-xs-3">
+                    <span class="form-field-name vertical-interval-middle input-required">Имя</span>
+                </span>
+                <span class="col-xs-9">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="text" id="callbackRequestName" class="input-small" data-ng-model="callback.name" required />
+                    </span>
+                </span>
+            </label>
+
+            <label class="row middle-xs">
+                <span class="col-xs-3">
+                    <span class="form-field-name vertical-interval-middle input-required">Телефон</span>
+                </span>
+                <span class="col-xs-9">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="tel" id="callbackRequestPhone" class="input-small" data-ng-model="callback.phone" required />
+                    </span>
+                </span>
+            </label>
+
+            <label class="row middle-xs" data-ng-if='callback.showCommentField'>
+                <span class="col-xs-3">
+                    <span class="form-field-name vertical-interval-middle">Комментарий</span>
+                </span>
+                <span class="col-xs-9">
+                    <span class="form-field-input vertical-interval-middle">
+                        <textarea id="callbackRequestWishPrice" class="textarea-small" data-ng-model="callback.comment"></textarea>
+                    </span>
+                </span>
+            </label>
+
+            <label class="row middle-xs" data-ng-if="callback.isShowUserAgreementText">
+                <span class="col-xs-12 form-field-input vertical-interval-xsmall">
+                    <input class="custom-input-native" type="checkbox" data-ng-model="callback.agreement" name="agreement" data-ng-init="callback.agreement=false" data-ng-value="callback.agreement" />
+                    <span class="custom-input-checkbox"></span>
+                    <span data-ng-bind-html="callback.userAgreementText"></span>
+                </span>
+            </label>
+
+        </div>
+
+        <div ng-switch-when="final">
+            Спасибо! Ваша заявка принята.
+        </div>
+
+    </div>
+</div>

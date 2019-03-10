@@ -1,0 +1,129 @@
+﻿
+.cart-popup-modal {
+    min-width: 600px;
+    max-width: 795px !important;
+    width: 100%;
+
+    .product-view-carousel-list {
+        height: 0;
+        flex-wrap: nowrap;
+    }
+
+    .carousel-initilized .product-view-carousel-list {
+        height: auto;
+    }
+
+    .modal-content {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+}
+
+.cart-popup-header {
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.cart-popup-content {
+}
+
+.cart-popup-product-link,
+.cart-popup-meta,
+.cart-popup-rating,
+.cart-popup-cost {
+    margin-bottom: 5px;
+}
+
+
+.cart-popup-product-link {
+    font-size: 20px;
+    display: inline-block;
+    line-height: 1.1;
+}
+
+.cart-popup-image {
+    padding-right: 30px;
+}
+
+.cart-popup-product {
+    margin-bottom: 10px;
+}
+
+.cart-popup-price {
+    font-size: 23px;
+}
+
+.cart-popup-spinbox {
+    width: 95px;
+    display: inline-block;
+}
+
+.cart-popup-cart-text {
+    padding-right: 10px;
+    font-size: 14px;
+    position: relative;
+    margin-left: 18px;
+
+    &:before {
+        top: 5px;
+        transform: translateY(0);
+        font-size: 18px;
+    }
+}
+
+.cart-popup-count, .cart-popup-cost {
+    font-weight: bold;
+}
+
+.cart-popup-footer {
+    border: 1px #eee solid;
+    border-width: 1px 0;
+    padding: 10px 0;
+}
+
+.cart-popup-carousel {
+
+    .products-view-tile {
+        margin: 0;
+    }
+
+    .products-view-item {
+        box-shadow: none;
+        border: 0;
+    }
+
+    .color-viewer-item {
+        border: 0;
+    }
+
+    .products-view-tile .products-view-block {
+        padding-bottom: 0;
+        padding-top: 0;
+        width: 280px;
+        flex-basis: 280px;
+        max-width: 280px;
+    }
+
+    .products-view-pictures {
+        padding-top: 0;
+        flex-basis: auto !important;
+        display: block;
+        box-sizing: border-box;
+        margin: 0 auto;
+        width: auto !important;
+    }
+
+    .products-view-tile .products-view-item,
+    .products-view-tile.products-view-item {
+        padding-bottom: 0;
+        display: inline-block;
+    }
+
+    .carousel-initilized .products-view-pictures {
+        flex-basis: 100% !important;
+    }
+}
+
+.cart-popup-related-block {
+    margin-top: 10px;
+}

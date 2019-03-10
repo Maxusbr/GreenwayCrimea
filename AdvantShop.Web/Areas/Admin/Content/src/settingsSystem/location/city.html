@@ -1,0 +1,12 @@
+﻿<ui-grid-custom grid-unique-id="gridCity"
+                grid-row-identificator="'CityId'"
+                grid-options="$ctrl.gridOptions"
+                grid-on-init="$ctrl.onGridInit({grid: grid})"
+                grid-params="$ctrl.gridParams"
+                grid-inplace-url="'cities/inplacecity'"
+                grid-url="'cities/getcitys'"
+                grid-extend-ctrl="$ctrl"
+                grid-on-preinit="$ctrl.onGridPreinit({grid: grid})">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="$ctrl.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

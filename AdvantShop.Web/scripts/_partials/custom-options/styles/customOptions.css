@@ -1,0 +1,17 @@
+.custom-options-list {
+  display: table;
+  width: 100%; }
+
+.custom-options-row {
+  display: table-row; }
+
+.custom-options-name,
+.custom-options-value {
+  display: table-cell;
+  vertical-align: middle; }
+
+.custom-options-name {
+  padding: 0.3125rem 0.3125rem 0.3125rem 0; }
+
+.custom-options-value {
+  padding: 0.3125rem 0 0.3125rem 0.3125rem; }

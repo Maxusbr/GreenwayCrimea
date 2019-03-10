@@ -1,0 +1,10 @@
+.buy-one-click-dialog {
+  min-width: 35vw; }
+
+@media (min-device-width: 768px) and (max-device-width: 1024px) {
+  .buy-one-click-dialog {
+    min-width: 70vw; } }
+
+.buy-one-click-buttons {
+  text-align: right;
+  margin-top: 0.625rem; }

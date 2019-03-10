@@ -1,0 +1,11 @@
+﻿Id;LeadId;Type;Message;CreatedDate[DATE];Title;TaskId
+1;1;1;TestMessage1;06.10.2015 14:40;Title1;1
+2;2;1;TestMessage2;07.10.2015 14:40;Title2;2
+3;3;1;TestMessage3;08.10.2015 14:40;Title3;3
+4;4;1;TestMessage4;09.10.2015 14:40;Title4;4
+5;5;1;TestMessage5;10.10.2015 14:40;Title5;5
+6;6;1;TestMessage6;11.10.2015 14:40;Title6;NULL
+7;7;1;TestMessage7;12.10.2015 14:40;Title7;NULL
+8;8;1;TestMessage8;13.10.2015 14:40;Title8;NULL
+9;9;1;TestMessage9;14.10.2015 14:40;Title9;NULL
+10;10;1;TestMessage10;15.10.2015 14:40;Title10;NULL

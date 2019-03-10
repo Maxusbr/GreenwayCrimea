@@ -1,0 +1,25 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+.manager-info {
+    padding-left: rem-calc(19px);
+}
+
+.manager-name {
+    font-size: rem-calc(14px);
+    padding-bottom: rem-calc(10px);
+}
+
+.manager-position {
+    padding-bottom: rem-calc(20px);
+}
+
+.manager-icon-mover:before {
+    left: -22px;
+}
+
+.manager-no-photo {
+    font-size: rem-calc(58px);
+}
+.managers-email-dialog, .managers-call-dialog{
+    min-width: rem-calc(440px);
+}

@@ -1,0 +1,31 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Settings.UsersSettingsViewModel
+
+<div class="sticky-page-name m-b-sm" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Settings.Users.ManagerRoles")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditManagerRoleCtrl'" controller-as="ctrl" on-close="settingsUsers.gridManagerRoles.fetchData()"
+                              template-url="../areas/admin/content/src/settings/modal/addEditManagerRole/AddEditManagerRole.html">
+                <button class="btn btn-sm btn-success" type="button">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.AddManagerRole")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+<ui-grid-custom grid-unique-id="gridManagerRoles"
+                grid-row-identificator="'Id'"
+                grid-on-init="settingsUsers.gridManagerRolesOnInit(grid)"
+                grid-options="settingsUsers.gridManagerRolesOptions"
+                grid-url="'managerRoles/getmanagerRoles'"
+                grid-inplace-url="'managerRoles/inplacemanagerRole'"
+                grid-extend-ctrl="settingsUsers"
+                grid-search-placeholder="'@T("Admin.ManagerRoles.Grid.SearchPlaceholder")'">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsUsers.gridManagerRoles.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

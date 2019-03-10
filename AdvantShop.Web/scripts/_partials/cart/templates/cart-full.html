@@ -1,0 +1,186 @@
+﻿<div data-ng-switch="cartFull.cartData != null">
+    <div data-ng-switch-when="true">
+        <div data-ng-switch="cartFull.cartData.CartProducts.length > 0">
+            <div data-ng-switch-when="true">
+                <table class="cart-full">
+                    <thead class="cart-full-header">
+                        <tr>
+                            <th class="cart-full-header-item cart-full-product">
+                                <span class="cart-full-header-text">{{ ::'Js.Cart.Product' | translate }}</span>
+                            </th>
+                            <th class="cart-full-header-item cart-full-price">
+                                <span class="cart-full-header-text">{{ ::'Js.Cart.PricePerUnit' | translate }}</span>
+                            </th>
+                            <th class="cart-full-header-item cart-full-amount">
+                                <span class="cart-full-header-text">{{ ::'Js.Cart.Amount' | translate }}</span>
+                            </th>
+                            <th class="cart-full-header-item cart-full-cost">
+                                <span class="cart-full-header-text">{{ ::'Js.Cart.Cost' | translate }}</span>
+                            </th>
+                            <th class="cart-full-header-item cart-full-remove">
+                                <a href="" data-ng-click="cartFull.clear()" class="icon-cancel-circled-before link-text-decoration-none cs-l-3" title="{{ ::'Js.Cart.ClearBasket' | translate }}"></a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="cart-full-body">
+                        <tr data-ng-repeat="item in cartFull.cartData.CartProducts track by $index">
+                            <td class="cart-full-body-item cart-full-product">
+                                <div class="row middle-xs">
+                                    <div>
+                                        <figure class="cart-full-photo" data-ng-style="{'width': cartFull.photoWidth + 'px'}">
+                                            <a class="cart-full-photo-link" href="{{item.Link}}">
+                                                <img data-ng-src="{{item.PhotoPath}}" alt="{{item.PhotoAlt}}" />
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="col-xs">
+                                        <a href="{{item.Link}}" class="cart-full-name-link" data-ng-bind="item.Name"></a>
+                                        <ul class="cart-full-properties" data-ng-if="item.ColorName || item.SizeName || item.SelectedOptions.length > 0">
+                                            <li class="cart-full-properties-item" data-ng-if="item.ColorName">
+                                                <div class="cart-full-properties-name" data-ng-bind="(cartFull.cartData.ColorHeader + ':')"></div>
+                                                <div class="cart-full-properties-value" data-ng-bind="item.ColorName"></div>
+                                            </li>
+                                            <li class="cart-full-properties-item" data-ng-if="item.SizeName">
+                                                <div class="cart-full-properties-name" data-ng-bind="(cartFull.cartData.SizeHeader + ':')"></div>
+                                                <div class="cart-full-properties-value" data-ng-bind="item.SizeName"></div>
+                                            </li>
+                                            <li class="cart-full-properties-item" data-ng-if="item.SelectedOptions.length > 0" data-ng-repeat="option in item.SelectedOptions track by $index">
+                                                <div class="cart-full-properties-name" data-ng-bind="(option.CustomOptionTitle + ':')"></div>
+                                                <div class="cart-full-properties-value">
+                                                    <span data-ng-bind="option.OptionTitle"></span>
+                                                    <span data-ng-bind="option.OptionText"></span>
+                                                    <span data-ng-bind="option.FormatPrice"></span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="cart-full-body-item cart-full-price products-view">
+                                <div data-ng-if="item.Discount.HasValue">
+                                    <div class="price-old cs-t-3"><span class="price-number" data-ng-bind="item.Price"></span></div>
+                                    <div data-ng-bind="item.PriceWithDiscount"></div>
+                                    <div class="price-discount">{{::'Js.Cart.Discount' | translate }}: <span data-ng-bind="item.DiscountText"></span></div>
+                                </div>
+                                <div data-ng-if="!item.Discount.HasValue">
+                                    <div data-ng-bind="item.PriceWithDiscount"></div>
+                                </div>
+                            </td>
+                            <td class="cart-full-body-item cart-full-amount">
+                                <div class="cart-full-amount-control" ng-if="!item.FrozenAmount" data-spinbox data-value="item.Amount" data-proxy="item.ShoppingCartItemId" data-update-fn="cartFull.updateAmount(value, proxy)" data-step="item.Multiplicity" data-max="item.MaxAmount" data-min="item.MinAmount"></div>
+                                <span ng-if="item.FrozenAmount" data-ng-bind="item.Amount"></span>
+                                <span data-ng-bind="item.Unit"></span>
+                                <div class="cart-amount-error-wrap"><span class="cart-amount-error" data-ng-bind="item.Avalible"></span></div>
+                                <div class="cart-amount-error-wrap"><span class="cart-amount-error" data-ng-if="item.Avalible == '' && item.AvailableAmount == 0">{{ ::'Js.Cart.PreOrder' | translate }}</span></div>
+                            </td>
+                            <td class="cart-full-body-item cart-full-cost" data-ng-bind="item.Cost"></td>
+                            <td class="cart-full-body-item cart-full-remove">
+                                <a href="" ng-if="!item.IsGift" data-ng-click="cartFull.remove(item.ShoppingCartItemId)" class="icon-cancel-circled-before link-text-decoration-none cs-l-3" title="{{ ::'Js.Cart.Delete' | translate }}"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="cart-full-addition">
+                                <div class="row bottom-xs">
+                                    <div class="col-xs-6 cart-full-coupon" data-ng-if="cartFull.cartData.CouponInputVisible">
+                                        <div class="row">
+                                            <div class="col-xs-12 cart-full-coupon-text">
+                                                {{ ::'Js.Cart.CouponCode' | translate }}
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <div data-cards-form data-apply-fn="cartFull.refresh()"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 cart-full-bonus bonus-card-icon bonus-card-block-inline" data-ng-if="cartFull.cartData.BonusPlus != null">
+                                        {{ ::'Js.Cart.BonusPlus' | translate }}:
+                                        +<span data-ng-bind="cartFull.cartData.BonusPlus"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cs-bg-3">
+                            <td colspan="5" class="cart-full-result-block">
+                                <div data-ng-if="cartFull.cartData.TotalProductPrice != null" data-ng-show="cartFull.cartData.TotalPrice != cartFull.cartData.TotalProductPrice">
+                                    <span class="cart-full-summary-name">
+                                        {{ ::'Js.Cart.Sum' | translate }}:
+                                    </span>
+                                    <span class="cart-full-summary-price" data-ng-bind="cartFull.cartData.TotalProductPrice"></span>
+                                </div>
+                                <div data-ng-if="cartFull.cartData.DiscountPrice != null" data-ng-show="cartFull.cartData.DiscountPrice != null">
+                                    <span class="cart-full-summary-name">
+                                        {{ ::'Js.Cart.Discount' | translate }}:
+                                    </span>
+                                    <span class="cart-full-summary-price" data-ng-bind="cartFull.cartData.DiscountPrice"></span>
+                                </div>
+                                <div data-ng-if="cartFull.cartData.Certificate != null">
+                                    <span class="cart-full-summary-name">
+                                        {{ ::'Js.Cart.Certificate' | translate }}:
+                                    </span>
+                                    <span class="cart-full-summary-price">
+                                        - <span data-ng-bind="cartFull.cartData.Certificate"></span>
+                                        <a href="" data-cards-remove data-type="certificate" data-apply-fn="cartFull.refresh()"></a>
+                                    </span>
+                                </div>
+                                <div data-ng-if="cartFull.cartData.Coupon != null">
+                                    <span class="cart-full-summary-name">
+                                        {{ ::'Js.Cart.Coupon' | translate }}:
+                                    </span>
+                                    <span class="cart-full-summary-price">
+                                        - <span data-ng-bind="cartFull.cartData.Coupon.Price"></span> <span data-ng-if="cartFull.cartData.Coupon.Percent != null">(<span data-ng-bind="cartFull.cartData.Coupon.Percent"></span> %)</span> <img data-ng-if="cartFull.cartData.Coupon.NotApplied" src="images/misc/q.png" title="{{ ::'Js.Cart.CouponErrorMsg' | translate }}">
+                                        <a href="" data-cards-remove data-type="coupon" data-apply-fn="cartFull.refresh()"></a>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="cart-full-result-name">
+                                        {{ ::'Js.Cart.Total' | translate }}:
+                                    </span>
+                                    <span class="cart-full-result-price" data-ng-bind="cartFull.cartData.TotalPrice"></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="cart-full-error" data-ng-if="cartFull.cartData.Valid != ''" data-ng-bind="cartFull.cartData.Valid"></div>
+                <div class="cart-full-buttons" data-ng-if="::cartFull.cartData.ShowConfirmButtons">
+                    <a href=""
+                       class="btn btn-middle btn-action"
+                       data-ng-if="cartFull.cartData.ShowBuyInOneClick && cartFull.cartData.Valid === ''"
+                       data-buy-one-click-trigger data-buy-one-click-modal="modalBuyOneClickInCart">
+                        <span data-ng-bind="cartFull.cartData.BuyInOneClickText"></span>
+                        <div id="modalBuyOneClickInCart" class="modal ng-hide"
+                             data-modal-control
+                             data-modal-class="buy-one-click-dialog"
+                             data-callback-close="buyOneClickTrigger.modalCallbackClose(modalScope)">
+                            <div data-modal-header class="modal-header">
+                                {{ ::'Js.Cart.BuyOneClickHeader' | translate }}
+                            </div>
+                            <div class="modal-content">
+                                <div data-buy-one-click-form="true"
+                                     data-form-init="buyOneClickTrigger.formInit(form)"
+                                     data-success-fn="buyOneClickTrigger.successFn(result)"
+                                     data-order-type="OneClick"
+                                     data-page="Cart">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a data-ng-href="{{cartFull.cartData.Valid == ''? 'checkout':''}}" data-ng-class="{'btn-disabled': cartFull.cartData.Valid != ''}" class="btn btn-middle btn-submit">{{ ::'Js.Cart.Checkout' | translate }}</a>
+                </div>
+            </div>
+            <div data-ng-switch-when="false">
+                <div class="cart-full-empty">
+                    {{ ::'Js.Cart.EmptyCart' | translate }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-switch-when="false">
+        <div class="cart-full-loading">
+            <span class="icon-spinner-before icon-animate-spin-before cart-full-loading-text">
+                {{ ::'Js.Cart.Loading' | translate }}
+            </span>
+        </div>
+    </div>
+</div>

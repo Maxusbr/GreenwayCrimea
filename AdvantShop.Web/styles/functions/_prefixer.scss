@@ -1,0 +1,135 @@
+﻿@mixin box-sizing($box-sizing-value) {
+    box-sizing: $box-sizing-value;
+}
+
+@mixin linear-gradient($angle, $color-stops...) {
+    $_angle-with-vendor-prefix: "";
+    $_angle: "";
+
+    @if $angle == "to top" or $angle == "bottom" {
+        $_angle-with-vendor-prefix: bottom;
+        $_angle: to top;
+    }
+    @else if $angle == "to right" or $angle == "left" {
+        $_angle-with-vendor-prefix: left;
+        $_angle: to right;
+    }
+    @else if $angle == "to bottom" or $angle == "top" {
+        $_angle-with-vendor-prefix: top;
+        $_angle: to bottom;
+    }
+    @else if $angle == "to left" or $angle == "right" {
+        $_angle-with-vendor-prefix: right;
+        $_angle: to left;
+    }
+    @else if $angle == "to top right" or $angle == "bottom left" {
+        $_angle-with-vendor-prefix: bottom left;
+        $_angle: to top right;
+    }
+    @else if $angle == "to bottom right" or $angle == "top left" {
+        $_angle-with-vendor-prefix: top left;
+        $_angle: to bottom right;
+    }
+    @else if $angle == "to bottom left" or $angle == "top right" {
+        $_angle-with-vendor-prefix: top right;
+        $_angle: to bottom left;
+    }
+    @else if $angle == "to top left" or $angle == "bottom right" {
+        $_angle-with-vendor-prefix: bottom right;
+        $_angle: to top left;
+    }
+    @else {
+        $_angle-with-vendor-prefix: $angle % 360;
+        $_angle: ((90 - $angle) % 360);
+    }
+    background-image: linear-gradient($_angle, $color-stops);
+}
+
+@mixin flex() {
+    display: flex;
+}
+
+@mixin inline-flex() {
+    display: inline-flex;
+}
+
+@mixin flex-direction($flex-direction-value) {
+    flex-direction: $flex-direction-value;
+}
+
+@mixin flex-wrap($flex-wrap-value) {
+    flex-wrap: $flex-wrap-value;
+}
+
+@mixin flex-basis($flex-basis-value) {
+
+    @if($flex-basis-value == auto) {
+        flex-basis: auto;
+    }
+    @else {
+        flex-basis: $flex-basis-value;
+    }
+}
+
+@mixin flex-shrink($flex-shrink-value) {
+    flex-shrink: $flex-shrink-value;
+}
+
+@mixin flex-align-horizontal($align) {
+    @if ($align == start) {
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+    }
+    @else if($align == center) {
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+    @else if($align == end) {
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+    }
+
+    -webkit-box-pack: $align;
+    -ms-flex-pack: $align;
+    text-align: $align;
+}
+
+@mixin flex-align-vertical($align) {
+    @if ($align == top) {
+        align-items: flex-start;
+    }
+    @else if($align == middle) {
+        align-items: center;
+    }
+    @else if($align == bottom) {
+        align-items: flex-end;
+    }
+}
+
+@mixin flex-align-around() {
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+@mixin flex-align-between() {
+    justify-content: space-between;
+}
+
+@mixin flex-first() {
+    order: -1;
+}
+
+@mixin flex-last() {
+    order: 1;
+}
+
+@mixin flex-grow($flex-grow-value) {
+    flex-grow: $flex-grow-value;
+}
+
+@mixin keyframes($animationName) {
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

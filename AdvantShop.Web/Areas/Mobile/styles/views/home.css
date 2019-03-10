@@ -1,0 +1,53 @@
+.logo-search-pnl {
+  display: table;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #86bf5b; }
+  .logo-search-pnl .city-select-input {
+    width: 100%; }
+  .logo-search-pnl .logo-cell, .logo-search-pnl .search-cell {
+    display: table-cell;
+    vertical-align: middle; }
+  .logo-search-pnl .logo-cell {
+    text-align: center;
+    font-size: 0;
+    line-height: 0; }
+  .logo-search-pnl .search-cell {
+    padding-left: 1.66667em; }
+
+.catalog-select-placeholder {
+  box-sizing: border-box; }
+  .catalog-select-placeholder div {
+    width: 48%;
+    display: inline-block; }
+  .catalog-select-placeholder .catalog-select-placeholder {
+    padding-right: 1%;
+    float: left; }
+  .catalog-select-placeholder .catalog-search-placeholder {
+    padding-left: 1%;
+    float: right;
+    position: relative; }
+
+.catalog-search-btn {
+  position: absolute;
+  width: 2.6em;
+  height: 2.6em;
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+  right: 0.33333em;
+  border-radius: 0.33333em;
+  margin: auto 0; }
+  .catalog-search-btn span {
+    width: 1.06667em;
+    height: 1.26667em;
+    position: absolute;
+    display: inline-block;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0; }
+
+.catalog-select-placeholder .good-select-block select {
+  height: 3.2em; }

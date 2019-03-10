@@ -1,0 +1,47 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.IPTelephonySettingsModel
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="MangoApiUrl" class="form-label-block">@T("Admin.Settings.Telephony.Mango.ApiUrl")</label>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.MangoApiUrl, new { ng_model = "settingsTelephony.mangoApiUrl", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="MangoApiKey" class="form-label-block">@T("Admin.Settings.Telephony.Mango.ApiKey")</label>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.MangoApiKey, new { ng_model = "settingsTelephony.mangoApiKey", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="MangoSecretKey" class="form-label-block">@T("Admin.Settings.Telephony.Mango.SecretKey")</label>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.MangoSecretKey, new { ng_model = "settingsTelephony.mangoSecretKey", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label class="form-label-block">@T("Admin.Settings.Telephony.Mango.ServiceUrl")</label>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <span>@(SettingsMain.SiteUrl)/mangoadvantshop</span>
+        <help-trigger class="ng-cloak word-spacing" data-title="@T("Admin.Settings.Telephony.Mango.ServiceUrl")">
+            @T("Admin.Settings.Telephony.Mango.ServiceUrlNote")
+        </help-trigger>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+﻿@model AdvantShop.Web.Admin.Models.Categories.AdminCategoryModel
+
+<form method="POST" action="@(Model.IsEditMode ? Url.Action("Edit") : Url.Action("Add"))" enctype="multipart/form-data" name="form">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.CategoryId)
+    @Html.HiddenFor(x => x.IsEditMode)
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block m-b-md sticky-page-name-inner top-xs">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    Категория <strong>"@(Model.IsEditMode ? Html.Raw(Model.Name) : T("Новая категория"))"</strong>
+                </h1>
+                @Html.Partial("_BreadCrumbs", Model.BreadCrumbs)
+            </div>
+            <div class="page-name-block-item-additional">
+                <a href="" class="link-danger m-r-xs" ng-click="category.deleteCategory(@Model.CategoryId)">Удалить</a>
+                @if (Model.IsEditMode)
+                {
+                    <a data-e2e="brandLinkLook" href="@Url.AbsoluteRouteUrl("category", new { url = Model.UrlPath })" class="btn btn-sm btn-default" target="_blank">@T("Admin.View")</a>
+                }
+                @*@Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, attributes: new[] { "ng-disabled=\"!form.modified\"", "disabled" }, validation: true)*@
+                @*временно для селениум тестов*@
+                @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, validation: true)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="flex-grow flex-basis-n flex-width-n">
+            @Html.ValidationSummary()
+            <div class="row">
+                <div class="col-xs-3 col-lg-3 col-wl-2">
+                    <h2 class="category-title">Основное</h2>
+                    <div>
+                        Укажите наименование категории, родительскую категорию и описание
+                    </div>
+                </div>
+                <div class="col-xs-9 col-wl-10">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div>
+                                <div class="row middle-xs category-row">
+                                    <div class="flex-grow-n col-fixed-size-md">
+                                        <span class="text-required">@T("Admin.Category.Index.Name")</span>
+                                    </div>
+
+                                    <div class="flex-grow flex-basis-n flex-width-n relative">
+                                        @Html.TextBoxFor(x => x.Name, new {@class = "form-control", url_generator = "", url_generator_enabled = Model.UrlPath.IsNotEmpty() ? "false" : "true", url_path = "category.UrlPath", required = "required", ng_model = "category.urlPath", validation_input_text = T("Admin.Category.Index.Name")})
+                                        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Название категории">
+                                            Название, наименование категории. Например: Детские подарки
+                                        </help-trigger>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row category-row">
+                                    <div class="flex-grow-n col-fixed-size-md">
+                                        <label for="Enabled" class="form-label-block">Активность</label>
+                                    </div>
+                                    <div class="flex-grow flex-basis-n flex-width-n">
+                                        <label class="adv-checkbox-label form-label-block">
+                                            @Html.CheckBoxFor(x => x.Enabled, new {ng_model = "category.enabled", ng_init = "category.enabled=" + Model.Enabled.ToLowerString(), @class = "adv-checkbox-input"})
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                        <help-trigger class="ng-cloak word-spacing" data-title="Активность">
+                                            Если категория не активна, то действуют правила:<br/>
+                                            - Категория скрывается из меню каталога<br/>
+                                            - Переход по URL категории будет выдавать 404<br/>
+                                            - Все товары категории (если она отмечена как основная) будут так же скрыты, т.е. выдавать 404
+                                        </help-trigger>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="flex-grow-n col-fixed-size-md">
+                                        @T("Admin.Category.Index.ParentCategory")
+                                    </div>
+                                    <div class="flex-grow flex-basis-n flex-width-n">
+                                        <span data-ng-bind-html="category.ParentCategoryName | sanitize" data-ng-init="category.ParentCategoryName='@Html.AttributeEncode(Model.ParentCategoryName)'">
+                                            @Html.Raw(Model.ParentCategoryName)
+                                        </span>
+                                        @if (!Model.IsEditMode || Model.CategoryId != 0)
+                                        {
+                                            <div class="relative inline">
+                                                <ui-modal-trigger data-controller="'ModalChangeParentCategoryCtrl'" controller-as="ctrl"
+                                                                  data-on-close="category.changeCategory(result)"
+                                                                  data-resolve="{showRoot: true, selected:@Model.ParentCategoryId, @(Model.CategoryId != 0 ? "currentId:" + Model.CategoryId : "")}"
+                                                                  template-url="../areas/admin/content/src/category/modal/changeParentCategory/ChangeParentCategory.html">
+                                                    <a href="" class="edit">@T("Admin.Category.Index.CahngeCategory")</a>
+                                                </ui-modal-trigger>
+                                                <help-trigger class="ng-cloak word-spacing help-trigger-icon-abs" data-title="Родительская категория">
+                                                    Категория, внутри которой будет находиться данная категория.
+                                                </help-trigger>
+                                            </div>
+                                        }
+                                        @Html.HiddenFor(x => x.ParentCategoryId, new {ng_value = "category.ParentCategoryId", ng_init = "category.ParentCategoryId=" + Model.ParentCategoryId, ng_model = "category.ParentCategoryId"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            @Html.RenderModules("admin_category_top", new { categoryId = Model.CategoryId })
+            
+            <div class="row">
+                <div class="col-xs-3 col-lg-3 col-wl-2">
+                    <h2 class="category-title">Описание</h2>
+                </div>
+                <div class="col-xs-9 col-wl-10">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div>
+                                <div class="row category-row">
+                                    <div class="col-xs-12 m-b-sm">
+                                        @T("Admin.Category.Index.BriefDescription")
+                                        <help-trigger class="ng-cloak word-spacing" data-title="Краткое описание категории">
+                                            Выводится на странице просмотра категории вверху страницы.
+                                        </help-trigger>
+                                        <a href="@Url.Action("Academy", "Service", new { id = 50 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell m-l-xs">
+                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                            Видеоурок о Визуальном редакторе
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        @Html.TextAreaFor(x => x.BriefDescription, new {@class = "wysiwyg", ckeditor = "", ng_model = "category.briefDescription"})
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row category-row">
+
+                                    <div class="col-xs-12 m-b-sm relative">
+                                        @T("Admin.Category.Index.Description")
+                                        <help-trigger class="ng-cloak word-spacing" data-title="Описание категории">
+                                            Выводится на странице просмотра категории внизу страницы.
+                                        </help-trigger>
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        @Html.TextAreaFor(x => x.Description, new {@class = "wysiwyg", ckeditor = "", ng_model = "category.description"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @Html.Partial("_Pictures", Model)
+
+            @Html.Partial("_Seo", Model)
+
+            @if (Model.IsEditMode)
+            {
+                @Html.Partial("_PropertyGroups", Model)
+            }
+        </div>
+
+        @Html.Partial("_RightPanel", Model)
+    </div>
+</form>

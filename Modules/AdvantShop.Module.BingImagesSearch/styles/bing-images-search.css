@@ -1,0 +1,27 @@
+﻿.bing-images-search-error {
+    text-align: center;
+}
+
+.bing-images-search-picture {
+    height: 140px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.bing-images-search-text {
+    text-align: center;
+}
+
+.bing-images-search-text-item {
+    margin-bottom: 30px;
+}
+[type="checkbox"].bing-images-search-state {
+    margin-right: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,367 @@
+.cs-t-1 {
+  color: #4b4f58; }
+
+.cs-t-2 {
+  color: #e2e3e4; }
+
+.cs-t-3 {
+  color: #94969b; }
+
+.cs-t-4 {
+  color: #fff; }
+
+.cs-t-5 {
+  color: #26282b; }
+
+.cs-t-6 {
+  color: #dedede; }
+
+.cs-t-7 {
+  color: #bfc0c1; }
+
+.cs-t-8 {
+  color: #4b4f58; }
+
+a {
+  color: #4b4f58; }
+  a:hover {
+    color: #4b4f58; }
+  a:active {
+    color: #575b66; }
+  a.cs-selected {
+    color: #3f434a; }
+
+.cs-l-1, .cs-l-d-1 {
+  color: #4b4f58; }
+  .cs-l-1:hover, .cs-l-d-1:hover {
+    color: #4b4f58; }
+  .cs-l-1:active, .cs-l-d-1:active {
+    color: #575b66; }
+  .cs-l-1.cs-selected, .cs-l-d-1.cs-selected {
+    color: #3f434a; }
+
+.cs-l-d-1, .cs-l-ds-1 {
+  border-bottom-color: #4b4f58; }
+  .cs-l-d-1:hover, .cs-l-ds-1:hover {
+    border-bottom-color: #4b4f58; }
+  .cs-l-d-1:active, .cs-l-ds-1:active {
+    border-bottom-color: #575b66; }
+  .cs-l-d-1.cs-selected, .cs-l-ds-1.cs-selected {
+    color: #3f434a; }
+
+.cs-l-2, .cs-l-d-2 {
+  color: #4b4f58; }
+  .cs-l-2:hover, .cs-l-d-2:hover {
+    color: #4b4f58; }
+  .cs-l-2:active, .cs-l-d-2:active {
+    color: #575b66; }
+  .cs-l-2.cs-selected, .cs-l-d-2.cs-selected {
+    color: #3f434a; }
+
+.cs-l-d-2, .cs-l-ds-2 {
+  border-bottom-color: #4b4f58; }
+  .cs-l-d-2:hover, .cs-l-ds-2:hover {
+    border-bottom-color: #4b4f58; }
+  .cs-l-d-2:active, .cs-l-ds-2:active {
+    border-bottom-color: #575b66; }
+  .cs-l-d-2.cs-selected, .cs-l-ds-2.cs-selected {
+    color: #3f434a; }
+
+.cs-l-3, .cs-l-d-3 {
+  color: #94969b; }
+  .cs-l-3:hover, .cs-l-d-3:hover {
+    color: #94969b; }
+  .cs-l-3:active, .cs-l-d-3:active {
+    color: #a1a3a7; }
+  .cs-l-3.cs-selected, .cs-l-d-3.cs-selected {
+    color: #87898f; }
+
+.cs-l-d-3, .cs-l-ds-3 {
+  border-bottom-color: #94969b; }
+  .cs-l-d-3:hover, .cs-l-ds-3:hover {
+    border-bottom-color: #94969b; }
+  .cs-l-d-3:active, .cs-l-ds-3:active {
+    border-bottom-color: #a1a3a7; }
+  .cs-l-d-3.cs-selected, .cs-l-ds-3.cs-selected {
+    color: #87898f; }
+
+.cs-l-4, .cs-l-d-4 {
+  color: #4b4f58; }
+  .cs-l-4:hover, .cs-l-d-4:hover {
+    color: #575b66; }
+  .cs-l-4:active, .cs-l-d-4:active {
+    color: #3f434a; }
+  .cs-l-4.cs-selected, .cs-l-d-4.cs-selected {
+    color: #fff; }
+
+.cs-l-d-4, .cs-l-ds-4 {
+  border-bottom-color: #4b4f58; }
+  .cs-l-d-4:hover, .cs-l-ds-4:hover {
+    border-bottom-color: #575b66; }
+  .cs-l-d-4:active, .cs-l-ds-4:active {
+    border-bottom-color: #3f434a; }
+  .cs-l-d-4.cs-selected, .cs-l-ds-4.cs-selected {
+    color: #fff; }
+
+.cs-l-5, .cs-l-d-5 {
+  color: #e20000; }
+  .cs-l-5:hover, .cs-l-d-5:hover {
+    color: #fc0000; }
+  .cs-l-5:active, .cs-l-d-5:active {
+    color: #c90000; }
+  .cs-l-5.cs-selected, .cs-l-d-5.cs-selected {
+    color: #fff; }
+
+.cs-l-d-5, .cs-l-ds-5 {
+  border-bottom-color: #e20000; }
+  .cs-l-d-5:hover, .cs-l-ds-5:hover {
+    border-bottom-color: #fc0000; }
+  .cs-l-d-5:active, .cs-l-ds-5:active {
+    border-bottom-color: #c90000; }
+  .cs-l-d-5.cs-selected, .cs-l-ds-5.cs-selected {
+    color: #fff; }
+
+.cs-l-6, .cs-l-d-6 {
+  color: #4b4f58; }
+  .cs-l-6:hover, .cs-l-d-6:hover {
+    color: #575b66; }
+  .cs-l-6:active, .cs-l-d-6:active {
+    color: #3f434a; }
+  .cs-l-6.cs-selected, .cs-l-d-6.cs-selected {
+    color: #fff; }
+
+.cs-l-d-6, .cs-l-ds-6 {
+  border-bottom-color: #4b4f58; }
+  .cs-l-d-6:hover, .cs-l-ds-6:hover {
+    border-bottom-color: #575b66; }
+  .cs-l-d-6:active, .cs-l-ds-6:active {
+    border-bottom-color: #3f434a; }
+  .cs-l-d-6.cs-selected, .cs-l-ds-6.cs-selected {
+    color: #fff; }
+
+.cs-l-7, .cs-l-d-7 {
+  color: #4b4f58; }
+  .cs-l-7:hover, .cs-l-d-7:hover {
+    color: #4b4f58; }
+  .cs-l-7:active, .cs-l-d-7:active {
+    color: #4b4f58; }
+  .cs-l-7.cs-selected, .cs-l-d-7.cs-selected {
+    color: #4b4f58; }
+
+.cs-l-d-7, .cs-l-ds-7 {
+  border-bottom-color: #4b4f58; }
+  .cs-l-d-7:hover, .cs-l-ds-7:hover {
+    border-bottom-color: #4b4f58; }
+  .cs-l-d-7:active, .cs-l-ds-7:active {
+    border-bottom-color: #4b4f58; }
+  .cs-l-d-7.cs-selected, .cs-l-ds-7.cs-selected {
+    color: #4b4f58; }
+
+.cs-bg-1 {
+  background-color: #dedede; }
+
+.cs-bg-i-1 {
+  background-color: #dedede; }
+  .cs-bg-i-1:hover {
+    background-color: #ebebeb; }
+  .cs-bg-i-1:active {
+    background-color: #d1d1d1; }
+  .cs-bg-i-1.cs-selected {
+    background-color: #d1d1d1; }
+
+.cs-bg-2 {
+  background-color: #4b4f58; }
+
+.cs-bg-i-2 {
+  background-color: #4b4f58; }
+  .cs-bg-i-2:hover {
+    background-color: #575b66; }
+  .cs-bg-i-2:active {
+    background-color: #3f434a; }
+  .cs-bg-i-2.cs-selected {
+    background-color: #3f434a; }
+
+.cs-bg-3 {
+  background-color: #f3f3f3; }
+
+.cs-bg-i-3 {
+  background-color: #f3f3f3; }
+  .cs-bg-i-3:hover {
+    background-color: white; }
+  .cs-bg-i-3:active {
+    background-color: #e6e6e6; }
+  .cs-bg-i-3.cs-selected {
+    background-color: #e6e6e6; }
+
+.cs-bg-4 {
+  background-color: #f8f8f8; }
+
+.cs-bg-i-4 {
+  background-color: #f8f8f8; }
+  .cs-bg-i-4:hover {
+    background-color: white; }
+  .cs-bg-i-4:active {
+    background-color: #ebebeb; }
+  .cs-bg-i-4.cs-selected {
+    background-color: #ebebeb; }
+
+.cs-bg-5 {
+  background-color: #ebebeb; }
+
+.cs-bg-i-5 {
+  background-color: #ebebeb; }
+  .cs-bg-i-5:hover {
+    background-color: #ebebeb; }
+  .cs-bg-i-5:active {
+    background-color: #dedede; }
+  .cs-bg-i-5.cs-selected {
+    background-color: #dedede; }
+
+.cs-bg-6 {
+  background-color: #e20000; }
+
+.cs-bg-i-6 {
+  background-color: #e20000; }
+  .cs-bg-i-6:hover {
+    background-color: #fc0000; }
+  .cs-bg-i-6:active {
+    background-color: #c90000; }
+  .cs-bg-i-6.cs-selected {
+    background-color: #c90000; }
+
+.cs-bg-7 {
+  background-color: #fff; }
+
+.cs-bg-i-7 {
+  background-color: #fff; }
+  .cs-bg-i-7:hover {
+    background-color: #f2f2f2; }
+  .cs-bg-i-7:active {
+    background-color: #f2f2f2; }
+  .cs-bg-i-7.cs-selected {
+    background-color: #f2f2f2; }
+
+.cs-bg-8 {
+  background-color: #94969b; }
+
+.cs-bg-i-8 {
+  background-color: #94969b; }
+  .cs-bg-i-8:hover {
+    background-color: #a1a3a7; }
+  .cs-bg-i-8:active {
+    background-color: #87898f; }
+  .cs-bg-i-8.cs-selected {
+    background-color: #87898f; }
+
+.cs-bg-9 {
+  background-color: #fff; }
+
+.cs-bg-i-9 {
+  background-color: #fff; }
+  .cs-bg-i-9:hover {
+    background-color: #f2f2f2; }
+  .cs-bg-i-9:active {
+    background-color: #f2f2f2; }
+  .cs-bg-i-9.cs-selected {
+    background-color: #f2f2f2; }
+
+.cs-bg-10 {
+  background-color: #4b4f58; }
+
+.cs-bg-i-10 {
+  background-color: #4b4f58; }
+  .cs-bg-i-10:hover {
+    background-color: #575b66; }
+  .cs-bg-i-10:active {
+    background-color: #3f434a; }
+  .cs-bg-i-10.cs-selected {
+    background-color: #3f434a; }
+
+.cs-bg-11 {
+  background-color: #fff; }
+
+.cs-bg-i-11 {
+  background-color: #fff; }
+  .cs-bg-i-11:hover {
+    background-color: #ebebeb; }
+  .cs-bg-i-11:active {
+    background-color: #d1d1d1; }
+  .cs-bg-i-11.cs-selected {
+    background-color: #d1d1d1; }
+
+.cs-g-1 {
+  background-image: linear-gradient(to bottom, #e3e3e3 0%,#e3e3e3 23%,#e5e5e5 26%,#e2e2e2 35%,#e3e3e3 48%,#dbdbdb 52%,#dedede 100%); }
+
+.btn-add {
+  color: #fff;
+  background: #4b4f58; }
+  .btn-add:hover {
+    color: #fff;
+    background: #575b66; }
+  .btn-add:active {
+    color: #fff;
+    background: #3f434a; }
+  .btn-add:disabled, .btn-add.btn-disabled {
+    color: #94969b;
+    background: #e2e3e4; }
+
+.btn-action {
+  color: #fff;
+  background: #4b4f58; }
+  .btn-action:hover {
+    color: #fff;
+    background: #575b66; }
+  .btn-action:active {
+    color: #fff;
+    background: #3f434a; }
+  .btn-action:disabled, .btn-action.btn-disabled {
+    color: #94969b;
+    background: #e2e3e4; }
+
+.btn-buy {
+  color: #fff;
+  background: #4b4f58; }
+  .btn-buy:hover {
+    color: #fff;
+    background: #575b66; }
+  .btn-buy:active {
+    color: #fff;
+    background: #3f434a; }
+  .btn-buy:disabled, .btn-buy.btn-disabled {
+    color: #94969b;
+    background: #e2e3e4; }
+
+.btn-confirm {
+  color: #fff;
+  background: #e20000; }
+  .btn-confirm:hover {
+    color: #fff;
+    background: #fc0000; }
+  .btn-confirm:active {
+    color: #fff;
+    background: #c90000; }
+  .btn-confirm:disabled, .btn-confirm.btn-disabled {
+    color: #94969b;
+    background: #e2e3e4; }
+
+.btn-submit {
+  color: #fff;
+  background: #4b4f58; }
+  .btn-submit:hover {
+    color: #fff;
+    background: #575b66; }
+  .btn-submit:active {
+    color: #fff;
+    background: #3f434a; }
+  .btn-submit:disabled, .btn-submit.btn-disabled {
+    color: #94969b;
+    background: #e2e3e4; }
+
+.cs-br-1 {
+  border-color: #e2e3e4 !important; }
+
+.cs-br-2 {
+  border-color: #4b4f58 !important; }
+
+tr, td, th {
+  border-color: #e2e3e4; }

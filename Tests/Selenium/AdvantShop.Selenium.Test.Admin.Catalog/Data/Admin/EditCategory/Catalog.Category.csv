@@ -1,0 +1,16 @@
+CategoryID;ParentCategory;Name;Enabled;SortOrder;UrlPath
+1;0;TestCategory1;true;1;Test-category1
+2;0;TestCategory2;true;2;Test-category2
+3;0;TestCategory3;true;3;Test-category3
+4;3;TestCategory4;true;4;Test-category4
+5;3;TestCategory5;true;5;Test-category5
+6;4;TestCategory6;true;6;Test-category6
+7;0;TestCategory7;true;7;Test-category7
+8;0;TestCategory8;true;8;Test-category8
+9;0;TestCategory9;true;9;Test-category9
+10;0;TestCategory10;true;10;Test-category10
+11;0;TestCategory11;true;11;Test-category11
+12;0;TestCategory12;true;12;Test-category12
+13;0;TestCategory13;true;13;Test-category13
+14;0;TestCategory14;true;14;Test-category14
+15;0;TestCategory15;true;15;Test-category15

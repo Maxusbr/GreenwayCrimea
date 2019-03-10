@@ -1,0 +1,66 @@
+﻿@model AdvantShop.Web.Admin.Models.CustomerSegments.CustomerSegmentModel
+
+<form method="POST" action="@Url.Action("AddEdit")" enctype="multipart/form-data" name="form">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.IsEditMode)
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block m-b-md sticky-page-name-inner top-xs">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    @Html.Raw(Model.IsEditMode ? "Сегмент <strong>\"" + Model.Name + "\"</strong>" : "Новый сегмент")
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <a href="" class="link-danger m-r-xs" ng-click="customerSegment.deleteSegment(@Model.Id)">Удалить</a>
+                @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, validation: true)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-wl-12">
+            <div class="ibox">
+                <div class="ibox-content category-content border_none">
+                            
+                    <div class="row middle-xs m-b-lg">
+                        <div class="flex-grow-n col-xs-1">
+                            <span class="text-required">Название</span>
+                        </div>
+                        <div class="flex-grow flex-basis-n flex-width-n relative">
+                            @Html.TextBoxFor(x => x.Name, new {@class = "form-control", required = "required", ng_model = "customerSegment.name", validation_input_text = "Название" })
+                        </div>
+                    </div>
+
+                    @Html.Partial("_Filters", Model)
+
+                    @if (Model.IsEditMode)
+                    {
+                        <div class="row middle-xs m-b-lg">
+                            <div class="col-xs-12">
+                                <div class="m-b-sm clearfix">
+                                    <h3 class="pull-left">
+                                        Покупатели
+                                    </h3>
+                                    <div class="pull-right">
+                                        <a href="" class="btn btn-sm btn-success" ng-click="customerSegment.export()">Написать письмо или смс</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ui-grid-custom grid-unique-id="grid"
+                                                    grid-options="customerSegment.gridOptions"
+                                                    grid-url="'customerSegments/getCustomersBySegment'"
+                                                    grid-params="{Id: @Model.Id}"
+                                                    grid-on-init="customerSegment.gridOnInit(grid)"
+                                                    grid-show-export="true">
+                                    </ui-grid-custom>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

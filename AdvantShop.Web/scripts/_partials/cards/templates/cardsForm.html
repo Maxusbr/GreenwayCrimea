@@ -1,0 +1,10 @@
+﻿<div data-ng-form name="cardsFormBlock">
+    <div class="row">
+        <div class="col-xs-8">
+            <input type="text" value="" class="input-small" data-ng-model="cardsForm.code" />
+        </div>
+        <div class="col-xs-4 checkout-gift-button">
+            <input type="button" class="btn btn-small btn-action btn-expander" value="{{ ::'Js.Cards.Apply' | translate }}" data-ng-click="cardsForm.apply(cardsForm.code)" />
+        </div>
+    </div>
+</div>

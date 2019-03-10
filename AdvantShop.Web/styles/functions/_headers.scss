@@ -1,0 +1,47 @@
+﻿@import "../_settings.scss", "_util.scss";
+
+$h1-size: $font-size-huge !default;
+$h1-bold: bold !default;
+$h1-font-family: $font-family !default;
+$h1-margin: 0 0 rem-calc(20px) 0 !default;
+
+$h2-size: $font-size-big !default;
+$h2-bold: normal !default;
+$h2-font-family: $font-family !default;
+$h2-margin: 0 0 rem-calc(20px) 0 !default;
+
+$h3-size: $font-size-xmedium !default;
+$h3-bold: normal !default;
+$h3-font-family: $font-family !default;
+$h3-margin: 0 0 rem-calc(15px) 0 !default;
+
+@mixin headers-init() {
+
+    .h-inline {
+        display: inline-block;
+    }
+
+    h1, .h1 {
+        font-family: $h1-font-family;
+        font-size: $h1-size;
+        font-weight: $h1-bold;
+        margin: $h1-margin;
+        line-height: 1.2;
+    }
+
+    h2, .h2 {
+        font-family: $h2-font-family;
+        font-size: $h2-size;
+        font-weight: $h2-bold;
+        margin: $h2-margin;
+        line-height: 1.2;
+    }
+
+    h3, .h3 {
+        font-family: $h3-font-family;
+        font-size: $h3-size;
+        font-weight: $h3-bold;
+        margin: $h3-margin;
+        line-height: 1.2;
+    }
+}

@@ -1,0 +1,28 @@
+.transformer-freeze {
+  position: absolute;
+  left: auto !important; }
+
+.transformer-notouch.transformer-scroll-over {
+  position: fixed;
+  top: 0;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important; }
+
+.transformer-touch.transformer-scroll-over {
+  /*position: absolute;*/
+  position: fixed;
+  left: auto !important; }
+
+.transformer-hidden {
+  /*display: none !important;*/
+  height: 0  !important;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 !important;
+  margin: 0 !important; }
+
+.responsive-checkout {
+  position: static !important;
+  width: auto !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important; }

@@ -1,0 +1,68 @@
+.payment-list {
+  display: table; }
+
+.payment-item {
+  display: table-row; }
+
+.payment-item-radio,
+.payment-item-icon,
+.payment-item-info {
+  display: table-cell;
+  vertical-align: top; }
+
+.payment-item-icon {
+  width: auto; }
+
+.payment-item-radio,
+.payment-item-icon {
+  padding-bottom: 1.0625rem; }
+
+.payment-item-radio {
+  padding-top: 0.5rem; }
+
+.payment-item-info {
+  padding: 0.5rem 0 1.0625rem 0.625rem; }
+
+.payment-item-title,
+.payment-item-description {
+  display: block;
+  line-height: 1.2;
+  cursor: pointer; }
+
+.payment-item-title {
+  font-size: 0.875rem;
+  line-height: 1; }
+
+.payment-item-more {
+  font-size: 0.875rem; }
+
+.payment-control {
+  padding-top: 0.625rem; }
+
+.payment-progress {
+  position: relative; }
+  .payment-progress:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 10; }
+
+.payment-progress-after:after {
+  left: 50%;
+  top: 50%;
+  font-size: 2.1875rem;
+  margin: -1.09375rem 0 0 -1.09375rem; }
+
+.payment-empty {
+  padding: 2.5rem 0; }
+
+.payment-custom-option {
+  display: none; }
+
+.payment-item-active .payment-custom-option {
+  display: block; }

@@ -1,0 +1,32 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CheckoutSettingsModel
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.SriptsOrderTracking")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-6">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.SuccessOrderScript")
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-6 form-inline">
+        <ui-ace-textarea ui-ace-options="{mode: 'css'}" ng-model="settingsCheckout.SuccessOrderScript">
+            @Html.TextAreaFor(x => Model.SuccessOrderScript, new { ng_model = "settingsCheckout.SuccessOrderScript" })
+        </ui-ace-textarea>
+    </div>
+    <div class="col-xs-4 form-inline">
+        @T("Admin.Settings.Checkout.CheckoutSuccessScriptVariables")
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-10">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/cv-final-page-script" target="_blank">@T("Admin.Settings.Checkout.SriptsInstruction")</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+User-agent: Yandex 
+Disallow: *?type=*
+Disallow: *?letter=*
+Disallow: *brandid=*
+Disallow: *pricefrom=*
+Disallow: *priceto=*
+Disallow: *prop=
+Disallow: /newscategory$
+Disallow: /fogotpassword 
+Disallow: /compare
+Disallow: /myaccount
+Disallow: /checkout
+Disallow: /registration
+Disallow: /cart
+Disallow: /wishlist
+Disallow: /checkout/billing
+Disallow: /tools/
+Disallow: /login
+Disallow: /preorder
+Disallow: /search
+Clean-param: forcedDesktop /
+Clean-param: forcedMobile /
+
+User-agent: * 
+Disallow: *?type=*
+Disallow: *?letter=*
+Disallow: *prop=
+Disallow: *brandid=*
+Disallow: *pricefrom=*
+Disallow: *priceto=*
+Disallow: /newscategory$
+Disallow: /fogotpassword 
+Disallow: /compare
+Disallow: /myaccount
+Disallow: /checkout
+Disallow: /registration
+Disallow: /cart
+Disallow: /wishlist
+Disallow: /checkout/billing
+Disallow: /tools/
+Disallow: /login
+Disallow: /preorder
+Disallow: /search

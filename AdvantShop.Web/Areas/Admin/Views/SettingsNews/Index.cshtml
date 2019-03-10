@@ -1,0 +1,43 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.NewsSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "SettingsNews", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", novalidate = "novalidate" }))
+{
+
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settingsNews.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </div>
+    </div>
+
+        @Html.AntiForgeryToken()
+        <div class="error">
+            @Html.ValidationSummary()
+        </div>
+
+        <uib-tabset uid="newsTab" on-select-batch="settingsNews.floatHeader = tab.heading;">
+            <uib-tab index="'news'" classes="ng-tab" heading="@T("Admin.Settings.News.Title")">
+                <uib-tab-heading ng-class="{'tab-warning' : newsForm.$invalid}">
+                    @T("Admin.Settings.News.Title")
+                    <span ng-if="newsForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                    <span ng-if="!newsForm.$invalid && newsForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+                </uib-tab-heading>
+                <ng-form name="newsForm" validation-tab-index="'news'">
+                    @Html.Partial("_NewsSettings", Model)
+                </ng-form>
+            </uib-tab>
+            <div class="js-not-tabs">
+                <input type="submit" class="btn btn-sm btn-success btn--margin-left" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </uib-tabset>
+}
+
+

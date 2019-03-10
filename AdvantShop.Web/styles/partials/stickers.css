@@ -1,0 +1,11 @@
+.sticker-main {
+  background: url(../../images/stickers/main.png);
+  background-size: cover; }
+
+.sticker-alt {
+  background: url(../../images/stickers/alt.png);
+  background-size: cover; }
+
+.sticker-additional {
+  background: url(../../images/stickers/additional.png);
+  background-size: cover; }

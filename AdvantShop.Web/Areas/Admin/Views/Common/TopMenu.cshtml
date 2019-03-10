@@ -1,0 +1,46 @@
+﻿@using AdvantShop.Trial
+@{
+    var adminUrl = UrlService.GetAdminUrl();
+}
+<div class="header-top-wrap bg-darkness">
+    <nav id="header-top" class="navbar-static-top middle-xs between-xs bg-darkness navbar" role="navigation">
+        <div class="logo-block">
+            <div class="logo-block-inner" style="width:auto;">
+                <div class="logo-block-cell logo-block-cell-logo" data-ng-controller="ChangeAdminShopNameCtrl as changeAdminShopName">
+                    <span>
+                        <span class="top-menu-block-shopname">
+                            <a href="@adminUrl" class="logo-block-cell-link top-menu-shopname" title="{{changeAdminShopName.shopname}}">
+                                @{
+                                    string shopname = SettingsMain.AdminShopName.IsNotEmpty() ? SettingsMain.AdminShopName : (SettingsMain.AdminShopName = TrialService.IsTrialEnabled ? SettingsMain.ShopName : SettingsMain.SiteUrl.Replace("http://", "").Replace("https://", "").Replace("www.", ""));
+                                }
+                                <span class="logo-block-cell-text" data-ng-init="changeAdminShopName.shopname = '@shopname'" data-ng-bind="changeAdminShopName.shopname">
+                                    @shopname
+                                </span>
+                            </a>
+                            <ui-modal-trigger data-controller="'ModalChangeAdminShopNameCtrl'"
+                                              template-url="../areas/admin/content/src/_shared/modal/changeAdminShopName/ChangeAdminShopName.html"
+                                              data-resolve="{data: {name: changeAdminShopName.shopname}}"
+                                              data-on-close="changeAdminShopName.save(result)">
+                                <a href="" class="top-menu-shopname-edit fa fa-pencil" title="Изменить"></a>
+                            </ui-modal-trigger>
+                        </span>
+                    </span>
+                </div>
+                <div class="logo-block-cell logo-block-cell-siteurl">
+                    <a class="btn btn-sm btn-success buy-domain-link m-l-xs" href="@UrlService.GetUrl()" title="@SettingsMain.SiteUrl" target="_blank">
+                        Витрина магазина
+                    </a>
+                    @if (AdvantShop.Saas.SaasDataService.IsSaasEnabled || TrialService.IsTrialEnabled)
+                    {
+                        <a href="service/domains" target="_parent" class="showcase m-l-xs">Привязать домен</a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="logo-block">
+            @Html.Partial("~/Areas/Admin/Views/Common/SaasBlock.cshtml")
+        </div>
+        @Html.Partial("~/Areas/Admin/Views/Common/TopPanelUser.cshtml")
+    </nav>
+
+</div>

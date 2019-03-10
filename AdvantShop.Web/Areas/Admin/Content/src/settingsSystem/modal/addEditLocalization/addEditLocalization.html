@@ -1,0 +1,48 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Добавить локализацию</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">
+                            Ключ
+                        </span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.ResourceKey" required validation-input-text="Ключ" autofocus />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">
+                            Язык
+                        </span>
+                    </label>
+                    <div class="col-xs-9">
+                        <select class="form-control" ng-model="ctrl.langSelected" ng-options="s.Text for s in ctrl.Langs track by s.Value" required validation-input-text="Язык">
+                            <option value="">Не выбран</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label"><span class="text-required">Значение</span></label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" ng-model="ctrl.ResourceValue" required validation-input-text="Значение"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-button-validation-success="ctrl.saveLocalization()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+﻿<div>
+    <div class="lp-gradient-picker-row">
+        <div class="lp-gradient-picker-item-name">Направление градиента</div>
+        <div class="lp-gradient-picker-direction">
+            <select ng-model="$ctrl.direction" ng-change="$ctrl.changeDirection()">
+                <option selected value="right">Горизонтальный</option>
+                <option value="bottom">Вертикальный</option>
+            </select>
+        </div>
+    </div>
+    <div class="lp-gradient-picker-row">
+        <label class="lp-gradient-picker-item">
+            <span class="lp-gradient-picker-item-name">Начальный цвет</span>
+            <color-picker class="lp-gradient-picker-color" ng-model="$ctrl.startColor"
+                          color-picker-swatch-bootstrap="false"
+                          color-picker-format="'hex'"
+                          color-picker-alpha="false"
+                          color-picker-swatch-only="false"
+                          color-picker-case="'lower'"
+                          color-picker-on-change="$ctrl.changeColor($event, color)"></color-picker>
+        </label>
+        <label class="lp-gradient-picker-item">
+            <span class="lp-gradient-picker-item-name">Центральный цвет</span>
+            <color-picker class="lp-gradient-picker-color" ng-model="$ctrl.middleColor"
+                          color-picker-swatch-bootstrap="false"
+                          color-picker-format="'hex'"
+                          color-picker-alpha="false"
+                          color-picker-swatch-only="false"
+                          color-picker-case="'lower'"
+                          color-picker-on-change="$ctrl.changeColor($event, color)"></color-picker>
+        </label>
+        <label class="lp-gradient-picker-item">
+            <span class="lp-gradient-picker-item-name">Конечный цвет</span>
+            <color-picker class="lp-gradient-picker-color" ng-model="$ctrl.endColor"
+                          color-picker-swatch-bootstrap="false"
+                          color-picker-format="'hex'"
+                          color-picker-alpha="false"
+                          color-picker-swatch-only="false"
+                          color-picker-case="'lower'"
+                          color-picker-on-change="$ctrl.changeColor($event, color)"></color-picker>
+        </label>
+    </div>
+</div>

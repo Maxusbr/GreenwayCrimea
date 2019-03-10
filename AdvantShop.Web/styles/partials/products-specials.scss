@@ -1,0 +1,28 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+.products-specials-more {
+    font-size: $font-size-small;
+    margin-left: rem-calc(10px);
+}
+
+.products-specials-category {
+    display: none;
+    margin: rem-calc(25px) rem-calc(15px) 0;
+}
+
+.products-specials {
+    & .products-specials-category {
+        display: block;
+        text-align: center;
+        flex-basis: 100%;
+    }
+}
+.products-specials-best-h,
+.products-specials-new-h,
+.products-specials-discount-h {
+    line-height: 1;
+}
+
+.products-specials-discount-h {
+    color: #d20e0e;
+}

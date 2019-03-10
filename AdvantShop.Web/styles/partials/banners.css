@@ -1,0 +1,47 @@
+.banners-main-page {
+  margin-bottom: 2.5rem; }
+
+.banners-main-page-item {
+  border-radius: 0.3125rem;
+  border: 0.0625rem #e2e3e4 solid;
+  padding: 0.25rem;
+  margin: 0 0.3125rem; }
+
+.banners-main-page-col:first-child .banners-main-page-item {
+  margin-left: 0;
+  color: #fc972a; }
+
+.banners-main-page-col:last-child .banners-main-page-item {
+  margin-right: 0;
+  color: #e44937; }
+
+.banners-main-page-item-inner {
+  border: 0.0625rem #e2e3e4 dashed;
+  padding: 0.5rem; }
+
+.banners-main-inner-img {
+  display: block; }
+
+.banner-main-head {
+  font-size: 1.375rem;
+  font-weight: bold;
+  margin-bottom: 0.3125rem; }
+
+.banner-main-page-aside {
+  border: 0.0625rem solid #e2e3e4;
+  border-radius: 0.3125rem;
+  padding: 0.625rem;
+  margin-bottom: 0.625rem; }
+
+.banner-main-page-header {
+  font-weight: bold;
+  font-size: 1rem; }
+
+.banner-main-page-aside-pic {
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  margin-bottom: 1.1875rem; }
+
+.banner-main-page-aside-wrap {
+  margin-bottom: 2.5rem; }

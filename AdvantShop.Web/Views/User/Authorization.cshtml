@@ -1,0 +1,43 @@
+﻿@model AdvantShop.ViewModel.User.AuthorizationViewModel
+<form name="authForm" novalidate="novalidate" data-ng-controller="AuthCtrl as auth">
+    <label class="row middle-xs">
+        <span class="col-xs-4">
+            <span class="form-field-name input-required vertical-interval-xsmall">@T("User.Authorization.Email")</span>
+        </span>
+        <span class="col-xs-8">
+            <span class="form-field-input vertical-interval-xsmall">
+                @Html.TextBox("email", null, new
+           {
+               @class = "input-small",
+               required = "required",
+               type = "text",
+               data_ng_model = "auth.email",
+               pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)|(admin)$",
+               autocomplete = "email"
+           })
+            </span>
+        </span>
+    </label>
+    <label class="row middle-xs">
+        <span class="col-xs-4">
+            <span class="form-field-name input-required vertical-interval-xsmall">@T("User.Authorization.Password")</span>
+        </span>
+        <span class="col-xs-8">
+            <span class="form-field-input vertical-interval-xsmall">@Html.Password("password", null, new { @class = "input-small", autocomplete = "off", required = "required", data_ng_model = "auth.password" })</span>
+        </span>
+    </label>
+    <div class="row middle-xs">
+        <span class="col-xs-8 col-xs-offset-4">
+            <span class="form-field-input  vertical-interval-xsmall">
+                <a href="@Url.AbsoluteRouteUrl("ForgotPassword")" class="link-forget">@T("User.Authorization.ForgotPassword")</a>
+            </span>
+        </span>
+    </div>
+    <div class="row middle-xs">
+        <span class="col-xs-8 col-xs-offset-4">
+            <span class="form-field-input  vertical-interval-xsmall">
+                <input type="submit" class="btn btn-submit btn-middle" value="@T("User.Authorization.SignIn")" data-button-validation data-button-validation-success="auth.login(auth.email, auth.password, '@Model.RedirectTo')" />
+            </span>
+        </span>
+    </div>
+</form>

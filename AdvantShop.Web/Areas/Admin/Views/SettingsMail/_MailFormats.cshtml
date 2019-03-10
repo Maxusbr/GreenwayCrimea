@@ -1,0 +1,36 @@
+﻿
+
+<div class="clear m-b">
+    <div class="sticky-page-name m-b-md">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text bottom-cell inline m-r-xs">
+                    @T("Admin.Settings.NotifyEMails.MailFormats")
+                </h1>
+                <a href="@Url.Action("Academy", "Service", new { id = 13 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    Видеоурок о Настройке почты
+                </a>
+            </div>
+            <div class="page-name-block-item-additional">
+                <ui-modal-trigger data-controller="'ModalAddEditMailFormatCtrl'" controller-as="ctrl" size="lg"
+                                  template-url="../areas/admin/content/src/mailSettings/modal/addEditMailFormat/addEditMailFormat.html"
+                                  data-on-close="mailSettings.grid.fetchData()">
+                    <a href="" class="btn btn-sm btn-success">
+                        @T("Admin.Add")
+                    </a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+    </div>
+</div>
+<ui-grid-custom grid-unique-id="grid"
+                grid-on-init="mailSettings.gridOnInit(grid)"
+                grid-row-identificator="'MailFormatID'"
+                grid-options="mailSettings.gridOptions"
+                grid-url="'settingsMail/getMailFormats'"
+                grid-inplace-url="'settingsMail/inplaceMailFormat'"
+                grid-extend-ctrl="mailSettings">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="news.grid.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

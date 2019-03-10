@@ -1,0 +1,592 @@
+@charset "UTF-8";
+[class^="icon-"]:before,
+[class^="icon-"]:after,
+[class*=" icon-"]:before,
+[class*=" icon-"]:after {
+  font-family: "advantshopfonts";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  line-height: 1;
+  text-align: center;
+  opacity: 1;
+  font-variant: normal;
+  text-transform: none;
+  /*line-height: 1em;*/ }
+
+.icon-animate-spin {
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block; }
+
+.icon-animate-spin-after:after, .icon-animate-spin-before:before {
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+  text-shadow: none; }
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+.icon-down-open-before:before,
+.icon-down-open-after:after,
+.icon-down-open-before-abs:before,
+.icon-down-open-after-abs:after,
+.icon-down-open-before-abs-offset:before,
+.icon-down-open-after-abs-offset:after {
+  content: ""; }
+
+.icon-left-open-before:before,
+.icon-left-open-after:after,
+.icon-left-open-before-abs:before,
+.icon-left-open-after-abs:after,
+.icon-left-open-before-abs-offset:before,
+.icon-left-open-after-abs-offset:after {
+  content: ""; }
+
+.icon-right-open-before:before,
+.icon-right-open-after:after,
+.icon-right-open-before-abs:before,
+.icon-right-open-after-abs:after,
+.icon-right-open-before-abs-offset:before,
+.icon-right-open-after-abs-offset:after {
+  content: ""; }
+
+.icon-up-open-before:before,
+.icon-up-open-after:after,
+.icon-up-open-before-abs:before,
+.icon-up-open-after-abs:after,
+.icon-up-open-before-abs-offset:before,
+.icon-up-open-after-abs-offset:after {
+  content: ""; }
+
+.icon-equalizer-before:before,
+.icon-equalizer-after:after,
+.icon-equalizer-before-abs:before,
+.icon-equalizer-after-abs:after,
+.icon-equalizer-before-abs-offset:before,
+.icon-equalizer-after-abs-offset:after {
+  content: ""; }
+
+.icon-spinner-before:before,
+.icon-spinner-after:after,
+.icon-spinner-before-abs:before,
+.icon-spinner-after-abs:after,
+.icon-spinner-before-abs-offset:before,
+.icon-spinner-after-abs-offset:after {
+  content: ""; }
+
+.icon-dot-before:before,
+.icon-dot-after:after,
+.icon-dot-before-abs:before,
+.icon-dot-after-abs:after,
+.icon-dot-before-abs-offset:before,
+.icon-dot-after-abs-offset:after {
+  content: ""; }
+
+.icon-ok-before:before,
+.icon-ok-after:after,
+.icon-ok-before-abs:before,
+.icon-ok-after-abs:after,
+.icon-ok-before-abs-offset:before,
+.icon-ok-after-abs-offset:after {
+  content: ""; }
+
+.icon-star-before:before,
+.icon-star-after:after,
+.icon-star-before-abs:before,
+.icon-star-after-abs:after,
+.icon-star-before-abs-offset:before,
+.icon-star-after-abs-offset:after {
+  content: ""; }
+
+.icon-heart-before:before,
+.icon-heart-after:after,
+.icon-heart-before-abs:before,
+.icon-heart-after-abs:after,
+.icon-heart-before-abs-offset:before,
+.icon-heart-after-abs-offset:after {
+  content: ""; }
+
+.icon-bag-before:before,
+.icon-bag-after:after,
+.icon-bag-before-abs:before,
+.icon-bag-after-abs:after,
+.icon-bag-before-abs-offset:before,
+.icon-bag-after-abs-offset:after {
+  content: ""; }
+
+.icon-menu-before:before,
+.icon-menu-after:after,
+.icon-menu-before-abs:before,
+.icon-menu-after-abs:after,
+.icon-menu-before-abs-offset:before,
+.icon-menu-after-abs-offset:after {
+  content: ""; }
+
+.icon-down-before:before,
+.icon-down-after:after,
+.icon-down-before-abs:before,
+.icon-down-after-abs:after,
+.icon-down-before-abs-offset:before,
+.icon-down-after-abs-offset:after {
+  content: ""; }
+
+.icon-left-before:before,
+.icon-left-after:after,
+.icon-left-before-abs:before,
+.icon-left-after-abs:after,
+.icon-left-before-abs-offset:before,
+.icon-left-after-abs-offset:after {
+  content: ""; }
+
+.icon-right-before:before,
+.icon-right-after:after,
+.icon-right-before-abs:before,
+.icon-right-after-abs:after,
+.icon-right-before-abs-offset:before,
+.icon-right-after-abs-offset:after {
+  content: ""; }
+
+.icon-up-before:before,
+.icon-up-after:after,
+.icon-up-before-abs:before,
+.icon-up-after-abs:after,
+.icon-up-before-abs-offset:before,
+.icon-up-after-abs-offset:after {
+  content: ""; }
+
+.icon-th-large-before:before,
+.icon-th-large-after:after,
+.icon-th-large-before-abs:before,
+.icon-th-large-after-abs:after,
+.icon-th-large-before-abs-offset:before,
+.icon-th-large-after-abs-offset:after {
+  content: ""; }
+
+.icon-th-list-before:before,
+.icon-th-list-after:after,
+.icon-th-list-before-abs:before,
+.icon-th-list-after-abs:after,
+.icon-th-list-before-abs-offset:before,
+.icon-th-list-after-abs-offset:after {
+  content: ""; }
+
+.icon-left-thin-before:before,
+.icon-left-thin-after:after,
+.icon-left-thin-before-abs:before,
+.icon-left-thin-after-abs:after,
+.icon-left-thin-before-abs-offset:before,
+.icon-left-thin-after-abs-offset:after {
+  content: ""; }
+
+.icon-right-thin-before:before,
+.icon-right-thin-after:after,
+.icon-right-thin-before-abs:before,
+.icon-right-thin-after-abs:after,
+.icon-right-thin-before-abs-offset:before,
+.icon-right-thin-after-abs-offset:after {
+  content: ""; }
+
+.icon-up-thin-before:before,
+.icon-up-thin-after:after,
+.icon-up-thin-before-abs:before,
+.icon-up-thin-after-abs:after,
+.icon-up-thin-before-abs-offset:before,
+.icon-up-thin-after-abs-offset:after {
+  content: ""; }
+
+.icon-down-thin-before:before,
+.icon-down-thin-after:after,
+.icon-down-thin-before-abs:before,
+.icon-down-thin-after-abs:after,
+.icon-down-thin-before-abs-offset:before,
+.icon-down-thin-after-abs-offset:after {
+  content: ""; }
+
+.icon-down-1-before:before,
+.icon-down-1-after:after,
+.icon-down-1-before-abs:before,
+.icon-down-1-after-abs:after,
+.icon-down-1-before-abs-offset:before,
+.icon-down-1-after-abs-offset:after {
+  content: ""; }
+
+.icon-left-1-before:before,
+.icon-left-1-after:after,
+.icon-left-1-before-abs:before,
+.icon-left-1-after-abs:after,
+.icon-left-1-before-abs-offset:before,
+.icon-left-1-after-abs-offset:after {
+  content: ""; }
+
+.icon-right-1-before:before,
+.icon-right-1-after:after,
+.icon-right-1-before-abs:before,
+.icon-right-1-after-abs:after,
+.icon-right-1-before-abs-offset:before,
+.icon-right-1-after-abs-offset:after {
+  content: ""; }
+
+.icon-up-1-before:before,
+.icon-up-1-after:after,
+.icon-up-1-before-abs:before,
+.icon-up-1-after-abs:after,
+.icon-up-1-before-abs-offset:before,
+.icon-up-1-after-abs-offset:after {
+  content: ""; }
+
+.icon-search-before:before,
+.icon-search-after:after,
+.icon-search-before-abs:before,
+.icon-search-after-abs:after,
+.icon-search-before-abs-offset:before,
+.icon-search-after-abs-offset:after {
+  content: ""; }
+
+.icon-mail-before:before,
+.icon-mail-after:after,
+.icon-mail-before-abs:before,
+.icon-mail-after-abs:after,
+.icon-mail-before-abs-offset:before,
+.icon-mail-after-abs-offset:after {
+  content: ""; }
+
+.icon-dot-3-before:before,
+.icon-dot-3-after:after,
+.icon-dot-3-before-abs:before,
+.icon-dot-3-after-abs:after,
+.icon-dot-3-before-abs-offset:before,
+.icon-dot-3-after-abs-offset:after {
+  content: ""; }
+
+.icon-ellipsis-before:before,
+.icon-ellipsis-after:after,
+.icon-ellipsis-before-abs:before,
+.icon-ellipsis-after-abs:after,
+.icon-ellipsis-before-abs-offset:before,
+.icon-ellipsis-after-abs-offset:after {
+  content: ""; }
+
+.icon-camera-before:before,
+.icon-camera-after:after,
+.icon-camera-before-abs:before,
+.icon-camera-after-abs:after,
+.icon-camera-before-abs-offset:before,
+.icon-camera-after-abs-offset:after {
+  content: ""; }
+
+.icon-arrows-ccw-before:before,
+.icon-arrows-ccw-after:after,
+.icon-arrows-ccw-before-abs:before,
+.icon-arrows-ccw-after-abs:after,
+.icon-arrows-ccw-before-abs-offset:before,
+.icon-arrows-ccw-after-abs-offset:after {
+  content: ""; }
+
+.icon-cancel-before:before,
+.icon-cancel-after:after,
+.icon-cancel-before-abs:before,
+.icon-cancel-after-abs:after,
+.icon-cancel-before-abs-offset:before,
+.icon-cancel-after-abs-offset:after {
+  content: ""; }
+
+.icon-cancel-circled-before:before,
+.icon-cancel-circled-after:after,
+.icon-cancel-circled-before-abs:before,
+.icon-cancel-circled-after-abs:after,
+.icon-cancel-circled-before-abs-offset:before,
+.icon-cancel-circled-after-abs-offset:after {
+  content: ""; }
+
+.icon-tw-before:before,
+.icon-tw-after:after,
+.icon-tw-before-abs:before,
+.icon-tw-after-abs:after,
+.icon-tw-before-abs-offset:before,
+.icon-tw-after-abs-offset:after {
+  content: ""; }
+
+.icon-vk-before:before,
+.icon-vk-after:after,
+.icon-vk-before-abs:before,
+.icon-vk-after-abs:after,
+.icon-vk-before-abs-offset:before,
+.icon-vk-after-abs-offset:after {
+  content: ""; }
+
+.icon-fb-before:before,
+.icon-fb-after:after,
+.icon-fb-before-abs:before,
+.icon-fb-after-abs:after,
+.icon-fb-before-abs-offset:before,
+.icon-fb-after-abs-offset:after {
+  content: ""; }
+
+.icon-print-before:before,
+.icon-print-after:after,
+.icon-print-before-abs:before,
+.icon-print-after-abs:after,
+.icon-print-before-abs-offset:before,
+.icon-print-after-abs-offset:after {
+  content: ""; }
+
+.icon-phone-before:before,
+.icon-phone-after:after,
+.icon-phone-before-abs:before,
+.icon-phone-after-abs:after,
+.icon-phone-before-abs-offset:before,
+.icon-phone-after-abs-offset:after {
+  content: ""; }
+
+.icon-alert-before:before,
+.icon-alert-after:after,
+.icon-alert-before-abs:before,
+.icon-alert-after-abs:after,
+.icon-alert-before-abs-offset:before,
+.icon-alert-after-abs-offset:after {
+  content: ""; }
+
+.icon-down-open-big-before:before,
+.icon-down-open-big-after:after,
+.icon-down-open-big-before-abs:before,
+.icon-down-open-big-after-abs:after,
+.icon-down-open-big-before-abs-offset:before,
+.icon-down-open-big-after-abs-offset:after {
+  content: ""; }
+
+.icon-left-open-big-before:before,
+.icon-left-open-big-after:after,
+.icon-left-open-big-before-abs:before,
+.icon-left-open-big-after-abs:after,
+.icon-left-open-big-before-abs-offset:before,
+.icon-left-open-big-after-abs-offset:after {
+  content: ""; }
+
+.icon-right-open-big-before:before,
+.icon-right-open-big-after:after,
+.icon-right-open-big-before-abs:before,
+.icon-right-open-big-after-abs:after,
+.icon-right-open-big-before-abs-offset:before,
+.icon-right-open-big-after-abs-offset:after {
+  content: ""; }
+
+.icon-up-open-big-before:before,
+.icon-up-open-big-after:after,
+.icon-up-open-big-before-abs:before,
+.icon-up-open-big-after-abs:after,
+.icon-up-open-big-before-abs-offset:before,
+.icon-up-open-big-after-abs-offset:after {
+  content: ""; }
+
+.icon-adult-before:before,
+.icon-adult-after:after,
+.icon-adult-before-abs:before,
+.icon-adult-after-abs:after,
+.icon-adult-before-abs-offset:before,
+.icon-adult-after-abs-offset:after {
+  content: ""; }
+
+.icon-level-up-before:before,
+.icon-level-up-after:after,
+.icon-level-up-before-abs:before,
+.icon-level-up-after-abs:after,
+.icon-level-up-before-abs-offset:before,
+.icon-level-up-after-abs-offset:after {
+  content: ""; }
+
+.icon-chart-line-before:before,
+.icon-chart-line-after:after,
+.icon-chart-line-before-abs:before,
+.icon-chart-line-after-abs:after,
+.icon-chart-line-before-abs-offset:before,
+.icon-chart-line-after-abs-offset:after {
+  content: ""; }
+
+.icon-chart-bar-before:before,
+.icon-chart-bar-after:after,
+.icon-chart-bar-before-abs:before,
+.icon-chart-bar-after-abs:after,
+.icon-chart-bar-before-abs-offset:before,
+.icon-chart-bar-after-abs-offset:after {
+  content: ""; }
+
+.icon-list-before:before,
+.icon-list-after:after,
+.icon-list-before-abs:before,
+.icon-list-after-abs:after,
+.icon-list-before-abs-offset:before,
+.icon-list-after-abs-offset:after {
+  content: ""; }
+
+.icon-rss-squared-before:before,
+.icon-rss-squared-after:after,
+.icon-rss-squared-before-abs:before,
+.icon-rss-squared-after-abs:after,
+.icon-rss-squared-before-abs-offset:before,
+.icon-rss-squared-after-abs-offset:after {
+  content: ""; }
+
+.icon-pencil-before:before,
+.icon-pencil-after:after,
+.icon-pencil-before-abs:before,
+.icon-pencil-after-abs:after,
+.icon-pencil-before-abs-offset:before,
+.icon-pencil-after-abs-offset:after {
+  content: ""; }
+
+.icon-warning-empty-before:before,
+.icon-warning-empty-after:after,
+.icon-warning-empty-before-abs:before,
+.icon-warning-empty-after-abs:after,
+.icon-warning-empty-before-abs-offset:before,
+.icon-warning-empty-after-abs-offset:after {
+  content: ""; }
+
+.icon-trash-before:before,
+.icon-trash-after:after,
+.icon-trash-before-abs:before,
+.icon-trash-after-abs:after,
+.icon-trash-before-abs-offset:before,
+.icon-trash-after-abs-offset:after {
+  content: ""; }
+
+.icon-plus-circled-before:before,
+.icon-plus-circled-after:after,
+.icon-plus-circled-before-abs:before,
+.icon-plus-circled-after-abs:after,
+.icon-plus-circled-before-abs-offset:before,
+.icon-plus-circled-after-abs-offset:after {
+  content: ""; }
+
+.icon-down-circle-before:before,
+.icon-down-circle-after:after,
+.icon-down-circle-before-abs:before,
+.icon-down-circle-after-abs:after,
+.icon-down-circle-before-abs-offset:before,
+.icon-down-circle-after-abs-offset:after {
+  content: ""; }
+
+.icon-up-circle-before:before,
+.icon-up-circle-after:after,
+.icon-up-circle-before-abs:before,
+.icon-up-circle-after-abs:after,
+.icon-up-circle-before-abs-offset:before,
+.icon-up-circle-after-abs-offset:after {
+  content: ""; }
+
+.icon-left-circle-before:before,
+.icon-left-circle-after:after,
+.icon-left-circle-before-abs:before,
+.icon-left-circle-after-abs:after,
+.icon-left-circle-before-abs-offset:before,
+.icon-left-circle-after-abs-offset:after {
+  content: ""; }
+
+.icon-right-circle-before:before,
+.icon-right-circle-after:after,
+.icon-right-circle-before-abs:before,
+.icon-right-circle-after-abs:after,
+.icon-right-circle-before-abs-offset:before,
+.icon-right-circle-after-abs-offset:after {
+  content: ""; }
+
+.icon-mobile-before:before,
+.icon-mobile-after:after,
+.icon-mobile-before-abs:before,
+.icon-mobile-after-abs:after,
+.icon-mobile-before-abs-offset:before,
+.icon-mobile-after-abs-offset:after {
+  content: ""; }
+
+.icon-plus-before:before,
+.icon-plus-after:after,
+.icon-plus-before-abs:before,
+.icon-plus-after-abs:after,
+.icon-plus-before-abs-offset:before,
+.icon-plus-after-abs-offset:after {
+  content: ""; }
+
+.icon-minus-before:before,
+.icon-minus-after:after,
+.icon-minus-before-abs:before,
+.icon-minus-after-abs:after,
+.icon-minus-before-abs-offset:before,
+.icon-minus-after-abs-offset:after {
+  content: ""; }
+
+.icon-basket-before:before,
+.icon-basket-after:after,
+.icon-basket-before-abs:before,
+.icon-basket-after-abs:after,
+.icon-basket-before-abs-offset:before,
+.icon-basket-after-abs-offset:after {
+  content: ""; }
+
+.icon-mail-1-before:before,
+.icon-mail-1-after:after,
+.icon-mail-1-before-abs:before,
+.icon-mail-1-after-abs:after,
+.icon-mail-1-before-abs-offset:before,
+.icon-mail-1-after-abs-offset:after {
+  content: ""; }
+
+.icon-phone-1-before:before,
+.icon-phone-1-after:after,
+.icon-phone-1-before-abs:before,
+.icon-phone-1-after-abs:after,
+.icon-phone-1-before-abs-offset:before,
+.icon-phone-1-after-abs-offset:after {
+  content: ""; }
+
+.icon-question-before:before,
+.icon-question-after:after,
+.icon-question-before-abs:before,
+.icon-question-after-abs:after,
+.icon-question-before-abs-offset:before,
+.icon-question-after-abs-offset:after {
+  content: ""; }
+
+.icon-down-open-before:before, .icon-down-open-before-abs:before, .icon-down-open-before-abs-offset:before, .icon-left-open-before:before, .icon-left-open-before-abs:before, .icon-left-open-before-abs-offset:before, .icon-right-open-before:before, .icon-right-open-before-abs:before, .icon-right-open-before-abs-offset:before, .icon-up-open-before:before, .icon-up-open-before-abs:before, .icon-up-open-before-abs-offset:before, .icon-equalizer-before:before, .icon-equalizer-before-abs:before, .icon-equalizer-before-abs-offset:before, .icon-spinner-before:before, .icon-spinner-before-abs:before, .icon-spinner-before-abs-offset:before, .icon-dot-before:before, .icon-dot-before-abs:before, .icon-dot-before-abs-offset:before, .icon-ok-before:before, .icon-ok-before-abs:before, .icon-ok-before-abs-offset:before, .icon-star-before:before, .icon-star-before-abs:before, .icon-star-before-abs-offset:before, .icon-heart-before:before, .icon-heart-before-abs:before, .icon-heart-before-abs-offset:before, .icon-bag-before:before, .icon-bag-before-abs:before, .icon-bag-before-abs-offset:before, .icon-menu-before:before, .icon-menu-before-abs:before, .icon-menu-before-abs-offset:before, .icon-down-before:before, .icon-down-before-abs:before, .icon-down-before-abs-offset:before, .icon-left-before:before, .icon-left-before-abs:before, .icon-left-before-abs-offset:before, .icon-right-before:before, .icon-right-before-abs:before, .icon-right-before-abs-offset:before, .icon-up-before:before, .icon-up-before-abs:before, .icon-up-before-abs-offset:before, .icon-th-large-before:before, .icon-th-large-before-abs:before, .icon-th-large-before-abs-offset:before, .icon-th-list-before:before, .icon-th-list-before-abs:before, .icon-th-list-before-abs-offset:before, .icon-left-thin-before:before, .icon-left-thin-before-abs:before, .icon-left-thin-before-abs-offset:before, .icon-right-thin-before:before, .icon-right-thin-before-abs:before, .icon-right-thin-before-abs-offset:before, .icon-up-thin-before:before, .icon-up-thin-before-abs:before, .icon-up-thin-before-abs-offset:before, .icon-down-thin-before:before, .icon-down-thin-before-abs:before, .icon-down-thin-before-abs-offset:before, .icon-down-1-before:before, .icon-down-1-before-abs:before, .icon-down-1-before-abs-offset:before, .icon-left-1-before:before, .icon-left-1-before-abs:before, .icon-left-1-before-abs-offset:before, .icon-right-1-before:before, .icon-right-1-before-abs:before, .icon-right-1-before-abs-offset:before, .icon-up-1-before:before, .icon-up-1-before-abs:before, .icon-up-1-before-abs-offset:before, .icon-search-before:before, .icon-search-before-abs:before, .icon-search-before-abs-offset:before, .icon-mail-before:before, .icon-mail-before-abs:before, .icon-mail-before-abs-offset:before, .icon-dot-3-before:before, .icon-dot-3-before-abs:before, .icon-dot-3-before-abs-offset:before, .icon-ellipsis-before:before, .icon-ellipsis-before-abs:before, .icon-ellipsis-before-abs-offset:before, .icon-camera-before:before, .icon-camera-before-abs:before, .icon-camera-before-abs-offset:before, .icon-arrows-ccw-before:before, .icon-arrows-ccw-before-abs:before, .icon-arrows-ccw-before-abs-offset:before, .icon-cancel-before:before, .icon-cancel-before-abs:before, .icon-cancel-before-abs-offset:before, .icon-cancel-circled-before:before, .icon-cancel-circled-before-abs:before, .icon-cancel-circled-before-abs-offset:before, .icon-tw-before:before, .icon-tw-before-abs:before, .icon-tw-before-abs-offset:before, .icon-vk-before:before, .icon-vk-before-abs:before, .icon-vk-before-abs-offset:before, .icon-fb-before:before, .icon-fb-before-abs:before, .icon-fb-before-abs-offset:before, .icon-print-before:before, .icon-print-before-abs:before, .icon-print-before-abs-offset:before, .icon-phone-before:before, .icon-phone-before-abs:before, .icon-phone-before-abs-offset:before, .icon-alert-before:before, .icon-alert-before-abs:before, .icon-alert-before-abs-offset:before, .icon-down-open-big-before:before, .icon-down-open-big-before-abs:before, .icon-down-open-big-before-abs-offset:before, .icon-left-open-big-before:before, .icon-left-open-big-before-abs:before, .icon-left-open-big-before-abs-offset:before, .icon-right-open-big-before:before, .icon-right-open-big-before-abs:before, .icon-right-open-big-before-abs-offset:before, .icon-up-open-big-before:before, .icon-up-open-big-before-abs:before, .icon-up-open-big-before-abs-offset:before, .icon-adult-before:before, .icon-adult-before-abs:before, .icon-adult-before-abs-offset:before, .icon-level-up-before:before, .icon-level-up-before-abs:before, .icon-level-up-before-abs-offset:before, .icon-chart-line-before:before, .icon-chart-line-before-abs:before, .icon-chart-line-before-abs-offset:before, .icon-chart-bar-before:before, .icon-chart-bar-before-abs:before, .icon-chart-bar-before-abs-offset:before, .icon-list-before:before, .icon-list-before-abs:before, .icon-list-before-abs-offset:before, .icon-rss-squared-before:before, .icon-rss-squared-before-abs:before, .icon-rss-squared-before-abs-offset:before, .icon-pencil-before:before, .icon-pencil-before-abs:before, .icon-pencil-before-abs-offset:before, .icon-warning-empty-before:before, .icon-warning-empty-before-abs:before, .icon-warning-empty-before-abs-offset:before, .icon-trash-before:before, .icon-trash-before-abs:before, .icon-trash-before-abs-offset:before, .icon-plus-circled-before:before, .icon-plus-circled-before-abs:before, .icon-plus-circled-before-abs-offset:before, .icon-down-circle-before:before, .icon-down-circle-before-abs:before, .icon-down-circle-before-abs-offset:before, .icon-up-circle-before:before, .icon-up-circle-before-abs:before, .icon-up-circle-before-abs-offset:before, .icon-left-circle-before:before, .icon-left-circle-before-abs:before, .icon-left-circle-before-abs-offset:before, .icon-right-circle-before:before, .icon-right-circle-before-abs:before, .icon-right-circle-before-abs-offset:before, .icon-mobile-before:before, .icon-mobile-before-abs:before, .icon-mobile-before-abs-offset:before, .icon-plus-before:before, .icon-plus-before-abs:before, .icon-plus-before-abs-offset:before, .icon-minus-before:before, .icon-minus-before-abs:before, .icon-minus-before-abs-offset:before, .icon-basket-before:before, .icon-basket-before-abs:before, .icon-basket-before-abs-offset:before, .icon-mail-1-before:before, .icon-mail-1-before-abs:before, .icon-mail-1-before-abs-offset:before, .icon-phone-1-before:before, .icon-phone-1-before-abs:before, .icon-phone-1-before-abs-offset:before, .icon-question-before:before, .icon-question-before-abs:before, .icon-question-before-abs-offset:before {
+  margin-right: 0.2em; }
+
+.icon-down-open-after:after, .icon-down-open-after-abs:after, .icon-down-open-after-abs-offset:after, .icon-left-open-after:after, .icon-left-open-after-abs:after, .icon-left-open-after-abs-offset:after, .icon-right-open-after:after, .icon-right-open-after-abs:after, .icon-right-open-after-abs-offset:after, .icon-up-open-after:after, .icon-up-open-after-abs:after, .icon-up-open-after-abs-offset:after, .icon-equalizer-after:after, .icon-equalizer-after-abs:after, .icon-equalizer-after-abs-offset:after, .icon-spinner-after:after, .icon-spinner-after-abs:after, .icon-spinner-after-abs-offset:after, .icon-dot-after:after, .icon-dot-after-abs:after, .icon-dot-after-abs-offset:after, .icon-ok-after:after, .icon-ok-after-abs:after, .icon-ok-after-abs-offset:after, .icon-star-after:after, .icon-star-after-abs:after, .icon-star-after-abs-offset:after, .icon-heart-after:after, .icon-heart-after-abs:after, .icon-heart-after-abs-offset:after, .icon-bag-after:after, .icon-bag-after-abs:after, .icon-bag-after-abs-offset:after, .icon-menu-after:after, .icon-menu-after-abs:after, .icon-menu-after-abs-offset:after, .icon-down-after:after, .icon-down-after-abs:after, .icon-down-after-abs-offset:after, .icon-left-after:after, .icon-left-after-abs:after, .icon-left-after-abs-offset:after, .icon-right-after:after, .icon-right-after-abs:after, .icon-right-after-abs-offset:after, .icon-up-after:after, .icon-up-after-abs:after, .icon-up-after-abs-offset:after, .icon-th-large-after:after, .icon-th-large-after-abs:after, .icon-th-large-after-abs-offset:after, .icon-th-list-after:after, .icon-th-list-after-abs:after, .icon-th-list-after-abs-offset:after, .icon-left-thin-after:after, .icon-left-thin-after-abs:after, .icon-left-thin-after-abs-offset:after, .icon-right-thin-after:after, .icon-right-thin-after-abs:after, .icon-right-thin-after-abs-offset:after, .icon-up-thin-after:after, .icon-up-thin-after-abs:after, .icon-up-thin-after-abs-offset:after, .icon-down-thin-after:after, .icon-down-thin-after-abs:after, .icon-down-thin-after-abs-offset:after, .icon-down-1-after:after, .icon-down-1-after-abs:after, .icon-down-1-after-abs-offset:after, .icon-left-1-after:after, .icon-left-1-after-abs:after, .icon-left-1-after-abs-offset:after, .icon-right-1-after:after, .icon-right-1-after-abs:after, .icon-right-1-after-abs-offset:after, .icon-up-1-after:after, .icon-up-1-after-abs:after, .icon-up-1-after-abs-offset:after, .icon-search-after:after, .icon-search-after-abs:after, .icon-search-after-abs-offset:after, .icon-mail-after:after, .icon-mail-after-abs:after, .icon-mail-after-abs-offset:after, .icon-dot-3-after:after, .icon-dot-3-after-abs:after, .icon-dot-3-after-abs-offset:after, .icon-ellipsis-after:after, .icon-ellipsis-after-abs:after, .icon-ellipsis-after-abs-offset:after, .icon-camera-after:after, .icon-camera-after-abs:after, .icon-camera-after-abs-offset:after, .icon-arrows-ccw-after:after, .icon-arrows-ccw-after-abs:after, .icon-arrows-ccw-after-abs-offset:after, .icon-cancel-after:after, .icon-cancel-after-abs:after, .icon-cancel-after-abs-offset:after, .icon-cancel-circled-after:after, .icon-cancel-circled-after-abs:after, .icon-cancel-circled-after-abs-offset:after, .icon-tw-after:after, .icon-tw-after-abs:after, .icon-tw-after-abs-offset:after, .icon-vk-after:after, .icon-vk-after-abs:after, .icon-vk-after-abs-offset:after, .icon-fb-after:after, .icon-fb-after-abs:after, .icon-fb-after-abs-offset:after, .icon-print-after:after, .icon-print-after-abs:after, .icon-print-after-abs-offset:after, .icon-phone-after:after, .icon-phone-after-abs:after, .icon-phone-after-abs-offset:after, .icon-alert-after:after, .icon-alert-after-abs:after, .icon-alert-after-abs-offset:after, .icon-down-open-big-after:after, .icon-down-open-big-after-abs:after, .icon-down-open-big-after-abs-offset:after, .icon-left-open-big-after:after, .icon-left-open-big-after-abs:after, .icon-left-open-big-after-abs-offset:after, .icon-right-open-big-after:after, .icon-right-open-big-after-abs:after, .icon-right-open-big-after-abs-offset:after, .icon-up-open-big-after:after, .icon-up-open-big-after-abs:after, .icon-up-open-big-after-abs-offset:after, .icon-adult-after:after, .icon-adult-after-abs:after, .icon-adult-after-abs-offset:after, .icon-level-up-after:after, .icon-level-up-after-abs:after, .icon-level-up-after-abs-offset:after, .icon-chart-line-after:after, .icon-chart-line-after-abs:after, .icon-chart-line-after-abs-offset:after, .icon-chart-bar-after:after, .icon-chart-bar-after-abs:after, .icon-chart-bar-after-abs-offset:after, .icon-list-after:after, .icon-list-after-abs:after, .icon-list-after-abs-offset:after, .icon-rss-squared-after:after, .icon-rss-squared-after-abs:after, .icon-rss-squared-after-abs-offset:after, .icon-pencil-after:after, .icon-pencil-after-abs:after, .icon-pencil-after-abs-offset:after, .icon-warning-empty-after:after, .icon-warning-empty-after-abs:after, .icon-warning-empty-after-abs-offset:after, .icon-trash-after:after, .icon-trash-after-abs:after, .icon-trash-after-abs-offset:after, .icon-plus-circled-after:after, .icon-plus-circled-after-abs:after, .icon-plus-circled-after-abs-offset:after, .icon-down-circle-after:after, .icon-down-circle-after-abs:after, .icon-down-circle-after-abs-offset:after, .icon-up-circle-after:after, .icon-up-circle-after-abs:after, .icon-up-circle-after-abs-offset:after, .icon-left-circle-after:after, .icon-left-circle-after-abs:after, .icon-left-circle-after-abs-offset:after, .icon-right-circle-after:after, .icon-right-circle-after-abs:after, .icon-right-circle-after-abs-offset:after, .icon-mobile-after:after, .icon-mobile-after-abs:after, .icon-mobile-after-abs-offset:after, .icon-plus-after:after, .icon-plus-after-abs:after, .icon-plus-after-abs-offset:after, .icon-minus-after:after, .icon-minus-after-abs:after, .icon-minus-after-abs-offset:after, .icon-basket-after:after, .icon-basket-after-abs:after, .icon-basket-after-abs-offset:after, .icon-mail-1-after:after, .icon-mail-1-after-abs:after, .icon-mail-1-after-abs-offset:after, .icon-phone-1-after:after, .icon-phone-1-after-abs:after, .icon-phone-1-after-abs-offset:after, .icon-question-after:after, .icon-question-after-abs:after, .icon-question-after-abs-offset:after {
+  margin-left: 0.2em; }
+
+.icon-down-open-before-abs:before, .icon-down-open-after-abs:after, .icon-down-open-before-abs-offset:before, .icon-down-open-after-abs-offset:after, .icon-left-open-before-abs:before, .icon-left-open-after-abs:after, .icon-left-open-before-abs-offset:before, .icon-left-open-after-abs-offset:after, .icon-right-open-before-abs:before, .icon-right-open-after-abs:after, .icon-right-open-before-abs-offset:before, .icon-right-open-after-abs-offset:after, .icon-up-open-before-abs:before, .icon-up-open-after-abs:after, .icon-up-open-before-abs-offset:before, .icon-up-open-after-abs-offset:after, .icon-equalizer-before-abs:before, .icon-equalizer-after-abs:after, .icon-equalizer-before-abs-offset:before, .icon-equalizer-after-abs-offset:after, .icon-spinner-before-abs:before, .icon-spinner-after-abs:after, .icon-spinner-before-abs-offset:before, .icon-spinner-after-abs-offset:after, .icon-dot-before-abs:before, .icon-dot-after-abs:after, .icon-dot-before-abs-offset:before, .icon-dot-after-abs-offset:after, .icon-ok-before-abs:before, .icon-ok-after-abs:after, .icon-ok-before-abs-offset:before, .icon-ok-after-abs-offset:after, .icon-star-before-abs:before, .icon-star-after-abs:after, .icon-star-before-abs-offset:before, .icon-star-after-abs-offset:after, .icon-heart-before-abs:before, .icon-heart-after-abs:after, .icon-heart-before-abs-offset:before, .icon-heart-after-abs-offset:after, .icon-bag-before-abs:before, .icon-bag-after-abs:after, .icon-bag-before-abs-offset:before, .icon-bag-after-abs-offset:after, .icon-menu-before-abs:before, .icon-menu-after-abs:after, .icon-menu-before-abs-offset:before, .icon-menu-after-abs-offset:after, .icon-down-before-abs:before, .icon-down-after-abs:after, .icon-down-before-abs-offset:before, .icon-down-after-abs-offset:after, .icon-left-before-abs:before, .icon-left-after-abs:after, .icon-left-before-abs-offset:before, .icon-left-after-abs-offset:after, .icon-right-before-abs:before, .icon-right-after-abs:after, .icon-right-before-abs-offset:before, .icon-right-after-abs-offset:after, .icon-up-before-abs:before, .icon-up-after-abs:after, .icon-up-before-abs-offset:before, .icon-up-after-abs-offset:after, .icon-th-large-before-abs:before, .icon-th-large-after-abs:after, .icon-th-large-before-abs-offset:before, .icon-th-large-after-abs-offset:after, .icon-th-list-before-abs:before, .icon-th-list-after-abs:after, .icon-th-list-before-abs-offset:before, .icon-th-list-after-abs-offset:after, .icon-left-thin-before-abs:before, .icon-left-thin-after-abs:after, .icon-left-thin-before-abs-offset:before, .icon-left-thin-after-abs-offset:after, .icon-right-thin-before-abs:before, .icon-right-thin-after-abs:after, .icon-right-thin-before-abs-offset:before, .icon-right-thin-after-abs-offset:after, .icon-up-thin-before-abs:before, .icon-up-thin-after-abs:after, .icon-up-thin-before-abs-offset:before, .icon-up-thin-after-abs-offset:after, .icon-down-thin-before-abs:before, .icon-down-thin-after-abs:after, .icon-down-thin-before-abs-offset:before, .icon-down-thin-after-abs-offset:after, .icon-down-1-before-abs:before, .icon-down-1-after-abs:after, .icon-down-1-before-abs-offset:before, .icon-down-1-after-abs-offset:after, .icon-left-1-before-abs:before, .icon-left-1-after-abs:after, .icon-left-1-before-abs-offset:before, .icon-left-1-after-abs-offset:after, .icon-right-1-before-abs:before, .icon-right-1-after-abs:after, .icon-right-1-before-abs-offset:before, .icon-right-1-after-abs-offset:after, .icon-up-1-before-abs:before, .icon-up-1-after-abs:after, .icon-up-1-before-abs-offset:before, .icon-up-1-after-abs-offset:after, .icon-search-before-abs:before, .icon-search-after-abs:after, .icon-search-before-abs-offset:before, .icon-search-after-abs-offset:after, .icon-mail-before-abs:before, .icon-mail-after-abs:after, .icon-mail-before-abs-offset:before, .icon-mail-after-abs-offset:after, .icon-dot-3-before-abs:before, .icon-dot-3-after-abs:after, .icon-dot-3-before-abs-offset:before, .icon-dot-3-after-abs-offset:after, .icon-ellipsis-before-abs:before, .icon-ellipsis-after-abs:after, .icon-ellipsis-before-abs-offset:before, .icon-ellipsis-after-abs-offset:after, .icon-camera-before-abs:before, .icon-camera-after-abs:after, .icon-camera-before-abs-offset:before, .icon-camera-after-abs-offset:after, .icon-arrows-ccw-before-abs:before, .icon-arrows-ccw-after-abs:after, .icon-arrows-ccw-before-abs-offset:before, .icon-arrows-ccw-after-abs-offset:after, .icon-cancel-before-abs:before, .icon-cancel-after-abs:after, .icon-cancel-before-abs-offset:before, .icon-cancel-after-abs-offset:after, .icon-cancel-circled-before-abs:before, .icon-cancel-circled-after-abs:after, .icon-cancel-circled-before-abs-offset:before, .icon-cancel-circled-after-abs-offset:after, .icon-tw-before-abs:before, .icon-tw-after-abs:after, .icon-tw-before-abs-offset:before, .icon-tw-after-abs-offset:after, .icon-vk-before-abs:before, .icon-vk-after-abs:after, .icon-vk-before-abs-offset:before, .icon-vk-after-abs-offset:after, .icon-fb-before-abs:before, .icon-fb-after-abs:after, .icon-fb-before-abs-offset:before, .icon-fb-after-abs-offset:after, .icon-print-before-abs:before, .icon-print-after-abs:after, .icon-print-before-abs-offset:before, .icon-print-after-abs-offset:after, .icon-phone-before-abs:before, .icon-phone-after-abs:after, .icon-phone-before-abs-offset:before, .icon-phone-after-abs-offset:after, .icon-alert-before-abs:before, .icon-alert-after-abs:after, .icon-alert-before-abs-offset:before, .icon-alert-after-abs-offset:after, .icon-down-open-big-before-abs:before, .icon-down-open-big-after-abs:after, .icon-down-open-big-before-abs-offset:before, .icon-down-open-big-after-abs-offset:after, .icon-left-open-big-before-abs:before, .icon-left-open-big-after-abs:after, .icon-left-open-big-before-abs-offset:before, .icon-left-open-big-after-abs-offset:after, .icon-right-open-big-before-abs:before, .icon-right-open-big-after-abs:after, .icon-right-open-big-before-abs-offset:before, .icon-right-open-big-after-abs-offset:after, .icon-up-open-big-before-abs:before, .icon-up-open-big-after-abs:after, .icon-up-open-big-before-abs-offset:before, .icon-up-open-big-after-abs-offset:after, .icon-adult-before-abs:before, .icon-adult-after-abs:after, .icon-adult-before-abs-offset:before, .icon-adult-after-abs-offset:after, .icon-level-up-before-abs:before, .icon-level-up-after-abs:after, .icon-level-up-before-abs-offset:before, .icon-level-up-after-abs-offset:after, .icon-chart-line-before-abs:before, .icon-chart-line-after-abs:after, .icon-chart-line-before-abs-offset:before, .icon-chart-line-after-abs-offset:after, .icon-chart-bar-before-abs:before, .icon-chart-bar-after-abs:after, .icon-chart-bar-before-abs-offset:before, .icon-chart-bar-after-abs-offset:after, .icon-list-before-abs:before, .icon-list-after-abs:after, .icon-list-before-abs-offset:before, .icon-list-after-abs-offset:after, .icon-rss-squared-before-abs:before, .icon-rss-squared-after-abs:after, .icon-rss-squared-before-abs-offset:before, .icon-rss-squared-after-abs-offset:after, .icon-pencil-before-abs:before, .icon-pencil-after-abs:after, .icon-pencil-before-abs-offset:before, .icon-pencil-after-abs-offset:after, .icon-warning-empty-before-abs:before, .icon-warning-empty-after-abs:after, .icon-warning-empty-before-abs-offset:before, .icon-warning-empty-after-abs-offset:after, .icon-trash-before-abs:before, .icon-trash-after-abs:after, .icon-trash-before-abs-offset:before, .icon-trash-after-abs-offset:after, .icon-plus-circled-before-abs:before, .icon-plus-circled-after-abs:after, .icon-plus-circled-before-abs-offset:before, .icon-plus-circled-after-abs-offset:after, .icon-down-circle-before-abs:before, .icon-down-circle-after-abs:after, .icon-down-circle-before-abs-offset:before, .icon-down-circle-after-abs-offset:after, .icon-up-circle-before-abs:before, .icon-up-circle-after-abs:after, .icon-up-circle-before-abs-offset:before, .icon-up-circle-after-abs-offset:after, .icon-left-circle-before-abs:before, .icon-left-circle-after-abs:after, .icon-left-circle-before-abs-offset:before, .icon-left-circle-after-abs-offset:after, .icon-right-circle-before-abs:before, .icon-right-circle-after-abs:after, .icon-right-circle-before-abs-offset:before, .icon-right-circle-after-abs-offset:after, .icon-mobile-before-abs:before, .icon-mobile-after-abs:after, .icon-mobile-before-abs-offset:before, .icon-mobile-after-abs-offset:after, .icon-plus-before-abs:before, .icon-plus-after-abs:after, .icon-plus-before-abs-offset:before, .icon-plus-after-abs-offset:after, .icon-minus-before-abs:before, .icon-minus-after-abs:after, .icon-minus-before-abs-offset:before, .icon-minus-after-abs-offset:after, .icon-basket-before-abs:before, .icon-basket-after-abs:after, .icon-basket-before-abs-offset:before, .icon-basket-after-abs-offset:after, .icon-mail-1-before-abs:before, .icon-mail-1-after-abs:after, .icon-mail-1-before-abs-offset:before, .icon-mail-1-after-abs-offset:after, .icon-phone-1-before-abs:before, .icon-phone-1-after-abs:after, .icon-phone-1-before-abs-offset:before, .icon-phone-1-after-abs-offset:after, .icon-question-before-abs:before, .icon-question-after-abs:after, .icon-question-before-abs-offset:before, .icon-question-after-abs-offset:after {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.icon-down-open-before-abs:before, .icon-left-open-before-abs:before, .icon-right-open-before-abs:before, .icon-up-open-before-abs:before, .icon-equalizer-before-abs:before, .icon-spinner-before-abs:before, .icon-dot-before-abs:before, .icon-ok-before-abs:before, .icon-star-before-abs:before, .icon-heart-before-abs:before, .icon-bag-before-abs:before, .icon-menu-before-abs:before, .icon-down-before-abs:before, .icon-left-before-abs:before, .icon-right-before-abs:before, .icon-up-before-abs:before, .icon-th-large-before-abs:before, .icon-th-list-before-abs:before, .icon-left-thin-before-abs:before, .icon-right-thin-before-abs:before, .icon-up-thin-before-abs:before, .icon-down-thin-before-abs:before, .icon-down-1-before-abs:before, .icon-left-1-before-abs:before, .icon-right-1-before-abs:before, .icon-up-1-before-abs:before, .icon-search-before-abs:before, .icon-mail-before-abs:before, .icon-dot-3-before-abs:before, .icon-ellipsis-before-abs:before, .icon-camera-before-abs:before, .icon-arrows-ccw-before-abs:before, .icon-cancel-before-abs:before, .icon-cancel-circled-before-abs:before, .icon-tw-before-abs:before, .icon-vk-before-abs:before, .icon-fb-before-abs:before, .icon-print-before-abs:before, .icon-phone-before-abs:before, .icon-alert-before-abs:before, .icon-down-open-big-before-abs:before, .icon-left-open-big-before-abs:before, .icon-right-open-big-before-abs:before, .icon-up-open-big-before-abs:before, .icon-adult-before-abs:before, .icon-level-up-before-abs:before, .icon-chart-line-before-abs:before, .icon-chart-bar-before-abs:before, .icon-list-before-abs:before, .icon-rss-squared-before-abs:before, .icon-pencil-before-abs:before, .icon-warning-empty-before-abs:before, .icon-trash-before-abs:before, .icon-plus-circled-before-abs:before, .icon-down-circle-before-abs:before, .icon-up-circle-before-abs:before, .icon-left-circle-before-abs:before, .icon-right-circle-before-abs:before, .icon-mobile-before-abs:before, .icon-plus-before-abs:before, .icon-minus-before-abs:before, .icon-basket-before-abs:before, .icon-mail-1-before-abs:before, .icon-phone-1-before-abs:before, .icon-question-before-abs:before {
+  left: 0; }
+
+.icon-down-open-after-abs:after, .icon-left-open-after-abs:after, .icon-right-open-after-abs:after, .icon-up-open-after-abs:after, .icon-equalizer-after-abs:after, .icon-spinner-after-abs:after, .icon-dot-after-abs:after, .icon-ok-after-abs:after, .icon-star-after-abs:after, .icon-heart-after-abs:after, .icon-bag-after-abs:after, .icon-menu-after-abs:after, .icon-down-after-abs:after, .icon-left-after-abs:after, .icon-right-after-abs:after, .icon-up-after-abs:after, .icon-th-large-after-abs:after, .icon-th-list-after-abs:after, .icon-left-thin-after-abs:after, .icon-right-thin-after-abs:after, .icon-up-thin-after-abs:after, .icon-down-thin-after-abs:after, .icon-down-1-after-abs:after, .icon-left-1-after-abs:after, .icon-right-1-after-abs:after, .icon-up-1-after-abs:after, .icon-search-after-abs:after, .icon-mail-after-abs:after, .icon-dot-3-after-abs:after, .icon-ellipsis-after-abs:after, .icon-camera-after-abs:after, .icon-arrows-ccw-after-abs:after, .icon-cancel-after-abs:after, .icon-cancel-circled-after-abs:after, .icon-tw-after-abs:after, .icon-vk-after-abs:after, .icon-fb-after-abs:after, .icon-print-after-abs:after, .icon-phone-after-abs:after, .icon-alert-after-abs:after, .icon-down-open-big-after-abs:after, .icon-left-open-big-after-abs:after, .icon-right-open-big-after-abs:after, .icon-up-open-big-after-abs:after, .icon-adult-after-abs:after, .icon-level-up-after-abs:after, .icon-chart-line-after-abs:after, .icon-chart-bar-after-abs:after, .icon-list-after-abs:after, .icon-rss-squared-after-abs:after, .icon-pencil-after-abs:after, .icon-warning-empty-after-abs:after, .icon-trash-after-abs:after, .icon-plus-circled-after-abs:after, .icon-down-circle-after-abs:after, .icon-up-circle-after-abs:after, .icon-left-circle-after-abs:after, .icon-right-circle-after-abs:after, .icon-mobile-after-abs:after, .icon-plus-after-abs:after, .icon-minus-after-abs:after, .icon-basket-after-abs:after, .icon-mail-1-after-abs:after, .icon-phone-1-after-abs:after, .icon-question-after-abs:after {
+  right: 0; }
+
+.icon-down-open-before-abs-offset:before, .icon-left-open-before-abs-offset:before, .icon-right-open-before-abs-offset:before, .icon-up-open-before-abs-offset:before, .icon-equalizer-before-abs-offset:before, .icon-spinner-before-abs-offset:before, .icon-dot-before-abs-offset:before, .icon-ok-before-abs-offset:before, .icon-star-before-abs-offset:before, .icon-heart-before-abs-offset:before, .icon-bag-before-abs-offset:before, .icon-menu-before-abs-offset:before, .icon-down-before-abs-offset:before, .icon-left-before-abs-offset:before, .icon-right-before-abs-offset:before, .icon-up-before-abs-offset:before, .icon-th-large-before-abs-offset:before, .icon-th-list-before-abs-offset:before, .icon-left-thin-before-abs-offset:before, .icon-right-thin-before-abs-offset:before, .icon-up-thin-before-abs-offset:before, .icon-down-thin-before-abs-offset:before, .icon-down-1-before-abs-offset:before, .icon-left-1-before-abs-offset:before, .icon-right-1-before-abs-offset:before, .icon-up-1-before-abs-offset:before, .icon-search-before-abs-offset:before, .icon-mail-before-abs-offset:before, .icon-dot-3-before-abs-offset:before, .icon-ellipsis-before-abs-offset:before, .icon-camera-before-abs-offset:before, .icon-arrows-ccw-before-abs-offset:before, .icon-cancel-before-abs-offset:before, .icon-cancel-circled-before-abs-offset:before, .icon-tw-before-abs-offset:before, .icon-vk-before-abs-offset:before, .icon-fb-before-abs-offset:before, .icon-print-before-abs-offset:before, .icon-phone-before-abs-offset:before, .icon-alert-before-abs-offset:before, .icon-down-open-big-before-abs-offset:before, .icon-left-open-big-before-abs-offset:before, .icon-right-open-big-before-abs-offset:before, .icon-up-open-big-before-abs-offset:before, .icon-adult-before-abs-offset:before, .icon-level-up-before-abs-offset:before, .icon-chart-line-before-abs-offset:before, .icon-chart-bar-before-abs-offset:before, .icon-list-before-abs-offset:before, .icon-rss-squared-before-abs-offset:before, .icon-pencil-before-abs-offset:before, .icon-warning-empty-before-abs-offset:before, .icon-trash-before-abs-offset:before, .icon-plus-circled-before-abs-offset:before, .icon-down-circle-before-abs-offset:before, .icon-up-circle-before-abs-offset:before, .icon-left-circle-before-abs-offset:before, .icon-right-circle-before-abs-offset:before, .icon-mobile-before-abs-offset:before, .icon-plus-before-abs-offset:before, .icon-minus-before-abs-offset:before, .icon-basket-before-abs-offset:before, .icon-mail-1-before-abs-offset:before, .icon-phone-1-before-abs-offset:before, .icon-question-before-abs-offset:before {
+  right: 100%; }
+
+.icon-down-open-after-abs-offset:after, .icon-left-open-after-abs-offset:after, .icon-right-open-after-abs-offset:after, .icon-up-open-after-abs-offset:after, .icon-equalizer-after-abs-offset:after, .icon-spinner-after-abs-offset:after, .icon-dot-after-abs-offset:after, .icon-ok-after-abs-offset:after, .icon-star-after-abs-offset:after, .icon-heart-after-abs-offset:after, .icon-bag-after-abs-offset:after, .icon-menu-after-abs-offset:after, .icon-down-after-abs-offset:after, .icon-left-after-abs-offset:after, .icon-right-after-abs-offset:after, .icon-up-after-abs-offset:after, .icon-th-large-after-abs-offset:after, .icon-th-list-after-abs-offset:after, .icon-left-thin-after-abs-offset:after, .icon-right-thin-after-abs-offset:after, .icon-up-thin-after-abs-offset:after, .icon-down-thin-after-abs-offset:after, .icon-down-1-after-abs-offset:after, .icon-left-1-after-abs-offset:after, .icon-right-1-after-abs-offset:after, .icon-up-1-after-abs-offset:after, .icon-search-after-abs-offset:after, .icon-mail-after-abs-offset:after, .icon-dot-3-after-abs-offset:after, .icon-ellipsis-after-abs-offset:after, .icon-camera-after-abs-offset:after, .icon-arrows-ccw-after-abs-offset:after, .icon-cancel-after-abs-offset:after, .icon-cancel-circled-after-abs-offset:after, .icon-tw-after-abs-offset:after, .icon-vk-after-abs-offset:after, .icon-fb-after-abs-offset:after, .icon-print-after-abs-offset:after, .icon-phone-after-abs-offset:after, .icon-alert-after-abs-offset:after, .icon-down-open-big-after-abs-offset:after, .icon-left-open-big-after-abs-offset:after, .icon-right-open-big-after-abs-offset:after, .icon-up-open-big-after-abs-offset:after, .icon-adult-after-abs-offset:after, .icon-level-up-after-abs-offset:after, .icon-chart-line-after-abs-offset:after, .icon-chart-bar-after-abs-offset:after, .icon-list-after-abs-offset:after, .icon-rss-squared-after-abs-offset:after, .icon-pencil-after-abs-offset:after, .icon-warning-empty-after-abs-offset:after, .icon-trash-after-abs-offset:after, .icon-plus-circled-after-abs-offset:after, .icon-down-circle-after-abs-offset:after, .icon-up-circle-after-abs-offset:after, .icon-left-circle-after-abs-offset:after, .icon-right-circle-after-abs-offset:after, .icon-mobile-after-abs-offset:after, .icon-plus-after-abs-offset:after, .icon-minus-after-abs-offset:after, .icon-basket-after-abs-offset:after, .icon-mail-1-after-abs-offset:after, .icon-phone-1-after-abs-offset:after, .icon-question-after-abs-offset:after {
+  left: 100%; }
+
+.icon-no-margin:after, .icon-no-margin:before {
+  margin: 0; }

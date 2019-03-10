@@ -1,0 +1,353 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Home.StatisticsDashboardViewModel
+
+<div class="ibox">
+    <div class="ibox-content statistics-block">
+        <div class="ibox-tools">
+            <ui-modal-trigger template-url="statisticsModal.html">
+                <a class="dropdown-toggle" data-e2e-indicators="IndicatorsShow" href="#" data-toggle="modal" data-target="#statisticsModal">
+                    <i class="fa fa-cog"></i>
+                </a>
+            </ui-modal-trigger>
+        </div>
+        @if (!Model.AnyActive)
+        {
+            <ui-modal-trigger template-url="statisticsModal.html">
+                <div class="statistics-block-choose-id dropdown-toggle">
+                    <a class="choose-id-link" data-e2e-no-indicators="IndicatorsShow" href="#" data-toggle="modal" data-target="#statisticsModal">@T("Admin.Home.StatisticsDashboard.ShowIndicators")</a>
+                </div>
+            </ui-modal-trigger>
+        }
+
+        <div class="statistics-block-inner">
+            @if (Model.ShowTotalProducts)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="ProductsCount">@T("Admin.Home.StatisticsDashboard.TotalProductsCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="ProductsCount">@Model.TotalProductsCount</h1>
+                        <small class="name-quantity" data-e2e-dashboard-quantity="ProductsCount">штук</small>
+                    </div>
+                </div>
+            }
+
+            @* Orders *@
+            @if (Model.ShowTotalOrdersToday)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="OrdersTodayCount">@T("Admin.Home.StatisticsDashboard.TotalOrdersTodayCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="OrdersTodayCount">@Model.TotalOrdersTodayCount</h1>
+                        <small class="name-quantity" data-e2e-dashboard-quantity="OrdersTodayCount">@Model.TotalOrdersTodayPrice</small>
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalOrdersYesterday)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="OrdersYesterdayCount">@T("Admin.Home.StatisticsDashboard.TotalOrdersYesterdayCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="OrdersYesterdayCount">@Model.TotalOrdersYesterdayCount</h1>
+                        <small class="name-quantity" data-e2e-dashboard-quantity="OrdersYesterdayCount">@Model.TotalOrdersYesterdayPrice</small>
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalOrdersMonth)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="OrdersMonthCount">@T("Admin.Home.StatisticsDashboard.TotalOrdersMonthCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="OrdersMonthCount">@Model.TotalOrdersMonthCount</h1>
+                        <small class="name-quantity" data-e2e-dashboard-quantity="OrdersMonthCount">@Model.TotalOrdersMonthPrice</small>
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalOrdersAllTime)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="OrdersAllTimeCount">@T("Admin.Home.StatisticsDashboard.TotalOrdersAllTimeCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="OrdersAllTimeCount">@Model.TotalOrdersAllTimeCount</h1>
+                        <small class="name-quantity" data-e2e-dashboard-quantity="OrdersAllTimeCount">@Model.TotalOrdersAllTimePrice</small>
+                    </div>
+                </div>
+            }
+
+            @* Leads *@
+            @if (Model.ShowTotalLeadsToday)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="LeadsTodayCount">@T("Admin.Home.StatisticsDashboard.TotalLeadsTodayCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="LeadsTodayCount">@Model.TotalLeadsTodayCount</h1>
+                        <small class="name-quantity" data-e2e-dashboard-quantity="LeadsTodayCount">@Model.TotalLeadsTodayPrice</small>
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalLeadsYesterday)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="LeadsYesterdayCount">@T("Admin.Home.StatisticsDashboard.TotalLeadsYesterdayCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="LeadsYesterdayCount">@Model.TotalLeadsYesterdayCount</h1>
+                        <small class="name-quantity" data-e2e-dashboard-quantity="LeadsYesterdayCount">@Model.TotalLeadsYesterdayPrice</small>
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalLeadsMonth)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="LeadsMonthCount">@T("Admin.Home.StatisticsDashboard.TotalLeadsMonthCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="LeadsMonthCount">@Model.TotalLeadsMonthCount</h1>
+                        <small class="name-quantity" data-e2e-dashboard-quantity="LeadsMonthCount">@Model.TotalLeadsMonthPrice</small>
+                    </div>
+                </div>
+            }
+
+            @* Reviews *@
+            @if (Model.ShowTotalReviewsToday)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="ReviewsTodayCount">@T("Admin.Home.StatisticsDashboard.TotalReviewsTodayCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="ReviewsTodayCount">@Model.TotalReviewsTodayCount</h1>
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalReviewsYesterday)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="ReviewsYesterdayCount">@T("Admin.Home.StatisticsDashboard.TotalReviewsYesterdayCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="ReviewsYesterdayCount">@Model.TotalReviewsYesterdayCount</h1>
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalReviewsMonth)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="ReviewsMonthCount">@T("Admin.Home.StatisticsDashboard.TotalReviewsMonthCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="ReviewsMonthCount">@Model.TotalReviewsMonthCount</h1>
+                    </div>
+                </div>
+            }
+
+            @* Calls *@
+            @if (Model.ShowTotalCallsToday)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="CallsTodayCount">@T("Admin.Home.StatisticsDashboard.TotalCallsTodayCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="CallsTodayCount">@Model.TotalCallsTodayCount</h1>
+                        @if (!Model.TelephonyConfigured)
+                        {
+                            <small class="connect-service" data-e2e-dashboard-service="ConnectServiceCallsToday">
+                                <a href="@Url.Action("index", "settingstelephony")">@T("Admin.Home.StatisticsDashboard.ConfigureTelephony")</a>
+                            </small>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalCallsYesterday)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="CallsYesterdayCount">@T("Admin.Home.StatisticsDashboard.TotalCallsYesterdayCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="CallsYesterdayCount">@Model.TotalCallsYesterdayCount</h1>
+                        @if (!Model.TelephonyConfigured)
+                        {
+                            <small class="connect-service" data-e2e-dashboard-service="ConnectServiceCallsYesterday">
+                                <a href="@Url.Action("index", "settingstelephony")">@T("Admin.Home.StatisticsDashboard.ConfigureTelephony")</a>
+                            </small>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.ShowTotalCallsMonth)
+            {
+                <div class="statistics-block-content">
+                    <div class="ibox-title statistics-header">
+                        <h5 class="statistics-title" data-e2e-dashboard="CallsMonthCount">@T("Admin.Home.StatisticsDashboard.TotalCallsMonthCount")</h5>
+                    </div>
+                    <div class="ibox-content statistics-content no-border">
+                        <h1 class="no-margins statistics-content-header" data-e2e-dashboard-content="CallsMonthCount">@Model.TotalCallsMonthCount</h1>
+                        @if (!Model.TelephonyConfigured)
+                        {
+                            <small class="connect-service" data-e2e-dashboard-service="ConnectServiceCallsMonth">
+                                <a href="@Url.Action("index", "settingstelephony")">@T("Admin.Home.StatisticsDashboard.ConfigureTelephony")</a>
+                            </small>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="statisticsModal.html">
+    <div class="animated1 bounceInRight1">
+
+        @using (Html.BeginForm("SaveStatisticsSettings", "Home", FormMethod.Post, new { name = "saveStatistics", novalidate = "novalidate" }))
+        {
+            <div class="modal-header">
+                <ui-modal-cross></ui-modal-cross>
+                <h1 class="modal-header-title" data-e2e-header="IndicatorsTitle">@T("Admin.Home.StatisticsDashboard.Indicators")</h1>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group label-wrap">
+                            <label class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalProductsCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalProducts, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "ProductsCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalOrdersToday" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalOrdersTodayCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalOrdersToday, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "OrdersTodayCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalOrdersYesterday" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalOrdersYesterdayCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalOrdersYesterday, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "OrdersYesterdayCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalOrdersMonth" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalOrdersMonthCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalOrdersMonth, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "OrdersMonthCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalOrdersAllTime" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalOrdersAllTimeCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalOrdersAllTime, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "OrdersAllTimeCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalLeadsToday" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalLeadsTodayCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalLeadsToday, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "LeadsTodayCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalLeadsYesterday" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalLeadsYesterdayCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalLeadsYesterday, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "LeadsYesterdayCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalLeadsMonth" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalLeadsMonthCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalLeadsMonth, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "LeadsMonthCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalCallsToday" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalCallsTodayCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalCallsToday, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "CallsTodayCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalCallsYesterday" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalCallsYesterdayCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalCallsYesterday, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "CallsYesterdayCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalCallsMonth" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalCallsMonthCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalCallsMonth, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "CallsMonthCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalReviewsToday" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalReviewsTodayCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalReviewsToday, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "ReviewsTodayCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalReviewsYesterday" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalReviewsYesterdayCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalReviewsYesterday, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "ReviewsYesterdayCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group label-wrap">
+                            <label for="ShowTotalReviewsMonth" class="adv-checkbox-label category-label">
+                                @T("Admin.Home.StatisticsDashboard.TotalReviewsMonthCount")
+                                @Html.CheckBoxFor(m => m.ShowTotalReviewsMonth, new { @class = "adv-checkbox-input", data_e2e_dashboard_check = "ReviewsMonthCount" })
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-save btn-primary">@T("Admin.Save")</button>
+                <ui-modal-dismiss><button type="button" class="btn btn-default btn-cancel">@T("Admin.Cancel")</button></ui-modal-dismiss>
+            </div>
+        }
+
+    </div>
+</script>

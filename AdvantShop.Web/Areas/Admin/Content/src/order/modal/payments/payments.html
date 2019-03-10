@@ -1,0 +1,18 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Оплата</h2>
+    </div>
+    <div class="modal-body">
+        <div data-payment-list
+             data-items="ctrl.payments"
+             data-select-payment="ctrl.selectPayment"
+             data-count-visible-items="::7"
+             data-change="checkout.changePayment(payment)"
+             data-is-progress="checkout.paymentLoading"></div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.save()">Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

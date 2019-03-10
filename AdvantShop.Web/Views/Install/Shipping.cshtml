@@ -1,0 +1,77 @@
+﻿@model AdvantShop.ViewModel.Install.InstallShippingModel
+@{
+    Layout = "~/Views/Install/Layout.cshtml";
+}
+
+<h1>
+    @Resource.Install_UserContols_ShippingView_h1
+</h1>
+<div class="install-payment">
+    @using (Html.BeginForm("shipping", "install", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="error">
+            @Html.ValidationSummary()
+        </div>
+        
+        <fieldset class="group simple">
+            <legend>
+                <label>@Html.CheckBoxFor(x => x.UseSelfDelivery) @Resource.Install_UserContols_ShippingView_Chb_Self</label>
+            </legend>
+        </fieldset>
+        <fieldset class="group">
+            <legend>
+                <label>@Html.CheckBoxFor(x => x.UseCourier) @Resource.Install_UserContols_ShippingView_Chb_Courier</label>
+            </legend>
+            <div class="block-options">
+                <p>
+                    @Resource.Install_UserContols_ShippingView_ShippingPrice
+                </p>
+                <div class="str">
+                    @Html.TextBoxFor(x => x.Courier, new { @class = "txt valid-money" })
+                </div>
+            </div>
+        </fieldset>
+        if (Model.ShowEddost)
+        {
+            <fieldset class="group" id="edostPanel">
+                <legend>
+                    <label>@Html.CheckBoxFor(x => x.UseEdost) @Resource.Install_UserContols_ShippingView_eDost</label>
+                </legend>
+                <div class="block-options">
+                    <p style="font-size: 12px; padding-bottom: 15px;">
+                        @Html.Raw(Resource.Install_UserContols_ShippingView_eDostDesc)
+                    </p>
+                    <p>
+                        @Resource.Install_UserContols_ShippingView_eDostNum
+                    </p>
+                    <div class="str">
+                        @Html.TextBoxFor(x => x.EDostNumer, new {@class = "txt valid-required"})
+                    </div>
+                    <p>
+                        @Resource.Install_UserContols_ShippingView_eDostPass
+                    </p>
+                    <div class="str">
+                        @if (Model.ShowEdostPass)
+                        {
+                            @Html.TextBoxFor(x => x.EDostPass, new {@class = "txt valid-required"})
+                        }
+                        else
+                        {
+                            <span>******</span>
+                        }
+                    </div>
+                </div>
+            </fieldset>
+        }
+        <p>
+            @Html.Raw(Resource.Install_UserContols_ShippingView_Warning)
+        </p>
+        <div class="step-btns">
+            <span class="btn-c">
+                <a href="@Model.BackUrl" class="btn btn-back">@Resource.Installer_Back</a>
+                <input type="submit" class="btn btn-next" value="@Resource.Installer_Next" />
+            </span>
+        </div>
+    }
+</div>

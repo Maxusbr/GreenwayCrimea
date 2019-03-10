@@ -1,0 +1,16 @@
+﻿@function list-find-value($list, $key) {
+
+    $val: null;
+
+    @if($list == null) {
+        @return null;
+    }
+
+    @each $pair in $list {
+        @if index($pair, $key) {
+            $val: nth($pair, 2);
+        }
+    }
+
+    @return $val;
+}

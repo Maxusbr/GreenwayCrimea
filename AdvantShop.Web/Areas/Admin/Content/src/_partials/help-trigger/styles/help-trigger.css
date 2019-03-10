@@ -1,0 +1,29 @@
+help-trigger {
+  display: inline-block;
+  vertical-align: middle; }
+
+.help-trigger-icon-wrap {
+  line-height: 0;
+  height: 12px;
+  display: block; }
+
+.help-trigger-icon {
+  color: #fff;
+  background-color: #727272;
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  line-height: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 9px;
+  box-sizing: border-box;
+  padding-left: 3px;
+  cursor: pointer; }
+
+.help-trigger-icon-abs {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }

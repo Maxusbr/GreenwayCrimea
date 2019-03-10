@@ -1,0 +1,201 @@
+﻿StaticBlockID;Key;InnerName;Content;Added[DATE];Modified[DATE];Enabled
+1;LeftBottom;Левая часть подвала;"<div class=""footer-copyright"">Работает на AdVantShop.NET © 2015<br></div>";13.08.2012 10:59;13.08.2014 11:09;true
+3;Блок под слайдером;BlockUnderSlider;"<div class=""ofh wrapper-padd"">
+                    
+					
+            		<ul class=""banner_set""><li class=""first""><a target=""_self"" href=""#""><img width=""342"" height=""109"" title="" Banner5 "" alt=""Banner5"" src=""images/banners/banner_02.png""></a></li><li><a target=""_self"" href=""#""><img width=""312"" height=""109"" title="" Banner6 "" alt=""Banner6"" src=""images/banners/banner_03.png""></a></li><li class=""last""><a target=""_self"" href=""#""><img width=""341"" height=""109"" title="" Banner7 "" alt=""Banner7"" src=""images/banners/banner_04.png""></a></li></ul> 
+                          
+                            
+            	</div>";17.08.2012 14:14;17.08.2012 14:14;true
+10;LiveCounter;Счетчики посещаемости;;2010-04-30 15:46:01.000;06.04.2015 15:22;true
+35;liveoperator;Скрипт кнопки Live Operator;"<script language=""JavaScript"" id=""clScript"" type=""text/javascript"" src=""http://live09.liveoperator.ru:8080/chat/cl.php?site=10401""></script>";26.09.2011 14:25;18.10.2011 15:38;false
+38;email;e-mail на главной;"<p><a class=""email"" href=""feedback"" style=""margin-right: 10px;"">Отправить сообщение</a><a class=""email"" data-callback=""true"" href=""javascript:void(0)"">Обратный звонок</a></p>
+";26.04.2012 16:15;31.08.2015 22:08;true
+40;RightBottom;Правая часть подвала;"<div class=""footer-payment"">
+                    <a href=""#"">
+                        <img src=""images/payment.png"" alt="""" /></a></div>";04.05.2012 16:56;04.05.2012 16:56;true
+42;feedbackAddons;Доп. блок в feedback;Возникли вопросы? Звоните нам!;07.05.2012 10:30;18.06.2012 12:28;true
+43;loginRegBlock;тест регистрации пользователя;Регистрация на сайте позволит быстро оформлять заказы, управлять заказами через личный кабинет, в полном объеме использовать возможности нашего интернет магазина.;07.05.2012 16:27;18.06.2012 12:37;true
+44;TwitterInNews;Twitter в новостях;"<div class=""block-uc social-big"">
+ <div class=""title"">
+  Мы в Twitter</div>
+ <div class=""content"">
+ 
+
+   <script charset=""utf-8"" src=""http://widgets.twimg.com/j/2/widget.js""></script><script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 10,
+  interval: 30000,
+  width: 'auto',
+  height: 300,
+  theme: {
+    shell: {
+      background: '#1f8bea',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#050505',
+      links: '#434dbf'
+    }
+  },
+  features: {
+    scrollbar: true,
+    loop: false,
+    live: true,
+    behavior: 'all'
+  }
+}).render().setUser('@AdVantShop').start();
+</script>
+
+
+</div>
+  <div class=""follow-twitter"">
+   <a href=""#"">Следить за нами в twitter</a></div>
+ </div>
+";07.05.2012 16:43;29.12.2012 16:16;true
+46;textOnReg;текст на странице регистрации;"<div class=""title"">Зачем нужна регистрация?</div>
+<div class=""new-user-text"">Зарегистрировавшись на сайте Вы сможете получить личный кабинет, что позволит Вам отслеживать историю заказов, быстрее оформлять заказы в нашем Интернет магазине, так как вся информация о Вас будет доступна в нашем магазине и ее не нужно будет повторно вносить</div>";07.05.2012 17:47;2012-06-18 11:52:05.097;true
+60;Vk;"Виджет Вконтакте ""Группа""";" <script type=""text/javascript"" src=""//vk.com/js/api/openapi.js?116""></script><!-- VK Widget -->
+ <div id=""vk_groups"">
+  &nbsp;</div>
+ <script defer type=""text/javascript"">
+window.onload = function(){
+VK.Widgets.Group(""vk_groups"", {mode: 0, width: ""auto"", height: ""290""},14532206);
+}
+</script>
+ <div style=""text-align: center; margin-top: 5px;"">
+  <a href=""http://www.advantshop.net/vidget-vkontakte"" target=""_blank"">Как изменить блок на свой?</a></div>";2012-05-24 00:00:00.000;11.02.2013 12:50;true
+61;RecoverPassword;Текст для восстановления пароля;Введите e-mail, который указывали при регистрации. Через несколько минут на него придет письмо со ссылкой для восстановления пароля.;08.06.2012 11:13;08.06.2012 11:13;true
+62;requestOnProduct;Оформление под заказ;После получения Вашей заявки, наши менеджеры сообщат Вам сроки поставки и точную цену товара. В письмо также будет ссылка на оформление заказа, которая будет действовать в течение 24 часов. С ее помощью Вы сможете оплатить Заказ, тем самым завершив процедуру оформления.;13.06.2012 10:50;13.06.2012 10:50;true
+65;TextOnMain;Текст между каруселью и товарами;"<div style=""text-align: center;""><span style=""font-size: 18px;""><span style=""font-weight: bold;"">Добро пожаловать в наш интернет магазин</span></span></div><br/>";11.07.2012 14:34;11.07.2012 15:15;false
+66;TextOnMain2;Текст между товарами и новостями (осн. вид);"<div style=""text-align: center;""><span style=""font-size: 14px; font-weight: bold;"">В Нашем магазине широко представленны все новинки от популярных брендов, а так же много товаров со скидками.<br /><br />
+</span></div>";11.07.2012 14:39;11.07.2012 15:15;false
+74;bannerDetails;Баннер, единый для всех товаров;;19.11.2012 13:34;13.08.2014 10:08;true
+77;PaymentFail;Ошибка при оплате;<h3>В процессе оплаты возникла ошибка. Свяжитесь с администратором магазина.</h3>;2012-12-25 00:00:00.000;2012-12-25 00:00:00.000;true
+78;PaymentReturn;Оплата заказа завершена;<h3>Оплата заказа завершена.</h3>;2012-12-25 00:00:00.000;2013-06-03 11:26:15.047;true
+79;PaymentCancel;Отмена оплаты заказа;<h3>Оплата заказа отменена</h3>;2012-12-25 00:00:00.000;2012-12-25 00:00:00.000;true
+82;static-temp;Картинка под слайдером ( вид:две колонки);"<div class=""static-temp"">
+ <img alt="""" src=""images/static-temp.gif"" /></div>
+";01.02.2013 17:07;01.02.2013 17:13;true
+84;shoppingcart;Корзина;;16.05.2013 11:45;16.05.2013 11:45;false
+85;ordersuccess;Успешное оформление заказа;;16.05.2013 11:45;01.07.2014 15:20;true
+86;dressCollectionBanners;dressCollection - Баннеры;"<div class=""image-container"">
+ <div class=""image-block"">
+  <div class=""intext"">
+   <div class=""title-collection man"">
+    Мужская</div>
+   <div class=""collection man"">
+    коллекция</div>
+   <div class=""year"">
+    2013</div>
+  </div>
+  <a href=""#""><img src=""Templates/DressCollection/images/manCollection.jpg"" /></a></div><div class=""image-block"">
+  <div class=""intext"">
+   <div class=""title-collection woman"">
+    Женская</div>
+   <div class=""collection woman"">
+    коллекция</div>
+   <div class=""year"">
+    2013</div>
+  </div>
+  <a href=""#""><img src=""Templates/DressCollection/images/womanCollection.jpg"" /></a></div><div class=""image-block"">
+  <div class=""intext"">
+   <div class=""collection cert"">
+    подарочные</div>
+   <div class=""title-collection cert"">
+    сертификаты</div>
+   <div class=""cert-table"">
+    <div class=""from"">
+     от</div>
+    <div class=""digits"">
+     99$</div>
+   </div>
+  </div>
+  <a href=""#""><img src=""Templates/DressCollection/images/giftCert.jpg"" /></a></div>
+</div>
+";04.06.2013 15:04;04.06.2013 15:06;true
+87;FashionStyleBanners;FashionStyle - Баннеры;"<div class=""image-container"">   <div class=""image-block"">    <div class=""intext"">     <div class=""title-collection man"">      Мужская</div>     <div class=""collection man"">      коллекция</div>     <div class=""year"">      2013</div>    </div>    <a href=""#""><img src=""Templates/FashionStyle/images/manCollection.jpg"" /></a></div><div class=""image-block"">    <div class=""intext"">     <div class=""title-collection woman"">      Женская</div>     <div class=""collection woman"">      коллекция</div>     <div class=""year"">      2013</div>    </div>    <a href=""#""><img src=""Templates/FashionStyle/images/womanCollection.jpg"" /></a></div><div class=""image-block"">    <div class=""intext"">     <div class=""collection cert"">      подарочные</div>     <div class=""title-collection cert"">      сертификаты</div>     <div class=""cert-table"">      <div class=""from"">       от</div>      <div class=""digits"">       99$</div>     </div>    </div>    <a href=""#""><img src=""Templates/FashionStyle/images/giftCert.jpg"" /></a></div>  </div>  ";11.07.2013 17:56;12.07.2013 16:19;true
+88;OrderSuccessTop;Успешное оформление заказа (блок сверху);"<div class=""congrat"">Поздравляем!</div> <div class=""congrat-num"">Ваш заказ принят под номером #ORDER_ID#</div>";10.06.2014 12:10;01.07.2014 15:19;true
+89;SocialLogo;Логотип в соц сетях;"<figure class=""logo-cell""><img id=""logo"" src=""images/nophoto-logo.png""></figure>";10.06.2014 12:10;10.06.2014 12:10;true
+90;DescriptionDetails;Блок под ценой товара;<br>;10.06.2014 12:10;13.08.2014 10:39;true
+91;SearchBottom;search bottom block;;01.04.2015 9:52;01.04.2015 9:52;true
+92;feedback;Обратная связь;Мы очень дорожим вашим мнением и готовы выслушать все что вы хотите сообщить. <br />Ответим а течении суток с момента отправки сообщения;01.04.2015 10:50;01.04.2015 10:50;true
+93;feedback_success;Обратная связь. Запрос отправлен;Спасибо за сообщение!;01.04.2015 10:50;17.08.2015 11:26;true
+94;store_closed;Витрина закрыта;"<div style=""font-family: Arial, Helvetica, sans-serif; color: #4b4f58;"">
+<div style=""width: 80%; margin: 0 auto;"">
+<div style=""font-size: 60px; font-weight: bold; margin-top: 75px;"">Ведутся технические работы.</div>
+
+<div style=""font-size: 30px; margin-top: 25px;"">Скоро мы откроемся.</div>
+</div>
+</div>
+";01.04.2015 10:50;06.04.2015 12:04;true
+95;mobile_footer_socialbuttons;Социальные кнопки в мобильной версии;"<div class=""bigBtnsPanel"">
+        <div class=""row"">
+            <div class=""cs-br-1 col-xs-6"">
+                <div class=""panel-btn-text"">
+                    <a class=""panel-btn cs-l-2 inked ink-dark"" href=""javascript:void(0);"">
+                        <span class=""panel-btn-icon cs-bg-12 cs-l-9 icon-vk-before icon-margin-drop""></span>
+                        Мы в Вконтакте
+                    </a>
+                </div>
+            </div>
+            <div class=""cs-br-1 col-xs-6"">
+                <div class=""panel-btn-text"">
+                    <a class=""panel-btn cs-l-2 inked ink-dark"" href=""javascript:void(0);"">
+                        <span class=""panel-btn-icon cs-bg-12 cs-l-9 icon-fb-before icon-margin-drop""></span>
+                        Мы в Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class=""row"">
+            <div class=""cs-br-1 col-xs-12"">
+                <div class=""panel-btn-text"">
+                    <a class=""panel-btn cs-l-2 inked ink-dark"" href=""javascript:void(0);"">
+                        <span class=""panel-btn-icon cs-bg-12 cs-l-9 icon-tw-before icon-margin-drop""></span>
+                        Мы в Twitter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>";11.06.2015 16:41;11.06.2015 16:41;true
+96;mobile_footer_text;Текст в подвале в мобильной версии;"<h3>Мы принимаем</h3> <div><br /> <img src=""./areas/mobile/images/cards.png"" alt=""Мы принимаем следующие виды оплаты"" /> <br /> </div>";11.06.2015 16:54;11.06.2015 16:54;true
+98;leftAsideBanners;Банеры в левой колонке;"<article class=""banner-main-page-aside-wrap"">
+<figure class=""banner-main-page-aside""><a href=""products/apple-iphone-5-64gb""><img alt="""" class=""banner-main-page-aside-pic"" src=""pictures/product/small/3816_small.jpg"" /> </a>
+
+<figcaption>
+<div class=""banner-main-page-header"">Лучшая техника для дома!</div>
+
+<div class=""banner-main-page-text"">Микроволная печь Samsung</div>
+
+<div class=""banner-main-page-text"">всего за 49 999 руб.</div>
+</figcaption>
+</figure>
+
+<figure class=""banner-main-page-aside""><a href=""products/apple-iphone-5-64gb""><img alt="""" class=""banner-main-page-aside-pic"" src=""pictures/product/small/3816_small.jpg"" /> </a>
+
+<figcaption>
+<div class=""banner-main-page-header"">Лучшая техника для дома!</div>
+
+<div class=""banner-main-page-text"">Микроволная печь Samsung</div>
+
+<div class=""banner-main-page-text"">всего за 49 999 руб.</div>
+</figcaption>
+</figure>
+</article>";2015-08-17 10:42:24.083;2015-08-17 10:42:24.083;true
+99;bottom_menu_right;Футер меню справа;;17.09.2015 10:21;17.09.2015 10:21;true
+100;MobileOrderSuccess;успешное завершение заказа в мобильной версии;;03.11.2016 14:22;03.11.2016 14:22;true
+101;PrintOrderTop;Распечатка заказа блок сверху;;03.11.2016 14:23;03.11.2016 14:23;true
+102;PrintOrderBottom;Распечатка заказа блок снизу;;03.11.2016 14:23;03.11.2016 14:23;true
+103;TopHeader;Верхняя часть в шапке сайта;;03.11.2016 14:23;03.11.2016 14:23;true
+104;CatalogLeft;Каталог слева под фильтром;;03.11.2016 14:23;03.11.2016 14:23;true
+105;CatalogRightBottom;Каталог под товарами;;03.11.2016 14:23;03.11.2016 14:23;true
+106;headerСenterBlock;Блок над посиком в Header; ;03.11.2016 14:23;03.11.2016 14:23;false
+107;headerСenterBlockAlt;Блок под поиском в Header; ;03.11.2016 14:23;03.11.2016 14:23;false
+108;SalesInProductListSale;Блок на странице скидок;;03.11.2016 14:23;03.11.2016 14:23;false
+109;SalesInProductListSale;Блок на странице скидок;;07.11.2016 16:42;07.11.2016 16:42;false
+110;SalesInProductListSale;Блок на странице скидок;;10.11.2016 10:18;10.11.2016 10:18;false
+111;SalesInProductListSale;Блок на странице скидок;;11.11.2016 14:31;11.11.2016 14:31;false

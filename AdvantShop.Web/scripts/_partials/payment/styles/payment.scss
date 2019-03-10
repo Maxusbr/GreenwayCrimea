@@ -1,0 +1,87 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+.payment-list {
+    display: table;
+}
+
+.payment-item {
+    display: table-row;
+}
+
+.payment-item-radio,
+.payment-item-icon,
+.payment-item-info {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.payment-item-icon {
+    width: auto;
+}
+
+.payment-item-radio,
+.payment-item-icon {
+    padding-bottom: rem-calc(17px);
+}
+
+.payment-item-radio {
+    padding-top: rem-calc(8px);
+}
+
+.payment-item-info {
+    padding: rem-calc(8px) 0 rem-calc(17px) $padding-base;
+}
+
+.payment-item-title,
+.payment-item-description {
+    display: block;
+    line-height: 1.2;
+    cursor: pointer;
+}
+
+.payment-item-title {
+    font-size: $font-size-medium;
+    line-height: 1;
+}
+
+.payment-item-more {
+    font-size: $font-size-medium;
+}
+
+.payment-control {
+    padding-top: rem-calc(10px);
+}
+
+.payment-progress {
+    position: relative;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        background: rgba(255,255,255, .5);
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 10;
+    }
+}
+
+.payment-progress-after:after {
+    left: 50%;
+    top: 50%;
+    font-size: rem-calc(35px);
+    margin: rem-calc(-35px)/2 0 0 rem-calc(-35px)/2;
+}
+
+.payment-empty {
+    padding: rem-calc(40px) 0;
+}
+
+.payment-custom-option {
+    display: none;
+}
+.payment-item-active .payment-custom-option{
+    display: block;
+}

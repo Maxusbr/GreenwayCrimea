@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app" @Html.GetNgController()>
+<head>
+    <title>@Html.GetPageTitle()</title>
+    <link rel="canonical" href="@(SettingsMain.SiteUrl + Request.Path)" />
+    <base href="@UrlService.GetUrl()" />
+    <meta charset="utf-8">
+    <meta content="Dynamic" name="document-state">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport">
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="Keywords" content="@Html.GetPageKeywords()" />
+    @Html.Action("Favicon", "Common", new {area = ""})
+    @Html.Partial("_HeadScripts", new { area = "Mobile" })
+</head>
+    <body class="cs-t-1" data-ng-controller="sidebarCtrl as sbCtrl" data-ng-class="{'sidebar_open' : sbCtrl.sidebarVisible.visible }">
+        @Html.GoggleTagManagerCounter()
+        @Html.Action("GoogleAnalytics", "Common", new {area = ""})
+        @Html.RenderModules("mobile_body_start")
+        <div id="layout">
+            @Html.Partial("_Header", new { area = "Mobile" })
+            @RenderBody()
+            @Html.Partial("_Footer", new { area = "Mobile" })
+        </div>
+        @Html.Action("Sidebar", "Sidebar", new {area = "Mobile"})
+        @Html.Action("CookiesPolicy", "Common", new { area = "" })
+        @Html.Partial("_FooterMobileScripts", new {area = "Mobile"})
+        @Html.GetNotifyMessages()
+        @Html.RenderModules("mobile_body_end")
+        @Html.StaticBlock("liveoperator")
+    </body>
+</html>

@@ -1,0 +1,91 @@
+.products-specials-best-h,
+.products-specials-new-h,
+.products-specials-discount-h {
+  display: inline-block;
+  font-size: 20px;
+  padding-bottom: 9px;
+  border-bottom: 2px solid #00a3cc;
+  margin-bottom: 0;
+  font-weight: normal;
+  position: relative; }
+
+.buy-in-time-block {
+  margin-top: 16px; }
+
+.products-specials-more {
+  display: inline-block; }
+
+.products-specials-header {
+  text-align: center; }
+
+.buy-in-time-block .buy-in-time-inner {
+  padding: 0;
+  border: 0;
+  box-sizing: border-box; }
+
+.buy-in-time-block .buy-in-time-header {
+  font-weight: normal;
+  display: block;
+  text-align: center;
+  padding-bottom: 13px;
+  font-size: 20px; }
+
+.buy-in-time-content {
+  padding: 20px;
+  box-shadow: 0px 0px 0px 2px #00a3cc;
+  border-color: transparent; }
+
+.products-specials-container .buy-in-time-block-vertical {
+  -ms-flex-preferred-size: 33.33333%;
+  -webkit-flex-basis: 33.33333%;
+  flex-basis: 33.33333%;
+  max-width: 33.33333%; }
+
+.buy-in-time-block-vertical .buy-in-time-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.buy-in-time-block-vertical .buy-in-time-price-block {
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
+  text-align: center; }
+
+.buy-in-time-block-vertical .buy-in-time-picture-block {
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1; }
+
+.buy-in-time-block-vertical .buy-in-time-countdown-block {
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2; }
+
+.buy-in-time-name-link {
+  font-weight: normal; }
+
+.buy-in-time-block .buy-in-time-price-today {
+  font-size: 14px;
+  font-weight: normal; }
+
+.buy-in-time-block .buy-in-time-price-default .price-currency,
+.buy-in-time-block .buy-in-time-price-default .price-number,
+.buy-in-time-block .buy-in-time-price-default {
+  color: #333333; }
+
+.buy-in-time-block .btn-buy-in-time {
+  transition: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.btn {
+  transition: none; }

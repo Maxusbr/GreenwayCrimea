@@ -1,0 +1,15 @@
+﻿<div class="search-row" ng-click="$event.stopPropagation()" ng-if="match.model.Items && match.model.Items.length > 0">
+    <div class="search-col-category">
+        <span ng-bind="match.model.Category"></span>
+        <br/>
+        <span class="search-col-category-desc" ng-bind="match.model.Time + ' ms.'"></span>
+    </div>
+    <div class="search-col-items">
+        <div class="search-col-item-row" ng-repeat="item in match.model.Items">
+            <a class="search-col-item-link" ng-href="{{item.Url}}"><span ng-bind="item.Text"></span><span class="search-col-item-desc" ng-bind="item.Description ? ', ' + item.Description : ''"></span></a>
+        </div>
+        <div ng-if="match.model.More">
+            <a class="search-col-item-link-more" ng-href="{{match.model.More.Url}}" ng-bind="match.model.More.Text"></a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿@import "../_defFuncValues.scss";
+@import "../_function.scss";
+
+.checkout-confirm-txt {
+    font-size: toEm(18px);
+    margin: toEm(20px) 0;
+    line-height: toEm(18px);
+}
+
+.checkout-confirm-number {
+    font-size: toEm(30px);
+    font-weight: bold;
+    margin: toEm(10px) 0;
+}
+
+.mobileCheckoutForm {
+    margin-top: toEm(15px);
+}
+
+.mobileCheckoutForm .form-input-value.input-required {
+    display:block;
+}
+
+/*Стили оформления заказа*/
+
+.checkout-block-title {
+    line-height: 1;
+}
+.h2 {
+    font-size: 1.375rem;
+    font-weight: normal;
+    margin: 0 0 1rem 0;
+}
+.mobile-block .col-xs-7,
+.mobile-block .col-xs-5 {
+    padding: 0;
+}
+.col-xs-12 .checkout-block {
+    padding-bottom: 0;
+}
+.col-xs-12--margin {
+    margin-bottom: 10px;
+}
+.checkout-block .link-dotted-invert {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+#rightCell {
+    display: none;
+}
+/*.input-small {
+    margin-bottom: 10px;
+}*/
+
+
+
+.yd-widget-modal {
+    z-index: 99999;
+    position: fixed;
+    /* top: 50%; */
+    left: 0;
+    width: 100%;
+    height: 530px;
+    display: none;
+    /* margin-top: -265px; */
+    margin-left: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 10px rgba(0,0,0,.2);
+    box-shadow: 0 1px 10px rgba(0,0,0,.2);
+    zoom: 50%;
+}
+.cw-variants-container {
+    z-index: 1;
+    position: absolute;
+    top: 7%;
+    width: 330px;
+    margin: 15px 0 0 15px;
+    font-size: 13px;
+    background: white;
+    background: rgba(255,255,255,1);
+}
+.address-list-item {
+    padding-right: 10px;
+}

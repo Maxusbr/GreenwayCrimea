@@ -1,0 +1,43 @@
+﻿<div id="content">
+    <div class="panel no-borders" ng-controller="CheckOutCtrl as ChkCtrl">
+        <h1>
+            @T("Checkout.Index.CheckoutTitle")
+        </h1>
+        <form class="mobileCheckoutForm" name="checkoutForm" novalidate>
+            @if (SettingsCheckout.IsShowBuyInOneClickName)
+            {
+                <div class="form-input-value @(SettingsCheckout.IsRequiredBuyInOneClickName ? "input-required" : "")">
+                    <input class="input-middle" data-ng-model="ChkCtrl.name" data-ng-minlength="2" placeholder="@SettingsCheckout.BuyInOneClickName" name="Name" @(SettingsCheckout.IsRequiredBuyInOneClickName ? "required" : "") type="text" value="" />
+                </div>
+            }
+            @if (SettingsCheckout.IsShowBuyInOneClickEmail)
+            {
+                <div class="form-input-value @(SettingsCheckout.IsRequiredBuyInOneClickEmail ? "input-required" : "")">
+                    <input class="input-middle" data-ng-model="ChkCtrl.email" placeholder="@SettingsCheckout.BuyInOneClickEmail" name="Email" @(SettingsCheckout.IsRequiredBuyInOneClickEmail ? "required" : "") type="email" value="" />
+                </div>
+            }
+            @if (SettingsCheckout.IsShowBuyInOneClickPhone)
+            {
+                <div class="form-input-value @(SettingsCheckout.IsRequiredBuyInOneClickPhone ? "input-required" : "")">
+                    <input class="input-middle" data-ng-model="ChkCtrl.phone" placeholder="@SettingsCheckout.BuyInOneClickPhone" data-ui-mask-placeholder data-ui-mask="{{ ::'Js.Bonus.PhoneMask' | translate }}" name="Phone" @(SettingsCheckout.IsRequiredBuyInOneClickPhone ? "required" : "") type="tel" value="" data-model-view-value="true" />
+                </div>
+            }
+            @if (SettingsCheckout.IsShowBuyInOneClickComment)
+            {
+                <div class="form-input-value @(SettingsCheckout.IsRequiredBuyInOneClickComment ? "input-required" : "")">
+                    <textarea class="textarea-small" cols="20" placeholder="@SettingsCheckout.BuyInOneClickComment" data-ng-model="ChkCtrl.message" name="Message" rows="2" @(SettingsCheckout.IsRequiredBuyInOneClickComment ? "required" : "")></textarea>
+                </div>
+            }
+            @if (SettingsCheckout.IsShowUserAgreementText)
+            {
+                <label class="form-input-value input-required">
+                    <input type="checkbox" class="custom-input-native" data-ng-model="ChkCtrl.agree" name="buyOneClickUserAgreement" id="buyOneClickUserAgreement" required />
+                    <span class="custom-input-checkbox"></span>
+                    <span class="vertical-interval-middle">@Html.Raw(SettingsCheckout.UserAgreementText)</span>
+                </label>
+            }
+            <button type="submit" class="btn btn-confirm btn-big" data-button-validation data-button-validation-success="ChkCtrl.submitMobile()"
+                    data-ladda="ChkCtrl.process">@SettingsCheckout.BuyInOneClickButtonText</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.InterkassaPaymentModel
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Идентификатор магазина в системе INTERKASSA</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ShopId, new { ng_model = "paymentMethod.Parameters.ShopId", @class = "form-control", required = "required", validation_input_text = "Идентификатор магазина в системе INTERKASSA" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Идентификатор">
+            Идентификатор магазина зарегистрированного в системе «INTERKASSA». Узнать его можно в разделе «Настройки магазина».
+        </help-trigger>
+    </div>
+</div>

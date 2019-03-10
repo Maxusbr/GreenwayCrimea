@@ -1,0 +1,130 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="inline product-setting-title content-header">Свойства</h2>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div ng-form="" name="formProductProperties" class="properties" id="properties" bs-modifiable="false"> 
+        <div data-ng-repeat="group in $ctrl.groups track by $index">
+
+            <div class="properties-group-name" ng-if="group.Title != null" ng-bind="group.Title"></div>
+
+            <div class="properties-group">
+                <div class="properties-group-name cs-t-5" ng-bind="group.Name"></div>
+            </div>
+
+            <div data-ng-repeat="property in group.Properties track by $index" class="properties-item">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="properties-item-name" ng-bind="property.Name"></div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="properties-item-value">
+                            <ui-select multiple
+                                       tagging="$ctrl.propertyValueTransform"
+                                       tagging-label="false"
+                                       on-select="$ctrl.addPropertyValue(property.PropertyId, $item, $model)"
+                                       on-remove="$ctrl.removePropertyValue(property.PropertyId, $item, $model, property.GroupId)"
+                                       ng-model="property.SelectedPropertyValues">
+                                <ui-select-match placeholder="">{{$item.Value}}</ui-select-match>
+                                <ui-select-choices repeat="propertyValue in property.PropertyValues | filter:$select.search">
+                                    {{propertyValue.Value}}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="properties-group">
+            <div class="properties-group-name cs-t-5">Добавление нового свойства</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="properties-new-item">Название свойства</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="properties-new-item">Значение свойства</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <select ng-model="$ctrl.selectedProperty"
+                        ng-options="s.label for s in $ctrl.properties track by s.value"
+                        ng-change="$ctrl.selectProperty()"
+                        ng-disabled="$ctrl.showNewProperty"
+                        class="form-control"
+                        data-e2e="selectProperty"></select>
+            </div>
+            <div class="col-xs-3">
+                <select ng-model="$ctrl.selectedPropertyValue"
+                        ng-options="s.label for s in $ctrl.PropertyValues track by s.value"
+                        ng-change="$ctrl.selectPropertyValue()"
+                        ng-disabled="($ctrl.showNewProperty || $ctrl.showNewPropertyValue)"
+                        class="form-control"
+                        data-e2e="selectPropertyValue"></select>
+            </div>
+            <div class="col-xs-3">
+                <button type="button" data-e2e="propertyAddSelected" class="btn btn-sm btn-action" ng-disabled="formProductProperties.$invalid" ng-click="$ctrl.addPropertyWithValue()" ng-if="!($ctrl.showNewProperty || $ctrl.showNewPropertyValue)">
+                    Добавить
+                </button>
+            </div>
+        </div>
+        <div class="row m-t-sm">
+            <div class="col-xs-3">
+                <a href="" ng-click="$ctrl.addNewProperty()" ng-switch="$ctrl.showNewProperty">
+                    <span ng-switch-when="true" data-e2e="propertyBack">
+                        Вернуться к выбору
+                    </span>
+                    <span data-e2e="propertyAdd" ng-switch-default>
+                        Добавить новое свойство
+                    </span>
+                </a>
+            </div>
+            <div class="col-xs-3" ng-if="!$ctrl.showNewProperty">
+                <a href="" ng-click="$ctrl.showNewPropertyValue = !$ctrl.showNewPropertyValue; $ctrl.newPropertyValue = null;" ng-switch="$ctrl.showNewPropertyValue">
+                    <span ng-switch-when="true" data-e2e="propertyValueBack">
+                        Вернуться к выбору
+                    </span>
+                    <span data-e2e="propertyValueAdd" ng-switch-default>
+                        Добавить новое значение
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="row m-t-sm">
+            <div class="col-xs-3">
+                <input type="text" 
+                       autofocus="$ctrl.showNewProperty"
+                       autofocus-delay="100"
+                       ng-model="$ctrl.newProperty"
+                       ng-keyup="$event.keyCode === 13 && formProductProperties.$valid && $ctrl.addPropertyWithValue()"
+                       ng-if="$ctrl.showNewProperty" 
+                       required
+                       class="form-control" 
+                       placeholder="Введите название"
+                       data-e2e="inputPropertyAdd" />
+            </div>
+            <div class="col-xs-3">
+                <input type="text"
+                       autofocus="!$ctrl.showNewProperty"
+                       autofocus-delay="100"
+                       ng-model="$ctrl.newPropertyValue" 
+                       ng-if="$ctrl.showNewPropertyValue"
+                       ng-keyup="$event.keyCode === 13 && formProductProperties.$valid && $ctrl.addPropertyWithValue()"
+                       required  
+                       class="form-control" 
+                       placeholder="Введите значение"
+                       data-e2e="inputPropertyValueAdd" />
+            </div>
+            <div class="col-xs-3">
+                <button type="button" data-e2e="propertyBtnAdd" class="btn btn-sm btn-action" ng-disabled="formProductProperties.$invalid"  ng-click="$ctrl.addPropertyWithValue()" ng-if="$ctrl.showNewProperty || $ctrl.showNewPropertyValue">
+                    Добавить
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

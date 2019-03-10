@@ -1,0 +1,2 @@
+CategoryID;ParentCategory;Name;Enabled;SortOrder;UrlPath
+1;0;TestCategory1;true;1;Test-category1

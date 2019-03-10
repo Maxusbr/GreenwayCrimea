@@ -1,0 +1,83 @@
+﻿<div ng-switch on="voting.subject['types']">
+    <div ng-switch-default ng-cloak>
+        <div class="sticky-page-name" sticky sticky-top="0">
+            <div class="page-name-block sticky-page-name-inner">
+                <div class="page-name-block-item-main">
+                    <h1 class="page-name-block-text sticky-page-name-text">
+                        @T("Admin.Voting.Index.Title")
+                    </h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger data-controller="'ModalAddEditVotingCtrl'" controller-as="ctrl"
+                                      template-url="../areas/admin/content/src/voting/modal/addEditVoting/addEditVoting.html"
+                                      data-on-close="voting.gridVoting.fetchData()">
+                        <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="btnAdd">
+                            <span class="fa fa-plus"></span> @T("Admin.Voting.Index.AddVoting")
+                        </button>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="ibox">
+            <div class="ibox-content">
+                <ui-grid-custom grid-unique-id="gridVoting"
+                                grid-options="voting.gridOptionsVoting"
+                                grid-on-init="voting.gridVotingOnInit(grid)"
+                                grid-url="'Voting/getVoting'"
+                                grid-inplace-url="'Voting/InplaceVoting'"
+                                grid-extend-ctrl="voting">
+                    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="voting.gridVoting.gridOptions.TotalString">
+                    </ui-grid-custom-footer>
+                </ui-grid-custom>
+            </div>
+        </div>
+    </div>
+    <div ng-switch-when="answers" ng-cloak>
+        <div class="sticky-page-name" sticky sticky-top="0">
+            <div class="page-name-block sticky-page-name-inner">
+                <div class="page-name-block-item-main">
+                    <h1 class="page-name-block-text sticky-page-name-text">
+                        @T("Admin.Answers.Index.Title")
+                    </h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <button class="btn btn-sm btn-success btn--margin-left" type="button" ng-click="voting.changeSubject(null,null)" data-e2e="btnBack">
+                        <span class="fa"></span> @T("Admin.Answers.Index.Back")
+                    </button>
+                    <ui-modal-trigger data-controller="'ModalAddEditAnswersCtrl'" controller-as="ctrl"
+                                      template-url="../areas/admin/content/src/voting/modal/addEditAnswers/addEditAnswers.html"
+                                      data-resolve="{'ThemeId': voting.subject['ThemeId']}"
+                                      data-on-close="voting.gridAnswers.fetchData()">
+                        <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="btnAddAnswers">
+                            <span class="fa fa-plus"></span> @T("Admin.Answers.Index.AddAnswers")
+                        </button>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox">
+            <div class="ibox-content">
+                <div ng-if="voting.answers.length > 0">
+                    <table style="margin-bottom:15px" data-e2e="voteAnswersStat">
+                        <tr ng-repeat="item in voting.answers" data-e2e="voteAnswersStat-answer-{{item.Name}}">
+                            <td>{{item.Name}}</td>
+                            <td><div style="height:10px;width:{{item.Percent}}px;background-color:rgb(18, 131, 39);margin-left:15px;margin-right:15px"></div></td>
+                            <td data-e2e="voteAnswersStat-answer-{{item.Name}}-percent">{{item.Text}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <ui-grid-custom grid-unique-id="gridAnswers"
+                                grid-options="voting.gridOptionsAnswers"
+                                grid-on-init="voting.gridAnswersOnInit(grid)"
+                                grid-url="'Voting/getAnswers'"
+                                grid-params="{'ThemeId': voting.subject['ThemeId']}"
+                                grid-inplace-url="'Voting/InplaceAnswers'"
+                                grid-extend-ctrl="voting">
+                    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="voting.gridAnswers.gridOptions.TotalString">
+                    </ui-grid-custom-footer>
+                </ui-grid-custom>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿<div>
+    <div class="background-picker-row">
+        <div class="color-viewer-list"
+             data-colors-viewer
+             data-color-selected="$ctrl.colorSelected"
+             data-change-color="$ctrl.changeColor(event, color)"
+             data-colors="::$ctrl.colors"
+             data-start-selected-colors=""
+             data-color-width="::'18px'"
+             data-color-height="::'18px'"></div>
+    </div>
+    <div class="background-picker-row">
+        <label class="background-picker-row">
+            <input type="checkbox" data-ng-model="$ctrl.isShowCustomColors" />
+            Указать свой цвет фона
+        </label>
+        <div data-ng-if="$ctrl.isShowCustomColors">
+            <div class="background-picker-row">
+                <color-picker class="lp-gradient-picker-color" ng-model="$ctrl.customColor"
+                              color-picker-swatch-bootstrap="false"
+                              color-picker-format="'hex'"
+                              color-picker-alpha="false"
+                              color-picker-swatch-only="false"
+                              color-picker-case="'lower'"
+                              color-picker-on-change="$ctrl.changeColorPicker($event, color)"></color-picker>
+            </div>
+        </div>
+    </div>
+    <div class="background-picker-row">
+        <label class="background-picker-row">
+            <input type="checkbox" ng-model="$ctrl.isShowGradientPanel" data-ng-change="$ctrl.changeUseGradient($ctrl.isShowGradientPanel)" /> Сделать градиент
+        </label>
+        <div data-ng-if="$ctrl.isShowGradientPanel">
+            <gradient-picker start-color="$ctrl.startColor"
+                             middle-color="$ctrl.middleColor"
+                             end-color="$ctrl.endColor"
+                             on-update="$ctrl.changeGradient(cssString)"></gradient-picker>
+        </div>
+    </div>
+</div>

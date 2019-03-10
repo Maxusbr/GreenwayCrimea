@@ -1,0 +1,76 @@
+﻿@import '../../../styles/_variable.scss';
+
+.category-row {
+    margin-bottom: 20px;
+}
+
+.block-additional-parameters-row {
+    margin-bottom: 19px;
+}
+
+.block-additional-parameters-name {
+    margin-bottom: 9px;
+}
+
+.block-additional-parameters-content {
+    background: #fafafa;
+}
+
+.block-additional-parameters-value {
+    position: relative;
+}
+
+.block-additional-parameters-content--padding-mid {
+    padding: 16px 22px;
+}
+
+.add-image-link, .delete-image-link {
+    font-family: $OpenSans-italic;
+    font-size: 13px;
+}
+
+.add-image-link {
+    color: $blue;
+}
+
+.delete-image-link {
+    color: $color-danger;
+}
+
+.add-image-link:hover {
+    text-decoration: underline;
+}
+
+.category-image-wrap {
+    border: 1px solid #e7eaec;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.add-icon-wrap {
+    width: 46px;
+    height: 46px;
+}
+
+.category-modal-change-text {
+    padding-bottom: 20px;
+}
+
+.category-seo-custom-block {
+    margin-top: 20px;
+}
+
+.category-header {
+    margin-bottom: 5px;
+}
+
+.block-additional-parameters-col {
+    flex-basis: 276px;
+    max-width: 276px;
+    padding: 0 0.625rem;
+}
+
+.property-groups-content {
+    min-height: 130px;
+}

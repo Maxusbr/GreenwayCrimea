@@ -1,0 +1,2 @@
+﻿OrderID;CurrencyCode;CurrencyNumCode;CurrencyValue;CurrencySymbol;IsCodeBefore;RoundNumbers;EnablePriceRounding
+1;RUB;643;1; руб.;false;1;false

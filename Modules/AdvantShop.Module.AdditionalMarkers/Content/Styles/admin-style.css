@@ -1,0 +1,83 @@
+﻿.products-view-label-inner {
+    border-radius: 0.3125rem;
+    padding: 0.3125rem 0.625rem;
+    display: inline-block;
+    color: white;
+}
+
+.products-view-label {
+    margin-bottom: 0.3125rem;
+    font-weight: bold;
+}
+
+.products-view-label a{
+    margin-bottom: 0.3125rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.preview-marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eee;
+    border: 3px dashed #ddd;
+}
+
+.preview-marker-label {
+    text-align: center;
+    font-size: 20px;
+    color: #ccc;
+}
+
+/*am-module-settings .row{
+    margin-bottom: 5px;
+}*/
+
+.admin-marker {
+    display: inline-block;
+    margin: 5px;
+}
+
+[name='markerForm'] .btn-success {
+    margin: 3px;
+}
+
+    .admin-marker .products-view-label {
+        display: inline-block !important;
+    }
+
+    .admin-marker .fa:hover{
+        color:dodgerblue;
+        cursor: pointer;
+    }
+
+.admin-marker-selected {
+    transform: scale(0.9);
+    border-radius: 7px;
+    border-bottom: 5px solid #2d9cee;
+}
+
+.admin-marker-not-selected {
+    /* box-shadow: 0 0 0px 20px #777 inset; */
+    background: #a5a5a5 !important;
+    color: #555454 !important;
+    transform: scale(0.97);
+}
+
+.admin-product-tab .products-view-label{
+    cursor: pointer;
+}
+
+.select-marker-to-edit {
+    border-bottom: 3px solid #2d9cee;
+}
+
+.csv-id {
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 33%;
+    padding: 4px;
+    font-weight: bold;
+}

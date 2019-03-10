@@ -1,0 +1,26 @@
+﻿<div class="am-module-markers-wrapper" id="markers-wrapper-pv" style="display:none">
+    <div data-productView-pid="{{productViewMarker.ProductId}}" data-productView-purl="{{productViewMarker.ProductUrl}}" ng-repeat="productViewMarker in $ctrl.productViewMarkers">
+        <div class="products-view-label" data-marker-id="{{marker.MarkerId}}" ng-repeat="marker in productViewMarker.Markers">
+            <a href="{{marker.Url}}" ng-show="marker.Url.length > 0"
+               target="{{marker.OpenNewTab ? '_blank' :'_self'}}"
+               style="color: #{{marker.ColorName}};">
+                <span class="products-view-label-inner"
+                        popover-trigger="'mouseenter'"
+                        popover-placement="auto right"
+                        popover-append-to-body="true"
+                        uib-popover-html="'{{marker.Description}}'"
+                       ng-style="{'background' : '#{{marker.Color}}', 'color' : '#{{marker.ColorName}}'}">
+                {{marker.Name}}
+                </span>
+            </a>
+            <span class="products-view-label-inner" ng-show="marker.Url == null || marker.Url.length == 0"
+                  popover-trigger="'mouseenter'"
+                  popover-placement="auto right"
+                  popover-append-to-body="true"
+                  uib-popover-html="'{{marker.Description}}'"
+                  ng-style="{'background' : '#{{marker.Color}}', 'color' : '#{{marker.ColorName}}'}">
+                {{marker.Name}}
+            </span>
+        </div>
+    </div>
+</div>

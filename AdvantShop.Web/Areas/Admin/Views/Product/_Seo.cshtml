@@ -1,0 +1,76 @@
+﻿@using AdvantShop.SEO
+@model AdvantShop.Web.Admin.Models.Products.AdminProductModel
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="inline product-setting-title content-header">SEO</h2>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="form-group row">
+        <div class="col-xs-2">
+            <span class="text-required">Синоним для URL запроса</span>
+        </div>
+        <div class="col-xs-10">
+            <label class="input-group m-b">
+                <span class="input-group-addon">@(SettingsMain.SiteUrl)/products/</span>
+                @Html.TextBoxFor(x => x.UrlPath, new { @class = "form-control", ng_model = "product.UrlPath", required = "required", validation_input_text = "Синоним для URL запроса" })
+            </label>
+        </div>
+        <label class="col-lg-offset-2 adv-checkbox-label" data-e2e="productDefaultMeta">
+            @Html.CheckBoxFor(x => x.DefaultMeta, new { ng_model = "product.defaultMeta", ng_init = "product.defaultMeta=" + Model.DefaultMeta.ToString().ToLower(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul adv-checkbox-emul--left"></span>
+            Использовать Meta по умолчанию
+        </label>
+    </div>
+
+</div>
+<div class="category-seo-custom-block container-fluid" ng-if="!product.defaultMeta">
+    <div>
+        <div class="row category-row">
+            <div class="col-lg-2">
+                Заголовок:
+            </div>
+            <div class="col-lg-10">
+                @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", ng_model = "product.seoTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = MetaType.Product }) })
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row category-row">
+            <div class="col-lg-2">
+                H1
+            </div>
+            <div class="col-lg-10">
+                @Html.TextBoxFor(x => x.SeoH1, new { @class = "form-control", ng_model = "product.seoH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = MetaType.Product }) })
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row category-row">
+            <div class="col-lg-2">
+                Ключевые слова:
+            </div>
+            <div class="col-lg-10">
+                @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", ng_model = "product.seoKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = MetaType.Product }) })
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row category-row">
+            <div class="col-lg-2">
+                Мета описание:
+            </div>
+            <div class="col-lg-10">
+                @Html.TextBoxFor(x => x.SeoDescription, new { @class = "form-control", ng_model = "product.seoDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = MetaType.Product }) })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-2">
+            @Html.Action("MetaVariablesDescription", "Common", new { type = MetaType.Product })
+        </div>
+    </div>
+</div>

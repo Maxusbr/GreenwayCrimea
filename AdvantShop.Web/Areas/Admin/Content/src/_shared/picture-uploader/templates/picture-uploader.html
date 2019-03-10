@@ -1,0 +1,34 @@
+﻿<div>
+    <figure class="picture-uploader-wrap">
+        <img class="picture-uploader-img"
+             alt=""
+             ng-src="{{$ctrl.src}}"
+             accept="image/*"
+             ngf-drop
+             ngf-max-size="15MB"
+             ngf-select=""
+             ngf-change="$ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)" />
+    </figure>
+    <div class="picture-uploader-buttons">
+        <div>
+            <a href=""
+               data-e2e="imgAdd"
+               accept="image/*"
+               ngf-max-size="15MB"
+               ngf-select=""
+               ngf-change="$ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+               class="picture-uploader-buttons-add">
+                Добавить изображение
+            </a>
+        </div>        
+        <div>
+            <ui-modal-trigger data-controller="'ModalPictureUploaderCtrl'" on-close="$ctrl.uploadByLink(result)" template-url="../areas/admin/content/src/_shared/picture-uploader/modal/pictureUploaderModal.html">
+                <a data-e2e="imgByHref" href="" class="picture-uploader-buttons-add">Добавить изображение по ссылке</a>
+            </ui-modal-trigger>
+        </div>
+        <div ng-transclude></div>
+        <div>
+            <a data-e2e="imgDel" href="" class="picture-uploader-buttons-delete link-danger" ng-click="$ctrl.delete($ctrl.deleteParams)">Удалить изображение</a>
+        </div>
+    </div>
+</div>

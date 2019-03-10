@@ -1,0 +1,17 @@
+﻿
+<div class="container-fluid">
+    <div class="row">
+        <h3>Список пользователей</h3>
+    </div>
+
+    <div class="row">
+        <ui-grid-custom style="width: 975px;" grid-unique-id="$ctrl"
+                        grid-row-identificator="'CustomerID'"
+                        grid-on-init="$ctrl.gridOnInit(grid)"
+                        grid-options="$ctrl.gridOptions"
+                        grid-url="'../rcadmin/getReturnCustomerRecords'"
+                        grid-inplace-url="'../rcadmin/inplace'"
+                        grid-extend-ctrl="$ctrl">
+        </ui-grid-custom>
+    </div>
+</div>

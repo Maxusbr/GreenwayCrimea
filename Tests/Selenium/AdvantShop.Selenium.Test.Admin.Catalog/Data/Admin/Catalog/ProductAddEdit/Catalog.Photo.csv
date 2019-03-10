@@ -1,0 +1,3 @@
+PhotoId;ObjId;Type;PhotoName;ModifiedDate[DATE];Main;Description
+1;1;Product;281.jpg;19.06.2007 20:05;true;NULL
+2;14;Product;281.jpg;20.06.2007 20:05;true;TestAltPhotoFirst

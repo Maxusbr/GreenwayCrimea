@@ -1,0 +1,51 @@
+﻿@using AdvantShop.Catalog
+@using AdvantShop.Helpers
+@model AdvantShop.Saas.SaasData
+
+<div ng-mouseenter="batteryPopoverShow = true" ng-mouseleave="batteryPopoverShow = false">
+    <div class="relative @*balance-wrap*@" uib-popover-template="'batteryContent.html'" popover-is-open="batteryPopoverShow" popover-trigger="'none'" popover-placement="bottom-right">
+        <span class="balance-inner">
+            @T("Admin.Layout.SaasBlock.MyAccount"):
+            <span class="balance-value">1 000 руб.</span>
+            <a href="@T("Admin.Layout.SaasBlock.MyAccountHref")/login.aspx?email=@(CustomerContext.CurrentCustomer.EMail)&hash=@(SecurityHelper.EncodeWithHmac(CustomerContext.CurrentCustomer.EMail, CustomerContext.CurrentCustomer.Password))&shopid=@SettingsLic.LicKey" target="_blank" class="btn btn-sm btn-success btn-lk m-l-xs">
+                Пополнить
+            </a>
+        </span>
+    </div>
+</div>
+<script type="text/ng-template" id="batteryContent.html">
+    <div class="battery-content" style="display: block;">
+        <table class="saasTable">
+            <tbody>
+                <tr>
+                    <td>@T("Admin.Comon.SaasInformation.Tarif"):</td>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <td>@T("Admin.Comon.SaasInformation.DaysLeft"):</td>
+                    <td>@Model.LeftDay</td>
+                </tr>
+                <tr>
+                    <td>@T("Admin.Comon.SaasInformation.Money"):</td>
+                    <td>@Model.Money.ToString("F2")</td>
+                </tr>
+                <tr>
+                    <td>@T("Admin.Comon.SaasInformation.Bonus"):</td>
+                    <td>@Model.Bonus.ToString("F2")</td>
+                </tr>
+                <tr>
+                    <td>@T("Admin.Comon.SaasInformation.ProductsCount"):</td>
+                    <td>@(ProductService.GetProductsCount() / Model.ProductsCount)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <form name="saasInfo" action="common/updatesaasinformation" method="post">
+                            <input type="submit" class="btn btn-sm btn-success" value="@T("Admin.Comon.SaasInformation.Update")" />
+                        </form>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</script>

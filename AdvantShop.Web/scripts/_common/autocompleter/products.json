@@ -1,0 +1,26 @@
+﻿[
+    {
+        "Name": "Iphone 6S",
+        "Photo": "pictures/product/small/imac_small.jpg",
+        "Amount": 1,
+        "Price": "11 999 Р",
+        "Rating": 3,
+        "Url": "?product"
+    },
+    {
+        "Name": "Телевизор Samsung UE32F4020AW",
+        "Photo": "pictures/product/small/imac_small.jpg",
+        "Amount": 1,
+        "Price": "11 999 Р",
+        "Rating": 1,
+        "Url": "?product"
+    },
+    {
+        "Name": "Телевизор Samsung UE32F4",
+        "Photo": "pictures/product/small/imac_small.jpg",
+        "Amount": 1,
+        "Price": "11 999 Р",
+        "Rating": 2,
+        "Url": "?product"
+    }
+]

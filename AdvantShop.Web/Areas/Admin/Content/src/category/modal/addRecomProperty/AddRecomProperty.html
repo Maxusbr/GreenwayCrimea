@@ -1,0 +1,39 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Свойства</h2>
+</div>
+<div class="modal-body">
+    
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="m-b">Выберите свойство:</div>
+            <select ng-model="ctrl.property" ng-options="s.Name for s in ctrl.properties" class="form-control" ng-change="ctrl.changeProperty()">
+                <option value="">-</option>
+            </select>
+        </div>
+        <div class="col-xs-6">
+            <div class="m-b">Выберите значение:</div>
+            <div class="m-b">
+                <label class="adv-radio-label">
+                    <input type="radio" class="adv-radio-input" name="propType" ng-model="ctrl.propType" value="0" />
+                    <span class="adv-radio-emul"></span>
+                    <select ng-model="ctrl.propertyValue" ng-options="s.Value for s in ctrl.propertyValues" class="form-control" style="width: 200px; display: inline-block;">
+                        <option value="">-</option>
+                    </select>
+                </label>
+            </div>
+            <div class="m-b">
+                <label class="adv-radio-label">
+                    <input type="radio" class="adv-radio-input"  name="propType" ng-model="ctrl.propType" value="1" />
+                    <span class="adv-radio-emul"></span>
+                    Совпадает со свойством товара
+                </label>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.saveProperty()">Добавить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

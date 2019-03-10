@@ -1,0 +1,38 @@
+﻿
+<div class="reports-graphic">
+    <div class="clear">
+        <h2 class="reports-title">
+            Заказы
+        </h2>
+        <div class="pull-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'dd'}" ng-click="$ctrl.changeGroup('dd')">По дням</button>
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'wk'}" ng-click="$ctrl.changeGroup('wk')">По неделям</button>
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'mm'}" ng-click="$ctrl.changeGroup('mm')">По месяцам</button>
+            </div>
+        </div>
+        <div>
+            <label><input type="checkbox" ng-model="$ctrl.useShippingCost" class="" ng-click="$ctrl.recalc()" /> Учитывать стоимость доставки</label>
+        </div>
+    </div>
+    <canvas id="ordersProfit"
+            class="chart chart-line"
+            chart-data="$ctrl.ProfitSum.Data"
+            chart-labels="$ctrl.ProfitSum.Labels"
+            chart-series="$ctrl.ProfitSum.Series"
+            chart-colors="$ctrl.ProfitSum.Colors"></canvas>    
+</div>
+
+<div class="reports-graphic">
+    <div class="clear">
+        <h2 class="reports-title">
+            Количество заказов
+        </h2>
+    </div>
+    <canvas id="ordersProfitCount"
+            class="chart chart-line"
+            chart-data="$ctrl.ProfitCount.Data"
+            chart-labels="$ctrl.ProfitCount.Labels"
+            chart-series="$ctrl.ProfitCount.Series"
+            chart-colors="$ctrl.ProfitCount.Colors"></canvas>
+</div>

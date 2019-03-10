@@ -1,0 +1,25 @@
+﻿@using AdvantShop.Catalog
+@model AdvantShop.Web.Admin.Models.Products.AdminProductModel
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="inline product-setting-title content-header">Списки</h2>
+        </div>
+    </div>
+</div>
+<div class="product-list-item-tab">
+    <uib-tabset active uid="tabsInProduct">
+        <uib-tab index="1" heading="@Html.AttributeEncode(SettingsCatalog.RelatedProductName)" classes="ng-tab" removable="true">
+            <related-products data-product-id="@Model.ProductId" data-type="@RelatedType.Related"></related-products>
+        </uib-tab>
+
+        <uib-tab index="2" heading="@Html.AttributeEncode(SettingsCatalog.AlternativeProductName)" classes="ng-tab" removable="true">
+            <related-products data-product-id="@Model.ProductId" data-type="@RelatedType.Alternative"></related-products>
+        </uib-tab>
+
+        <uib-tab index="3" heading="Подарки" classes="ng-tab" removable="true">
+            <product-gifts data-product-id="@Model.ProductId"></product-gifts>
+        </uib-tab>
+    </uib-tabset>
+</div>

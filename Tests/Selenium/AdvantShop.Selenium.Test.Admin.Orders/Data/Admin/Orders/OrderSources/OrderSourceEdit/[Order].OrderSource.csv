@@ -1,0 +1,13 @@
+﻿Id;Name;SortOrder;Main;Type
+1;OrderSource1;1;true;ShoppingCart
+2;OrderSource2;2;false;Offline
+3;OrderSource3;3;true;OneClick
+4;OrderSource4;4;true;LandingPage
+5;OrderSource5;5;true;Mobile
+6;OrderSource6;6;true;Phone
+7;OrderSource7;7;true;LiveChat
+8;OrderSource8;8;true;SocialNetworks
+9;OrderSource9;9;true;FindCheaper
+10;OrderSource10;10;true;AbandonedCart
+11;OrderSource11;11;true;Callback
+12;OrderSource12;12;true;None

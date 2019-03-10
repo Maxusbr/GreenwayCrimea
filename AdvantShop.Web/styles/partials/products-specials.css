@@ -1,0 +1,22 @@
+.products-specials-more {
+  font-size: 0.6875rem;
+  margin-left: 0.625rem; }
+
+.products-specials-category {
+  display: none;
+  margin: 1.5625rem 0.9375rem 0; }
+
+.products-specials .products-specials-category {
+  display: block;
+  text-align: center;
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%; }
+
+.products-specials-best-h,
+.products-specials-new-h,
+.products-specials-discount-h {
+  line-height: 1; }
+
+.products-specials-discount-h {
+  color: #d20e0e; }

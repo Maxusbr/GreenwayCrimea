@@ -1,0 +1,77 @@
+﻿@model AdvantShop.Areas.Mobile.Models.Home.HomeMobileViewModel
+
+<div class="panel no-borders logo-search-pnl">
+    @Html.Action("Logo", "Home")
+    @Html.Action("CityChanger", "Home")
+</div>
+@Html.StaticBlock("headerСenterBlock", "mobile-header-static-block-center")
+<div class="panel no-borders catalog-select-placeholder">
+    <div class="catalog-select-placeholder" data-ng-controller="selectCatalogCtrl as scCtrl">
+        <span class="select-custom select-custom--fat icon-down-open-after-abs cs-t-8">
+            @Html.DropDownList("ddlStatus", Model.CategoriesUrl, new { @class = "cs-bg-2", data_ng_change = "scCtrl.selectCategory(scCtrl.select)", data_ng_model = "scCtrl.select", data_ng_init = "scCtrl.select='" + Model.CategoriesUrl.First().Value + "'" })
+        </span>
+    </div>
+    <div class="catalog-search-placeholder" data-ng-controller="inputSearchCtrl as isCtrl">
+        <input type="text" data-ng-model="isCtrl.searchQuery" data-hndlr-enter="isCtrl.search(isCtrl.searchQuery)" class="input-big" />
+        <a href="" class="catalog-search-btn cs-bg-1" data-ng-click="isCtrl.search(isCtrl.searchQuery)">
+            <span class="icon-search-before icon-margin-drop cs-t-8"></span>
+        </a>
+    </div>
+    <div class="clear"></div>
+</div>
+@Html.StaticBlock("headerСenterBlockAlt", "mobile-header-static-block-center-alt")
+<div id="content">
+	@Html.Action("Carousel", "Home")
+
+	@Html.StaticBlock("TextOnMain")
+	@if (Model.Bestsellers != null && Model.Bestsellers.Products.Count > 0)
+	{
+		<section class="bestsellers-section">
+			<div class="panel no-borders header cs-t-5 cs-bg-3">
+				<i class="icon-alert-before"></i>
+				@T("Home.MainPageProducts.BestSellersTitle")
+				<a href="@Url.AbsoluteRouteUrl("ProductList", new {type = "best"})" class="panel-add-link cs-l-1">@T("Home.MainPageProducts.BestSellersAllLink")</a>
+			</div>
+			@Html.Partial("_MainPageProducts", Model.Bestsellers)
+		</section>
+	}
+
+	@Html.RenderModules("mobile_after_carousel")
+
+	@if (Model.NewProducts != null && Model.NewProducts.Products.Count > 0)
+	{
+		<section class="novelty-section">
+			<div class="panel no-borders header cs-t-5 cs-bg-3">
+				<i class="icon-star-empty-before"></i>
+				@T("Home.MainPageProducts.NewProductsTitle")
+				<a href="@Url.AbsoluteRouteUrl("ProductList", new {type = "new"})" class="panel-add-link cs-l-1">@T("Home.MainPageProducts.NewProductsAllLink")</a>
+			</div>
+			@Html.Partial("_MainPageProducts", Model.NewProducts)
+		</section>
+	}
+	@if (Model.Sales != null && Model.Sales.Products.Count > 0)
+	{
+		<section class="sale-section">
+			<div class="panel no-borders header cs-t-9 cs-bg-3">
+				<i class="icon-alert-before"></i>
+				@T("Home.MainPageProducts.SalesTitle")
+				<a href="@Url.AbsoluteRouteUrl("ProductList", new {type = "sale"})" class="panel-add-link cs-l-1">@T("Home.MainPageProducts.SalesAllLink")</a>
+			</div>
+			@Html.Partial("_MainPageProducts", Model.Sales)
+		</section>
+	}
+
+	@foreach (var productList in Model.ProductLists)
+	{
+		<section class="prodList-section">
+			<div class="panel no-borders header cs-t-9 cs-bg-3">
+				<a href="@Url.AbsoluteRouteUrl("ProductList", new {type = "list", list = productList.Id})">@Html.Raw(productList.Title)</a>
+			</div>
+			@Html.Partial("_MainPageProducts", productList)
+		</section>
+	}
+	@if (!User.Identity.IsAuthenticated)
+	{
+		@Html.StaticBlock("TextOnMain2")
+	}
+</div>

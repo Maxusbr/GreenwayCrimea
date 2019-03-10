@@ -1,0 +1,40 @@
+﻿@import "../functions/_icons.scss";
+
+//--ICONS
+//$icons-margin: .2em;
+//$icons-width: 1em;
+//$icons-opacity: 1;
+//$icons-3d: false;
+
+@include icon-init();
+
+
+$icons: (
+    email "\e800",
+    trash-empty "\e804",
+    cog "\e808",
+    trash "\e80c",
+    eye-off "\e810",
+    phone "\e801",
+    down "\e805",
+    cancel "\e809",
+    left "\e80d",
+    up-open "\e811",
+    right-open "\e802",
+    up "\e806",
+    ok "\e80a",
+    pencil "\e80e",
+    down-open "\e812",
+    plus-circled "\e803",
+    plus "\e807",
+    arrows-ccw "\e80b",
+    eye "\e80f"
+    );
+
+@include icons($icons);
+
+.icon-no-margin {
+    &:after, &:before {
+        margin: 0;
+    }
+}

@@ -1,0 +1,105 @@
+﻿@using AdvantShop.CMS
+@model AdvantShop.Web.Admin.Models.Products.AdminProductModel
+
+<aside class="product-aside-right">
+    <div class="ibox margin-none">
+        <div class="ibox-content product-setting-aside-block">
+            
+            @Html.RenderModules("admin_product_rightblock_top", new {productId = Model.ProductId})
+
+            <div class="setting-label-wrap form-group">
+                <div>
+                    Производитель
+                    <help-trigger class="ng-cloak m-l-xs" data-title="Производитель">
+                        <p>Товары известных брендов традиционно пользуются доверием. Зарекомендовавший себя бренд означает престиж, качество и надежность.</p>
+                        <p>Опция позволяет указать для товара его производителя.</p>
+                        <p>Подробнее о производителях:</p>
+                        <p><a href="http://www.advantshop.net/help/pages/brand" target="_blank">Инструкция. Бренды (производители)</a>
+                        </p>
+                    </help-trigger>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-init="product.brand='@Html.AttributeEncode(Model.Brand != null ? Model.Brand.Name : "Не выбран")'; product.brandId=@(Model.Brand != null ? Model.Brand.BrandId : 0)">
+                <span ng-bind-html="product.brand" data-e2e="ProductBrandName"></span>
+                <a class="link-invert link-decoration-none fa fa-remove" ng-click="product.deleteBrand()" ng-if="product.brandId != 0" href="" title="Удалить" data-e2e="DeleteBrand"></a>
+
+                <ui-modal-trigger data-controller="'ModalAddBrandCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/_shared/modal/addBrand/addBrand.html"
+                                  data-on-close="product.changeBrand(result)">
+                    <a href="" data-e2e="AddBrand">@T("Admin.Choose")</a>
+                </ui-modal-trigger>
+            </div>
+
+            @if (Model.IsTagsVisible)
+            {
+                <div class="setting-label-wrap form-group">
+                    <div>
+                        Теги
+                        <help-trigger class="ng-cloak m-l-xs" data-title="Теги">
+                            <p>С помошью тегов существует возможность создавать виртуальные категории (списки товаров) с набором товаров которым присвоены определенные метки (Теги).</p>
+                            <p>Инструкция: <a href="http://www.advantshop.net/help/pages/tags" target="_blank">Теги. Механизм тегов</a>
+                            </p>
+                        </help-trigger>
+                    </div>
+                </div>
+                <div class="form-group ng-cloak">
+                    <ui-select 
+                               multiple
+                               tagging="product.tagTransform"
+                               sortable="true"
+                               ng-init="product.getTags()"
+                               ng-model="product.selectedTags" data-e2e="SelectTag">
+                        <ui-select-match placeholder="Выберите теги">{{$item.value}}</ui-select-match>
+                        <ui-select-choices repeat="tag in product.tags | filter:$select.search">
+                            {{tag.value}}
+                        </ui-select-choices>
+                    </ui-select>
+                    @*select для отправки данных через обычный post *@
+                    <select name="Tags" id="Tags" multiple hidden>
+                        <option selected value="{{option.value}}" ng-repeat="option in product.selectedTags track by $index"></option>
+                    </select>
+                </div>
+            }
+            <div class="info-about-product">
+                <div class="info-about-product-row">
+                    <div class="info-about-product-cell">
+                        Отзывы:
+                    </div>
+                    <div class="info-about-product-cell info-about-product-cell--pad-l" data-e2e="ProductReviewsCount">
+                        @Model.ReviewsCount
+                        <a href="@Url.Action("Index", "Reviews", new {EntityId = Model.ProductId, Type = EntityType.Product})" class="italic" target="_blank" data-e2e="Review">смотреть</a>
+                    </div>
+                </div>
+                @*<div class="info-about-product-row">
+                    <div class="info-about-product-cell">
+                        Продано:
+                    </div>
+                    <div class="info-about-product-cell info-about-product-cell--pad-l">
+                        78 шт.
+                        <a href="#" class="italic" data-e2e="Sales">график продаж</a>
+                    </div>
+                </div>*@
+            </div>
+            @if (!string.IsNullOrEmpty(Model.ModifiedDate) || !string.IsNullOrEmpty(Model.ModifiedBy))
+            {
+                <div class="info-about-product-row">
+                    <div>
+                        Изменен:
+                        <div class="m-t-sm">
+                            @Model.ModifiedDate @Model.ModifiedBy
+                        </div>
+                    </div>
+                </div>
+            }
+            @Html.RenderModules("admin_product_rightblock_bottom", new {productId = Model.ProductId})
+        </div>
+    </div>
+    <div class="product-aside-right-footer">        
+        <ui-modal-trigger data-controller="'ModalCopyProductCtrl'" controller-as="ctrl" 
+                          template-url="../areas/admin/content/src/product/modal/copyProduct/copyProduct.html"
+                          data-resolve="{ 'product': { 'productId': @Model.ProductId, 'name': '@Html.AttributeEncode(Model.Name)' }}">
+            <a href="" data-e2e="ProductCopy">Создать копию товара</a>
+        </ui-modal-trigger>
+    </div>
+</aside>

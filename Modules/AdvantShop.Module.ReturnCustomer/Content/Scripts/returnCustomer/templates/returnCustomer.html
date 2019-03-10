@@ -1,0 +1,98 @@
+﻿
+<div class="container-fluid">
+    <div class="row col-xs-12">
+        <h3>Настройки</h3>
+    </div>
+
+    <form role="form" name="returnCustomerForm" novalidate>
+        <div class="form-group row">
+            <div class="col-md-4 col-form-label">
+                Включить автоотправку сообщений
+                <help-trigger class="ng-cloak word-spacing" data-title="Автоотправка сообщений">
+                    При активной настройке на email пользователей автоматически будет отправляться шаблон письма для мотивации к повторному посещению сайта и совершению заказа
+                </help-trigger>
+            </div>
+            <div class="col-md-8">
+                <input type="checkbox" id="chbAutoSending" ng-model="$ctrl.AutoSending" />
+            </div>
+        </div>
+        <div class="form-group row" ng-if="$ctrl.isLogExists">
+            <div class="col-md-4 col-form-label">
+                <a href="../userfiles/Modules/ReturnCustomer/log/SendingLog.txt" target="_blank">
+                    Посмотреть лог отправленных писем
+                </a>
+            </div>
+            <div class="col-md-8">
+                <a href="javascript:void(0);" ng-click="$ctrl.deleteLog()">
+                    Удалить лог
+                </a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-form-label">
+                Период хранения данных
+                <help-trigger class="ng-cloak word-spacing" data-title="Период хранения данных">
+                    Укажите количество дней, в течение которого не будут отправляться сообщения повторно, после второго и последующего посещения пользователем интернет-магазина (при выполнении условий отсутствия заказов от рассматриваемого пользователя)
+                </help-trigger>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="txtDaysInterval" class="form-control" ng-model="$ctrl.DaysInterval" value="$ctrl.DaysInterval" style="width: 100px; display: inline-block;" required />
+                &nbsp; дней
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-form-label">
+                Исключенные email адреса
+                <help-trigger class="ng-cloak word-spacing" data-title="Исключенные email адреса">
+                    Если необходимо на определенные email адреса не отправлять сообщения, укажите их списком через ";" <br />
+                    Например: adress1@pochta.ru; adress2@mail.ru <br />
+                    Настройка работает только для автоотправляемых сообщений
+                </help-trigger>
+            </div>
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="txtDisabledMailsList" ng-model="$ctrl.DisabledMailsList" value="$ctrl.DisabledMailsList" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-form-label">Тема письма</div>
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="txtMessageSubject" ng-model="$ctrl.MessageSubject" value="$ctrl.MessageSubject" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-form-label">Текст письма</div>
+            <div class="col-md-8">
+                <textarea id="txtMessageText" ckeditor ng-model="$ctrl.MessageText" class="wysiwyg" multiple required /><br />
+                Доступные переменные в теле письма: #STORE_NAME#, #LOGO#, #MAIN_PHONE#, #USERNAME#, #VIEWEDPRODUCTS#
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-form-label">
+                <b>Альтернативное сообщение</b>
+                <help-trigger class="ng-cloak word-spacing" data-title="Альтернативное сообщение">
+                    Данное письмо отправляется, если пользователь посетил ваш интернет магазин, но не посмотрел ни одного товара
+                </help-trigger>
+            </div>
+            <div class="col-md-8"> &nbsp; </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-form-label">Тема альтернативного письма</div>
+            <div class="col-md-8">
+                <input type="text" id="txtMessageSubject" class="form-control" ng-model="$ctrl.AlternativeMessageSubject" value="$ctrl.AlternativeMessageSubject" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-form-label">Текст альтернативного письма</div>
+            <div class="col-md-8">
+                <textarea id="txtMessageText" ckeditor ng-model="$ctrl.AlternativeMessageText" class="wysiwyg" multiple required /><br />
+                Доступные переменные в теле письма: #STORE_NAME#, #LOGO#, #MAIN_PHONE#, #USERNAME#
+            </div>
+        </div>
+        <div class="form-group row">
+            <input type="button" ng-click="$ctrl.saveChanges(returnCustomerForm)" class="btn btn-sm btn-success" value="Сохранить" />
+        </div>
+    </form>
+</div>
+
+
+

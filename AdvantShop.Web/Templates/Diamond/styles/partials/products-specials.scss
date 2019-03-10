@@ -1,0 +1,99 @@
+﻿.products-specials-best-h,
+.products-specials-new-h,
+.products-specials-discount-h {
+    display: inline-block;
+    font-size: 20px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #00a3cc;
+    margin-bottom: 0;
+    font-weight: normal;
+    position: relative;
+}
+
+.buy-in-time-block {
+    margin-top: 16px;
+}
+
+.products-specials-more {
+    display: inline-block;
+}
+
+.products-specials-header {
+    text-align: center;
+}
+
+.buy-in-time-block .buy-in-time-inner {
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.buy-in-time-block .buy-in-time-header {
+    font-weight: normal;
+    display: block;
+    text-align: center;
+    padding-bottom: 13px;
+    font-size: 20px;
+}
+
+.buy-in-time-content {
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 0px 2px rgba(0,163,204,1);
+    -moz-box-shadow: 0px 0px 0px 2px rgba(0,163,204,1);
+    box-shadow: 0px 0px 0px 2px rgba(0,163,204,1);
+    border-color: transparent;
+}
+
+.products-specials-container .buy-in-time-block-vertical {
+    -webkit-flex-basis: 33.33333%;
+    -ms-flex-preferred-size: 33.33333%;
+    flex-basis: 33.33333%;
+    max-width: 33.33333%;
+}
+
+.buy-in-time-block-vertical .buy-in-time-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.buy-in-time-block-vertical .buy-in-time-price-block {
+    order: 3;
+    text-align: center;
+}
+
+.buy-in-time-block-vertical .buy-in-time-picture-block {
+    order: 1;
+}
+
+.buy-in-time-block-vertical .buy-in-time-countdown-block {
+    order: 2;
+}
+
+
+.buy-in-time-name-link {
+    font-weight: normal;
+}
+
+.buy-in-time-block .buy-in-time-price-today {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.buy-in-time-block .buy-in-time-price-default .price-currency,
+.buy-in-time-block .buy-in-time-price-default .price-number,
+.buy-in-time-block .buy-in-time-price-default {
+    color: #333333;
+}
+
+.buy-in-time-block .btn-buy-in-time {
+    transition: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    transition: none;
+}

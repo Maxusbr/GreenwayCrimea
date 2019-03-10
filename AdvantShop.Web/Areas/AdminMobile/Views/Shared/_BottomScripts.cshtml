@@ -1,0 +1,69 @@
+﻿@using AdvantShop.Core
+
+@Html.Raw(
+    JsCssTool.MiniJs(new List<string>
+    {
+        "~/vendors/moment/moment.js",
+        "~/vendors/moment/moment-locale_" + SettingsMain.Language + ".js",
+
+        "~/vendors/angular/angular.js",
+        "~/vendors/angular/angular-cookies.js",
+        "~/vendors/angular/angular-sanitize.js",
+
+        "~/vendors/angular/i18n/angular-locale_" + AdvantShop.Configuration.SettingsMain.Language +".js",
+
+        "~/vendors/materialClick/materialClick.js",
+
+        "~/areas/adminmobile/scripts/templatesCache/templatesCache.js",
+
+        "~/areas/adminmobile/scripts/home/home.js",
+        "~/areas/adminmobile/scripts/home/controllers/homeController.js",
+
+        "~/areas/adminmobile/scripts/_partitials/ordersList/ordersList.js",
+        "~/areas/adminmobile/scripts/_partitials/ordersList/controllers/ordersListController.js",
+
+        "~/scripts/_common/dom/dom.js",
+        "~/scripts/_common/dom/services/domService.js",
+
+        "~/areas/adminmobile/scripts/_partitials/orderItem/orderItem.js",
+        "~/areas/adminmobile/scripts/_partitials/orderItem/controllers/orderItemController.js",
+
+        "~/vendors/datetimepicker/datetimepicker.js",
+        "~/vendors/datetimepicker/ext/controllers/datetimepickerPopupController.js",
+        "~/vendors/datetimepicker/ext/controllers/datetimepickerTriggerController.js",
+        "~/vendors/datetimepicker/ext/directives/datetimepickerDirectives.js",
+        "~/vendors/datetimepicker/ext/services/datetimepickerExtService.js",
+
+        "~/areas/adminmobile/scripts/_partitials/tasksView/tasksView.js",
+        "~/areas/adminmobile/scripts/_partitials/tasksView/controllers/tasksViewController.js",
+        "~/areas/adminmobile/scripts/_partitials/tasksView/directives/tasksViewDirectives.js",
+
+        "~/areas/adminmobile/scripts/_partitials/taskView/taskView.js",
+        "~/areas/adminmobile/scripts/_partitials/taskView/controllers/taskViewController.js",
+
+
+        "~/areas/adminmobile/scripts/_partitials/leads/leads.js",
+        "~/areas/adminmobile/scripts/_partitials/leads/controllers/leadscontroller.js",
+        "~/areas/adminmobile/scripts/_partitials/leads/directives/leadsdirectives.js",
+
+        "~/scripts/_mobile/sidebar/sidebar.js",
+        "~/scripts/_mobile/sidebar/controllers/sidebarController.js",
+        "~/scripts/_mobile/sidebar/services/sidebarService.js",
+
+        "~/areas/adminmobile/scripts/graphics/graphics.js",
+        "~/areas/adminmobile/scripts/graphics/controllers/graphicsController.js",
+
+        "~/areas/adminmobile/scripts/advLibrary.js",
+
+        "~/areas/adminmobile/vendors/chart/jquery.flot.js",
+        "~/areas/adminmobile/vendors/chart/chart.js",
+        
+        //common ng scripts
+        "~/scripts/_common/window/window.js",
+        "~/scripts/_common/window/controllers/windowController.js",
+        "~/scripts/_common/window/directives/windowDirectives.js",
+        "~/scripts/_common/window/services/windowService.js",
+
+        "~/areas/adminmobile/scripts/app.js"
+
+    }, "adminmobile.js"))

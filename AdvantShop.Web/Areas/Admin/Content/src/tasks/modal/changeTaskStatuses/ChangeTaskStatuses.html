@@ -1,0 +1,13 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Изменение статуса задач</h2>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <select ng-model="ctrl.status" ng-options="s.label for s in ctrl.statuses track by s.value" class="form-control"></select>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.changeStatuses()">Изменить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

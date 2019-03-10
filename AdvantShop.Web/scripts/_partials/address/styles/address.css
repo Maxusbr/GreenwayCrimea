@@ -1,0 +1,30 @@
+.address-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: block; }
+
+.address-list-item {
+  font-size: 0.875rem;
+  padding: 1.25rem 0 0 0;
+  margin: 0;
+  /*border-bottom: 1px #ededee solid;*/ }
+  .address-list-item:first-child {
+    border-top: 1px #ededee solid; }
+
+.address-list-change-text {
+  cursor: pointer; }
+
+.address-controls-item {
+  margin-left: 1.25rem; }
+
+.address-empty {
+  font-size: 1rem;
+  padding: 0.625rem 0; }
+
+.address-dialog {
+  min-width: 40vw;
+  /*for IE*/ }
+
+.row-address-full {
+  max-width: 40vw; }

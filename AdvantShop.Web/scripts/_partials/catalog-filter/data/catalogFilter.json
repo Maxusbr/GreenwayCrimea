@@ -1,0 +1,109 @@
+﻿[
+    {
+        "expanded": true,
+        "title": "Цена",
+        "subtitle": "руб.",
+        "control": "range",
+        "values": [
+            {
+                "min": 0,
+                "max": 150,
+                "modelMin": 5,
+                "modelMax": 70,
+                "step": 0.5,
+                "decimalPlaces": 3
+            }
+        ]
+    },
+    {
+        "expanded": true,
+        "type": "brand",
+        "title": "Бренды",
+        "subtitle": "",
+        "description": "Описание свойства",
+        "control": "checkbox",
+        "values": [
+            {
+                "text": "BBK",
+                "id": "brand-bbk",
+                "selected": true
+            },
+            {
+                "text": "Hyundai",
+                "id": "brand-hyundai",
+                "selected": false
+            },
+            {
+                "text": "LG",
+                "id": "brand-lg",
+                "selected": false
+            },
+            {
+                "text": "Samsung",
+                "id": "brand-samsung",
+                "selected": false
+            },
+            {
+                "text": "Toshiba",
+                "id": "brand-toshiba",
+                "selected": false
+            },
+            {
+                "text": "Siemens",
+                "id": "brand-Siemens",
+                "selected": false
+            }
+        ]
+    },
+    {
+        "title": "В наличии",
+        "subtitle": "",
+        "control": "checkbox",
+        "values": [
+            {
+                "text": "Eсть",
+                "id": "avalable-yes",
+                "selected": false
+            },
+            {
+                "text": "Нет",
+                "id": "avalable-no",
+                "selected": false
+            },
+            {
+                "text": "Без разницы",
+                "id": "avalable-xz",
+                "selected": false
+            }
+        ]
+    },
+    {
+        "title": "Дропдаун",
+        "subtitle": "",
+        "control": "select",
+        "values": [
+            {
+                "id": "avalable-yes",
+                "selected": { },
+                "items": [
+                    {
+                        "val": "10",
+                        "text": "Первый пункт"
+                    },
+                    {
+                        "val": "21",
+                        "text": "Второй пункт"
+                    },
+                    {
+                        "val": "32",
+                        "text": "Третий пункт"
+                    },
+                    {
+                        "val": "43",
+                        "text": "Четвертый пункт"
+                    }
+                ]
+            }
+        ]
+    }
+]

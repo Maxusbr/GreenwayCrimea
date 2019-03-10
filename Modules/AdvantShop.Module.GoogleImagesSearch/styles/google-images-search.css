@@ -1,0 +1,27 @@
+﻿.google-images-search-error {
+    text-align: center;
+}
+
+.google-images-search-picture {
+    height: 140px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.google-images-search-text {
+    text-align: center;
+}
+
+.google-images-search-text-item {
+    margin-bottom: 30px;
+}
+[type="checkbox"].google-images-search-state{
+    margin-right: 5px;
+    cursor: pointer;
+}

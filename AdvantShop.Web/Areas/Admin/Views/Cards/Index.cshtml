@@ -1,0 +1,82 @@
+﻿<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline bottom-cell m-r-xs">
+                @T("Admin.Cards.Index.Title")
+            </h1>
+            <a href="@Url.Action("Academy", "Service", new { id = 55 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline bottom-cell">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Бонусной системе
+            </a>
+        </div>
+        <div>
+            <div class="flex">
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger data-controller="'ModalImportCardsCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                                      template-url="../areas/admin/content/src/_shared/modal/bonus/cards/importcards.html">
+                        @*<a data-e2e="ImportCards" class="btn btn-sm btn-success btn--margin-left" href="">*@
+                        <a data-e2e="ImportCards" class="btn btn-sm btn-link btn--margin-left" href="">
+
+                            @T("Admin.Cards.Index.ImportCards")
+                        </a>
+                    </ui-modal-trigger>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <a data-e2e="ExportCards" class="btn btn-sm btn-link btn--margin-left" href="" ng-click="cards.startExport()">
+
+                        @T("Admin.Cards.Index.ExportCards")
+                    </a>
+                </div>
+
+                <div class="dropdown m-r-sm">
+                    <button class="btn btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-e2e="indexBonusesAddAll">
+                        Начислить бонусы
+                        <span class="caret"></span>
+                    </button>
+
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li>
+                            <ui-modal-trigger data-controller="'ModalAddMainBonusCtrl'" size="md" backdrop="static"
+                                              template-url="../areas/admin/content/src/_shared/modal/bonus/MainBonus/addMainBonus.html"
+                                              resolve="{params:{filter: cards.grid.selectionCustom.getSelectedParams('CardNumber')}}">
+                                <a href="">Начислить основные</a>
+                            </ui-modal-trigger>
+                        </li>
+                        <li>
+                            <ui-modal-trigger data-controller="'ModalAddAdditionBonusCtrl'" size="md" backdrop="static"
+                                              template-url="../areas/admin/content/src/_shared/modal/bonus/AdditionBonus/addAdditionBonus.html"
+                                              resolve="{params:{filter: cards.grid.selectionCustom.getSelectedParams('CardNumber')}}">
+                                <a href="">Начислить дополнительные</a>
+                            </ui-modal-trigger>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger data-controller="'ModalAddCardCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                                      template-url="../areas/admin/content/src/_shared/modal/bonus/cards/addcard.html">
+                        <a data-e2e="AddCard" class="btn btn-sm btn-success btn--margin-left" href="">
+                            <span class="fa fa-plus"></span>
+                            @T("Admin.Cards.Index.AddCard")
+                        </a>
+                    </ui-modal-trigger>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="cards.gridOnInit(grid)"
+                        grid-on-filter-init="cards.gridOnFilterInit(filter)"
+                        grid-options="cards.gridOptions"
+                        grid-url="'cards/getcards'">
+        </ui-grid-custom>
+    </div>
+</div>
+

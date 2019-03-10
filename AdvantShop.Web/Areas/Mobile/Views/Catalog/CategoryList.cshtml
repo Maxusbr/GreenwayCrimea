@@ -1,0 +1,60 @@
+﻿@model AdvantShop.Areas.Mobile.Models.Catalog.CategoryListMobileViewModel
+
+@if ((int)Model.DisplayStyle == 2)
+{
+    foreach (var category in Model.Categories)
+    {
+        <a class="panel cs-l-1 cs-br-1 inked ink-dark catalog-product-item" href="@Url.AbsoluteRouteUrl("Category", new {url = category.UrlPath})">
+            @if (category.MiniPicture.PhotoName.IsNotEmpty())
+            {
+                <div class="prod-photo" style="height: @(Model.PhotoHeight)px">
+                    <img src="@category.MiniPicture.ImageSrcSmall()" alt="@Html.AttributeEncode(category.Name)" />
+                </div>
+            }
+            <div class="prod-text">
+                <div class="prod-name text-floating">
+                    @Html.Raw(category.Name)
+                    @if (Model.DisplayProductCount)
+                    {
+                        @("(" + category.ProductsCount + ") ")
+                    }
+                </div>
+
+            </div>
+
+        </a>
+    }
+}
+else
+{
+    <table class="catalog-view-table">
+        @{ var i = 0; }
+        @foreach (var category in Model.Categories)
+        {
+            if (i % 2 == 0)
+            {
+                @:<tr>
+            }
+            <td class="cat-cell">
+                <a class="inked ink-dark" href="@Url.AbsoluteRouteUrl("Category", new {url = category.UrlPath})">
+                    @if (category.MiniPicture.PhotoName.IsNotEmpty())
+                    {
+                        <div class="cat-image-wrap" style="height: @(Model.PhotoHeight)px">
+                            <img src="@category.MiniPicture.ImageSrcSmall()" alt="@Html.AttributeEncode(category.Name)" />
+                        </div>
+                    }
+                    <div class="cat-name">@Html.Raw(category.Name)</div>
+                    @if (Model.DisplayProductCount)
+                    {
+                        <div class="goods-count cs-t-1">@category.ProductsCount</div>
+                    }
+                </a>
+            </td>
+            if (i != 0 && i % 2 != 0)
+            {
+                @:</tr>
+            }
+            i++;
+        }
+    </table>
+}

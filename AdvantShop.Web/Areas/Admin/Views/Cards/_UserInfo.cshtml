@@ -1,0 +1,50 @@
+﻿@model AdvantShop.Customers.Customer
+
+<h2 class="m-b-sm">Личная информация</h2>
+
+@if (Model == null)
+{
+    return;
+}
+
+<div>
+    <div class="row middle-xs form-group">
+        <div class="col-xs-4">
+            Фамилия:
+        </div>
+        <div class="block-additional-parameters-value" data-e2e="bonusCardSuname">
+            @Model.LastName
+        </div>
+    </div>
+
+    <div class="row middle-xs form-group">
+        <div class="col-xs-4">
+            Имя:
+        </div>
+        <div data-e2e="bonusCardName">
+            @Model.FirstName
+        </div>
+    </div>
+
+    <div class="row middle-xs form-group">
+        <div class="col-xs-4">
+            Мобильный телефон:
+        </div>
+        <div class="block-additional-parameters-value" data-e2e="bonusCardPhone">
+            @Model.StandardPhone
+        </div>
+    </div>
+
+    <div class="row middle-xs form-group">
+        <div class="col-xs-4">
+            Email:
+        </div>
+        <div data-e2e="bonusCardMail">
+            @Model.EMail
+        </div>
+    </div>
+    <div>
+        <a href="@Url.Action("Edit", "Customers", new {id = Model.Id})" class="edit link-decoration-none">перейти</a>
+    </div>
+</div>
+

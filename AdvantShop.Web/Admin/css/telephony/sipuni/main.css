@@ -1,0 +1,81 @@
+/* http://sipuni.com/idealats/js/vendor/webphone2/styles/main.css */
+
+.phone {
+  width: 130px;
+}
+.phone__key {
+  display: inline-block;
+  border-radius: 3px;
+  background: #fff;
+  border: 1px solid #bbb;
+  width: 35px;
+  height: 20px;
+  margin: 4px;
+  cursor: pointer;
+  outline: none;
+}
+.phone-screen__field {
+  border-radius: 3px;
+  border: 1px solid #bbb;
+  height: 20px;
+}
+.phone__status-light {
+  display: inline-block;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background: #f00;
+  -webkit-transition: background 0.5s ease;
+  transition: background 0.5s ease;
+  margin: 5px;
+}
+.phone__status-light_color_green {
+  background: #7aff2a;
+}
+
+#phone_wrapper {
+    z-index: 100;
+    position: fixed;
+    bottom: 0px;
+    right: 25px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 3px 3px 0 0;
+}
+    #phone_wrapper .telephony {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 4px;
+        font-weight: bold;
+    } 
+    #phone_wrapper .toggle-phone {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        margin: 5px;
+        cursor: pointer;
+        width: 10px;
+        height: 8px;
+        border-bottom: 2px solid #777;
+    }
+    #phone_wrapper.mini .toggle-phone {
+        height: 5px;
+        border: 2px solid #777;
+        border-top-width: 3px;
+    }
+    #phone_wrapper.mini .phone > div {
+        display: none;
+    }
+.phone-screen {
+    margin: 4px;
+}
+    .phone-screen input {
+        width: 120px;
+    }
+.phone button:not(.phone__key) {
+    margin: 4px;
+}

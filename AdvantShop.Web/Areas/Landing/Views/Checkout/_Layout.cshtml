@@ -1,0 +1,27 @@
+﻿@using AdvantShop.Core.UrlRewriter
+<!DOCTYPE html>
+<html data-ng-strict-di data-ng-app="app" @Html.GetNgController()>
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="AdVantShop.NET">
+    <meta name="format-detection" content="telePhone=no">
+    <title>@Html.GetPageTitle()</title>
+    <base href="@UrlService.GetUrl()" />
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="Keywords" content="@Html.GetPageKeywords()"/>
+    <link rel="canonical" href="@UrlService.GetCanonicalUrl()" />
+    @Html.Partial("_Head")
+    @Html.Action("Favicon", "Common")
+</head>
+<body class="cs-t-1 text-floating">
+    <div class="stretch-container">
+        <main class="stretch-middle site-body">
+            <div class="container container-fluid site-body-inner js-site-body-inner cs-bg-7">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+    @Html.GetNotifyMessages()
+    @Html.Partial("_FooterScripts")
+</body>
+</html>

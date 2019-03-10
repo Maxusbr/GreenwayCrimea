@@ -1,0 +1,56 @@
+﻿
+
+<h2 class="reports-title m-b">
+    RM-анализ
+</h2>
+<div class="clear"></div>
+<div class="rfm-tb">
+    <div class="rfm-row" ng-if="$ctrl.Rm != null">
+
+        <div class="rfm-row" ng-repeat="i in $ctrl.range(0, 4)">
+            <div class="rfm-cell" ng-repeat="j in $ctrl.range(0, 4)" ng-click="$ctrl.showRm(i, j)">
+                <div>{{$ctrl.Rm[i][j].Percent}} %</div>
+                <a href="">{{$ctrl.Rm[i][j].Count}}</a>
+            </div>
+        </div>
+
+        <div class="hor-line"></div>
+        <div class="vert-line"></div>
+        <div class="hor-line-gr"><span>Низкая важность</span><span>Высокая важность</span></div>
+        <div class="vert-line-gr"><span>Давно</span><span>Недавно</span></div>
+        <div class="vert-line-title">Давность покупки (R)</div>
+        <div class="hor-line-title">Важность в обороте (M)</div>
+
+    </div>
+    <div ng-if="$ctrl.Rm == null">
+        Нет данных
+    </div>
+</div>
+
+<h2 class="reports-title m-b">
+    RF-анализ
+</h2>
+<div class="clear"></div>
+<div class="rfm-tb">
+    <div class="rfm-row" ng-if="$ctrl.Rf != null">
+
+        <div class="rfm-row" ng-repeat="i in $ctrl.rangeNg(4, 0)">
+            <div class="rfm-cell" ng-repeat="j in $ctrl.range(0, 4)" ng-click="$ctrl.showRf(i, j)">
+                <div>{{$ctrl.Rf[i][j].Percent}} %</div>
+                <a href="" target="_blank">{{$ctrl.Rf[i][j].Count}}</a>
+            </div>
+        </div>
+
+        <div class="hor-line"></div>
+        <div class="vert-line"></div>
+        <div class="hor-line-gr"><span>Мало</span><span class="rf-sp">Много</span></div>
+        <div class="vert-line-gr"><span>Давно</span><span>Недавно</span></div>
+        <div class="vert-line-title">Давность покупки (R)</div>
+        <div class="hor-line-title">Регулярность продаж (F)</div>
+
+    </div>
+    <div ng-if="$ctrl.Rf == null">
+        Нет данных
+    </div>
+</div>
+

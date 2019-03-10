@@ -1,0 +1,29 @@
+﻿@using AdvantShop.Customers
+@{
+    var customer = CustomerContext.CurrentCustomer;
+}
+<article class="checkout-block">
+    <div class="checkout-block-title h-inline h2">
+        @T("Checkout.CheckoutShipping.ShippingMethods")
+    </div>
+    @if (SettingsDesign.DisplayCityInTopPanel && (!customer.RegistredUser || !customer.Contacts.Any()))
+    {
+        <a class="link-dotted-invert" href="" data-zone-dialog-trigger>
+            <span data-zone-current data-ng-bind-template="{{zone.CountryName }}{{zone.Region != null && zone.Region.length ? ', ' +  zone.Region: ''}}{{zone.City != null && zone.City.length ?', ' +  zone.City : ''}}"></span>
+        </a>
+    }
+    <div class="checkout-block-content">
+        <div class="checkout-block-content-inner">
+            <div data-shipping-list 
+                 data-anchor="checkoutshippings" 
+                 data-items="checkout.Shipping.option" 
+                 data-select-shipping="checkout.ngSelectShipping" 
+                 data-count-visible-items="::7" 
+                 data-change="checkout.changeShipping(shipping)"
+                 data-is-progress="checkout.shippingLoading"
+                 data-contact="checkout.contact"
+                 data-icon-height="@(SettingsPictureSize.ShippingIconHeight)px"
+                 data-icon-width="@(SettingsPictureSize.ShippingIconWidth)px"></div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,11 @@
+﻿@model AdvantShop.ViewModel.MyAccount.MyAccountBonusCardViewModel
+
+<div class="h2">
+    @T("MyAccount.BonusCard.Bonuses")
+</div>
+
+<div data-bonus-what-to-do
+     data-page="myaccount"
+     data-email="myaccount.commonInfo.email"
+     data-bonus-plus="@Model.BonusPlus"
+     data-is-show-patronymic="@SettingsCheckout.IsShowPatronymic.ToString().ToLower()"></div>

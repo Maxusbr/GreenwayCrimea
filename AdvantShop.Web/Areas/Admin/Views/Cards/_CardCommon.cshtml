@@ -1,0 +1,102 @@
+﻿@model AdvantShop.Web.Admin.Models.Cards.CardModel
+
+<h2>
+    Карта
+</h2>
+
+<div>
+    @if (!Model.IsEditMode)
+    {
+        <div>
+            <div class="row middle-xs form-group">
+                <div class="col-xs-3">
+                    Владелец карты<span class="text-required"></span>
+                </div>
+                <div class="col-xs">
+                    <ui-modal-trigger data-controller="'ModalSelectCustomerCtrl'" controller-as="ctrl" size="middle"
+                                      template-url="../areas/admin/content/src/_shared/modal/selectCustomer/selectCustomer.html"
+                                      data-on-close="cards.selectCustomer(result)">
+                        <a href="" class="edit link-decoration-none">Выбрать покупателя</a>
+                    </ui-modal-trigger>
+                    <a target="_blank" href="customers/edit/{{cards.customerId}}" ng-if="cards.selectedFirstName != null && cards.selectedLastName != null" class="ng-cloak m-l-xs link-invert">
+                        {{cards.selectedFirstName}} {{cards.selectedLastName}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        <div class="row middle-xs form-group">
+            <div class="col-xs-3">
+                Номер карты<span class="text-required"></span>
+            </div>
+            <div class="col-xs-3 col-wl-2" data-e2e="numberCardBonus">
+                @if (!Model.IsEditMode)
+            {
+                    @Html.TextBoxFor(x => x.CardNumber, new { @class = "required form-control", url_generator = "", required = "required", ng_model = "cards.cardNumber", validation_input_text = "Номер карты" })
+                }
+                else
+                {
+                    @Model.CardNumber
+                }
+            </div>
+        </div>
+    </div>
+
+
+    @if (Model.IsEditMode)
+    {
+        <div>
+            <div class="row middle-xs form-group">
+                <div class="col-xs-3">
+                    <label for="" class="form-label-block">Дата выдачи</label>
+                </div>
+                <div class="col-xs">
+                    @Model.CreateOn
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        <div class="row middle-xs form-group">
+            <div class="col-xs-3">
+                Грейд
+            </div>
+            <div class="col-xs-5 col-wl-3" data-e2e="gradeBonus">
+                @Html.DropDownListFor(x => x.GradeId, Model.Grades.Select(y => new SelectListItem { Text = string.Format("{0} {1}%", y.Name, y.BonusPercent.ToInvatiant()), Value = y.Id.ToString() }).ToList(),
+                                    new { @class = "required form-control", ng_disabled = Model.DisabledChangeGrade.ToString().ToLower(), ng_model = "cards.GradeId", ng_init = "cards.GradeId = '" + Model.GradeId + "'" })
+
+                <input name="GradeId" type="hidden" value="{{cards.GradeId}}" />
+            </div>
+            <div>
+                <a href="@Url.Action("HistoryPersent", new { cardId = Model.CardId })">история грейдов</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row middle-xs form-group">
+            <div class="col-xs-3">
+                Устанавливать грейд вручную
+            </div>
+            <div class="col-xs-9 col-wl-3" data-e2e="manualGrade">
+                <label class="adv-checkbox-label word-spacing">
+                    @Html.CheckBoxFor(x => x.ManualGrade, new { @class = "required form-control adv-checkbox-input", ng_model = "cards.ManualGrade", ng_init = "cards.ManualGrade = '" + Model.ManualGrade + "'" })
+                    <span class="adv-checkbox-emul" data-e2e="CheckBoxNewClick"></span>
+                </label>          
+            </div>
+
+
+        </div>
+    </div>
+    <div>
+        <div class="row middle-xs form-group">
+            <div class="col-xs-3">
+                Кол-во бонусов
+            </div>
+            <div class="col-xs-8" data-e2e="countBonus">
+                <span class="fs-lg">@((Model.BonusAmount + Model.AdditionBonusAmount).ToInvatiant()) бонусов</span>
+                <div>@Model.BonusAmount.ToInvatiant() основных и @Model.AdditionBonusAmount.ToInvatiant() дополнительных</div>
+            </div>
+        </div>
+    </div>
+</div>

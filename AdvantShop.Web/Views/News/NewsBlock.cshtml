@@ -1,0 +1,26 @@
+﻿@model List<AdvantShop.News.NewsItem>
+<!--noindex-->
+<article class="block news-block">
+    <header class="block-head">
+        <div class="h2">@T("News.NewsBlock.NewsTitle")</div>
+    </header>
+    <div class="block-content">
+        <ul class="news-block-items">
+            @foreach (var newsItem in Model)
+            {
+                <li class="news-block-row">
+                    <div class="news-block-anno">
+                        <a href="@Url.AbsoluteRouteUrl("News", new { url = newsItem.UrlPath })" class="news-block-anno-link">@newsItem.Title</a>
+                    </div>
+                    <div class="news-block-date cs-t-3">
+                        <time class="news-block-date-text">@newsItem.AddingDate.ToString("dd MMMM yyyy")</time>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="allNews">
+            <a href="@Url.AbsoluteRouteUrl("NewsHome")" class="cs-l-2">@T("News.NewsBlock.AllNews")</a>
+        </div>
+    </div>
+</article>
+<!--/noindex-->

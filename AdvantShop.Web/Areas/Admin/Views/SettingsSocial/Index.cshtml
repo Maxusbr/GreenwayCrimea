@@ -1,0 +1,32 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SocialSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "SettingsSocial", FormMethod.Post, new { name = "form", enctype = "multipart/form-data", novalidate = "novalidate" }))
+{
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settingsSocial.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+
+    <uib-tabset active uid="socialTab" on-select-batch="settingsSocial.floatHeader = tab.heading;">
+        <uib-tab index="1" heading="@T("Admin.Settings.Social.SocialCommon")" classes="ng-tab">
+            @Html.Partial("_SocialCommon", Model)
+        </uib-tab>
+
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+        </div>
+    </uib-tabset>
+}

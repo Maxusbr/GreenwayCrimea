@@ -1,0 +1,80 @@
+﻿@model AdvantShop.Web.Admin.Models.Leads.LeadModel
+@{
+    Layout = "~/Areas/Admin/Views/Leads/LeadsLayout.cshtml";
+}
+
+<form method="POST" action="@Url.Action("Edit")" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+
+    <div ng-init="lead.init(@Model.Id)">
+        <input name="Id" type="hidden" value="{{lead.leadId}}"/>
+        <input name="Lead.LeadId" type="hidden" value="{{leadId.leadId}}"/>
+    </div>
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner m-b-sm">
+            <div class="page-name-block-item-main m-l">
+                <h1 class="page-name-block-text sticky-page-name-text inline order-header-item order-header-item-name">
+                    Лид № @Model.Lead.Id
+                </h1>
+                <div>
+                    <a href="@Url.Action("Index", "Leads")">Список лидов</a>
+                </div>
+            </div>
+            <div class="page-name-block-item-additional">
+                <a href="" class="link-danger m-r-xs" ng-click="lead.deleteLead()">Удалить</a>
+                @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, attributes: new[] {"ng-disabled=\"!form.modified\"", "disabled"})
+                <a class="btn btn-sm btn-action m-r-sm" href="" ng-click="lead.createOrder()" data-e2e="LeadCreateOrder">
+                    Создать заказ
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 col-wl-2">
+                <div class="aside-menu">
+
+                    @Html.Partial("_Description", Model)
+                    @Html.Partial("_Customer", Model)
+
+                    <div class="ibox">
+                        <div class="ibox-content block-additional-parameters-content">
+                            <h3 class="m-b-md">
+                                Прикрепленные файлы
+                            </h3>
+                            <ol class="p-l-sm ng-cloak" ng-if="lead.attachments.length > 0">
+                                <li class="word-break" ng-repeat="attachment in lead.attachments track by $index">
+                                    <a href="" target="_blank" ng-href="{{attachment.FilePathAdmin}}" ng-bind="attachment.FileName"></a> - <span ng-bind="attachment.FileSize"></span>
+                                    <a href="" ng-click="lead.deleteAttachment(attachment.Id)" class="fa fa-times link-invert link-decoration-none" title="Удалить"></a>
+                                </li>
+                            </ol>
+                            <p class="ng-cloak" ng-if="lead.attachments.length == 0">
+                                Нет файлов
+                            </p>
+                            <figure class="">
+                                <button class="btn btn-action btn-sm" type="button" ngf-drop ngf-max-size="15MB" ngf-select="" multiple
+                                        ngf-change="lead.uploadAttachment($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)" ladda="lead.loadingFiles">
+                                    <i class="fa fa-upload"></i>&nbsp;&nbsp;<span class="bold">Прикрепить файл</span>
+                                </button>
+                                <help-trigger class="ng-cloak m-l-xs">
+                                    <div class="help-content">
+                                        @Html.Action("FilesHelpText", "Common", new { type = AdvantShop.Helpers.EAdvantShopFileTypes.LeadAttachment })
+                                    </div>
+                                </help-trigger>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-9 col-wl-10">
+                @Html.Partial("_Products", Model)
+                @Html.Partial("_Tasks", Model)
+                <div bs-modifiable="false">
+                    <lead-events lead-id="@Model.Id" customer-id="@Model.Lead.CustomerId" on-init="lead.leadEventsOnInit(leadEvents)"></lead-events>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

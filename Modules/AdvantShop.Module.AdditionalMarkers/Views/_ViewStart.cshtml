@@ -1,0 +1,15 @@
+﻿@using AdvantShop.Design
+@{
+    var layout = "~/Views/Shared/_Layout.cshtml";
+    
+    if (SettingsDesign.Template != TemplateService.DefaultTemplateId)
+    {
+        var templateLayout = "~/Templates/" + SettingsDesign.Template + "/Views/Shared/_Layout.cshtml";
+        if (VirtualPathFactory.Exists(templateLayout))
+        {
+            layout = templateLayout;
+        }
+    }
+
+    Layout = layout;
+}

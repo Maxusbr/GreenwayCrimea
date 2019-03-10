@@ -1,0 +1,53 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SEOSettingsModel
+
+
+<div class="ng-cloak">
+    <div class="sticky-page-name">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    @T("Admin.Settings.System.301Redirects")
+                </h1>
+                <label class="adv-checkbox-label form-label-block">
+                    @Html.CheckBoxFor(x => Model.EnableRedirect301, new { @class = "adv-checkbox-input", ng_model = "settingsSeo.active301", ng_change = "settingsSeo.setActive301(settingsSeo.active301)", ng_init = "settingsSeo.active301 = settingsSeo.active301in404 = " + (Model.EnableRedirect301 ? "true" : "false") })
+                    <span class="adv-checkbox-emul"></span>
+                    <span>Активность 301 редиректа</span>
+                </label>
+            </div>
+            <div class="page-name-block-item-additional">
+
+                <button class="btn btn-sm btn-success btn--margin-left" type="button" ng-click="settingsSeo.startExport301Red()">
+                    <span class="fa"></span> @T("Admin.Settings.System.301Redirects.Export")
+                </button>
+
+                <ui-modal-trigger data-controller="'ModalAddEdit301RedCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/settings/modal/addEdit301Red/addEdit301Red.html"
+                                  data-on-close="settingsSeo.grid301Red.fetchData()">
+                    <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                        <span class="fa fa-plus"></span> @T("Admin.Settings.System.301Redirects.Add")
+                    </button>
+                </ui-modal-trigger>
+                <file-uploader class="picture-uploader-middle"
+                               accept=".csv"
+                               start-src=""
+                               upload-url="/redirect301/import"
+                               upload-params=""
+                               on-update="" style="display:inline-block;">
+                </file-uploader>
+            </div>
+        </div>
+    </div>
+
+    <ui-grid-custom grid-unique-id="grid301Red"
+                    grid-row-identificator="'ID'"
+                    grid-options="settingsSeo.gridOptions301Red"
+                    grid-on-init="settingsSeo.grid301RedOnInit(grid)"
+                    grid-url="'redirect301/getRedirect301'"
+                    grid-inplace-url="'redirect301/InplaceRedirect301'"
+                    grid-extend-ctrl="settings">
+        <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsSeo.grid301Red.gridOptions.TotalString">
+        </ui-grid-custom-footer>
+    </ui-grid-custom>
+
+</div>
+

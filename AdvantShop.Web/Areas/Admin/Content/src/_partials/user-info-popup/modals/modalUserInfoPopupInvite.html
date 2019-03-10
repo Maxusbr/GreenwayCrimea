@@ -1,0 +1,55 @@
+﻿<div class="modal-new__inner">
+    <div class="modal-form">
+        <h2 class="modal-form__title">Пригласите своих коллег в Advantshop. Шаг 2/2</h2>
+        <div class="modal-form__descr">Коллеги получат приглашение и присоединятся к системе.</div>
+        <div class="modal-form__fields">
+            <form name="inviteUserForm" novalidate class="segment-form">
+                <div class="segment-form__inner">
+                    <div class="row relative m-b-sm" ng-repeat="user in ctrl.userList track by $index"> 
+                        <div class="col-xs-4">
+                            <div class=".segment-form__field-wrap_horizontal">
+                                <div class="segment-form__value-wrap">
+                                    <input type="text" ng-model="user.FirstName" class="valid-required" autocomplete="off" autofocus
+                                           required validation-input-text="Имя {{$index}}" placeholder="Имя" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class=".segment-form__field-wrap_horizontal">
+                                <div class="segment-form__value-wrap">
+                                    <input type="text" ng-model="user.LastName" class="valid-required" autocomplete="off"
+                                           required validation-input-text="Фамилия {{$index}}" placeholder="Фамилия" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class=".segment-form__field-wrap_horizontal">
+                                <div class="segment-form__value-wrap">
+                                    <input type="email" ng-model="user.Email" class="valid-required" autocomplete="off"
+                                           required validation-input-text="E-mail {{$index}}" placeholder="E-mail" />
+                                </div>
+                            </div>
+                        </div>
+                        <button ng-if="$index > 0" class="segment-list-user__remove fa fa-remove" ng-click="ctrl.removeUser(user)"></button>
+                    </div>
+
+                    <div class=".segment-form__field-wrap_horizontal">
+                        <div class="segment-form__value-wrap">
+                            <button type="button" ng-click="ctrl.addFieldsUser()" class="segment-form__btn-add-friend m-l-md">Добавить друга</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="segment-form__btn-wrap">
+                    <ui-modal-dismiss>
+                        <button class="segment-form-btn segment-form-btn_action" type="button" ui-modal-dismiss>
+                            Пропустить
+                        </button>
+                    </ui-modal-dismiss>
+                    <button class="segment-form-btn segment-form-btn_confirm" type="submit" button-validation button-validation-success="ctrl.invite(ctrl.userList)" ladda="ctrl.btnLoading">
+                        Пригласить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,213 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SEOSettingsModel
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.GoogleAnalytics.Header")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleAnalyticsEnabled, T("Admin.Settings.GoogleAnalytics.GoogleAnalyticsEnabled"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.GoogleAnalyticsEnabled, new { @class = "adv-checkbox-input", ng_init = "settingsSeo.GoogleAnalyticsEnabled=" + Model.GoogleAnalyticsEnabled.ToLowerString(), ng_model = "settingsSeo.GoogleAnalyticsEnabled" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleAnalyticsEnableDemogrReports, T("Admin.Settings.GoogleAnalytics.GoogleAnalyticsEnableDemogrReports"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.GoogleAnalyticsEnableDemogrReports, new { @class = "adv-checkbox-input", ng_init = "settingsSeo.GoogleAnalyticsEnableDemogrReports=" + Model.GoogleAnalyticsEnableDemogrReports.ToLowerString(), ng_model = "settingsSeo.GoogleAnalyticsEnableDemogrReports" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleAnalyticsNumber, T("Admin.Settings.GoogleAnalytics.GoogleAnalyticsNumber"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.GoogleAnalyticsNumber, new { @class = "form-control", ng_model = "settingsSeo.GoogleAnalyticsNumber" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        Категория событий: Advantshop_events
+        <br />
+        <br />
+        Доступные события:
+        <br />
+        addToCart - добавление в корзину
+        <br />
+        sendPreOrder - заявка на товар под заказ
+        <br />
+        addToCompare - добавление в сравнение товаров
+        <br />
+        addToWishlist - добавление в список желаний
+        <br />
+        buyOneClickForm - открытие формы "В один клик"
+        <br />
+        buyOneClickConfirm - подтверждение заказа "В один клик"
+        <br />
+        sendFeedback -обратная связь
+        <br />
+        addResponse - отзыв к товару
+        <br />
+        getCallBack - заказ обратного звонка с помощью модуля
+        <br />
+        callBack - звонок с формы "Мы перезвоним Вам через N секунд"
+        <br />
+        callBackRequest - заявка на звонок с формы "Мы перезвоним Вам через N секунд"
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/install-google-analytics" target="_blank">Инструкция. Установка счетчика статистики Google Analytics</a>
+        </div>
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/google-analytics-goals" target="_blank">Инструкция. Как настроить цели в Google Analytics</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.GoogleAnalyticsApi.Header")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleAnalyticsApiEnabled, T("Admin.Settings.GoogleAnalyticsApi.GoogleAnalyticsApiEnabled"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.GoogleAnalyticsApiEnabled, new { @class = "adv-checkbox-input", ng_init = "settingsSeo.GoogleAnalyticsApiEnabled=" + Model.GoogleAnalyticsApiEnabled.ToLowerString(), ng_model = "settingsSeo.GoogleAnalyticsApiEnabled" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleAnalyticsAccountID, T("Admin.Settings.GoogleAnalyticsApi.GoogleAnalyticsAccountID"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.GoogleAnalyticsAccountID, new { @class = "form-control", ng_model = "settingsSeo.GoogleAnalyticsAccountID" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleClientId, T("Admin.Settings.GoogleAnalyticsApi.GoogleClientId"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.LabelFor(x => x.GoogleClientId, Model.GoogleClientId, new { ng_model = "settingsSeo.GoogleClientId" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleClientSecret, T("Admin.Settings.GoogleAnalyticsApi.GoogleClientSecret"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.LabelFor(x => x.GoogleClientSecret, Model.GoogleClientSecret, new { ng_model = "settingsSeo.GoogleClientSecret" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="setting-label-wrap">
+            (Client ID и Client secret заполняются на странице Авторизация по OpenID)
+        </div>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            Redirect URL
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.LabelFor(x => x.GoogleClientSecret, UrlService.GetUrl("login"), new { ng_model = "settingsSeo.GoogleClientSecret" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        <a class="auth-google" href="" ng-click="settingsSeo.googleAnalitycsOauth('user/LoginGoogleAnalytics?pagetoredirect=login')">Авторизоваться в Google Analytics</a>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/google-analytics-api" target="_blank">Инструкция. Подключение к Google Analytics API</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.SriptsGtm")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ScriptsGtmEnabled")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        @Html.CheckBoxFor(x => x.UseGTM, new { @class = "", ng_model = "settings.checkout.scripts.useGtm", ng_init = "settings.checkout.scripts.useGtm = " + Model.UseGTM.ToLowerString() })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ScriptsGTMContainerId")
+        </div>
+    </div>
+    <div class="col-xs-4 form-inline">
+        @Html.TextBoxFor(x => x.GTMContainerId, new { @class = "", ng_model = "settings.checkout.scripts.gtmContainerId", ng_init = "settings.checkout.scripts.gtmContainerId = '" + Model.GTMContainerId + "'" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        Доступные события:<br />
+        addToCart - добавление в корзину<br />
+        addToCompare - добавление в сравнение товаров<br />
+        addToWishlist - добавление в список желаний<br />
+        buyOneClickForm - открытие формы "В один клик"<br />
+        buyOneClickConfirm - подтверждение заказа "В один клик"<br />
+        sendFeedback - обратная связь<br />
+        addResponse - отзыв к товару<br />
+        getCallBack - заказ обратного звонка с помощью модуля<br />
+        callBack - звонок с формы "Мы перезвоним Вам через N секунд"<br />
+        callBackRequest - заявка на звонок с формы "Мы перезвоним Вам через N секунд"
+    </div>
+</div>

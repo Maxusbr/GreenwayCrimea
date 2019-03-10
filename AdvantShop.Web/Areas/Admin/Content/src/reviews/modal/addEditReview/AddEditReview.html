@@ -1,0 +1,111 @@
+<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Отзыв</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row" ng-if="ctrl.mode == 'add'">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Артикул товара</span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.ArtNo" required validation-input-text="Артикул товара" data-e2e="ReviewArtNo" />
+            </div>
+        </div>
+        <div class="form-group row" ng-if="ctrl.mode != 'add'">
+            <label class="col-xs-3 control-label">
+                <span>Товар</span>
+            </label>
+            <div class="col-xs-9">
+                <a ng-href="{{ctrl.productUrl}}#?tab=tabReviews" href="" target="_blank" title="просмотр товара в клиентской части, откроется в новом окне">{{ctrl.productName}}</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Автор</span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.Name" required validation-input-text="Автор" data-e2e="ReviewName" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Email
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.Email" data-e2e="ReviewEmail" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Текст отзыва</span>
+            </label>
+            <div class="col-xs-9">
+                <textarea class="form-control" ng-model="ctrl.Text" rows="7" required validation-input-text="Текст отзыва" data-e2e="ReviewText" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Изображение
+            </label>
+            <div class="col-xs-9">
+                <div ng-if="ctrl.PhotoName != null && ctrl.PhotoName != ''">
+                    <img ng-src="{{ctrl.Photo}}" />
+                    <div>
+                        <a href="" class="picture-uploader-buttons-delete link-danger" ng-click="ctrl.deletePhoto()">Удалить</a>
+                    </div>
+                </div>
+                <div ng-if="ctrl.PhotoName == null || ctrl.PhotoName == ''">
+                    <figure class="">
+                        <button data-e2e="ReviewImg" class="btn btn-action btn-sm" type="button" ngf-drop ngf-max-size="15MB" accept="image/*" ngf-select=""
+                                ngf-change="ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)">
+                            <i class="fa fa-upload"></i>&nbsp;&nbsp;<span class="bold">Выберите файл</span>
+                        </button>
+                        <span ng-if="ctrl.file" ng-bind="ctrl.file.name"></span>
+                        <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                            <div class="help-content" ng-bind-html="ctrl.filesHelpText">
+                            </div>
+                        </help-trigger>
+                    </figure>
+                    <!--<input type="file" accept="image/*"
+                           ngf-max-size="15MB"
+                           ngf-select=""
+                           ngf-change="ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+                           class=""
+                           data-e2e="ReviewImg" />-->
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Добавлен
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.AddDate" data-e2e="ReviewDateAdd" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Проверен
+            </label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label">
+                    <input type="checkbox" ng-model="ctrl.Checked" class="adv-checkbox-input control-checkbox" data-e2e="ReviewCheckedSelected" />
+                    <span class="adv-checkbox-emul" data-e2e="ReviewCheckedClick"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row" ng-if="ctrl.mode != 'add'">
+            <label class="col-xs-3 control-label">
+                ip
+            </label>
+            <div class="col-xs-9 control-label">
+                <span>{{::ctrl.Ip}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

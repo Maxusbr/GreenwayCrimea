@@ -1,0 +1,156 @@
+﻿@model AdvantShop.ViewModel.Install.InstallShopInfoModel
+@{
+    Layout = "~/Views/Install/Layout.cshtml";
+}
+<h1>@Resource.Install_UserContols_ShopinfoView_h1</h1>
+@using (Html.BeginForm("ShopInfo", "Install", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="error">
+        @Html.ValidationSummary()
+    </div>
+    if (Model.DisplayKey)
+    {
+        <div class="group">
+            <p>
+                @Resource.Install_UserContols_ShopinfoView_Key
+            </p>
+            <div class="str">
+                @Html.TextBoxFor(x => x.Key, new {@class = "txt valid-required valid-compare-source"})
+                @Html.ValidationMessageFor(model => model.Key)
+            </div>
+        </div>
+    }
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_ShopName
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.ShopName, new {@class = "txt valid-required"})
+            @Html.ValidationMessageFor(model => model.ShopName)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_UrlShop
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.ShopUrl, new {@class = "txt valid-required"})
+            @Html.ValidationMessageFor(model => model.ShopUrl)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_Logo
+        </p>
+        <div class="container-logo">
+            @if (!string.IsNullOrEmpty(Model.LogoUrl))
+            {
+                <img src="@Model.LogoUrl" alt="" />
+            }
+        </div>
+        <div class="str">
+            <input type="file" name="logo" class="file-upload" />
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_Favicon
+        </p>
+        <div class="container-logo">
+            @if (!string.IsNullOrEmpty(Model.FaviconUrl))
+            {
+                <img src="@Model.FaviconUrl" alt="" />
+            }
+        </div>
+        <div class="str">
+            <input type="file" name="favicon" class="file-upload" />
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_Country
+        </p>
+        <div class="str">
+            @Html.DropDownListFor(x => x.Country, Model.Countries)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_Region
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.Region, new {@class = "txt region"})
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_City
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.City, new {@class = "txt city"})
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_Phone
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.Phone, new {@class = "txt valid-required"})
+        </div>
+    </div>
+    @*<div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_Director
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.Director, new {@class = "txt valid-required"})
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_Accountant
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.Accountant, new {@class = "txt"})
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_ShopinfoView_Manager
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.Manager, new {@class = "txt"})
+        </div>
+    </div>*@
+    <div class="step-btns">
+        <span class="btn-c">
+            <a href="@Model.BackUrl" class="btn btn-back">@Resource.Installer_Back</a>
+            <input type="submit" class="btn btn-next" value="@Resource.Installer_Next" />
+        </span>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".city").autocomplete('admin/HttpHandlers/Location/GetCities.ashx', {
+            delay: 10,
+            minChars: 1,
+            matchSubset: 1,
+            autoFill: true,
+            matchContains: 1,
+            cacheLength: 10,
+            selectFirst: true,
+            maxItemsToShow: 10
+        });
+        $(".region").autocomplete('admin/HttpHandlers/Location/GetRegions.ashx', {
+            delay: 10,
+            minChars: 1,
+            matchSubset: 1,
+            autoFill: true,
+            matchContains: 1,
+            cacheLength: 10,
+            selectFirst: true,
+            maxItemsToShow: 10
+        });
+    });
+</script>

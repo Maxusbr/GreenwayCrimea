@@ -1,0 +1,98 @@
+﻿@model AdvantShop.Web.Admin.Models.OrdersEdit.OrderModel
+@{
+    var source = Model.OrderTrafficSource;
+    var orderSourceId = "null";
+
+    if (Model.IsEditMode && Model.Order != null)
+    {
+        orderSourceId = Model.Order.OrderSourceId.ToString();
+    }
+    else
+    {
+        var orderSource = Model.OrderSources.FirstOrDefault();
+        orderSourceId = orderSource != null ? orderSource.Value : null;
+    }
+}
+
+<div class="ibox category-block block-additional-parameters">
+    <div class="ibox-content category-content block-additional-parameters-content border_none">
+        <h3 class="category-title">Дополнительно</h3>
+
+        @if (Model.ShowCrm)
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    Менеджер
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Html.DropDownListFor(x => x.Order.ManagerId, Model.Managers, new { @class = "form-control", ng_model = "order.managerId", ng_init = "order.managerId=" + (Model.Order != null ? "'" + Model.Order.ManagerId.ToString() + "'" : "null") + "", ng_change = "order.saveChanges()" })
+                </div>
+            </div>
+        }
+
+        @if (Model.IsEditMode)
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    Номер отслеживания (трек-номер)
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Html.TextBoxFor(x => x.Order.TrackNumber, new { @class = "form-control", ng_model = "order.trackNumber", ng_init = "order.trackNumber=" + (Model.Order != null ? "'" + Model.Order.TrackNumber + "'" : "null"), ng_blur = "order.saveChanges()" })
+                </div>
+            </div>
+        }
+        <div class="block-additional-parameters-row">
+            <div class="block-additional-parameters-name">
+                Источник заказа
+            </div>
+            <div class="block-additional-parameters-value">
+                @Html.DropDownListFor(x => x.Order.OrderSourceId, Model.OrderSources, new { @class = "form-control", ng_model = "order.orderSourceId", ng_init = "order.orderSourceId='" + orderSourceId + "'", ng_change = "order.saveChanges()" })
+            </div>
+        </div>
+        @if (Model.IsEditMode && source != null)
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    UTM метки
+                </div>
+                <div class="block-additional-parameters-value text-floating">
+                    @if (!string.IsNullOrEmpty(source.Referrer))
+                    {
+                        <div class="m-b-sm">Реферал: @source.Referrer</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.Url))
+                    {
+                        <div class="m-b-sm word-break">Страница входа: @source.Url</div>
+                    }
+                    <div class="m-b-sm">Дата: @source.CreateOn.ToLongDateString()</div>
+                    @if (!string.IsNullOrEmpty(source.utm_source))
+                    {
+                        <div class="m-b-sm">UTM Source: @source.utm_source</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.utm_medium))
+                    {
+                        <div class="m-b-sm">UTM Medium: @source.utm_medium</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.utm_campaign))
+                    {
+                        <div class="m-b-sm">UTM Campaign: @source.utm_campaign</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.utm_content))
+                    {
+                        <div class="m-b-sm">UTM Content: @source.utm_content</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.utm_term))
+                    {
+                        <div class="m-b-sm">UTM Term: @source.utm_term</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.GoogleClientId))
+                    {
+                        <div class="m-b-sm">Google client id: @source.GoogleClientId</div>
+                    }
+                </div>
+            </div>
+        }
+
+        @Html.RenderModules("admin_order_orderinfo", new { orderId = Model.OrderId })
+    </div>
+</div>

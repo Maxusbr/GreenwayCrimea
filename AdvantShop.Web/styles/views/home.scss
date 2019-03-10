@@ -1,0 +1,99 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+.carousel-main {
+    margin-bottom: rem-calc(10px);
+    padding: 0;
+}
+
+.carousel-main-block {
+    padding-bottom: $padding-base;
+    position: relative;
+    overflow: hidden;
+
+    .carousel {
+        /*display: inline-block;*/
+    }
+}
+
+.carousel-main-list {
+    white-space: nowrap;
+    display: block;
+}
+.slider-main-block .carousel-inner {
+    margin: 0 auto;
+}
+
+.carousel-main-dots {
+}
+
+.carousel-main-dots-item {
+}
+
+.carousel-main-prev,
+.carousel-main-next {
+    color: rgba(0,0,0, .5);
+    font-size: $font-size-large;
+}
+
+.carousel-main-prev {
+    margin-left: $horizontal-interval-xsmall;
+}
+
+.carousel-main-next {
+    margin-right: $horizontal-interval-xsmall;
+}
+
+.carousel-main-item {
+    display: inline-block;
+    /*visibility: hidden;*/
+    position: relative;
+    line-height: 0;
+    font-size: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+
+    &:first-child {
+        visibility: visible;
+    }
+
+    img {
+        border-radius: $border-radius-base;
+        width: 100%; /*FF bug: image adaptive get full width in grid col-xs*/
+    }
+}
+
+.carousel-initilized {
+    .carousel-main-item {
+        display: inline-block;
+        visibility: visible;
+    }
+}
+
+.carousel-main-link-noop, .carousel-main-link-noop:hover, .carousel-main-link-noop:active {
+    cursor: default;
+}
+
+.default-block-banner {
+    padding-bottom: $padding-base;
+}
+
+.footer-gifts {
+    font-size: $font-size-normal;
+}
+
+.products-specials-block {
+    margin-top: rem-calc(15px);
+}
+
+.blocks-on-main-horizontals {
+    margin-left: -1%;
+    margin-right: -1%;
+    .news-block, .voting, .static-block, .check-order, .block-certificate {
+        float: left;
+        box-sizing: border-box;
+        width: 23%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+}

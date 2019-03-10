@@ -1,0 +1,30 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ProductDetailsViewModel
+@{
+    var product = Model.Product;
+    Layout = null;
+}
+
+<div data-ng-controller="ProductCtrl as product">
+    <div data-ng-init="product.loadData(@product.ProductId, @(Model.ColorId != null ?  Model.ColorId.ToString() : "null"), @(Model.SizeId != null ? Model.SizeId.ToString() : "null"))"></div>
+    <div class="row">
+        <div class="col-xs-4">
+            @Html.Action("ProductPhotos", new { productModel = Model, enabledModalPreview = false })
+        </div>
+        <div class="col-xs-8">
+            <div class="page-title-row details-title-row">
+                <div class="details-title page-title h2">
+                    <a href="@Url.AbsoluteRouteUrl("Product", new { url= product.UrlPath })" data-ng-href="{{product.getUrl('@Url.AbsoluteRouteUrl("Product", new { url= product.UrlPath })')}}">@Html.GetPageH1()</a>
+                </div>
+            </div>
+            @if (product.Brand != null && product.Brand.BrandLogo != null)
+            {
+                <figure class="details-brand fr">
+                    <a href="@Url.RouteUrl("Brand", new { url = product.Brand.UrlPath })" class="details-brand-link">
+                        <img class="details-brand-link" src="@product.Brand.BrandLogo.ImageSrc()" alt="@Html.Encode(product.Brand.Name)" />
+                    </a>
+                </figure>
+            }
+            @Html.Partial("ProductInfo", Model)
+        </div>
+    </div>
+</div>

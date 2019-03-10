@@ -1,0 +1,47 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Добавление варианта ответа" : "Редактирование варианта ответа"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">
+                    Тема
+                </span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.theme" readonly="readonly" data-e2e="voteTheme" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">
+                    Название
+                </span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.Name" required validation-input-text="Название" data-e2e="voteAnswerName" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Сортировка</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.SortOrder" data-e2e="voteAnswerSortOrder" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Видимый</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="voteAnswerIsVisible">
+                    <input type="checkbox" ng-model="ctrl.IsVisible" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-e2e="voteAnswerSave" data-button-validation-success="ctrl.saveAnswer()" data-button-validation>{{ctrl.mode == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

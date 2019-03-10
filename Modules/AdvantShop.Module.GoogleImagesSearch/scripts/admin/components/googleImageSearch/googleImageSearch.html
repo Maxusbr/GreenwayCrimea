@@ -1,0 +1,8 @@
+﻿
+<ui-modal-trigger data-controller="'ModalSearchImagesCtrl'"
+                  size="lg"
+                  resolve="{params: {uploadbylinkUrl: $ctrl.uploadbylinkUrl, uploadbylinkParams: $ctrl.uploadbylinkParams, selectMode: $ctrl.selectMode }}"
+                  on-close="$ctrl.apply(result)"
+                  template-url="../modules/googleImagesSearchModule/scripts/admin/modals/modalSearchImages/modalSearchImages.html">
+    <a href="" class="picture-uploader-buttons-add">Найти фотографии в интернете</a>
+</ui-modal-trigger>

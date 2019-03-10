@@ -1,0 +1,246 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="MasterPageAdmin.master"
+    Inherits="Admin.CatalogLayout" CodeBehind="CatalogLayout.master.cs" %>
+
+<%@ Import Namespace="Resources" %>
+<%@ Register TagPrefix="adv" TagName="CatalogPart" Src="~/Admin/UserControls/Catalog/CatalogPart.ascx" %>
+<%@ Register Src="~/admin/UserControls/Catalog/AddProduct.ascx" TagName="AddProduct" TagPrefix="adv" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Head" runat="Server">
+    <script type="text/javascript">
+
+        function CreateHistory(hist) {
+            $.historyLoad(hist);
+        }
+
+        var timeOut;
+        function Darken() {
+            timeOut = setTimeout('document.getElementById("inprogress").style.display = "block";', 1000);
+        }
+
+        function Clear() {
+            clearTimeout(timeOut);
+            document.getElementById("inprogress").style.display = "none";
+
+            $("input.sel").each(function (i) {
+                if (this.checked) $(this).parent().parent().addClass("selectedrow");
+            });
+
+            initgrid();
+        }
+
+        function removeunloadhandler(a) {
+            window.onbeforeunload = null;
+        }
+
+        $(document).ready(function () {
+            document.onkeydown = keyboard_navigation;
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+            prm.add_beginRequest(Darken);
+            prm.add_endRequest(Clear);
+            initgrid();
+            $("ineditcategory").tooltip();
+        });
+    </script>
+    <asp:ContentPlaceHolder runat="server" ID="cphHead" />
+</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphMain" runat="Server">
+    <adv:AddProduct ID="addProduct" runat="server" />
+    <div id="inprogress" style="display: none;">
+        <div id="curtain" class="opacitybackground">
+            &nbsp;
+        </div>
+        <div class="loader">
+            <table width="100%" style="font-weight: bold; text-align: center;">
+                <tbody>
+                    <tr>
+                        <td align="center">
+                            <img src="images/ajax-loader.gif" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="color: #0D76B8;">
+                            <asp:Localize ID="Localize_Admin_Properties_PleaseWait" runat="server" Text="<%$ Resources:Resource, Admin_Properties_PleaseWait %>"></asp:Localize>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="content-top">
+        <menu class="neighbor-menu neighbor-catalog">
+            <li class="neighbor-menu-item <%= Request.Url.AbsoluteUri.ToLower().Contains("catalog.aspx") ? "selected" : string.Empty %>"><a href="Catalog.aspx" class="neighbor-menu-lnk">
+                <%= Resource.Admin_MasterPageAdmin_CategoryAndProducts %></a></li>
+            <li class="neighbor-menu-item <%= Request.Url.AbsoluteUri.ToLower().Contains("productsonmain.aspx") || Request.Url.AbsoluteUri.ToLower().Contains("productlist") ? "selected" : string.Empty %> dropdown-menu-parent"><a href="ProductsOnMain.aspx?type=New"
+                class="neighbor-menu-lnk">
+                <%= Resource.Admin_MasterPageAdminCatalog_FirstPageProducts%></a>
+                <div class="dropdown-menu-wrap">
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-menu-item m-item"><a class="main-menu-subitem-lnk" href="ProductsOnMain.aspx?type=Best">
+                            <%= Resource.Admin_MasterPageAdminCatalog_BestSellers %>
+                        </a></li>
+                        <li class="dropdown-menu-item m-item"><a class="main-menu-subitem-lnk" href="ProductsOnMain.aspx?type=New">
+                            <%= Resource.Admin_MasterPageAdminCatalog_New %>
+                        </a></li>
+                        <li class="dropdown-menu-item m-item"><a class="main-menu-subitem-lnk" href="ProductsOnMain.aspx?type=Sale">
+                            <%= Resource.Admin_MasterPageAdminCatalog_Discount %>
+                        </a></li>
+                        <li class="dropdown-menu-item m-item"><a class="main-menu-subitem-lnk" href="ProductLists.aspx">
+                            <%= Resource.Admin_MasterPageAdmin_ProductLists %>
+                        </a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="neighbor-menu-item dropdown-menu-parent"><a href="Properties.aspx">
+                <%= Resources.Resource.Admin_MasterPageAdmin_Directory%></a>
+                <div class="dropdown-menu-wrap">
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-menu-item m-item"><a class="main-menu-subitem-lnk" href="Properties.aspx"><%= Resource.Admin_MasterPageAdmin_ProductProperties%>
+                        </a></li>
+                        <li class="dropdown-menu-item m-item"><a class="main-menu-subitem-lnk" href="Colors.aspx"><%= Resource.Admin_MasterPageAdmin_ColorDictionary%>
+                        </a></li>
+                        <li class="dropdown-menu-item m-item"><a class="main-menu-subitem-lnk" href="Sizes.aspx"><%= Resource.Admin_MasterPageAdmin_SizeDictionary%>
+                        </a></li>
+                        <li class="dropdown-menu-item m-item"><a class="main-menu-subitem-lnk" href="Tags.aspx">
+                            <%= Resource.Admin_Tags_Header %>
+                        </a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="neighbor-menu-item"><a href="ExportFeed.aspx" class="neighbor-menu-lnk">
+                <%= Resource.Admin_MasterPageAdmin_Export%></a></li>
+            <li class="neighbor-menu-item"><a href="ImportCSV.aspx" class="neighbor-menu-lnk">
+                <%= Resource.Admin_MasterPageAdmin_Import%></a></li>
+            <li class="neighbor-menu-item"><a href="Brands.aspx" class="neighbor-menu-lnk">
+                <%= Resource.Admin_MasterPageAdmin_Brands%></a></li>
+            <li class="neighbor-menu-item"><a href="Reviews.aspx" class="neighbor-menu-lnk">
+                <%= Resource.Admin_MasterPageAdmin_Reviews%></a></li>
+        </menu>
+        <div class="panel-add">
+            <%= Resource.Admin_MasterPageAdmin_Add %>
+            <a href="javascript:void(0);" class="panel-add-lnk" data-add-product-call class="link-pictograph-add-product">
+                <%= Resource.Admin_MasterPageAdmin_Product %></a>, 
+            <a href="m_Category.aspx?ParentCategoryID=<%=Request["categoryid"] ?? "0" %>" class="panel-add-lnk">
+                <%= Resource.Admin_MasterPageAdmin_Category %></a>
+        </div>
+    </div>
+    <ul class="two-column">
+        <li class="two-column-item">
+            <div class="panel-toggle">
+                <adv:CatalogPart ID="catalogPart" runat="server" />
+                <div class="justify">
+                    <h2 class="justify-item catalog-tree-header">
+                        <%= Resource.Admin_Catalog_Categories %>
+                    </h2>
+                    <div class="justify-item catalog-tree-controls">
+                        <a href="m_Category.aspx?ParentCategoryID=0" class="link-pictograph-add-product">
+                            <img id="ineditcategory" class="showtooltip"
+                                onmouseover="this.src='images/bplus.gif'" title="<%= Resource.Admin_MasterPageAdminCatalog_AddNewCategory %>"
+                                onmouseout="this.src='images/gplus.gif';" src="images/gplus.gif" />
+                        </a>
+                        <asp:ImageButton ID="ibRecalculate" CssClass="showtooltip" runat="server" ImageUrl="images/groundarrow.gif"
+                            ToolTip="<%$ Resources:Resource, Admin_MasterPageAdminCatalog_Recalculate%>"
+                            onmouseout="this.src='images/groundarrow.gif';" OnClick="ibRecalculate_Click" />
+                        <input type="image" src="images/gudarrow.gif" class="showtooltip" onclick="open_window('m_CategorySortOrder.aspx', 750, 640); return false;"
+                            title="<%= Resource.Admin_MasterPageAdminCatalog_SortOrder %>" onmouseover="this.src='images/budarrow.gif';"
+                            onmouseout="this.src='images/gudarrow.gif';" />
+                    </div>
+                </div>
+                <adv:CommandTreeView SkipLinkText="" CollapseImageUrl="images/new_admin/treeview/arrow-collapse.png"
+                    ExpandImageUrl="images/new_admin/treeview/arrow-expand.png" CssClass="treeview"
+                    ID="tree" runat="server" NodeWrap="False" ShowLines="False" OnTreeNodeCommand="tree_TreeNodeCommand"
+                    OnTreeNodePopulate="tree_TreeNodePopulate">
+                    <ParentNodeStyle ImageUrl="images/new_admin/treeview/folder.jpg" />
+                    <SelectedNodeStyle ImageUrl="images/new_admin/treeview/folder-alt.jpg" Font-Bold="true" />
+                    <NodeStyle ImageUrl="images/new_admin/treeview/folder.jpg" />
+                </adv:CommandTreeView>
+            </div>
+        </li>
+        <li class="two-column-item">
+            <asp:Label runat="server" ID="lMessage" />
+            <asp:ContentPlaceHolder ID="cphContent" runat="Server" />
+        </li>
+    </ul>
+    <script type="text/javascript">
+        var base$TreeView_PopulateNodeDoCallBack = this.TreeView_PopulateNodeDoCallBack;
+        var base$TreeView_ProcessNodeData = this.TreeView_ProcessNodeData;
+        this.TreeView_ProcessNodeData = function (result, context) {
+            //alert( "after load " );
+            hide_wait_for_node(context.node);
+            var r = base$TreeView_ProcessNodeData(result, context);
+            setupHoverPanel();
+            return r;
+        };
+        this.TreeView_PopulateNodeDoCallBack = function (context, param) {
+            //alert( "before load " );
+            show_wait_for_node(context.node);
+            return base$TreeView_PopulateNodeDoCallBack(context, param);
+        };
+
+        function setupTooltips() {
+            $(".showtooltip").tooltip({
+                showURL: false
+            });
+        }
+
+        function setupHoverPanel() {
+            $(".newToolTip").each(function () {
+                if ($(this).data('qtip')) {
+                    return true;
+                }
+                var catId = $(this).attr("catId");
+                var catName = $(this).attr("catName");
+
+                 var cnt = "<div class='hoverPanel'><div style='margin-bottom:5px;width:190px'><a onmouseover='this.style.color = \"#FF7F27\"' onmouseout='this.style.color = \"#000000\"' href=\"m_Category.aspx?ParentCategoryID=" + catId + "\"> <div class=\"hoverPanel_img_container\"><img onmouseout=\"this.src = 'images/glplus.gif';\" onmouseover=\"this.src = 'images/blplus.gif';\" src=\"images/glplus.gif\" alt=\"\"/></div>";
+                    cnt += "<span><%= Resource.Admin_MasterPageAdminCatalog_FPanel_AddCategory %></span></a></div>";
+                    cnt += "<div style='margin-bottom:5px;'><a onmouseover='this.style.color = \"#FF7F27\"' onmouseout='this.style.color = \"#000000\"' href=\"m_Category.aspx?CategoryID=" + catId + "\"> <div class=\"hoverPanel_img_container\"><img onmouseout=\"this.src = 'images/gpencil.gif';\" onmouseover=\"this.src = 'images/bpencil.gif';\" src=\"images/gpencil.gif\" alt=\"\"/></div>";
+                    cnt += "<span><%= Resource.Admin_MasterPageAdminCatalog_FPanel_EditCategory %></span></a></div>";
+
+                if (catId != '0') {
+                   
+                    cnt += "<div><a onmouseover='this.style.color = \"#FF7F27\"' onmouseout='this.style.color = \"#000000\"' onclick=\"if(confirm('" + catName + "')){__doPostBack('<%= tree.UniqueID %>','c$DeleteCategory#" + catId + "')} return false;\"> <div class=\"hoverPanel_img_container\"><img onmouseout=\"this.src = 'images/gcross.gif';\" onmouseover=\"this.src = 'images/bcross.gif';\" src=\"images/gcross.gif\" alt=\"\"/></div>";
+                    cnt += "<span><%= Resource.Admin_MasterPageAdminCatalog_FPanel_DeleteCategory %></span></a></div></div>";
+                }
+              
+                $(this).qtip({
+                    content: cnt,
+                    position: { corner: { target: 'bottomLeft', tooltip: "topLeft" }, adjust: { screen: true } },
+                    //раскомментировать в случае падения производительности скриптов на странице
+                    hide: { fixed: true, delay: 100 /*,effect: function () { $(this).stop(true, true).hide(); }*/ },
+                    show: { solo: true, delay: 600 /*,effect: function () { $(this).stop(true, true).show(); }*/ }
+                });
+
+                $(this).mouseover(function () {
+                    $(this).addClass("AdminTree_HoverNodeStyle");
+                });
+
+                $(this).mouseout(function () {
+                    $(this).removeClass("AdminTree_HoverNodeStyle");
+                });
+            });
+        }
+
+        function hide_wait_for_node(node) {
+            if (node.wait_img) {
+                node.removeChild(node.wait_img);
+            }
+        }
+
+        function show_wait_for_node(node) {
+            var wait_img = document.createElement("IMG");
+            wait_img.src = "images/loader.gif";
+            wait_img.border = 0;
+            node.wait_img = wait_img;
+            node.appendChild(wait_img);
+        }
+
+        Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function () { setupTooltips(); setupHoverPanel(); });
+
+        function ATreeView_Select(sender, arg) {
+            $("a.selectedtreenode").removeClass("selectedtreenode");
+            $(sender).addClass("selectedtreenode");
+            document.getElementById("TreeView_SelectedValue").value = arg;
+            document.getElementById("TreeView_SelectedNodeText").value = sender.innerHTML;
+            return false;
+        }
+    </script>
+</asp:Content>

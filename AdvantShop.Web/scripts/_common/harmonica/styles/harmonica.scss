@@ -1,0 +1,58 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+.harmonica {
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.harmonica-initialized {
+    overflow: visible;
+}
+
+.harmonica-tile {
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+}
+
+.harmonica-tile-dots {
+    z-index: 20;
+    position: relative;
+}
+
+.harmonica-tile-list {
+    border-radius: $border-radius-base;
+    background: #fff;
+    position: absolute;
+    z-index: 15;
+    padding-left: rem-calc(15px);
+    padding-right: rem-calc(15px);
+    box-shadow: $box-shadow-base;
+    top: 0;
+    opacity: 0;
+    left: auto;
+    right: 0;
+    text-align: right;
+}
+
+/*.harmonica-tile-submenu-invert {
+    left: auto;
+    right: 0;
+    text-align: right;
+}*/
+
+.harmonica-tile-row {
+    margin: rem-calc(7px) 0;
+}
+
+.harmonica-tile-submenu-active {
+    opacity: 1;
+}
+
+.harmonica-tile-link {
+    line-height: 1.2;
+}
+
+.harmonica-tile-inner {
+    display: inline-block;
+}

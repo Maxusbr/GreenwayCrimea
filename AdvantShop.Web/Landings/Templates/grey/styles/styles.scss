@@ -1,0 +1,637 @@
+﻿/*plp - product landing page*/
+$subTitles-size: 36px;
+/*$plpStickerMainSize: 180px;
+$plpStickerAltSize: 160px;
+$plpStickerAdditionalSize: 140px;*/
+
+.site-body.lp {
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    padding-top: 10px;
+
+    .site-body-inner {
+        margin-top: -10px;
+        padding-bottom: 0;
+    }
+}
+
+.plp-block-wrap {
+    & > .container {
+        background: url("../pictures/shadow.png") center 0 no-repeat;
+        padding: 50px 0;
+    }
+
+    &:nth-child(3n-2) {
+        background: url('../pictures/plp-bgd.jpg') #fff 0 0 repeat;
+    }
+
+    &:nth-child(3n-1) {
+        background: #fff;
+    }
+
+    &:nth-child(3n) {
+        background: #f3f3f3;
+    }
+}
+
+.plp-main-baner {
+    padding-bottom: 20px;
+
+    .t-timer {
+
+        .timer-text {
+            font-size: 18px;
+            text-transform: uppercase;
+            position: relative;
+            color: red;
+            font-weight: bold;
+            padding-top: 15px;
+            padding-right: 10px;
+        }
+
+        .details-buy-in-time-block {
+            padding-top: 30px;
+        }
+
+        .details-buy-in-time-block, .timer-text {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    .countdown-item-part {
+        font-size: 20px;
+    }
+
+    .details-colors,
+    .details-sizes {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 15px;
+        line-height: 34px;
+    }
+
+    .color-viewer-header, .sizes-viewer-header {
+        margin-right: 10px;
+    }
+
+    .color-viewer-list {
+        line-height: 0;
+    }
+}
+
+.plp-subTitle-wrap {
+    text-align: center;
+}
+
+.plp-subTitle {
+    display: inline-block;
+    font-size: $subTitles-size;
+    margin: 20px 0;
+    text-align: center;
+    position: relative;
+    font-family: "DroidSansRegular";
+
+    &:before {
+        content: "";
+        display: inline-block;
+        height: 2px;
+        width: 40px;
+        left: -70px;
+        top: 50%;
+        position: absolute;
+        background: #5b5b5b;
+    }
+
+    &:after {
+        content: "";
+        display: inline-block;
+        height: 2px;
+        width: 40px;
+        right: -70px;
+        top: 50%;
+        position: absolute;
+        background: #5b5b5b;
+    }
+}
+
+
+/*.plp-features {
+	background: #f4f5f5;
+}*/
+
+.plp-item-feature {
+
+    .fName, .fTxt, .fImage {
+        text-align: center;
+    }
+
+    .fImage {
+        min-height: 200px;
+    }
+
+    .fName {
+        font-size: 24px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .fTxt {
+        font-size: 16px;
+    }
+}
+
+.plp-gift {
+    padding: 30px;
+}
+
+.g-item {
+    text-align: center;
+    font-size: 16px;
+
+    .g-img {
+        min-height: 250px;
+    }
+}
+
+.gift-descr {
+    text-align: center;
+    font-size: 16px;
+}
+
+.gift-name {
+    color: #0662c1;
+}
+
+.plp-main-timer {
+    .t-container {
+        min-height: 265px;
+    }
+
+    background: url('../../../../../images/misc/plpGrad.png') top center;
+
+    .t-title {
+        font-size: $subTitles-size;
+        text-align: right;
+    }
+
+    .t-timer {
+        & > div {
+            padding-top: 48px;
+        }
+    }
+}
+
+.t-countdown {
+    .countdown-item-part, .countdown-spliter {
+        font-size: 40px;
+    }
+
+    .countdown-item-label {
+        font-size: 18px;
+        margin-top: 15px;
+        color: #4b4f58;
+    }
+
+    .countdown-spliter {
+        padding: 0 6px 0 0;
+    }
+}
+
+.plp-specifications {
+    .s-banner {
+        text-align: center;
+        margin: 40px 0 20px 0;
+    }
+}
+
+.spec-block {
+    width: 50%;
+    margin: 0 auto;
+
+    .properties-group {
+        text-align: center;
+        background: #b0b8bb;
+        border-bottom: 3px solid #8b9396;
+
+        &:hover {
+            background: #9ca4a7;
+            border-bottom: 3px solid #5b5b5b;
+        }
+
+        .properties-group-name {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 10px 0;
+            color: #fff;
+        }
+    }
+
+    .properties-item {
+        background: #fff;
+    }
+
+    .plp-p-name, .plp-p-value {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .plp-p-name, .properties-item-name {
+        text-align: right;
+    }
+
+    .plp-p-value {
+    }
+}
+
+.plp-video {
+    .v-container {
+        text-align: center;
+    }
+}
+
+.plp-reasons {
+    text-align: center;
+
+    .reas-flex {
+        margin: 30px 10px;
+        border: 1px solid #e3e3e3;
+        background: #fff;
+
+        &:hover {
+            border-color: #b0b8bb;
+
+            .r-img {
+                border: 3px solid #b0b8bb;
+                top: -44px;
+                margin-left: -44px;
+            }
+        }
+    }
+}
+
+.r-item {
+    display: table;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 60px 20px 40px;
+    width: 100%;
+    position: relative;
+
+    .r-img, .r-info {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .r-img {
+        font-size: 0;
+        position: absolute;
+        display: block;
+        width: 84px;
+        height: 84px;
+        background: #fff;
+        border-radius: 50%;
+        top: -42px;
+        line-height: 84px;
+        left: 50%;
+        margin-left: -42px;
+        border: 1px solid #e3e3e3;
+
+        img {
+            vertical-align: middle;
+        }
+    }
+
+    .r-info {
+        text-align: center;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: "DroidSansRegular";
+    }
+
+    .r-title {
+        font-size: 18px;
+        line-height: 1;
+        margin-bottom: 7px;
+    }
+
+    .r-txt {
+        font-size: 14px;
+    }
+}
+
+.plp-reviews {
+    margin-bottom: 50px;
+
+    .js-reviews-list-root {
+        text-align: center;
+    }
+
+    .review-item-buttons {
+        text-align: right;
+    }
+
+    .review-item-text {
+        border: 1px solid #c8d2d5;
+        padding: 20px 60px;
+        text-align: left;
+        background: #fff;
+        position: relative;
+        z-index: 10;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-image: url("../pictures/quotes.png");
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-image: url("../pictures/quotes.png");
+            background-repeat: no-repeat;
+            z-index: -1;
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+    }
+
+    .review-item-name {
+        font-size: 18px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .review-item-date {
+        font-size: 12px;
+        border-left: 0;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    .reviews-header {
+        @extend .plp-subTitle;
+    }
+}
+
+.spot-txt {
+    color: #fff;
+    z-index: 3;
+    position: absolute;
+    display: inline-block;
+    width: 70%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.plp-promo-image {
+    text-align: center;
+    position: relative;
+    border: 19px solid #c8d2d5;
+    background: #fff;
+
+    .pi-image {
+        display: inline-block;
+    }
+
+    .plp-image-big {
+        max-height: 450px;
+    }
+
+    .s-curent-price {
+        top: -50px;
+        left: 70px;
+    }
+
+    .s-old-price {
+        top: 35px;
+        left: -40px;
+    }
+
+    .s-gift {
+        top: 160px;
+        left: 45px;
+    }
+}
+
+.plp-btns {
+    margin-top: 20px;
+}
+
+
+.plp-main-timer .details-buy-in-time-block {
+    width: 385px;
+}
+
+.buy-in-time-text {
+    display: none;
+}
+
+.plp-price {
+    position: absolute;
+    top: 0;
+    left: 0; //minumum left from labels
+    .price-discount {
+        display: none;
+    }
+
+    .price-new, .price-old, .price-current, .plp-sticker-gift {
+        position: absolute;
+        color: #fff;
+        display: inline-block;
+        justify-content: center;
+        font-family: "DroidSansRegular";
+
+        .price-number {
+            font-size: 34px;
+        }
+
+        .price-currency {
+            font-size: 18px;
+        }
+    }
+
+    .price-new, .price-current {
+        top: -40px;
+        left: -43px;
+        width: 201px;
+        height: 73px;
+        background: url(../pictures/main.png) center center / 100% auto no-repeat;
+        z-index: 10;
+
+        .price-number {
+            font-size: 30px;
+            line-height: 55px;
+        }
+    }
+
+    .price-old {
+        top: 38px;
+        left: -36px;
+        width: 138px;
+        height: 50px;
+        background: url(../pictures/alt.png) center center / 100% auto no-repeat;
+        z-index: 5;
+
+        .price-number {
+            font-size: 20px;
+            line-height: 40px;
+        }
+
+        .price-currency {
+            text-decoration: none;
+            line-height: 40px;
+        }
+    }
+
+    .price-number, .price-currency {
+        text-align: center;
+        display: inline-block;
+    }
+}
+
+.plp-sticker-gift {
+    top: 98px;
+    left: -36px;
+    width: 138px;
+    height: 50px;
+    background: url(../pictures/additional.png) center center / 100% auto no-repeat;
+    z-index: 0;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.design-background-bottom,
+.design-background-top,
+body,
+html {
+    background: transparent none !important;
+}
+
+
+
+body.plp-body {
+    font-family: Tahoma, "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
+}
+
+.plp-site-head-phone {
+    font-size: 24px;
+    line-height: 1;
+    color: #757575;
+}
+
+.plp-title {
+    font-size: 40px;
+    text-align: center;
+    margin: 20px 0 45px;
+    font-family: "DroidSansRegular";
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+.plp-form-timer {
+    position: relative;
+}
+
+.plp-callback-form {
+    padding: 20px 40px;
+    background-color: rgba( 247, 249, 250, 0.62 );
+
+    .form-field-name, .buy-one-click-text {
+        font-size: 16px;
+        color: currentColor;
+    }
+
+    .buy-one-click-text {
+        display: none;
+    }
+
+    .buy-one-click-final-text {
+        font-size: 18px;
+    }
+
+    .input-required.form-field-name:after {
+        display: none;
+    }
+
+    .row, [class^="col"] {
+        display: block;
+        max-width: 100%;
+    }
+
+    [class^="col"] {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .row {
+        margin: 0;
+        width: 100%;
+    }
+
+    .form-field-name.vertical-interval-middle {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .buy-one-click-buttons {
+        text-align: left;
+
+        .btn-confirm {
+            width: 100%;
+            text-transform: uppercase;
+        }
+    }
+
+    .form-field-input input {
+        background: #fff;
+    }
+}
+
+#containerFirst {
+    .plp-main-baner {
+        min-height: 500px;
+    }
+}
+
+#containerSecond {
+    .plp-form-timer {
+        order: 2;
+
+        .plp-callback-form {
+            background: rgba(176, 184, 187,0.3);
+        }
+
+        .t-timer {
+        }
+    }
+
+    .plp-image-wrap {
+        order: 1;
+        margin-left: 20px;
+    }
+}

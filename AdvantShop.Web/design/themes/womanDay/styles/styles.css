@@ -1,0 +1,39 @@
+.design-background-top,
+.design-background-bottom {
+  z-index: 0; }
+
+.toolbar-bottom-enabled .design-background-bottom {
+  /*comment because get white margin to bottom page*/
+  /*margin-bottom: rem-calc(40px);*/ }
+
+.design-background-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 33.5625rem;
+  background: url("../images/headerImage.jpg") no-repeat center top; }
+  .design-background-top:after {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 6.25rem;
+    top: 100%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 40%, white 60%, rgba(255, 255, 255, 0) 100%); }
+
+.site-footer-top-level, .footer-bottom-level {
+  background-color: transparent; }
+
+.site-footer:before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: url(../images/footerImage.jpg) no-repeat center bottom;
+  height: 195px;
+  left: 0;
+  right: 0;
+  bottom: 0; }

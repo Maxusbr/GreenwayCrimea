@@ -1,0 +1,8 @@
+﻿<div>
+    <a class="btn btn-xsmall btn-submit" href="javascript:void(0)" modal-open="modalGrastinWidget">Выбрать пункт выдачи</a>
+    <div data-ng-bind="grastin.grastinShipping.PickpointAddress"></div>
+    <div data-ng-if="grastin.grastinShipping.PickpointAddress == null" class="shipping-extend-error error-color">
+        Необходимо выбрать пункт выдачи или указать курьерскую доставку
+    </div>
+    <input data-ng-if="grastin.grastinIsSelected" class="shipping-extend-input-hidden" type="text" data-ng-model="grastin.grastinShipping.PickpointAddress" required readonly data-validation-input-text="Необходимо выбрать пункт выдачи" />
+</div>

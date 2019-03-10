@@ -1,0 +1,35 @@
+﻿@using AdvantShop.Areas.Mobile.Extensions
+@using AdvantShop.Core.Services.Configuration.Settings
+@using AdvantShop.Orders
+
+@{
+    var headText = SettingsMobile.DisplayHeaderTitle ? Html.GetPageTitleText() : new HtmlString(SettingsMobile.HeaderCustomTitle);
+}
+<header id="header" class="cs-bg-1">
+    <div class="nav-root cs-t-8 center-aligner">@headText</div>
+    <label for="sidebar__input" class="toggle_sidebar" id="sidebar_trigger">
+        <div class="toggle-sidebar-icon icon-menu-before icon-margin-drop cs-t-8"></div>
+    </label>
+    <div data-window-click="spCtrl.clickOut(event)">
+        <div data-search-icon class="js-click-out"></div>
+        <div data-search-panel class="js-click-out"></div>
+    </div>
+    <div class="phoneBtn" data-ng-controller="CitySelectorCtrl as csCtrl">
+        <a class="phone-link link-text-decoration-invert icon-phone-before icon-margin-drop inked ink-light cs-t-8"
+           data-ng-hide="!zone.MobilePhone || zone.MobilePhone.length === 0" 
+           data-zone-current 
+           data-start-val="{MobilePhone: '@Html.GetCityPhone(true)'}" 
+           data-ng-href="tel:{{zone.MobilePhone}}" 
+           href="tel:@Html.GetCityPhone(true)"></a>
+    </div>
+    <div class="cartBtn">
+        <a href="@Url.AbsoluteRouteUrl("Cart")" class="cart-link cs-l-7">
+            <span class="icon-bag-before"></span>
+            <span class="cart-count cs-br-3">
+                <span class="border cs-bg-1 cs-br-3"></span>
+                <span data-cart-count data-type="count.TotalItems" data-ng-bind-html="cartCount.getValue()">@ShoppingCartService.CurrentShoppingCart.TotalItems</span>
+            </span>
+        </a>
+    </div>
+</header>
+@Html.StaticBlock("TopHeader")

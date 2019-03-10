@@ -1,0 +1,23 @@
+﻿@import "../../../../styles/_settings.scss";
+
+.wishlist-control {
+    font-size: $font-size-normal;
+}
+.wishlist-checkbox ~ .custom-input-text {
+    .wishlist-text-not-added {
+        display: inline;
+    }
+
+    .wishlist-text-added {
+        display: none;
+    }
+}
+.wishlist-checkbox:checked ~ .custom-input-text {
+    .wishlist-text-not-added {
+        display: none;
+    }
+
+    .wishlist-text-added {
+        display: inline;
+    }
+}

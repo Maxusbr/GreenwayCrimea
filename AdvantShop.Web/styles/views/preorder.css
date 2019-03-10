@@ -1,0 +1,16 @@
+.preorder-text {
+  padding-bottom: 1.875rem;
+  font-size: 0.875rem; }
+
+.preorder-product {
+  margin-left: 1.0625rem; }
+
+.preorder-form .form-field-name {
+  font-size: 0.875rem; }
+
+.preorder-success-txt {
+  font-size: 1rem;
+  padding-top: 1.25rem; }
+
+.preorder-price-wrap .price-new, .preorder-price-wrap .price-current {
+  font-size: 1rem; }

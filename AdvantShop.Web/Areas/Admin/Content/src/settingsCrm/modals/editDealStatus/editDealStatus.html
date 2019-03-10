@@ -1,0 +1,36 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{'Admin.Js.EditDealStatus.Title'|translate}}</h2>
+    </div>
+    <div class="modal-body overflow-hidden">
+        <div class="form-horizontal">
+            <div class="form-group row">
+                <label class="col-xs-3 control-label">
+                    <span class="text-required">
+                        {{'Admin.Js.EditDealStatus.Name'|translate}}
+                    </span>
+                </label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" ng-model="ctrl.Name" required validation-input-text={{'Admin.Js.EditDealStatus.Name'|translate}} autofocus data-e2e="DealStatusName" />
+                </div>
+            </div>
+            <div class="form-group row color-picker-wrap">
+                <label class="col-xs-3 control-label">{{'Admin.Js.EditDealStatus.Color'|translate}}</label>
+                <div class="col-xs-9">
+                    <color-picker data-e2e="dealStatusColor"
+                                  ng-model="ctrl.Color"
+                                  options="ctrl.colorPickerOptions"
+                                  validation-input-text="Цвет"
+                                  api="ctrl.colorPickerApi"
+                                  event-api="ctrl.colorPickerEventApi">
+                    </color-picker>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-button-validation-success="ctrl.save()" data-button-validation data-e2e="dealStatusSave">{{'Admin.Js.AddEdit.Save'|translate}}</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()" data-e2e="dealStatusCancel">{{'Admin.Js.AddEdit.Cancel'|translate}}</button>
+    </div>
+</form>

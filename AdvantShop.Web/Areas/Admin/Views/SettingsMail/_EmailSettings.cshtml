@@ -1,0 +1,233 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.MailSettingsModel
+
+<a href="@Url.Action("Academy", "Service", new { id = 13 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline">
+    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+    Видеоурок о Настройке почты
+</a>
+<div class="setting-title setting-title__m-t-md">
+    <h3>@T("Admin.Settings.NotifyEMails.EmailSettings")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.SMTP")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.SMTP, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.SMTP", required = "true", validation_input_text = T("Admin.Settings.NotifyEMails.SMTP") })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.SMTP")">
+            <div class="help-content">
+                SMTP сервер вашего почтового провайдера.<br>
+                <br>
+                Например, для yandex он будет: <b>smtp.yandex.ru</b><br>
+                У каждого почтового провайдера свой SMTP.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.Port")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.Port, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.Port", type = "number", required = "true", validation_input_text = T("Admin.Settings.NotifyEMails.Port") })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.Port")">
+            <div class="help-content">
+                Порт, через который происходит соединение с почтовым сервером.<br>
+                Например: <b>25</b>
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.ImapHost")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.ImapHost, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.imapHost", validation_input_text = T("Admin.Settings.NotifyEMails.ImapHost") })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.ImapHost")">
+            <div class="help-content">
+                IMAP сервер вашего почтового провайдера. <br>Необязательное поле.<br>
+                <br>
+                Для yandex: <b>imap.yandex.ru</b>, порт: 933, для google: <b>imap.gmail.com</b>, порт: 933<br><br>
+                У каждого почтового провайдера свой IMAP.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.ImapPort")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.ImapPort, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.imapPort", type = "number", validation_input_text = T("Admin.Settings.NotifyEMails.Port") })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.ImapPort")">
+            <div class="help-content">
+                IMAP Порт. Необязательное поле.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.Login")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.Login, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.Login", required = "true", validation_input_text = T("Admin.Settings.NotifyEMails.Login") })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.Login")">
+            <div class="help-content">
+                Логин, который вы используете для входа в почтовый ящик. Его нужно указать здесь.<br>
+                <br>
+                Например: <b>myemail@yandex.ru</b>
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.Password")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.Password", ng_init= "mailSettings.notifyemails.emailsettings.Password='" + Model.PasswordCompare + "'", validation_input_text = T("Admin.Settings.NotifyEMails.Password") })
+        @Html.HiddenFor(x => x.PasswordCompare, new { ng_model = "mailSettings.notifyemails.emailsettings.PasswordCompare" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.Password")">
+            <div class="help-content">
+                Пароль, который вы используете для входа в почтовый ящик. <br><br>
+                Если хотите изменить пароль укажите его, если ничего не указано пароль не изменится.
+                <br><br>
+                Например: <b>MySuperPass123</b>
+            </div>
+        </help-trigger>
+        @if (CustomerContext.IsDebug)
+        {
+            <div>@Model.Password</div>
+        }
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.SSL")
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.SSL, new { @class = "adv-checkbox-input", ng_model = "mailSettings.notifyemails.emailsettings.SSL", ng_init = "mailSettings.notifyemails.emailsettings.SSL=" + Model.SSL.ToString().ToLower() })
+            <span class="adv-checkbox-emul" data-e2e="SSL"></span>
+        </label>
+        <help-trigger class="ng-cloak m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.SSL")">
+            <div class="help-content">
+                Определяет использовать ли SSL соединения для подключения к почтовому серверу.<br>
+                В большинстве случаев эта галочка необходима.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.From")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.From, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.From", type = "email", required = "true", validation_input_text = T("Admin.Settings.NotifyEMails.From") })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.From")">
+            <div class="help-content">
+                Этот email будет использован в качестве адреса для отправки сообщений от магазина.<br>
+                Обратите внимание, что этот параметр не живет отдельно от других параметров почты.<br>
+                <br>
+                Укажите полное название ящика.<br>
+                <br>
+                Например: <b>myemail@yandex.ru</b>
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.NotifyEMails.SenderName")
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.SenderName, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.SenderName" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.NotifyEMails.SenderName")">
+            <div class="help-content">
+                Это имя будет использовано в качестве подписи.<br>
+                Не допускается использование html-тегов.<br>
+                Например: <b>Мой интрнет-магазин на платформе AdvantShop</b>
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/email-google-yandex" target="_blank">Инструкция. Настройка e-mail почты магазина</a>
+        </div>
+    </div>
+</div>
+
+<div bs-modifiable="false" name="mailSettingsTestForm">
+    <div class="setting-title">
+        <h3>@T("Admin.Settings.NotifyEMails.SendTestMessage")</h3>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3">
+            <div class="setting-label-wrap">
+                @T("Admin.Settings.NotifyEMails.To")
+            </div>
+        </div>
+        <div class="col-xs-4">
+            @Html.TextBox("To", null, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.To" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3">
+            <div class="setting-label-wrap">
+                @T("Admin.Settings.NotifyEMails.Subject")
+            </div>
+        </div>
+        <div class="col-xs-4">
+            @Html.TextBox("Subject", null, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.Subject" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3">
+            <div class="setting-label-wrap">
+                @T("Admin.Settings.NotifyEMails.Body")
+            </div>
+        </div>
+        <div class="col-xs-4">
+            @Html.TextArea("Body", null, new { @class = "form-control input-small", ng_model = "mailSettings.notifyemails.emailsettings.Body", rows = "10" })
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-success" ng-click="mailSettings.sendTestMessage(mailSettings.notifyemails.emailsettings)" ladda="mailSettings.sendingProgress">
+        @T("Admin.Settings.NotifyEMails.Send")
+    </button>
+</div>
+

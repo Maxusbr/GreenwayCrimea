@@ -1,0 +1,14 @@
+﻿@model AdvantShop.Module.SimaLand.ViewModel.AdvCategoryViewModel
+@if (Model.DeleteLink)
+{
+    <b><a class="delete-advcategory">Удалить связь</a></b>
+}
+else
+{
+    <b><a class="select-advcategory" data-categoryid="@Model.Back">Назад</a></b>
+}
+@foreach (var c in Model.Categories)
+{
+    @*<a class="select-advcategory" data-categoryid="@c.CategoryId">@c.Name<div class="set-image" >&nbsp;<img src="../admin/images/ok.gif" class="set-advcategory"/></div></a>*@
+    <a class="select-advcategory" data-categoryid="@c.CategoryId" data-categoryname="@c.Name">@c.Name<div class="set-image"><span class="set-text set-advcategory">Выбрать</span></div></a>
+}

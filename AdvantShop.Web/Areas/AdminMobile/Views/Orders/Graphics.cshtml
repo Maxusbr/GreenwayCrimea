@@ -1,0 +1,39 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.Orders.GraphicViewModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "blue", href = "", title = T("AdminMobile.Orders.Graphics.Graphics").ToString() })
+}
+<div id="content">
+    <div class="graph-wrapper" ng-controller="GraphicsCtrl as graphicsCtrl">
+        <div class="common-input-wrapper">
+            <span class="datetimepicker-wrap">
+                <input type="text" data-datetimepicker-trigger readonly="true" id="dateFrom" data-ng-model="graphicsCtrl.dateFrom" data-ng-init="graphicsCtrl.dateFrom='@Model.DateFrom.ToString("o")'" name="dateFrom" id="dateFrom" value="" class="input-small" />
+                <div data-datetimepicker-popup data-datetimepicker-popup-trigger="dateFrom" class="datetimepicker-popup ng-hide">
+                    <datetimepicker data-ng-model="graphicsCtrl.dateFrom" data-datetimepicker-config="{ startView:'year', minView:'day' }" data-on-set-time="graphicsCtrl.updateGraph(newDate, oldDate)" />
+                </div>
+            </span>
+            <div class="graphic-input-header">
+                |
+            </div>
+            <span class="datetimepicker-wrap">
+                <input type="text" data-datetimepicker-trigger readonly="true" id="dateTo" data-ng-model="graphicsCtrl.dateTo" data-ng-init="graphicsCtrl.dateTo='@Model.DateTo.ToString("o")'" name="dateTo" id="dateTo" value="" class="input-small" />
+                <div data-datetimepicker-popup data-datetimepicker-popup-trigger="dateTo" class="datetimepicker-popup ng-hide">
+                    <datetimepicker data-ng-model="graphicsCtrl.dateTo" data-datetimepicker-config="{ startView:'year', minView:'day' }" data-on-set-time="graphicsCtrl.updateGraph(newDate, oldDate)" />
+                </div>
+            </span>
+        </div>
+        <label class="paid-chk">
+            @Html.CheckBoxFor(x => x.Paid, new { @class = "custom-input-native", ng_click = "graphicsCtrl.updateGraph()", data_ng_model = "graphicsCtrl.paid" })
+            <span class="custom-input-checkbox"></span>
+            <span class="custom-input-text">@T("AdminMobile.Orders.Graphics.Paid")</span>
+        </label>
+        <div id="chartWeek" style="width: 99%; height: 190px;" data-plugin="chart"
+             data-chart="@Model.DataChart"
+             data-chart-options="{xaxis : {mode: 'time',timeformat: '%d %b',min: @Model.Min,max: @Model.Max}}">
+        </div>
+    </div>
+</div>

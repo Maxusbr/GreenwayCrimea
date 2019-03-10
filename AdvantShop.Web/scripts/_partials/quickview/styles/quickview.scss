@@ -1,0 +1,72 @@
+﻿@import "../../../../styles/_settings.scss";
+@import "../../../../styles/functions/_util.scss";
+@import "../../../../styles/functions/_breakpoints.scss";
+
+$quickviewArrowWidth: rem-calc(60px);
+
+.quickview-arrows-prev,
+.quickview-arrows-next {
+    font-size: rem-calc(50px);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 0;
+    box-sizing: border-box;
+    width: $quickviewArrowWidth;
+    display: block;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:before {
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    }
+}
+
+.quickview-arrows-prev {
+    right: 100%;
+    margin-right: $margin-value-base;
+}
+
+.quickview-arrows-next {
+    left: 100%;
+    margin-left: $margin-value-base;
+}
+
+.modal .modal-quickview {
+    max-width: $max-width - (($quickviewArrowWidth + $margin-value-base) * 2);
+    min-width: $min-width - (($quickviewArrowWidth + $margin-value-base) * 2);
+    width: 100%;
+}
+
+.modal-quickview {
+    .details-availability, .details-rating {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .details-rating {
+        margin-left: $margin-value-base;
+    }
+
+    min-height: 540px;
+}
+
+.quickview-loading-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@include breakpointsGetMedia('tablet') {
+    .modal .modal-quickview {
+        max-width: $min-width - (($quickviewArrowWidth + $margin-value-base) * 2);
+        min-width: $min-width - (($quickviewArrowWidth + $margin-value-base) * 2);
+    }
+}
+.modal-quickview{
+	width:980px;
+}

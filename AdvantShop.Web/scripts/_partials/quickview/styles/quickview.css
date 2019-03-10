@@ -1,0 +1,54 @@
+.quickview-arrows-prev,
+.quickview-arrows-next {
+  font-size: 3.125rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  width: 3.75rem;
+  display: block; }
+  .quickview-arrows-prev:focus,
+  .quickview-arrows-next:focus {
+    outline: none; }
+  .quickview-arrows-prev:before,
+  .quickview-arrows-next:before {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); }
+
+.quickview-arrows-prev {
+  right: 100%;
+  margin-right: 1.0625rem; }
+
+.quickview-arrows-next {
+  left: 100%;
+  margin-left: 1.0625rem; }
+
+.modal .modal-quickview {
+  max-width: 64.125rem;
+  min-width: 51rem;
+  width: 100%; }
+
+.modal-quickview {
+  min-height: 540px; }
+  .modal-quickview .details-availability, .modal-quickview .details-rating {
+    display: inline-block;
+    vertical-align: middle; }
+  .modal-quickview .details-rating {
+    margin-left: 1.0625rem; }
+
+.quickview-loading-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+@media (min-device-width: 768px) and (max-device-width: 1024px) {
+  .modal .modal-quickview {
+    max-width: 51rem;
+    min-width: 51rem; } }
+
+.modal-quickview {
+  width: 980px; }

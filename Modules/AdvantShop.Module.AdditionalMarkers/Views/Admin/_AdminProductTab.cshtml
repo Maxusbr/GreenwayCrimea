@@ -1,0 +1,17 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.AdditionalMarkers
+@using AdvantShop.Module.AdditionalMarkers.Service
+@model int
+@{ 
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+    {
+        url + "modules/" + AdditionalMarkers.ModuleStringId + "/content/scripts/admin-product-tab/admin-product-tab.js",
+        url + "modules/" + AdditionalMarkers.ModuleStringId + "/content/scripts/module-admin-service.js",
+        url + "modules/" + AdditionalMarkers.ModuleStringId + "/content/styles/admin-style.css"
+    };
+}
+
+<div data-oc-lazy-load="[@String.Join(",",scripts.Select(x => "'" + x + "?" + ModuleSettings.Version + "'"))]">
+    <am-admin-product-tab data-product-id="@Model"></am-admin-product-tab>
+</div>

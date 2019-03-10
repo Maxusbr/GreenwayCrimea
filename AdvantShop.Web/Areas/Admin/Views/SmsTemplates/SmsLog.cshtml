@@ -1,0 +1,22 @@
+﻿@using AdvantShop.Core.Services.Bonuses.Sms
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.SmsTemplates.SmsLog.Title")
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="gridlog"
+                        grid-on-init="smstemplates.gridlogOnInit(gridlog)"
+                        grid-options="smstemplates.gridlogOptions"
+                        grid-url="'smstemplates/getsmslogs'"
+                        grid-filter-enabled="true"
+                        grid-selection-enabled="false">
+        </ui-grid-custom>
+    </div>
+</div>

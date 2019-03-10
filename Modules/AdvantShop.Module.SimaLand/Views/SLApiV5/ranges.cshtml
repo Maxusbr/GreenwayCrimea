@@ -1,0 +1,81 @@
+﻿@model AdvantShop.Module.SimaLand.ViewModel.RangeViewModel
+
+<table class="table-ui">
+    <thead>
+        <tr>
+            <th>
+                От
+            </th>
+            <th>
+                До
+            </th>
+            <th>
+                Наценка
+            </th>
+            <th style="width: 55px;">
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var range in Model.ranges)
+            {
+                if (Model.Edited == range.Id)
+                {
+                    <tr>
+                        <td>
+                            <input id="minPrice" class="input-markup" type="text" placeholder="от" value="@range.MinPrice" />
+                        </td>
+                        <td>
+                            <input id="maxPrice" class="input-markup" type="text" placeholder="до" value="@range.MaxPrice"/>
+                        </td>
+                        <td>
+                            <input id="markup" class="input-markup" type="text" placeholder="наценка" value="@range.Markup"/>
+                        </td>
+                        <td>
+                            <input id="update" type="image" data-rangeid="@range.Id" src="images/updatebtn.png" style="border-width:0px;">
+                            <input type="image" id="cancel" title="Отмена" src="images/cancelbtn.png" style="border-width:0px;">
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            @range.MinPrice<span> руб.</span>
+                        </td>
+                        <td>
+                            @range.MaxPrice<span> руб.</span>
+                        </td>
+                        <td>
+                            @range.Markup<span>%</span>
+                        </td>
+                        <td>
+                            <input type="image" id="editMarkup" data-rangeid="@range.Id" title="Изменить" src="images/editbtn.gif" style="border-width:0px;">
+                            <input type="image" id="deleteMarkup" data-rangeid="@range.Id" title="Удалить" src="images/deletebtn.png" style="border-width:0px;">
+                        </td>
+                    </tr>
+                }
+            }
+            if (Model.Added)
+            {
+                <tr>
+                    <td>
+                        <input id="minPrice" class="input-markup" type="text" placeholder="от"/>
+                    </td>
+                    <td>
+                        <input id="maxPrice" class="input-markup" type="text" placeholder="до" />
+                    </td>
+                    <td>
+                        <input id="markup" class="input-markup" type="text" placeholder="наценка" />
+                    </td>
+                    <td>
+                        <input type="image" id="added" title="Добавить" src="images/addbtn.gif" style="border-width:0px;">
+                        <input type="image" id="cancel" title="Отмена" src="images/cancelbtn.png" style="border-width:0px;">
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

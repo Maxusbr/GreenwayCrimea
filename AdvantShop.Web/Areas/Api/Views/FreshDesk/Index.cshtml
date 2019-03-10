@@ -1,0 +1,157 @@
+﻿@model AdvantShop.Areas.Api.Models.FreshDeskModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 13px;
+        }
+
+        h1 {
+            margin-bottom: 16px;
+            font-size: 19.5px;
+            font-weight: 200;
+            line-height: 24px;
+        }
+
+        a {
+            color: #06c;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: #004080;
+                text-decoration: none;
+            }
+
+        .aw-customer-name {
+            font-weight: bold;
+            font-size: 120%;
+        }
+
+        .aw-customer-row {
+            margin: 5px 0;
+        }
+
+        .aw-customer-last-orders {
+            padding: 0;
+            margin: 15px 0;
+            border-collapse: collapse;
+        }
+
+        .aw-customer-last-orders-cell {
+            padding: 5px;
+            vertical-align: middle;
+            border: 1px #ccc solid;
+            border-width: 1px 0;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .aw-customer-last-orders-caption {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .aw-customer-not-found {
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .aw-header {
+            margin: 15px 0 5px;
+            font-size: 20px;
+        }
+
+        .aw-customer-error {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .aw-split {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 5px;
+            width: 1px;
+            background: #ccc;
+            height: 18px;
+        }
+        .aw-customer-email,
+        .aw-customer-phone{
+            line-height: 1;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Информация о покупателе</h1>
+
+    @if (!string.IsNullOrEmpty(Model.Email))
+    {
+        <div class="aw-customer-name aw-customer-row">@Model.Name</div>
+        <div class="aw-customer-row">
+            <span class="aw-customer-email"><a href="mailto:@Model.Email">@Model.Email</a></span>
+            <span class="aw-split"></span>
+            <span class="aw-customer-phone"><a href="tel:@Model.Phone">@Model.Phone</a></span>
+        </div>
+        <div class="aw-customer-row">Количество заказов: <b>@Model.OrdersCount</b></div>
+        <div class="aw-customer-row">Общая сумма заказов: <b>@Model.OrdersSum</b></div>
+        <div class="aw-customer-row">
+            @if (!string.IsNullOrEmpty(Model.Link))
+            {
+                <a href="@Model.Link" target="_blank">Информация о клиенте</a>
+            }
+            else
+            {
+                <span>Информация о клиенте</span>
+            }
+        </div>
+        if (Model.LastOrders != null && Model.LastOrders.Count > 0)
+        {
+            <table class="aw-customer-last-orders">
+                <caption class="aw-customer-last-orders-caption">
+                    Последние заказы:
+                </caption>
+
+                @foreach (var item in Model.LastOrders)
+                {
+                    <tr>
+                        <td class="aw-customer-last-orders-cell" style="border-left: 3px #@item.StatusColor solid;" title="@item.Status">
+                            @item.Date
+                        </td>
+                        <td class="aw-customer-last-orders-cell">
+                            @item.Sum
+                        </td>
+                        <td class="aw-customer-last-orders-cell">
+                            @(item.Payed ? "Оплачен" : "Не оплачен")
+                        </td>
+                        <td class="aw-customer-last-orders-cell">
+                            <a href="@item.Link" target="_blank">Подробнее</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div class="aw-customer-last-orders-caption">
+                Заказов нет
+            </div>
+        }
+    }
+    else
+    {
+        <div class="aw-customer-not-found">
+            Покупатель не найден
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿@import "../_settings.scss";
+@import "../functions/_util.scss";
+
+.properties {
+    padding: 0;
+    margin: 0;
+    display: block;
+    list-style: none;
+    overflow: inherit;
+}
+
+.properties-group-name,
+.properties-item-name,
+.properties-item-value,
+.properties-item-title-name,
+.properties-item-title-value {
+    margin-left: $margin-value-base;
+    margin-right: $margin-value-base;
+}
+
+.properties-group-name {
+    font-size: $font-size-xmedium;
+    margin-top: $margin-value-base;
+    margin-bottom: $margin-value-base;
+}
+
+.properties-item-name, .properties-item-value {
+    font-size: $font-size-normal;
+    margin-top: $vertical-interval-middle;
+    margin-bottom: $vertical-interval-middle;
+}
+
+.properties-item-title-name,
+.properties-item-title-value {
+    font-size: $font-size-normal;
+    margin-top: $vertical-interval-middle;
+}
+.properties-item-hint{
+
+}

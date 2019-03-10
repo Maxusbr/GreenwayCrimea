@@ -1,0 +1,87 @@
+﻿@using AdvantShop.Orders
+@model AdvantShop.ViewModel.ProductDetails.ProductDetailsViewModel
+@{
+    var product = Model.Product;
+    var offer = Model.Offer;
+}
+
+@Html.RenderModules("product_page_before", new { product, offer, Model.FinalPrice, Model.FinalDiscount })
+<div data-ng-init="product.loadData(@product.ProductId, @(Model.ColorId != null ?  Model.ColorId.ToString() : "null"), @(Model.SizeId != null ? Model.SizeId.ToString() : "null"))"></div>
+<div class="col-p-v" itemscope itemtype="http://schema.org/Product">
+    <div class="page-title-row details-title-row">
+        <h1 class="details-title page-title" itemprop="name" data-ng-init="product.productName='@Html.AttributeEncode(Html.GetPageH1())'" @Html.InplaceMeta(product.ProductId, AdvantShop.SEO.MetaType.Product)>@Html.GetPageH1()</h1>
+    </div>
+    @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+    <div class="row">
+        <div class="col-xs-9 details-block">
+            <div class="row">
+                <div class="col-xs-6">
+                    @Html.Action("ProductPhotos", new { productModel = Model, enabledModalPreview = true })
+                </div>
+                <div class="col-xs-6">
+                    @Html.Partial("ProductInfo", Model)
+                </div>
+            </div>
+            <div>
+                @Html.StaticBlock("details-2")
+                @Html.RenderModules("product_middle", new { product, offer })
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <aside class="details-aside">
+                @Html.StaticBlock("bannerDetails")
+                @if (product.Brand != null && product.Brand.Enabled && product.Brand.BrandLogo != null && product.Brand.BrandLogo.PhotoName.IsNotEmpty())
+                {
+                    <figure class="details-brand">
+                        <a href="@Url.RouteUrl("Brand", new { url = product.Brand.UrlPath })" class="details-brand-link">
+                            <img class="details-brand-link" src="@product.Brand.BrandLogo.ImageSrc()" alt="@Html.Encode(product.Brand.Name)" />
+                        </a>
+                    </figure>
+                }
+                @if (offer != null)
+                {
+                    <div class="cs-bg-4 block-exuding">
+                        @Html.Action("CompareBlock", "Compare", new { NgOfferId = "product.offerSelected.OfferId", NgNameCallbackInit = "product.compareInit", Mode = "product", Checked = ShoppingCartService.CurrentCompare.Any(x => x.OfferId == offer.OfferId) })
+                        @Html.Action("WishListBlock", "Wishlist", new { OfferId = offer.OfferId, NgOfferId = "product.offerSelected.OfferId", NgNameCallbackInit = "product.wishlistControlInit", Mode = "product", Checked = ShoppingCartService.CurrentWishlist.Any(x => x.OfferId == offer.OfferId) })
+
+                        @if (Model.RenderShippings)
+                        {
+                            <div class="block-exuding-row">
+                                <div class="top-shipping-row">
+                                    Доставка в
+                                    <a class="link-dotted-invert" href="" data-zone-dialog-trigger>
+                                        <span data-zone-current data-ng-bind="zone.City" data-start-val="{City: '@AdvantShop.Repository.IpZoneContext.CurrentZone.City'}">@AdvantShop.Repository.IpZoneContext.CurrentZone.City</span>
+                                    </a>
+                                </div>
+                                @{
+                                    var prodMinAmount = product.MinAmount == null
+                                        ? product.Multiplicity
+                                        : product.Multiplicity > product.MinAmount
+                                            ? product.Multiplicity
+                                            : product.MinAmount.Value;
+                                }
+                                <div data-shipping-variants
+                                     data-type="@Model.ShowShippingsMethods"
+                                     data-start-offer-id="@offer.OfferId"
+                                     data-start-amount="@(prodMinAmount > 0 ? prodMinAmount : 1)"
+                                     data-offer-id="product.offerSelected.OfferId"
+                                     data-amount="product.offerSelected.AmountBuy"
+                                     data-sv-custom-options="product.customOptions.xml"
+                                     data-init-fn="product.addShippingVariants(shippingVariants)"></div>
+                            </div>
+                                    }
+                        @Html.Action("SocialButtons", "Common")
+                    </div>
+                    @Html.RenderModules("product_right", new { product, offer })
+                    }
+            </aside>
+        </div>
+    </div>
+    @Html.Action("ProductTabs", Model)
+    <div class="details-row">
+        @Html.Action("RelatedProducts", new { Model.Product, type = "Related" })
+    </div>
+    <div class="details-row">
+        @Html.Action("RelatedProducts", new { Product = product, type = "Alternative" })
+    </div>
+</div>

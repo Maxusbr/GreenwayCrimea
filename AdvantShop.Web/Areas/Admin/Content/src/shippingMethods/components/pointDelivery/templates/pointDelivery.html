@@ -1,0 +1,40 @@
+﻿<!--<ng-form name="pointdelivery">-->
+    <div>
+        <div class="m-b-sm">
+                Адрес:
+        </div>
+        <div class="flex m-b-md">
+            <div class="flex-grow p-r-sm">
+                <input type="text" ng-model="$ctrl.pointAddress" class="form-control"/>
+            </div>
+            <div>
+                <button type="button" class="btn btn-action" ng-disabled="$ctrl.pointAddress == null" ng-click="$ctrl.addPoint($ctrl.pointAddress)">Добавить</button>
+            </div>
+        </div>
+
+        <div id="pointDeliverySortingContainer" class="relative">
+            <div class="m-b-md sortable-row ng-cloak" ng-model="$ctrl.pointsArr" as-sortable="$ctrl.sortableOptions">
+                <div ng-repeat="item in $ctrl.pointsArr" as-sortable-item>
+                    <div class="flex payment-row middle-xs between-xs">
+                        <div class="col-xs">
+                            <div class="as-sortable-item-handle" as-sortable-item-handle>
+                                <div class="flex middle-xs">
+                                    <div class="as-sortable-item-handle" as-sortable-item-handle>
+                                        <icon-move />
+                                    </div>
+                                    <span data-ng-bind="item.pointAddress"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex middle-xs col-fixed-size-ls">
+                            <a href="" ng-click="$ctrl.deletePoint(item)" class="link-invert link-decoration-none fa fa-remove"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="points" value="{{$ctrl.points}}" />
+        <input type="text" ng-model="$ctrl.update" class="hidden" />
+
+    </div>
+<!--</ng-form>-->

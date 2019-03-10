@@ -1,0 +1,10 @@
+﻿<div>
+    <div class="color-viewer-item" data-ng-repeat="color in colorsViewer.colors track by $index"
+         data-ng-class="{'color-viewer-item-selected cs-br-2': colorsViewer.multiselect ? colorsViewer.colorSelected.indexOf(color) !== -1 : colorsViewer.colorSelected.ColorId === color.ColorId }" title="{{::color.ColorName}}">
+        <div class="color-viewer-inner cs-br-1"
+             data-ng-bind="::color.ColorName"
+             data-ng-click="colorsViewer.selectColor($event, color)"
+             data-ng-style="::{'background-color': color.ColorCode != null && color.ColorCode.length > 0 ? color.ColorCode : 'transparent', 'background-image': color.PhotoName != null && color.PhotoName.length > 0 ? 'url(' + colorsViewer.getImagePath(color.PhotoName) + ')' : 'none', 'width': colorsViewer.colorWidth, 'height': colorsViewer.colorHeight, 'background-size': '100%' }">
+        </div>
+    </div>
+</div>

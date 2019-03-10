@@ -1,0 +1,93 @@
+﻿@model AdvantShop.Web.Admin.Models.Categories.AdminCategoryModel
+
+<div class="row">
+    <div class="col-xs-3 col-lg-3 col-wl-2">
+        <h2 class="category-title">SEO</h2>
+        <div class="">
+            SEO параметры заполняются автоматически по шаблону, указанному в настройках.<br />
+            @*При необходимости вы самостоятельно можете указать SEO параметры такие как: title, h1, keywords, description*@
+        </div>
+    </div>
+    <div class="col-xs-9 col-wl-10">
+        <div class="ibox category-block">
+            <div class="ibox-content category-content border_none">
+
+                <div>
+                    <div class="row middle-xs category-row">
+                        <div class="flex-grow-n col-fixed-size-md">
+                            <span class="text-required">@T("Admin.Category.Index.UrlPath")</span>
+                        </div>
+                        <div class="flex-grow flex-basis-n flex-width-n relative">
+                            <label class="input-group">
+                                <span class="input-group-addon fs-xs">@UrlService.GetUrl("categories/")</span>
+                                @Html.TextBoxFor(x => x.UrlPath, new { @class = "form-control", ng_model = "category.UrlPath", required = "required", validation_input_text = T("Admin.Category.Index.UrlPath") })
+                            </label>
+                            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Синоним для URL запроса">
+                                Обязательное поле. Синоним не должен содержать пробелов и знаков препинания, кроме '_' и '-' Например: padarki-detyam
+                            </help-trigger>
+                        </div>
+                    </div>
+                </div>
+
+                <label class="col-fixed-offset-md adv-checkbox-label" data-e2e="categoryDefaultMeta">
+                    @Html.CheckBoxFor(x => x.DefaultMeta, new { ng_model = "category.defaultMeta", ng_init = "category.defaultMeta=" + Model.DefaultMeta.ToLowerString(), @class = "adv-checkbox-input" })
+                    <span class="adv-checkbox-emul adv-checkbox-emul-t"></span>
+                    Использовать Meta по умолчанию
+                    <help-trigger class="ng-cloak word-spacing" data-title="Использовать Meta по умолчанию">
+                        Если опция включена, SEO настройки будут взяты из общих настроек магазина.<br>
+                        <br>
+                        Если опция выключена, SEO настройки для товара будут взяты с формы ниже.<br>
+                        <br>
+                        Подробнее:<br>
+                        <a href="http://www.advantshop.net/help/pages/settings-of-seo-module"> Настройка мета по умолчанию для магазина.</a>
+                    </help-trigger>
+                </label>
+
+                <div class="category-seo-custom-block ng-cloak" ng-if="!category.defaultMeta">
+                    <div>
+                        <div class="row middle-xs category-row">
+                            <div class="flex-grow-n col-fixed-size-md">
+                                @T("Admin.Category.Index.SeoTitle")
+                            </div>
+                            <div class="flex-grow flex-basis-n flex-width-n">
+                                @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", ng_model = "category.seoTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Category }) })
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row middle-xs category-row">
+                            <div class="flex-grow-n col-fixed-size-md">
+                                @T("Admin.Category.Index.SeoH1")
+                            </div>
+                            <div class="flex-grow flex-basis-n flex-width-n">
+                                @Html.TextBoxFor(x => x.SeoH1, new { @class = "form-control", ng_model = "category.seoH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Category }) })
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row middle-xs category-row">
+                            <div class="flex-grow-n col-fixed-size-md">
+                                @T("Admin.Category.Index.SeoKeywords")
+                            </div>
+                            <div class="flex-grow flex-basis-n flex-width-n">
+                                @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", ng_model = "category.seoKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Category }) })
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row middle-xs category-row">
+                            <div class="flex-grow-n col-fixed-size-md">
+                                @T("Admin.Category.Index.SeoDescription")
+                            </div>
+                            <div class="flex-grow flex-basis-n flex-width-n">
+                                @Html.TextBoxFor(x => x.SeoDescription, new { @class = "form-control", ng_model = "category.seoDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Category }) })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-fixed-offset-md">@T("Admin.Category.Index.UseGlobalVariables")</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

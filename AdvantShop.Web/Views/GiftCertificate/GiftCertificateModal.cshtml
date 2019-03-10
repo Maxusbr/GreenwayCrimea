@@ -1,0 +1,73 @@
+﻿@model AdvantShop.ViewModel.GiftCertificate.GiftCertificateModalViewModel
+@{
+    string code = "", nameTo = "", nameFrom = "", message = "", sum = "";
+    if (Model.GiftCertificate != null)
+    {
+        code = Model.GiftCertificate.CertificateCode;
+        nameTo = Model.GiftCertificate.ToName;
+        nameFrom = Model.GiftCertificate.FromName;
+        message = Model.GiftCertificate.CertificateMessage;
+        sum = Model.GiftCertificate.Sum.ToString();
+    }
+    else
+    {
+        code = "0000-0000-0000";
+    }
+}
+
+<div id="giftcertificatePreview" @Html.Raw(Model.IsModal ? "data-modal-control data-move-in-body=\"true\" class=\"ng-hide\"" : "")>
+    <div class="modal-content">
+        <div class="certificate">
+            <div class="header">
+                <div class="logo-wrap">
+                    @Html.Action("Logo", "Common")
+                </div>
+                <div class="code-wrap">
+                    <div class="text">
+                        @T("GiftCertificate.GiftCertificateModal.Code"):
+                    </div>
+                    <div class="code">
+                        @Html.Raw(code)
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="section pie">
+                <div class="cert-data">
+                    <div class="name">
+                        <img src="@UrlService.GetUrl()images/giftcertificate/header_@(SettingsMain.Language).png" alt="" />
+                    </div>
+                    <div class="persons">
+                        <div class="person-to">
+                            <img src="@UrlService.GetUrl()images/giftcertificate/to_@(SettingsMain.Language).png" alt="" />
+                            <span data-ng-bind="giftcertificate.NameTo">@Html.Raw(nameTo)</span>
+                        </div>
+                        <div class="person-from">
+                            <img src="@UrlService.GetUrl()images/giftcertificate/from_@(SettingsMain.Language).png" alt="" />
+                            <span data-ng-bind="giftcertificate.NameFrom">@Html.Raw(nameFrom)</span>
+                        </div>
+                        <br class="clear" />
+                    </div>
+                    <div class="message">
+                        <span data-ng-bind="giftcertificate.Message">@Html.Raw(message)</span>
+                    </div>
+                    <div class="cert-price">
+                        <span data-ng-bind="giftcertificate.Sum">@Html.Raw(sum)</span>
+                    </div>
+                    <div class="heighter"></div>
+                    <br class="clear" />
+                </div>
+                <div class="use">
+                    @T("GiftCertificate.GiftCertificateModal.CanBeUsed")
+                    <span class="site-use">
+                        @SettingsMain.SiteUrl
+                    </span>
+                </div>
+            </div>
+            <div class="bow-wrap">
+                <div class="bow">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

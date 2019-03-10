@@ -1,0 +1,7 @@
+﻿<div class="admin-comments row">
+    <admin-comment-item id="{{'admin-comment-' + comment.Id}}" class="admin-comment-item col-xs-12" comment="comment"
+                        ng-repeat="comment in $ctrl.comments track by comment.Id"></admin-comment-item>
+</div>
+<admin-comments-form form-visible="$ctrl.formVisible" admin-comment-id="$ctrl.adminCommentIdActive" visible-form-cancel-button="$ctrl.visibleFormCancelButton" 
+                     submit-fn="$ctrl.submit(form)" cancel-fn="$ctrl.cancel()">
+</admin-comments-form>

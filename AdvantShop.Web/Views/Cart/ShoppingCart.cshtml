@@ -1,0 +1,11 @@
+﻿@model AdvantShop.ViewModel.Common.ShoppingCartViewModel
+
+<div class="site-head-cart">
+    @Html.Action("ClientCode", "User")
+    <div class="cart-mini" data-cart-mini>
+        <a data-cart-mini-trigger href="@Url.RouteUrl("Cart")" class="cs-l-2 cs-bg-9 cart-mini-main-link icon-bag-before">
+            @T("Cart.ShoppingCart.ShoppingCart"): <span data-cart-count data-type="count" data-ng-bind-html="cartCount.getValue()">@Model.Amount</span>
+        </a>
+        <div data-cart-mini-list data-cart-data="cartMini.cartData"></div>
+    </div>
+</div>

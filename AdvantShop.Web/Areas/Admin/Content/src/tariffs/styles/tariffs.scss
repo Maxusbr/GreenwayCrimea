@@ -1,0 +1,105 @@
+﻿@import '../../../styles/_variable.scss';
+
+.tariff-period-wrap,
+.tariff-wrap {
+    flex-basis: 25%;
+    max-width: 25%;
+    padding: 10px 5px;
+}
+
+.tariff-block {
+    min-height: 568px;
+    padding: 15px 28px;
+    border: $border-default;
+}
+
+.tariff-price,
+.tariff-description,
+.tariff-features,
+.tariff-title {
+    color: $color-base;
+}
+
+.tariff-label {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    display: inline-block;
+    background: #8bc34a;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: $OpenSans-bold;
+    font-size: 9px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    line-height: 1;
+}
+
+.tariff-description {
+    font-size: $fz-small;
+    margin-bottom: 26px;
+}
+
+.tariff-features {
+    border-left: 0;
+    border-right: 0;
+}
+
+.tariff-features-text-danger {
+    color: #f44336;
+}
+
+.tariff-content {
+    flex: 1 0 auto;
+}
+
+.tariff-footer {
+    flex: 0 0 auto;
+}
+
+.tariff-price {
+    font-size: $fz-small;
+}
+
+.tariff-price .tarif-price-num {
+    color: $color-base;
+    font-size: $fz-big;
+}
+
+.tariff-period {
+    color: $color-base;
+    border: $border-default;
+    padding: 15px 28px;
+}
+
+.tariff-period-title {
+    color: $color-base;
+    font-size: $fz-very-small;
+}
+
+.tariff-period-price {
+    color: $color-base;
+    font-size: 18px;
+}
+
+.tariff-period-descount {
+    color: $color-base;
+    font-size: $fz-middle;
+}
+
+.selected-tariff-period,
+.selected-tariff {
+    border-color: #2d9cee;
+    box-shadow: 0 0 0 2px #2d9cee;
+}
+.tariff-block:hover {
+    border-color: #2d9cee;
+    box-shadow: 0 0 0 2px #2d9cee;
+    cursor: pointer;
+}
+
+.selected-tariff-period > *,
+.selected-tariff-period .tariff-period-title {
+    color: #8bc34a !important;
+}
+

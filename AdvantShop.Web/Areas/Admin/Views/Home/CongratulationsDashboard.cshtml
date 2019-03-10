@@ -1,0 +1,76 @@
+﻿
+<div class="row congrat-block">
+    <div class="col-xs-9 col-wl-10">
+        <div class="row center-xs">
+            <div class="col-xs-10">
+                <div class="congrat-title text-center">
+                    <h2>Поздравляем, Вы успешно открыли Интернет-магазин!</h2>
+                </div>
+                <div class="text-center m-b-md m-t-lg congrat-subtitle">
+                    Всего несколько шагов отделяет Вас от запуска магазина
+                </div>
+                <div class="text-right m-b-sm">
+                    <a href="">Пропустить мастер запуска</a>
+                </div>
+                <div class="ibox-content m-b-md">
+                    <div class="flex middle-xs between-xs">
+                        <div>
+                            <div class="flex middle-xs">
+                                <i class="fa fa-info-circle congrat-icon" aria-hidden="true"></i>
+                                <div>
+                                    <div class="bold">Введите данные Вашего магазина</div>
+                                    <div>Укажите название Вашего магазина, контакты</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-success">Ввести данные</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content m-b-md">
+                    <div class="flex middle-xs between-xs">
+                        <div>
+                            <div class="flex middle-xs">
+                                <i class="fa fa-sitemap congrat-icon" aria-hidden="true" style="font-size: 43px;"></i>
+                                <div>
+                                    <div class="bold">Создайте  первые категории каталога</div>
+                                    <div>Укажите название Вашего магазина, контакты</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="@Url.Action("Add", "Category")" target="_blank" class="btn btn-sm btn-success">
+                                @*@Url.Action("Add", "Category", new { parentId = Model.CategoryId })*@
+                                <span class="fa fa-plus"></span>
+                                @T("Admin.AddCategory")
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="flex middle-xs between-xs">
+                        <div>
+                            <div class="flex middle-xs">
+                                <i class="fa fa-tag congrat-icon" aria-hidden="true"></i>
+                                <div>
+                                    <div class="bold">Добавьте первый товар</div>
+                                    <div>Укажите название Вашего магазина, контакты</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-success" type="button" ui-modal-trigger data-controller="'ModalAddProductCtrl'" template-url="../areas/admin/content/src/_shared/modal/addProduct/addProduct.html">
+                                <span class="fa fa-plus"></span>
+                                @T("Admin.AddProduct")
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 col-wl-2 congrat-action-wrap">
+        @*@Html.Raw(Model.ActionText)*@
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.select-cart {
+  width: 70px;
+  margin-bottom: 0.33333em; }
+  .select-cart .good-select-emulate {
+    padding-right: 1.33333em;
+    padding-left: 0; }
+  .select-cart .good-select-block {
+    width: 4em; }
+
+.cart-amount-error {
+  position: relative;
+  left: 0;
+  -webkit-transform: none;
+  transform: none; }
+
+.cart-full-mobile-coupon input[type='text'] {
+  margin-bottom: 0.66667em; }

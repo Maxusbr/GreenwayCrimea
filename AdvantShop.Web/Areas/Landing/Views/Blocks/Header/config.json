@@ -1,0 +1,61 @@
+﻿{
+  "name": "header",
+  "type": "header",
+  "description": "Шапка сайта 1",
+  "category": "Шапки",
+  "picture": "",
+  "subblocks": [
+    {
+      "name": "logo",
+      "description": "Логотип",
+      "type": "logo",
+      "settings": {
+        "alt": null,
+        "src": "images/logo.png"
+      }
+    },
+    {
+      "name": "phone",
+      "description": "Телефон",
+      "type": "html",
+      "placeholder": "+7 (999) 999-99-99"
+    },
+    {
+      "name": "email",
+      "description": "Email",
+      "type": "html",
+      "placeholder": "info@mysite.ru"
+    },
+    {
+      "name": "callback",
+      "description": "Кнопка обратный звонок",
+      "type": "button",
+      "settings": {
+        "text": "Обратный звонок",
+        "style": {
+          "background": "#f85f23",
+          "color": "#ffffff",
+          "border-radius": "15px",
+          "box-shadow": "0 3px 7px 0 #f85f23"
+        }
+      }
+    },
+    {
+      "name": "menuHeader",
+      "description": "Меню",
+      "type": "html"
+    }
+  ],
+  "settings": {
+    "show_logo": true,
+    "show_callback": true,
+    "show_phone": true,
+    "show_email": true,
+    "show_menu": true,
+    "background_image": null,
+    "background_color": "#ffffff",
+    "style": {
+      "background": "#ffffff"
+    }
+  }
+}

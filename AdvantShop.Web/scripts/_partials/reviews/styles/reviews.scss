@@ -1,0 +1,89 @@
+﻿@import "../../../../styles/_settings.scss";
+@import "../../../../styles/functions/_util.scss";
+
+.reviews-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    .reviews-list {
+        padding: rem-calc(10px) 0 $margin-value-base rem-calc(20px);
+    }
+}
+
+.review-item-name,
+.review-item-date {
+    padding-right: rem-calc(15px);
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.review-item-image {
+    padding: 0 10px 10px 0;
+}
+
+.review-item-name {
+    font-size: rem-calc(13px);
+    font-weight: bold;
+}
+
+.review-item-date {
+    font-size: $font-size-small;
+    padding-left: rem-calc(15px);
+    border-left: rem-calc(1px) #e5e5e5 solid;
+}
+
+.review-item {
+    margin-bottom: rem-calc(20px);
+
+    .reviews-list {
+        margin-bottom: 0;
+    }
+
+    .review-item {
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .review-form-block {
+        margin-top: $margin-value-base;
+    }
+}
+
+.review-form-header {
+    font-size: $font-size-xmedium;
+    margin-bottom: rem-calc(25px);
+    line-height: 1;
+}
+
+.review-shift-right {
+    padding-right: rem-calc(3px);
+}
+
+.review-shift-left {
+    padding-left: rem-calc(3px);
+}
+
+.review-item-button {
+    margin-right: $margin-value-base;
+}
+
+.review-item-text {
+    padding: rem-calc(10px) 0;
+}
+
+#reviewThumbs {
+    width: 50px;
+}
+.reviewThumbs {
+    display: inline-block;
+    vertical-align: middle;
+    
+    padding: 6px;
+    border: 1px solid;
+    font-size: 0;
+    border-radius: $border-radius-base;
+}

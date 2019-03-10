@@ -1,0 +1,369 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SystemSettingsModel
+
+
+<div class="setting-titlee-top">
+    <h3>@T("Admin.Settings.SystemSettings.AuthGoogle")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleActive, T("Admin.Settings.SystemSettings.AuthGoogleActive"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.GoogleActive, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.GoogleActive=" + Model.GoogleActive.ToLowerString(), ng_model = "settingsSystem.GoogleActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleClientId, T("Admin.Settings.SystemSettings.AuthGoogleClientId"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.GoogleClientId, new { @class = "form-control", ng_model = "settingsSystem.GoogleClientId" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.GoogleClientSecret, T("Admin.Settings.SystemSettings.AuthGoogleClientSecret"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.GoogleClientSecret, new { @class = "form-control", ng_model = "settingsSystem.GoogleClientSecret" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CallbackUrl, T("Admin.Settings.SystemSettings.AuthGoogleRedirectUrl"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblGoogleCallbackUrl", Model.CallbackUrl)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/openid-google-text" target="_blank">@T("Admin.Settings.SystemSettings.AuthGoogleInstruction")</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SystemSettings.AuthYandex")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.YandexActive, T("Admin.Settings.SystemSettings.AuthYandexActive"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.YandexActive, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.YandexActive=" + Model.YandexActive.ToLowerString(), ng_model = "settingsSystem.YandexActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.YandexClientId, T("Admin.Settings.SystemSettings.AuthYandexClientId"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.YandexClientId, new { @class = "form-control", ng_model = "settingsSystem.YandexClientId" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.YandexClientSecret, T("Admin.Settings.SystemSettings.AuthYandexClientSecret"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.YandexClientSecret, new { @class = "form-control", ng_model = "settingsSystem.YandexClientSecret" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CallbackUrl, T("Admin.Settings.SystemSettings.AuthYandexCallbackURL"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblYandexCallbackUrl", Model.CallbackUrl)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/openid-yandex" target="_blank">@T("Admin.Settings.SystemSettings.AuthYandexInstruction")</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SystemSettings.AuthMail")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.MailActive, T("Admin.Settings.SystemSettings.AuthMailActive"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.MailActive, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.MailActive=" + Model.MailActive.ToLowerString(), ng_model = "settingsSystem.MailActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.MailAppId, T("Admin.Settings.SystemSettings.AuthMailAppId"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.MailAppId, new { @class = "form-control", ng_model = "settingsSystem.MailAppId" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.MailClientId, T("Admin.Settings.SystemSettings.AuthMailClientId"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.MailClientId, new { @class = "form-control", ng_model = "settingsSystem.MailClientId" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.MailClientSecret, T("Admin.Settings.SystemSettings.AuthMailClientSecret"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.MailClientSecret, new { @class = "form-control", ng_model = "settingsSystem.MailClientSecret" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CallbackUrl, T("Admin.Settings.SystemSettings.AuthMailCallbackURL"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblMailCallbackUrl", Model.CallbackUrl)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/openid-mail-ru" target="_blank">@T("Admin.Settings.SystemSettings.AuthMailInstruction")</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SystemSettings.AuthVk")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.VkontakteActive, T("Admin.Settings.SystemSettings.AuthVkontakteActive"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.VkontakteActive, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.VkontakteActive=" + Model.VkontakteActive.ToLowerString(), ng_model = "settingsSystem.VkontakteActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.VkontakeClientId, T("Admin.Settings.SystemSettings.AuthVkontakeClientId"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.VkontakeClientId, new { @class = "form-control", ng_model = "settingsSystem.VkontakeClientId" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.VkontakeSecret, T("Admin.Settings.SystemSettings.AuthVkontakeSecret"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.VkontakeSecret, new { @class = "form-control", ng_model = "settingsSystem.VkontakeSecret" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CallbackUrl, T("Admin.Settings.SystemSettings.AuthVkCallbackURL"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblVkCallbackUrl", Model.CallbackUrl)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/openid-vk" target="_blank">@T("Admin.Settings.SystemSettings.AuthVkInstruction")</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SystemSettings.AuthFacebook")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.FacebookActive, T("Admin.Settings.SystemSettings.AuthFacebookActive"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.FacebookActive, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.FacebookActive=" + Model.FacebookActive.ToLowerString(), ng_model = "settingsSystem.FacebookActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.FacebookClientId, T("Admin.Settings.SystemSettings.AuthFacebookClientId"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.FacebookClientId, new { @class = "form-control", ng_model = "settingsSystem.FacebookClientId" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.FacebookApplicationSecret, T("Admin.Settings.SystemSettings.AuthFacebookApplicationSecret"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.FacebookApplicationSecret, new { @class = "form-control", ng_model = "settingsSystem.FacebookApplicationSecret" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CallbackUrl, T("Admin.Settings.SystemSettings.AuthFacebookCallbackURL"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblFacebookCallbackUrl", Model.CallbackUrl)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/openid-fb-text" target="_blank">@T("Admin.Settings.SystemSettings.AuthFacebookInstruction")</a>
+        </div>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SystemSettings.AuthOdnoklassniki")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.OdnoklassnikiActive, T("Admin.Settings.SystemSettings.AuthOdnoklassnikiActive"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.OdnoklassnikiActive, new { @class = "adv-checkbox-input", ng_init = "settingsSystem.OdnoklassnikiActive=" + Model.OdnoklassnikiActive.ToLowerString(), ng_model = "settingsSystem.OdnoklassnikiActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.OdnoklassnikiClientId, T("Admin.Settings.SystemSettings.AuthOdnoklassnikiClientId"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.OdnoklassnikiClientId, new { @class = "form-control", ng_model = "settingsSystem.OdnoklassnikiClientId" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.OdnoklassnikiPublicApiKey, T("Admin.Settings.SystemSettings.AuthOdnoklassnikiPublicApiKey"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.OdnoklassnikiPublicApiKey, new { @class = "form-control", ng_model = "settingsSystem.OdnoklassnikiPublicApiKey" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.OdnoklassnikiSecret, T("Admin.Settings.SystemSettings.AuthOdnoklassnikiSecret"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.OdnoklassnikiSecret, new { @class = "form-control", ng_model = "settingsSystem.OdnoklassnikiSecret" })
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CallbackUrl, T("Admin.Settings.SystemSettings.AuthOdnoklassnikiCallbackURL"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblOkCallbackUrl", Model.CallbackUrl)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/openid-odk" target="_blank">@T("Admin.Settings.SystemSettings.AuthOdnoklassnikiInstruction")</a>
+        </div>
+    </div>
+</div>

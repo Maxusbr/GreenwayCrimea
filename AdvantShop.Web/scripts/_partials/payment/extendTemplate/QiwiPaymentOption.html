@@ -1,0 +1,10 @@
+﻿<div class="payment-control payment-custom-option">
+    <span>Телефон</span>
+    <input class="input-small"
+           type="text"
+           data-ui-mask="{{ ::'Js.Bonus.PhoneMask' | translate }}"
+           placeholder="{{ ::'Js.Bonus.PhoneMask' | translate }}"
+           ui-mask-placeholder
+           data-ng-model="paymentTemplate.payment.Phone"
+           data-ng-keyup="paymentTemplate.changePrepare($event, paymentTemplate.payment.Phone)" />
+</div>

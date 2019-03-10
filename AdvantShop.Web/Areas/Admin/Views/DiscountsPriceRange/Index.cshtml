@@ -1,0 +1,51 @@
+﻿
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.DiscountsPriceRange.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditDiscountsPriceRangeCtrl'" controller-as="ctrl"
+                              template-url="../areas/admin/content/src/discountsPriceRange/modal/addEditDiscountsPriceRange/AddEditDiscountsPriceRange.html"
+                              data-on-close="discountsPriceRange.grid.fetchData()">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="bntAdd">
+                    <span class="fa fa-plus"></span>@T("Admin.Add")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <div>
+            <label class="adv-checkbox-label category-label" data-e2e="enableDiscounts">
+                <input type="checkbox" class="adv-checkbox-input"
+                       ng-model="discountsPriceRange.enableDiscounts"
+                       ng-init="discountsPriceRange.enableDiscounts=@SettingsCheckout.EnableDiscountModule.ToLowerString()"
+                       ng-click="discountsPriceRange.changeDiscountsState()" />
+                <span class="adv-checkbox-emul"></span>
+                <span>@T("Admin.DiscountsPriceRange.Index.EnableDiscountModule")</span>
+            </label>
+            <div class="m-b-sm">
+                @T("Admin.DiscountsPriceRange.Index.Hint")
+            </div>
+            <div class="m-b">
+                <ui-modal-trigger data-controller="'ModalDiscountByDatetimeCtrl'" controller-as="ctrl" size="middle"
+                                  template-url="../areas/admin/content/src/discountsPriceRange/modal/discountByDatetime/discountByDatetime.html">
+                    <a href="">@T("Admin.DiscountsPriceRange.Index.SetDiscountsByDatetime")</a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="discountsPriceRange.gridOnInit(grid)"
+                        grid-options="discountsPriceRange.gridOptions"
+                        grid-url="'discountsPriceRange/getItems'"
+                        grid-inplace-url="'discountsPriceRange/updateItem'"
+                        grid-extend-ctrl="discountsPriceRange">
+        </ui-grid-custom>
+    </div>
+</div>

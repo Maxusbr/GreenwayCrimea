@@ -1,0 +1,89 @@
+﻿@using AdvantShop.ViewModel.Shared
+@model AdvantShop.Module.ShoppingCartPopup.Models.RelatedProductsViewModel
+@if (Model.RelatedProducts.Count > 0)
+{
+    <div class="cart-popup-related-block">
+        <div class="h2">@Model.Title</div>
+        <div class="products-view-tile products-view cart-popup-products-view">
+            <div class="product-view-carousel-list product-view-carousel-list-horizontal"
+                 data-carousel
+                 data-carousel-class="product-view-carousel" 
+                 data-nav-position="outside"
+                 data-stretch="false">
+                @foreach (var product in Model.RelatedProducts)
+                {
+                    var productUrl = Url.AbsoluteRouteUrl("Product", new { url = product.UrlPath });
+                    <div class="products-view-block cs-br-1 js-products-view-block">
+                        <div class="products-view-item text-static cs-br-1 js-products-view-item" data-product-view-item data-offer-id="@product.OfferId" data-product-id="@product.ProductId">
+                            <figure class="products-view-pictures">
+                                <a class="products-view-picture-link" href="@productUrl" style="height:@(Model.PhotoHeight)px;">
+                                    <img src="@product.Photo.ImageSrcSmall()" alt="@product.Photo.Alt" title="@product.Photo.Title" class="products-view-picture">
+                                </a>
+                            </figure>
+                            <div class="products-view-info">
+                                <div class="products-view-name @Html.Raw(string.IsNullOrEmpty(@product.Colors) ? " products-view-name-default" : " products-view-name-slim")">
+                                    <a href="@productUrl" class="products-view-name-link" title="@product.Name">@Html.Raw(@product.Name)</a>
+                                </div>
+                                @if (!string.IsNullOrEmpty(@product.Colors))
+                                {
+                                    @Html.Partial("_Colors", new ColorsViewModel
+                                    {
+                                        NgColors = product.Colors,
+                                        ColorWidth = Model.ColorImageWidth,
+                                        ColorHeight = Model.ColorImageHeight,
+                                        EnabledSlider = true,
+                                        InitilazeTo = ".js-color-viewer-slider",
+                                        ImageType = AdvantShop.FilePath.ColorImageType.Catalog
+                                    })
+                                }
+                                else
+                                {
+                                    <div class="products-view-list-element-hidden products-view-table-element-hidden" style="height: @(Model.ColorImageHeight - 7)px"></div>
+                                }
+                                @*@if (Model.DisplayRating)
+                                    {
+                                        <div class="products-view-rating">
+                                            @Html.Action("Rating", "Common", new { objId = 0, rating = product.Ratio, readOnly = true })
+                                        </div>
+                                    }*@
+
+                            </div>
+                            @if (product.Recomend || product.Sales || product.Bestseller || product.New || product.TotalDiscount.HasValue)
+                            {
+                                <div class="products-view-labels">
+                                    @*@Html.RenderLabels(product.Recomend, product.Sales, product.Bestseller, product.New, product.TotalDiscount)*@
+                                </div>
+                            }
+                            <div class="products-view-price-block products-view-price-inner">
+                                <div class="products-view-price">
+                                    <div class="price">
+                                        @Html.Raw(@product.PreparedPrice)
+                                    </div>
+                                </div>
+                                @{
+                                    var showBuyButton = Model.DisplayBuyButton && ((product.RoundedPrice > 0 && product.Amount > 0 ) || Model.AllowBuyOutOfStockProducts);
+                                    var showPreOrderButton = Model.DisplayPreOrderButton && (product.RoundedPrice == 0 || product.Amount <= 0) && product.AllowPreorder && product.OfferId != 0 && !Model.AllowBuyOutOfStockProducts;
+                                }
+                                @if (showBuyButton || showPreOrderButton)
+                                {
+                                    <div class="products-view-buttons-cell">
+                                        <div class="products-view-buttons">
+                                            @if (showBuyButton)
+                                            {
+                                                <a href="@productUrl" data-cart-add data-offer-id="0" data-product-id="@product.ProductId" data-amount="@product.MinAmount" class="btn btn-small btn-buy icon-bag-before products-view-buy">@Model.BuyButtonText</a>
+                                            }
+                                            @if (showPreOrderButton)
+                                            {
+                                                <a href="@Url.RouteUrl("PreOrder", new {offerid= product.OfferId})" data-cart-preorder data-offer-id="productViewItem.offerId" class="btn btn-small btn-action icon-bag-before products-view-buy">@Model.PreOrderButtonText</a>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="EtalonDatabaseName" value="dev" />
+    <add key="TestDatabaseName" value="devtest" />
+    <add key="BackupPath" value="e:\db\bak\" />
+    <add key="DatabasePath" value="e:\db\" />
+    <add key="SiteUrl" value="http://localhost/devtest" />
+    <add key="SitePath" value="e:\sites\devtest\" />
+    <add key="ScreenshotsPath" value="e:\sites\_TestResults\Screenshots\" />
+  </appSettings>
+  <connectionStrings>
+  <add name="etalon" connectionString="Data Source='ADV-SAND-SRV\SQLEXPRESS'; Connect Timeout='60'; Initial Catalog='dev'; Persist Security Info='True'; User ID='sa'; Password='qweasdefgw123!';" providerName="System.Data.SqlClient" />
+  <add name="AdvantConnectionString" connectionString="Data Source='ADV-SAND-SRV\SQLEXPRESS'; Connect Timeout='60'; Initial Catalog='devtest'; Persist Security Info='True'; User ID='sa'; Password='qweasdefgw123!';" providerName="System.Data.SqlClient" />
+    </connectionStrings>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+  </startup>
+</configuration>

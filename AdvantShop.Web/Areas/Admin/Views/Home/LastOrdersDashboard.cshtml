@@ -1,0 +1,57 @@
+﻿@{
+    var isModerator = CustomerContext.CurrentCustomer.IsModerator;
+    var orderConstraint = SettingsManager.ManagersOrderConstraint;
+
+    var showAll = !isModerator || orderConstraint == ManagersOrderConstraint.All;
+    var showOnlyAssigned = !isModerator || orderConstraint == ManagersOrderConstraint.Assigned;
+    var showOnlyAssignedAndFree = !isModerator || orderConstraint == ManagersOrderConstraint.AssignedAndFree;
+}
+
+<div class="ibox">
+    <div class="ibox-content last-orders-block">
+        <uib-tabset active uid="tabsOnMainPageOrders">
+            @if (showAll)
+            {
+                <uib-tab index="1" heading="Все заказы" classes="ng-tab" removable="true">
+                    <ui-grid-custom grid-unique-id="gridAllOrders"
+                                    grid-filter-enabled="false"
+                                    grid-pagination-enabled="false"
+                                    grid-selection-enabled="false"
+                                    grid-options="home.gridOptions"
+                                    grid-params="{status: 'all'}"
+                                    grid-url="'home/getLastOrders'">
+                    </ui-grid-custom>
+                </uib-tab>
+            }
+            @if (showOnlyAssigned || showOnlyAssignedAndFree)
+            {
+                <uib-tab index="2" heading="Назначенные мне" classes="ng-tab" removable="true">
+                    <ui-grid-custom grid-unique-id="gridMyOrders"
+                                    grid-filter-enabled="false"
+                                    grid-pagination-enabled="false"
+                                    grid-selection-enabled="false"
+                                    grid-options="home.gridOptionsMy"
+                                    grid-params="{status: 'my'}"
+                                    grid-url="'home/getLastOrders'">
+                    </ui-grid-custom>
+                </uib-tab>
+            }
+            @if (showOnlyAssignedAndFree)
+            {
+                <uib-tab index="3" heading="Не назначенные" classes="ng-tab" removable="true">
+                    <ui-grid-custom grid-unique-id="gridNotMyOrders"
+                                    grid-filter-enabled="false"
+                                    grid-pagination-enabled="false"
+                                    grid-selection-enabled="false"
+                                    grid-options="home.gridOptionsNotMy"
+                                    grid-params="{status: 'notmy'}"
+                                    grid-url="'home/getLastOrders'">
+                    </ui-grid-custom>
+                </uib-tab>
+            }
+        </uib-tabset>
+    </div>
+</div>
+
+
+

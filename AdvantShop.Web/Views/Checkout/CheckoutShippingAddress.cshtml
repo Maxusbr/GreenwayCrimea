@@ -1,0 +1,242 @@
+﻿@model AdvantShop.ViewModel.Checkout.CheckoutShippingAddressViewModel
+
+<article class="checkout-block"
+         data-ng-init="checkout.HasAddresses = @Model.HasAddresses.ToString().ToLower(); checkout.HasCustomShippingFields = @Model.HasCustomShippingFields.ToString().ToLower()"
+         data-ng-if="(checkout.ngSelectShipping == null || checkout.ngSelectShipping.SelectedPoint == null) &&
+                    ((checkout.HasAddresses && checkout.HasCustomShippingFields && checkout.ngSelectShipping.DisplayCustomFields) ||
+                    ((!checkout.HasAddresses && checkout.ngSelectShipping.HideAddressBlock === false && @SettingsCheckout.IsShowAddress.ToString().ToLower())
+                   || checkout.ngSelectShipping.DisplayCustomFields === true || checkout.ngSelectShipping.DisplayIndex === true))">
+    <div class="checkout-block-title h2">
+        @T("Checkout.CheckoutShippingAddress.AddressTitle")
+    </div>
+    <div class="checkout-block-content">
+        @if (SettingsCheckout.IsShowCustomShippingField1)
+        {
+            <div class="row" data-ng-if="checkout.ngSelectShipping.DisplayCustomFields === true">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="row">
+                        <span class="col-xs-12 col-sm-4">
+                            <span class="form-field-name vertical-interval-xsmall @(SettingsCheckout.IsReqCustomShippingField1 ? "input-required" : "")">
+                                @Html.Raw(SettingsCheckout.CustomShippingField1)
+                            </span>
+                        </span>
+                        <span class="12 col-sm-8">
+                            <span class="form-field-input vertical-interval-xsmall">
+                                @Html.TextBox("customField1", Model.AddressContact.CustomField1, new
+                           {
+                               @class = "input-small",
+                               data_ng_model = "checkout.contact.CustomField1",
+                               data_ng_blur = "checkout.saveContact()",
+                               data_ng_required = SettingsCheckout.IsReqCustomShippingField1.ToString().ToLower(),
+                               maxlength = "1000"
+                           })
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (SettingsCheckout.IsShowCustomShippingField2)
+        {
+            <div class="row" data-ng-if="checkout.ngSelectShipping.DisplayCustomFields === true">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="row">
+                        <span class="col-xs-12 col-sm-4">
+                            <span class="form-field-name vertical-interval-xsmall @(SettingsCheckout.IsReqCustomShippingField2 ? "input-required" : "")">
+                                @Html.Raw(SettingsCheckout.CustomShippingField2)
+                            </span>
+                        </span>
+                        <span class="col-xs-12 col-sm-8">
+                            <span class="form-field-input vertical-interval-xsmall">
+                                @Html.TextBox("customField2", Model.AddressContact.CustomField2, new
+                           {
+                               @class = "input-small",
+                               data_ng_model = "checkout.contact.CustomField2",
+                               data_ng_blur = "checkout.saveContact()",
+                               data_ng_required = SettingsCheckout.IsReqCustomShippingField2.ToString().ToLower(),
+                               maxlength = "1000"
+                           })
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (SettingsCheckout.IsShowZip)
+        {
+            <div class="row" data-ng-if="checkout.ngSelectShipping.DisplayIndex === true">
+                <div class="col-xs-12 col-md-8">
+                    <div class="row">
+                        <span class="col-xs-12 col-sm-4">
+                            <span class="form-field-name vertical-interval-xsmall @(SettingsCheckout.IsRequiredZip ? "input-required" : "")">
+                                @T("Checkout.CheckoutShippingAddress.Zip")
+                            </span>
+                        </span>
+                        <span class="col-xs-12 col-sm-8">
+                            <span class="form-field-input vertical-interval-xsmall">
+                                @Html.TextBox("zip", Model.AddressContact.Zip, new
+                           {
+                               @class = "input-small",
+                               data_ng_model = "checkout.contact.Zip",
+                               data_ng_blur = "checkout.saveContact()",
+                               data_ng_required = SettingsCheckout.IsRequiredZip.ToString().ToLower(),
+                               autocomplete = "shipping postal-code",
+                               maxlength = "70"
+                           })
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (SettingsCheckout.IsShowAddress && !Model.HasAddresses)
+        {
+            if (!SettingsCheckout.IsShowFullAddress)
+            {
+                <div class="row" data-ng-if="checkout.ngSelectShipping.HideAddressBlock === false && checkout.HasAddresses === false">
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row">
+                            <span class="col-xs-12 col-sm-4">
+                                <span class="form-field-name vertical-interval-xsmall @(SettingsCheckout.IsRequiredAddress ? "input-required" : "")">
+                                    @T("Checkout.CheckoutShippingAddress.Address")
+                                </span>
+                            </span>
+                            <span class="col-xs-12 col-sm-8">
+                                <span class="form-field-input vertical-interval-xsmall">
+                                    @Html.TextAreaFor(x => x.AddressContact.Street, new
+                               {
+                                   @class = "textarea-small",
+                                   data_ng_model = "checkout.contact.Street",
+                                   data_ng_blur = "checkout.saveContact()",
+                                   data_ng_required = SettingsCheckout.IsRequiredAddress.ToString().ToLower(),
+                                   autocomplete = "shipping street-address",
+                                   maxlength = "255"
+                               })
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row" data-ng-if="checkout.ngSelectShipping.HideAddressBlock === false && checkout.HasAddresses === false">
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row">
+                            <span class="col-xs-12 col-sm-4">
+                                <span class="form-field-name vertical-interval-xsmall @(SettingsCheckout.IsRequiredAddress ? "input-required" : "")">
+                                    @T("Checkout.CheckoutShippingAddress.Street")
+                                </span>
+                            </span>
+                            <span class="col-xs-12 col-sm-8">
+                                <span class="form-field-input vertical-interval-xsmall">
+                                    @Html.TextBoxFor(x => x.AddressContact.Street, new
+                               {
+                                   @class = "input-small",
+                                   data_ng_model = "checkout.contact.Street",
+                                   data_ng_blur = "checkout.saveContact()",
+                                   data_ng_required = SettingsCheckout.IsRequiredAddress.ToString().ToLower(),
+                                   autocomplete = "shipping street-address",
+                                   maxlength = "255"
+                               })
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" data-ng-if="checkout.ngSelectShipping.HideAddressBlock === false && checkout.HasAddresses === false">
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2">
+                                <label class="control-label text-left m-b-xs @(SettingsCheckout.IsRequiredAddress ? "input-required" : "")">@T("Checkout.CheckoutShippingAddress.House")</label>
+                                @Html.TextBoxFor(x => x.AddressContact.House, new
+                           {
+                               @class = "input-small",
+                               data_ng_model = "checkout.contact.House",
+                               data_ng_blur = "checkout.saveContact()",
+                               data_ng_required = SettingsCheckout.IsRequiredAddress.ToString().ToLower(),
+                               maxlength = "10"
+                           })
+                            </div>
+                            <div class="col-xs-12 col-sm">
+                                <div class="row between-xs">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <label class="control-label text-left m-b-xs">@T("Checkout.CheckoutShippingAddress.Apartment")</label>
+                                        @Html.TextBoxFor(x => x.AddressContact.Apartment, new
+                                   {
+                                       @class = "input-small",
+                                       data_ng_model = "checkout.contact.Apartment",
+                                       data_ng_blur = "checkout.saveContact(true)",
+                                       maxlength = "10"
+                                   })
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <label class="control-label text-left m-b-xs">@T("Checkout.CheckoutShippingAddress.Structure")</label>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                @Html.TextBoxFor(x => x.AddressContact.Structure, new
+                                           {
+                                               @class = "input-small",
+                                               data_ng_model = "checkout.contact.Structure",
+                                               data_ng_blur = "checkout.saveContact(true)",
+                                               maxlength = "10"
+                                           })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label class="control-label text-left m-b-xs">@T("Checkout.CheckoutShippingAddress.Entrance")</label>
+                                @Html.TextBoxFor(x => x.AddressContact.Entrance, new
+                           {
+                               @class = "input-small",
+                               data_ng_model = "checkout.contact.Entrance",
+                               data_ng_blur = "checkout.saveContact(true)",
+                               maxlength = "10"
+                           })
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label class="control-label text-left m-b-xs">@T("Checkout.CheckoutShippingAddress.Floor")</label>
+                                @Html.TextBoxFor(x => x.AddressContact.Floor, new
+                           {
+                               @class = "input-small",
+                               data_ng_model = "checkout.contact.Floor",
+                               data_ng_blur = "checkout.saveContact(true)",
+                               maxlength = "10"
+                           })
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        @if (SettingsCheckout.IsShowCustomShippingField3)
+        {
+            <div class="row" data-ng-if="checkout.ngSelectShipping.DisplayCustomFields === true">
+                <div class="col-xs-12 col-md-8">
+                    <div class="row">
+                        <span class="col-xs-12 col-sm-4">
+                            <span class="form-field-name vertical-interval-xsmall @(SettingsCheckout.IsReqCustomShippingField3 ? "input-required" : "")">
+                                @Html.Raw(SettingsCheckout.CustomShippingField3)
+                            </span>
+                        </span>
+                        <span class="col-xs-12 col-sm-8">
+                            <span class="form-field-input vertical-interval-xsmall">
+                                @Html.TextBox("customField3", Model.AddressContact.CustomField3, new
+                           {
+                               @class = "input-small",
+                               data_ng_model = "checkout.contact.CustomField3",
+                               data_ng_blur = "checkout.saveContact()",
+                               data_ng_required = SettingsCheckout.IsReqCustomShippingField3.ToString().ToLower(),
+                               maxlength = "1000"
+                           })
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</article>

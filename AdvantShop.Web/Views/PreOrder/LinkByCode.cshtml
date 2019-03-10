@@ -1,0 +1,13 @@
+﻿@model AdvantShop.ViewModel.PreOrder.LinkByCodeViewModel
+
+<div class="site-body-cell">
+    <div class="page-title-row details-title-row">
+        <h1 class="preorder-title page-title">@T("PreOrder.LinkByCode.Header")</h1>
+    </div>
+    <div class="block-usr-txt">
+        @Model.Error
+        <div>
+            <a href="@Url.AbsoluteRouteUrl("Home")">@T("PreOrder.LinkByCode.BackToMainPage")</a>
+        </div>
+    </div>
+</div>

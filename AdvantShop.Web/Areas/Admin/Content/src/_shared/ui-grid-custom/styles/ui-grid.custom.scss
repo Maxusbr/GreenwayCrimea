@@ -1,0 +1,389 @@
+﻿@import "../../../../styles/_variable.scss";
+
+.ui-grid-top-panel {
+    background: #fff none;
+}
+
+.ui-grid-header-cell, .ui-grid-cell,
+.ui-grid-pinned-container.ui-grid-pinned-container-left .ui-grid-header-cell:last-child,
+.ui-grid-pinned-container.ui-grid-pinned-container-left .ui-grid-cell:last-child {
+    border-color: transparent;
+}
+
+.ui-grid-column-menu-button {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ui-grid-column-menu-button .ui-grid-icon-angle-down {
+    vertical-align: baseline;
+}
+
+.ui-grid-row-wrap:nth-child(even) .ui-grid-cell {
+    background-color: #ffffff;
+}
+
+.ui-grid-row-wrap:nth-child(odd) .ui-grid-cell {
+    background-color: #f9f9f9;
+}
+
+.ui-grid-selection-row-header-buttons {
+    opacity: 1;
+}
+
+div.ui-grid-cell input[type="checkbox"] {
+    margin-top: 4px;
+}
+
+div.ui-grid-cell .ui-grid-custom-edit-field.adv-checkbox-label {
+    margin-left: 12px;
+}
+
+.ui-grid-header-cell input[type="checkbox"] {
+    margin-left: 6px;
+}
+
+.ui-grid-custom-checkbox-wrap {
+    position: relative;
+    margin: 4px 0 0 6px;
+    display: inline-block;
+    line-height: 0;
+    font-size: 0;
+}
+
+div.ui-grid-cell input[type="checkbox"],
+.ui-grid-header-cell input[type="checkbox"] {
+    margin: 0;
+}
+
+.ui-grid-custom-checkbox-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+.ui-grid-cell-focus {
+    background-color: transparent;
+}
+
+.ui-grid, .ui-grid-viewport {
+    height: auto !important;
+}
+
+[type=checkbox].ui-grid-custom-checkbox-select-all {
+    margin: 0;
+}
+
+.ui-grid-custom-service-icon {
+    margin: 0 7px;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.ui-grid-header-cell {
+    vertical-align: middle;
+}
+
+
+
+.ui-grid-cell-contents {
+    white-space: normal;
+
+    &:not(.ui-grid-header-cell-primary-focus) {
+        display: flex;
+        align-items: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+
+        > span:not(.badge), > a, > form, > div {
+            width: 100%;
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    .onoffswitch-label {
+        margin-bottom: 0;
+    }
+}
+
+.ui-grid-cell:first-child .ui-grid-cell-contents, .ui-grid-header-cell:first-child .ui-grid-cell-contents {
+    padding-left: 18px;
+}
+
+.ui-grid-pinned-container-left + .ui-grid-render-container .ui-grid-header-cell:first-child .ui-grid-cell-contents,
+.ui-grid-pinned-container-left + .ui-grid-render-container .ui-grid-cell:first-child .ui-grid-cell-contents,
+.ui-grid-pinned-container-left .ui-grid-header-cell:first-child .ui-grid-cell-contents,
+.ui-grid-pinned-container-left .ui-grid-cell:first-child .ui-grid-cell-contents {
+    padding-left: 5px;
+}
+
+.ui-grid-custom-link-for-img {
+    height: 100%;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid #bebebe;
+    background-color: #fff;
+    padding: 5px;
+
+    &:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        overflow: hidden;
+    }
+
+    img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.ui-grid-custom-flex-center {
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+
+    &:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        height: 100%;
+    }
+}
+
+.ui-grid-custom-col-img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ui-grid-custom-header-cell-center {
+    text-align: center;
+}
+
+.ui-grid-custom-edit-form {
+    /*margin-left: -12px;*/
+    position: relative;
+}
+
+.ui-grid-disable-selection {
+    height: 100%;
+}
+
+.ui-grid-cell input, .ui-grid-cell textarea {
+    width: 100%;
+    resize: none;
+}
+
+div.ui-grid-cell input {
+    padding: 6px 6px;
+    border-radius: 1px;
+}
+
+.ui-grid .ui-grid-header-cell {
+    height: 40px;
+}
+
+.ui-grid-invisible {
+    display: none;
+}
+
+.ui-grid-custom-footer {
+    text-align: right;
+    padding: 10px;
+    background-color: #f9f9f9;
+    display: block;
+}
+
+.ui-grid-row-wrap.ui-grid-custom-row-hover .ui-grid-cell {
+    background-color: #e6e7e8;
+}
+
+.ui-grid-custom-pointer {
+    cursor: pointer;
+}
+
+.ui-grid-custom-prevent-pointer {
+    cursor: auto;
+}
+
+.ui-grid-custom-group-header {
+    background-color: #dbdcde;
+    color: #34383b;
+    line-height: 60px;
+    font-weight: bold;
+}
+
+.ui-grid-custom-row-bold .ui-grid-row:not(.ui-grid-custom-group-header),
+.ui-grid-custom-row-bold .ui-grid-row:not(.ui-grid-custom-group-header) .ui-grid-cell-contents:not(.ui-grid-custom-ignore-row-style),
+.ui-grid-cell-contents.ui-grid-cell-bold {
+    font-weight: bold;
+}
+
+.ui-grid-custom-row-red .ui-grid-row:not(.ui-grid-custom-group-header),
+.ui-grid-custom-row-red .ui-grid-row:not(.ui-grid-custom-group-header) .ui-grid-cell-contents:not(.ui-grid-custom-ignore-row-style),
+.ui-grid-cell-contents.ui-grid-cell-red {
+    color: #f00;
+}
+
+.ui-grid-custom-row-blue .ui-grid-row:not(.ui-grid-custom-group-header),
+.ui-grid-custom-row-blue .ui-grid-row:not(.ui-grid-custom-group-header) .ui-grid-cell-contents:not(.ui-grid-custom-ignore-row-style),
+.ui-grid-cell-contents.ui-grid-cell-blue {
+    color: #1c84c6;
+}
+
+.ui-grid-custom-row-linethrough .ui-grid-row:not(.ui-grid-custom-group-header),
+.ui-grid-custom-row-linethrough .ui-grid-row:not(.ui-grid-custom-group-header) .ui-grid-cell-contents:not(.ui-grid-custom-ignore-row-style),
+.ui-grid-cell-contents.ui-grid-cell-linethrough {
+    text-decoration: line-through;
+}
+
+.ui-grid-pinned-container .ui-grid-custom-group-header-text {
+    display: none;
+}
+
+.ui-grid-canvas {
+    padding-top: 0;
+    height: auto !important; /*в нашей самописной группировке скрываются строки равные кол-во шапок группы*/
+}
+
+.ui-grid-row-wrap.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+    background-color: #c9dde1;
+}
+
+.ui-grid-cell.ui-grid-disable-selection.ui-grid-row-header-cell {
+    pointer-events: auto;
+}
+
+.ui-grid-row {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.ui-grid-header {
+    border-bottom: $border-default;
+}
+
+.ui-grid {
+    border: $border-default;
+}
+
+.ui-grid-empty-text {
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.ui-grid-tree-base-row-header-buttons {
+    display: flex;
+    align-items: center;
+    width: auto;
+    font-size: 0;
+    line-height: 0;
+}
+
+.ui-grid-icon-minus-squared,
+.ui-grid-icon-plus-squared {
+    font-size: 13px;
+    line-height: 1;
+
+    &:before {
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+.ui-grid-icon-minus-squared:before {
+    content: "\f068";
+}
+
+.ui-grid-icon-plus-squared:before {
+    content: "\f067";
+}
+/*for selection dropdown*/
+.ui-grid-top-panel, .ui-grid-header-viewport {
+    overflow: visible;
+}
+
+.ui-grid-custom-selection-in-header {
+    font-weight: normal;
+}
+
+.ui-grid-cell-avatar {
+    max-height: 30px;
+    max-width: 30px;
+    margin-right: 5px;
+    box-sizing: border-box;
+}
+
+/*.ui-grid-cell-contents > span,
+.ui-grid-cell-table span,
+.ui-grid-cell-table div,
+.ui-grid-cell-table a {
+    max-height: 100%;
+}*/
+
+.ui-grid-cell-table .ui-grid-custom-edit-form {
+    width: 100%;
+}
+
+.ui-grid-custom-wrapper {
+    position: relative;
+    z-index: 20; /*for overlay ui-grid-custom-paging*/
+}
+
+.ui-grid-custom-processing {
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255, 0.5);
+        display: block;
+        z-index: 10;
+    }
+
+    &:after {
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\f110";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        animation: fa-spin 2s infinite linear;
+        font-size: 40px;
+    }
+}
+
+.ui-grid-error-text {
+    color: #f00;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}

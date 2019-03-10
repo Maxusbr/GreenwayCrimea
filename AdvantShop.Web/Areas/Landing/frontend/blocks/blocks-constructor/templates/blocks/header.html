@@ -1,0 +1,156 @@
+﻿<div>
+    <div data-tabs class="tabs tabs-horizontal">
+        <ul class="tabs-headers row center-xs start-sm">
+            <li id="tabHeaderMenu" class="tabs-header-item col-xs-12 col-sm-slim" data-tab-header="" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                    Пункты меню
+                </a>
+            </li>
+            <li id="tabHeaderLogo" class="tabs-header-item col-xs-12 col-sm-slim" data-tab-header="" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                    Логотип
+                </a>
+            </li>
+            <li id="tabHeaderContact" class="tabs-header-item col-xs-12 col-sm-slim" data-tab-header="" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                    Контакты
+                </a>
+            </li>
+            <li id="tabHeaderFront" class="tabs-header-item col-xs-12 col-sm-slim" data-tab-header="" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                    Внешний вид
+                </a>
+            </li>
+            <li id="tabHeaderAddational" class="tabs-header-item col-xs-12 col-sm-slim" data-tab-header="" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+                <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                    Дополнительно
+                </a>
+            </li>
+        </ul>
+        <div class="tabs-content">
+            <div class="tab-content" data-tab-content="tabHeaderMenu" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                <div class="lp-table">
+                    <div class="lp-table__head visible-md">
+                        <div class="lp-table__row row">
+                            <div class="lp-table__header">
+                                Название
+                            </div>
+                            <div class="lp-table__header">
+                                Ссылка
+                            </div>
+                            <div class="lp-table__header">
+                                Выбор блока
+                            </div>
+                            <div class="lp-table__header">
+                                Удалить
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-table__body">
+                        <div class="lp-table__row row">
+                            <div class="col-xs-6 hidden-md table-view__cell">
+                                Название
+                            </div>
+                            <div class="lp-table__cell col-xs-6 col-md-4">
+                                О компании
+                            </div>
+                            <div class="col-xs-6 hidden-md table-view__cell">
+                                Ссылка
+                            </div>
+                            <div class="lp-table__cell col-xs-6 col-md-4">
+                                #asdasd
+                            </div>
+                            <div class="col-xs-6 hidden-md table-view__cell">
+                                Выбор блока
+                            </div>
+                            <div class="lp-table__cell col-xs-6 col-md-3">
+                                Выбрать блок
+                            </div>
+                            <div class="lp-table__cell col-xs-6 col-md-1">
+                                x
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab-content="tabHeaderLogo" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                    Логотип
+                    <label><input type="checkbox" data-ng-model="$ctrl.modalData.settings.show_logo" /> Логотип</label>
+                </div>
+                <div class="tab-content" data-tab-content="tabHeaderContact" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                    <div class="blocks-constructor-table-value">
+                        <div class="blocks-constructor-table">
+                            <div class="blocks-constructor-table-row">
+                                <div class="blocks-constructor-table-name">
+                                    <label><input type="checkbox" data-ng-model="$ctrl.modalData.settings.show_callback" /> Обратный звонок</label>
+                                </div>
+                            </div>
+                            <div class="blocks-constructor-table-row">
+                                <div class="blocks-constructor-table-name">
+                                    <label><input type="checkbox" data-ng-model="$ctrl.modalData.settings.show_phone" /> Телефон</label>
+                                </div>
+                                <div class="blocks-constructor-table-name">
+                                    <label><input type="checkbox" data-ng-model="$ctrl.modalData.settings.show_email" /> Email</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab-content="tabHeaderFront" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                    <div class="blocks-constructor-table">
+                        <div class="blocks-constructor-table-row">
+                            <div class="blocks-constructor-table-name">
+                                Фон блока
+                            </div>
+                            <div class="blocks-constructor-table-value">
+                                <background-picker on-update="$ctrl.modalData.onUpdateBackground(cssString)" data-colors="$ctrl.backgroundColors"></background-picker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blocks-constructor-table">
+                        <div class="blocks-constructor-table-row">
+                            <div class="blocks-constructor-table-name">
+                                Фоновая картинка
+                            </div>
+                            <div class="blocks-constructor-table-value">
+                                <div data-ng-switch="$ctrl.modalData.settings.background_image != null && $ctrl.modalData.settings.background_image.length > 0">
+                                    <div class="blocks-constructor-bg-img-buttons" data-ng-switch-when="false">
+                                        <button class="blocks-constructor-btn-apply"
+                                                ng-model="$ctrl.backgroundImage"
+                                                ngf-select=""
+                                                ngf-change="$ctrl.onUploadFileBackground({$file: $file})"
+                                                ngf-max-height="1000"
+                                                ngf-max-size="10MB"
+                                                ngf-pattern="'image/*'"
+                                                ngf-accept="'image/*'">
+                                            Загрузить картинку
+                                        </button>
+                                    </div>
+                                    <div class="blocks-constructor-bg-img-buttons" data-ng-switch-when="true">
+                                        <figure class="blocks-constructor-bg-img-wrap">
+                                            <img data-ng-src="{{$ctrl.modalData.settings.background_image}}" alt="" />
+                                        </figure>
+                                        <button class="blocks-constructor-btn-apply"
+                                                ng-model="$ctrl.backgroundImage"
+                                                ngf-select=""
+                                                ngf-change="$ctrl.onUpdateFileBackground({$file: $file})"
+                                                ngf-max-height="1000"
+                                                ngf-max-size="10MB"
+                                                ngf-pattern="'image/*'"
+                                                ngf-accept="'image/*'">
+                                            Обновить
+                                        </button>
+                                        <button class="blocks-constructor-btn-remove" data-ng-click="$ctrl.onDeleteFileBackground()">
+                                            Удалить
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab-content="tabHeaderAddational" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                    Дополнительно
+                </div>
+            </div>
+        </div>
+    </div>

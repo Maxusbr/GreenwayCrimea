@@ -1,0 +1,34 @@
+﻿@using AdvantShop.Customers
+@{
+    Layout = "~/Areas/Landing/Views/Checkout/_Layout.cshtml";
+}
+@*@Html.Action("Index", "Checkout")*@
+<div class="col-p-v mobile-content-padding">
+    <div class="page-title-row checkout-title-row">
+        <h1 class="checkout-title page-title">@T("Checkout.Index.CheckoutTitle")</h1>
+    </div>
+    @*@Html.SingleBreadCrumb(T("Checkout.Index.CheckoutTitle").ToString())*@
+    <div class="row" data-ng-init="checkout.getAddress(@CustomerContext.CurrentCustomer.Contacts.Any().ToString().ToLower())">
+        <div class="col-xs-12 col-md-8 col-p-v">
+            @*формы нельзя в друг друга вкладывать, поэтому пришлось делать несколько*@
+
+            @Html.Action("CheckoutUser", "Checkout")
+
+            @using (Html.BeginForm("IndexPost", "Checkout", FormMethod.Post, new { name = "checkoutForm", novalidate = "novalidate", @class = "js-checkout-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Action("CheckoutShipping", "Checkout")
+                @Html.Action("CheckoutShippingAddress", "Checkout")
+                @Html.Action("CheckoutPayment", "Checkout")
+                @Html.Action("CheckoutBonus", "Checkout")
+                @Html.Action("CheckoutCoupon", "Checkout")
+                @Html.Action("CheckoutComment", "Checkout")
+                @Html.Action("CheckoutSummary", "Checkout")
+                <input type="hidden" name="customData" id="customData" value="" />
+            }
+        </div>
+        <div class="col-xs-12 col-md-4 col-p-v" id="rightCell">
+            @Html.Action("CheckoutCart", "Checkout")
+        </div>
+    </div>
+</div>

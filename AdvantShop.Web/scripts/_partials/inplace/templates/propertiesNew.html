@@ -1,0 +1,60 @@
+﻿<div>
+    <div id="inplacePropertiesNewContainer"></div>
+    <form name="inplacePropertiesNewForm" novalidate="novalidate">
+        <ul class="properties">
+            <li class="properties-group" data-ng-init="inplacePropertiesNew.form = inplacePropertiesNewForm">
+                <div class="properties-group-name cs-t-5">{{ ::'Js.Inplace.AddingNewProperty' | translate }}</div>
+            </li>
+            <li class="properties-item properties-item-odd cs-bg-4">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="properties-item-title-name">
+                            {{ ::'Js.Inplace.PropertyName' | translate }}
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="properties-item-title-value">
+                            {{ ::'Js.Inplace.PropertyValue' | translate }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="properties-item-name">
+                            <div class="inplace-properties-new-wrap">
+                                <div data-autocompleter
+                                     data-apply-fn="inplacePropertiesNew.autocompleteNameApply(value, obj)"
+                                     data-min-length="1"
+                                     data-field="Value"
+                                     data-template-path="/scripts/_common/autocompleter/templates/properties.html"
+                                     data-request-url="/product/getpropertiesnames">
+                                    <input data-autocompleter-input data-default-button="#inplaceNewBtn" class="input-small" type="text" autocomplete="off" data-ng-model="inplacePropertiesNew.name" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="properties-item-value">
+                            <div class="inplace-properties-new-wrap">
+                                <div data-autocompleter
+                                     data-apply-fn="inplacePropertiesNew.autocompleteValueApply(value, obj)"
+                                     data-min-length="1"
+                                     data-field="Value"
+                                     data-params="inplacePropertiesNew.autocompleteValueParams"
+                                     data-template-path="/scripts/_common/autocompleter/templates/properties.html"
+                                     data-request-url="/product/getpropertiesvalues">
+                                    <input data-autocompleter-input data-default-button="#inplaceNewBtn" class="input-small" type="text" autocomplete="off" data-ng-model="inplacePropertiesNew.value" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="properties-item-value">
+                            <a id="inplaceNewBtn" href="" class="btn btn-small btn-action" data-button-validation data-button-validation-success="inplacePropertiesNew.save()">{{ ::'Js.Inplace.Add' | translate }}</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>

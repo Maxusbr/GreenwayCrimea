@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section NavMenu {
+
+    @Html.Action("NavMenu", "Tasks")
+}
+@RenderBody()

@@ -1,0 +1,19 @@
+﻿<div>
+    <table class="table table-striped">
+        <tr>
+            <th>Номер</th>
+            <th>Текст</th>
+            <th>Статус</th>
+            <th>Дата</th>
+        </tr>
+        <tr ng-if="$ctrl.items != null && $ctrl.items.length > 0" data-ng-repeat="item in $ctrl.items track by $index">
+            <td>{{item.Phone}}</td>
+            <td>{{item.Body}}</td>
+            <td>{{item.Status}}</td>
+            <td class="text-right mail-date">{{item.CreateOn}}</td>
+        </tr>
+        <tr ng-if="$ctrl.items == null || $ctrl.items.length == 0">
+            <td colspan="4">Записи отсутсвуют</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Выбор категорий</h2>
+</div>
+<div class="modal-body">
+    <div>
+        <div data-js-tree
+             data-tree-ajax="catalog/categoriestree?{{ctrl.selectedIds != null ? '&selectedIds=' + ctrl.selectedIds : ''}}{{ctrl.excludeIds != null ? '&excludeids=' + ctrl.excludeIds : ''}}"
+             data-tree-core=""
+             data-tree-events="select_node:ctrl.treeCallbacks.select_node;deselect_node:ctrl.treeCallbacks.deselect_node;"
+             tree-plugins="checkbox"
+             tree-checkbox="{ three_state : false}"
+             tie-selection="false"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.choose()" ng-disabled="ctrl.btnChangeDisabled">Выбрать</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

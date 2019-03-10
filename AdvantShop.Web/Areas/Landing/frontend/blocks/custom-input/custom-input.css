@@ -1,0 +1,188 @@
+.custom-input-native {
+  /*display: none;*/
+  opacity: 0;
+  position: absolute; }
+
+.custom-input-text {
+  cursor: pointer;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; }
+
+.custom-input-checkbox, .custom-input-radio {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 8px 0 0;
+  box-shadow: 0 0 2px #818181;
+  border: 1px #818181 solid;
+  border-bottom-color: #2d2d2d;
+  background: #fdfdfd;
+  background: linear-gradient(to bottom, #fdfdfd 0%, #f3f3f3 11%, #ebebeb 33%, gainsboro 44%, #e6e6e6 67%, #f0f0f0 78%, #f6f6f6 89%, white 100%); }
+  .custom-input-checkbox:hover, .custom-input-radio:hover {
+    background: white;
+    background: linear-gradient(to bottom, white 0%, #f6f6f6 11%, #f0f0f0 22%, #e6e6e6 33%, gainsboro 56%, #ebebeb 67%, #f3f3f3 89%, #fdfdfd 100%); }
+
+.custom-input-checkbox {
+  border-radius: 4px; }
+
+.custom-input-radio {
+  border-radius: 50%; }
+
+.custom-input-checkbox:after {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  background-repeat: no-repeat;
+  left: 1px;
+  top: -2px; }
+
+.custom-input-radio:after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+.custom-input-native:checked ~ .custom-input-checkbox,
+.custom-input-native:checked ~ .custom-input-radio,
+.custom-input-native:checked ~ .custom-input-checkbox,
+.custom-input-native:checked ~ .custom-input-radio {
+  background: #42509b;
+  background: linear-gradient(to bottom, #42509b 0%, #94a3ca 3%, #e9f8ff 5%, #e6f3f9 8%, #daeaf7 11%, #badff2 16%, #abd4f2 19%, #99ceee 22%, #80c5ee 41%, #79c4eb 43%, #77bdf1 46%, #33b3e2 49%, #3cb3eb 51%, #41b3e9 54%, #51b6ea 57%, #51baea 59%, #64c0f3 65%, #66c1ee 68%, #7fccfa 78%, #8dd7fe 81%, #a7ebfe 86%, #b0f6ff 89%, #b7fbfe 92%, #b8fcff 95%, #b5f7ff 97%, #abecfe 100%); }
+
+.custom-input-native:disabled ~ .custom-input-text,
+.custom-input-native:disabled ~ .custom-input-text {
+  color: #94969b; }
+
+.custom-input-native:focus ~ .custom-input-checkbox,
+.custom-input-native:focus ~ .custom-input-radio,
+.custom-input-native:focus ~ .custom-input-checkbox,
+.custom-input-native:focus ~ .custom-input-radio {
+  box-shadow: 0 0 5px 0 #42509b; }
+
+.custom-input-native:checked ~ .custom-input-checkbox:after {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iMTEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBvbHlnb24gcG9pbnRzPSIwLDUgNCwxMSA1LDExIDExLDAgOSwwIDUsOCA0LDggMyw1IiBmaWxsPSJyZWQ7Ij48L3BvbHlnb24+PC9zdmc+); }
+
+.custom-input-native:checked ~ .custom-input-radio:after {
+  background-color: #000; }
+
+.custom-iphone-checkbox {
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  width: 55px;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-size: 10px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0); }
+  .custom-iphone-checkbox input {
+    display: none; }
+  .custom-iphone-checkbox input:checked + .custom-iphone-checkbox-slider {
+    left: 0; }
+
+.custom-iphone-checkbox-slider {
+  left: -50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  transition: left .25s ease-out;
+  border-radius: 4px; }
+
+.custom-iphone-checkbox-on, .custom-iphone-checkbox-block, .custom-iphone-checkbox-off {
+  display: block;
+  font-weight: bold;
+  height: 100%;
+  line-height: 18px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  box-sizing: border-box; }
+
+.custom-iphone-checkbox-on {
+  background-color: #0662c1;
+  color: white;
+  left: 0;
+  width: 29.5px;
+  padding-right: 2px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+
+.custom-iphone-checkbox-off {
+  background-color: #252729;
+  color: #8b8b8b;
+  padding-left: 2px;
+  left: 53px;
+  width: 27.5px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px; }
+
+.custom-iphone-checkbox-block {
+  background-color: #5a5d60;
+  border-radius: 4px;
+  height: 100%;
+  left: 27.5px;
+  width: 27.5px; }
+
+.btn-ghost {
+  border: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto 20px auto 0;
+  width: 13px;
+  height: 13px;
+  color: #adadad; }
+  .btn-ghost:hover {
+    text-decoration: none;
+    color: #adadad; }
+
+.select-custom {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  color: #fff; }
+  .select-custom:after {
+    right: 10px;
+    pointer-events: none; }
+  .select-custom select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* do not forget set background color to select by color-sheme */
+    border: none;
+    padding: 8px 30px 8px 15px;
+    border-radius: 4px;
+    width: 100%; }
+    .select-custom select:hover, .select-custom select:focus, .select-custom select:active {
+      border: none;
+      outline: none; }
+    .select-custom select::-ms-expand {
+      display: none; }
+    .select-custom select option {
+      background-color: #fff;
+      color: #333;
+      border: none; }
+  .select-custom--slim select {
+    padding: 0 30px 0 15px;
+    height: 25px; }
+  .select-custom--fat select {
+    padding-top: 12px;
+    padding-bottom: 12px; }

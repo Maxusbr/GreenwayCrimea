@@ -1,0 +1,77 @@
+.icon-get-out:after
+{
+    content: "";
+    background: url("../../images/new_admin/icons/get-out.gif") no-repeat;
+    height: 9px;
+    width: 9px;
+    position: relative;
+    top: 0;
+    display: inline-block;
+    margin-left: 10px;
+}
+.icon-mail-a
+{
+    padding-right: 20px;
+    position: relative;
+    text-decoration: none;
+}
+.icon-mail-a:after
+{
+    content: "";
+    display: block;
+    vertical-align: middle;
+    background: url("../../images/new_admin/icons/mail.png") no-repeat 0 1px;
+    width: 14px;
+    height: 13px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -6px;
+}
+.icon-mail-a.icon-selected:after
+{
+    background-position: left -19px;
+}
+.icon-bubble
+{
+    text-decoration: none;
+    position: relative;
+    padding-right: 20px;
+}
+.icon-bubble:after
+{
+    content: "";
+    display: block;
+    vertical-align: middle;
+    background: url("../../images/new_admin/icons/bubble.png") no-repeat;
+    width: 14px;
+    height: 13px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+}
+.icon-bubble.icon-selected:after
+{
+    background-position: left -23px;
+}
+.icon-profile:before
+{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    background: url("../../images/new_admin/icons/profile.png") no-repeat;
+    width: 18px;
+    height: 19px;
+    margin-right: 10px;
+}
+.icon-cogwheel:before
+{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+    height: 18px;
+    width: 18px;
+    background: url("../../images/new_admin/cliparts/cogwheel.png") no-repeat;
+}

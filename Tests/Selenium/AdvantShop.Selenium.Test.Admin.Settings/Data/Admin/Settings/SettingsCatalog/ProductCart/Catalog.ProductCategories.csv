@@ -1,0 +1,9 @@
+CategoryID;ProductID;SortOrder;Main
+1;1;1;true
+1;2;2;true
+2;3;3;true
+2;4;4;true
+3;5;5;true
+3;6;6;true
+2;7;7;true
+2;8;8;true

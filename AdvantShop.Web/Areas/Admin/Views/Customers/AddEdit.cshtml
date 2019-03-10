@@ -1,0 +1,143 @@
+﻿@model AdvantShop.Web.Admin.Models.Customers.CustomersModel
+@{
+    var allowSaveQuickly = Request["orderid"] != null;
+}
+
+<form method="POST" action="@Url.Action("AddEdit")" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+
+    <div ng-init="customer.initCustomer('@Model.CustomerId', @Model.IsEditMode.ToLowerString(), '@(Model.Customer != null ? Model.Customer.StandardPhone : null)')">
+        <input name="IsEditMode" type="hidden" value="{{customer.isEditMode}}" />
+        <input name="CustomerId" type="hidden" value="{{customer.customerId}}" />
+        <input name="Customer.CustomerId" type="hidden" value="{{customer.customerId}}" />
+    </div>
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text inline order-header-item order-header-item-name">
+                    @if (!Model.IsEditMode)
+                    {
+                        if (Model.Customer != null && !Model.Customer.RegistredUser)
+                        {
+                            <span>Пользователь не зарегистрирован. @(Model.Customer.Code != null ? "Код клиента:" + Model.Customer.Code : "")</span>
+                        }
+                        else
+                        {
+                            <span>Новый покупатель</span>
+                        }
+                    }
+                    else if (Model.Customer != null)
+                    {
+                        <span>@Model.Customer.LastName @Model.Customer.FirstName @Model.Customer.Patronymic</span>
+                    }
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <div>
+                    @if (Model.IsEditMode && CustomerService.CanDelete(Model.CustomerId))
+                    {
+                        <a href="" class="link-danger m-r-sm" ng-click="customer.delete()">@T("Admin.Delete")</a>
+                    }
+                    @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, attributes: allowSaveQuickly ? null : new[] { "ng-disabled=\"!form.modified\"", "disabled" }, validation: true)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-9 col-wl-10">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            @Html.Partial("_Customer", Model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Model.Customer != null && (Model.IsEditMode || !Model.Customer.RegistredUser))
+            {
+                if (Model.ShoppingCart != null && Model.ShoppingCart.HasItems)
+                {
+                    <div class="row">
+                        <div class="col-xs">
+                            @Html.Partial("_ShoppingCart", Model)
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-xs">
+                        <div class="ibox category-block">
+                            <div class="ibox-content category-content border_none">
+                                <customer-leads customer-id="@Model.CustomerId"></customer-leads>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                if (Model.Customer.RegistredUser)
+                {
+                    <div class="row">
+                        <div class="col-xs">
+                            <div class="ibox category-block">
+                                <div class="ibox-content category-content border_none">
+                                    <customer-orders customer-id="@Model.CustomerId"></customer-orders>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-xs">
+                        <div class="ibox category-block">
+                            <uib-tabset active uid="tabs">
+                                @if (Model.Customer.RegistredUser)
+                                {
+                                    <uib-tab index="1" heading="Обсуждение покупателя" classes="ng-tab">
+                                        <admin-comments obj-id="@Model.Customer.InnerId" type="customer" form-visible="true"></admin-comments>
+                                    </uib-tab>
+                                }
+
+                                @if (Model.ShowActivity)
+                                {
+                                    <uib-tab index="2" heading="Лог действий" classes="ng-tab">
+                                        <activity-actions data-customer-id="customer.customerId"></activity-actions>
+                                    </uib-tab>
+
+                                    <uib-tab index="3" heading="Звонки" classes="ng-tab">
+                                        <activity-calls data-customer-id="customer.customerId" data-standard-phone="customer.standardPhone"></activity-calls>
+                                    </uib-tab>
+
+                                    <uib-tab index="4" heading="Письма" classes="ng-tab">
+                                        <activity-emails data-customer-id="customer.customerId" data-email="customer.email"></activity-emails>
+                                    </uib-tab>
+
+                                    <uib-tab index="5" heading="SMS" classes="ng-tab">
+                                        <activity-smses data-customer-id="customer.customerId" data-standard-phone="customer.standardPhone"></activity-smses>
+                                    </uib-tab>
+                                }
+                                @if (Model.ShowVk && Model.VkUser != null)
+                                {
+                                    <uib-tab index="6" heading="Вконтакте" classes="ng-tab">
+                                        <vk-messages data-customer-id="customer.customerId" data-user-id="@Model.VkUser.Id"></vk-messages>
+                                    </uib-tab>
+                                }
+                            </uib-tabset>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-xs-3 col-wl-2">
+            @Html.Partial("_RightBlock", Model)
+            @if (Model.IsEditMode && Model.ShowBonusSystem)
+            {
+                @Html.Partial("_BonusCard", Model)
+            }
+        </div>
+    </div>
+</form>

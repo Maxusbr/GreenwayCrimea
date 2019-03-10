@@ -1,0 +1,32 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.Tasks.TasksViewModel
+@section Sidebar
+{
+    @Html.Action("Sidebar", "Sidebar")
+}
+@section Header
+{
+    @Html.Action("Header", "Home", new { className = "blue", href = "", title = Resource.AdminMobile_Tasks })
+}
+<div data-ng-controller="TasksViewController as tasksCtrl">
+    <div class="search-wrap">
+        <span class="select-custom icon-down-open-after-abs cs-t-4">
+            @Html.DropDownList("ddlStatus", Model.Statuses,
+            new
+            {
+                @class = "cs-bg-2",
+                data_ng_change = "tasksCtrl.FilterByStatus()",
+                data_ng_model = "tasksCtrl.status",
+                data_ng_init = "tasksCtrl.status='-1'"
+            })
+        </span>
+    </div>
+    <div id="content">
+        <div>
+            <div data-window-scroll="tasksCtrl.onWinScroll()">
+                <div class="orders" id="tasks">
+                    <div data-tasks-view></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

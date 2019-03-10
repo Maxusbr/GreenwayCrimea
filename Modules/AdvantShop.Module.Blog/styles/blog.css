@@ -1,0 +1,23 @@
+.blog-rss-link {
+  font-size: 18px; }
+
+@media (max-width: 480px) {
+  .blog-rss-link {
+    font-size: 1.25em;
+    position: absolute;
+    right: -5px;
+    top: -4px; }
+  .blog-right-static {
+    margin-top: 10px; }
+  .blog-link-title {
+    display: block; }
+  .blog-list-item .subheader, .blog-post .subheader {
+    font-size: 0.75em; }
+  .blog-title-row {
+    margin: 10px 0; }
+  .blog-list-item .subheader, .blog-post .subheader, .blog-image-column, .blog-link-title, .blog-list-item, .blog-item-bottom {
+    margin-bottom: 10px; }
+  h1.blog-title.page-title {
+    text-align: left;
+    font-size: 1.25em;
+    position: relative; } }

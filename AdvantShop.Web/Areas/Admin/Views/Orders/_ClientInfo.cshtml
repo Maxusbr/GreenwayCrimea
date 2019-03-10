@@ -1,0 +1,48 @@
+﻿@model AdvantShop.Web.Admin.Models.OrdersEdit.ClientInfoModel
+
+<div class="ibox category-block block-additional-parameters">
+    <div class="ibox-content category-content block-additional-parameters-content p-r-lg border_none">
+        <h3 class="category-title">Покупатель</h3>
+        <div class="block-additional-parameters-row">
+            <div>
+                Группа покупателей:
+            </div>
+            <div class="block-additional-parameters-value">
+                @Model.CustomerGroup
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.Segment))
+        {
+            <div class="block-additional-parameters-row">
+                <div>
+                    Сегмент:
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Model.Segment
+                </div>
+            </div>
+        }
+        @if (Model.CustomerId != null)
+        {
+            <div class="block-additional-parameters-row">
+                <a href="@Url.Action("Edit", "Customers", new {id = @Model.CustomerId})" class="edit link-decoration-none">Все заказы покупателя: @Model.OrdersCount</a>
+            </div>
+            <div class="block-additional-parameters-row">
+                <div>
+                    Дата регистрации:
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Model.RegistrationDate
+                </div>
+            </div>
+            <div class="block-additional-parameters-row">
+                <div>
+                    Комментарий администратора о покупателе:
+                </div>
+                <div class="block-additional-parameters-value">
+                    @(!string.IsNullOrEmpty(Model.AdminCommentAboutCustomer) ? Model.AdminCommentAboutCustomer : "нет")
+                </div>
+            </div>
+        }
+    </div>
+</div>

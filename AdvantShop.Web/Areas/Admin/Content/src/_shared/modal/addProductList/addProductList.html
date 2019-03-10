@@ -1,0 +1,50 @@
+﻿<form name="formAddProductList">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Добавление продуктов списком</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-4 control-label">
+                <span class="text-required">
+                    Родительская категория
+                </span>
+            </label>
+            <div class="col-xs-8 control-label">
+
+                <span class="error-color" ng-show="formAddProductList.inputCategoryName.$invalid">Выберите категорию</span>
+                <input type="text" class="input-ghost" name="inputCategoryName" required ng-model="ctrl.categoryName" ng-hide="formAddProductList.inputCategoryName.$invalid" input-ghost validation-input-text="Выберите категорию" />
+
+                <ui-modal-trigger data-controller="'ModalChangeParentCategoryCtrl'" controller-as="ctrl"
+                                  data-on-close="ctrl.changeCategory(result)"
+                                  data-resolve="{showRoot: true, selected:0, currentId:0}"
+                                  template-url="../areas/admin/content/src/category/modal/changeParentCategory/ChangeParentCategory.html">
+                    <a href="" class="edit">Выбрать</a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4 control-label">
+                <div class="text-required">Список продуктов</div>
+                <div class="m-t-sm m-b-sm bold">Название товара в новой строке</div>
+                <div class="italic m-b-xs">Пример:</div>
+                <div>
+                    Товар 1<br />
+                    Товар 2
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <textarea rows="8"
+                          required
+                          class="form-control"
+                          name="productListTextarea"
+                          ng-model="ctrl.products"
+                          validation-input-text="Список продуктов"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation ladda="ctrl.inProgress">Добавить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

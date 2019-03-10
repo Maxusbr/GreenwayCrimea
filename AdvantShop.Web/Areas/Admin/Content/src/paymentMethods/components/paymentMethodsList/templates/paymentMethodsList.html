@@ -1,0 +1,27 @@
+﻿<div class="sortable-row" ng-model="$ctrl.methods" as-sortable="$ctrl.sortableOptions">
+    <div class="row" ng-repeat="item in $ctrl.methods" as-sortable-item ng-cloak>
+        <div class="col-xs-12">
+            <div class="flex payment-row middle-xs between-xs">
+                <div class="flex middle-xs col-xs">
+                    <div class="as-sortable-item-handle" as-sortable-item-handle>
+                        <icon-move />
+                    </div>
+                    <div class="payment-icon">
+                        <a href="paymentmethods/edit/{{item.PaymentMethodId}}"><img ng-if="item.Icon != null" ng-src="{{item.Icon}}" alt="" /></a>
+                    </div>
+                    <span data-e2e="PaymentName" class="payment-text">
+                        <a href="paymentmethods/edit/{{item.PaymentMethodId}}">{{item.Name}}</a> <span class="payment-text-grey">{{item.PaymentType}}</span>
+                    </span>
+                </div>
+                <div class="flex middle-xs col-fixed-size-sm">
+                    <div class="payment-switcher">
+                        <switcher-state on-change="$ctrl.setEnabled(item.PaymentMethodId, checked)" data-e2e="PaymentEnabled" text-off="Выкл" text-on="Вкл" checked="item.Enabled"></switcher-state>
+                    </div>
+                </div>
+                <div class="flex middle-xs col-fixed-size-ls">
+                    <a href="" class="fa fa-times link-invert link-decoration-none" ng-click="$ctrl.deleteMethod(item.PaymentMethodId)"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

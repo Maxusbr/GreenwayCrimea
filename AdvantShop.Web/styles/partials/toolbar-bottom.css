@@ -1,0 +1,110 @@
+.toolbar-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #383c40; }
+
+.toolbar-bottom, .toolbar-bottom-garant {
+  height: 2.5rem; }
+
+@media (max-width: 980px) {
+  .toolbar-bottom-block.wishlist-bottom-block {
+    display: none; } }
+
+@media (max-width: 870px) {
+  .bottom-toolbars {
+    display: none; } }
+
+.toolbar-bottom-block, .toolbar-bottom-slim {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle; }
+
+.toolbar-bottom-block {
+  font-size: 0.75rem;
+  padding: 0.625rem 0;
+  margin: 0 0.625rem; }
+
+.toolbar-bottom-count {
+  border-radius: 0.1875rem;
+  padding: 0.125rem 0.3125rem;
+  text-align: center;
+  min-width: 0.9375rem;
+  vertical-align: middle;
+  position: absolute;
+  background-color: #0662c1;
+  line-height: 1;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.toolbar-bottom-count-left {
+  right: 100%;
+  margin-right: 0.3125rem; }
+
+.toolbar-bottom-count-right {
+  left: 100%;
+  margin-left: 0.3125rem; }
+
+.toolbar-bottom-link {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border-bottom-color: #fff;
+  color: #fff; }
+  .toolbar-bottom-link:hover, .toolbar-bottom-link:active {
+    color: #fff;
+    border-bottom-color: transparent; }
+
+.toolbar-bottom-link-wrap {
+  position: relative; }
+
+.toolbar-bottom-link-with-icon-left {
+  margin-left: 1.875rem; }
+
+.toolbar-bottom-link-with-icon-right {
+  margin-right: 1.875rem; }
+
+.toolbar-bottom-align-center {
+  text-align: center; }
+
+.toolbar-bottom-align-right {
+  text-align: right; }
+
+.toolbar-bottom-label {
+  color: #fff;
+  margin-left: 0.3125rem;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.toolbar-bottom-garant {
+  display: none; }
+
+.toolbar-bottom + .toolbar-bottom-garant {
+  display: block; }
+
+.toolbar-bottom-btn-confirm {
+  color: #fff;
+  background: #e20000; }
+  .toolbar-bottom-btn-confirm:hover {
+    color: #fff;
+    background: #fb0000; }
+  .toolbar-bottom-btn-confirm:active {
+    color: #fff;
+    background: #c90000; }
+
+.toolbar-bottom-btn-confirm-disabled {
+  opacity: .5; }
+
+.toolbar-bottom-links .toolbar-bottom-block:first-child {
+  margin-left: 0; }
+
+.popover.toolbar-bottom-module {
+  z-index: 1000; }

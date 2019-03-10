@@ -1,0 +1,18 @@
+﻿@model AdvantShop.ViewModel.Catalog.TagViewModel
+
+@if (Model.Tags.Any())
+{
+    <div class="tags">
+        @foreach (var tag in Model.Tags)
+        {
+            if (tag.Selected)
+            {
+                <span class="tag-item selected cs-br-1">@tag.Name <a href="@(Url.AbsoluteRouteUrl("Category", new { url = Model.CategoryUrl}))" class="icon-cancel-after link-text-decoration-none icon-unselect"></a></span>
+            }
+            else
+            {
+                <a class="tag-item cs-br-1 @(tag.Selected ? "selected" : "") " href="@(Url.AbsoluteRouteUrl("CategoryTag", new { url = Model.CategoryUrl, tagUrl = tag.Url }))">@tag.Name</a>
+            }
+        }
+    </div>
+}

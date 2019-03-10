@@ -1,0 +1,79 @@
+﻿<table class="order-history">
+    <thead class="order-history-header">
+        <tr>
+            <th class="order-history-header-item order-history-id cs-bg-3">
+                №
+            </th>
+            <th class="order-history-header-item cs-bg-3">
+                {{ ::'Js.Order.Status' | translate }}
+            </th>
+            <th class="order-history-header-item cs-bg-3">
+                {{ ::'Js.Order.Payment' | translate }}
+            </th>
+            <th class="order-history-header-item cs-bg-3">
+                {{ ::'Js.Order.Delivery' | translate }}
+            </th>
+            <th class="order-history-header-item cs-bg-3">
+                {{ ::'Js.Order.OrderDate' | translate }}
+            </th>
+            <th class="order-history-header-item cs-bg-3">
+                {{ ::'Js.Order.IsPaied' | translate }}
+            </th>
+            <th class="order-history-header-item cs-bg-3">
+                {{ ::'Js.Order.Cost' | translate }}
+            </th>
+            <th class="order-history-header-item order-history-trigger-details cs-bg-3"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="order-history-body-item-row" data-ng-repeat="item in parentScope.items.Orders track by $index" data-ng-click="parentScope.view(item.OrderNumber)">
+            <td class="order-history-body-item order-history-id">
+                {{item.OrderNumber}}
+            </td>
+            <td class="order-history-body-item">
+                {{item.Status}}
+            </td>
+            <td class="order-history-body-item">
+                {{item.ArchivedPaymentName}}
+            </td>
+            <td class="order-history-body-item">
+                {{item.ShippingMethodName}}
+            </td>
+            <td class="order-history-body-item">
+                <div>
+                    {{item.OrderDate}}
+                </div>
+                <div class="cs-t-3">
+                    {{item.OrderTime}}
+                </div>
+            </td>
+            <td class="order-history-body-item">
+                {{item.Payed ? 'Js.Order.Yes' : 'Js.Order.No' | translate}}
+            </td>
+            <td class="order-history-body-item">
+                {{item.Sum}}
+            </td>
+            <td class="order-history-body-item  order-history-trigger-detail">
+                <a href="" class="icon-right-open-before link-text-decoration-none"></a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8" class="order-history-body-item" data-ng-if="parentScope.items.Orders.length == 0">
+                <div class="order-history-empty-text">{{ ::'Js.Order.EmptyOrderListMsg' | translate }}</div>
+                <div>
+                    <a href="catalog" class="btn btn-middle btn-action">{{ ::'Js.Order.GoToCatalog' | translate }}</a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="order-history-footer-item" colspan="7" data-ng-if="parentScope.items.Orders.length > 0">
+                <span class="order-history-footer-text">{{ ::'Js.Order.OrderSum' | translate }}:</span>
+                <span class="order-history-footer-result">{{parentScope.items.TotalSum}}</span><br />
+                <span class="order-history-footer-note cs-t-3">{{ ::'Js.Order.OrderSumText' | translate }}</span>
+            </td>
+            <td class="order-history-footer-item"></td>
+        </tr>
+    </tfoot>
+</table>

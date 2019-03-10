@@ -1,0 +1,11 @@
+﻿<div class="panel js-citi-selector-panel">
+    <div class="city-selector-title cs-t-4">
+        Ваш город:
+    </div>
+    <div class="city-selector-input">
+        <input id="citySelecorList" type="text" data-ng-model="csCtrl.curZone.city" data-ng-keyup="csCtrl.input()" />
+    </div>
+    <div class="city-selector-panel cs-br-4">
+        <a class="cs-l-9" href="" data-ng-repeat="city in csCtrl.zones | filter: {Name:csCtrl.curZone.city} track by $index" data-ng-click="csCtrl.selectCity(city.Name)" data-ng-bind="city.Name"></a>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.ShippingMethodsSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+
+
+<div class="sticky-page-name m-n" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner header-hidden">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @*<span class="original-header-page">@T("Admin.Settings.Header")</span>*@
+                <span class="float-header-page" ng-bind="settings.floatHeader"></span>
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+
+        </div>
+    </div>
+</div>
+
+    <div class="ibox">
+        <uib-tabset active uid="shippings" on-select-batch="settings.floatHeader = tab.heading;">
+            <uib-tab index="1" heading="@T("Admin.Settings.ShippingMethods")" classes="ng-tab">
+                <a href="@Url.Action("Academy", "Service", new { id = 42 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline m-b-sm">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    Видеоурок о Способах доставки
+                </a>
+                <shipping-methods-list></shipping-methods-list>
+
+            </uib-tab>
+            <div class="js-not-tabs">
+                <ui-modal-trigger data-controller="'ModalAddShippingMethodCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/shippingMethods/modal/addShippingMethod/addShippingMethod.html"
+                                  data-on-close="settings.shippingMethodsList.fetch()">
+                    <button data-e2e="ShippingAdd" class="btn btn-sm btn-success" type="button">
+                        <span class="fa fa-plus"></span> @T("Добавить способ доставки")
+                    </button>
+                </ui-modal-trigger>
+            </div>
+        </uib-tabset>
+    </div>

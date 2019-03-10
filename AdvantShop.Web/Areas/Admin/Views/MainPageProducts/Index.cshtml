@@ -1,0 +1,50 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.MainPageProducts.MainPageProductsViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Catalog/_CatalogLayout.cshtml";
+    ViewBag.CatalogLeftMenuNgCallbackOnInit = "mainpageproducts.initCatalogLeftMenu(catalogLeftMenu)";
+}
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline bottom-cell m-r-xs">
+                @Html.Raw(Model.Title)
+            </h1>
+            <a href="@Url.Action("Academy", "Service", new { id = 34 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Товарах на главной
+            </a>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalEditMainPageListCtrl'" controller-as="ctrl" size="lg" 
+                              template-url="../areas/admin/content/src/mainpageproducts/modal/editMainPageList/editMainPageList.html" 
+                              data-resolve="{'type': @((int)Model.Type)}"> 
+                <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="editMainPageList">
+                    Редактировать
+                </button>
+            </ui-modal-trigger>
+
+            @if (Model.Type != AdvantShop.Catalog.EProductOnMain.Sale)
+            {
+                <ui-modal-trigger class="header-subtext" data-controller="'ModalProductsSelectvizrCtrl'" controller-as="ctrl" size="xs-11" on-close="mainpageproducts.addProductsModal(result)" template-url="../areas/admin/content/src/_shared/modal/products-selectvizr/productsSelectvizrModal.html">
+                    <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="mainPageListAddProduct">
+                        <span class="fa fa-plus"></span> @T("Admin.AddProduct")
+                    </button>
+                </ui-modal-trigger>
+            }
+        </div>
+    </div>
+</div>
+
+<ui-grid-custom grid-unique-id="grid"
+                grid-row-identificator="'ProductId'"
+                grid-on-init="mainpageproducts.onInitGrid(grid)"
+                grid-options="mainpageproducts.gridOptions"
+                grid-params="{type:'@(Model.Type.ToString())'}"
+                grid-url="'mainpageproducts/getcatalog'"
+                grid-inplace-url="'mainpageproducts/inplaceproduct'"
+                grid-on-delete="mainpageproducts.onGridDeleteItem()"
+                grid-selection-mass-apply="mainpageproducts.onGridDeleteItem()">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="mainpageproducts.grid.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

@@ -1,0 +1,10 @@
+﻿<div>
+    <div class="sizes-viewer-block" data-ng-repeat="size in ::sizesViewer.sizes track by $index">
+        <div class="sizes-viewer-item" data-ng-class="{'sizes-viewer-item-selected cs-br-2':  sizesViewer.sizeSelected.SizeId === size.SizeId, 'sizes-viewer-item-disabled': size.isDisabled}">
+            <label class="sizes-viewer-inner center-aligner cs-l-1" title="{{::size.SizeName}}">
+                <span data-ng-bind="::size.SizeName"></span>
+                <input data-ng-disabled="size.isDisabled" data-ng-change="sizesViewer.changeSize({ size: size })" data-ng-model="sizesViewer.sizeSelected" class="sizes-viewer-radio" type="radio" data-ng-value="size" />
+            </label>
+        </div>
+    </div>
+</div>

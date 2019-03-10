@@ -1,0 +1,12 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@model System.Boolean
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>()
+    {
+        url + "modules/additionalmarkers/content/scripts/product-view-markers/product-view-markers.js",
+    };
+}
+    <div data-oc-lazy-load="[@(String.Join(", ", scripts.Select(x => "'" + x + "'")))]">
+        <product-view-marker data-is-mobile="@Model"></product-view-marker>
+    </div>

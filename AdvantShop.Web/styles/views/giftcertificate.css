@@ -1,0 +1,142 @@
+.certificate {
+  width: 686px;
+  min-height: 295px;
+  position: relative;
+  background: #fff; }
+
+.certificate .header {
+  padding: 8px 0 8px 175px;
+  font-family: Tahoma;
+  border-bottom: 3px #00539a solid;
+  margin-bottom: 2px; }
+
+.certificate .logo-wrap {
+  float: left; }
+
+.certificate .logo-wrap img {
+  max-width: 270px; }
+
+.certificate .code-wrap {
+  float: right;
+  width: 200px; }
+
+.certificate .code-wrap .text {
+  color: #b80700;
+  padding-bottom: 10px; }
+
+.certificate .code-wrap .code {
+  font-size: 18px;
+  color: #393939; }
+
+.certificate .section {
+  background: #e7f5ff url(../../images/giftcertificate/bg_certificate.jpg) no-repeat scroll center bottom;
+  position: relative;
+  font-family: "Times New Roman";
+  color: #00539a;
+  padding: 10px 0;
+  min-height: 210px;
+  -webkit-print-color-adjust: exact; }
+
+.certificate .section .cert-data {
+  margin-left: 215px;
+  padding-bottom: 25px; }
+
+.certificate .section .cert-data .name {
+  padding-bottom: 20px; }
+
+.certificate .section .use {
+  font-family: Tahoma;
+  left: 214px;
+  bottom: 5px;
+  position: absolute;
+  color: #000; }
+
+.certificate .section .persons {
+  font-size: 17px;
+  font-family: Times New Roman;
+  font-style: italic;
+  padding-bottom: 15px; }
+
+.certificate .section .persons .person-to, .certificate .section .persons .person-from {
+  float: left;
+  margin-right: 40px;
+  padding-top: 5px; }
+
+.certificate .section .persons .person-to img, .certificate .section .persons .person-from img {
+  margin-right: 8px; }
+
+.certificate .section .persons .person-to img {
+  vertical-align: middle; }
+
+.certificate .section .persons .person-from img {
+  vertical-align: middle; }
+
+.certificate .section .message {
+  width: 250px;
+  background: url(../../images/giftcertificate/line.png) repeat-y scroll left 30px;
+  font-size: 16px;
+  font-style: italic;
+  font-family: Times New Roman;
+  line-height: 31px;
+  position: relative;
+  float: left;
+  -webkit-print-color-adjust: exact; }
+
+.certificate .section .site-use {
+  color: #000;
+  font-weight: bold; }
+
+.certificate .section .cert-price {
+  font-family: Tahoma;
+  font-weight: bold;
+  font-size: 24px;
+  color: #b80700;
+  position: absolute;
+  width: 200px;
+  right: 10px;
+  bottom: 60px;
+  text-align: center; }
+
+.certificate .section .cert-price .curr {
+  font-size: 24px; }
+
+.curr {
+  display: inline-block;
+  vertical-align: middle; }
+
+.certificate .bow-wrap {
+  background: url(../../images/giftcertificate/bow-bg.png) repeat-y scroll 80px top;
+  position: absolute;
+  width: 209px;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  -webkit-print-color-adjust: exact; }
+
+.certificate .heighter {
+  min-height: 60px;
+  float: right; }
+
+.certificate .bow {
+  background: url(../../images/giftcertificate/bow.png) no-repeat;
+  height: 293px;
+  -webkit-print-color-adjust: exact; }
+
+.block-certificate {
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0 10px 10px 0;
+  margin-bottom: 10px; }
+
+.block-certificate:after {
+  background: transparent none; }
+
+.block-certificate .block-certificate-txt {
+  background: #3d597a;
+  padding: 10px 15px;
+  color: #fff;
+  text-transform: uppercase; }
+
+.block-certificate img.certificate-img {
+  display: block;
+  width: 100%; }

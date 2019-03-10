@@ -1,0 +1,58 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.PropertyValues.PropertyValuesViewModel
+
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-wl-2">
+        <div class="clearfix">
+            <div class="pull-left header-alt">@T("Admin.Properties.Index.PropertyGroups")</div>
+            <div class="pull-right header-alt-icons">
+                <ui-modal-trigger data-controller="'ModalAddGroupCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/properties/modal/addGroup/addGroup.html"
+                                  data-on-close="propertyvalues.updatePropertyGroups(result)">
+                    <a href="" class="fa fa-plus link-alt header-alt-icons-item link-decoration-none"></a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+        <property-groups group-id="@(Model.PropertyGroupId ?? 0)" on-init="propertyValues.initPropertyGroups(propertyGroups)"></property-groups>
+
+    </div>
+    <div class="col-xs-12 col-sm-9 col-wl-10">
+        <div class="ibox">
+            <div class="ibox-content">
+
+                <div class="sticky-page-name" sticky sticky-top="0">
+                    <div class="page-name-block sticky-page-name-inner">
+                        <div class="page-name-block-item-main">
+                            <h1 class="page-name-block-text sticky-page-name-text">
+                                @T("Admin.PropertyValues.PropertyValues") - "@Html.Raw(Model.PropertyName)"
+                            </h1>
+                            <div class="m-t-xs">
+                                <a href="@Url.Action("Index", "Properties", new {groupId = Model.PropertyGroupId})">@T("Admin.Back")</a>
+                            </div>
+                        </div>
+                        <div class="page-name-block-item-additional">
+                            <ui-modal-trigger data-controller="'ModalAddPropertyValueCtrl'" controller-as="ctrl"
+                                              template-url="../areas/admin/content/src/propertyValues/modal/addPropertyValue/addPropertyValue.html"
+                                              data-resolve="{'propertyId': @Model.PropertyId}"
+                                              data-on-close="propertyvalues.grid.fetchData()">
+                                <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                                    <span class="fa fa-plus"></span> @T("Admin.PropertyValues.AddPropertyValue")
+                                </button>
+                            </ui-modal-trigger>
+                        </div>
+                    </div>
+                </div>
+
+                <ui-grid-custom grid-unique-id="grid"
+                                grid-options="propertyvalues.gridOptions"
+                                grid-on-init="propertyvalues.gridOnInit(grid)"
+                                grid-url="'propertyvalues/getPropertyValues'"
+                                grid-params="{propertyId: '@Model.PropertyId'}"
+                                grid-inplace-url="'propertyvalues/inplacePropertyValue'">
+                    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="propertyvalues.grid.gridOptions.TotalString">
+                    </ui-grid-custom-footer>
+                </ui-grid-custom>
+
+            </div>
+        </div>
+    </div>
+</div>

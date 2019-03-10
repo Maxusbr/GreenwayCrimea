@@ -1,0 +1,117 @@
+﻿@model AdvantShop.Module.ShippingPaymentPage.Models.ShippingPaymentModel
+
+<div data-oc-lazy-load="['modules/shippingpaymentpage/scripts/shippingpaymentpage.js']">
+    <div data-ng-controller="ShippingPaymentPageCtrl as shippingPaymentPage">
+        <h1 class="main-title">@T("Module.ShippingPaymentPage.PageTitle")</h1>
+            <div class="shipping-payment-city">Ваш город:</div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <form name="shippingPaementZone">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                                <div data-field="Name" class="shipping-payment-autocomplete" data-autocompleter data-apply-fn="shippingPaymentPage.setZone(value, obj, obj.CountryId)" data-request-url="/location/GetCitiesAutocomplete" data-template-path="scripts/_common/autocompleter/templates/location.html">
+                                    <input data-autocompleter-input type="text" class="input-big" placeholder="@T("Module.ShippingPaymentPage.EnterYourCity")" value="@Model.Zone.City" name="shippingPaementField" data-ng-init="shippingPaymentPage.zoneCity = '@Model.Zone.City'" data-ng-model="shippingPaymentPage.zoneCity" />
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <div class="shipping-payment-zone-button">
+                                    <input class="btn btn-big btn-buy btn-expander" type="button" value="@T("Module.ShippingPaymentPage.Apply")" data-ng-click="shippingPaymentPage.setZone(shippingPaymentPage.zoneCity)" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-p-v">
+                    <div class="site-body-cell">
+                        <label class="shipping-payment-use-cart">
+                            <input type="checkbox" class="custom-input-native" data-ng-model="shippingPaymentPage.useCart" data-ng-change="shippingPaymentPage.reloadData()" />
+                            <span class="custom-input-checkbox"></span>
+                            <span class="custom-input-text">@T("Module.ShippingPaymentPage.RequireCart")</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            @if (!string.IsNullOrEmpty(@Model.TextBlock))
+            {
+                <div class="row">
+                    <div class="col-xs-12 col-p-v">
+                        <div class="site-body-cell site-body-cell-no-left">
+                            @Html.Raw(Model.TextBlock)
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="h2 shipping-main-title">@T("Module.ShippingPaymentPage.ShippingMethods")</div>
+                    <div class="shipping-payment-list-wrapper icon-spinner-after icon-animate-spin-after" data-ng-class="{'loaded' : shippingPaymentPage.shippingDataReceived}">
+                        <div class="shipping-payment-list">
+                            <div class="shipping-payment-item">
+                                <span class="shipping-payment-head cs-br-1"></span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.ShippingName")</span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.ShippingCost")</span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.ShippingTime")</span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.ShippingDescription")</span>
+                            </div>
+                            <div class="shipping-payment-body ng-hide" data-ng-show="shippingPaymentPage.shippingDataReceived">
+                                <label class="shipping-payment-item cs-bg-9-interactive" data-ng-repeat="shipping in shippingPaymentPage.Shipping.option track by $index">
+                                    <span class="shipping-payment-field shipping-payment-radio">
+                                        <input type="radio" name="shipping" class="custom-input-native" data-ng-value="shipping" data-ng-model="shippingPaymentPage.ngSelectShipping" data-ng-change="shippingPaymentPage.changeShipping(shipping)" />
+                                        <span class="custom-input-radio"></span>
+                                    </span>
+                                    <span class="shipping-payment-field">
+                                        <span class="shipping-payment-icon-cell" data-ng-if="shipping.IconName != null">
+                                            <img class="shipping-payment-icon" data-ng-src="{{shipping.IconName}}" alt="" />
+                                        </span>
+                                        <span data-ng-bind-html="shipping.Name"></span>
+                                        <span class="shipping-payment-additional" data-ng-if="shipping.Template != null && shipping.Template.length > 0">
+                                            <span data-shipping-template data-contact="shippingPaymentPage.contact" data-is-selected="shippingPaymentPage.selectShipping === shipping" data-shipping="shipping" data-template-url="shipping.Template" data-change-control="shippingPaymentPage.changeShipping(shipping)"></span>
+                                        </span>
+                                    </span>
+                                    <span class="shipping-payment-field" data-ng-bind="shipping.FormatRate"></span>
+                                    <span class="shipping-payment-field" data-ng-bind="shipping.DeliveryTime"> </span>
+                                    <span class="shipping-payment-field" data-ng-bind-html="shipping.Desc"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h2 shipping-main-title">@T("Module.ShippingPaymentPage.PaymentMethods")</div>
+                    <div class="shipping-payment-list-wrapper icon-spinner-after icon-animate-spin-after" data-ng-class="{'loaded' : shippingPaymentPage.paymentDataReceived}">
+                        <div class="shipping-payment-list">
+                            <div class="shipping-payment-item">
+                                <span class="shipping-payment-head shipping-payment-head-radio-payment cs-br-1"></span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.PaymentName")</span>
+                                <span class="shipping-payment-head shipping-payment-head-description cs-br-1">@T("Module.ShippingPaymentPage.ShippingDescription")</span>
+                            </div>
+                            <div class="shipping-payment-body ng-hide" data-ng-show="shippingPaymentPage.paymentDataReceived">
+                                <label class="shipping-payment-item  cs-bg-9-interactive" data-ng-repeat="payment in shippingPaymentPage.Payment.option track by $index">
+                                    <span class="shipping-payment-field shipping-payment-radio">
+                                        <input type="radio" name="payment" class="custom-input-native" data-ng-value="payment" data-ng-model="shippingPaymentPage.ngSelectPayment" data-ng-change="shippingPaymentPage.changePayment(payment)" />
+                                        <span class="custom-input-radio"></span>
+                                    </span>
+                                    <span class="shipping-payment-field">
+                                        <img class="shipping-payment-icon" data-ng-if="payment.IconName != null" data-ng-src="{{payment.IconName}}" alt="" />
+                                        <span data-ng-bind-html="payment.Name"></span>
+                                    </span>
+                                    <span class="shipping-payment-field" data-ng-bind-html="payment.Desc"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(@Model.TextBlockBottom))
+            {
+                <div class="row">
+                    <div class="col-xs-12 col-p-v">
+                        <div class="site-body-cell site-body-cell-no-left">
+                            @Html.Raw(Model.TextBlockBottom)
+                        </div>
+                    </div>
+                </div>
+            }
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿
+<div class="err-txt">
+    @T("Error.NotFound.Title")
+</div>
+<div class="err-reasons">
+    <div class="err-reasons-title">@T("Error.NotFound.ReasonsTitle"):</div>
+    <ul class="err-reasons-list">
+        <li>@T("Error.NotFound.PageWasDeleted")</li>
+        <li>@T("Error.NotFound.IncorrectLinkToThePage")</li>
+        <li>@T("Error.NotFound.IncorrectTypeOrAddress")</li>
+    </ul>
+    @T("Error.NotFound.BackToMainPage", Url.RouteUrl("Home")) @T("Error.NotFound.BackCatalog", Url.RouteUrl("CatalogRoot"))
+</div>

@@ -1,0 +1,140 @@
+﻿@import "../_settings.scss", "../functions/_util.scss", "../functions/_breakpoints.scss";
+
+.toolbar-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #383c40;
+}
+
+.toolbar-bottom, .toolbar-bottom-garant {
+    height: rem-calc(40px);
+}
+
+@media (max-width: 980px) {
+    .toolbar-bottom-block.wishlist-bottom-block {
+        display: none;
+    }
+}
+
+@media (max-width: 870px) {
+    .bottom-toolbars {
+        display: none;
+    }
+}
+
+.toolbar-bottom-block, .toolbar-bottom-slim {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.toolbar-bottom-block {
+    font-size: $font-size-normal;
+    padding: $padding-base 0;
+    margin: 0 $padding-base;
+}
+
+.toolbar-bottom-count {
+    border-radius: $border-radius-small;
+    padding: rem-calc(2px) rem-calc(5px);
+    text-align: center;
+    min-width: rem-calc(15px);
+    vertical-align: middle;
+    position: absolute;
+    background-color: #0662c1;
+    line-height: 1;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.toolbar-bottom-count-left {
+    right: 100%;
+    margin-right: rem-calc(5px);
+}
+
+.toolbar-bottom-count-right {
+    left: 100%;
+    margin-left: rem-calc(5px);
+}
+
+.toolbar-bottom-link {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    border-bottom-color: #fff;
+    color: #fff;
+
+    &:hover, &:active {
+        color: #fff;
+        border-bottom-color: transparent;
+    }
+}
+
+.toolbar-bottom-link-wrap {
+    position: relative;
+}
+
+.toolbar-bottom-link-with-icon-left {
+    margin-left: rem-calc(30px);
+}
+
+.toolbar-bottom-link-with-icon-right {
+    margin-right: rem-calc(30px);
+}
+
+.toolbar-bottom-align-center {
+    text-align: center;
+}
+
+.toolbar-bottom-align-right {
+    text-align: right;
+}
+
+.toolbar-bottom-label {
+    color: #fff;
+    margin-left: rem-calc(5px);
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toolbar-bottom-garant {
+    display: none;
+}
+
+.toolbar-bottom + .toolbar-bottom-garant {
+    display: block;
+}
+
+.toolbar-bottom-btn-confirm {
+    color: #fff;
+    background: #e20000;
+
+    &:hover {
+        color: #fff;
+        background: #fb0000;
+    }
+
+    &:active {
+        color: #fff;
+        background: #c90000;
+    }
+}
+
+.toolbar-bottom-btn-confirm-disabled {
+    opacity: .5;
+}
+
+.toolbar-bottom-links {
+    .toolbar-bottom-block:first-child {
+        margin-left: 0;
+    }
+}
+
+.popover.toolbar-bottom-module {
+    z-index: 1000;
+}

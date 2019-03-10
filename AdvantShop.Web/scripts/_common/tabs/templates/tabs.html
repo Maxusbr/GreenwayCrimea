@@ -1,0 +1,8 @@
+﻿<div class="tabs tabs-{{::tabs.type}}">
+    <ul class="tabs-headers clear">
+        <li id="{{::pane.id}}" class="tabs-header-item" data-ng-if="pane.isRender" data-ng-repeat="pane in ::tabs.panes track by $index" data-ng-class="tabs.getClassesTab(pane)">
+            <a href="" class="tabs-header-item-link" data-ng-click="tabs.change(pane)" data-ng-class="tabs.getClassesLink(pane)" data-ng-bind="::pane.title"></a>
+        </li>
+    </ul>
+    <div class="tabs-content" ng-transclude></div>
+</div>

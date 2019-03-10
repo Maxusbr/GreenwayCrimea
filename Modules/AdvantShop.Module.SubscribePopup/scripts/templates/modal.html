@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="col-xs-12" ng-switch="subscribePopup.currentForm">
+        <div ng-switch-when="main">
+            <div data-ng-bind-html="subscribePopup.modalTopText">
+
+            </div>
+            <label class="row middle-xs">
+                <span class="col-xs-5">
+                    <span class="form-field-name vertical-interval-middle input-required">Ваш e-mail адрес</span>
+                </span>
+                <span class="col-xs-7">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="email" id="subscribePopupEmail" class="input-small" data-ng-model="subscribePopup.email" required />
+                    </span>
+                </span>
+            </label>
+            <div data-ng-bind-html="subscribePopup.modalBottomText"></div>
+        </div>
+
+        <div ng-switch-when="final" data-ng-bind-html="subscribePopup.modalFinalText"></div>
+    </div>
+</div>

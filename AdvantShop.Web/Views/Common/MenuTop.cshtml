@@ -1,0 +1,12 @@
+﻿@model List<AdvantShop.Core.Services.CMS.MenuItemModel>
+<ul class="menu-header clear">
+    @foreach (var item in Model)
+    {
+        if (item.NoFollow)
+        { <!--noindex--> }
+        <li class="menu-header-item"><a class="cs-l-2 menu-header-link" href="@item.UrlPath" @Html.Raw(item.Blank ? "target=\"_blank\"" : "") @Html.Raw(item.NoFollow ? "rel=\"nofollow\"" : "")>@item.Name</a></li>
+        if (item.NoFollow)
+        { <!--/noindex--> }
+    }
+</ul>
+

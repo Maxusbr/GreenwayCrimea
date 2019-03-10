@@ -1,0 +1,29 @@
+﻿@model AdvantShop.ViewModel.Home.HomeViewModel
+
+<div class="row body-content">
+    <div class="col-xs-12 site-body-main">
+
+        <div class="slider-main-block">
+            <div class="row">
+                @Html.Action("Carousel", "Home")
+            </div>
+        </div>
+        @Html.Action("BrandCarousel", "Brand", new { count = 20 })
+        @Html.StaticBlock("TextOnMain")
+        @Html.RenderModules("mainpage_block")
+        @Html.Action("MainPageProducts", "Home")
+	    @if (!User.Identity.IsAuthenticated)
+	    {
+		    @Html.StaticBlock("TextOnMain2")
+	    }
+        @Html.Action("NewsSubscription", "News")
+
+        <div class="blocks-on-main-horizontals">
+            @Html.Action("NewsBlock", "News")
+            @Html.Action("VotingBlock", "Voting")
+            @Html.StaticBlock("Vk")
+            @Html.Action("CheckOrderBlock", "Checkout")
+            @Html.Action("GiftCertificateBlock", "GiftCertificate")
+        </div>
+    </div>
+</div>

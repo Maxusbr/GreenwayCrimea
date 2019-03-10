@@ -1,0 +1,12 @@
+﻿<form>
+    <div class="modal-header" ng-if="ctrl.title != null && ctrl.title != ''">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.title}}</h2>
+    </div>
+    <div class="modal-body">
+        {{ctrl.msg}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success btn-save" type="button" ng-click="ctrl.close()">Ок</button>
+    </div>
+</form>

@@ -1,0 +1,85 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.PayPalExpressCheckoutPaymentModel
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Имя вашего PayPal API аккаунта</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.User, new { ng_model = "paymentMethod.Parameters.User", @class = "form-control", required = "required", validation_input_text = "Имя вашего PayPal API аккаунта" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Имя">
+            Имя вашего PayPal API аккаунта
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Пароль вашего PayPal API аккаунта</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.Password, new { ng_model = "paymentMethod.Parameters.Password", @class = "form-control", required = "required", validation_input_text = "Пароль вашего PayPal API аккаунта" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Пароль">
+            Пароль вашего PayPal API аккаунта
+        </help-trigger>
+    </div>
+</div>
+
+
+
+<div class="form-group row">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Электронная подпись PayPal API</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.Signature, new { ng_model = "paymentMethod.Parameters.Signature", @class = "form-control", required = "required", validation_input_text = "Электронная подпись PayPal API" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Электронная подпись">
+            Электронная подпись PayPal API. Параметр следует использовать только в том случае, если вы используете сертификат для авторизации
+        </help-trigger>
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Код валюты ISO3</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.CurrencyCode, Model.CurrenciesList, new { ng_model = "paymentMethod.Parameters.CurrencyCode", ng_init = "paymentMethod.Parameters.CurrencyCode='" + Model.CurrencyCode + "'", @class = "form-control" })
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Курс валюты</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.CurrencyValue, new { ng_model = "paymentMethod.Parameters.CurrencyValue", @class = "form-control", required = "required", validation_input_text = "Курс валюты" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Курс валюты">
+            Курс валюты по отношению к валюте магазина
+        </help-trigger>
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Тестовый режим
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.Sandbox, new { ng_model = "paymentMethod.Parameters.Sandbox", ng_init = "paymentMethod.Parameters.Sandbox=" + Model.Sandbox.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak" data-title="Тестовый режим">
+            Обработка операций в тестовом режиме
+        </help-trigger>
+    </div>
+</div>
+
+

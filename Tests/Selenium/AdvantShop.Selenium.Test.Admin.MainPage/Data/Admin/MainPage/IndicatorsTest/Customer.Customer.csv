@@ -1,0 +1,7 @@
+﻿CustomerID[GUID];Password;FirstName;LastName;RegistrationDateTime[DATE];Email;CustomerGroupId;Rating;Enabled
+CFC2C33B-1E84-415E-8482-E98156341520;4QrcOUm6Wau+VuBX8g+IPg==;Customer Review Month;Test;01.08.2016 16:14;test3@gmail.com;1;0;true
+CFC2C33B-1E84-415E-8482-E98156341521;4QrcOUm6Wau+VuBX8g+IPg==;Customer Review Today;Test;01.08.2016 16:12;test@gmail.com;1;0;true
+CFC2C33B-1E84-415E-8482-E98156341522;gobh+Ab12ipP4w3kj11I3A==;Ирина;Петрова;31.03.2015 14:00;irina@advantshop.net;1;0;true
+CFC2C33B-1E84-415E-8482-E98156341523;QWoA8qQijxFsnOuRYXzfCg==;Елена;Синицина;01.04.2015 15:00;elena@advantshop.net;1;0;true
+CFC2C33B-1E84-415E-8482-E98156341524;Qpf0SxOVUjUkWySXOZ16kw==;Администратор;Администратор;06.11.2015 9:58;admin;1;5;true
+CFC2C33B-1E84-415E-8482-E98156341525;4QrcOUm6Wau+VuBX8g+IPg==;Customer Review Yesterday;Test;01.08.2016 16:13;test2@gmail.com;1;0;true

@@ -1,0 +1,184 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Analytics.AnalyticsReportModel
+
+<div class="wrapper">
+
+    <div>
+        <div class="page-name-block m-b-md sticky-page-name-inner top-xs">
+            <div class="page-name-block-item-main">
+                <div class="m-b-xs">
+                    <h1 class="page-name-block-text sticky-page-name-text m-r-xs inline bottom-cell">
+                        Аналитика
+                    </h1>
+                    @*<a href="@Url.Action("Academy", "Service", new { id = 49 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline bottom-cell">
+                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                        Видеоурок о Аналитике
+                    </a>*@
+                </div>
+                <span>Статистика по заказам, товарам и покупателям</span>
+            </div>
+            <div class="page-name-block-item-additional">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="sticky-page-name row" sticky sticky-top="0">
+        <div class="col-xs-offset-2 col-xs-7 row">
+            <div class="col-xs-3">
+                <div class="m-b-xs">
+                    Дата от
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-toggle" id="dateFrom" role="button" data-toggle="dropdown">
+                        <div class="input-group">
+                            <input type="text" value="@Model.DateFrom.ToString("dd.MM.yyyy")" ng-model="analyticsReport.dateFrom" ng-change="analyticsReport.updateData()" data-date-time-input="DD.MM.YYYY" class="form-control">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker ng-model="analyticsReport.dateFrom" data-datetimepicker-config="{ dropdownSelector: '#dateFrom', minView: 'day', modelType: 'DD.MM.YYYY' }" on-set-time="analyticsReport.updateData()" />
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="m-b-xs">
+                    Дата до
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-toggle" id="dateTo" role="button" data-toggle="dropdown">
+                        <div class="input-group">
+                            <input type="text" value="@Model.DateTo.ToString("dd.MM.yyyy")" ng-model="analyticsReport.dateTo" ng-change="analyticsReport.updateData()" data-date-time-input="DD.MM.YYYY" class="form-control">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker ng-model="analyticsReport.dateTo" data-datetimepicker-config="{ dropdownSelector: '#dateTo', minView: 'day', modelType: 'DD.MM.YYYY' }" on-set-time="analyticsReport.updateData()" />
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xs-3 ng-cloak" ng-if="analyticsReport.showPaid">
+                <div class="m-b-xs">
+                    Оплачен
+                </div>
+                <div>
+                    @Html.DropDownListFor(x => x.Paid, Model.PaidItems, new {@class= "form-control", ng_model = "analyticsReport.paid", ng_init= "analyticsReport.paid='" + Model.Paid + "'", ng_change = "analyticsReport.updateData()" })
+                </div>
+            </div>
+
+            <div class="col-xs-3 ng-cloak" ng-if="analyticsReport.showOrderStatus">
+                <div class="m-b-xs">
+                    Статус
+                </div>
+                @Html.DropDownListFor(x => x.OrderStatus, Model.OrderStatuses, new { @class = "form-control", ng_model = "analyticsReport.orderStatus", ng_init = "analyticsReport.orderStatus='" + Model.OrderStatus + "'", ng_change = "analyticsReport.updateData()" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="m-t">
+
+        <div class="row">
+
+            <div class="col-xs-2">
+                <div class="settings-wrap">
+                    <div class="aside-menu">
+
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':analyticsReport.selectedTab=='vortex'}" href="" ng-click="analyticsReport.showTab('vortex')">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">Воронка продаж</div>
+                            </div>
+                        </a>
+
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':analyticsReport.selectedTab=='profit'}" href="" ng-click="analyticsReport.showTab('profit')">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">Доход</div>
+                            </div>
+                        </a>
+
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':analyticsReport.selectedTab=='avgcheck'}" href="" ng-click="analyticsReport.showTab('avgcheck')">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">Средний чек</div>
+                            </div>
+                        </a>
+
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':analyticsReport.selectedTab=='orders'}" href="" ng-click="analyticsReport.showTab('orders')">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">Заказы</div>
+                            </div>
+                        </a>
+
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':analyticsReport.selectedTab=='abcxyz'}" href="" ng-click="analyticsReport.showTab('abcxyz')">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">Товары</div>
+                            </div>
+                        </a>
+
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':analyticsReport.selectedTab=='rfm'}" href="" ng-click="analyticsReport.showTab('rfm')">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">Покупатели</div>
+                            </div>
+                        </a>
+
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':analyticsReport.selectedTab=='telephony'}" href="" ng-click="analyticsReport.showTab('telephony')">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">Телефония</div>
+                            </div>
+                        </a>
+
+                        <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':analyticsReport.selectedTab=='managers'}" href="" ng-click="analyticsReport.showTab('managers')">
+                            <div class="aside-menu-inner">
+                                <div class="aside-menu-name">Менеджеры</div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-10">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="container-fluid">
+
+                            <div ng-show="analyticsReport.selectedTab == 'vortex'">
+                                <vortex on-init="analyticsReport.onInitVortex(vortex)"></vortex>
+                            </div>
+
+                            <div ng-show="analyticsReport.selectedTab == 'profit'">
+                                <profit on-init="analyticsReport.onInitProfit(profit)"></profit>
+                            </div>
+
+                            <div ng-show="analyticsReport.selectedTab == 'avgcheck'">
+                                <avgcheck on-init="analyticsReport.onInitAvgcheck(avgcheck)"></avgcheck>
+                            </div>
+
+                            <div ng-show="analyticsReport.selectedTab == 'orders'">
+                                <orders-analysis on-init="analyticsReport.onInitOrders(orders)"></orders-analysis>
+                            </div>
+                            
+                            <div ng-show="analyticsReport.selectedTab == 'abcxyz'">
+                                <abcxyz-analysis on-init="analyticsReport.onInitAbcxyz(abcxyz)"></abcxyz-analysis>
+                            </div>
+
+                            <div ng-show="analyticsReport.selectedTab == 'rfm'">
+                                <rfm on-init="analyticsReport.onInitRfm(rfm)"></rfm>
+                            </div>
+
+                            <div ng-show="analyticsReport.selectedTab == 'telephony'">
+                                <telephony on-init="analyticsReport.onInitTelephony(telephony)"></telephony>
+                            </div>
+
+                            <div ng-show="analyticsReport.selectedTab == 'managers'">
+                                <managers-report on-init="analyticsReport.onInitManagers(managers)"></managers-report>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

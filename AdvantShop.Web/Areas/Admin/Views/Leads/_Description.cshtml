@@ -1,0 +1,100 @@
+﻿@model AdvantShop.Web.Admin.Models.Leads.LeadModel
+@{
+    var source = Model.TrafficSource;
+}
+
+<div class="ibox">
+    <div class="ibox-content block-additional-parameters-content block-additional-parameters-content--padding-mid">
+        <div class="m-b-xs">
+            Этап сделки
+        </div>
+        <div class="m-b-sm">
+            @Html.DropDownListFor(x => x.Lead.DealStatusId, Model.Statuses, new {@class = "form-control", ng_model = "lead.dealStatusId", ng_init = "lead.dealStatusId='" + Model.Lead.DealStatusId + "'"})
+        </div>
+
+        @if (Model.Order != null)
+        {
+            <div class="m-b-sm">
+                <a href="orders/edit/@Model.Order.OrderID" target="_blank">Заказ № @Model.Order.Number</a>
+            </div>
+        }
+
+        <div class="m-b-xs">
+            Описание
+        </div>
+        <div class="m-b-sm">
+            @Html.TextAreaFor(x => x.Lead.Description, new {ng_model = "lead.description", @class = "form-control"})
+        </div>
+
+        <div class="m-b-xs">
+            Бюджет
+        </div>
+        <div class="row m-b-sm">
+            <div class="col-xs-10">
+                @Html.TextBoxFor(x => x.Lead.Sum, new {ng_model = "lead.sum", @class = "form-control", ng_readonly = "lead.hasProducts"})
+            </div>
+            <div class="col-xs-2 control-label">
+                @(Model.Lead.LeadCurrency != null ? Model.Lead.LeadCurrency.CurrencySymbol : Model.LeadCurrency.Symbol)
+            </div>
+        </div>
+
+        <div class="m-b-xs">
+            Менеджер
+        </div>
+        <div class="m-b-sm">
+            @Html.DropDownListFor(x => x.Lead.ManagerId, Model.Managers, new {@class = "form-control", ng_model = "lead.managerId", ng_init = "lead.managerId='" + Model.Lead.ManagerId + "'"})
+        </div>
+
+        <div class="m-b-xs">
+            Источник:
+        </div>
+        <div class="m-b-sm">
+            @Html.DropDownListFor(x => x.Lead.OrderSourceId, Model.LeadSources, new {@class = "form-control", ng_model = "lead.sourceId", ng_init = "lead.sourceId='" + Model.Lead.OrderSourceId + "'"})
+        </div>
+        @if (source != null)
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    UTM метки
+                </div>
+                <div class="block-additional-parameters-value text-floating">
+                    @if (!string.IsNullOrEmpty(source.Referrer))
+                    {
+                        <div class="m-b-sm word-break">Реферал: @source.Referrer</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.Url))
+                    {
+                        <div class="m-b-sm">Страница входа: @source.Url</div>
+                    }
+                    <div class="m-b-sm">Дата: @source.CreateOn.ToLongDateString()</div>
+                    @if (!string.IsNullOrEmpty(source.utm_source))
+                    {
+                        <div class="m-b-sm">UTM Source: @source.utm_source</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.utm_medium))
+                    {
+                        <div class="m-b-sm">UTM Medium: @source.utm_medium</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.utm_campaign))
+                    {
+                        <div class="m-b-sm">UTM Campaign: @source.utm_campaign</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.utm_content))
+                    {
+                        <div class="m-b-sm">UTM Content: @source.utm_content</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.utm_term))
+                    {
+                        <div class="m-b-sm">UTM Term: @source.utm_term</div>
+                    }
+                    @if (!string.IsNullOrEmpty(source.GoogleClientId))
+                    {
+                        <div class="m-b-sm">Google client id: @source.GoogleClientId</div>
+                    }
+                </div>
+            </div>
+        }
+
+        @Html.RenderModules("admin_lead_description", new { leadId = Model.Lead.Id })
+    </div>
+</div>

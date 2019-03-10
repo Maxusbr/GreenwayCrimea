@@ -1,0 +1,107 @@
+﻿@using AdvantShop.FilePath
+@model AdvantShop.Web.Admin.Models.Categories.AdminCategoryModel
+
+<div class="row">
+    <div class="col-xs-3 col-lg-3 col-wl-2">
+        <h2 class="category-title">Изображения</h2>
+    </div>
+    <div class="col-xs-9 col-wl-10">
+        <div class="ibox category-block">
+            <div class="ibox-content category-content border_none">
+                <div>
+                    <div class="row category-row">
+
+                        <div class="col-xs-2">
+                            @T("Admin.Category.Index.MiniPicture")
+                            <div>
+                                @(SettingsPictureSize.SmallCategoryImageWidth)x@(SettingsPictureSize.SmallCategoryImageHeight)px
+                                <help-trigger class="ng-cloak word-spacing" data-title="Мини-картинка">
+                                    Мини-картинка, которая отобразится у категории при просмотре списка категорий в клиентской части магазина.<br />
+                                    <br />
+                                    Настоятельно рекомендуем указывать картинку для категорий.<br />
+                                    <br />
+                                    Размер по умолчанию 120px на 80px.
+                                </help-trigger>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-5">
+                            @Html.PictureUploader(
+                               AdvantShop.Catalog.PhotoType.CategorySmall,
+                               Model.CategoryId,
+                               Model.MiniPicture.ImageSrcSmall(),
+                               "category.updateMiniImage(result)",
+                               new
+                               {
+                                   data_e2e = "SmallImg",
+                                   @class = "picture-uploader-middle"
+                               }, Model.MiniPicture.PhotoId)
+                            @Html.HiddenFor(x => x.MiniPictureId, new { ng_value = "category.MiniPictureId" })
+                        </div>
+
+                        <div class="col-xs-5">
+                            <div>
+                                @T("Admin.Category.Index.Icon")
+                                <div class="m-b-sm">
+                                    @(SettingsPictureSize.IconCategoryImageWidth)x@(SettingsPictureSize.IconCategoryImageHeight)px
+                                    <help-trigger class="ng-cloak word-spacing" data-title="Иконка для меню">
+                                        Иконка категории для отображения в пункте меню.<br />
+                                        <br />
+                                        Рекомендуемый формат файла: *.png с прозрачным фоном.<br />
+                                        <br />
+                                        Размер 30px на 30px.
+                                    </help-trigger>
+                                </div>
+                                @Html.PictureUploader(
+                                   AdvantShop.Catalog.PhotoType.CategoryIcon,
+                                   Model.CategoryId,
+                                   Model.Icon.IconSrc(true),
+                                   "category.updateIconImage(result)",
+                                   new
+                                   {
+                                       data_e2e = "IconImg",
+                                       @class = "picture-uploader-small"
+                                   }, Model.Icon.PhotoId)
+                                @Html.HiddenFor(x => x.IconId, new { ng_value = "category.IconId" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="row category-row">
+
+                        <div class="col-xs-2">
+                            @T("Admin.Category.Index.Picture")
+                            <div>
+                                @(SettingsPictureSize.BigCategoryImageWidth)x@(SettingsPictureSize.BigCategoryImageHeight)px
+                                <help-trigger class="ng-cloak" data-title="Изображение">
+                                    Главное изображение (баннер) категории.<br />
+                                    <br />
+                                    Изображение отображается при просмотре категории в клиентской части магазина.<br />
+                                    <br />
+                                    Размер по умолчанию 740px на 200px.
+                                </help-trigger>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-10">
+
+                            @Html.PictureUploader(
+                                   AdvantShop.Catalog.PhotoType.CategoryBig,
+                                   Model.CategoryId,
+                                   Model.Picture.ImageSrcBig(),
+                                   "category.updateImage(result)",
+                                   new
+                                   {
+                                       data_e2e = "BigImg",
+                                       @class = "picture-uploader-big"
+                                   }, Model.Picture.PhotoId)
+                            @Html.HiddenFor(x => x.PictureId, new { ng_value = "category.PictureId" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

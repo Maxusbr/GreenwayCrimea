@@ -1,0 +1,66 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+$sizes-viewer-item-margin: rem-calc(4px);
+
+.sizes-viewer-list {
+}
+
+.sizes-viewer-block {
+    display: inline-block;
+    text-align: center;
+}
+
+.sizes-viewer-item,
+.sizes-viewer-inner {
+    border-radius: $border-radius-small;
+    position: relative;
+    cursor: pointer;
+}
+
+.sizes-viewer-item {
+    border: 1px transparent solid;
+    display: inline-block;
+}
+
+.sizes-viewer-inner {
+    margin: $sizes-viewer-item-margin;
+    line-height: 1;
+    padding: rem-calc(5px);
+    font-size: rem-calc($font-size-base);
+}
+
+.sizes-viewer-selector {
+    font-size: 0;
+    line-height: 0;
+}
+
+.sizes-viewer-radio {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+.sizes-viewer-item-selected {
+
+}
+
+.sizes-viewer-block-slider {
+    padding: 0 20px;
+}
+
+.sizes-viewer-header {
+    font-size: $font-size-normal;
+    margin-bottom: $vertical-interval-xsmall;
+}
+
+.sizes-viewer-item-disabled {
+    opacity: .5;
+    cursor: default;
+}

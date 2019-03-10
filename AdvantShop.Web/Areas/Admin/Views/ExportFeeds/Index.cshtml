@@ -1,0 +1,115 @@
+﻿@using AdvantShop.Core.Common.Extensions;
+@model AdvantShop.Web.Admin.ViewModels.ExportFeeds.ExportFeedsModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<form name="exportFeedForm" novalidate="novalidate">
+    <div class="wrapper" ng-init="exportFeeds.exportFeedForm=exportFeedForm">
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="settings-wrap">
+                    <div class="header-alt settings-title">Экспорт</div>
+                    <div class="aside-menu">
+                        @foreach (var exportFeed in Model.ExportFeeds)
+                        {
+                            <a class="link-invert link-decoration-none" href="@Url.Action("Index", "ExportFeeds", new { id = @exportFeed.Id, type = Model.CurrentExportFeedsType })">
+                                <div class="aside-menu-inner aside-menu-row m-b-sm settigs-menu-row @Html.Raw( Model.CurrentExportFeed.Id == exportFeed.Id ? "aside-menu-row-selected"  : "")">
+                                    <div class="aside-menu-name">
+                                        @exportFeed.Name
+                                        <br />
+                                        <b>@exportFeed.Type.Localize()</b>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                        <ui-modal-trigger data-controller="'ModalAddExportFeedCtrl'"
+                                          controller-as="ctrl"
+                                          template-url="../areas/admin/content/src/_shared/modal/addExportFeed/addExportFeed.html"
+                                          data-resolve="{value: { param: '@Model.CurrentExportFeedsType'}}">
+                            <button class="btn btn-sm btn-success" data-e2e="AddExportFeed" type="button">
+                                <span class="fa fa-plus"></span>
+                                @T("Новая выгрузка")
+                            </button>
+                        </ui-modal-trigger>
+                        <a href="@Url.Action("Academy", "Service", new { id = 47 })" target="_blank" class="m-t-md link-academy btn btn-xsmall btn-default link-invert inline">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                            Видеоурок о Яндекс.Маркет
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-10 animated1 fadeInRight1">
+                @if (Model.CurrentExportFeed != null)
+                {
+                    <div class="sticky-page-name" sticky sticky-top="0">
+                        <div class="page-name-block m-b-md sticky-page-name-inner top-xs">
+                            <div class="page-name-block-item-main">
+                                <h1 class="page-name-block-text sticky-page-name-text m-b-xs">
+                                    @Model.CurrentExportFeed.Name
+                                </h1>
+
+                                @if (Model.CurrentExportFeed.LastExport.HasValue || !string.IsNullOrEmpty(Model.CurrentExportFeed.LastExportFileFullName))
+                                {
+                                    <a href="~/@Model.CurrentExportFeed.LastExportFileFullName">@Model.CurrentExportFeed.Type.Localize()</a>
+                                    <br />
+                                    @Model.CurrentExportFeed.LastExport
+                                }
+                                else
+                                {
+                                    @Html.Label("Не выгружался")
+                                }
+                            </div>
+                            <div class="page-name-block-item-additional">
+                                <button class="btn btn-sm btn-success m-l-xs" data-e2e="Export" type="button"
+                                        data-button-validation=""
+                                        data-button-validation-success="exportFeeds.startExport()">
+                                    @T("Admin.ExportFeeed.СhoiceOfProducts.Export")
+                                </button>
+                                <button data-e2e="ButtonSave" type="submit" class="btn btn-sm btn-success m-r-lg"
+                                        data-button-validation=""
+                                        data-button-validation-success="exportFeeds.saveExportFeed()"
+                                        ng-disabled="!exportFeedForm.modified"
+                                        disabled>
+                                    <i class="fa fa-check"></i>
+                                    @T("Admin.Save")
+                                </button>
+                                <a href="" class="link-danger m-l-sm" ng-click="exportFeeds.deleteExport(@Model.CurrentExportFeed.Id)">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ibox">
+                        <div class="ibox-content settings-block">
+                            <div class="form-horizontal">
+                                @Html.AntiForgeryToken()
+                                <div class="error">
+                                    @Html.ValidationSummary()
+                                </div>
+
+                                <uib-tabset active uid="exportfeedtab" on-select-batch="exportFeeds.floatHeader = tab.heading;">
+                                    <uib-tab index="1" heading="@T("Выбор товаров")" classes="ng-tab">
+                                        @Html.Partial("СhoiceOfProducts", Model.CurrentExportFeed)
+                                    </uib-tab>
+                                    @if (Model.CurrentExportFeed.Type == AdvantShop.ExportImport.EExportFeedType.Csv || Model.CurrentExportFeed.Type == AdvantShop.ExportImport.EExportFeedType.Reseller)
+                                    {
+                                        <uib-tab index="2" heading="@T("Поля выгрузки")" classes="ng-tab">
+                                            @Html.Action("GetExportFeedFields", "ExportFeeds", new { exportFeedId = Model.CurrentExportFeed.Id, exportFeedType = Model.CurrentExportFeed.Type.ToString(), advancedSettings = Model.CurrentExportFeed.ExportFeedSettings.AdvancedSettings })
+                                        </uib-tab>
+                                    }
+                                    <uib-tab index="3" heading="@T("Параметры выгрузки")" classes="ng-tab">
+                                        @Html.Partial("ExportFeedSettings", Model.CurrentExportFeed)
+                                    </uib-tab>
+                                </uib-tabset>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <span>нет доступных выгрузок</span>
+                }
+            </div>
+        </div>
+    </div>
+</form>

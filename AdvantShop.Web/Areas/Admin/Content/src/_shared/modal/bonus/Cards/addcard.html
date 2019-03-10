@@ -1,0 +1,50 @@
+﻿<form name="formAddCard" novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Добавить карту</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal m-r m-l">
+
+            <div class="row form-group">
+                <label class="col-xs-3 m-b-xs text-required">
+                    Владелец карты
+                </label>
+                <div class="col-xs-9">
+                    <ui-modal-trigger data-controller="'ModalSelectCustomerCtrl'" controller-as="ctrl" size="middle"
+                                        template-url="../areas/admin/content/src/_shared/modal/selectCustomer/selectCustomer.html"
+                                        data-on-close="ctrl.selectCustomer(result)">
+                        <a href="" class="edit link-decoration-none">Выбрать покупателя</a>
+                    </ui-modal-trigger>
+                    <input type="text" class="ng-hide" name="inputCategoryName" required ng-model="ctrl.customerId" validation-input-text="Выберите покупателя" />
+                    <a target="_blank" href="customers/edit/{{ctrl.customerId}}" ng-if="ctrl.customerId != null" class="ng-cloak m-l-xs link-invert">
+                        {{ctrl.selectedFirstName}} {{ctrl.selectedLastName}}
+                    </a>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="col-xs-3 control-label m-b-xs">
+                    Номер карты
+                </label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" ng-model="ctrl.CardNumber"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-xs-3 control-label m-b-xs required">
+                    Грейд
+                </label>
+                <div class="col-xs-9">
+                    <select required validation-input-text="Выберите грейд" class="form-control" ng-options="item.Value as item.Text for item in ctrl.Grades" ng-model="ctrl.GradeId"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="submit" button-validation button-validation-success="ctrl.addCard();"
+                 ladda="ctrl.btnLoading" data-e2e="addCard">Добавить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

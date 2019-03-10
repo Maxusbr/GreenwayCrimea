@@ -1,0 +1,39 @@
+﻿<div>
+    
+
+    <div class="picture-uploader-buttons" ng-switch="$ctrl.step">
+        <div ng-switch-when="progressStep"  ng-if="$ctrl.file != null">
+            <uib-progressbar max="100" value="$ctrl.progressPercentage" style="width:200px;"><span style="color:white; white-space:nowrap;">{{ $ctrl.progressPercentage }} %</span></uib-progressbar>
+            <div ng-if="$ctrl.showAfterUpload">
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <span >Обрабатываем файл...</span>
+            </div>
+        </div>
+        <div ng-switch-when="uploadStep">
+            <div >
+                <a href=""
+                   ngf-accept="$ctrl.accept"
+                   data-e2e="imgAdd"
+                   ngf-max-size="900MB"
+                   ngf-select=""
+                   ngf-change="$ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+                   class="btn btn-sm btn-success">
+                    {{ $ctrl.titleUploadButton==null || $ctrl.titleUploadButton == "" ? "Добавить файл" : $ctrl.titleUploadButton }}
+                </a>
+            </div>
+            <div ng-if="$ctrl.uploadbylinkUrl != null">
+                <ui-modal-trigger data-controller="'ModalFileUploaderCtrl'" on-close="$ctrl.uploadByLink(result)" controller-as="ctrl" template-url="../areas/admin/content/src/_shared/file-uploader/modal/fileUploaderModal.html">
+                    <a data-e2e="imgByHref" href="" class="picture-uploader-buttons-add btn btn-sm btn-success">Добавить файл по ссылке</a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+        <div ng-switch-when="resultStep">
+            <figure ng-if="$ctrl.file != null && $ctrl.showResult">
+                Имя файла: {{$ctrl.file.name}}
+            </figure>
+            <div ng-if="$ctrl.deleteUrl != null" >
+                <a data-e2e="imgDel" href="" class="picture-uploader-buttons-delete link-danger" ng-click="$ctrl.delete($ctrl.deleteParams)">Удалить файл</a>
+            </div>
+        </div>
+    </div>
+</div>

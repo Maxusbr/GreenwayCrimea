@@ -1,0 +1,11 @@
+.news-block-items {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+.news-block-row {
+  margin: 0 0 1.25rem 0;
+  font-size: 0.75rem; }
+
+.allNews {
+  font-size: 0.75rem; }

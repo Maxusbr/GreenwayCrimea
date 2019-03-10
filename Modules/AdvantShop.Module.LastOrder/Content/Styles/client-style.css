@@ -1,0 +1,45 @@
+﻿.details-rating .notify-wrap .notify-text {
+    padding: 10px 10px 10px 49px;
+    position: relative;
+}
+.details-rating .notify-wrap {
+    vertical-align: middle;
+    margin-top: 0;
+    width: 66%;
+}
+.details-rating .notify-icon {
+    left: 10px;
+}
+
+
+.notify-wrap {
+    border: 1px solid;
+    border-radius: 5px;
+    position: relative;
+    display: inline-block;
+    margin-top: 7px;
+}
+.notify-text {
+    padding: 10px 20px 10px 75px;
+    position: relative;
+}
+.notify-icon {
+    border: 1px solid;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    margin-top: -15px;
+    border-radius: 20px;
+}
+.notify-clock {
+    position: absolute;
+    left: 13px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+}
+

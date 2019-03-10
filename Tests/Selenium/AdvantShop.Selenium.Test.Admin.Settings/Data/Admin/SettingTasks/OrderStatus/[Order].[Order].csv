@@ -1,0 +1,3 @@
+OrderID;Number;ShippingMethodID;PaymentMethodID;OrderDate;PaymentDate;StatusComment;Decremented;ShippingCost;TaxCost;SupplyTotal;Sum;OrderStatusID;ShippingContactID;BillingContactID;PaymentMethodName;ShippingMethodName;PaymentCost;BonusCost;DiscountCost;Code[GUID];ManagerConfirmed;OrderSourceId;IsDraft;IsFromAdminArea
+29;29;141;961;2016-08-31 15:00:00.028;2016-09-17 00:00:05.028;comment29;true;0;0;29;29;28;29;29;ќплата наличными при получении заказа в пункте выдачи;—амовывоз;0;0;0;CFC2C33B-1E84-415E-8482-E98156341558;true;4;false;false
+30;30;141;962;2016-08-31 23:00:00.029;2016-09-18 00:00:05.029;comment30;true;0;0;30;30;28;30;30;ќплата наличными при получении заказа в пункте выдачи;—амовывоз;0;0;0;CFC2C33B-1E84-415E-8482-E98156341559;true;5;false;false

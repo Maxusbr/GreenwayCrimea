@@ -1,0 +1,15 @@
+﻿@model AdvantShop.Core.Services.SEO.MetaData.OpenGraphModel
+
+<meta property="og:site_name" content="@Html.AttributeEncode(Model.SiteName)" />
+<meta property="og:title" content="@Html.GetPageTitle()" />
+<meta property="og:url" content="@Model.Url" />
+<meta property="og:description" content="@Html.GetPageDescription()" />
+<meta property="og:type" content="@Model.Type.ToString().ToLower()" />
+@if (Model.Admins.IsNotEmpty())
+{
+<meta property="fb:admins" content="@Model.Admins" />
+}
+@foreach (var image in Model.Images)
+{
+<meta property="og:image" content="@image" />
+}

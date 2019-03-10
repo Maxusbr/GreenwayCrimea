@@ -1,0 +1,121 @@
+@import "../../../../styles/_settings.scss";
+@import "../../../../styles/functions/_util.scss";
+
+$tabs-hr-header-padding: rem-calc(15px) rem-calc(20px);
+$tabs-hr-content-padding: rem-calc(15px) rem-calc(20px);
+$tabs-vr-header-padding: rem-calc(10px) rem-calc(15px);
+$tabs-vr-content-padding: 0 0;
+
+.tabs-headers {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.tab-content, .mobile-tab-content {
+    display: none;
+}
+
+.tab-content-active, .mobile-tab-content-active {
+    display: block;
+}
+
+.tabs-header-item-link {
+    display: block;
+    line-height: 1;
+}
+
+.tabs-header-active {
+
+    /*.tabs-header-item-link {
+        text-decoration: none;
+        border-bottom-width: 0;
+
+        &:hover, &:active {
+            text-decoration: none;
+            border-bottom-width: 0;
+        }
+    }*/
+}
+
+.tabs-horizontal {
+    .tabs-header-item-link {
+        font-size: $font-size-large;
+    }
+
+    .tabs-header-item {
+        padding: $tabs-hr-header-padding;
+        border: rem-calc(1px) solid transparent;
+        border-radius: $border-radius-base;
+        float: left;
+                margin-right: 10px;
+    }
+
+    /*.tabs-header-active {
+        border-color: #e2e3e4;
+    }*/
+
+    .tabs-content {
+        padding: $tabs-hr-content-padding;
+        font-size: $font-size-medium;
+    }
+}
+
+.tabs-vertical {
+    display: table;
+    width: 100%;
+
+    .tabs-headers,
+    .tabs-content {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .tabs-headers {
+        width: 25%;
+        padding-right: rem-calc(15px);
+    }
+
+    .tabs-header-item-link {
+        font-size: $font-size-medium;
+        padding: $tabs-vr-header-padding;
+    }
+
+    .tabs-header-item {
+        border-radius: $border-radius-base;
+    }
+
+    .tabs-header-active {
+    }
+
+    .tabs-content {
+        padding: $tabs-vr-content-padding;
+    }
+}
+
+.mobile-details-tabs-header-item {
+  padding: 10px 20px;
+  display: block;
+  font-size: 21px;
+  border-top-width: 1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-style: solid;
+  position: relative;
+  cursor: pointer;
+}
+
+.mobile-details-tabs-arrow {
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 23px;
+  width: 12px;
+  position: absolute;
+  right: 20px;
+}
+.mobile-tab-content{
+    padding: $tabs-hr-content-padding;
+}

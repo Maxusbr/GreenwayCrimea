@@ -1,0 +1,86 @@
+﻿@model AdvantShop.Module.RussianPostPrintBlank.Models.FormModel
+@using AdvantShop.Module.RussianPostPrintBlank.Models
+
+<form id="printForm" action="http://print-blanks.clarity-soft.ru/api/activekey/@Model.BlankName" method="post" style="display: none;">
+    <input type="submit" value="" /><br>
+    @switch (Model.Type)
+    {
+        case FormType.F7:
+            <input type="text" value="@Model.ToLastName" name="to_lastname"><br>
+            <input type="text" value="@Model.ToFirstName" name="to_firstname"><br>
+            <input type="text" value="@string.Format("{0}{1}", Model.ToCity, !string.IsNullOrEmpty(Model.ToCity) && !string.IsNullOrEmpty(Model.ToStreet) ? ", " : string.Empty)" name="to_address_line_1"><br>
+            <input type="text" value="@string.Format("{0}", Model.ToStreet)" name="to_address_line_2"><br>
+            <input type="text" value="" name="to_address_line_3"><br>
+            @*<input type="text" value="@Model.ToCity" name="to_city"><br>
+                <input type="text" value="@Model.ToStreet" name="to_street"><br>
+                <input type="text" value="" name="to_home"><br>
+                <input type="text" value="" name="to_apartment"><br>*@
+            <input type="text" value="@Model.ToPostCode" name="to_postcode"><br>
+            <input type="text" value="@Model.FromLastName" name="from_lastname"><br>
+            <input type="text" value="@Model.FromFirstName" name="from_firstname"><br>
+            <input type="text" value="@string.Format("{0}{1}", Model.FromRegion, !string.IsNullOrEmpty(Model.FromCity) ? ", " + Model.FromCity : string.Empty)" name="from_address_line_1"><br>
+            <input type="text" value="@string.Format("{0}{1}{2}", Model.FromStreet, !string.IsNullOrEmpty(Model.FromHome) ? ", " + Model.FromHome : string.Empty, !string.IsNullOrEmpty(Model.FromApartment) ? ", " + Model.FromApartment: string.Empty)" name="from_address_line_2"><br>
+            <input type="text" value="" name="from_address_line_3"><br>
+            @*<input type="text" value="@Model.FromCity" name="from_city"><br>
+                <input type="text" value="@Model.FromStreet" name="from_street"><br>
+                <input type="text" value="@Model.FromHome" name="from_home"><br>
+                <input type="text" value="@Model.FromApartment" name="from_apartment"><br>*@
+            <input type="text" value="@Model.FromPostCode" name="from_postcode"><br>
+            <input type="text" value="@(Model.DeclaredValue > 0 ? Model.DeclaredValue.ToString() : string.Empty)" name="declared_value"><br>
+            <input type="text" value="@Model.DeclaredValue" name="COD_amount"><br>
+            <select name="type_blank" id="type_blank">
+                <option value="@Model.PackageType"></option>
+            </select>
+            break;
+
+        case FormType.F107:
+            int productCount = 1;
+            <input type="text" name="id_number" value="@Model.MailId">
+            <input type="text" name="from_name_or_from_company" value="@Model.OrganizationName">
+            foreach (var product in Model.Products)
+            {
+                <p>
+                    <lable>Название товара 1<input type="text" name="@string.Format("item_{0}_name", productCount)" value="@product.ProductName"></lable>
+                    <lable>Количество товара 1<input type="text" name="@string.Format("item_{0}_count", productCount)" value="@product.Amount"></lable>
+                    <lable>Цена товара 1<input type="text" name="@string.Format("item_{0}_price", productCount)" value="@product.Price"></lable>
+                </p>
+                productCount++;
+            }
+            break;
+
+        case FormType.F112:
+            <input type="text" name="price" value="@(Model.DeclaredValue > 0 ? Model.DeclaredValue.ToString() : string.Empty)">
+            <input type="text" name="pod" value="@Model.COD">
+            <input type="text" name="delivery_home" value="@Model.DeliveryHome">
+            <input type="text" name="notification" value="@Model.Notification">
+            <input type="text" name="to_phone" value="@Model.ToPhone">
+            <input type="text" name="from_phone" value="@Model.FromPhone">
+            <input type="text" name="to_name" value="@Model.ToFirstName">
+            <input type="text" name="to_region_and_city" value="@string.Format("{0}{1}", Model.ToCity, !string.IsNullOrEmpty(Model.ToCity) && !string.IsNullOrEmpty(Model.ToStreet) ? ", " : string.Empty)">
+            <input type="text" name="to_street_and_house" value="@Model.ToStreet">
+            <input type="text" name="to_postcode" value="@Model.ToPostCode">
+            <input type="text" name="to_message_first" value="@Model.FirstString">
+            <input type="text" name="to_message_second" value="@Model.SecondString">
+            <input type="text" name="to_tin" value="@Model.Inn">
+            <input type="text" name="to_corp_account" value="@Model.CorrespondentAccount">
+            <input type="text" name="bank_name" value='"@Model.BankName"'>
+            <input type="text" name="to_check_account" value="@Model.CheckingAccount">
+            <input type="text" name="bank_bic" value="@Model.BankCode">
+            <input type="text" name="from_name" value="@Model.FromFirstName">
+            <input type="text" name="from_region_and_city" value="@Model.FromCity">
+            <input type="text" name="from_street_and_house" value="@Model.FromStreet">
+            <input type="text" name="from_postcode" value="@Model.FromPostCode">
+            break;
+    }
+</form>
+
+<script>
+    window.onload = function () {
+
+        var printForm = document.getElementById("printForm");
+
+        if (printForm != null) {
+            printForm.submit();
+        }
+    };
+</script>

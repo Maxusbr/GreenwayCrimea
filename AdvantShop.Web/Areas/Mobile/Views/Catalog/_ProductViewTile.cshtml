@@ -1,0 +1,43 @@
+﻿@model AdvantShop.Areas.Mobile.Models.Catalog.ProductViewMobileModel
+<table class="tiles-table cs-br-1">
+    @for (int i = 0; i < Model.Products.Count; i++)
+    {
+        var product = Model.Products[i];
+        if (i % 2 == 0)
+        {
+            @:<tr>
+        }
+        <td class="prod-cell cs-br-1">
+            <a class="cs-l-1 inked ink-dark catalog-product-item" href="@Url.AbsoluteRouteUrl("Product", new { url = product.UrlPath })">
+                <div class="prod-photo" style="height: @(Model.PhotoHeight)px">
+                    <div class="prod-photo-inner">
+                        <img src="@product.Photo.ImageSrcSmall()" alt="@product.Photo.Alt" />
+                        @if (product.Gifts)
+                        {
+                            <div class="prod-gift-icon"></div>
+                        }
+                    </div>
+                </div>
+                <div class="prod-text">
+                    <div class="prod-name text-floating">@Html.Raw(product.Name)</div>
+                    <div class="mobile-prod-artno">@product.ArtNo</div>
+                    <span class="price cs-l-8">@Html.Raw(product.PreparedPrice)</span>
+                    @if (product.Recomend || product.Sales || product.Bestseller || product.New || product.TotalDiscount.HasValue)
+                    {
+                        <div class="products-view-labels">
+                            @Html.RenderLabels(product.Recomend, product.Sales, product.Bestseller, product.New, product.TotalDiscount)
+                        </div>
+                    }
+                </div>
+            </a>
+        </td>
+        if (i == Model.Products.Count - 1 && Model.Products.Count % 2 != 0)
+        {
+            <td></td>
+        }
+        if (i != 0 && i % 2 != 0)
+        {
+            @:</tr>
+        }
+    }
+</table>

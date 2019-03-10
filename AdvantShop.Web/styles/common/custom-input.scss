@@ -1,0 +1,293 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+$ghost-btn-margin: auto rem-calc(20px) auto 0 !default;
+$ghost-btn-color: #adadad;
+
+$input-height: rem-calc(12px);
+$input-width: rem-calc(12px);
+$input-margin: 0 rem-calc(8px) 0 0;
+$iphone-checkbox-height: rem-calc(18px);
+$iphone-checkbox-width: rem-calc(55px);
+$iphone-checkbox-dim: rem-calc(2px);
+$iphone-checkbox-on-off-width: ($iphone-checkbox-width/2);
+//    <label>
+//          <input type="checkbox" class="custom-input-native" />
+//          <span class="custom-input-checkbox"></span>
+//          <span class="custom-input-text">Сравнить</span>
+//    </label>
+
+//<label class="custom-iphone-checkbox">
+//    <input type="checkbox" />
+//    <span class="custom-iphone-checkbox-slider">
+//        <span class="custom-iphone-checkbox-on">ON</span>
+//        <span class="custom-iphone-checkbox-off">OFF</span>
+//        <span class="custom-iphone-checkbox-block"></span>
+//    </span>
+//</label>
+
+//  <span class="custom-select">
+//    <select>...</select>
+//  </span>
+
+.custom-input-native {
+    /*display: none;*/
+    opacity: 0;
+    position: absolute;
+}
+
+.custom-input-text {
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.custom-input-text__indent {
+    padding-left: 20px;
+}
+
+
+.custom-input-checkbox, .custom-input-radio {
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    width: $input-width;
+    height: $input-height;
+    margin: $input-margin;
+    box-shadow: 0 0 rem-calc(2px) #818181;
+    border: $border-width #818181 solid;
+    border-bottom-color: #2d2d2d;
+    background: rgb(253,253,253);
+    background: -moz-linear-gradient(top, rgba(253,253,253,1) 0%, rgba(243,243,243,1) 11%, rgba(235,235,235,1) 33%, rgba(220,220,220,1) 44%, rgba(230,230,230,1) 67%, rgba(240,240,240,1) 78%, rgba(246,246,246,1) 89%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(253,253,253,1)), color-stop(11%,rgba(243,243,243,1)), color-stop(33%,rgba(235,235,235,1)), color-stop(44%,rgba(220,220,220,1)), color-stop(67%,rgba(230,230,230,1)), color-stop(78%,rgba(240,240,240,1)), color-stop(89%,rgba(246,246,246,1)), color-stop(100%,rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top, rgba(253,253,253,1) 0%,rgba(243,243,243,1) 11%,rgba(235,235,235,1) 33%,rgba(220,220,220,1) 44%,rgba(230,230,230,1) 67%,rgba(240,240,240,1) 78%,rgba(246,246,246,1) 89%,rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(top, rgba(253,253,253,1) 0%,rgba(243,243,243,1) 11%,rgba(235,235,235,1) 33%,rgba(220,220,220,1) 44%,rgba(230,230,230,1) 67%,rgba(240,240,240,1) 78%,rgba(246,246,246,1) 89%,rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(253,253,253,1) 0%,rgba(243,243,243,1) 11%,rgba(235,235,235,1) 33%,rgba(220,220,220,1) 44%,rgba(230,230,230,1) 67%,rgba(240,240,240,1) 78%,rgba(246,246,246,1) 89%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(253,253,253,1) 0%,rgba(243,243,243,1) 11%,rgba(235,235,235,1) 33%,rgba(220,220,220,1) 44%,rgba(230,230,230,1) 67%,rgba(240,240,240,1) 78%,rgba(246,246,246,1) 89%,rgba(255,255,255,1) 100%);
+
+    &:hover {
+        background: rgb(255,255,255);
+        background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 11%, rgba(240,240,240,1) 22%, rgba(230,230,230,1) 33%, rgba(220,220,220,1) 56%, rgba(235,235,235,1) 67%, rgba(243,243,243,1) 89%, rgba(253,253,253,1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(11%,rgba(246,246,246,1)), color-stop(22%,rgba(240,240,240,1)), color-stop(33%,rgba(230,230,230,1)), color-stop(56%,rgba(220,220,220,1)), color-stop(67%,rgba(235,235,235,1)), color-stop(89%,rgba(243,243,243,1)), color-stop(100%,rgba(253,253,253,1)));
+        background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 11%,rgba(240,240,240,1) 22%,rgba(230,230,230,1) 33%,rgba(220,220,220,1) 56%,rgba(235,235,235,1) 67%,rgba(243,243,243,1) 89%,rgba(253,253,253,1) 100%);
+        background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 11%,rgba(240,240,240,1) 22%,rgba(230,230,230,1) 33%,rgba(220,220,220,1) 56%,rgba(235,235,235,1) 67%,rgba(243,243,243,1) 89%,rgba(253,253,253,1) 100%);
+        background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 11%,rgba(240,240,240,1) 22%,rgba(230,230,230,1) 33%,rgba(220,220,220,1) 56%,rgba(235,235,235,1) 67%,rgba(243,243,243,1) 89%,rgba(253,253,253,1) 100%);
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 11%,rgba(240,240,240,1) 22%,rgba(230,230,230,1) 33%,rgba(220,220,220,1) 56%,rgba(235,235,235,1) 67%,rgba(243,243,243,1) 89%,rgba(253,253,253,1) 100%);
+    }
+}
+
+.custom-input-checkbox {
+    border-radius: $border-radius-small;
+}
+
+.custom-input-checkbox__abs {
+    position: absolute;
+    left: 0;
+    top: 4px;
+}
+
+.custom-input-radio {
+    border-radius: 50%;
+}
+
+.custom-input-checkbox:after {
+    content: "";
+    position: absolute;
+    width: $input-width + rem-calc(1px);
+    height: $input-height + rem-calc(1px);
+    background-repeat: no-repeat;
+    left: rem-calc(1px);
+    top: rem-calc(-2px);
+}
+
+.custom-input-radio:after {
+    content: "";
+    position: absolute;
+    width: $input-width/2;
+    height: $input-height/2;
+    border-radius: 50%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.custom-input-native,
+.custom-input-native {
+
+    &:checked ~ .custom-input-checkbox,
+    &:checked ~ .custom-input-radio {
+        background: rgb(66,80,155);
+        background: -moz-linear-gradient(top, rgba(66,80,155,1) 0%, rgba(148,163,202,1) 3%, rgba(233,248,255,1) 5%, rgba(230,243,249,1) 8%, rgba(218,234,247,1) 11%, rgba(186,223,242,1) 16%, rgba(171,212,242,1) 19%, rgba(153,206,238,1) 22%, rgba(128,197,238,1) 41%, rgba(121,196,235,1) 43%, rgba(119,189,241,1) 46%, rgba(51,179,226,1) 49%, rgba(60,179,235,1) 51%, rgba(65,179,233,1) 54%, rgba(81,182,234,1) 57%, rgba(81,186,234,1) 59%, rgba(100,192,243,1) 65%, rgba(102,193,238,1) 68%, rgba(127,204,250,1) 78%, rgba(141,215,254,1) 81%, rgba(167,235,254,1) 86%, rgba(176,246,255,1) 89%, rgba(183,251,254,1) 92%, rgba(184,252,255,1) 95%, rgba(181,247,255,1) 97%, rgba(171,236,254,1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(66,80,155,1)), color-stop(3%,rgba(148,163,202,1)), color-stop(5%,rgba(233,248,255,1)), color-stop(8%,rgba(230,243,249,1)), color-stop(11%,rgba(218,234,247,1)), color-stop(16%,rgba(186,223,242,1)), color-stop(19%,rgba(171,212,242,1)), color-stop(22%,rgba(153,206,238,1)), color-stop(41%,rgba(128,197,238,1)), color-stop(43%,rgba(121,196,235,1)), color-stop(46%,rgba(119,189,241,1)), color-stop(49%,rgba(51,179,226,1)), color-stop(51%,rgba(60,179,235,1)), color-stop(54%,rgba(65,179,233,1)), color-stop(57%,rgba(81,182,234,1)), color-stop(59%,rgba(81,186,234,1)), color-stop(65%,rgba(100,192,243,1)), color-stop(68%,rgba(102,193,238,1)), color-stop(78%,rgba(127,204,250,1)), color-stop(81%,rgba(141,215,254,1)), color-stop(86%,rgba(167,235,254,1)), color-stop(89%,rgba(176,246,255,1)), color-stop(92%,rgba(183,251,254,1)), color-stop(95%,rgba(184,252,255,1)), color-stop(97%,rgba(181,247,255,1)), color-stop(100%,rgba(171,236,254,1)));
+        background: -webkit-linear-gradient(top, rgba(66,80,155,1) 0%,rgba(148,163,202,1) 3%,rgba(233,248,255,1) 5%,rgba(230,243,249,1) 8%,rgba(218,234,247,1) 11%,rgba(186,223,242,1) 16%,rgba(171,212,242,1) 19%,rgba(153,206,238,1) 22%,rgba(128,197,238,1) 41%,rgba(121,196,235,1) 43%,rgba(119,189,241,1) 46%,rgba(51,179,226,1) 49%,rgba(60,179,235,1) 51%,rgba(65,179,233,1) 54%,rgba(81,182,234,1) 57%,rgba(81,186,234,1) 59%,rgba(100,192,243,1) 65%,rgba(102,193,238,1) 68%,rgba(127,204,250,1) 78%,rgba(141,215,254,1) 81%,rgba(167,235,254,1) 86%,rgba(176,246,255,1) 89%,rgba(183,251,254,1) 92%,rgba(184,252,255,1) 95%,rgba(181,247,255,1) 97%,rgba(171,236,254,1) 100%);
+        background: -o-linear-gradient(top, rgba(66,80,155,1) 0%,rgba(148,163,202,1) 3%,rgba(233,248,255,1) 5%,rgba(230,243,249,1) 8%,rgba(218,234,247,1) 11%,rgba(186,223,242,1) 16%,rgba(171,212,242,1) 19%,rgba(153,206,238,1) 22%,rgba(128,197,238,1) 41%,rgba(121,196,235,1) 43%,rgba(119,189,241,1) 46%,rgba(51,179,226,1) 49%,rgba(60,179,235,1) 51%,rgba(65,179,233,1) 54%,rgba(81,182,234,1) 57%,rgba(81,186,234,1) 59%,rgba(100,192,243,1) 65%,rgba(102,193,238,1) 68%,rgba(127,204,250,1) 78%,rgba(141,215,254,1) 81%,rgba(167,235,254,1) 86%,rgba(176,246,255,1) 89%,rgba(183,251,254,1) 92%,rgba(184,252,255,1) 95%,rgba(181,247,255,1) 97%,rgba(171,236,254,1) 100%);
+        background: -ms-linear-gradient(top, rgba(66,80,155,1) 0%,rgba(148,163,202,1) 3%,rgba(233,248,255,1) 5%,rgba(230,243,249,1) 8%,rgba(218,234,247,1) 11%,rgba(186,223,242,1) 16%,rgba(171,212,242,1) 19%,rgba(153,206,238,1) 22%,rgba(128,197,238,1) 41%,rgba(121,196,235,1) 43%,rgba(119,189,241,1) 46%,rgba(51,179,226,1) 49%,rgba(60,179,235,1) 51%,rgba(65,179,233,1) 54%,rgba(81,182,234,1) 57%,rgba(81,186,234,1) 59%,rgba(100,192,243,1) 65%,rgba(102,193,238,1) 68%,rgba(127,204,250,1) 78%,rgba(141,215,254,1) 81%,rgba(167,235,254,1) 86%,rgba(176,246,255,1) 89%,rgba(183,251,254,1) 92%,rgba(184,252,255,1) 95%,rgba(181,247,255,1) 97%,rgba(171,236,254,1) 100%);
+        background: linear-gradient(to bottom, rgba(66,80,155,1) 0%,rgba(148,163,202,1) 3%,rgba(233,248,255,1) 5%,rgba(230,243,249,1) 8%,rgba(218,234,247,1) 11%,rgba(186,223,242,1) 16%,rgba(171,212,242,1) 19%,rgba(153,206,238,1) 22%,rgba(128,197,238,1) 41%,rgba(121,196,235,1) 43%,rgba(119,189,241,1) 46%,rgba(51,179,226,1) 49%,rgba(60,179,235,1) 51%,rgba(65,179,233,1) 54%,rgba(81,182,234,1) 57%,rgba(81,186,234,1) 59%,rgba(100,192,243,1) 65%,rgba(102,193,238,1) 68%,rgba(127,204,250,1) 78%,rgba(141,215,254,1) 81%,rgba(167,235,254,1) 86%,rgba(176,246,255,1) 89%,rgba(183,251,254,1) 92%,rgba(184,252,255,1) 95%,rgba(181,247,255,1) 97%,rgba(171,236,254,1) 100%);
+    }
+
+    &:disabled ~ .custom-input-text {
+        color: #94969b;
+    }
+
+    &:focus ~ .custom-input-checkbox,
+    &:focus ~ .custom-input-radio {
+        box-shadow: 0 0 5px 0 rgba(66,80,155,1);
+    }
+}
+
+.custom-input-native:checked ~ .custom-input-checkbox:after {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iMTEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBvbHlnb24gcG9pbnRzPSIwLDUgNCwxMSA1LDExIDExLDAgOSwwIDUsOCA0LDggMyw1IiBmaWxsPSJyZWQ7Ij48L3BvbHlnb24+PC9zdmc+);
+    //<svg width="11" height="11" xmlns="http://www.w3.org/2000/svg"><polygon points="0,5 4,11 5,11 11,0 9,0 5,8 4,8 3,5" fill="red;"></polygon></svg>
+}
+
+.custom-input-native:checked ~ .custom-input-radio:after {
+    background-color: #000;
+}
+
+.custom-iphone-checkbox {
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    display: inline-block;
+    height: $iphone-checkbox-height;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    width: $iphone-checkbox-width;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: $font-size-xsmall;
+    transform: translateZ(0);
+
+    & input {
+        display: none;
+    }
+
+    & input:checked + .custom-iphone-checkbox-slider {
+        left: 0;
+    }
+}
+
+.custom-iphone-checkbox-slider {
+    left: -50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    -moz-transition: left .25s ease-out;
+    -webkit-transition: left .25s ease-out;
+    -o-transition: left .25s ease-out;
+    transition: left .25s ease-out;
+    border-radius: $border-radius-small;
+}
+
+.custom-iphone-checkbox-on, .custom-iphone-checkbox-block, .custom-iphone-checkbox-off {
+    display: block;
+    font-weight: bold;
+    height: 100%;
+    line-height: $iphone-checkbox-height;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.custom-iphone-checkbox-on {
+    background-color: rgb(6, 98, 193);
+    color: white;
+    left: 0;
+    width: $iphone-checkbox-on-off-width + $iphone-checkbox-dim;
+    padding-right: $iphone-checkbox-dim;
+    border-top-left-radius: $border-radius-small;
+    border-bottom-left-radius: $border-radius-small;
+}
+
+.custom-iphone-checkbox-off {
+    background-color: #252729;
+    color: #8b8b8b;
+    padding-left: $iphone-checkbox-dim;
+    left: $iphone-checkbox-width - $iphone-checkbox-dim;
+    width: $iphone-checkbox-on-off-width;
+    border-top-right-radius: $border-radius-small;
+    border-bottom-right-radius: $border-radius-small;
+}
+
+.custom-iphone-checkbox-block {
+    background-color: #5a5d60;
+    border-radius: $border-radius-small;
+    height: 100%;
+    left: $iphone-checkbox-width/2;
+    width: $iphone-checkbox-width/2;
+}
+
+.btn-ghost {
+    border: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: $ghost-btn-margin;
+    width: 13px;
+    height: 13px;
+    color: $ghost-btn-color;
+
+    &:hover {
+        text-decoration: none;
+        color: $ghost-btn-color;
+    }
+}
+
+.select-custom {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    color:#fff;
+
+    &:after {
+        right: rem-calc(10px);
+        pointer-events: none;
+    }
+
+    select {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        /* do not forget set background color to select by color-sheme */
+        /*border: none;*/
+        border-color: transparent;
+        padding: rem-calc(8px) rem-calc(30px) rem-calc(8px) rem-calc(15px);
+        border-radius: $border-radius-base;
+        width: 100%;
+
+        &:hover, &:focus{
+            /*border: none;*/
+            outline: none;
+        }
+
+        &::-ms-expand {
+            display: none;
+        }
+
+        option {
+            background-color: #fff;
+            color: #333;
+            border: none;
+        }
+    }
+
+    &--slim select {
+        padding: 0 rem-calc(30px) 0 rem-calc(15px);
+        height: rem-calc(25px);
+    }
+
+    &--fat select {
+            padding-top: 12px;
+            padding-bottom: 12px;
+    }
+}

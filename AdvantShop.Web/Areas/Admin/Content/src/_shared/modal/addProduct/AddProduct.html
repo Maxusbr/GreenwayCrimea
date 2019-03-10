@@ -1,0 +1,31 @@
+﻿<form name="formAddProduct" novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Добавление товара</h2>
+    </div>
+    <div class="modal-body">
+        <div class="m-b">
+            Категория:
+
+            <span class="error-color" ng-show="formAddProduct.inputCategoryName.$invalid">Выберите категорию</span>
+            <input type="text" class="input-ghost" name="inputCategoryName" required ng-model="ctrl.categoryName" ng-hide="formAddProduct.inputCategoryName.$invalid" input-ghost validation-input-text="Выберите категорию" />
+
+            <ui-modal-trigger data-controller="'ModalChangeParentCategoryCtrl'" controller-as="ctrl"
+                              data-on-close="ctrl.changeCategory(result)"
+                              data-resolve="{showRoot: true, selected:0, currentId:0}"
+                              template-url="../areas/admin/content/src/category/modal/changeParentCategory/ChangeParentCategory.html">
+                <a href="" class="edit">Выбрать</a>
+            </ui-modal-trigger>
+        </div>
+        <div class="m-b">
+            Название товара: <span class="text-required"></span>
+        </div>
+        <div>
+            <input type="text" placeholder="" ng-model="ctrl.name" class="form-control" data-e2e="inputProductName" required autofocus ng-keyup="formAddProduct.$valid && $event.keyCode === 13 && ctrl.addProduct()" validation-input-text="Название товара" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation data-button-validation-success="ctrl.addProduct()" ladda="ctrl.btnLoading">Добавить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

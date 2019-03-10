@@ -1,0 +1,38 @@
+﻿@model AdvantShop.Module.OrderNow.ViewModel.AdminTabViewmodel
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="inline product-setting-title content-header" style="padding-left: 0.625rem;">Модуль "Закажи сейчас"</h2>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6">
+            <lable>Текст уведомления</lable>
+        </div>
+        <div class="col-xs-6">
+            <textarea onchange="AddUpdateProductMessage(@Model.productid)" style="width:100%;" class="js-ONtxtOutputText">@Model.Message</textarea>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6">
+            <lable>Текст уведомления после завершения времени показа основного уведомления</lable>
+        </div>
+        <div class="col-xs-6">
+            <textarea onchange="AddUpdateProductTimeoutMessage(@Model.productid)" style="width:100%;" class="ONtxtOutputText js-ONtxtOutputTimeoutText">@Model.TimeoutMessage</textarea>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6">
+            <label>Доступные переменные:</label>
+        </div>
+        <div class="col-xs-6">
+            #TODAY#, #TOMORROW#, #2DAYS#, #3DAYS#, #NDAYS#, #DATE#
+        </div>
+    </div>
+</div>
+
+<div id="snackbar"></div>

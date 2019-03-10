@@ -1,0 +1,24 @@
+﻿@model AdvantShop.Areas.AdminMobile.Models.User.LoginModel
+<div class="wrapper">
+    @Html.Action("Logo", "Home")
+    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+    {
+        <div class="auth-panel">
+            <div class="input-wrap login">
+                @Html.TextBoxFor(m => m.Login, new { placeholder = T("AdminMobile.User.Login.Login") })
+            </div>
+            <div class="input-wrap pass">
+                @Html.PasswordFor(m => m.Password, new { placeholder = T("AdminMobile.User.Login.Password"), autocomplete = "off" })
+            </div>
+        </div>
+        
+        <div class="signIn-wrapper">
+            @if (!string.IsNullOrEmpty(Model.Error))
+            {
+                <div>@Html.Raw(Model.Error)</div>
+            }
+            <input type="submit" class="signInBtn" value="@T("AdminMobile.User.Login.Signin")" />
+        </div>
+    }
+    <div class="auth-footer">© @DateTime.Now.Year AdVantShop.NET</div>
+</div>

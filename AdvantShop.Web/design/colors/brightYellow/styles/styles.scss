@@ -1,0 +1,76 @@
+﻿@import '../../_colorScheme.scss';
+
+$colorValueChange: getDefaultColorValueChange() !default;
+
+$c1: #4b4f58;
+$c2: #e2e3e4;
+$c3: #94969b;
+$c4: #fff;
+$c5: #26282b;
+
+/*vk colors*/
+$c6: #ffdd00;
+$c6darker: #ffce00;
+
+$btnConfirm: #ffce00;
+$btnConfirmHover: #ffdd00;
+$btnConfirmActive: #ffdd00;
+
+$btnAdd: #ffce00;
+$btnAddHover: #ffdd00;
+$btnAddActive: #ffdd00;
+
+$btnSubmit: #ffce00;
+$btnSubmitHover: #ffdd00;
+
+/*end*/
+
+$c7: #bfc0c1;
+$c9: #e20000;
+$c10: #f3f3f3;
+$c11: #f8f8f8;
+$c12: #3c668e;
+
+@include color-scheme-text('1', $c1);
+@include color-scheme-text('2', $c2);
+@include color-scheme-text('3', $c3);
+@include color-scheme-text('4', $c4);
+@include color-scheme-text('5', $c5);
+@include color-scheme-text('6', $c6);
+@include color-scheme-text('7', $c7);
+@include color-scheme-text('8', $c1);
+
+@include color-scheme-link('1', $c1, $c1, lighten($c1, $colorValueChange), null, true);
+@include color-scheme-link('2', $c1, $c1, darken($c1, $colorValueChange));
+@include color-scheme-link('3', $c3, $c1, darken($c1, $colorValueChange));
+@include color-scheme-link('4', $c1, lighten($c1, $colorValueChange), darken($c1, $colorValueChange), $c4);
+@include color-scheme-link('5', $c9, lighten($c9, $colorValueChange), darken($c9, $colorValueChange));
+@include color-scheme-link('6', $c6, $c4, $c4, $c4);
+@include color-scheme-link('7', $c1, $c1, $c1, $c1);
+
+@include color-scheme-bg('1', $c6, lighten($c6, $colorValueChange), darken($c6, $colorValueChange));
+@include color-scheme-bg('2', $c1, lighten($c1, $colorValueChange), darken($c1, $colorValueChange));
+@include color-scheme-bg('3', $c10, lighten($c10, $colorValueChange), darken($c10, $colorValueChange));
+@include color-scheme-bg('4', $c11, lighten($c11, $colorValueChange), darken($c11, $colorValueChange));
+@include color-scheme-bg('5', lighten($c6, $colorValueChange), lighten($c6, $colorValueChange),$c6);
+@include color-scheme-bg('6', $c9, lighten($c9, $colorValueChange), darken($c9, $colorValueChange));
+@include color-scheme-bg('7', $c4, darken($c4, $colorValueChange), darken($c4, $colorValueChange));
+@include color-scheme-bg('8', $c3, lighten($c3, $colorValueChange), darken($c3, $colorValueChange));
+@include color-scheme-bg('9', $c4, darken($c4, $colorValueChange), darken($c4, $colorValueChange));
+@include color-scheme-bg('10', $c12, lighten($c12, $colorValueChange), darken($c12, $colorValueChange));
+@include color-scheme-bg('11', $c4, lighten($c6, $colorValueChange), darken($c6, $colorValueChange));
+
+@include color-scheme-gradient('1', 'to bottom', inspect((#{$c6} 0%, #{$c6darker} 50%)));
+
+@include color-scheme-button('add', $btnAdd, $c1, $btnAddHover, $c1, $btnAddActive, $c1, $c2, $c3);
+@include color-scheme-button('action', $c1, $c4, lighten($c1, $colorValueChange), $c4, darken($c1, $colorValueChange), $c4, $c2, $c3);
+@include color-scheme-button('buy', $c6, $c1, lighten($c6, $colorValueChange), lighten($c1, $colorValueChange), darken($c6, $colorValueChange), darken($c1, $colorValueChange), $c2, $c3);
+@include color-scheme-button('confirm', $c9, $c4, lighten($c9, $colorValueChange), $c4, darken($c9, $colorValueChange), $c4, $c2, $c3);
+@include color-scheme-button('submit', $c6, $c1, lighten($c6, $colorValueChange), lighten($c1, $colorValueChange), darken($c6, $colorValueChange), darken($c1, $colorValueChange), $c2, $c3);
+
+@include color-scheme-borders-color('1', $c2, $c2, $c2);
+@include color-scheme-borders-color('2', $c12, $c12, $c12);
+
+tr, td, th {
+    border-color: $c2;
+}

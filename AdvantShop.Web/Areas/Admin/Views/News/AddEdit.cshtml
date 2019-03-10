@@ -1,0 +1,303 @@
+﻿@model AdvantShop.Web.Admin.Models.News.AddEditNewsModel
+
+<form method="POST" action="@(Model.IsEditMode ? Url.Action("Edit") : Url.Action("Add"))" enctype="multipart/form-data" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => Model.NewsId)
+    @Html.HiddenFor(x => Model.IsEditMode)
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    @if (Model.IsEditMode)
+                    {
+                        <span>Новость</span> <strong>"@Html.Raw(Model.Title)"</strong>
+                    }
+                    else
+                    {
+                        <strong>@T("Новая новость")</strong>
+                    }
+                </h1>
+                <ul class="breadcrumb sticky-page-name-subtext">
+                    <li>
+                        <a class="link-invert" href="@Url.Action("Index", "News")">Все новости</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-name-block-item-additional">
+                <a href="" class="link-danger m-r-xs" ng-if="@Model.IsEditMode.ToString().ToLower()" ng-click="newsItem.deleteNewsItem(@Model.NewsId)">Удалить</a>
+                @if (Model.IsEditMode && Model.Enabled)
+                {
+                    @Html.Button(T("Admin.View"), eButtonType.Simple, eButtonSize.Small, eColorType.Default, 
+                                    @Url.AbsoluteRouteUrl("News", new { url = Model.UrlPath }), name: "ViewNews", attributes: new[] { "target=\"_blank\""})
+                }
+
+                @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, attributes: new [] { "ng-disabled=\"!form.modified\"", "disabled"})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="flex-grow-n col-fixed-size-md">
+                    <h2 class="category-title">Основное</h2>
+                    <div class="">
+                    </div>
+                </div>
+                <div class="flex-grow flex-basis-n flex-width-n">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="Title" class="form-label-block"><span class="text-required">Заголовок новости</span></label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", url_generator = "", url_generator_enabled = Model.UrlPath.IsNotEmpty() ? "false" : "true", url_path = "newsItem.UrlPath", required = "required", ng_model = "newsItem.Title", validation_input_text = "Заголовок новости" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="ShowOnMainPage" class="form-label-block">Отображать на главной странице</label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <label class="adv-checkbox-label form-label-block" data-e2e="ShowOnMainPage">
+                                            @Html.CheckBoxFor(x => x.ShowOnMainPage, new { ng_model = "newsItem.showOnMainPage", @class = "adv-checkbox-input" })
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="ShowOnMainPage" class="form-label-block">Активность</label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <label class="adv-checkbox-label form-label-block" data-e2e="Enabled">
+                                            @Html.CheckBoxFor(x => x.Enabled, new { ng_model = "newsItem.enabled", @class = "adv-checkbox-input" })
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="form-group middle-xs row">
+                                    <div class="col-xs-2">
+                                        <div class="setting-label-wrap">
+                                            <label for="NewsCategorys"><span class="text-required">Категория новости</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 col-wl-2">
+                                        @Html.DropDownListFor(x => x.NewsCategoryId, Model.NewsCategory, new { @class = "form-control", ng_model = "newsItem.newsCategoryId", ng_init = "newsItem.newsCategoryId='" + Model.NewsCategoryId + "'" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="AddingDates" class="form-label-block">Дата</label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <div class="dropdown" style="width:30%">
+                                            <div class="dropdown-toggle" id="addingDates" role="button" data-toggle="dropdown">
+                                                <div class="input-group">
+                                                    <input type="text" id="AddingDates" name="AddingDates" class="form-control" ng-init="newsItem.addingDates='@Model.AddingDate.ToString("o")'" ng-model="newsItem.addingDates" data-date-time-input="DD.MM.YYYY HH:mm" />
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <datetimepicker ng-model="newsItem.addingDates" data-datetimepicker-config="{ dropdownSelector: '#addingDates' }" />
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* Description *@
+            <div class="row">
+                <div class="flex-grow-n col-fixed-size-md">
+                    <h2 class="category-title">Текст</h2>
+                    <div class="">
+                    </div>
+                </div>
+                <div class="flex-grow flex-basis-n flex-width-n">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-xs-2">
+                                        <label for="Description" class="form-label-block m-b-wl"><span class="text-required">Текст</span></label>
+                                        <a href="@Url.Action("Academy", "Service", new { id = 50 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                            Видеоурок о Визуальном редакторе
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextAreaFor(x => x.TextToPublication, new { @class = "wysiwyg", ckeditor = "", ng_model = "newsItem.textToPublication", required = "required", validation_input_text = "Текст" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-xs-2">
+                                        <label for="Description" class="form-label-block"><span class="text-required">Аннотация</span></label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextAreaFor(x => x.TextAnnotation, new {@class = "wysiwyg", ckeditor = "", ng_model = "newsItem.textAnnotation", required = "required", validation_input_text = "Аннотация"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* Pictures *@
+            <div class="row">
+                <div class="flex-grow-n col-fixed-size-md">
+                    <h2 class="category-title">Изображения</h2>
+                </div>
+                <div class="flex-grow flex-basis-n flex-width-n">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-xs-2">
+                                        @T("Admin.Category.Index.Picture")
+                                        <div>
+                                            @(SettingsPictureSize.NewsImageWidth)x@(SettingsPictureSize.PaymentIconHeight)px
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+
+                                        @Html.PictureUploader(AdvantShop.Catalog.PhotoType.News, 
+                                                              Model.NewsId, 
+                                                              Model.PhotoSrc, 
+                                                              "newsItem.changePhoto(result)", 
+                                                              null, 
+                                                              Model.PhotoId)
+
+                                        @Html.HiddenFor(x => x.PhotoId, new { ng_value = "newsItem.PhotoId" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* News products *@
+            @if (Model.IsEditMode)
+            {
+                <div class="row">
+                    <div class="flex-grow-n col-fixed-size-md">
+                        <h2 class="category-title">Товары в новости</h2>
+                    </div>
+                    <div class="flex-grow flex-basis-n flex-width-n">
+                        <div class="ibox category-block">
+                            <div class="ibox-content category-content border_none">
+                                <div class="container-fluid">
+                                    <div class="row category-row">
+                                        <div class="col-xs-12">
+                                            <news-products data-news-id="@Model.NewsId"></news-products>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @* SEO*@
+            <div class="row">
+                <div class="flex-grow-n col-fixed-size-md">
+                    <h2 class="category-title">SEO</h2>
+                    <div class="">
+                        SEO параметры заполняются автоматически по шаблону, указанному в настройках.
+                    </div>
+                </div>
+                <div class="flex-grow flex-basis-n flex-width-n">
+                    <div class="ibox brand-block">
+                        <div class="ibox-content brand-content border_none">
+
+                            <div>
+                                <div class="row category-row">
+                                    <div class="col-xs-2">
+                                        <label for="URL" class="form-label-block"><span class="text-required">Синоним для URL запроса</span></label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <label class="input-group form-label-block">
+                                            <span class="input-group-addon fs-xs">@(SettingsMain.SiteUrl)/news/</span>
+                                            @Html.TextBoxFor(x => x.UrlPath, new { @class = "form-control", ng_model = "newsItem.UrlPath", id = "URL", required = "required", validation_input_text = "Синоним для URL запроса" })
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-offset-2">
+                                    <label class="adv-checkbox-label">
+                                        @Html.CheckBoxFor(x => x.DefaultMeta, new { ng_model = "newsItem.defaultMeta", ng_init = "newsItem.defaultMeta=" + Model.DefaultMeta.ToString().ToLower(), @class = "adv-checkbox-input" })
+                                        <span class="adv-checkbox-emul" data-e2e="DefaultMetaCheckbox"></span>
+                                        Использовать Meta по умолчанию
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="brand-seo-custom-block ng-cloak m-t-md" ng-if="!newsItem.defaultMeta">
+                                <div>
+                                    <div class="row category-row middle-xs">
+                                        <div class="col-xs-2">
+                                            <label class="form-label-block" for="SeoTitle">@T("Admin.Category.Index.SeoTitle")</label>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", ng_model = "newsItem.seoTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.News }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row middle-xs">
+                                        <div class="col-xs-2">
+                                            <label class="form-label-block" for="SeoH1">@T("Admin.Category.Index.SeoH1")</label>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            @Html.TextBoxFor(x => x.SeoH1, new { @class = "form-control", ng_model = "newsItem.seoH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.News }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row middle-xs">
+                                        <div class="col-xs-2">
+                                            <label class="form-label-block" for="SeoKeywords">@T("Admin.Category.Index.SeoKeywords")</label>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", ng_model = "newsItem.seoKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.News }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row middle-xs">
+                                        <div class="col-xs-2">
+                                            <label class="form-label-block" for="SeoDescription">@T("Admin.Category.Index.SeoDescription")</label>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            @Html.TextBoxFor(x => x.SeoDescription, new { @class = "form-control", ng_model = "newsItem.seoDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.News }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-offset-2">
+                                        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.News })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

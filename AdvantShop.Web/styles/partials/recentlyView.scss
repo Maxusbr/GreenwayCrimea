@@ -1,0 +1,117 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+$outer: 50px; //for RecentlyList
+
+.recently-list {
+    padding: 0;
+    margin: 0;
+    display: none;
+    list-style: none;
+    min-width: rem-calc(350px);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: rem-calc(50px);
+    z-index: 1;
+    border-radius: $border-radius-base;
+    box-shadow: $box-shadow-base;
+
+    &:after, &:before {
+        content: "";
+        display: inline-block;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto;
+        position: absolute;
+        height: $outer;
+    }
+
+    &:after {
+        bottom: -($outer/4);
+        background: white;
+        box-shadow: $box-shadow-base;
+        width: $outer/2;
+        height: $outer/2;
+        transform: rotate(45deg);
+        z-index: 0;
+    }
+
+    &:before {
+        bottom: -($outer/2);
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1340px) {
+    .recently-list {
+        left: -50%;
+        transform: none;
+
+        &:after {
+            margin: 0;
+            left: 25%;
+        }
+    }
+}
+
+.recently-list__container {
+    max-height: rem-calc(340px);
+    padding-top: $outer/4;
+    padding-bottom: $outer/4;
+    position: relative;
+    z-index: 1;
+}
+
+.active .recently-list {
+    display: block;
+}
+
+.recently-list-item {
+    padding: rem-calc(15px);
+    margin: 0;
+    border-top: $border-width #ededee solid;
+
+    &:first-child {
+        border-top-width: 0;
+        border-top-left-radius: $border-radius-base;
+        border-top-right-radius: $border-radius-base;
+    }
+    /*&:last-child {
+        border-top-width: 0;
+        border-bottom-left-radius: $border-radius-base;
+        border-bottom-right-radius: $border-radius-base;
+    }*/
+}
+
+.recently-product-image-block {
+    text-align: center;
+    padding-right: rem-calc(15px);
+}
+
+.recently-product-name {
+    font-size: $font-size-medium;
+    margin-bottom: rem-calc(10px);
+}
+
+.recently-product-additional-block {
+    display: table;
+    font-size: $font-size-small;
+}
+
+.recently-product-amount,
+.recently-product-price {
+    display: table-row;
+}
+
+.recently-product-amount-text,
+.recently-product-amount-value,
+.recently-product-price-text,
+.recently-product-price-value {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.recently-product-amount-text,
+.recently-product-price-text {
+    padding-right: rem-calc(10px);
+}

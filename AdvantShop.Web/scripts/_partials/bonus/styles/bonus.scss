@@ -1,0 +1,39 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+.bonus-form-label-row {
+    margin-bottom: $margin-value-base;
+}
+
+.bonus-form-label-row .bonus-form-label-content {
+    padding: 5px 0 0 25px;
+}
+
+.bonus-form-label {
+    margin-right: $margin-value-base;
+}
+
+.bonus-error-text {
+    text-align: center;
+    color: #c80505;
+    font-weight: bold;
+}
+
+.modal-bonus {
+    width: 50vw;
+}
+
+.modal-bonus-text {
+    padding: 5px 0;
+}
+
+.bonus-code-success-text {
+    text-align: center;
+}
+
+.bonus-auth-inner {
+    padding-right: 0;
+}
+
+.bonus-string-sum {
+    white-space: normal;
+}

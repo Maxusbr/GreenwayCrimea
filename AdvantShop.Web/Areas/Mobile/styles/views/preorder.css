@@ -1,0 +1,5 @@
+.preorder-rating-wrap, .preorder-price-wrap, .preorder-avalable-wrap {
+  text-align: center; }
+
+.preorder-price-wrap .price-new, .preorder-price-wrap .price-current {
+  font-size: 16px; }

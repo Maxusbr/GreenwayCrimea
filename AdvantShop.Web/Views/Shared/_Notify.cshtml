@@ -1,0 +1,14 @@
+﻿@model List<Notify>
+
+<div data-toaster-container data-toaster-options="{'close-button': true, 'body-output-type': 'trustedHtml'}">
+</div>
+<div class="toaster-container-alternative" data-toaster-container data-toaster-options="{'close-button': true, 'tap-to-dismiss': false, 'toaster-id': 'toasterContainerAlternative', 'body-output-type': 'trustedHtml'}">
+</div>
+<div hidden>
+    @foreach (var item in Model)
+    {
+        <div data-toaster-type="@item.NotifyType.ToString().ToLower()">
+            @Html.Raw(item.Message)
+        </div>
+    }
+</div>

@@ -1,0 +1,102 @@
+﻿<article class="catalog-filter">
+    <div data-ng-if="catalogFilter.isRenderBlock">
+        <div class="catalog-filter-header h3">
+            {{ ::'Js.CatalogFilter.Filters' | translate }}
+        </div>
+        <form name="catalogFilterForm" class="catalog-filter-content cs-br-1" novalidate="novalidate" data-submenu-container="{'type': 'accordion'}">
+            <div class="catalog-filter-block" data-ng-repeat="item in ::catalogFilter.catalogFilterData track by $index" data-ng-init="indexItem = $index">
+                <div submenu-parent>
+                    <div class="catalog-filter-block-header cs-l-1 cs-br-1" data-ng-click="submenuParent.submenu.toggle()" ng-class="{'catalog-filter-block-header-open': submenuParent.submenu.isSubmenuVisible}">
+                        <span class="catalog-filter-block-title" data-ng-bind="::item.Title"></span>
+                        <span class="catalog-filter-questian-description" data-ng-if="item.Subtitle.length > 0"> ({{::item.Subtitle}}) </span>
+                        <span class="catalog-filter-question-description icon-question-after" ng-if="::item.Description"  uib-popover="{{::item.Description}}" data-popover-trigger="'mouseenter'" popover-placement="right" popover-append-to-body="true"></span>
+                    </div>
+                    <div data-submenu data-ng-init="submenu.isSubmenuVisible = item.Expanded">
+                        <div class="catalog-filter-block-content cs-br-1" data-ng-if="submenu.isSubmenuVisible">
+                            <div data-ng-class="catalogfilter.getCssClassForContent(item.control)">
+                                <div data-ng-if="::item.Control == 'selectSearch'">
+                                    <span class="select-custom icon-down-open-after-abs cs-t-8">
+                                        <select class="cs-bg-2" data-ng-model="item.Selected" data-ng-options="option.Text for option in ::item.Values" data-ng-click="e = $event" data-ng-change="catalogFilter.clickSelect(e)">
+                                            <option value="" selected>{{ ::'Js.CatalogFilter.AllCategories' | translate }}</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                <div data-ng-if="::item.Control == 'select'">
+                                    <span class="select-custom icon-down-open-after-abs cs-t-8">
+                                        <select class="cs-bg-2" data-ng-model="item.Selected" data-ng-options="option.Text for option in ::item.Values" data-ng-click="e = $event" data-ng-change="catalogFilter.clickSelect(e)">
+                                            <option value="" selected>{{ ::'Js.CatalogFilter.NotSelected' | translate }}</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                <div class="js-color-viewer" data-ng-if="::item.Control == 'color'">
+                                    <div data-colors-viewer
+                                         data-is-enable-slider="false"
+                                         data-multiselect="true"
+                                         data-colors="::item.Values"
+                                         data-color-width="::item.Values[0].ImageWidth"
+                                         data-color-height="::item.Values[0].ImageHeight"
+                                         data-change-color="catalogFilter.changeColor(event)"
+                                         data-image-type="Catalog"></div>
+                                </div>
+                                <div data-ng-switch="::item.Control" data-ng-repeat="child in item.Values | limitTo:catalogFilter.itemsOptions[indexItem].countVisibleItems track by $index">
+                                    <!-- For search page -->
+                                    <div data-ng-switch-when="input">
+                                        <input class="input-middle" data-ng-model="item.Text" data-ng-init="item.Text = child.Text" type="text" data-ng-value="child.Text" data-ng-keypress="catalogFilter.inputKeypress($event)" />
+                                    </div>
+                                    <!-- For search page end -->
+                                    <div data-ng-switch-when="checkbox">
+                                        <div class="catalog-filter-row">
+                                            <label>
+                                                <input class="custom-input-native" type="checkbox" data-ng-value="child.Id" data-ng-checked="child.Selected" data-ng-disabled="!child.Available" data-ng-model="child.Selected" data-ng-click="catalogFilter.clickCheckbox($event)" />
+                                                <span class="custom-input-checkbox"></span>
+                                                <span class="custom-input-text" data-ng-bind="::child.Text"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div data-ng-switch-when="range" class="js-range-slider-block">
+                                        <div data-ng-switch="catalogFilter.isIE">
+                                            <div data-ng-switch-when="false">
+                                                <span range-slider min="child.Min" max="child.Max" data-show-values="true" data-show-inputs="true" model-min="child.CurrentMin" model-max="child.CurrentMax" step="child.Step" decimal-places="child.DecimalPlaces" on-handle-up="catalogFilter.clickRange(event); catalogFilterForm.$setDirty()"></span>
+                                            </div>
+                                            <div data-ng-switch-when="true">
+                                                от <input type="number" data-ng-model="child.CurrentMin" class="input-small" name="filteredModelMin" />
+                                                до <input type="number" data-ng-model="child.CurrentMax" class="input-small" name="filteredModelMax" />
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div data-ng-if="::(item.Values.length > catalogFilter.countVisibleCollapse && item.Control != 'selectSearch' && item.Control != 'search' && item.Control != 'color')">
+                                    <a href="" data-ng-click="catalogFilter.toggleVisible(item.Values.length, indexItem)">
+                                        <span data-ng-switch="catalogFilter.itemsOptions[indexItem].collapsed">
+                                            <span data-ng-switch-when="true">
+                                                {{ ::'Js.CatalogFilter.More' | translate }}
+                                            </span>
+                                            <span data-ng-switch-when="false">
+                                                {{ ::'Js.CatalogFilter.Hide' | translate }}
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-class="{'popover-catalog-filter-mobile-show': catalogFilterForm.$dirty }" class="popover-catalog-filter-mobile-hide">
+                <div id="popoverCatalogFilter" class="adv-popover text-static" data-popover data-popover-position="left" data-popover-is-fixed="false" data-popover-show-on-load="false" data-popover-overlay-enabled="false">
+                    <div class="catalog-filter-popover-text">{{ ::'Js.CatalogFilter.Finded' | translate }}: <span data-ng-bind="catalogFilter.foundCount"></span></div>
+                    <div class="catalog-filter-popover-button"><input type="button" class="btn btn-xsmall btn-action" value="{{ ::'Js.CatalogFilter.ShowProducts' | translate }}" data-ng-click="catalogFilter.submit()" /></div>
+                </div>
+            </div>
+            <div class="catalog-filter-footer cs-br-1">
+                <input type="button" class="btn btn-middle btn-submit" value="{{ ::'Js.CatalogFilter.Apply' | translate }}" data-ng-click="catalogFilter.submit()" />
+                <input type="button" class="btn btn-middle btn-action" value="{{ ::'Js.CatalogFilter.Reset' | translate }}" data-ng-click="catalogFilter.reset()" />
+            </div>
+        </form>
+        <!--<div id="popoverCatalogFilter" class="adv-popover text-static" data-popover data-popover-position="left" data-popover-is-fixed="false" data-popover-show-on-load="false" data-popover-overlay-enabled="false">
+            <div class="catalog-filter-popover-text">{{ ::'Js.CatalogFilter.Finded' | translate }}: <span data-ng-bind="catalogFilter.foundCount"></span></div>
+            <div class="catalog-filter-popover-button"><input type="button" class="btn btn-xsmall btn-action" value="{{ ::'Js.CatalogFilter.ShowProducts' | translate }}" data-ng-click="catalogFilter.submit()" /></div>
+        </div>-->
+    </div>
+</article>

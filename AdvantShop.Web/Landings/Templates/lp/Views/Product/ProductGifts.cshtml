@@ -1,0 +1,16 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ProductGiftsViewModel
+    <div class="row center-xs">
+        @foreach (var gift in Model.Gifts)
+        {
+            <div class="col-xs-3">
+                <div class="site-body-cell g-item">
+                    <div class="row middle-xs g-img">
+                        <span class="col-xs">
+                            <img src="@gift.Photo.ImageSrcSmall()" alt="@Html.AttributeEncode(gift.Product.Name)"/>
+                        </span>
+                    </div>
+                    <span class="gift-name">@gift.Product.Name</span>
+                </div>
+            </div>
+        }
+    </div>

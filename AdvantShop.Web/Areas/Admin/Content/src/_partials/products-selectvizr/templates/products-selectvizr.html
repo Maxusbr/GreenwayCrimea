@@ -1,0 +1,19 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4">
+            <div js-tree tree-ajax="{{::$ctrl.selectvizrTreeUrl}}" data-show-root="true" tree-events="select_node:$ctrl.treeCallbacks.select_node;"></div>
+        </div>
+        <div class="col-xs-8">
+            <ui-grid-custom grid-unique-id="gridProductsSelectvizr"
+                            grid-url="$ctrl.selectvizrGridUrl"
+                            grid-options="$ctrl.selectvizrGridOptions"
+                            grid-params="$ctrl.selectvizrGridParams"
+                            grid-on-init="$ctrl.gridOnInit(grid)"
+                            grid-selection-on-change="$ctrl.gridSelectionOnChange()"
+                            grid-selection-on-init="$ctrl.gridSelectionOnInit(selectionCustom)"
+                            grid-search-placeholder="'Поиск по наименованию и артикулу'"
+                            grid-selection-items-selected-fn="$ctrl.gridItemsSelectedFilterFn(rowEntity)">
+            </ui-grid-custom>
+        </div>
+    </div>
+</div>

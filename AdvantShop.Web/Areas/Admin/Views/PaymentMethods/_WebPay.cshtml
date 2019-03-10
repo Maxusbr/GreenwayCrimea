@@ -1,0 +1,41 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.WebPayPaymentModel
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Идентификатор магазина в системе WebPay</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.StoreId, new { ng_model = "paymentMethod.Parameters.StoreId", @class = "form-control", required = "required", validation_input_text = "Идентификатор магазина в системе WebPay" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs">
+            Идентификатор магазина в системе WebPay. Данный идентификатор создается при регистрации в системе WebPay™ и высылается в письме
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Секретный ключ</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.SecretKey, new { ng_model = "paymentMethod.Parameters.SecretKey", @class = "form-control", required = "required", validation_input_text = "Секретный ключ" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs">
+            Секретный ключ в системе WebPay
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Тестовый режим
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.TestMode, new {ng_model = "paymentMethod.Parameters.TestMode", ng_init = "paymentMethod.Parameters.TestMode=" + Model.TestMode.ToLowerString(), @class = "adv-checkbox-input"})
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak help-trigger-icon-abs">
+            Тестовый режим
+        </help-trigger>
+    </div>
+</div>
+

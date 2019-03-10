@@ -1,0 +1,399 @@
+﻿/*plp - product landing page*/
+$subTitles-size: 48px;
+$plpStickerMainSize: 180px;
+$plpStickerAltSize: 160px;
+$plpStickerAdditionalSize: 140px;
+
+.site-body.lp {
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    padding-top: 10px;
+}
+
+.plp-title {
+    font-size: 60px;
+    text-align: center;
+    margin: 20px 0 45px;
+}
+
+.plp-main-baner {
+    padding-bottom: 20px;
+
+    .t-timer {
+        & > div {
+            padding-top: 30px;
+        }
+    }
+
+    .countdown-item-part {
+        font-size: 30px;
+    }
+
+    .details-colors,
+    .details-sizes {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 15px;
+    }
+
+    .details-buy-in-time-block {
+        width: 100%;
+    }
+}
+
+.plp-subTitle {
+    font-size: $subTitles-size;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.plp-callback-form {
+    border-radius: 5px;
+    padding: 20px;
+
+    .form-field-name, .buy-one-click-text {
+        font-size: 16px;
+        color: currentColor;
+    }
+
+    .buy-one-click-text {
+        display: none;
+    }
+
+    .buy-one-click-final-text {
+        font-size: 18px;
+    }
+
+    .input-required.form-field-name:after {
+        display: none;
+    }
+
+    .row, [class^="col"] {
+        display: block;
+        max-width: 100%;
+    }
+
+    [class^="col"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .row {
+        margin: 0 0 20px 0;
+    }
+
+    .form-field-name.vertical-interval-middle {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .buy-one-click-buttons {
+        text-align: left;
+    }
+}
+
+
+/*.plp-features {
+	background: #f4f5f5;
+}*/
+
+.plp-item-feature {
+
+    .fName, .fTxt, .fImage {
+        text-align: center;
+    }
+
+    .fImage {
+        min-height: 200px;
+    }
+
+    .fName {
+        font-size: 24px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .fTxt {
+        font-size: 16px;
+    }
+}
+
+.plp-gift {
+    padding: 30px;
+}
+
+.g-item {
+    text-align: center;
+    font-size: 16px;
+
+    .g-img {
+        min-height: 250px;
+    }
+}
+
+.gift-descr {
+    text-align: center;
+    font-size: 16px;
+}
+
+.gift-name {
+    color: #0662c1;
+}
+
+.plp-main-timer {
+    .t-container {
+        min-height: 265px;
+    }
+
+    background: url('../../../images/misc/plpGrad.png') top center;
+
+    .t-title {
+        font-size: $subTitles-size;
+        text-align: right;
+    }
+
+    .t-timer {
+        & > div {
+            padding-top: 48px;
+        }
+    }
+}
+
+.t-countdown {
+    .countdown-item-part, .countdown-spliter {
+        font-size: 40px;
+    }
+
+    .countdown-item-label {
+        font-size: 18px;
+        margin-top: 15px;
+        color: #4b4f58;
+    }
+
+    .countdown-spliter {
+        padding: 0 6px 0 0;
+    }
+}
+
+.plp-specifications {
+    .s-banner {
+        text-align: center;
+        margin: 40px 0 20px 0;
+    }
+}
+
+.spec-block {
+    width: 80%;
+    margin: 0 auto;
+
+    .plp-p-name, .plp-p-value {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .plp-p-name, .properties-item-name {
+        text-align: right;
+    }
+
+    .plp-p-value {
+    }
+}
+
+.plp-video {
+    .v-container {
+        text-align: center;
+    }
+}
+
+.plp-reasons .reas-flex {
+    margin: 10px;
+}
+
+.r-item {
+    display: table;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 25px 20px;
+    width: 100%;
+
+    .r-img, .r-info {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .r-img {
+        width: 11%;
+        line-height: 0;
+        font-size: 0;
+    }
+
+    .r-info {
+        padding-left: 20px;
+        width: 64%;
+        text-align: left;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .r-title {
+        font-size: 16px;
+        line-height: 1;
+        margin-bottom: 7px;
+    }
+
+    .r-txt {
+        font-size: 13px;
+    }
+}
+
+.plp-reviews {
+    margin-bottom: 50px;
+
+    .review-item-name {
+        font-size: 18px;
+    }
+
+    .review-item-date {
+        font-size: 12px;
+        border-left: 0;
+        padding: 0;
+    }
+
+    .reviews-header {
+        @extend .plp-subTitle;
+    }
+}
+
+.spot-txt {
+    color: #fff;
+    z-index: 3;
+    position: absolute;
+    display: inline-block;
+    width: 70%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.plp-promo-image {
+    text-align: center;
+    position: relative;
+
+    .pi-image {
+        display: inline-block;
+    }
+
+    .plp-image-big {
+        max-height: 450px;
+    }
+
+    .s-curent-price {
+        top: -50px;
+        left: 70px;
+    }
+
+    .s-old-price {
+        top: 35px;
+        left: -40px;
+    }
+
+    .s-gift {
+        top: 160px;
+        left: 45px;
+    }
+}
+
+.plp-btns {
+    margin-top: 20px;
+}
+
+
+.plp-main-timer .details-buy-in-time-block {
+    width: 385px;
+}
+
+.buy-in-time-text {
+    display: none;
+}
+
+.plp-price {
+    position: absolute;
+    top: 0;
+    left: 0; //minumum left from labels
+    .price-discount {
+        display: none;
+    }
+
+    .price-new, .price-old, .price-current, .plp-sticker-gift {
+        position: absolute;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .price-number {
+            font-size: 34px;
+        }
+
+        .price-currency {
+            font-size: 18px;
+        }
+    }
+
+    .price-new, .price-current {
+        top: -50px;
+        left: 120px;
+        width: $plpStickerMainSize;
+        height: $plpStickerMainSize;
+        background: url(../../../images/stickers/main.png) center center / 100% auto no-repeat;
+        z-index: 10;
+    }
+
+    .price-old {
+        top: 30px;
+        left: 0;
+        width: $plpStickerAltSize;
+        height: $plpStickerAltSize;
+        background: url(../../../images/stickers/alt.png) center center / 100% auto no-repeat;
+        z-index: 5;
+
+        .price-currency {
+            text-decoration: none;
+        }
+    }
+
+    .price-number, .price-currency {
+        text-align: center;
+        display: block;
+        line-height: 1;
+    }
+}
+
+.plp-sticker-gift {
+    top: 150px;
+    left: 120px;
+    width: $plpStickerAdditionalSize;
+    height: $plpStickerAdditionalSize;
+    background: url(../../../images/stickers/additional.png) center center / 100% auto no-repeat;
+    z-index: 0;
+    font-size: 25px;
+    line-height: 1;
+}
+.design-background-bottom,
+.design-background-top,
+body,
+html{
+    background:transparent none !important;
+}
+
+.form-field-name-white {
+    color: #fff;
+}
+
+.site-head-inner {
+    padding: 20px 0;
+}

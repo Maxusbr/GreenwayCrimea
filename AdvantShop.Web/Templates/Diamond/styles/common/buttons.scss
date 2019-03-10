@@ -1,0 +1,67 @@
+﻿@import "../../../../styles/functions/_util.scss", "../../../../styles/functions/_list.scss", "../../../../styles/functions/_prefixer.scss", "../../../../styles/_settings.scss";
+
+$btn-border-radius: rem-calc(30px) !default;
+$btn-big: (padding (rem-calc(14px) rem-calc(14px) rem-calc(14px)), font-size rem-calc(15px), is-bold true) !default;
+$btn-middle: (padding rem-calc(12px), font-size $font-size-normal, is-bold true) !default;
+$btn-small: (padding (rem-calc(13px) rem-calc(10px) rem-calc(10px)), font-size $font-size-normal, is-bold true) !default;
+$btn-xsmall: (padding (rem-calc(12px)), font-size $font-size-normal, is-bold true) !default;
+
+
+@mixin btn-size($btn-size-name, $btn-size-param) {
+    .#{$btn-size-name} {
+        @if(list-find-value($btn-size-param, is-bold)) {
+            font-weight: bold;
+        }
+        @else {
+            font-weight: normal;
+        }
+
+        font-size: list-find-value($btn-size-param, font-size);
+        line-height: list-find-value($btn-size-param, line-height);
+        padding-top: list-find-value($btn-size-param, padding);
+        padding-bottom: list-find-value($btn-size-param, padding);
+        padding-left: 38px;
+        padding-right: 38px;
+    }
+}
+
+.btn {
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    border: 0;
+    text-align: center;
+    border-radius: $btn-border-radius;
+    line-height: 1.3; //обязательно указывать это свойство, иначе высота кнопок input и "a" разная
+    box-sizing: border-box;
+    text-transform: uppercase;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn-expander {
+    width: 100%;
+}
+
+.btn[class^="icon-"]:before,
+.btn[class^="icon-"]:after,
+.btn[class*=" icon-"]:before,
+.btn[class*=" icon-"]:after {
+    font-size: $font-size-medium;
+}
+
+@include btn-size(btn-big, $btn-big);
+@include btn-size(btn-middle, $btn-middle);
+@include btn-size(btn-small, $btn-small);
+@include btn-size(btn-xsmall, $btn-xsmall);
+
+.voting .btn-action {
+    padding-left: 16px;
+    padding-right: 16px;
+}

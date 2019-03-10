@@ -1,0 +1,63 @@
+﻿
+$invalid-color: #fbdbdb;
+$invalid-bg: #fbdbdb;
+
+[type="text"],
+[type="password"],
+[type="search"],
+[type="email"],
+[type="number"],
+[type="tel"],
+[type="url"],
+textarea {
+    &.ng-dirty.ng-invalid {
+        /*border-color: #{$invalid-color};*/
+        background: #{$invalid-bg};
+    }
+}
+
+.custom-input-native.ng-dirty.ng-invalid {
+    & ~ .custom-input-radio,
+    & ~ .custom-input-checkbox {
+        /*border-color: $invalid-color;*/
+        box-shadow: 0 0 2px 0 $invalid-color;
+    }
+}
+
+
+.ng-submitted.ng-dirty {
+    [type="text"],
+    [type="password"],
+    [type="search"],
+    [type="email"],
+    [type="number"],
+    [type="tel"],
+    [type="url"],
+    textarea {
+        &.ng-invalid {
+            /*border-color: #{$invalid-color};*/
+            background: #{$invalid-bg};
+        }
+    }
+
+    .custom-input-native.ng-invalid {
+        & ~ .custom-input-radio,
+        & ~ .custom-input-checkbox {
+            /*border-color: $invalid-color;*/
+            box-shadow: 0 0 rem-calc(2px) 0 $invalid-color;
+        }
+    }
+}
+
+.validation-popover {
+    color: #{$invalid-color};
+    font-weight: bold;
+}
+
+.error-text {
+    border-color: #{$invalid-color};
+}
+
+.error-color {
+    color: #{$invalid-color};
+}

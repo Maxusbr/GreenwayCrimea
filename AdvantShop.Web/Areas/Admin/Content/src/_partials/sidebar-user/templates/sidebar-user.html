@@ -1,0 +1,120 @@
+﻿<div class="sidebar-user" ng-if="$ctrl.isShow">
+    <i ng-click="$ctrl.close()" class="fa fa-times sidebar-user-close"></i>
+    <div class="sidebar-user-main">
+        <figure class="sidebar-user-photo-wrap">
+            <ui-modal-trigger controller="'ModalAddEditUserCtrl'"
+                              controller-as="ctrl"
+                              template-url="../areas/admin/content/src/settings/modal/addEditUser/AddEditUser.html"
+                              resolve="{'params': {'customerId': $ctrl.user.CustomerId}}">
+                <a href=""><img ng-src="{{$ctrl.user.PhotoSrc}}" /></a>
+            </ui-modal-trigger>
+        </figure>
+        <div class="sidebar-user-name">
+            <!--<ui-modal-trigger controller="'ModalAddEditUserCtrl'"
+                              controller-as="ctrl"
+                              template-url="../areas/admin/content/src/settings/modal/addEditUser/AddEditUser.html"
+                              resolve="{'params': {'customerId': $ctrl.user.CustomerId}}">-->
+                    <span ng-bind="$ctrl.user.LastName + ' ' + $ctrl.user.FirstName"></span>
+            <!--</ui-modal-trigger>-->
+        </div>
+        <div class="sidebar-user-position" ng-if="$ctrl.user.Position">
+            <span ng-bind="$ctrl.user.Position"></span>
+        </div>
+        <div class="sidebar-user-btn">
+            <ui-modal-trigger data-controller="'ModalAddTaskCtrl'"
+                              controller-as="ctrl"
+                              on-close="tasks.reload()" size="lg" backdrop="static"
+                              template-url="../areas/admin/content/src/_shared/modal/addTask/addTask.html"
+                              on-before-open="$ctrl.close()"
+                              resolve="{'userData': {'assignedManager': $ctrl.user.AssociatedManagerId}}">
+                <button class="btn btn-sm btn-success" type="button">
+                    <span class="fa fa-plus"></span>
+                    Поставить задачу
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+    <div class="sidebar-user-data">
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="sidebar-user-col-left">
+                    Email:
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="sidebar-user-col-right">
+                    <a ng-href="mailto:{{$ctrl.user.Email}}" ng-bind="$ctrl.user.Email"></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="sidebar-user-col-left">
+                    Телефон:
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="sidebar-user-col-right">
+                    <span ng-bind="$ctrl.user.Phone || 'Не указано'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="sidebar-user-col-left">
+                    Город:
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="sidebar-user-col-right">
+                    <span ng-bind="$ctrl.user.City || 'Не указано'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="sidebar-user-col-left">
+                    Дата рождения:
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="sidebar-user-col-right">
+                    <span ng-bind="($ctrl.user.BirthDay | date:'longDate') || 'Не указано'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="sidebar-user-col-left">
+                    Руководитель:
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="sidebar-user-col-right">
+                    <div ng-switch="$ctrl.user.HeadCustomer != null">
+                        <div ng-switch-when="true">
+                            <sidebar-user-trigger customer-id="$ctrl.user.HeadCustomer.CustomerId">
+                                <a href="" ng-bind="$ctrl.user.HeadCustomer.LastName + ' ' + $ctrl.user.HeadCustomer.FirstName"></a>
+                            </sidebar-user-trigger>
+                        </div>
+                        <div ng-switch-when="false">
+                            Не указано
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="sidebar-user-col-left">
+                    Отдел:
+                </div>
+            </div>
+            <div class="col-xs">
+                <div class="sidebar-user-col-right">
+                    <span ng-bind="$ctrl.user.DepartmentName || 'Не указано'"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

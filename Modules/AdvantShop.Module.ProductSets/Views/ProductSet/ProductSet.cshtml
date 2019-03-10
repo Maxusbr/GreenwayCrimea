@@ -1,0 +1,74 @@
+﻿@model AdvantShop.Module.ProductSets.Models.ProductSetViewModel
+
+<div data-oc-lazy-load="['modules/productsets/scripts/productsets.js']">
+    <div class="h2">
+        @Model.Title
+    </div>
+    <div data-ng-controller="ProductSetsCtrl as productSets">
+        <div class="row middle-xs" ng-init="productSets.init(product)">
+            <div class="col-xs-12">
+                <div class="productset products-view products-view-tile">
+                    @for (int i = 0; i < Model.ProductSet.Count; i++)
+                    {
+                        var product = Model.ProductSet[i];
+                        <div class="products-view-block"
+                             data-ng-class="{'notselected': !productSets.items[@i].selected}"
+                             data-ng-init="productSets.initValues(@i, {offerId : @product.OfferId, 'selected' : true})">
+                            <div class="products-view-item text-static cs-br-1">
+                                <div class="products-view-pictures">
+                                    <figure class="products-view-picture-block">
+                                        <a class="products-view-picture-link" href="@Url.RouteUrl("Product", new { url = product.UrlPath})" style="height: @(Model.PhotoHeight)px;">
+                                            <img src="@product.Photo.ImageSrcSmall()" alt="@product.Photo.Alt" title="@product.Photo.Title" class="products-view-picture" />
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="products-view-info">
+                                    <div class="products-view-name products-view-name-default">
+                                        <label>
+                                            <input type="checkbox"
+                                                   class="custom-input-native"
+                                                   data-ng-change="productSets.calcPrice()"
+                                                   data-ng-model="productSets.items[@i].selected" />
+                                            <span class="custom-input-checkbox"></span>
+                                        </label>
+                                        <a class="products-view-name-link" href="@Url.RouteUrl("Product", new { url = product.UrlPath})" title="@product.Name">
+                                            @product.Name
+                                        </a>
+                                    </div>
+                                    <div class="products-view-price-block products-view-price-inner">
+                                        <div class="products-view-price">
+                                            <div class="price">
+                                                @Html.Raw(@product.PreparedPrice)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        if (i != 0 && (i + 1) % 3 == 0 && i != Model.ProductSet.Count - 1)
+                        {
+                            @:<br>
+                        }
+                    }
+                    <div class="productset-price products-view-block center-aligner" data-ng-show="productSets.hasChecked">
+                        <div class="products-view-item">
+                            <div>
+                                <div class="price-text">
+                                    Ваша цена:
+                                </div>
+                                <div class="products-view-price" style="display: block;">
+                                    <div class="price" 
+                                         data-ng-init="productSets.totalPricePrepared = '@Model.TotalPricePrepared'" 
+                                         data-ng-bind-html="productSets.totalPricePrepared">
+                                        @Html.Raw(Model.TotalPricePrepared)
+                                    </div>
+                                </div>
+                                <a href="javascript:void(0);" class="btn btn-small btn-buy icon-bag-before products-view-buy" data-ng-click="productSets.addToCart()">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

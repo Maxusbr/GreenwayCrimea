@@ -1,0 +1,30 @@
+﻿$font-normal: 14px;
+$font-middle: 18px;
+
+.lp-properties {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: table;
+    font-size: $font-middle;
+    width: 100%;
+}
+
+.lp-properties-row {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: table-row;
+}
+
+.lp-properties-name,
+.lp-properties-value {
+    padding: 17px 0 9px;
+    display: table-cell;
+    border-bottom: 1px solid;
+}
+
+.lp-properties-name {
+    font-weight: bold;
+    padding-right: 15px;
+}

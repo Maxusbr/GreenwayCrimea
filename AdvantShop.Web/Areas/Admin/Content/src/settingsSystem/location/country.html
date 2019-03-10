@@ -1,0 +1,10 @@
+﻿<ui-grid-custom grid-unique-id="gridCountry"
+                grid-row-identificator="'CountryId'"
+                grid-options="$ctrl.gridOptions"
+                grid-on-init="$ctrl.onGridInit({grid: grid})"
+                grid-url="'countries/getcountry'"
+                grid-inplace-url="'countries/inplacecountry'"
+                grid-extend-ctrl="$ctrl">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="$ctrl.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

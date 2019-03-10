@@ -1,0 +1,40 @@
+﻿@model AdvantShop.ViewModel.Managers.ManagersViewModel
+<div class="col-p-v">
+    <div class="row">
+        <div class="col-xs-9">
+            <h1>@T("Managers.Index.MangersTitle")</h1>
+            @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+
+            @{
+                var departments = Model.Departments.Departments;
+                if (Model.Departments.Selected != -1)
+                {
+                    departments = departments.Where(item => item.DepartmentId == Model.Departments.Selected).OrderBy(x => x.Sort).ToList();
+                }
+            }
+
+            @if (Model.Managers.Any(item => item.DepartmentId != null))
+            {
+                foreach (var department in departments)
+                {
+                    var managers = Model.Managers.Where(item => item.DepartmentId == department.DepartmentId).ToList();
+                    if (managers.Any())
+                    {
+                        <div>
+                            <div class="h2"> @Html.Raw(department.Name)</div>
+                        </div>
+                        @Html.Partial("_ManagersList", managers)
+                    }
+                }
+            }
+            else
+            {
+                @Html.Partial("_ManagersList", Model.Managers)
+            }
+        </div>
+        <div class="col-xs-3">
+            @Html.Partial("_DepartmentsList", Model.Departments)
+            @Html.StaticBlock("Vk")
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.subscribe-block {
+  padding: 0.9375rem 1.5625rem;
+  margin-bottom: 2.5rem;
+  border-radius: 0.3125rem; }
+
+.subscribe-block-text {
+  font-size: 1rem;
+  margin: 0.3125rem 0;
+  line-height: 1.1; }
+
+.subscribe-block-button, .subscribe-block-button-slim, .subscribe-block-field {
+  margin: 0.3125rem 0; }

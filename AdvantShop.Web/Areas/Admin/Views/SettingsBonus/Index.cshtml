@@ -1,0 +1,190 @@
+﻿@using System.Web.Mvc.Html
+@using AdvantShop.Core.Services.Bonuses.Sms
+@model AdvantShop.Web.Admin.Models.Settings.BonusSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "SettingsBonus", FormMethod.Post, new { name = "form", enctype = "multipart/form-data", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settings.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </div>
+    </div>
+    <uib-tabset active uid="'crm'" on-select-batch="settings.floatHeader = tab.heading;">
+
+        <uib-tab index="1" heading="@T("Admin.Settings.Bonus.Header")" classes="ng-tab">
+            <a href="@Url.Action("Academy", "Service", new { id = 51 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert m-b-md">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Настройке бонусной системы
+            </a>
+            <h3 class="m-b-md">@T("Admin.Settings.SettingsBonus.Default")</h3>
+            <div class="form-group row">
+                <div class="col-xs-3">
+                    Включить
+                </div>
+                <div class="col-xs-9">
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label category-label">
+                            @Html.CheckBoxFor(x => x.IsActive, new { @class = "form-control adv-checkbox-input", ng_model = "settingBonus.IsActive" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                        @if (Model.IsActive)
+                        {
+                            @Html.RouteLink(T("Admin.Settings.SettingsBonus.GoToGetBonusCardPage").ToString(), "GetBonusCardRoute")
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-3">
+                    @T("Admin.Settings.SettingsBonus.BonusGradeId")
+                </div>
+                <div class="col-xs-4">
+                    @Html.DropDownListFor(x => x.BonusGradeId, Model.Grades, new { @class = "form-control", ng_model = "settingBonus.BonusGradeId" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-3">
+                    Диапазон карт от
+                </div>
+                <div class="col-xs-4">
+                    @Html.TextBoxFor(x => x.CardNumFrom, new { @class = "form-control", ng_model = "settingBonus.CardNumFrom", textcomplete = "" })
+                </div>
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Диапазон карт до
+                </div>
+                <div class="col-xs-4">
+                    @Html.TextBoxFor(x => x.CardNumTo, new { @type="number", @maxlength="20", @class = "form-control", ng_model = "settingBonus.CardNumTo", textcomplete = "", validation_input_text= "Диапазон карт до" })
+                </div>
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Начислять и списывать по
+                </div>
+                <div class="col-xs-4">
+                    @Html.DropDownListFor(x => x.BonusType, Model.BonusTypes, new { @class = "form-control", ng_model = "settingBonus.BonusType" })
+                </div>
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Максимальный % заказа, который можно оплатить бонусами
+                </div>
+                <div class="col-xs-4">
+                    @Html.TextBoxFor(x => x.MaxOrderPercent, new { @type="number", @min="1", @max="100", @class = "form-control", ng_model = "settingBonus.MaxOrderPercent", textcomplete = "", required = "required", validation_input_text = "Максимальный % заказа, который можно оплатить бонусами" })
+                </div>
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Запретить применение бонусов при активированном купоне
+                </div>
+                <div class="col-xs-9">
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label category-label">
+                            @Html.CheckBoxFor(x => x.ForbidOnCoupon, new { @class = "form-control adv-checkbox-input", ng_model = "settingBonus.ForbidOnCoupon" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>                       
+                    </div>
+                </div>              
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Основной текст на странице бонусной системы
+                </div>
+                <div class="col-xs-9">
+                    @Html.TextAreaFor(x => x.BonusTextBlock, new { @class = "wysiwyg", ckeditor = "", ng_model = "settingBonus.BonusTextBlock" })
+                </div>
+            </div>
+
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Текст в правом блоке на странице бонусной системы
+                </div>
+                <div class="col-xs-9">
+                    @Html.TextAreaFor(x => x.BonusRightTextBlock, new { @class = "wysiwyg", ckeditor = "", ng_model = "settingBonus.BonusRightTextBlock" })
+                </div>
+            </div>
+
+            <h3 class="m-b-md">Sms</h3>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Включить
+                </div>
+                <div class="col-xs-4">
+
+                    <div class="form-group label-wrap">
+                        <label class="adv-checkbox-label category-label">
+                            @Html.CheckBoxFor(x => x.SmsEnabled, new { @class = "form-control adv-checkbox-input", ng_model = "settingBonus.SmsEnabled" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Наименование отправителя
+                </div>
+                <div class="col-xs-4">
+                    @Html.TextBoxFor(x => x.SmsTitle, new { @class = "form-control", ng_model = "settingBonus.SmsTitle", textcomplete = "" })
+                </div>
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Шлюз смс провайдера
+                </div>
+                <div class="col-xs-4">
+                    @Html.EnumDropDownListFor(x => x.SmsProviderType, new { @class = "form-control", ng_model = "settingBonus.SmsProviderType" })
+                    @*@Html.DropDownListFor(x => x.SmsProviderType, Model.SmsProviders, new { @class = "form-control", ng_model = "settingBonus.SmsProviderType" })*@
+                </div>
+            </div>
+
+            <div class="ng-hide" ng-show="settingBonus.SmsProviderType == '@SmsProviderType.Sms4B.ConvertIntString()'">
+                @Html.Partial("SMS/Sms4B", Model)
+            </div>
+            <div class="ng-hide" ng-show="settingBonus.SmsProviderType == '@SmsProviderType.StreamSms.ConvertIntString()'">
+                @Html.Partial("SMS/StreamTelecom", Model)
+            </div>
+            <div class="ng-hide" ng-show="settingBonus.SmsProviderType == '@SmsProviderType.EPochta.ConvertIntString()'">
+                @Html.Partial("SMS/EPochta", Model)
+            </div>
+            <div class="ng-hide" ng-show="settingBonus.SmsProviderType == '@SmsProviderType.UniSender.ConvertIntString()'">
+                @Html.Partial("SMS/UniSender", Model)
+            </div>
+            @*<div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Логин для смс системы
+                </div>
+                <div class="col-xs-4">
+                    @Html.TextBoxFor(x => x.SmsLogin, new { @class = "form-control", ng_model = "settingBonus.SmsLogin", textcomplete = "" })
+                </div>
+            </div>
+            <div class="form-group row m-b-lg">
+                <div class="col-xs-3">
+                    Пароль для смс системы
+                </div>
+                <div class="col-xs-4">
+                    @Html.TextBoxFor(x => x.SmsPassword, new { @class = "form-control", ng_model = "settingBonus.SmsPassword", textcomplete = "" })
+                </div>
+            </div>*@
+            @*<div bs-modifiable="false">
+                    <deal-statuses></deal-statuses>
+                </div>*@
+        </uib-tab>
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" data-e2e="SettingsBonusSave" />
+        </div>
+    </uib-tabset>
+}

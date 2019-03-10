@@ -1,0 +1,8 @@
+﻿<ul class="rating" data-ng-class="{'rating-readonly': rating.readonly === 'true'}">
+    <li class="rating-item icon-star-before" 
+        data-ng-repeat="item in ::rating.items track by $index" 
+        data-ng-class="{'rating-item-selected': $index <= rating.current - 1, 'rating-item-hover': item.isHover}" 
+        data-ng-mouseenter="rating.change($index)" 
+        data-ng-mouseleave="rating.change(-1)" 
+        data-ng-click="rating.select($index+1)"></li>
+</ul>

@@ -1,0 +1,107 @@
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px #e2e3e4 solid;
+  vertical-align: middle;
+  width: 100%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: none; }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  textarea:focus {
+    outline: none; }
+  input[type="text"][readonly],
+  input[type="password"][readonly],
+  input[type="search"][readonly],
+  input[type="email"][readonly],
+  input[type="number"][readonly],
+  input[type="tel"][readonly],
+  input[type="url"][readonly],
+  textarea[readonly] {
+    background-color: #f9f9f9; }
+  input[type="text"]:disabled,
+  input[type="password"]:disabled,
+  input[type="search"]:disabled,
+  input[type="email"]:disabled,
+  input[type="number"]:disabled,
+  input[type="tel"]:disabled,
+  input[type="url"]:disabled,
+  textarea:disabled {
+    background-color: #eee; }
+
+select {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px #e2e3e4 solid;
+  vertical-align: middle;
+  width: 100%;
+  box-shadow: none; }
+  select:focus {
+    outline: none; }
+  select[readonly] {
+    background-color: #f9f9f9; }
+  select:disabled {
+    background-color: #eee; }
+
+textarea {
+  overflow: auto; }
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield; }
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0; }
+
+.input-big {
+  font-size: 1rem;
+  padding: 0.8125rem; }
+
+.input-middle {
+  font-size: 0.75rem;
+  padding: 0.75rem; }
+
+.input-small {
+  font-size: 0.75rem;
+  padding: 0.5625rem; }
+
+.input-xsmall {
+  font-size: 0.75rem;
+  padding: 0.625rem; }
+
+.textarea-big {
+  padding: 0.8125rem;
+  font-size: 1rem;
+  height: 0.8125rem; }
+
+.textarea-middle {
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  height: 9.6875rem; }
+
+.textarea-small {
+  padding: 0.5625rem;
+  font-size: 0.75rem;
+  height: 6rem; }
+
+.textarea-xsmall {
+  padding: 0.5625rem;
+  font-size: 0.75rem;
+  height: 4.0625rem; }

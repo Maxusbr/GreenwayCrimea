@@ -1,0 +1,351 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Import.ImportProductsModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<form name="importProductsForm" novalidate="novalidate" ng-init="import.isStartExport=@(Model.IsStartExport.ToString().ToLower())">
+
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="sticky-page-name" sticky sticky-top="0">
+                <div class="page-name-block m-b-md sticky-page-name-inner top-xs">
+                    <div class="page-name-block-item-main">
+                        <h1 class="page-name-block-text sticky-page-name-text m-b-xs inline middle-cell m-r-xs">
+                            Импорт товаров
+                        </h1>
+                        <a href="@Url.Action("Academy", "Service", new { id = 4 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                            Видеоурок о Товарах
+                        </a>
+                    </div>
+                    <div class="page-name-block-item-additional">
+                        <button class="btn btn-sm btn-success m-l-xs" data-e2e="Export" type="button"
+                                data-button-validation=""
+                                data-button-validation-success="import.startProductsImport()" ng-if="import.showFields && !import.isStartExport">
+                            @T("Admin.Import.ImportProducts.Import")
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" ng-if="!import.isStartExport">
+            @*<span>На данной странице Вы можете загрузить данные каталога из файла формата CSV (Excel). Вы можете выбрать колонки, которые необходимо загрузить из файла, колонки могут идти в любой последовательности.</span>*@
+            <div class="row">
+                <div class="col-xs-3 col-lg-3 col-wl-2">
+                    <h2 class="category-title">@T("Admin.Import.ImportProducts.Params")</h2>
+                </div>
+                <div class="col-xs-9 col-wl-10">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div class="form-group row">
+                                <div class="col-xs-3 col-wl-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.Import.ImportProducts.ColumnSeparator")
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-wl-2">
+                                    @Html.DropDownList("ddlColumnSeparator", new SelectList(Model.ColumnSeparators, "Key", "Value", Model.ColumnSeparator), new { @class = "form-control", ng_init = "import.ColumnSeparator='" + Model.ColumnSeparator + "'", ng_model = "import.ColumnSeparator" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-xs-3 col-wl-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.Import.ImportProducts.FileEncoding")
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-wl-2">
+                                    @Html.DropDownList("ddlEncodings", new SelectList(Model.Encodings, "Key", "Value", Model.Encoding), new { @class = "form-control", ng_init = "import.Encoding='" + Model.Encoding + "'", ng_model = "import.Encoding" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-xs-3 col-wl-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.Import.ImportProducts.PropertySeparator")
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-wl-2">
+                                    @Html.TextBox("txtPropertySeparator", Model.PropertySeparator, new { @class = "form-control", required = "required", ng_init = "import.PropertySeparator='" + Model.PropertySeparator + "'", ng_model = "import.PropertySeparator", validation_input_text = T("Разделитель между свойствами") })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-xs-3 col-wl-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.Import.ImportProducts.PropertyValueSeparator")
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-wl-2">
+                                    @Html.TextBox("txtPropertyValueSeparator", Model.PropertyValueSeparator, new { @class = "form-control", required = "required", ng_init = "import.PropertyValueSeparator='" + Model.PropertyValueSeparator + "'", ng_model = "import.PropertyValueSeparator", validation_input_text = T("Разделитель между свойством и значением") })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-xs-3 col-wl-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.Import.ImportProducts.HasHeader")
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-wl-2">
+                                    <label class="adv-checkbox-label">
+                                        @Html.CheckBox("chbHaveHeader", Model.HaveHeader, new { @class = "adv-checkbox-input", ng_init = "import.HaveHeader=" + Model.HaveHeader.ToLowerString(), ng_model = "import.HaveHeader" })
+                                        <span class="adv-checkbox-emul"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-xs-3 col-wl-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.Import.ImportProducts.DisableProducts")
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-wl-2">
+                                    <label class="adv-checkbox-label">
+                                        @Html.CheckBox("chbDisableProducts", Model.DisableProducts, new { @class = "adv-checkbox-input", ng_init = "import.DisableProducts=" + Model.DisableProducts.ToLowerString(), ng_model = "import.DisableProducts" })
+                                        <span class="adv-checkbox-emul"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3 col-lg-3 col-wl-2">
+                    <h2 class="category-title">@T("Admin.Import.ImportProducts.CsvFile")</h2>
+                </div>
+                <div class="col-xs-9 col-wl-10">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div class="form-group row" ng-if="!import.showFields">
+                                <div class="col-xs-3 col-wl-2">
+                                    <file-uploader class="picture-uploader-middle inline"
+                                                   accept=".csv"
+                                                   start-src=""
+                                                   upload-url="/import/uploadCsvFile"
+                                                   upload-params=""
+                                                   on-update="import.getFiledsFromCsvFile()">
+                                    </file-uploader>
+                                    <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                                        <div class="help-content">
+                                            @Html.Action("FilesHelpText", "Common", new { type = AdvantShop.Helpers.EAdvantShopFileTypes.Catalog })
+                                        </div>
+                                    </help-trigger>
+                                </div>
+                            </div>
+
+                            <div ng-if="import.showFields">
+                                <div class="form-group row">
+                                    <div class="col-xs-3">
+                                        <div class="setting-title">
+                                            <h3>@T("Admin.Import.ImportProducts.ColumnInCsv")</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <div class="setting-title">
+                                            <h3>@T("Admin.Import.ImportProducts.FirstProductData")</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <div class="setting-title">
+                                            <h3>@T("Admin.Import.ImportProducts.DataType")</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row" ng-repeat="header in import.headers track by $index">
+                                    <div class="col-xs-3">
+                                        <span> {{import.headers[$index]}} </span>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <span> {{import.firstProductFields[$index]}} </span>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <select ng-options="key as value for (key , value) in import.allProductFields" ng-init="import.selectedProductFields[$index]=import.headers[$index]" ng-model="import.selectedProductFields[$index]" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <button class="btn btn-sm btn-success m-l-xs" data-e2e="Export" type="button"
+                                            data-button-validation=""
+                                            data-button-validation-success="import.changeNewFile()">
+                                        @T("Admin.Import.ImportProducts.ChangeNewFile")
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3 col-lg-3 col-wl-2">
+                    <h2 class="category-title">@T("Admin.Import.ImportProducts.ZipFile")</h2>
+                </div>
+                <div class="col-xs-9 col-wl-10">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div class="form-group row">
+                                <div class="col-xs-3 col-wl-2">
+                                    <file-uploader class="picture-uploader-middle inline"
+                                                   accept=".zip"
+                                                   start-src=""
+                                                   upload-url="/import/uploadZipFile"
+                                                   upload-params=""
+                                                   delete-url="/import/deleteZipFile"
+                                                   delete-params=""
+                                                   show-result="true">
+                                    </file-uploader>
+                                    <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                                        <div class="help-content">
+                                            @Html.Action("FilesHelpText", "Common", new { type = AdvantShop.Helpers.EAdvantShopFileTypes.Zip })
+                                        </div>
+                                    </help-trigger>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <cm-stat ng-if="import.isStartExport">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <uib-progressbar max="cmStat.entity.Total || 1" value="cmStat.entity.Processed"><span style="color:white; white-space:nowrap;">{{ cmStat.entity.ProcessedPercent }} %</span></uib-progressbar>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group row">
+                                <div class="col-sm-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.ProgressData.Added")
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+
+                                    <label class="adv-checkbox-label">
+                                        <a class="link-decoration-none" ng-bind="cmStat.entity.Add"></a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.ProgressData.Updated")
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+
+                                    <label class="adv-checkbox-label">
+                                        <a class="link-decoration-none" ng-bind="cmStat.entity.Update"></a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.ProgressData.Errors")
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="adv-checkbox-label">
+                                        <a class="link-decoration-none" ng-bind="cmStat.entity.Error"></a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.ProgressData.CurrentProcess")
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="adv-checkbox-label">
+                                        <a class="link-decoration-none" ng-href="{{cmStat.entity.CurrentProcess}}" ng-bind="cmStat.entity.CurrentProcessName"></a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="col-xs-6">
+                            <saas-stat>
+                                <div ng-if="saasStat.entity.isSaas">
+                                    <div class="form-group row">
+                                        <div class="col-sm-3">
+                                            <div class="setting-label-wrap">
+                                                @T("Admin.ProgressData.ProductsCount")
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <label class="adv-checkbox-label">
+                                                <a class="link-decoration-none" ng-bind="saasStat.entity.productsCount"></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-3">
+                                            <div class="setting-label-wrap">
+                                                @T("Admin.ProgressData.AvalableProductsCountInSaas")
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <label class="adv-checkbox-label">
+                                                <a class="link-decoration-none" ng-bind="saasStat.entity.productsInTariff"></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </saas-stat>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="!cmStat.entity.IsRun">
+                        <div class="col-xs-6">
+                            <div class="form-group row" ng-if="cmStat.entity.Error == 0">
+                                <div class="col-xs-12">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.ProgressData.ProcessEndSuccess")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row" ng-if="cmStat.entity.Error != 0">
+                                <div class="col-xs-12">
+                                    <div class="setting-label-wrap">
+                                        @T("Admin.ProgressData.ProcessEndError")
+                                        <label class="adv-checkbox-label">
+                                            <a class="link-decoration-none" href="" ng-click="import.getLogFile()" download>@T("Admin.ProgressData.DownloadErrorsLog")</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="cmStat.entity.IsRun">
+                        <div class="col-xs-6">
+                            <div class="form-group row">
+                                <div class="col-xs-12">
+                                    <a class="btn btn-sm btn-default" target="_blank" ng-click="import.abortImport()">@T("Admin.ProgressData.InterruptProcess")</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="!cmStat.entity.IsRun">
+                        <div class="col-xs-6">
+                            <div class="form-group row">
+                                <div class="col-xs-12">
+                                    <a class="link-decoration-none" href="" ng-click="import.isStartExport = false; import.showFields = false;">@T("Admin.ProgressData.BackToImport")</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </cm-stat>
+    </div>
+</form>

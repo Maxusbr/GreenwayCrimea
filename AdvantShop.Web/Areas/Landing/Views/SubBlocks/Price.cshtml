@@ -1,0 +1,13 @@
+﻿@model SubBlockModel
+ 
+@if (Model.SubBlock.TryGetSettingsValue("show_price") == true || Model.InPlace)
+{
+    <div class="price-block">
+        @if (Model.SubBlock.TryGetSettingsValue("old_price") != "")
+        {
+            <div class="price-block-item"><div class="price-old">@Model.SubBlock.TryGetSettingsValue("old_price") @Model.SubBlock.TryGetSettingsValue("currency")</div></div>
+        }
+    
+        <div class="price-block-item"><div class="price-new">@Model.SubBlock.TryGetSettingsValue("new_price") @Model.SubBlock.TryGetSettingsValue("currency")</div></div>
+    </div>
+}

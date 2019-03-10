@@ -1,0 +1,45 @@
+﻿<div class="m-b-md">
+    <div class="row">
+        <div class="col-xs-4 col-wl-5" data-e2e="RecommendationCategory">
+            <div class="m-b-sm">Категории:</div>
+            <div>
+                <div ng-repeat="item in ctrl.categories track by $index" class="m-b-sm">
+                    {{item.Name}} <a href="" ng-click="ctrl.deleteCategory(item.Type, item.CategoryId)" class="fa fa-remove link-invert link-decoration-none" title="Удалить" data-e2e="RecommendationCategoryDelete-id-{{item.CategoryId}}"></a>
+                </div>
+                <div ng-if="ctrl.categories.length == 0" class="m-b-sm">
+                    Нет выбранных категорий
+                </div>
+                <div ng-if="(ctrl.categories == null || ctrl.categories.length == 0) && ((ctrl.properties != null && ctrl.properties.length > 0) || (ctrl.propertiesWithValues != null && ctrl.propertiesWithValues.length > 0))" class="m-b-sm">
+                    <span style="color:red">Выберите категории, по которым искать товары</span>
+                </div>
+                <ui-modal-trigger data-on-close="ctrl.addCategory(result)"
+                                  data-controller="'ModalAddCategoryCtrl'"
+                                  controller-as="ctrl" 
+                                  template-url="../areas/admin/content/src/_shared/modal/addCategory/AddCategory.html">
+                    <a href="" class="btn btn-sm btn-default" data-e2e="RecommendationCategoryAdd">Добавить</a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+        <div class="col-xs-4 col-wl-5" data-e2e="RecommendationProperty">
+            <div class="m-b-sm">Свойства:</div>
+            <div>
+                <div ng-repeat="item in ctrl.properties track by $index" class="m-b-sm">
+
+                    {{item.Name}} - как у товара <a href="" ng-click="ctrl.deleteProperty(item.Type, item.Id)" class="fa fa-remove link-invert link-decoration-none" title="Удалить" data-e2e="RecommendationPropertyDelete-id-{{item.Id}}"></a>
+                </div>
+                <div ng-repeat="item in ctrl.propertiesWithValues track by $index" class="m-b-sm">
+                    {{item.Name}} - {{item.Value}} <a href="" ng-click="ctrl.deletePropertyWithValue(item.Type, item.Id)" class="fa fa-remove link-invert link-decoration-none" title="Удалить" data-e2e="RecommendationPropertyWithValueDelete-value-id-{{item.Id}}"></a>
+                </div>
+                <div ng-if="ctrl.properties.length == 0 && ctrl.propertiesWithValues.length === 0" class="m-b-sm">
+                    Нет выбранных свойств
+                </div>
+                <ui-modal-trigger data-on-close="ctrl.addPropertyModal(result)"
+                                  data-controller="'ModalAddRecomPropertyCtrl'"
+                                  controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/category/modal/addRecomProperty/addRecomProperty.html">
+                    <a href="" class="btn btn-sm btn-default" data-e2e="RecommendationPropertyAdd">Добавить</a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+    </div>
+</div>

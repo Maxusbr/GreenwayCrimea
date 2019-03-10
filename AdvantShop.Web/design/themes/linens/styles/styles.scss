@@ -1,0 +1,33 @@
+@import "../../_themes.scss", "../../../../styles/functions/_util.scss", "../../../../styles/_settings.scss";
+
+
+$bgTop: (height rem-calc(760px), bg (url('../images/background-top.jpg') no-repeat center top));
+
+
+@include theme-background($bgTop, null);
+
+.site-footer {
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        z-index: 0;
+    }
+
+    &:before {
+        background: url('../images/background-bottom-left.png') no-repeat left bottom;
+        height: 363px;
+        width: 379px;
+        left: 50%;
+        margin-left: -965px;
+        top: 20px;
+    }
+
+    &:after {
+        background: url('../images/background-bottom-right.png') no-repeat 590px bottom;
+        height: 383px;
+        left: 50%;
+        right: 0;
+        top: 20px;
+    }
+}

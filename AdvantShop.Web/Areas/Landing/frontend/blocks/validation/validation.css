@@ -1,0 +1,41 @@
+[type="text"].ng-dirty.ng-invalid,
+[type="password"].ng-dirty.ng-invalid,
+[type="search"].ng-dirty.ng-invalid,
+[type="email"].ng-dirty.ng-invalid,
+[type="number"].ng-dirty.ng-invalid,
+[type="tel"].ng-dirty.ng-invalid,
+[type="url"].ng-dirty.ng-invalid,
+textarea.ng-dirty.ng-invalid {
+  /*border-color: #fbdbdb;*/
+  background: #fbdbdb; }
+
+.custom-input-native.ng-dirty.ng-invalid ~ .custom-input-radio,
+.custom-input-native.ng-dirty.ng-invalid ~ .custom-input-checkbox {
+  /*border-color: $invalid-color;*/
+  box-shadow: 0 0 2px 0 #fbdbdb; }
+
+.ng-submitted.ng-dirty [type="text"].ng-invalid,
+.ng-submitted.ng-dirty [type="password"].ng-invalid,
+.ng-submitted.ng-dirty [type="search"].ng-invalid,
+.ng-submitted.ng-dirty [type="email"].ng-invalid,
+.ng-submitted.ng-dirty [type="number"].ng-invalid,
+.ng-submitted.ng-dirty [type="tel"].ng-invalid,
+.ng-submitted.ng-dirty [type="url"].ng-invalid,
+.ng-submitted.ng-dirty textarea.ng-invalid {
+  /*border-color: #fbdbdb;*/
+  background: #fbdbdb; }
+
+.ng-submitted.ng-dirty .custom-input-native.ng-invalid ~ .custom-input-radio,
+.ng-submitted.ng-dirty .custom-input-native.ng-invalid ~ .custom-input-checkbox {
+  /*border-color: $invalid-color;*/
+  box-shadow: 0 0 rem-calc(2px) 0 #fbdbdb; }
+
+.validation-popover {
+  color: #fbdbdb;
+  font-weight: bold; }
+
+.error-text {
+  border-color: #fbdbdb; }
+
+.error-color {
+  color: #fbdbdb; }

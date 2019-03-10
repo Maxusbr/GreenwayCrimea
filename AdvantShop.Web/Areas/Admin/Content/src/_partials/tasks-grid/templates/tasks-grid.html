@@ -1,0 +1,22 @@
+﻿<div class="m-b-sm">
+    <div class="flex between-xs inline">
+        <h1 class="page-name-block-text">Задачи</h1>
+    </div>
+    <ui-modal-trigger data-controller="'ModalAddTaskCtrl'" controller-as="ctrl" on-close="$ctrl.modalClose()" size="lg" backdrop="static" class="pull-right"
+                      template-url="../areas/admin/content/src/_shared/modal/addTask/addTask.html" data-resolve="{bindTo:{objId: $ctrl.objId, type: $ctrl.type}}">
+        <button class="btn btn-sm btn-success" type="button">
+            <span class="fa fa-plus"></span>
+            Новая задача
+        </button>
+    </ui-modal-trigger>
+</div>
+<ui-grid-custom grid-unique-id="gridTasks"
+                grid-filter-enabled="false"
+                grid-on-init="$ctrl.gridOnInit(grid)"
+                grid-options="$ctrl.gridOptions"
+                grid-params="{filterby: $ctrl.type, objId: $ctrl.objId}"
+                grid-url="'tasks/gettasks'"
+                grid-extend-ctrl="$ctrl">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="$ctrl.gridTasks.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

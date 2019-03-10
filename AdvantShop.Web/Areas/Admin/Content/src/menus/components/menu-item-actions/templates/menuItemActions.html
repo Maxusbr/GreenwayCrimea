@@ -1,0 +1,8 @@
+﻿<ui-modal-trigger data-controller="'ModalAddEditMenuItemCtrl'" controller-as="ctrl"
+                  template-url="../areas/admin/content/src/menus/modal/AddEditMenuItem/AddEditMenuItem.html"
+                  data-resolve="{ params: {id: $ctrl.id, menuType: $ctrl.type}}"
+                  data-on-close="$ctrl.editMenuItem()">
+    <a class="link-invert fa fa-pencil link-decoration-none menu-item-action-item"></a>
+</ui-modal-trigger>
+
+<a class="link-invert fa fa-remove link-decoration-none m-l-sm menu-item-action-item" ng-click="$ctrl.deleteMenuItem()"></a>

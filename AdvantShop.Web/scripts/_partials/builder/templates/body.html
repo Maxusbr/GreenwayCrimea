@@ -1,0 +1,86 @@
+﻿<div>
+    <div class="builder-structure">
+        <div class="form-field-name" data-translate="Js.Builder.Structure"></div>
+        <div class="row middle-xs">
+            <div class="col-xs-3">
+                <label class="builder-structure-default">
+                    <input class="custom-input-native builder-checkbox-native" type="radio" name="designStructure" data-ng-model="builder.design.DesignCurrent.Structure" data-ng-value="builder.design.Structures[1]" />
+                    <span class="custom-input-checkbox builder-checkbox"></span>
+                    <div class="builder-structure-item">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="builder-structure-block builder-structure-head"></div>
+                            </div>
+                            <div class="col-xs-8">
+                                <div class="builder-structure-block builder-structure-head"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="builder-structure-block  builder-structure-body"></div>
+                            </div>
+                            <div class="col-xs-8">
+                                <div class="builder-structure-block  builder-structure-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col-xs-3">
+                <label class="builder-structure-two columns">
+                    <input class="custom-input-native builder-checkbox-native" type="radio" name="designStructure" data-ng-model="builder.design.DesignCurrent.Structure" data-ng-value="builder.design.Structures[0]" />
+                    <span class="custom-input-checkbox builder-checkbox"></span>
+                    <div class="builder-structure-item">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="builder-structure-block builder-structure-head"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="builder-structure-block  builder-structure-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col-xs">
+                <!--<div class="builder-structure-text text-static builder-right-block" data-translate="Js.Builder.StructureText"></div>-->
+                <div class="builder-logo-generator">
+                    <logo-generator-trigger logo-generator-id="logoMain">
+                        <button type="button" class="btn btn-middle btn-submit">Создать логотип</button>
+                    </logo-generator-trigger>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs">
+            <div class="form-field-name" data-translate="Js.Builder.Theme"></div>
+            <div class="form-field">
+                <span class="select-custom cs-t-4 icon-down-open-after-abs">
+                    <select class="cs-bg-2" name="builderThemes"
+                            data-ng-change="builder.changeTheme(builder.design.DesignCurrent.Theme)"
+                            data-ng-model="builder.design.DesignCurrent.Theme"
+                            data-ng-options="theme.Name as theme.Title for theme in builder.design.Themes"></select>
+                </span>
+            </div>
+            <div class="form-field-name" data-translate="Js.Builder.Background"></div>
+            <div class="form-field">
+                <span class="select-custom cs-t-4 icon-down-open-after-abs">
+                    <select class="cs-bg-2" name="builderBackgrounds"
+                            data-ng-change="builder.changeBackground(builder.design.DesignCurrent.Background)"
+                            data-ng-model="builder.design.DesignCurrent.Background"
+                            data-ng-options="background.Name as background.Title for background in builder.design.Backgrounds"></select>
+                </span>
+            </div>
+        </div>
+        <div class="col-xs">
+            <div class="builder-right-block">
+                <div class="form-field-name" data-translate="Js.Builder.Color"></div>
+                <div data-colors-viewer data-colors="builder.colors" data-color-selected="builder.colorSelected" data-is-enable-slider="false" data-color-height="'14px'" data-color-width="'14px'" data-change-color="builder.changeColor(color)"></div>
+            </div>
+        </div>
+    </div>
+</div>

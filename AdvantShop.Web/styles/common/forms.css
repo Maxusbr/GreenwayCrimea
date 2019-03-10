@@ -1,0 +1,86 @@
+.form-field-name, .form-field-input {
+  display: block;
+  font-size: 0.75rem; }
+
+.form-field-name-alt, .form-field-input-alt {
+  margin-bottom: 0.3125rem;
+  display: block;
+  /*line-height: 1;*/ }
+
+.form-field-name {
+  padding-right: 0.625rem;
+  font-size: 0.75rem; }
+
+.form-field {
+  margin-bottom: 1.0625rem;
+  display: block; }
+
+.form-title {
+  padding: 0.9375rem 1.5625rem;
+  margin: 0;
+  font-size: 14px; }
+
+.form-content {
+  margin: 0 1.5625rem;
+  padding-bottom: 1.875rem; }
+
+.form-input-title {
+  padding-top: 1.3125rem;
+  margin-bottom: 0.625rem;
+  font-size: 0.75rem; }
+  .form-input-title.moMarginTop {
+    margin-top: 0; }
+  .form-input-title.moMarginBottom {
+    margin-bottom: 0; }
+
+.form-input-value {
+  margin-bottom: 1.25rem; }
+
+.input-required {
+  position: relative;
+  display: inline-block; }
+  .input-required:after {
+    content: "*";
+    position: absolute;
+    top: 0;
+    color: red;
+    left: 100%; }
+  .input-required.form-field-name:after {
+    right: 0;
+    left: auto; }
+
+.input-required__rel.input-required:after {
+  position: relative;
+  margin-left: 4px; }
+
+.form-buttons-block {
+  padding-left: 0.3125rem;
+  margin-top: 1.25rem; }
+
+.form-required-explanation {
+  display: inline-block;
+  float: right;
+  font-size: 0.75rem;
+  color: #acadae;
+  position: relative; }
+  .form-required-explanation:after {
+    content: "*";
+    position: absolute;
+    top: 0;
+    color: red;
+    left: -12px;
+    display: inline-block;
+    width: 10px;
+    height: 10px; }
+
+.form-legend {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1.0625rem; }
+
+.form-addon-text .title {
+  font-size: 1rem;
+  padding: 0 0 0.625rem 0; }
+
+.text-required {
+  color: red; }

@@ -1,0 +1,63 @@
+﻿<style>
+    .bannermania textarea {
+        min-width: 300px;
+        min-height: 150px;
+        max-width: 300px;
+        max-height: 150px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row col-xs-12">
+        <h3>Обратная связь</h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-7">
+            Через данную форму обратной связи вы можете отправить вопросы, уточнения и пожелания по работе модуля.
+        </div>
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+        <div class="col-xs-7">
+            <form role="form" name="bmForm" novalidate class="form-inline">
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        ФИО:
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="$ctrl.Name" value="$ctrl.Name" style="width: 300px;">
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Email:
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="$ctrl.Email" value="$ctrl.Email" style="width: 300px;">
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Телефон:
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="$ctrl.Phone" value="$ctrl.Phone" style="width: 300px;">
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Сообщение:
+                    </div>
+                    <div class="col-xs-6 bannermania">
+                        <textarea class="form-control" ng-model="$ctrl.Message" value="$ctrl.Message" required />
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <input type="button" ng-click="$ctrl.send(bmForm)" class="btn btn-sm btn-success" value="Отправить письмо" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+﻿.rppb-module #ordertoprint td {
+    text-align: center;
+}
+
+.rppb-module .currPage {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.rppb-module .pages, .rppb-module .controls, .rppb-module .statistic {
+    display: inline-block;
+}
+
+.rppb-module .controls {
+    padding: 10px;
+    width: 50%;
+}
+
+.rppb-module .statistic {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.rppb-module .msg-field {
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 10px 0px 0px 10px;
+}
+
+.rppb-module td .text-box-field {
+    text-align: left;
+    /*width: 250px;*/
+    padding: 10px 25px 10px 25px;
+}
+
+.rppb-module .table-ui {
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+    border: 1px #e1e1e1 solid;
+    width: 100%;
+}
+
+    .rppb-module .table-ui th {
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px 5px;
+        background: #bde5fa;
+    }
+
+    .rppb-module .table-ui td {
+        padding: 10px 5px;
+        vertical-align: middle;
+        border: 1px #e1e1e1 solid;
+    }
+
+.rppb-module .table-ui-center {
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+    border: 1px #e1e1e1 solid;
+    width: 100%;
+}
+
+    .rppb-module .table-ui-center th {
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px 5px;
+        background: #bde5fa;
+    }
+
+    .rppb-module .table-ui-center td {
+        padding: 10px 5px;
+        vertical-align: middle;
+        text-align: center;
+        border: 1px #e1e1e1 solid;
+    }
+
+    .rppb-module .table-ui-center tbody tr:nth-child(even) {
+        background: #f4f4f4;
+    }
+
+.rppb-module td .text-box-field {
+    text-align: left;
+    /*width: 250px;*/
+    padding: 10px 25px 10px 25px;
+}
+
+
+.rppb-module .spanSettCategory {
+    font-family: Arial,​Helvetica,​sans-serif;
+    font-size: 17px;
+}
+
+.rppb-module input[type="text"], .rppb-module select {
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #c3c3c3;
+    border-radius: 1px;
+    color: #31373d;
+    display: inline-block;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    font-size: 14px;
+    box-shadow: none;
+    line-height: 1.42857143;
+    box-shadow: none;
+}
+
+.rppb-module input[type="text"]:focus {
+    border-color: #2d9ced;
+    outline: 0;
+    box-shadow: none;
+}
+
+.rppb-module select:focus {
+    border-color: #2d9ced;
+    outline: 0;
+    box-shadow: none;
+}
+
+.rppb-module a {
+    color: #475761;
+    text-decoration: underline;
+}
+
+.rppb-module div .tables {
+    /*width: 100%;*/
+    vertical-align: top;
+    padding: 10px 0px 10px 0px;
+}

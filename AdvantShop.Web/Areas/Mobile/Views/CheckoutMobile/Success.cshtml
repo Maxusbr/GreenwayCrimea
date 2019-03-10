@@ -1,0 +1,40 @@
+﻿@model AdvantShop.ViewModel.Checkout.CheckoutSuccess
+
+@Html.Raw(Model.GoogleAnalyticsString)
+
+<div id="content">
+    <div class="panel no-borders">
+        <div>
+            <div class="checkout-confirm-txt">
+                @T("Checkout.Success.CheckoutSuccessOrder")
+                @Html.Raw(Model.OrderSuccessTopText)
+                @*@if (Model.Order != null)
+                    {
+                        <div>Ваш заказ</div>
+                        <div class="checkout-confirm-number">№ @Model.Order.Number</div>
+                    }*@
+                @if (SettingsCheckout.ManagerConfirmed)
+                {
+                    <div>@T("Checkout.Success.TextConfirmByManager")</div>
+                }
+            </div>
+            @if (Model.Order != null)
+            {
+                <div class="vertical-interval-small">
+                    <div data-ng-init="checkoutSuccess.getHtml(@Model.Order.OrderID)">
+                        <div data-ng-bind-html="checkoutSuccess.payment.script" class="js-checkout-success"></div>
+                    </div>
+                </div>
+            }
+            @Html.StaticBlock("MobileOrderSuccess")
+            @if (Model.Order != null)
+            {
+                @Html.RenderModules("order_success", new { area = "", order = Model.Order})
+            }
+            @Html.Raw(Model.SuccessScript)
+            <div>
+                <a class="btn btn-confirm btn-small" @*href="@(SettingsMain.SiteUrl)"*@ href=".">@T("Checkout.Success.ReturnOnMain")</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿<div>
+    <div data-ng-switch="bonusWhatToDo.activeView">
+        <div data-ng-switch-when="form" class="bonus-form-labels">
+            <div class="bonus-form-label-row">
+                <label class="bonus-form-label">
+                    <span class="custom-input-text">{{ ::'Js.Bonus.HaveNoBonusCard' | translate }}</span>
+                </label>
+            </div>
+        </div>
+        <div data-ng-switch-when="myaccount_newcart" class="bonus-form-labels">
+            <div class="bonus-form-label-row">
+                <span>{{ ::'Js.Bonus.HaveNoBonusCard' | translate }}</span>
+            </div>
+            <div class="bonus-form-label-row">
+                <a href="" ng-click="bonusWhatToDo.createBonusCard()" class="btn btn-submit btn-middle">Получить бонусную карту</a>
+            </div>
+        </div>
+        <div data-ng-switch-when="blocked" class="bonus-form-labels">
+            <div class="bonus-form-label-row">
+                <label class="bonus-form-label">
+                    <span class="custom-input-text">Бонусная карта заблокирована</span>
+                </label>
+            </div>
+        </div>
+        <div data-ng-switch-when="apply">
+            <div data-bonus-apply data-bonus-text="bonusWhatToDo.bonusData.bonusText" data-is-apply="bonusWhatToDo.isApply" data-change-bonus="bonusWhatToDo.changeBonusInterface(isApply)"></div>
+        </div>
+        <div data-ng-switch-when="info">
+            <div data-bonus-info data-is-show-patronymic="bonusWhatToDo.isShowPatronymic" bonus-data="bonusWhatToDo.bonusData.bonus"></div>
+        </div>
+    </div>
+</div>

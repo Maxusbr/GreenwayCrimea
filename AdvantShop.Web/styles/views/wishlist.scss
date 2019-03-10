@@ -1,0 +1,15 @@
+﻿@import "../_settings.scss";
+@import "../functions/_util.scss";
+
+.wishlist-remove {
+    font-size: $font-size-xmedium;
+    position: absolute;
+    top: rem-calc(-5px);
+    right: rem-calc(-5px);
+}
+
+.wishlist-empty {
+    text-align: center;
+    padding: $padding-base;
+    font-size: $font-size-xmedium;
+}

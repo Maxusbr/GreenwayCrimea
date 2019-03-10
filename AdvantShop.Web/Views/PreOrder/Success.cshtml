@@ -1,0 +1,19 @@
+﻿<div class="site-body-cell">
+    <div class="page-title-row details-title-row">
+        <h1 class="preorder-title page-title">@T("PreOrder.LinkByCode.Header")</h1>
+    </div>
+    <div class="mobile-container-fluid">
+        <div class="row">
+            <div class="col-xs preorder-success-txt">
+                @Html.StaticBlock("requestOnProduct")
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        setTimeout(function () {
+            $(document).trigger("send_preorder");
+        }, 2000);
+    });
+</script>

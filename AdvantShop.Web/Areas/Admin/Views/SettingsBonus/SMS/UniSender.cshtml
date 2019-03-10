@@ -1,0 +1,52 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.BonusSettingsModel
+<div class="form-group row m-b-lg" ng-init="settingsBonus.uniSenderRegistered = true" bs-modifiable="false">
+    <div class="col-xs-4 col-xs-offset-3">
+        <label class="adv-checkbox-label m-r">
+            <input class="adv-radio-input" name="uniSenderReg" ng-model="settingsBonus.uniSenderRegistered" type="radio" ng-value="true">
+            Есть аккаунт
+            <span class="adv-radio-emul"></span>
+        </label>
+        <label class="adv-checkbox-label">
+            <input class="adv-radio-input" name="uniSenderReg" ng-model="settingsBonus.uniSenderRegistered" type="radio" ng-value="false">
+            Зарегистрироваться
+            <span class="adv-radio-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row m-b-lg ng-hide" ng-show="settingsBonus.uniSenderRegistered">
+    <div class="col-xs-3">
+        API-key
+    </div>
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => x.UniSenderApiKey, new { @class = "form-control", ng_model = "settingsBonus.UniSenderApiKey", textcomplete = "" })
+    </div>
+</div>
+<div class="ng-hide" ng-show="!settingsBonus.uniSenderRegistered" bs-modifiable="false">
+    <div class="form-group row m-b-lg">
+        <div class="col-xs-3">
+            E-mail
+        </div>
+        <div class="col-xs-4">
+            @Html.TextBox("UniSenderRegEmail", "", new { @class = "form-control", ng_model = "settingsBonus.uniSenderRegEmail", pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)|(admin)$" })
+        </div>
+    </div>
+    <div class="form-group row m-b-lg">
+        <div class="col-xs-3">
+            Логин
+        </div>
+        <div class="col-xs-4">
+            @Html.TextBox("UniSenderRegLogin", "", new { @class = "form-control", ng_model = "settingsBonus.uniSenderRegLogin" })
+        </div>
+    </div>
+    <div class="form-group row m-b-lg">
+        <div class="col-xs-3">
+            Пароль
+        </div>
+        <div class="col-xs-4">
+            @Html.Password("UniSenderRegPassword", "", new { @class = "form-control", ng_model = "settingsBonus.uniSenderRegPassword" })
+        </div>
+    </div>
+    <div class="col-xs-4 col-xs-offset-3">
+        <span class="btn btn-sm btn-success" ng-click="settingsBonus.uniSenderRegister()" ladda="settingsBonus.uniSenderRegProgress">Зарегистрироваться</span>
+    </div>
+</div>

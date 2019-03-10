@@ -1,0 +1,106 @@
+﻿<form novalidate name="addEditCurrencyForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новая валюта" : "Редактирование валюты"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.form = addEditCurrencyForm">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Наименование</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input data-e2e="currencyName" type="text" class="form-control" ng-model="ctrl.Name" required validation-input-text="Наименование" autofocus />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Символ</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input data-e2e="currencySymbol" type="text" class="form-control" ng-model="ctrl.Symbol" required validation-input-text="Символ"  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Значение</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input data-e2e="currencyRate" type="number" class="form-control" ng-model="ctrl.Rate" required validation-input-text="Наименование" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Код ISO3</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input data-e2e="currencyIso3" type="text" class="form-control" ng-model="ctrl.Iso3" required validation-input-text="Код ISO3"  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Числовой код ISO3</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <input data-e2e="currencyNumIso3" type="number" max="999" class="form-control" ng-model="ctrl.NumIso3" required validation-input-text="Числовой код ISO3"  />
+                    </div>
+                </div>
+            </div>
+
+          
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Символ впереди
+                    </label>
+                    <div class="col-xs-9">
+                        <label class="adv-checkbox-label">
+                            <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.IsCodeBefore"  data-e2e="currencyIsCodeBefore" />
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        Порядок округления
+                    </label>
+                    <div class="col-xs-9" >
+                        <select ng-model="ctrl.RoundNumbers"  data-e2e="currencyRoundNumbers" convert-to-number class="form-control"> 
+                            <option value="-1">Не округлять</option>
+                            <option value="0.01">Округлять до копеек</option>
+                            <option value="1">Округлять до целого</option>
+                            <option value="10">Округлять до десятков</option>
+                            <option value="100">Округлять до сотен</option>
+                            <option value="1000">Округлять до тысяч</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-e2e="currencyButtonSave" 
+                data-button-validation-success="ctrl.save()" data-button-validation ladda="ctrl.btnSleep"
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !addEditCurrencyForm.modified)"
+                ng-bind="ctrl.mode == 'add' ? 'Добавить' : 'Сохранить'"></button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

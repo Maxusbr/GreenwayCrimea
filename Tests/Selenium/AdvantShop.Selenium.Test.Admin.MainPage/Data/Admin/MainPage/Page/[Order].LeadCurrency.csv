@@ -1,0 +1,4 @@
+﻿LeadId;CurrencyCode;CurrencyNumCode;CurrencyValue;CurrencySymbol;IsCodeBefore;EnablePriceRounding;RoundNumbers
+2;RUB;643;1; руб.;false;false;0
+3;RUB;643;1; руб.;false;false;0
+4;RUB;643;1; руб.;false;false;0

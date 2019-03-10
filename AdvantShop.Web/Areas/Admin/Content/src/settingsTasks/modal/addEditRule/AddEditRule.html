@@ -1,0 +1,179 @@
+﻿<form novalidate name="addEditRuleForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новое правило" : "Редактирование правила"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.addEditRuleForm = addEditRuleForm">
+        <h3>Условия отбора</h3>
+        <div class="form-group form-inline">
+            <div class="row">
+                <label class="col-xs-2 control-label">Тип</label>
+                <div class="col-xs-10">
+                    <span ng-bind="ctrl.eventName" data-e2e="BizRuleType"></span>
+                    <span ng-if="ctrl.showEventObject"> на
+                        <select data-e2e="BizRuleTypeStatus" ng-model="ctrl.eventObject" ng-options="s.label for s in ctrl.eventObjects track by s.value"
+                                class="form-control" required validation-input-text="Тип">
+                            <option value="">Выберите тип</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-xs-2">Приоритет правила</label>
+                <div class="col-xs-2">
+                    <input type="number" class="form-control" ng-model="ctrl.priority" data-e2e="BizRulePriority" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-if="ctrl.useFilter">
+            <h4 ng-bind="ctrl.filterTypeName">Условие отбора</h4>
+            <ol ng-if="ctrl.filter != null && ctrl.filter.Comparers.length > 0">
+                <li ng-repeat="comparer in ctrl.filter.Comparers track by $index">
+                    <ui-modal-trigger data-controller="'ModalAddEditFilterRuleCtrl'" controller-as="ctrl"
+                                      data-resolve="{'rule': comparer, 'event': {'type': ctrl.eventType}}"
+                                      template-url="../areas/admin/content/src/settingsTasks/modal/addEditFilterRule/AddEditFilterRule.html"
+                                      data-on-close="ctrl.processFilterRule(comparer, result)">
+                        <a href="" title="Редактировать условие" class="link-invert link-decoration-none" data-e2e="BizRuleFilter">
+                            <b ng-bind="comparer.FieldName" data-e2e="BizRuleFilterName"></b>
+                            <span ng-if="comparer.FieldValueObjectName" ng-bind="'= ' + comparer.FieldValueObjectName"></span>
+                            <span ng-if="comparer.FieldComparer.From" ng-bind="'от ' + comparer.FieldComparer.From"></span>
+                            <span ng-if="comparer.FieldComparer.To" ng-bind="'до ' + comparer.FieldComparer.To"></span>
+                            <span ng-if="comparer.FieldComparer.DateFromString" ng-bind="'от ' + comparer.FieldComparer.DateFromString"></span>
+                            <span ng-if="comparer.FieldComparer.DateToString" ng-bind="'до ' + comparer.FieldComparer.DateToString"></span>
+                            <span ng-if="comparer.FieldComparer.Type == 3" ng-bind="'= ' + (comparer.FieldComparer.Flag ? 'Да' : 'Нет')"></span>
+                            <span ng-if="!comparer.FieldValueObjectName && comparer.FieldComparer.Value" 
+                                  ng-bind="(comparer.FieldComparer.Type == 4 ? 'содержит ' : '= ') + comparer.FieldComparer.Value"></span>
+                            <span class="fa fa-pencil p-l-xs"></span>
+                        </a>
+                    </ui-modal-trigger>
+                    <a href="" ng-click="ctrl.processFilterRule(comparer)" class="fa fa-times link-invert link-decoration-none p-l-xs" title="Удалить" data-e2e="BizRuleFilterDelete"></a>
+                </li>
+            </ol>
+            <ui-modal-trigger data-controller="'ModalAddEditFilterRuleCtrl'" controller-as="ctrl"
+                                data-resolve="{'event': { 'type': ctrl.eventType}}"
+                                template-url="../areas/admin/content/src/settingsTasks/modal/addEditFilterRule/AddEditFilterRule.html"
+                                data-on-close="ctrl.processFilterRule(null, result)">
+                <button class="btn btn-action btn-sm" type="button" data-e2e="BizRuleFilterAdd">
+                    <i class="fa fa-plus"></i>&nbsp;&nbsp;<span class="bold">Добавить</span>
+                </button>
+            </ui-modal-trigger>
+            <input type="text" hidden ng-model="ctrl.filterSerialized" /><!-- to enable submit button -->
+        </div>
+        <div class="form-group">
+            <h4><span class="text-required">Условие отбора сотрудника</span></h4>
+            <ol ng-if="ctrl.managerFilter != null && ctrl.managerFilter.Comparers.length > 0">
+                <li ng-repeat="comparer in ctrl.managerFilter.Comparers track by $index">
+                    <ui-modal-trigger data-controller="'ModalAddEditManagerFilterRuleCtrl'" controller-as="ctrl"
+                                      data-resolve="{'rule': comparer, 'event': {'type': ctrl.eventType}}"
+                                      template-url="../areas/admin/content/src/settingsTasks/modal/addEditManagerFilterRule/AddEditManagerFilterRule.html"
+                                      data-on-close="ctrl.processManagerFilterRule(comparer, result)">
+                        <a href="" title="Редактировать условие" class="link-invert link-decoration-none" data-e2e="BizRuleManagerName">
+                            <span ng-bind="ctrl.getManagerFilterHtml(comparer)"></span>
+                            <span class="fa fa-pencil p-l-xs"></span>
+                        </a>
+                    </ui-modal-trigger>
+                    <a href="" ng-click="ctrl.processManagerFilterRule(comparer)" class="fa fa-times link-invert link-decoration-none p-l-xs" title="Удалить" data-e2e="BizRuleManagerDelete"></a>
+                </li>
+            </ol>
+            <ui-modal-trigger data-controller="'ModalAddEditManagerFilterRuleCtrl'" controller-as="ctrl"
+                              data-resolve="{'event': {'type': ctrl.eventType}}"  
+                              template-url="../areas/admin/content/src/settingsTasks/modal/addEditManagerFilterRule/AddEditManagerFilterRule.html"
+                              data-on-close="ctrl.processManagerFilterRule(null, result)">
+                <button class="btn btn-action btn-sm" type="button" data-e2e="BizRuleManagerAdd">
+                    <i class="fa fa-plus"></i>&nbsp;&nbsp;<span class="bold">Добавить</span>
+                </button>
+            </ui-modal-trigger>
+            <input type="text" hidden ng-model="ctrl.managerFilterSerialized" /><!-- to enable submit button -->
+        </div>
+
+        <div class="form-group">
+            <div class="divider-form"></div>
+        </div>
+        
+        <h3>Параметры задачи</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="control-label">
+                        <span class="text-required">Название задачи</span>
+                    </label>
+                    <input type="text" class="form-control" ng-model="ctrl.taskName" autofocus required validation-input-text="Название задачи" textcomplete textcomplete-data="ctrl.availableVariables" data-e2e="BizRuleTaskName">
+                    <span class="help-block" ng-if="ctrl.availableVariables" ng-bind="'Доступные переменные: ' + ctrl.availableVariables.join(', ')"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        <span class="text-required">Текст задачи</span>
+                    </label>
+                    <textarea class="form-control r-v" rows="5" ng-model="ctrl.taskDescription" required validation-input-text="Описание задачи" textcomplete textcomplete-data="ctrl.availableVariables" data-e2e="BizRuleTaskText" />
+                    <span class="help-block" ng-if="ctrl.availableVariables" ng-bind="'Доступные переменные: ' + ctrl.availableVariables.join(', ')"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group m-t">
+                    <div class="row">
+                        <label class="col-xs-7">Время на исполнение</label>
+                        <div class="col-xs-5">
+                            <label class="adv-checkbox-label">
+                                <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.taskDueDateIntervalNotSet"
+                                        ng-change="ctrl.taskDueDateIntervalFocus = !ctrl.taskDueDateIntervalNotSet" data-e2e="BizRuleTaskDueDateInput" />
+                                <span class="adv-checkbox-emul" data-e2e="BizRuleTaskDueDateEmul"></span>
+                                Не указано
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="!ctrl.taskDueDateIntervalNotSet">
+                        <div class="col-xs-4">
+                            <input type="number" class="form-control" ng-model="ctrl.taskDueDateInterval.Interval" autofocus="ctrl.taskDueDateIntervalFocus" data-e2e="BizRuleTaskDueDate" />
+                        </div>
+                        <div class="col-xs-8">
+                            <select ng-model="ctrl.taskDueDateInterval.IntervalType" convert-to-number
+                                    ng-options="s.value as s.label for s in ctrl.intervalTypes" class="form-control" data-e2e="BizRuleTaskDueDateSelect"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-xs-7">Срок постановки задачи</label>
+                        <div class="col-xs-5">
+                            <label class="adv-checkbox-label">
+                                <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.taskCreateIntervalNotSet"
+                                        ng-change="ctrl.taskCreateIntervalFocus = !ctrl.taskCreateIntervalNotSet" data-e2e="BizRuleTaskCreateDateInput" />
+                                <span class="adv-checkbox-emul" data-e2e="BizRuleTaskCreateDateEmul"></span>
+                                Сразу
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="!ctrl.taskCreateIntervalNotSet">
+                        <div class="col-xs-4">
+                            <input type="number" class="form-control" ng-model="ctrl.taskCreateInterval.Interval" autofocus="ctrl.taskCreateIntervalFocus" data-e2e="BizRuleTaskCreateDate" />
+                        </div>
+                        <div class="col-xs-8">
+                            <select ng-model="ctrl.taskCreateInterval.IntervalType" convert-to-number
+                                    ng-options="s.value as s.label for s in ctrl.intervalTypes" class="form-control" data-e2e="BizRuleTaskCreateDateSelect"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Приоритет задачи</label>
+                    <select ng-model="ctrl.taskPriority" convert-to-number
+                            ng-options="s.value as s.label for s in ctrl.taskPriorities" class="form-control" data-e2e="BizRuleTaskPriority"></select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Проект</label>
+                    <select ng-model="ctrl.taskGroupId" ng-options="s.value as s.label for s in ctrl.taskGroups" class="form-control" convert-to-number data-e2e="BizRuleTaskGroup">
+                        <option value="">По умолчанию</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button"
+                data-button-validation-success="ctrl.save()" data-button-validation ladda="ctrl.btnSleep" data-e2e="BizRuleOk"
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !addEditRuleForm.modified)"
+                ng-bind="ctrl.mode == 'add' ? 'Добавить' : 'Сохранить'"></button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()" data-e2e="BizRuleCancel">Отмена</button>
+    </div>
+</form>

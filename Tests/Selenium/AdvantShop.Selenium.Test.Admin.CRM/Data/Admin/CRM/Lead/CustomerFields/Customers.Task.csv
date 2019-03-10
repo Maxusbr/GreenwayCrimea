@@ -1,0 +1,6 @@
+Id;TaskGroupId;AssignedManagerId;AppointedManagerId;Name;Description;Status;Priority;DueDate;LeadId;DateCreated[DATE];DateModified[DATE];Accepted;DateAppointed[DATE];IsAutomatic;IsDeferred;SortOrder
+1;1;1;2;Task1;Task description 1;0;1;2015-04-06 00:00:00.000;1;06.04.2015 16:29;06.04.2015 16:29;false;06.04.2015 16:29;false;false;1
+2;1;1;2;Task2;Task description 2;0;1;2015-04-06 00:00:00.001;2;07.04.2015 16:29;07.04.2015 16:29;false;07.04.2015 16:29;false;false;2
+3;1;1;2;Task3;Task description 3;0;1;2015-04-06 00:00:00.002;3;08.04.2015 16:29;08.04.2015 16:29;false;08.04.2015 16:29;false;false;3
+4;1;1;2;Task4;Task description 4;0;1;2015-04-06 00:00:00.003;4;09.04.2015 16:29;09.04.2015 16:29;false;09.04.2015 16:29;false;false;4
+5;1;1;2;Task5;Task description 5;0;1;2015-04-06 00:00:00.004;5;10.04.2015 16:29;10.04.2015 16:29;false;10.04.2015 16:29;false;false;5

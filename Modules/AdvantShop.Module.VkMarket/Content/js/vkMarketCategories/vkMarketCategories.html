@@ -1,0 +1,63 @@
+﻿
+
+<h3 class="m-b-md">Создайте категории для переноса в сообщество ВКонтакте</h3>
+
+<ul class="m-b-md">
+    <li class="m-b-md">
+        Категории товаров магазина в ВКонтакте называются подборками/альбомами. 
+        ВКонтакте они <b>не могут быть вложены</b> одна в другую, а в одной подборке может находиться не более 1000 товаров. 
+        Также в сообществе возможно хранить <b>не более 100 подборок и 15000 товаров</b>.
+</li>
+    <li class="m-b-md">
+        Если количество товаров для переноса превышает несколько тысяч, на него может понадобиться несколько часов или дней.
+    </li>
+    <li class="m-b-md">
+        Для каждого раздела с товарами из магазина необходимо выбрать категорию ВКонтакте. Без такой категории социальная сеть не разрешает размещать товары.
+    </li>
+    <li class="m-b-md">
+        Необходимо, чтобы название было не менее 4 и не более 100 символов, иначе товар не будет перенесён.
+    </li>
+    <li class="m-b-md">
+        Вконтакте требуется наличие хотя бы одной фотографии для товара, но при этом всего у товара не должно быть более 4 фотографий.<br>
+        После переноса товара в ВКонтакте его фотографии не меняются.
+    </li>
+    <li class="m-b-md">
+        Обратите внимание на требования Вконтакте к фотографиям: минимальный размер каждой из сторон фотографии должен быть не менее 400 пикселей. 
+        Лучше всего подходят квадратные изображения. Если потребуются изменения при переносе, модуль сам их внесет.
+    </li>
+    <li class="m-b-md">
+        <b>При удалении категорий из списка ниже</b> - автоматически удалятся категории и товары из ВКонтакте.<br/>
+        Если удалить товар из магазина, из ВКонтакте он удалится только после экспорта.
+    </li>
+</ul>
+
+<div>
+    <div class="sticky-page-name m-b-md">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    Категории (подборки)
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <ui-modal-trigger data-controller="'ModalAddEditVkCategoryCtrl'" controller-as="ctrl"
+                                  on-close="$ctrl.grid.fetchData()" 
+                                  template-url="../modules/vkMarket/content/js/vkMarketCategories/modals/ModalAddEditVkCategory.html">
+                    <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                        <span class="fa fa-plus"></span> Добавить категорию
+                    </button>
+                </ui-modal-trigger>
+            </div>
+        </div>
+    </div>
+
+    <ui-grid-custom grid-unique-id="grid"
+                    grid-extend-ctrl="$ctrl"
+                    grid-filter-enabled="false"
+                    grid-selection-enabled="false"
+                    grid-on-init="$ctrl.gridOnInit(grid)"
+                    grid-options="$ctrl.gridOptions" 
+                    grid-inplace-url="'../vkMarketSettings/inplace'"
+                    grid-url="'../vkMarketSettings/getCategories'">
+    </ui-grid-custom>
+</div>

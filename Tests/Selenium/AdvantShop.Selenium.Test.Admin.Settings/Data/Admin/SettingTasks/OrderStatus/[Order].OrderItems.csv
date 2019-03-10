@@ -1,0 +1,3 @@
+OrderItemID;OrderID;ProductID;Name;Price;Amount;ArtNo;SupplyPrice;Weight;IsCouponApplied;DecrementedAmount;IgnoreOrderDiscount;AccrueBonuses
+29;29;29;TestProduct29;29;29;29;0;29;false;29;true;false
+30;30;30;TestProduct30;30;30;30;0;30;false;30;true;false

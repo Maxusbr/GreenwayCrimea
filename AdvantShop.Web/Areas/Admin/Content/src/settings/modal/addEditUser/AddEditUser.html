@@ -1,0 +1,171 @@
+﻿<form novalidate name="addEditUserForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новый сотрудник" : "Редактирование сотрудника"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.addEditUserForm = addEditUserForm">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Фамилия</span>
+            </label>
+            <div class="col-xs-9">
+                <input data-e2e="userLastName" type="text" class="form-control" ng-model="ctrl.lastName" required validation-input-text="Фамилия" autofocus />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Имя</span>
+            </label>
+            <div class="col-xs-9">
+                <input data-e2e="userFirstName" type="text" class="form-control" ng-model="ctrl.firstName" required validation-input-text="Имя" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">E-mail</span>
+            </label>
+            <div class="col-xs-9">
+                <input data-e2e="userEmail" type="text" class="form-control" ng-model="ctrl.email" required validation-input-text="E-mail" />
+            </div>
+        </div>
+        <div class="form-group row" ng-if="(ctrl.mode == 'edit' || ctrl.mode == 'me') && (ctrl.isAdmin || ctrl.customerRole == 50)">
+            <label class="col-xs-3 control-label">
+                <span>Пароль</span>
+            </label>
+            <div class="col-xs-9 control-label">
+                <div>
+                    <ui-modal-trigger data-controller="'ModalChangeUserPasswordCtrl'" controller-as="ctrl" data-resolve="{'params': {customerId: ctrl.customerId, editcurrent: ctrl.mode == 'me'}}"
+                                      template-url="../areas/admin/content/src/settings/modal/changeUserPassword/ChangeUserPassword.html">
+                        <a href="">Сменить пароль</a>
+                    </ui-modal-trigger>
+                </div>
+                <div>
+                    <a href="" ng-click="ctrl.changePassword()">Выслать ссылку на смену пароля</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Фото</label>
+            <div class="col-xs-9">
+                <input type="hidden" ng-model="ctrl.avatar" /><!--to enable save button-->
+                <div ng-if="ctrl.avatar != null && ctrl.avatar != ''">
+                    <img ng-src="{{ctrl.photoSrc}}" width="70" height="70" />
+                    <div>
+                        <a href="" class="picture-uploader-buttons-delete link-danger" ng-click="ctrl.deleteAvatar()">Удалить</a>
+                    </div>
+                </div>
+                <ui-modal-trigger data-controller="'ModalCropImageCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/_shared/modal/cropImage/cropImage.html"
+                                  on-close="ctrl.updateAvatar(result)">
+                    <a href="">Загрузить фото</a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Должность</label>
+            <div class="col-xs-9">
+                <input type="text" data-e2e="userPosition" ng-model="ctrl.position" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Отдел</label>
+            <div class="col-xs-9">
+                <select data-e2e="userDepartment" ng-model="ctrl.departmentId" ng-options="s.value as s.label for s in ctrl.departments" class="form-control" convert-to-number>
+                    <option value="">Не выбран</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Телефон</label>
+            <div class="col-xs-9">
+                <input type="text" data-e2e="userPhone" ng-model="ctrl.phone" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Дата рождения</label>
+            <div class="col-xs-9">
+                <div class="dropup">
+                    <div class="dropdown-toggle" id="birthDay" role="button" data-toggle="dropdown">
+                        <div class="input-group">
+                            <input data-e2e="userBirthDay" type="text" class="form-control" ng-model="ctrl.birthDay" data-date-time-input="DD.MM.YYYY"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker ng-model="ctrl.birthDay" data-datetimepicker-config="{ dropdownSelector: '#birthDay', minView: 'day' }" />
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Город</label>
+            <div class="col-xs-9">
+                <input type="text" data-e2e="userCity" ng-model="ctrl.city" class="form-control" autocompleter on-type="city" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group row" ng-if="!ctrl.editHimself">
+            <label class="col-xs-3 control-label">Руководитель</label>
+            <div class="col-xs-9">
+                <select data-e2e="userHeadUser" ng-model="ctrl.headUserId" ng-options="s.value as s.label for s in ctrl.users" class="form-control">
+                    <option value="">Не выбран</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row" ng-if="ctrl.isAdmin && !ctrl.editHimself" >
+            <label class="col-xs-3 control-label">Права доступа</label>
+            <div class="col-xs-9">
+                <div class="flex top-xs">
+                    <label class="adv-radio-label" ng-hide="(!ctrl.isAdmin || !ctrl.moderatorsAvailable) && ctrl.mode == 'add'" >
+                        Модератор
+                        <input type="radio" name="permissions" class="adv-radio-input" ng-model="ctrl.customerRole" value="50"
+                               disabled ng-disabled="!ctrl.isAdmin || !ctrl.moderatorsAvailable" data-e2e="userPermissionsModerInput" />
+                        <span class="adv-radio-emul" data-e2e="userPermissionsModer"></span>
+                        <span ng-if="ctrl.customerRole == 50 && (ctrl.trialEnabled || (ctrl.moderatorsAvailable && ctrl.isAdmin))">
+                            <br />
+                            <ui-modal-trigger data-controller="'ModalEditUserRoleActionsCtrl'" controller-as="ctrl"
+                                              data-resolve="{'params': {'customerId': ctrl.customerId, 'roleActionKeys': ctrl.roleActionKeys}}"
+                                              template-url="../areas/admin/content/src/settings/modal/editUserRoleActions/EditUserRoleActions.html"
+                                              data-on-close="ctrl.selectRoleActions(result);addEditUserForm.modified=true;">
+                                <a href="">Настроить права доступа</a>
+                            </ui-modal-trigger>
+                            <input type="text" ng-model="ctrl.roleActionKeys" hidden /> <!-- to enable submit button -->
+                        </span>                        
+                    </label>
+                    <label class="adv-radio-label">
+                        Администратор
+                        <input type="radio" name="permissions" class="adv-radio-input" ng-model="ctrl.customerRole" value="100"
+                               disabled ng-disabled="!ctrl.isAdmin" data-e2e="userPermissionsAdminInput" />
+                        <span class="adv-radio-emul" data-e2e="userPermissionsAdmin"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row" ng-if="!ctrl.editHimself">
+            <label class="col-xs-3 control-label">Роли</label>
+            <div class="col-xs-9">
+                <ui-select multiple ng-model="ctrl.selectedRolesIds">
+                    <ui-select-match placeholder="Выберите роли">{{$item.Name}}</ui-select-match>
+                    <ui-select-choices repeat="role.Id as role in ctrl.roles | filter:{Name:$select.search}">
+                        {{role.Name}}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group row" ng-if="!ctrl.editHimself">
+            <label class="col-xs-3 control-label">Активен</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="userEnabled">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.enabled" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-e2e="userButtonSave"
+                data-button-validation-success="ctrl.save()" data-button-validation ladda="ctrl.btnSleep"
+                disabled ng-disabled="(ctrl.mode == 'edit' || ctrl.mode == 'me') && (!ctrl.formInited || !addEditUserForm.modified)"
+                ng-bind="ctrl.mode == 'add' ? 'Добавить' : 'Сохранить'"></button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

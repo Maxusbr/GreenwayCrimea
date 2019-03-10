@@ -1,0 +1,80 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.type == "add" ? "Новый статус заказа" : "Редактирование статуса заказа"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Название</span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.name" required validation-input-text="Название" data-e2e="orderStatusName" autofocus />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Значение по умолчанию</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="orderStatusIsDefault">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.isDefault" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Отмена заказа</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="orderStatusIsCanceled">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.isCanceled" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Заказ завершен</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="orderStatusIsCompleted">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.isCompleted" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Скрыт для клиента</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="orderStatusHidden">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.hidden" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Цвет</label>
+            <div class="col-xs-9">
+                <color-picker data-e2e="orderStatusColor"
+                              ng-model="ctrl.color" 
+                              options="ctrl.colorPickerOptions"
+                              validation-input-text="Цвет"
+                              api="ctrl.colorPickerApi"
+                              event-api="ctrl.colorPickerEventApi">
+                </color-picker>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Сортировка</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.sortOrder" data-e2e="orderStatusSortOrder" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Команда</label>
+            <div class="col-xs-9">
+                <select ng-model="ctrl.command" ng-options="s.label for s in ctrl.commands track by s.value" class="form-control" data-e2e="orderStatusCommand"></select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.saveStatus()" data-e2e="orderStatusSave" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

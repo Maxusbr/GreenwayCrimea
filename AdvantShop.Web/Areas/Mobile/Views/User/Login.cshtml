@@ -1,0 +1,24 @@
+﻿
+<div id="content">
+    <div class="panel no-borders">
+        @using (Html.BeginForm("Login", "User", FormMethod.Post, new { area = "Mobile", name = "authForm", novalidate = "novalidate" }))
+        {
+            <div class="form-input-value input-required input-required-block">
+                @Html.TextBox("email", null, new { placeholder = "Email", @class = "input-small", required = "required", type = "email", data_ng_model = "email" })
+            </div>
+            <div class="form-input-value input-required input-required-block">
+                @Html.Password("password", null, new { placeholder = T("User.Authorization.Password"), @class = "input-small", required = "required", data_ng_model = "password", autocomplete = "off" })
+            </div>
+                <div class="form-input-value">
+                    <span class="form-field-input  vertical-interval-xsmall">
+                        <a href="@Url.AbsoluteRouteUrl("ForgotPassword")" class="link-forget">@T("User.Authorization.ForgotPassword")</a>
+                    </span>
+                </div>
+                <div class="form-input-value">
+                    <span class="form-field-input  vertical-interval-xsmall">
+                        <input type="submit" class="btn btn-m-action btn-middle" value="@T("User.Authorization.SignIn")" data-ng-disabled="authForm.$pristine || authForm.$invalid" />
+                    </span>
+                </div>
+        }
+    </div>
+</div>

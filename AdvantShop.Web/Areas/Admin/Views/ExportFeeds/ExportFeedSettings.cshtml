@@ -1,0 +1,130 @@
+﻿@model  AdvantShop.Web.Admin.Models.ExportFeeds.ExportFeedModel
+<div class="container-fluid">
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.Name, T("Admin.ExportFeeed.Settings.Name"))
+                <span class="text-required"></span>
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.TextBoxFor(x => Model.Name, new { @class = "form-control", required = "required", ng_model = "exportFeeds.CommonSettings.Name", validation_input_text = T("Admin.ExportFeeed.Settings.Name") })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.Description, T("Admin.ExportFeeed.Settings.Description"))
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.TextAreaFor(x => Model.Description, new { @class = "form-control", ng_model = "exportFeeds.CommonSettings.Description" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.ExportFeedSettings.Active, T("Admin.ExportFeeed.Settings.Active"))
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            <label class="adv-checkbox-label">
+                @Html.CheckBoxFor(x => Model.ExportFeedSettings.Active, new { @class = "adv-checkbox-input", ng_init = "exportFeeds.CommonSettings.Active=" + Model.ExportFeedSettings.Active.ToString().ToLower(), ng_model = "exportFeeds.CommonSettings.Active" })
+                <span class="adv-checkbox-emul" data-e2e="exportCommonSettingsActive"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.ExportFeedSettings.Interval, T("Admin.ExportFeeed.Settings.Interval"))
+                <span class="text-required"></span>
+            </div>
+        </div>
+        <div class="col-xs-2 col-wl-2">
+            @Html.TextBoxFor(x => Model.ExportFeedSettings.Interval, new { @class = "form-control", required = "required", @pattern = "^[0-9][0-9]*$", ng_model = "exportFeeds.CommonSettings.Interval", validation_input_text = T("Admin.ExportFeeed.Settings.Interval"), ng_disabled = "!exportFeeds.CommonSettings.Active" })
+        </div>
+        <div class="col-xs-3 col-wl-2">
+            @Html.DropDownList("ddlIntervalType", new SelectList(Model.ExportFeedSettings.IntervalTypeList, "Key", "Value", Model.ExportFeedSettings.IntervalType), new { @class = "form-control", ng_init = "exportFeeds.CommonSettings.IntervalType='" + Model.ExportFeedSettings.IntervalType + "'", ng_model = "exportFeeds.CommonSettings.IntervalType", validation_input_text = T("Admin.ExportFeeed.Settings.Interval"), ng_disabled = "!exportFeeds.CommonSettings.Active" })
+        </div>
+    </div>
+    <div class="form-group row middle-xs">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.ExportFeedSettings.JobStartHour, T("Admin.ExportFeeed.Settings.JobTimeStart"))
+            </div>
+        </div>
+        <div class="col-xs-1 col-wl-1">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.ExportFeedSettings.JobStartHour, T("Admin.ExportFeeed.Settings.JobTimeStartHour"))
+            </div>
+        </div>
+        <div class="col-xs-1 col-wl-1">
+            @Html.TextBoxFor(x => Model.ExportFeedSettings.JobStartHour, new { @class = "form-control", required = "required", @type = "number", ng_model = "exportFeeds.CommonSettings.JobStartHour", validation_input_text = T("Admin.ExportFeeed.Settings.JobStartHour"), ng_disabled = "exportFeeds.CommonSettings.IntervalType != '" + AdvantShop.Core.Scheduler.TimeIntervalType.Days.ToString() + "' || !exportFeeds.CommonSettings.Active" })
+        </div>
+        <div class="col-xs-1 col-wl-1">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.ExportFeedSettings.JobStartHour, T("Admin.ExportFeeed.Settings.JobTimeStartMinute"))
+            </div>
+        </div>
+        <div class="col-xs-1 col-wl-1">
+            @Html.TextBoxFor(x => Model.ExportFeedSettings.JobStartMinute, new { @class = "form-control", required = "required", @type = "number", ng_model = "exportFeeds.CommonSettings.JobStartMinute", validation_input_text = T("Admin.ExportFeeed.Settings.JobStartMinute"), ng_disabled = "exportFeeds.CommonSettings.IntervalType != '" + AdvantShop.Core.Scheduler.TimeIntervalType.Days.ToString() + "' || !exportFeeds.CommonSettings.Active" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.ExportFeedSettings.FileName, T("Admin.ExportFeeed.Settings.FileName"))
+                <span class="text-required"></span>
+            </div>
+        </div>
+        <div class="col-xs-2 col-wl-2">
+            @Html.TextBoxFor(x => Model.ExportFeedSettings.FileName, new { @class = "form-control", required = "required", ng_model = "exportFeeds.CommonSettings.FileName", validation_input_text = T("Admin.ExportFeeed.Settings.FileName") })
+        </div>
+        <div class="col-xs-3 col-wl-2">
+            @Html.DropDownList("ddlFileExtention", new SelectList(Model.ExportFeedSettings.FileExtentions, "Key", "Value", Model.ExportFeedSettings.FileExtention), new { @class = "form-control", ng_init = "exportFeeds.CommonSettings.FileExtention='" + Model.ExportFeedSettings.FileExtention + "'", ng_model = "exportFeeds.CommonSettings.FileExtention" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.ExportFeedSettings.PriceMargin, T("Admin.ExportFeeed.Settings.PriceMargin"))
+                <span class="text-required"></span>
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.TextBoxFor(x => Model.ExportFeedSettings.PriceMargin, new { @class = "form-control", required = "required", @type = "number", ng_model = "exportFeeds.CommonSettings.PriceMargin", validation_input_text = T("Admin.ExportFeeed.Settings.PriceMargin") })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => Model.ExportFeedSettings.PriceMargin, T("Admin.ExportFeed.Settings.AdditionalUrlTags"))
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4 relative">
+            @Html.TextBoxFor(x => Model.ExportFeedSettings.AdditionalUrlTags, new { @class = "form-control", ng_model = "exportFeeds.CommonSettings.AdditionalUrlTags", validation_input_text = T("Admin.ExportFeed.Settings.AdditionalUrlTags") })
+            <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.ExportFeed.Settings.AdditionalUrlTags")">
+                <div class="help-content">
+                    @T("Admin.ExportFeed.Settings.AvailableVariables")
+                    #STORE_NAME#, #STORE_URL#, #PRODUCT_NAME#, #PRODUCT_ID#, #PRODUCT_ARTNO#
+                </div>
+            </help-trigger>
+        </div>
+    </div>
+
+    <div class="form-group row" ng-init="exportFeeds.InitAdvancedSettings(@Model.ExportFeedSettings.AdvancedSettings)">
+        <div class="col-xs-12">
+            <div class="setting-title">
+                <h3>@T("Admin.ExportFeeed.Settings.AdvancedSettings")</h3>
+            </div>
+        </div>
+    </div>
+    @Html.Action("GetAdvansedSettings", "ExportFeeds", new { exportFeedId = Model.Id, exportFeedType = Model.Type.ToString(), advancedSettings = Model.ExportFeedSettings.AdvancedSettings })
+</div>

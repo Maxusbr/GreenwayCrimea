@@ -1,0 +1,65 @@
+﻿<div id="vortex">
+    <h2 class="m-b-md">Воронка продаж</h2>
+
+    <div class="vortex-line">
+        <div class="vortex-title">Все пользователи</div>
+        <div class="vortex-count-percent">{{$ctrl.vortex.TotalUsersCount}} ({{$ctrl.vortex.TotalUsersCountPercent}}%)</div>
+        <div class="vortex-bar-outer">
+            <div class="vortex-bar-inner" style="width: {{$ctrl.vortex.TotalUsersCountPercent}}%;"></div>
+        </div>
+    </div>
+
+    <div class="vortex-line">
+        <div class="vortex-title">Добавившие товар в корзину</div>
+        <div class="vortex-count-percent">{{$ctrl.vortex.AddtoCartEvents}} ({{$ctrl.vortex.AddtoCartEventsPercent}}%)</div>
+        <div class="vortex-bar-outer">
+            <div class="vortex-bar-inner" style="width: {{$ctrl.vortex.AddtoCartEventsPercent}}%;"></div>
+        </div>
+    </div>
+
+    <div class="vortex-line">
+        <div class="vortex-title">Оформившие заказ</div>
+        <div class="vortex-count-percent">{{$ctrl.vortex.TotalOrdersCount}} ({{$ctrl.vortex.TotalOrdersCountPercent}}%)</div>
+        <div class="vortex-bar-outer">
+            <div class="vortex-bar-inner" style="width: {{$ctrl.vortex.TotalOrdersCountPercent}}%;"></div>
+        </div>
+    </div>
+
+    <div class="vortex-line">
+        <div class="vortex-title">Оплатившие заказ</div>
+        <div class="vortex-count-percent">{{$ctrl.vortex.PaiedOrdersCount}} ({{$ctrl.vortex.PaiedOrdersCountPercent}}%)</div>
+        <div class="vortex-bar-outer">
+            <div class="vortex-bar-inner" style="width: {{$ctrl.vortex.PaiedOrdersCountPercent}}%;"></div>
+        </div>
+    </div>
+
+    <div class="vortex-line">
+        <div class="vortex-title">Заказы со стаусом выполен</div>
+        <div class="vortex-count-percent">{{$ctrl.vortex.ComletedOrdersCount}} ({{$ctrl.vortex.ComletedOrdersCountPercent}}%)</div>
+        <div class="vortex-bar-outer">
+            <div class="vortex-bar-inner" style="width: {{$ctrl.vortex.ComletedOrdersCountPercent}}% ; "></div>
+        </div>
+    </div>
+
+    <div ng-if="$ctrl.vortex.TotalUsersCountPercent == '0'" class="m-t m-b">
+        Воронка продаж строится на основе данных из Google Analytics. <a target="_blank" href="http://www.advantshop.net/help/pages/google-analytics-api">Инструкция по подключению к Google Analytics API</a>
+    </div>
+
+    <div ng-if="$ctrl.vortex.Sources != null && $ctrl.vortex.Sources.length > 0" class="vortex-sources m-t-md">
+        
+        <h2 class="m-b-md">Источники заказов</h2>
+
+        <table class="table table-striped">
+            <tr class="header">
+                <th>Источник</th> 
+                <th>Кампания</th> 
+                <th>Кол-во заказов</th>
+            </tr>
+            <tr ng-repeat="item in $ctrl.vortex.Sources track by $index">
+                <td>{{item.Source}}</td>
+                <td>{{item.Medium}}</td>
+                <td>{{item.Transactions}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿
+
+<h2 class="reports-title">
+    ABC/XYZ анализ
+</h2>
+<div class="clear"></div>
+<div id="abcxyz" ng-if="$ctrl.Data != null">
+    <div class="abc-group">
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='az'"><div class="xyz-cell-title">AZ</div> <div>{{$ctrl.Data.azPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('az')">{{$ctrl.Data.az}}</a></div>
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='ay'"><div class="xyz-cell-title">AY</div> <div>{{$ctrl.Data.ayPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('ay')">{{$ctrl.Data.ay}}</a></div>
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='ax'"><div class="xyz-cell-title">AX</div> <div>{{$ctrl.Data.axPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('ax')">{{$ctrl.Data.ax}}</a></div>
+    </div>
+
+    <div class="abc-group">
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='bz'"><div class="xyz-cell-title">BZ</div> <div>{{$ctrl.Data.bzPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('bz')">{{$ctrl.Data.bz}}</a></div>
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='by'"><div class="xyz-cell-title">BY</div> <div>{{$ctrl.Data.byPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('by')">{{$ctrl.Data.by}}</a></div>
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='bx'"><div class="xyz-cell-title">BX</div> <div>{{$ctrl.Data.bxPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('bx')">{{$ctrl.Data.bx}}</a></div>
+    </div>
+
+    <div class="abc-group">
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='cz'"><div class="xyz-cell-title">CZ</div> <div>{{$ctrl.Data.czPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('cz')">{{$ctrl.Data.cz}}</a></div>
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='cy'"><div class="xyz-cell-title">CY</div> <div>{{$ctrl.Data.cyPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('cy')">{{$ctrl.Data.cy}}</a></div>
+        <div class="xyz-cell" ng-mouseover="$ctrl.cell='cx'"><div class="xyz-cell-title">CX</div> <div>{{$ctrl.Data.cxPercent}}% </div> <a href="" ng-click="$ctrl.showProducts('cx')">{{$ctrl.Data.cx}}</a></div>
+    </div>
+
+    <div class="hor-line"></div>
+    <div class="vert-line"></div>
+    <div class="hor-line-gr"><span>Z</span><span>Y</span><span>X</span></div>
+    <div class="vert-line-gr"><span>A</span><span>B</span><span>C</span></div>
+    <div class="vert-line-title">Вклад товара в оборот/прибыль</div>
+    <div class="hor-line-title">Стабильность продаж</div>
+</div>
+<div class="m-t-lg" ng-if="$ctrl.Data == null">
+    Нет данных
+</div>
+
+<div class="abc-hint-msg">
+    <div class="xyz-cell-title">{{$ctrl.cell}}</div>
+    <div ng-if="$ctrl.cell=='ax'">
+        <div>Поставки = ритмично</div>
+        <div>Поставщики = производители</div>
+        <div>Контроль = ежедневно</div>
+    </div>
+    <div ng-if="$ctrl.cell=='ay'">
+        <div>Поставки = умерен. партиями</div>
+        <div>Поставщики = производители</div>
+        <div>Контроль = ежедневно</div>
+    </div>
+    <div ng-if="$ctrl.cell=='az'">
+        <div>Поставки = миним. партиями</div>
+        <div>Поставщики = дистибьютеры</div>
+        <div>Контроль = ежедневно</div>
+    </div>
+
+    <div ng-if="$ctrl.cell=='bx'">
+        <div>Поставки = ритмично</div>
+        <div>Поставщики = производители</div>
+        <div>Контроль = 2 раза в неделю</div>
+    </div>
+    <div ng-if="$ctrl.cell=='by'">
+        <div>Поставки = умерен. партиями</div>
+        <div>Поставщики = производители</div>
+        <div>Контроль = 2 раза в неделю</div>
+    </div>
+    <div ng-if="$ctrl.cell=='bz'">
+        <div>Поставки = миним. партиями</div>
+        <div>Поставщики = дистибьютеры</div>
+        <div>Контроль = 2 раза в неделю</div>
+    </div>
+
+    <div ng-if="$ctrl.cell=='cx'">
+        <div>Поставки = редко, макс. парт.</div>
+        <div>Поставщики = производители</div>
+        <div>Контроль = раз в неделю</div>
+    </div>
+    <div ng-if="$ctrl.cell=='cy'">
+        <div>Поставки = редко, макс. парт.</div>
+        <div>Поставщики = дистибьютеры</div>
+        <div>Контроль = раз в неделю</div>
+    </div>
+    <div ng-if="$ctrl.cell=='cz'">
+        <div>Позиции данного раздела исключаются из ассортимента</div>
+    </div>
+</div>

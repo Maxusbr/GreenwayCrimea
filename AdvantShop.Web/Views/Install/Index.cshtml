@@ -1,0 +1,48 @@
+﻿@model AdvantShop.ViewModel.Install.InstallTrialSelectModel
+@{
+    Layout = "~/Views/Install/Layout.cshtml";
+}
+
+<h1>@Html.Raw(Model.Title)</h1>
+<div class="group">
+    @if (Model.ShowExpress)
+    {
+        using (Html.BeginForm("IndexPost", "Install", FormMethod.Post))
+        {
+            <div class="install-mode">
+                <label>
+                    @Html.RadioButtonFor(x => x.IsExpressInstall, true) <span class="mode-name">@Resource.Install_UserContols_TrialSelectView_Express</span>
+                    <span class="mode-description">
+                        @Resource.Install_UserContols_TrialSelectView_ExpressDecsription
+                    </span>
+                </label>
+                <br />
+                <br />
+                <label>
+                    @Html.RadioButtonFor(x => x.IsExpressInstall, false) <span class="mode-name">@Resource.Install_UserContols_TrialSelectView_Full</span>
+                    <span class="mode-description">
+                        @Resource.Install_UserContols_TrialSelectView_FullDecsription
+                    </span>
+                </label>
+            </div>
+            <div class="step-btns">
+                <span class="btn-c">
+                    <input type="submit" class="btn btn-next" value="@Resource.Installer_Next" />
+                </span>
+            </div>
+        }
+    }
+    else
+    {
+        <p>@Resource.Install_UserContols_ShopinfoView_HasNoWriteAccess</p>
+        <p>@Resource.Install_UserContols_ShopinfoView_HasNoWriteAccess_Desc</p>
+        <br />
+        <a class="check_other_folders" id="check_folders" onclick=" javascript:void(0); ">
+            @Resource.Install_UserContols_TrialSelectView_AccsessRights_CheckOtherFolders
+        </a>
+        <div id="load_content">
+            <img src="images/ajax-loader.gif" />
+        </div>
+        <div id="access_info" style="margin-top: 5px;"></div>
+    }
+</div>

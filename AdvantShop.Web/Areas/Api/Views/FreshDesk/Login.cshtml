@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 13px;
+        }
+
+        h1 {
+            margin-bottom: 16px;
+            font-size: 19.5px;
+            font-weight: 200;
+            line-height: 24px;
+        }
+
+        div.ui-form ul, ul.ui-form {
+            list-style: none;
+            border-radius: 6px;
+        }
+
+        .ui-form {
+            padding: 6px 0 12px 0;
+            position: relative;
+            border: 1px solid #e4e4e4;
+            background-color: #f8f8f8;
+            margin: 0;
+        }
+
+            .ui-form li {
+                padding: 8px 2% 8px 2%;
+                margin: 0;
+                float: left;
+                width: 96%;
+            }
+
+                .ui-form li label {
+                    padding: 0;
+                }
+
+                .ui-form label, .ui-form li.checkbox {
+                    font-weight: normal;
+                    margin: 0;
+                    line-height: 18px;
+                    font-size: 13px;
+                }
+
+        div.ui-form ul:after, ul.ui-form:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        label {
+            display: block;
+        }
+
+        input, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+            padding-left: 1%;
+            padding-right: 0;
+            width: 95%;
+        }
+
+            textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+                background-color: white;
+                border: 1px solid #ccc;
+                -webkit-box-shadow: 0 4px 5px -4px #ccc inset;
+                -moz-box-shadow: 0 4px 5px -4px #ccc inset;
+                box-shadow: 0 4px 5px -4px #ccc inset;
+                -webkit-transition: border linear .2s,box-shadow linear .2s;
+                -moz-transition: border linear .2s,box-shadow linear .2s;
+                -o-transition: border linear .2s,box-shadow linear .2s;
+                transition: border linear .2s,box-shadow linear .2s;
+            }
+
+            select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+                display: inline-block;
+                height: 16px;
+                padding: 4px 6px;
+                margin-bottom: 9px;
+                font-size: 13px;
+                line-height: 16px;
+                color: #555;
+                border-radius: 3px;
+            }
+
+            input[type=text], input[type=password], select, input.text {
+                margin: 0 0 3px 0;
+            }
+
+
+        .required_star {
+            color: #d00;
+            font-size: 20px;
+            font-weight: bold;
+            position: relative;
+            top: 5px;
+            margin-left: 3px;
+            margin-right: 1px;
+            line-height: 0;
+        }
+
+        .pull-right {
+            float: right;
+        }
+
+        .btn-toolbar {
+            font-size: 0;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            border-color: #c5c5c5;
+            border-color: rgba(0,0,0,0.15) rgba(0,0,0,0.15) rgba(0,0,0,0.25);
+            display: inline-block;
+            padding: 4px 14px;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 13px;
+            line-height: 16px;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            background-color: #333;
+            color: #333;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+            background-image: -moz-linear-gradient(top,white,#e6e6e6);
+            background-image: -webkit-gradient(linear,0 0,0 100%,from(white),to(#e6e6e6));
+            background-image: -webkit-linear-gradient(top,white,#e6e6e6);
+            background-image: -o-linear-gradient(top,white,#e6e6e6);
+            background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF',endColorstr='#FFE6E6E6',GradientType=0);
+            border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+            border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+            border: 1px solid #bbb;
+            border-bottom-color: #a2a2a2;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+            -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .btn-primary {
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+            background-color: #373737;
+            background-image: -moz-linear-gradient(top,#444,#222);
+            background-image: -webkit-gradient(linear,0 0,0 100%,from(#444),to(#222));
+            background-image: -webkit-linear-gradient(top,#444,#222);
+            background-image: -o-linear-gradient(top,#444,#222);
+            background-image: linear-gradient(to bottom,#444,#222);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF444444',endColorstr='#FF222222',GradientType=0);
+            border-color: #222 #222222 black;
+            border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+            padding-left: 20px;
+            padding-right: 20px;
+            font-weight: bold;
+        }
+
+            .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
+                color: white;
+                background-color: #222;
+            }
+
+        .pull-right .btn {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Авторизация в магазине</h1>
+    @using (Html.BeginForm("Login", "FreshDesk", FormMethod.Post))
+    {
+        <ul class="ui-form">
+            <li>
+                <label for="email">Email<span class="required_star">*</span></label>
+                @Html.TextBox("email", null, new { @class = "required text" })
+            </li>
+            <li>
+                <label for="awLoginEmail">@T("User.Authorization.Password")<span class="required_star">*</span></label>
+                @Html.Password("password", null, new { @class = "required text", autocomplete = "off" })
+            </li>
+        </ul>
+        <div class="btn-toolbar pull-right">
+            <input class="btn btn-primary" type="submit" value="@T("User.Authorization.SignIn")" />
+        </div>
+    }
+</body>
+</html>

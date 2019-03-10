@@ -1,0 +1,92 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Добавить изображение карусели</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label"><span class="text-required">Изображение</span></label>
+            <div class="col-xs-9">
+                <picture-uploader start-src="../images/nophoto_small.jpg"
+                                  upload-url="/carousel/Upload"
+                                  delete-url="/carousel/DeleteFile"
+                                  uploadbylink-url="/carousel/uploadByLink"
+                                  on-update="ctrl.updateImage(result)"></picture-uploader>
+                Рекомендуемый размер изображения:<br/>
+                1160px * 553px - одна колонка<br />
+                865px * 554px - две колонки
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">
+                    URL для навигации
+                </span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.CaruselUrl" required validation-input-text="URL для навигации" autofocus value="#" data-e2e="carouselAddUrl" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Alt-тег изображения</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.Description" data-e2e="carouselAddAltTag" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Одна колонка</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="carouselAddOneColumn">
+                    <input type="checkbox" checked ng-model="ctrl.DisplayInOneColumn" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Две колонки</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="carouselAddTwoColumns">
+                    <input type="checkbox" checked ng-model="ctrl.DisplayInTwoColumns" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Мобильная версия</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="carouselAddDisplayInMobile">
+                    <input type="checkbox" checked ng-model="ctrl.DisplayInMobile" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">В новом окне</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="carouselAddBlank">
+                    <input type="checkbox" ng-model="ctrl.Blank" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Сортировка</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.SortOrder" data-e2e="carouselAddSortOrder" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Активность</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="carouselAddEnabled">
+                    <input type="checkbox" checked ng-model="ctrl.Enabled" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" ladda="ctrl.btnSleep" type="button" data-button-validation-success="ctrl.saveCarousel()" data-e2e="carouselAdd" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()" data-e2e="carouselAddCancel">Отмена</button>
+    </div>
+</form>

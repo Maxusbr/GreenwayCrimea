@@ -1,0 +1,26 @@
+.tooltip-adv {
+    position: absolute;
+    padding: 5px;
+    color: #475761;
+    background: #fff;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px #bbb solid;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    z-index:50;
+}
+.tooltip-adv:after {
+    content: "";
+    border-bottom: 4px solid #fff;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: -4px;
+}
+.tooltip-adv-hide {
+    left: -100%;
+    top: -100%;
+}

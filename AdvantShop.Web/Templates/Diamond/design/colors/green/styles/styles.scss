@@ -1,0 +1,119 @@
+﻿@import '../../../../../../design/colors/_colorScheme.scss';
+
+$colorValueChange: getDefaultColorValueChange() !default;
+
+$c1: #f8b643;
+$c2: #e2e3e4;
+$c3: #94969b;
+$c4: #000000;
+$c5: #26282b;
+$c6: #00b6d7;
+$c7: #bfc0c1;
+$c9: #e20000;
+$c10: #f3f3f3;
+$c11: #f8f8f8;
+$c12: #f8b643;
+$c13: #fff;
+$c14: #ffc60a;
+$c15: #ff9d02;
+$c16: -webkit-linear-gradient(top, $c14 0%, $c15 100%);
+$c17: #0088b9;
+$c18: -webkit-linear-gradient(top, $c6 0%, $c17 100%);
+$c18: -webkit-linear-gradient(top, $c6 0%, $c17 100%);
+
+@include color-scheme-text('1', $c4);
+@include color-scheme-text( '2', $c2);
+@include color-scheme-text( '3', $c3);
+@include color-scheme-text( '4', $c4);
+@include color-scheme-text( '5', $c5);
+@include color-scheme-text( '6', $c6);
+@include color-scheme-text( '7', $c7);
+@include color-scheme-text( '8', $c4);
+
+@include color-scheme-link( '1', $c5, $c6, lighten($c6, $colorValueChange), null, true);
+@include color-scheme-link( '2', $c4, $c6, darken($c6, $colorValueChange));
+@include color-scheme-link ( '3', $c3, $c6, ($c6, $colorValueChange));
+@include color-scheme-link ( '4', $c13, $c13, $c13, selected $c13);
+@include color-scheme-link( '5', $c9, lighten($c9, $colorValueChange), darken($c9, $colorValueChange));
+@include color-scheme-link( '6', $c6, $c4, $c4, $c4);
+
+@include color-scheme-bg( '1', $c6, lighten($c6, $colorValueChange), darken($c6, $colorValueChange));
+@include color-scheme-bg ( '2', $c1, lighten($c1, $colorValueChange), darken($c1, $colorValueChange)); 
+@include color-scheme-bg( '3', $c10, lighten($c10, $colorValueChange), darken($c10, $colorValueChange));
+@include color-scheme-bg( '4', $c11, lighten($c11, $colorValueChange), darken($c11, $colorValueChange));
+@include color-scheme-bg( '5', lighten($c6, $colorValueChange), lighten($c6, $colorValueChange ), $c6);
+@include color-scheme-bg( '6', lighten($c9, $colorValueChange), darken($c9, $colorValueChange));
+@include color-scheme-bg( '7', $c13, darken($c13, $colorValueChange), darken($c13, $colorValueChange));
+@include color-scheme-bg( '8', $c3, lighten($c3, $colorValueChange), darken($c3, $colorValueChange));
+@include color-scheme-bg( '9', $c13, darken($c13, $colorValueChange), darken($c13, $colorValueChange * 2));
+@include color-scheme-bg( '10', $c12, lighten($c12, $colorValueChange), darken($c12, $colorValueChange));
+@include color-scheme-bg ( '11', $c4, lighten($c6, $colorValueChange), darken($c6, $colorValueChange));
+
+@include color-scheme-gradient( '1', 'to bottom', inspect((#{lighten($c6, 5%)} 0%, #{$c6} 50%, #{darken($c6, 5%)} 100%)));
+
+@include color-scheme-button( 'add', $c6, $c4, lighten($c6, $colorValueChange), $c4, darken($c6, $colorValueChange), $c4, $c2, $c3);
+@include color-scheme-button( 'buy', $c16, $c4, lighten($c14, $colorValueChange), $c4, darken($c1, $colorValueChange), $c4, $c2, $c3);
+@include color-scheme-button( 'action', $c18, $c13, lighten($c6, $colorValueChange), $c13, darken($c6, $colorValueChange), $c13, $c2, $c3);
+@include color-scheme-button( 'confirm', $c16, $c4, lighten($c14, $colorValueChange), $c4, darken($c1, $colorValueChange), $c4, $c2, $c3);
+;
+@include color-scheme-button( 'submit', $c16, $c4, lighten($c14, $colorValueChange), $c4, darken($c1, $colorValueChange), $c4, $c2, $c3);
+
+@include color-scheme-borders-color('1', $c2, $c2, $c2);
+@include color-scheme-borders-color('2', $c12, $c12, $c12);
+
+.toolbar-top-item .cs-t-3 {
+    color: #fff;
+}
+
+tr, td, th {
+    border-color: $c2;
+}
+
+.harmonica-tile-inner {
+    color: $c13;
+}
+
+.catalog-filter-footer .btn-action {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.catalog-filter-footer .btn-submit {
+    background: $c16;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.catalog-filter-footer .btn-submit:hover {
+    background: $c15;
+}
+
+.site-head-userid,
+.cs-bg-i-11.cs-selected {
+    color: $c13;
+}
+
+.cs-bg-i-11 {
+    background-color: $c13;
+}
+
+.footer-bottom-level-inner .cs-t-3 > a,
+.gift-block.footer-gifts-item {
+    color: #999999;
+
+    &:hover {
+        color: $c13;
+    }
+}
+
+
+.product-categories-thin-total {
+    background: $c18;
+
+    &:hover {
+        background: lighten($c6, $colorValueChange);
+    }
+
+    & .product-categories-thin-total-text {
+        color: $c13;
+    }
+}

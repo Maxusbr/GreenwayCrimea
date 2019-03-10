@@ -1,0 +1,75 @@
+.bonus-card-block {
+  display: block;
+  text-decoration: none; }
+  .bonus-card-block:hover, .bonus-card-block:active {
+    text-decoration: none; }
+  .bonus-card-block:before {
+    display: block;
+    margin-bottom: 0.625rem;
+    font-size: 2.125rem;
+    height: 3.125rem;
+    width: 5rem; }
+
+.bonus-card-block-inline:before {
+  width: 1.6875rem;
+  height: 1.6875rem;
+  font-size: 0.9375rem;
+  margin-right: 0.3125rem;
+  display: inline-block;
+  line-height: 1.7rem;
+  padding: 0 5px; }
+
+.bonus-card-block-inline-after:after {
+  position: absolute;
+  left: 6px;
+  width: 1.6875rem;
+  height: 1.6875rem;
+  font-size: 0.9375rem;
+  margin-right: 0.3125rem;
+  display: inline-block;
+  line-height: 1.7rem;
+  padding: 0 5px; }
+
+.bonus-card-block-inline_without-margin:before {
+  margin-right: 0; }
+
+.bonus-card-icon-after:after {
+  content: "%";
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.25);
+  text-align: center;
+  background-color: #fff;
+  color: #c13d35;
+  border-radius: 0.3125rem;
+  font-weight: bold;
+  vertical-align: middle; }
+
+.bonus-card-icon:before {
+  content: "%";
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.25);
+  text-align: center;
+  background-color: #fff;
+  color: #c13d35;
+  border-radius: 0.3125rem;
+  font-weight: bold;
+  vertical-align: middle; }
+
+.bonus-card-icon-center {
+  margin: 0; }
+
+.bonus-card-icon-center:before {
+  margin: 0 auto;
+  margin-bottom: 20px; }
+
+.bonus-string-sum {
+  display: block;
+  font-size: 0.6875rem; }
+
+.bonus-card-reg {
+  padding-right: 45px; }
+
+.checkout-success-bonus-title {
+  font-size: 30px; }
+
+.checkout-success-bonus-card-block {
+  background-color: #f8f8f8;
+  padding: 30px 0; }

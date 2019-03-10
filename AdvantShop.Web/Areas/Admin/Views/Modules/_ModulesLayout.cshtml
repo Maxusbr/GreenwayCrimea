@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var isSelectedMenuItem = !Request.RawUrl.ToLower().EndsWith("modules/market");
+}
+
+<div class="row">
+    <div class="flex-grow-n col-fixed-size-md">
+        <div class="header-alt settings-title">Модули</div>
+        @Html.Partial("LeftMenu", isSelectedMenuItem)
+    </div>
+    <div class="flex-grow flex-basis-n flex-width-n">
+        <div class="ibox">
+            @RenderBody()
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@using AdvantShop.Customers
+@using AdvantShop.SEO
+@model AdvantShop.ViewModel.Catalog.CategoryViewModel
+@{
+    var category = Model.Category;
+    var tag = Model.Tag;
+    var briefDescription = tag != null ? tag.BriefDescription : category.BriefDescription;
+    var description = tag != null ? tag.Description : category.Description;
+}
+<div class="row">
+    <div class="col-xs-3 col-p-v site-body-aside">
+        @Html.Action("MenuCatalog", "Catalog", new { InLayout = false, IsExpanded = true, CategoryId = category.CategoryId })
+        @if (Model.Filter != null && SettingsDesign.FilterVisibility)
+        {
+            <div data-catalog-filter data-url="catalog/filter"
+                 data-url-count="catalog/filterproductCount"
+                 data-parameters="{categoryId : @(category.CategoryId), tagUrl: '@Model.TagView.Tags.Where(x => x.Selected).Select(x => x.Url).FirstOrDefault()'}"
+                 data-count-visible-collapse="10"></div>
+        }
+        @Html.StaticBlock("CatalogLeft")
+    </div>
+    <div class="col-xs-9 col-p-v site-body-main">
+        <div class="page-title-row catalog-title-row">
+            <h1 class="catalog-title page-title" @(tag != null ? Html.InplaceMeta(tag.Id, MetaType.Tag) : Html.InplaceMeta(category.CategoryId, MetaType.Category))>
+                @Html.GetPageH1()
+            </h1>
+        </div>
+        @Html.Action("BreadCrumbs", "Common", new { Model.BreadCrumbs })
+        @if (category.Picture != null && category.Picture.PhotoName.IsNotEmpty())
+        {
+            <div class="category-picture">
+                <img src="@category.Picture.ImageSrcBig()" alt="@Html.Encode(category.Name)" />
+            </div>
+        }
+        @if (!string.IsNullOrWhiteSpace(briefDescription) && Model.Pager.CurrentPage == 1)
+        {
+            <div class="category-description" @(tag == null ? Html.InplaceCategory(category.CategoryId, CategoryInplaceField.BriefDescription) : Html.InplaceTag(tag.Id, TagInplaceField.BriefDescription))>
+                @Html.Raw(briefDescription)
+            </div>
+        }
+        @Html.Action("CategoryList", "Catalog", new { categoryId = category.CategoryId, type = category.DisplayStyle })
+
+        @Html.RenderModules("category_top", category)
+
+        @Html.Partial("_TagView", Model.TagView)
+
+        @if (Model.HasProducts)
+        {
+            <div class="row">
+                <div class="col-xs-10">
+                    <div class="row between-xs">
+                        @Html.Partial("Sorting", Model.Filter.Sorting)
+                        <div class="products-view-sort-result">
+                            <span class="products-view-sort-result-text cs-t-3">@T("Catalog.Index.ItemsFound")</span>
+                            <span class="products-view-sort-result-number">@Model.Pager.TotalItemsCount</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    @if (Model.Filter.AllowChangeViewMode)
+                    {
+                        @Html.Action("ChangeMode", "Catalog", new { name = "productViewCatalog", viewMode = Model.Filter.ViewMode })
+                    }
+                </div>
+            </div>
+            <div class="row products-view products-view-@Model.Filter.ViewMode" product-view-mode data-name="productViewCatalog" data-current="@Model.Filter.ViewMode">
+                @Html.Partial("_ProductView", Model.Products)
+            </div>
+            @Html.Paging(Model.Pager)
+        }
+
+        @Html.RenderModules("category_bottom", category)
+        @if (!string.IsNullOrWhiteSpace(description) && Model.Pager.CurrentPage == 1)
+        {
+            <div class="category-description" @(tag == null ? Html.InplaceCategory(category.CategoryId, CategoryInplaceField.Description) : Html.InplaceTag(tag.Id, TagInplaceField.Description))>
+                @Html.Raw(description)
+            </div>
+        }
+	    @if (!User.Identity.IsAuthenticated)
+	    {
+		    @Html.StaticBlock("CatalogRightBottom")
+	    }
+    </div>
+</div>

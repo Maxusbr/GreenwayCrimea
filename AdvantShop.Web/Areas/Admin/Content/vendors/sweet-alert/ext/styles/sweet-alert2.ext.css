@@ -1,0 +1,48 @@
+.swal2-buttonswrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse; }
+
+.swal2-container .swal2-buttonswrapper .swal2-cancel {
+  margin-left: 3px; }
+
+.swal2-modal .swal2-checkbox input, .swal2-modal .swal2-checkbox span {
+  margin: 0; }
+
+.swal2-modal .swal2-checkbox span {
+  margin-left: 5px; }
+
+.swal2-container .sa-small {
+  position: fixed;
+  left: 75px;
+  top: 75px; }
+
+.swal2-container .sa-small h2 {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 5px 0; }
+
+.swal2-container .sa-small .swal2-content {
+  font-size: 14px; }
+
+.swal2-container .sa-small .swal2-buttonswrapper {
+  margin-top: 10px; }
+
+.swal2-container .sa-small .swal2-checkbox {
+  margin: 5px 0; }
+
+body.swal2-shown {
+  height: auto!important;
+  overflow: auto!important;
+  padding-right: 0!important; }
+
+.sa-custom {
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0.17);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.17);
+}

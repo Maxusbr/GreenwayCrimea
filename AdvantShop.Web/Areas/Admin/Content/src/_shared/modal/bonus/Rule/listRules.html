@@ -1,0 +1,27 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Добавить правило</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal m-r m-l">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-2 control-label m-b-xs">
+                        Правило
+                    </label>
+                    <div class="col-xs-10">
+                        <select data-e2e="RuleSelect" ng-options="item.Value as item.Text for item in ctrl.RuleTypes" class="form-control" ng-model="ctrl.RuleType" ng-init="ctrl.RuleType">
+                            <option selected="selected" value="" style="opacity: 0.3;" disabled>Выберите правило...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="submit" button-validation button-validation-success="ctrl.saveRule();"
+                 ladda="ctrl.btnLoading" data-e2e="addTemplate">Добавить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

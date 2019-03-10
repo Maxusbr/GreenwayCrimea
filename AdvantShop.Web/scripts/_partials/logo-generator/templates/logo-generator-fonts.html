@@ -1,0 +1,49 @@
+﻿<div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="logo-generator-fonts-filter">
+                <div class="logo-generator-fonts-filter__name">
+                    Язык:
+                </div>
+                <div class="logo-generator-fonts-filter__value">
+                    <label class="logo-generator-fonts-filter__value-el">
+                        <input type="radio" class="custom-input-native" name="logoGeneratorFontsLang" data-ng-model="$ctrl.language" value=""><span class="custom-input-radio"></span><span class="custom-input-text">Все языки</span>
+                    </label>
+                    <label class="logo-generator-fonts-filter__value-el">
+                        <input type="radio" class="custom-input-native" name="logoGeneratorFontsLang" data-ng-model="$ctrl.language" value="latin"><span class="custom-input-radio"></span><span class="custom-input-text">Латиница</span>
+                    </label>
+                    <label class="logo-generator-fonts-filter__value-el">
+                        <input type="radio" class="custom-input-native" name="logoGeneratorFontsLang" data-ng-model="$ctrl.language" value="cyrillic"><span class="custom-input-radio"></span><span class="custom-input-text">Кириллица</span>
+                    </label>
+                </div>
+            </div>
+            <div class="logo-generator-fonts-filter">
+                <div class="logo-generator-fonts-filter__name">
+                    Размер текста:
+                </div>
+                <div class="logo-generator-fonts-filter__value" data-ng-switch="$ctrl.objType === 'logo'">
+                    <div data-ng-switch-when="true" class="logo-generator__spinbox" data-spinbox data-value="$ctrl.logo.style.fontSize" data-step="1" data-max="999" data-min="0"></div>
+                    <div data-ng-switch-when="false"  class="logo-generator__spinbox" data-spinbox data-value="$ctrl.slogan.style.fontSize" data-step="1" data-max="999" data-min="0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4" data-ng-repeat="font in $ctrl.fontsList | filter: {languages: $ctrl.language}">
+            <div class="logo-generator-fonts-item cs-br-1" data-ng-click="$ctrl.selectFont(font)">
+                <div class="logo-generator-fonts-name" data-ng-bind="font.fontFamily"></div>
+                <link data-ng-href="{{font.link}}" rel="stylesheet" />
+                <div data-ng-class="{'logo-generator-slogan-vertical-top': $ctrl.slogan.style.verticalAlign === 'top', 'logo-generator-slogan-vertical-bottom': $ctrl.slogan.style.verticalAlign === 'bottom'}">
+                    <div class="logo-generator-fonts__logo"
+                         data-ng-style="$ctrl.getStyle($ctrl.logo.style, font, $ctrl.objType, 'logo')"
+                         data-ng-bind="$ctrl.logo.text | logoGeneratorFontSupport:($ctrl.objType === 'logo' ? font.languages : null)"></div>
+
+                    <div class="logo-generator-fonts__slogan"
+                         data-ng-if="$ctrl.isUseSlogan"
+                         data-ng-style="$ctrl.getStyle($ctrl.slogan.style, font, $ctrl.objType, 'slogan')"
+                         data-ng-bind="$ctrl.slogan.text | logoGeneratorFontSupport:($ctrl.objType === 'slogan' ? font.languages : null)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

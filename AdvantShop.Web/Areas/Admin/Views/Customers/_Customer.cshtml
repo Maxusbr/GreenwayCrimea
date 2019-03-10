@@ -1,0 +1,245 @@
+﻿@using AdvantShop.Core.Services.IPTelephony
+@model AdvantShop.Web.Admin.Models.Customers.CustomersModel
+
+<ng-form novalidate="" name="customerForm">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="p-r-lg">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="control-label text-left m-b-xs">Фамилия</label>
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Customer.LastName, new { @class = "form-control", ng_model = "customer.lastName" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="control-label text-left m-b-xs">Имя</label>
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Customer.FirstName, new { @class = "form-control", ng_model = "customer.firstName" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="control-label text-left m-b-xs">Отчество</label>
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Customer.Patronymic, new { @class = "form-control", ng_model = "customer.patronymic" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label text-left m-b-xs">Email</label>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="row between-xs middle-xs">
+                                <div class="col-xs">
+                                    @Html.TextBoxFor(x => x.Customer.EMail, new { @class = "form-control", ng_model = "customer.email", pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)|(admin)$", validation_input_text= "Email" })
+                                </div>
+                                @if (Model.IsEditMode)
+                                {
+                                    <div class="col-xs flex-grow-n text-nowrap" ng-if="customer.email != null && customer.email.length > 0 && customerForm['Customer.EMmail'].$error.pattern == null">
+                                        <ui-modal-trigger data-controller="'ModalSendLetterToCustomerCtrl'" controller-as="ctrl" size="lg"
+                                                          template-url="../areas/admin/content/src/_shared/modal/sendLetterToCustomer/sendLetterToCustomer.html"
+                                                          data-resolve="{params: {email: customer.email, firstName: customer.firstName, lastName: customer.lastName, patronymic: customer.patronymic}}">
+                                            <a href="" class="edit link-decoration-none">Отправить письмо</a>
+                                        </ui-modal-trigger>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label text-left m-b-xs">Телефон в числовом формате</label>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="row between-xs middle-xs">
+                                <div class="col-xs">
+                                    @Html.TextBoxFor(x => x.Customer.Phone, new { @class = "form-control", ng_model = "customer.phone" })
+                                </div>
+                                @if (Model.IsEditMode && Model.Customer.StandardPhone != null)
+                                {
+                                    <div class="col-xs flex-grow-n text-nowrap">
+                                        @*if (Model.ShowTelelephony) *@
+                                        <a href="tel:@Model.Customer.StandardPhone" class="edit link-decoration-none">Позвонить</a>
+
+                                        @Html.Raw(IPTelephonyOperator.Current.RenderCallButton(Model.Customer.StandardPhone, ECallButtonType.Big))
+                                        @foreach (var module in Model.SmsModules)
+                                        {
+                                            @module.GetSendSmsButton(Model.CustomerId, Model.Customer.StandardPhone.Value)
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                @if (Model.VkUser != null)
+                {
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="row between-xs middle-xs">
+                                    <div class="col-xs">
+                                        @{
+                                            var vkLink = "https://vk.com/" + (!string.IsNullOrEmpty(Model.VkUser.ScreenName) ? Model.VkUser.ScreenName : "id" + Model.VkUser.Id);
+                                        }
+                                        <i class="fa fa-vk vk-customer-icon"></i> <a href="@vkLink" target="_blank">@vkLink</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (!Model.IsEditMode)
+                {
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label text-left m-b-xs">Пароль</label>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="row between-xs middle-xs">
+                                <div class="col-xs">
+                                    @Html.PasswordFor(x => x.Customer.Password, new {@class = "form-control", ng_model = "customer.password", autocomplete = "off" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+        @Html.HiddenFor(x => x.CustomerContact.ContactId)
+        <div class="col-xs-6">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Страна</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.CustomerContact.Country, new {@class = "form-control", ng_model = "customer.country", autocompleter = "", on_type = "country"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Регион</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.CustomerContact.Region, new {@class = "form-control", ng_model = "customer.region", autocompleter = "", on_type = "region"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Город</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.CustomerContact.City, new {@class = "form-control", ng_model = "customer.city", autocompleter = "", on_type = "city"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Улица</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.CustomerContact.Street, new { @class = "form-control", ng_model = "customer.street" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs">
+
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Индекс</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.CustomerContact.Zip, new { @class = "form-control", ng_model = "customer.zip" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row between-xs">
+                    <div class="col-xs-2">
+                        <label class="control-label text-left m-b-xs">Дом</label>
+
+                        @Html.TextBoxFor(x => x.CustomerContact.House, new { @class = "form-control", ng_model = "customer.house" })
+                    </div>
+                    <div class="col-xs">
+                        <div class="row between-xs">
+                            <div class="col-xs-4">
+                                <label class="control-label text-left m-b-xs">Квартира</label>
+
+                                @Html.TextBoxFor(x => x.CustomerContact.Apartment, new { @class = "form-control", ng_model = "customer.apartment" })
+                            </div>
+                            <div class="col-xs-8">
+                                <label class="control-label text-left m-b-xs">Строение/Корпус</label>
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        @Html.TextBoxFor(x => x.CustomerContact.Structure, new { @class = "form-control", ng_model = "customer.structure" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <label class="control-label text-left m-b-xs">Подьезд</label>
+                        @Html.TextBoxFor(x => x.CustomerContact.Entrance, new { @class = "form-control", ng_model = "customer.entrance" })
+                    </div>
+                    <div class="col-xs-2">
+                        <label class="control-label text-left m-b-xs">Этаж</label>
+                        @Html.TextBoxFor(x => x.CustomerContact.Floor, new { @class = "form-control", ng_model = "customer.floor" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   
+    <div class="customer-custom-fields-divider"></div>
+    <div class="row customer-custom-fields">
+        @Html.Partial("_CustomerFields", Model.CustomerFields)
+    </div>
+    
+</ng-form>

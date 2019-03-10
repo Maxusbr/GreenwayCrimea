@@ -1,0 +1,16 @@
+﻿<div>    
+    <div class="products-view-photos cs-br-1" data-ng-if="photosCarousel.parentScope.photosVisible && photosCarousel.parentScope.photos != null && photosCarousel.parentScope.photos.length > 1">
+        <div class="products-view-photos-list"
+             data-carousel
+             data-carousel-class="products-view-photos-carousel"
+             data-is-vertical="true"
+             data-init-fn="photosCarousel.carouselInit(carousel)"
+             data-stretch="false"
+             data-init-on-load="true"
+             data-load="photosCarousel.parentScope.carouselInit">
+            <div class="products-view-photo-wrap" data-ng-repeat="photo in photosCarousel.parentScope.photos track by $index">
+                <figure class="products-view-photos-item" data-ng-style="::{width: photosCarousel.photoWidth, height:photosCarousel.photoHeight}" data-ng-click="photosCarousel.changePhoto({photo:photo})"><img class="products-view-photos-image" data-ng-src="{{photo.PathXSmall}}" alt="{{photo.alt}}" /></figure>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+﻿@using AdvantShop.ViewModel.Common;
+@model AdvantShop.ViewModel.MyAccount.CommonInfoViewModel
+
+@using (Html.BeginForm("CommonInfo", "MyAccount", FormMethod.Post, new { name = "commonInfoForm", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="h2">@T("MyAccount.CommonInfo.Header")</div>
+    <div class="row">
+        <div class="col-xs-8">
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle">Email</span>
+                </span>
+                <span class="col-xs-8">
+                    <span class="form-field-input vertical-interval-middle" data-ng-init="myaccount.commonInfo.email = '@Model.Email'">@Model.Email</span>
+                </span>
+            </label>
+
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle">@T("MyAccount.CommonInfo.RegistrationDate")</span>
+                </span>
+                <span class="col-xs-8">
+                    <span class="form-field-input vertical-interval-middle">@Model.RegistrationDate</span>
+                </span>
+            </label>
+
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle">@T("MyAccount.CommonInfo.Name")</span>
+                </span>
+                <span class="col-xs-8">
+                    <span class="form-field-input vertical-interval-middle">@Html.TextBoxFor(m => m.FirstName, new { required = "true", @class = "input-small", data_ng_model = "myaccount.commonInfo.firstname" })</span>
+                </span>
+            </label>
+
+
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle">@T("MyAccount.CommonInfo.LastName")</span>
+                </span>
+                <span class="col-xs-8">
+                    <span class="form-field-input vertical-interval-middle">@Html.TextBoxFor(m => m.LastName, new { required = "true", @class = "input-small", data_ng_model = "myaccount.commonInfo.lastname" })</span>
+                </span>
+            </label>
+            
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle">@T("MyAccount.CommonInfo.Patronymic")</span>
+                </span>
+                <span class="col-xs-8">
+                    <span class="form-field-input vertical-interval-middle">@Html.TextBoxFor(m => m.Patronymic, new { required = "true", @class = "input-small", data_ng_model = "myaccount.commonInfo.patronymic" })</span>
+                </span>
+            </label>
+
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle">@T("MyAccount.CommonInfo.Phone")</span>
+                </span>
+                <span class="col-xs-8">
+                    <span class="form-field-input vertical-interval-middle">
+                        @Html.TextBoxFor(m => m.Phone,
+                         new
+                         {
+                             placeholder = "{{::'Js.Phone.PhonePlaceholder' | translate}}",
+                             data_ui_mask_placeholder = "",
+                             data_ui_mask = "{{::'Js.Phone.PhoneMask' | translate}}",
+                             @class = "input-small",
+                             required = "required",
+                             data_ng_model = "myaccount.commonInfo.phone",
+                             data_ng_init = "myaccount.commonInfo.phone='" + Model.Phone + "'",
+                             data_ng_model_options = "{ debounce: 300 }",
+                             data_model_view_value = "true",
+                             autocomplete = "tel",
+                             maxlength = 70
+                         })
+                        @*Html.TextBoxFor(m => m.Phone, new { type = "tel", @class = "input-small", data_ng_model = "myaccount.commonInfo.phone" })*@
+                    </span>
+                </span>
+            </label>
+
+            @Html.Partial("_CustomerFields", new CustomerFieldsViewModel(Model.CustomerFields))
+
+            @if (Model.ShowCustomerRole)
+            {
+                <label class="row middle-xs">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-middle">@T("MyAccount.CommonInfo.CustomerType")</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <span class="form-field-input vertical-interval-middle">@Model.CustomerType</span>
+                    </span>
+                </label>
+            }
+
+            @if (Model.ShowCustomerGroup)
+            {
+                <label class="row middle-xs">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-middle">@T("MyAccount.CommonInfo.CustomerGroup")</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <span class="form-field-input vertical-interval-middle">@Model.CustomerGroup</span>
+                    </span>
+                </label>
+            }
+
+            @if (Model.ShowSubscription)
+            {
+                <label class="row middle-xs">
+                    <span class="col-xs-4">
+                        <span class="form-field-name vertical-interval-middle">@T("MyAccount.CommonInfo.NewsSubscription")</span>
+                    </span>
+                    <span class="col-xs-8">
+                        <span class="form-field-input vertical-interval-middle">
+                            @Html.CheckBoxFor(m => m.SubscribedForNews, new { @class = "custom-input-native" })
+                            <span class="custom-input-checkbox"></span>
+                        </span>
+                    </span>
+                </label>
+            }
+            <div class="row middle-xs">
+                <span class="col-xs-8 col-xs-offset-4">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input data-button-validation type="submit" class="btn btn-middle btn-action" value="@T("MyAccount.CommonInfo.Change")" />
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+}

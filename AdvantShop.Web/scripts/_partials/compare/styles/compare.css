@@ -1,0 +1,14 @@
+.compare-control {
+  font-size: 0.75rem; }
+
+.compare-checkbox ~ .custom-input-text .compare-text-not-added {
+  display: inline; }
+
+.compare-checkbox ~ .custom-input-text .compare-text-added {
+  display: none; }
+
+.compare-checkbox:checked ~ .custom-input-text .compare-text-not-added {
+  display: none; }
+
+.compare-checkbox:checked ~ .custom-input-text .compare-text-added {
+  display: inline; }

@@ -1,0 +1,114 @@
+﻿@{
+    var staticPath = "~/" + UrlService.GetAdminStaticPath();
+
+    Html.AddBundles(new List<string>
+    {
+        "~/styles/font.css",
+
+        staticPath + "styles/bootstrap.min.css",
+        staticPath + "styles/bootstrap.overwrite.css",
+        staticPath + "styles/flexboxgrid/flexboxgrid.css",
+        staticPath + "styles/grid-classic.css",
+        staticPath + "font-awesome/css/font-awesome.css",
+        staticPath + "styles/animate.css",
+
+        staticPath + "styles/style.css",
+        staticPath + "styles/theme.css",
+        staticPath + "styles/buttons.css",
+        staticPath + "styles/c3.min.css",
+        staticPath + "vendors/ui-grid/css/ui-grid.min.css",
+        staticPath + "src/_shared/ui-grid-custom/styles/ui-grid.custom.css",
+        staticPath + "src/_shared/ui-grid-custom/styles/ui-grid.custom.pagination.css",
+        staticPath + "src/_shared/ui-grid-custom/styles/ui-grid.custom.selection.css",
+        staticPath + "src/_shared/ui-grid-custom/styles/ui-grid.custom.edit.css",
+        staticPath + "src/_shared/ui-grid-custom/styles/ui-grid.custom.filter.css",
+        "~/scripts/_common/carousel/styles/carousel.css",
+
+        "~/styles/common/validation.css",
+        "~/scripts/_common/autocompleter/styles/autocompleter.css",
+        "~/scripts/_common/spinbox/styles/spinbox.css",
+        "~/scripts/_common/transformer/styles/transformer.css",
+        "~/scripts/_partials/shipping/styles/shipping.css",
+        "~/scripts/_partials/payment/styles/payment.css",
+
+        "~/vendors/internationalPhoneNumber/intl-tel-input/styles/intlTelInput.css",
+
+        staticPath + "vendors/sweetalert/css/sweetalert2.css",
+        staticPath + "vendors/jstree/themes/default/style.css",
+        staticPath + "vendors/angular-bootstrap-datetimepicker/css/datetimepicker.css",
+        staticPath + "vendors/ng-sortable/css/ng-sortable.min.css",
+        staticPath + "vendors/angular-color-picker/angularjs-color-picker.css",
+        staticPath + "vendors/angular-color-picker/themes/angularjs-color-picker-bootstrap.min.css",
+        staticPath + "vendors/ladda/css/ladda.css",
+        staticPath + "vendors/magnific-popup/css/magnific-popup.css",
+        staticPath + "vendors/ui-select/css/select.css",
+        staticPath + "styles/progress-overlay.css",
+
+        staticPath + "vendors/sweet-alert/ext/styles/sweet-alert2.ext.css",
+        staticPath + "vendors/jsTree.directive/themes/advantshop/style.css",
+        staticPath + "vendors/toaster/toaster.css",
+        staticPath + "vendors/cropper/cropper.min.css",
+        staticPath + "vendors/ng-ckeditor/ng-ckeditor.css",
+
+        staticPath + "vendors/jquery.rcrumbs/jquery.rcrumbs.css",
+
+        staticPath + "src/_shared/admin-web-notifications/styles/admin-web-notifications.css",
+        staticPath + "src/_shared/audio-player/styles/audio-player.css",
+        staticPath + "src/_shared/input-ghost/styles/inputGhost.css",
+
+        staticPath + "src/_shared/ui-ace-textarea/styles/ui-ace-textarea.css",
+
+        staticPath + "src/_shared/product-picker/styles/productpicker.css",
+
+        staticPath + "src/_shared/toaster-ext/toaster-ext.css",
+
+        staticPath + "src/tariffs/styles/tariffs.css",
+
+        staticPath + "src/_shared/search/styles/search.css",
+
+        staticPath + "src/_shared/picture-uploader/styles/picture-uploader.css",
+
+        staticPath + "src/_shared/file-uploader/styles/file-uploader.css",
+
+        staticPath + "src/_shared/input/styles/input.css",
+        staticPath + "src/_shared/switch-on-off/styles/switch-on-off.css",
+        staticPath + "src/_shared/switcher-state/styles/switcher-state.css",
+
+        staticPath + "src/_shared/icon-move/styles/icon-move.css",
+
+        staticPath + "src/_partials/admin-comments/styles/admin-comments.css",
+
+        staticPath + "src/_partials/person-avatar/styles/person-avatar.css",
+        staticPath + "src/_partials/categories-block/styles/categories-block.css",
+        staticPath + "src/_partials/help-trigger/styles/help-trigger.css",
+        staticPath + "src/_partials/sidebar-user/styles/sidebar-user.css",
+        staticPath + "src/_partials/user-info-popup/modals/styles/user-info-popup.css",
+
+        staticPath + "src/catalog/styles/catalog.css",
+        staticPath + "src/customer/styles/customer.css",
+        staticPath + "src/module/styles/module.css",
+        staticPath + "src/modules/styles/modules.css",
+        staticPath + "src/product/styles/product.css",
+        staticPath + "src/lead/styles/lead.css",
+        staticPath + "src/design/styles/design.css",
+        staticPath + "src/settings/styles/settings.css",
+        staticPath + "src/settingsSystem/logs/logs.css",
+        staticPath + "src/category/styles/category.css",
+        staticPath + "src/order/styles/orders.css",
+        staticPath + "src/tasks/styles/tasks.css",
+        staticPath + "src/_shared/kanban/styles/kanban.css",
+        staticPath + "src/analyticsReport/styles/analytics-report.css",
+        staticPath + "src/menus/components/menu-item-actions/styles/menu-item-actions.css",
+        staticPath + "styles/design_style.css",
+        staticPath + "styles/panels.css",
+        staticPath + "src/_shared/modal/styles/uimodal.css",
+        "~/scripts/_partials/submenu/style/style.css",
+        "~/scripts/_common/countdown/styles/countdown.css",
+        "~/scripts/_common/modal/styles/modal.css",
+         "~/userfiles/extra-admin.css",
+
+
+    }, "all_admin_top_new.css");
+}
+
+@Html.RenderCssBundle("all_admin_top_new.css")

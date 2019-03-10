@@ -1,0 +1,13 @@
+.module-details-title {
+    font-size: 24px;
+    color: #2f4050;
+}
+.module-details-title .module-active, .module-details-title .module-not-active {
+    font-size: 18px;
+}
+.module-details-title .module-active {
+    color: Green;
+}
+.module-details-title .module-not-active {
+    color: red;
+}

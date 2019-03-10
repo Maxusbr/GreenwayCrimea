@@ -1,0 +1,1109 @@
+﻿/*
+    roles - ["None"] - разрешено всем модераторам
+    roles - [] или null - только админу
+    roles - ["Catalog", "DisplayMainPageBestsellers"] - если есть обе роли, то разрешено
+
+    route - анонимный объект { "type": "new" }, который превратиться в RouteValueDictionary
+
+    ishidden - скрыт
+*/
+[
+  {
+    "controller": "home",
+    "action": "index",
+    "name": "Admin.Home.Menu.Shop",
+    "roles": [ "None" ],
+    "icon": "side-basket-icon",
+    "statisticsDataType": "orders",
+    "menuItems": [
+      {
+        "controller": "Home",
+        "action": "Index",
+        "name": "Admin.Home.Menu.HomePage",
+        "roles": [ "None" ]
+      },
+      {
+        "controller": "Catalog",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Catalog",
+        "roles": [ "Catalog" ],
+        "menuItems": [
+          {
+            "controller": "Catalog",
+            "action": "Index",
+            "name": "Admin.Home.Menu.CategoriesAndProducts",
+            "roles": [ "Catalog" ]
+          },
+          {
+            "controller": "MainPageProducts",
+            "action": "Index",
+            "route": { "type": "new" },
+            "name": "Admin.Home.Menu.MainPageProducts",
+            "roles": [ "Catalog" ],
+            "menuItems": [
+              {
+                "controller": "MainPageProducts",
+                "action": "Index",
+                "route": { "type": "best" },
+                "name": "Admin.Home.Menu.BestSellers",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "MainPageProducts",
+                "action": "Index",
+                "route": { "type": "new" },
+                "name": "Admin.Home.Menu.NewProducts",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "MainPageProducts",
+                "action": "Index",
+                "route": { "type": "sale" },
+                "name": "Admin.Home.Menu.Sales",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "ProductLists",
+                "action": "Index",
+                "name": "Admin.Home.Menu.ProductLists",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "ProductLists",
+                "action": "products",
+                "name": "",
+                "roles": [ "Catalog" ],
+                "ishidden": true
+              }
+            ]
+          },
+          {
+            "controller": "Brands",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Brands",
+            "roles": [ "Catalog" ]
+          },
+          {
+            "controller": "Properties",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Dictionaries",
+            "roles": [ "Catalog" ],
+            "menuItems": [
+              {
+                "controller": "Properties",
+                "action": "Index",
+                "name": "Admin.Home.Menu.ProductProperties",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "Colors",
+                "action": "Index",
+                "name": "Admin.Home.Menu.ProductColors",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "Sizes",
+                "action": "Index",
+                "name": "Admin.Home.Menu.ProductSizes",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "Tags",
+                "action": "Index",
+                "name": "Admin.Home.Menu.Tags",
+                "roles": [ "Catalog" ],
+                "saasFeature": "HaveTags"
+              }
+            ]
+          },
+
+          {
+            "controller": "exportfeeds",
+            "action": "index",
+            "name": "Admin.Home.Menu.Export",
+            "roles": [ "Catalog" ],
+            "menuItems": [
+              {
+                "controller": "exportfeeds",
+                "action": "index",
+                "name": "Admin.Home.Menu.ExportProducts",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "exportcategories",
+                "action": "index",
+                "name": "Admin.Home.Menu.ExportCategories",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "exportfeeds",
+                "action": "export",
+                "name": "",
+                "roles": [ "Catalog" ],
+                "ishidden": true
+              },
+              {
+                "controller": "exportcategories",
+                "action": "export",
+                "name": "",
+                "roles": [ "Catalog" ],
+                "ishidden": true
+              }
+            ]
+          },
+
+          {
+            "controller": "import",
+            "action": "importProducts",
+            "name": "Admin.Home.Menu.Import",
+            "roles": [ "Catalog" ],
+            "menuItems": [
+              {
+                "controller": "import",
+                "action": "importProducts",
+                "name": "Admin.Home.Menu.ImportProducts",
+                "roles": [ "Catalog" ]
+              },
+              {
+                "controller": "import",
+                "action": "importCategories",
+                "name": "Admin.Home.Menu.ImportCategories",
+                "roles": [ "Catalog" ]
+              }
+            ]
+          },
+
+          {
+            "controller": "PriceRegulation",
+            "action": "Index",
+            "name": "Admin.Home.Menu.PriceRegulation",
+            "roles": [ "Catalog" ]
+          },
+
+          {
+            "controller": "Reviews",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Reviews",
+            "roles": [ "Catalog" ]
+          },
+
+          {
+            "controller": "category",
+            "action": "add",
+            "name": "",
+            "roles": [ "Catalog" ],
+            "ishidden": true
+          },
+          {
+            "controller": "category",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Catalog" ],
+            "ishidden": true
+          },
+          {
+            "controller": "product",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Catalog" ],
+            "ishidden": true
+          },
+          {
+            "controller": "brands",
+            "action": "add",
+            "name": "",
+            "roles": [ "Catalog" ],
+            "ishidden": true
+          },
+          {
+            "controller": "brands",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Catalog" ],
+            "ishidden": true
+          },
+          {
+            "controller": "tags",
+            "action": "add",
+            "name": "",
+            "roles": [ "Catalog" ],
+            "ishidden": true
+          },
+          {
+            "controller": "tags",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Catalog" ],
+            "ishidden": true
+          },
+          {
+            "controller": "propertyValues",
+            "action": "Index",
+            "name": "",
+            "roles": [ "Catalog" ],
+            "ishidden": true
+          }
+        ]
+      },
+      {
+        "controller": "Orders",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Orders",
+        "roles": [ "Orders" ],
+		"statisticsDataType": "orders",
+        "menuItems": [
+          {
+            "controller": "Orders",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Orders",
+            "roles": [ "Orders" ]
+          },
+          {
+            "controller": "OrderStatuses",
+            "action": "Index",
+            "name": "Admin.Home.Menu.OrderStatuses",
+            "roles": [ "Orders" ],
+            "saasFeature": "OrderStatuses"
+          },
+          {
+            "controller": "OrderSources",
+            "action": "Index",
+            "name": "Admin.Home.Menu.OrderSources",
+            "roles": [ "Orders" ]
+          },
+          {
+            "controller": "analytics",
+            "action": "exportorders",
+            "name": "Admin.Home.Menu.ExportOrders",
+            "roles": [ "Orders" ],
+            "saasFeature": "DeepAnalytics"            
+          },
+
+          {
+            "controller": "orders",
+            "action": "add",
+            "name": "",
+            "roles": [ "Orders" ],
+            "ishidden": true
+          },
+          {
+            "controller": "orders",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Orders" ],
+            "ishidden": true
+          }
+        ]
+      },
+      {
+        "controller": "Customers",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Buyers",
+        "roles": [ "Customers" ],
+        "menuItems": [
+          {
+            "controller": "Customers",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Buyers",
+            "roles": [ "Customers" ]
+          },
+          {
+            "controller": "CustomerGroups",
+            "action": "Index",
+            "name": "Admin.Home.Menu.CustomerGroups",
+            "roles": [ "Customers" ]
+          },
+          {
+            "controller": "Subscription",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Subscribers",
+            "roles": [ "Customers" ]
+          },
+          {
+            "controller": "Import",
+            "action": "ImportCustomers",
+            "name": "Admin.Home.Menu.ImportBuyers",
+            "roles": [ "Customers" ]
+          },
+          {
+            "controller": "CustomerSegments",
+            "action": "Index",
+            "name": "Admin.Home.Menu.CustomerSegments",
+            "roles": [ "Customers" ]
+          },
+          {
+            "controller": "customers",
+            "action": "add",
+            "name": "",
+            "roles": [ "Customers" ],
+            "ishidden": true
+          },
+          {
+            "controller": "customers",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Customers" ],
+            "ishidden": true
+          },
+          {
+            "controller": "CustomerSegments",
+            "action": "add",
+            "name": "",
+            "roles": [ "Customers" ],
+            "ishidden": true
+          },
+          {
+            "controller": "CustomerSegments",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Customers" ],
+            "ishidden": true
+          },
+        ]
+      },
+      {
+        "controller": "menus",
+        "action": "index",
+        "name": "Admin.Home.Menu.Cms",
+        "roles": [ "Cms" ],
+        "menuItems": [
+          {
+            "controller": "Menus",
+            "action": "Index",
+            "name": "Admin.Home.Menu.MainMenu",
+            "roles": [ "Cms" ]
+          },
+          {
+            "controller": "News",
+            "action": "Index",
+            "name": "Admin.Home.Menu.News",
+            "roles": [ "Cms" ]
+          },
+          {
+            "controller": "NewsCategory",
+            "action": "Index",
+            "name": "Admin.Home.Menu.NewsCategories",
+            "roles": [ "Cms" ]
+          },
+          {
+            "controller": "Carousel",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Carousel",
+            "roles": [ "Cms" ]
+          },
+          {
+            "controller": "StaticPages",
+            "action": "Index",
+            "name": "Admin.Home.Menu.StaticPages",
+            "roles": [ "Cms" ]
+          },
+          {
+            "controller": "StaticBlock",
+            "action": "Index",
+            "name": "Admin.Home.Menu.StaticBlocks",
+            "roles": [ "Cms" ]
+          },
+          {
+            "controller": "Files",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Files",
+            "roles": [ "Cms" ]
+          },
+          {
+            "controller": "news",
+            "action": "add",
+            "name": "",
+            "roles": [ "Settings" ],
+            "ishidden": true
+          },
+          {
+            "controller": "news",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Settings" ],
+            "ishidden": true
+          },
+          {
+            "controller": "staticpages",
+            "action": "add",
+            "name": "",
+            "roles": [ "Cms" ],
+            "ishidden": true
+          },
+          {
+            "controller": "staticpages",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Cms" ],
+            "ishidden": true
+          }
+        ]
+      },
+      {
+        "controller": "Modules",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Modules",
+        "roles": [ "Modules" ],
+        "menuItems": [
+          {
+            "controller": "modules",
+            "action": "details",
+            "name": "",
+            "roles": [ "Modules" ],
+            "ishidden": true
+          },
+          {
+            "controller": "modules",
+            "action": "market",
+            "name": "",
+            "roles": [ "Modules" ],
+            "ishidden": true
+          }
+        ]
+
+      },
+      {
+        "controller": "design",
+        "action": "index",
+        "name": "Admin.Home.Menu.Design",
+        "roles": [ "Design" ],
+        "menuItems": [
+          {
+            "controller": "design",
+            "action": "csseditor",
+            "name": "",
+            "roles": [ "Design" ],
+            "ishidden": true
+          },
+          {
+            "controller": "design",
+            "action": "theme",
+            "name": "",
+            "roles": [ "Design" ],
+            "ishidden": true
+          },
+        ]
+      },
+      {
+        "controller": "DiscountsPriceRange",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Marketing",
+        "roles": [ "Marketing" ],
+        "menuItems": [
+          {
+            "controller": "DiscountsPriceRange",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Discounts",
+            "roles": [ "Marketing" ]
+          },
+          {
+            "controller": "Coupons",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Coupons",
+            "roles": [ "Marketing" ]
+          },
+          {
+            "controller": "Certificates",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Certificates",
+            "roles": [ "Marketing" ]
+          },
+          {
+            "controller": "ExportFeeds",
+            "action": "IndexYandex",
+            "name": "Admin.Home.Menu.YandexMarket",
+            "roles": [ "Catalog" ],
+            "saasFeature": "HaveExportFeeds"
+          },
+          {
+            "controller": "ExportFeeds",
+            "action": "IndexGoogle",
+            "name": "Admin.Home.Menu.GoogleBase",
+            "roles": [ "Catalog" ],
+            "saasFeature": "HaveExportFeeds"
+          },
+          {
+            "controller": "LandingPages",
+            "action": "Index",
+            "name": "Admin.Home.Menu.LandingPages",
+            "roles": [ "Marketing" ],
+            "saasFeature": "LandingPage"
+          },
+          {
+            "controller": "Voting",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Voting",
+            "roles": [ "Marketing" ]
+          },
+          {
+            "controller": "Analytics",
+            "action": "Index",
+            "name": "Admin.Home.Menu.Statistics",
+            "roles": [ "Marketing" ],
+            "saasFeature": "DeepAnalytics",
+            "menuItems": [
+              {
+                "controller": "Analytics",
+                "action": "Index",
+                "name": "Admin.Home.Menu.StatisticExportConsolidatedReport",
+                "roles": [ "Marketing" ]
+              },
+              {
+                "controller": "Analytics",
+                "action": "ExportProducts",
+                "name": "Admin.Home.Menu.StatisticExportProducts",
+                "roles": [ "Marketing" ]
+              },
+              {
+                "controller": "Analytics",
+                "action": "ExportCustomers",
+                "name": "Admin.Home.Menu.StatisticExportCustomers",
+                "roles": [ "Marketing" ]
+              },
+              {
+                "controller": "Analytics",
+                "action": "ExportOrders",
+                "name": "Admin.Home.Menu.StatisticExportOrders",
+                "roles": [ "Marketing" ]
+              },
+              {
+                "controller": "Analytics",
+                "action": "AnalyticsFilter",
+                "name": "",
+                "roles": [ "Marketing" ],
+                "ishidden": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "controller": "Settings",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Settings",
+        "roles": [ "Settings" ],
+        "class": "setting-column-submenu",
+        "menuItems": [
+          {
+            "controller": "settings",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsCommon",
+            "roles": [ "Settings" ]
+
+          },
+          {
+            "controller": "settingscatalog",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsCatalog",
+            "roles": [ "Settings" ]
+
+          },
+          {
+            "controller": "settingscheckout",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsCheckout",
+            "roles": [ "Settings" ]
+
+          },
+          {
+            "controller": "settingscustomers",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsCustomers",
+            "roles": [ "Settings" ]
+
+          },
+          {
+            "controller": "settingsnews",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsNews",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settings",
+            "action": "shippingmethods",
+            "name": "Admin.Home.Menu.SettingsShippings",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settings",
+            "action": "paymentmethods",
+            "name": "Admin.Home.Menu.SettingsPayments",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settings",
+            "action": "mobileversion",
+            "name": "Admin.Home.Menu.SettingsMobile",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settingstasks",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsTasks",
+            "roles": [ "Settings" ]
+          },
+          //{
+          //  "controller": "settingscrm",
+          //  "action": "index",
+          //  "name": "Admin.Home.Menu.SettingsCrm",
+          //  "roles": [ "Crm" ],
+          //  "saasFeature": "HaveCrm"
+          //},
+          //{
+          //  "controller": "settingsbonus",
+          //  "action": "index",
+          //  "name": "Admin.Home.Menu.SettingsBonuses",
+          //  "roles": [ "BonusSystem" ],
+          //  "saasFeature": "HaveCrm"
+          //},
+          {
+            "controller": "settings",
+            "action": "userssettings",
+            "name": "Admin.Home.Menu.SettingsUser",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settingstelephony",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsTelephony",
+            "roles": [ "Settings" ],
+            "saasFeature": "HaveTelephony"
+          },
+          {
+            "controller": "settingsmail",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsMail",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settingsseo",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsSeo",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settingssocial",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsSocial",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settingsapi",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsApi",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "settingssystem",
+            "action": "index",
+            "name": "Admin.Home.Menu.SettingsSystem",
+            "roles": [ "Settings" ]
+          },
+          {
+            "controller": "SettingsSearch",
+            "action": "Index",
+            "name": "Поиск настроек",
+            "roles": [ "Settings" ],
+			"ishidden": true
+          },
+          {
+            "controller": "shippingmethods",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Settings" ],
+            "ishidden": true
+          },
+          {
+            "controller": "paymentmethods",
+            "action": "edit",
+            "name": "",
+            "roles": [ "Settings" ],
+            "ishidden": true
+          }
+        ]
+      },
+      {
+        "controller": "service",
+        "action": "supportcenter",
+        "name": "",
+        "ishidden": true
+      },
+      {
+        "controller": "service",
+        "action": "domains",
+        "name": "",
+        "ishidden": true
+      },
+      {
+        "controller": "service",
+        "action": "changetariff",
+        "name": "",
+        "ishidden": true
+      },
+      {
+        "controller": "service",
+        "action": "GetFeature",
+        "name": "",
+        "ishidden": true
+      },
+      {
+        "controller": "service",
+        "action": "BuyTemplate",
+        "name": "",
+        "ishidden": true
+      },
+      {
+        "controller": "service",
+        "action": "tariffs",
+        "name": "",
+        "ishidden": true
+      }
+    ]
+  },
+  {
+    "controller": "leads",
+    "action": "index",
+    "name": "Admin.Home.Menu.Crm",
+    "roles": [ "Crm" ],
+    "icon": "crm-user-icon",
+    "statisticsDataType": "leads",
+    "saasFeature": "HaveCrm",
+    "menuitems": [
+      {
+        "controller": "leads",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Leads",
+        "roles": [ "Crm" ],
+        "saasFeature": "HaveCrm",
+		    "statisticsDataType": "leads"
+      },
+      {
+        "controller": "calls",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Calls",
+        "roles": [ "Crm" ],
+        "saasFeature": "HaveTelephony"
+      },
+      {
+        "controller": "settingscrm",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Settings",
+        "roles": [ "Crm" ],
+        "saasFeature": "HaveCrm"
+      }
+    ]
+  },
+  {
+    "controller": "landing",
+    "action": "index",
+    "name": "Admin.Home.Menu.Landing",
+    "roles": [ "Crm" ],
+    "icon": "landing-transform-icon",
+    "saasFeature": "LandingPage",
+    "menuitems": [
+    ],
+	"ishidden" : true
+  },
+  {
+    "controller": "tasks",
+    "action": "index",
+    "name": "Admin.Home.Menu.Tasks",
+    "roles": [ "Tasks" ],
+    //"route": { "filterby": "assignedtome" },
+    "icon": "task-calendar-icon",
+    "statisticsDataType": "tasks",
+    "menuItems": [
+      {
+        "controller": "tasks",
+        "action": "index",
+        //"route": { "filterby": "assignedtome" },
+        "name": "Admin.Layout.LeftMenu.Tasks",
+        "roles": [ "Tasks" ],
+		"statisticsDataType": "tasks"
+      },
+      {
+        "controller": "taskgroups",
+        "action": "index",
+        "name": "Admin.Layout.LeftMenu.TaskGroups",
+        "roles": [ "Tasks" ]        
+      },
+      {
+        "controller": "settingstasks",
+        "action": "index",
+        "name": "Admin.Layout.LeftMenu.TasksSettings",
+        "roles": [ "Tasks", "Settings" ]
+      }
+    ]
+  },
+  {
+    "controller": "cards",
+    "action": "index",
+    "name": "Admin.Home.Menu.Bonuses",
+    "icon": "bonuses-icon",
+    "roles": [ "BonusSystem" ],
+    "saasFeature": "BonusSystem",
+    "menuItems": [
+      {
+        "controller": "cards",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Cards",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem"
+      },
+      {
+        "controller": "cards",
+        "action": "edit",
+        "name": "",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem",
+        "ishidden": true
+      },
+      {
+        "controller": "cards",
+        "action": "add",
+        "name": "",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem",
+        "ishidden": true
+      },
+      {
+        "controller": "cards",
+        "action": "allpurchase",
+        "name": "",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem",
+        "ishidden": true
+      },
+      {
+        "controller": "cards",
+        "action": "alltransaction",
+        "name": "",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem",
+        "ishidden": true
+      },
+      {
+        "controller": "cards",
+        "action": "historypersent",
+        "name": "",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem",
+        "ishidden": true
+      },
+      {
+        "controller": "grades",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Grades",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem"
+      },
+      {
+        "controller": "grades",
+        "action": "edit",
+        "name": "",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem",
+        "ishidden": true
+      },
+      {
+        "controller": "grades",
+        "action": "add",
+        "name": "",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem",
+        "ishidden": true
+      },
+      {
+        "controller": "rules",
+        "action": "Index",
+        "name": "Admin.Home.Menu.Rules",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem"
+      },
+      {
+        "controller": "rules",
+        "action": "edit",
+        "name": "",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem",
+        "ishidden": true
+      },
+      {
+        "controller": "smstemplates",
+        "action": "Index",
+        "name": "Admin.Home.Menu.SmsTemplates",
+        "saasFeature": "BonusSystem",
+        "roles": [ "BonusSystem" ]
+      },
+      {
+        "controller": "smstemplates",
+        "action": "smslog",
+        "name": "Admin.Home.Menu.SmsLog",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem"
+      },
+      {
+        "controller": "settingsbonus",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsBonus",
+        "roles": [ "BonusSystem" ],
+        "saasFeature": "BonusSystem"
+      }
+    ]
+  },
+  {
+    "controller": "settings",
+    "action": "index",
+    "name": "Admin.Home.Menu.Settings",
+    "roles": [ "Settings" ],
+    "icon": "sittings-cogwheel-icone",
+    "class": "setting-column-submenu",
+    "menuItems": [
+      {
+        "controller": "settings",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsCommon",
+        "roles": [ "Settings" ]
+
+      },
+      {
+        "controller": "settingscatalog",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsCatalog",
+        "roles": [ "Settings" ]
+
+      },
+      {
+        "controller": "settingscheckout",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsCheckout",
+        "roles": [ "Settings" ]
+
+      },
+      {
+        "controller": "settingscustomers",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsCustomers",
+        "roles": [ "Settings" ]
+
+      },
+      {
+        "controller": "settingsnews",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsNews",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settings",
+        "action": "shippingmethods",
+        "name": "Admin.Home.Menu.SettingsShippings",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settings",
+        "action": "paymentmethods",
+        "name": "Admin.Home.Menu.SettingsPayments",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settings",
+        "action": "mobileversion",
+        "name": "Admin.Home.Menu.SettingsMobile",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settingstasks",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsTasks",
+        "roles": [ "Settings", "Tasks" ]
+      },
+      {
+        "controller": "settingscrm",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsCrm",
+        "roles": [ "Settings" ],
+        "saasFeature": "HaveCrm"
+      },
+      //{
+      //  "controller": "settingsbonus",
+      //  "action": "index",
+      //  "name": "Admin.Home.Menu.SettingsBonuses",
+      //  "roles": [ "Settings" ],
+      //  "saasFeature": "BonusSystem"
+      //},
+      {
+        "controller": "settings",
+        "action": "userssettings",
+        "name": "Admin.Home.Menu.SettingsUser",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settingstelephony",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsTelephony",
+        "roles": [ "Settings" ],
+        "saasFeature": "HaveTelephony"
+      },
+      {
+        "controller": "settingsmail",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsMail",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settingsseo",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsSeo",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settingssocial",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsSocial",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settingsapi",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsApi",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "settingssystem",
+        "action": "index",
+        "name": "Admin.Home.Menu.SettingsSystem",
+        "roles": [ "Settings" ]
+      },
+      {
+        "controller": "SettingsSearch",
+        "action": "Index",
+        "name": "Поиск настроек",
+        "roles": [ "Settings" ],
+		"ishidden": true
+      },
+      {
+        "controller": "shippingmethods",
+        "action": "edit",
+        "name": "",
+        "roles": [ "Settings" ],
+        "ishidden": true
+      },
+      {
+        "controller": "paymentmethods",
+        "action": "edit",
+        "name": "",
+        "roles": [ "Settings" ],
+        "ishidden": true
+      }
+    ]
+
+  },
+  {
+    "controller": "service",
+    "action": "academy",
+    "name": "Admin.Home.Menu.Academy",
+    "roles": [ "None" ],
+    "icon": "fa-graduation-cap side-menu-graduation",
+    "statisticsDataType": "academy"
+  }
+]

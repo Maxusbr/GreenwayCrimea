@@ -1,0 +1,14 @@
+﻿#popupOnMainPage {
+    .modal-content {
+        padding: 0;
+    }
+    .modal-content > div {
+        border-radius: 0 0 4px 4px;
+    }
+
+    .modal-header {
+        padding: 0;
+        border-bottom: none;
+        font-size: 1rem;
+    }
+}

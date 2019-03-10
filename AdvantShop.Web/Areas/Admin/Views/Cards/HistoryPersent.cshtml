@@ -1,0 +1,57 @@
+﻿@using AdvantShop.Web.Admin.Extensions;
+@model AdvantShop.Web.Infrastructure.Admin.FilterResult<AdvantShop.Core.Services.Bonuses.Model.PersentHistory>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <h2 class="m-b-sm clearfix">История изменений</h2>
+        <div class="m-b">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px">
+                                    Название грейда
+                                </th>
+                                <th style="width: 30px">
+                                    Процент
+                                </th>
+                                <th style="width: 130px">
+                                    Дата изменения
+                                </th>                                                        
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DataItems)
+                            {
+                                <tr>
+                                    <td data-e2e="GradeName">
+                                        @item.GradeName
+                                    </td>
+                                    <td data-e2e="BonusPersent">
+                                        @item.BonusPersent.ToString("F2")
+                                    </td>
+                                    <td data-e2e="CreateOn">
+                                        @item.CreateOn.ToString("dd.MM.yyyy HH:mm:ss")
+                                    </td>                                 
+                                    @*<td>
+                                            @Html.ActionLink("!!!!!", "Delete", "Purchase", new { id = item.PurchaseId }, null)
+                                        </td>*@
+                                </tr>
+                            }
+                            @if (Model.DataItems.Count < 1)
+                            {
+                                <tr>
+                                    <td colspan="11">
+                                        Ни одной записи не найдено
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @Html.BootstrapPager(Model.PageIndex, index => Url.Action("HistoryPersent", "Cards", new { CardId = ViewBag.CardId, pageIndex = index }), Model.TotalItemsCount)           
+            </div>
+        </div>
+    </div>
+</div>

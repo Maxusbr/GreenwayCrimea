@@ -1,0 +1,60 @@
+@import "../../_themes.scss", "../../../../styles/functions/_util.scss", "../../../../styles/_settings.scss";
+
+
+.design-background-top {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: rem-calc(670px);
+    display: block;
+
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        display: block;
+    }
+
+    &:before {
+        background: url('../images/background-top-left.png') no-repeat left top;
+        height: 667px;
+        width: 516px;
+        left: 50%;
+        margin-left: -950px;
+        top: 0;
+    }
+
+    &:after {
+        background: url('../images/background-top-right.png') no-repeat 460px bottom;
+        height: 670px;
+        left: 50%;
+        right: 0;
+        top: 0;
+    }
+}
+
+.site-footer {
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        z-index: 0;
+    }
+
+    &:before {
+        background: url('../images/background-bottom-left.png') no-repeat left bottom;
+        height: 411px;
+        width: 387px;
+        left: 50%;
+        margin-left: -965px;
+        top: 0;
+    }
+
+    &:after {
+        background: url('../images/background-bottom-right.png') no-repeat 590px bottom;
+        height: 385px;
+        left: 50%;
+        right: 0;
+        top: 0;
+    }
+}

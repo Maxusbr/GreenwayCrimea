@@ -1,0 +1,11 @@
+﻿
+<ui-grid-custom grid-unique-id="gridStatusHistory"
+                grid-on-init="ctrl.gridOnInit(grid)"
+                grid-filter-enabled="false"
+                grid-pagination-enabled="false"
+                grid-selection-enabled="false"
+                grid-params="{orderId:$ctrl.orderId}"
+                grid-options="$ctrl.gridOptions"
+                grid-url="'orders/getOrderStatusHistory'"
+                grid-empty-text="'Записи отсутствуют'">
+</ui-grid-custom>

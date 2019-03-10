@@ -1,0 +1,24 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Calls.CallsListViewModel
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Calls.Index.Title")
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content no-top-border">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="calls.gridOnInit(grid)"
+                        grid-options="calls.gridOptions"
+                        grid-url="'calls/getcalls'"
+                        grid-extend-ctrl="calls">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="calls.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

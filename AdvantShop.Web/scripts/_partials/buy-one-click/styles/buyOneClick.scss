@@ -1,0 +1,17 @@
+﻿@import "../../../../styles/functions/_util.scss";
+@import "../../../../styles/_settings.scss";
+@import "../../../../styles/functions/_breakpoints.scss";
+.buy-one-click-dialog {
+    min-width: 35vw;
+}
+
+@include breakpointsGetMedia(tablet){
+.buy-one-click-dialog {
+    min-width: 70vw;
+}
+}
+
+.buy-one-click-buttons {
+    text-align: right;
+    margin-top: $vertical-interval-middle;
+}

@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+  padding: 0.3125rem 0.3125rem;
+  margin: 0;
+  border-collapse: collapse;
+  border: 0; }
+
+td, th {
+  padding: 0.3125rem 0.3125rem;
+  border-width: 0.0625rem;
+  border-style: solid;
+  border-collapse: collapse; }
+
+tr {
+  border-collapse: collapse; }
+
+.table-without-borders {
+  border: 0; }
+  .table-without-borders td, .table-without-borders th {
+    border: 0; }
+
+.Oplata {
+  border: 0; }
+  .Oplata td, .Oplata th {
+    border: 0; }
+
+/*inplace*/
+table[align="center"] {
+  margin-left: auto;
+  margin-right: auto; }
+
+table[border="0"] {
+  border: 0; }
+  table[border="0"] td, table[border="0"] th {
+    border: 0; }

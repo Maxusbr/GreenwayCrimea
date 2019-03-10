@@ -1,0 +1,57 @@
+﻿
+<div ng-if="$ctrl.groupId == null || $ctrl.groupName == null" class="ng-cloak">
+    <div class="m-b-lg">
+        <div class="m-b">
+            Если вы являетесь администратором группы, публичной страницы или мероприятия ВКонтакте, вы можете принимать сообщения от ваших клиентов в магазине.
+        </div>
+        <p>
+            1) Создайте приложение для доступа к группе по API.<br/> <a href="https://vk.com/editapp?act=create" target="_blank">Создать приложение</a>
+            Тип: Веб-сайт. Адрес сайта и Базовый домен: ваш url адрес магазина "http://site.ru/".
+        </p>
+        <p>
+            2) Перейдите в Настройки созданного приложения и скопируйте "ID приложения" в магазин
+        </p>
+        <p>
+            3) Нажмите "Авторизоваться в ВКонтакте", выберите группу и нажмите "Подключить группу"
+        </p>
+    </div>
+
+    <div class="form-group row m-t">
+        <div class="col-xs-2 col-wl-2">
+            <div class="setting-label-wrap">
+                ID приложения
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <input type="text" class="form-control input-small" ng-model="$ctrl.clientId" />
+        </div>
+        <div class="col-xs-3">
+            <a href="" ng-click="$ctrl.authVk()">Авторизоваться в ВКонтакте</a>
+        </div>
+    </div>
+    
+    <div class="form-group row m-t" ng-if="$ctrl.groups != null && $ctrl.groups.length > 0">
+        <div class="col-xs-2 col-wl-2">
+            <div class="setting-label-wrap">
+                Выберите группу
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <select ng-model="$ctrl.selectedGroup" ng-options="item.Name for item in $ctrl.groups" class="form-control">
+            </select> 
+        </div>
+        <div class="col-xs-3">
+            <a href="" ng-click="$ctrl.authGroup()">Подключить группу</a>
+        </div>
+    </div>
+</div>
+
+<div ng-if="$ctrl.groupId != null && $ctrl.groupName != null" class="ng-cloak">
+    <div>
+        Подключена группа:
+        <a href="https://vk.me/club{{$ctrl.groupId}}" target="_blank" class="vk-group-name">
+            <i class="fa fa-vk"></i> {{$ctrl.groupName}}
+        </a>
+        <a href="" ng-click="$ctrl.deleteGroup()" class="m-l">Удалить привязку</a>
+    </div>
+</div>

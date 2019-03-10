@@ -1,0 +1,46 @@
+﻿@model AdvantShop.ViewModel.Common.MenuBlockViewModel
+
+
+@if (Model.Layout == "_ColumnsTwo")
+{
+    <div class="row rel big-z menu-block">
+        <div class="col-xs-3 col-p-v site-body-aside">
+            @Html.Action("MenuCatalog", "Catalog", new { InLayout = true })
+        </div>
+        <div class="col-xs-9 col-p-v site-body-main">
+            <div class="site-menu-row cs-g-1 js-menu-general-block-orientation">
+                <div class="row">
+                    <div class="col-xs">
+                        @Html.Action("MenuGeneral", "Common")
+                    </div>
+                    @if (SettingsDesign.SearchBlockLocation == SettingsDesign.eSearchBlockLocation.CatalogMenu)
+                    {
+                        <div class="col-xs-3 col-searc-block-menu">
+                            @Html.Action("SearchBlock", "Search")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (Model.Layout == "_ColumnsOne")
+{
+    <div class="row rel big-z menu-block">
+        <div class="col-xs-12 col-p-v site-body-aside">
+            <div class="site-menu-row cs-g-1 js-menu-general-block-orientation">
+                <div class="row">
+                    <div class="col-xs">
+                        @Html.Action("MenuGeneral", "Common")
+                    </div>
+                    @if (SettingsDesign.SearchBlockLocation == SettingsDesign.eSearchBlockLocation.CatalogMenu)
+                    {
+                        <div class="col-xs-3 col-searc-block-menu">
+                            @Html.Action("SearchBlock", "Search")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

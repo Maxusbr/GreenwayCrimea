@@ -1,0 +1,6 @@
+pagination,
+modal, 
+tabs,
+popover,
+typehead,
+progressbar

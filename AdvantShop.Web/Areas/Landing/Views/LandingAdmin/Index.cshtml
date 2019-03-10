@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h1 class="inline">Лендинги</h1>
+        <div class="pull-right">
+            <ui-modal-trigger data-controller="'ModalAddLandingCtrl'" controller-as="ctrl" template-url="../areas/admin/content/src/landing/modal/addLanding.html">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                    <span class="fa fa-plus"></span> @T("Создать лендинг")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-options="landings.gridOptions"
+                        grid-url="'landing/landingadmin/getlandings'"
+                        grid-inplace-url="'landing/landingadmin/inplace'">
+        </ui-grid-custom>
+    </div>
+</div>

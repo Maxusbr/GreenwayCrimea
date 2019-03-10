@@ -1,0 +1,106 @@
+﻿<form novalidate name="addEditCustomerFieldForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Новое поле" : "Редактирование поля"}}</h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.form = addEditCustomerFieldForm">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Название</span>
+            </label>
+            <div class="col-xs-9">
+                <input data-e2e="customerFieldName" type="text" class="form-control" ng-model="ctrl.name" required validation-input-text="Название" autofocus />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Тип
+            </label>
+            <div class="col-xs-9">
+                <select ng-model="ctrl.fieldType" ng-options="s.label for s in ctrl.fieldTypes track by s.value" class="form-control" data-e2e="customerFieldType"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Порядок сортировки</label>
+            <div class="col-xs-9">
+                <input type="text" data-e2e="customerFieldSortOrder" ng-model="ctrl.sortOrder" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Обязательное
+            </label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="customerFieldRequired">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.required" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Запрашивать у покупателя
+            </label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="customerFieldShowInClient">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.showInClient" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                Активно
+            </label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="customerFieldEnabled">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.enabled" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row" ng-if="ctrl.fieldType.value == 0">
+            <label class="col-xs-3 control-label">
+                Значения поля
+            </label>
+            <div class="col-xs-9">
+                <div class="sortable-row" ng-model="ctrl.fieldValues" as-sortable="ctrl.sortableFieldValues">
+                    <div class="row" ng-repeat="item in ctrl.fieldValues" as-sortable-item ng-cloak>
+                        <div class="col-xs-12">
+                            <div class="flex payment-row middle-xs between-xs">
+                                <div class="flex middle-xs col-xs">
+                                    <div class="as-sortable-item-handle" as-sortable-item-handle>
+                                        <icon-move />
+                                    </div>
+                                    <span ng-if="item.Id == null">
+                                        <input type="text" class="form-control" ng-model="item.Value" data-e2e="customerFieldValue"
+                                               ng-keypress="$event.keyCode === 13 && item.Value && ctrl.addFieldValue(item, item.Value)"
+                                               autofocus="ctrl.focusOnValue" />
+                                    </span>
+                                    <span class="payment-text" ng-if="item.Id != null">
+                                        <span class="payment-text-grey" ng-bind="item.Value"></span>
+                                    </span>
+                                </div>
+                                <div class="flex middle-xs col-fixed-size-sm" ng-if="item.Id == null">
+                                    <button class="btn btn-sm btn-success btn--margin-left" type="button" ng-click="ctrl.addFieldValue(item, item.Value)" data-e2e="customerFieldAddValue">
+                                        <span class="fa fa-plus"></span>&nbsp;&nbsp;Добавить
+                                    </button>
+                                </div>
+                                <div class="flex middle-xs col-fixed-size-ls" ng-if="item.Id != null">
+                                    <a href="" class="fa fa-times link-invert link-decoration-none" ng-click="ctrl.deleteFieldValue(item)" data-e2e="customerFieldDeleteValue"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-e2e="btnSave"
+                data-button-validation-success="ctrl.save()" data-button-validation ladda="ctrl.btnSleep"
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !addEditCustomerFieldForm.modified)"
+                ng-bind="ctrl.mode == 'add' ? 'Добавить' : 'Сохранить'"></button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

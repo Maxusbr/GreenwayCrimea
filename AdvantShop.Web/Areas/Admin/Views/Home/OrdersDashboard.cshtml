@@ -1,0 +1,22 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Home.OrdersDasboardViewModel
+
+<div class="ibox float-e-margins">
+    <div class="ibox-content orders-block">
+        <h3 class="orders-title">@T("Admin.Home.OrdersDasboard.Orders")</h3>
+        
+        <ul class="category-list orders-list">
+            @foreach (var status in Model.OrderStatuses)
+            {
+                <li class="orders-category">
+                    <div class="orders-category-inner">
+                        <i class="fa fa-circle orders-category-icon" style="color: #@(status.Color.IsNotEmpty() ? status.Color : "000");"></i>
+                        <a data-e2e="status-id-@status.OrderStatusId" class="orders-link" href="@(Url.AbsoluteActionUrl("Index", "Orders") + (status.OrderStatusId != 0 ? "#?grid={\"OrderStatusId\":" + status.OrderStatusId + "}" : ""))">
+                            @status.StatusName
+                        </a>
+                    </div>
+                    <span data-e2e="count-status-id-@status.OrderStatusId" span="orders-quantity">@status.OrdersCount</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

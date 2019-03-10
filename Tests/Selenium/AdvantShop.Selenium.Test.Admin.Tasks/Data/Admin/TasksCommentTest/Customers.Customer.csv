@@ -1,0 +1,4 @@
+CustomerID[GUID];Password;FirstName;LastName;Phone;RegistrationDateTime[DATE];Email;CustomerGroupId;CustomerRole;Rating;Enabled
+CFC2C33B-1E84-415E-8482-E98156341601;4QrcOUm6Wau+VuBX8g+IPg==;test;testov;874452;08.08.2016 13:48;qwe@qwe.qwe;1;50;0;true
+CFC2C33B-1E84-415E-8482-E98156341602;QWoA8qQijxFsnOuRYXzfCg==;Elena;El;+7 (495) 584-33-74;01.04.2015 15:00;elena@advantshop.net;1;50;0;true
+CFC2C33B-1E84-415E-8482-E98156341603;Qpf0SxOVUjUkWySXOZ16kw==;Admin;Ad;+7 495 800 200 00 ;06.11.2015 9:58;admin;1;100;5;true

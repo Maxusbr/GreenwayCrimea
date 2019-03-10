@@ -1,0 +1,14 @@
+﻿<div class="shipping-control-range" >
+    <div data-ng-if="shippingTemplate.shipping.UseDistance === true">
+        <span>{{ ::'Js.Order.Distance' | translate }}</span>
+        <div class="shipping-spinbox"
+             data-ng-init="shippingTemplate.shipping.Distance = shippingTemplate.shipping.Distance || 0"
+             data-spinbox
+             data-value="shippingTemplate.shipping.Distance"
+             data-proxy="shippingTemplate.shipping"
+             data-update-fn="shippingTemplate.changeSpinbox(value, proxy)"
+             data-step="1"
+             data-min="0"
+             data-max="shippingTemplate.shipping.MaxDistance"></div>
+    </div>
+</div>

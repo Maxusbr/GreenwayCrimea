@@ -1,0 +1,69 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ProductDetailsViewModel
+@using System.Linq;
+@{
+    var product = Model.Product;
+    var offer = Model.Offer;
+}
+
+<div id="moveblock" class="row plp-main-baner">
+    <div class="col-xs">
+        <div class="plp-promo-image">
+            <div class="pi-image" data-ng-init="product.discount=@product.Discount.Percent.ToString().Replace(",", "."); product.Price.PriceNumber=@Model.FinalPrice.ToString().Replace(",", "."); product.Price.PriceOldNumber=@(offer!= null ? offer.RoundedPrice.ToString().Replace(",", ".") : "0");">
+
+                <div class="plp-price">
+                    <span data-ng-bind-html="product.Price.PriceString"></span>
+                    <span data-ng-if="product.Price.PriceString == null">@Html.Raw(Model.PreparedPrice)</span>
+                    @if (Model.Gifts != null && Model.Gifts.Count > 0)
+                    {
+                        <div class="plp-sticker-gift">
+                            +<br />
+                            подарок
+                        </div>
+                    }
+                </div>
+                <img src="@(offer != null ? offer.Photo.ImageSrcBig() : product.ProductPhotos.OrderByDescending(item => item.Main).ThenBy(item => item.PhotoSortOrder).FirstOrDefault(item => item.Main).ImageSrcBig())"
+                     alt="@Html.GetPageH1()"
+                     class="plp-image-big"
+                     data-ng-src="{{product.picture.originalPath}}">
+            </div>
+        </div>
+
+        @if (offer != null)
+        {
+            <div class="row center-xs">
+                @if (product.Offers.Any(x => x.ColorID != null || x.SizeID != null))
+                {
+                    <div class="col-xs-6 text-align-center">
+                        @Html.Action("SizeColorPicker", "Product", new { product })
+                    </div>
+                }
+                @if (Model.HasCustomOptions)
+                {
+                    <div class="col-xs-6">
+                        @Html.Action("CustomOptions", "Product", new { productId = product.ProductId })
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="col-xs-3">
+        <div class="plp-callback-form cs-bg-1 cs-t-8"
+             data-buy-one-click-form="true"
+             data-page="@AdvantShop.Orders.BuyInOneclickPage.LandingPage"
+             data-order-type="@AdvantShop.Core.Services.Orders.OrderType.LandingPage"
+             data-offer-id="product.offerSelected.OfferId"
+             data-product-id="@product.ProductId"
+             data-amount="product.offerSelected.AmountBuy"
+             data-attributes-xml="product.customOptions.xml"
+             data-fields-options="::{IsShowBuyInOneClickComment: false}"
+             data-buy-one-click-valid="product.validate()"
+             data-auto-reset="::3000">
+        </div>
+        <div>
+            <div class="t-timer">
+                @Html.RenderModules("product_info", new { product, offer })
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@model AdvantShop.Module.Blog.Models.BlogItemViewModel
+
+<div class="mobile-container-fluid">
+    <div class="row news-item">
+        <div class="col-xs-12 col-sm-9 col-p-v">
+            <div class="page-title-row news-item-title-row">
+                <h1 class="news-item-title page-title">
+                    @Html.Raw(Model.BlogItem.Title)
+                    <a href="blog/rss" class="icon-rss-squared-before news-rss-link link-text-decoration-none" target="_blank" title="RSS"></a>
+                </h1>
+            </div>
+            @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+            @if (Model.ShowAddDate)
+            {
+                <div class="subheader">
+                    @Model.BlogItem.AddingDate.ToShortDateTime()
+                </div>
+            }
+            <div class="block-usr-txt">
+                @Html.Raw(Model.BlogItem.TextToPublication)
+            </div>
+            @Html.Action("SocialButtons", "Common")
+            <div>
+                @Html.Raw(Model.SbAfterText)
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3  col-p-v">
+            @Html.Partial("~/Modules/Blog/Views/Home/_BlogCategoryList.cshtml", Model.BlogCategoriesList)
+            @Html.Partial("~/Modules/Blog/Views/Home/BlogProducts.cshtml", Model.BlogProducts)
+            @Html.Raw(Model.SbRightBlock)
+        </div>
+    </div>
+</div>

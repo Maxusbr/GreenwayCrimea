@@ -1,0 +1,4 @@
+Id;FirstName;Phone;Email;LeadStatus;Comment;CreatedDate;OrderSourceId;Discount
+2;LeadToday;89342563546;TestLead@gmail.com;New;comment1;[TODAY];1;0
+3;LeadYesterday;89342563546;TestLead2@gmail.com;New;comment2;[YESTERDAY];1;0
+4;LeadMonth;89342563546;TestLead3@gmail.com;New;comment3;[YESTERDAY];1;0

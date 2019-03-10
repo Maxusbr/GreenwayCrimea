@@ -1,0 +1,6 @@
+﻿<div data-ng-class="{'cs-bg-4': autocompleterItem.isActive}"
+     data-ng-click="autocompleterItem.parentScope.itemClick($event, autocompleterItem)"
+     data-ng-mouseenter="autocompleterItem.parentScope.itemActive(autocompleterItem)"
+     data-ng-mouseleave="autocompleterItem.parentScope.itemDeactive(autocompleterItem)">
+    <div data-ng-include="autocompleterItem.itemTemplatePath || autocompleterItem.parentScope.templatePath"></div>
+</div>

@@ -1,0 +1,26 @@
+﻿.carousel-horizontal .carousel-nav-inside .carousel-main-next {
+    right: 0px;
+}
+
+.carousel-horizontal .carousel-nav-inside .carousel-main-prev {
+    left: 0px;
+}
+
+.gallery-logo-slider {
+    padding: 0 55px;
+}
+
+.carousel-horizontal .carousel-nav-prev {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+}
+
+.carousel-main-prev, .carousel-main-next {
+    font-size: 50px;
+}
+
+.carousel-dots.carousel-main-dots {
+    display: none;
+}

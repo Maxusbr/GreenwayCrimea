@@ -1,0 +1,85 @@
+﻿@using AdvantShop.Web.Admin.Models.Catalog
+@model AdvantShop.Web.Admin.Models.Catalog.CatalogLeftMenu
+<div data-catalog-left-menu on-init="@Model.NgCallbackOnInit">
+    <div class="clearfix">
+        <div class="pull-left header-alt">@T("Admin.Catalog.CatalogLeftMenu.Products")</div>
+        <div class="pull-right header-alt-icons">
+            <ui-modal-trigger data-controller="'ModalAddProductCtrl'" controller-as="ctrl" template-url="../areas/admin/content/src/_shared/modal/addProduct/addProduct.html">
+                <a href="" class="link-decoration-none fa fa-plus link-alt header-alt-icons-item" uib-popover="Добавить новый товар" popover-trigger="'mouseenter'" popover-placement="auto top" popover-append-to-body="true"></a>
+            </ui-modal-trigger>
+            <recalc-trigger uib-popover="Пересчет количества товаров" popover-trigger="'mouseenter'" popover-placement="auto right" popover-append-to-body="true"><span class="link-decoration-none fa fa-rotate-right link-alt header-alt-icons-item"></span></recalc-trigger>
+        </div>
+    </div>
+    <div class="aside-menu">
+        <a href="@Url.Action("Index", "Catalog", new { showMethod = ECatalogShowMethod.AllProducts })" class="link-invert link-decoration-none aside-menu-row @(Model.SelectedItem == "AllProducts" ? "selected" : "")">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    @T("Admin.Catalog.CatalogLeftMenu.ProductsCount")
+                </div>
+                <div class="aside-menu-count">
+                    <span class="aside-menu-count-inner" ng-bind="catalogLeftMenu.data.ProductsCount" ng-init="catalogLeftMenu.data.ProductsCount=@Model.ProductsCount;">
+                        @Model.ProductsCount
+                    </span>
+                </div>
+            </div>
+        </a>
+        <a href="@Url.Action("Index", "Catalog", new { showMethod = ECatalogShowMethod.OnlyWithoutCategories })" class="link-invert link-decoration-none aside-menu-row @(Model.SelectedItem == "OnlyWithoutCategories" ? "selected" : "")">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    @T("Admin.Catalog.CatalogLeftMenu.ProductsWithoutCategoriesCount")
+                </div>
+                <div class="aside-menu-count">
+                    <span class="aside-menu-count-inner" ng-bind="catalogLeftMenu.data.ProductsWithoutCategoriesCount" ng-init="catalogLeftMenu.data.ProductsWithoutCategoriesCount=@Model.ProductsWithoutCategoriesCount;">
+                        @Model.ProductsWithoutCategoriesCount
+                    </span>
+                </div>
+            </div>
+        </a>
+        <a href="@Url.Action("Index", "MainPageProducts", new { type = "best" })" class="link-invert link-decoration-none aside-menu-row @(Model.SelectedItem == "best" ? "selected" : "")">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    @T("Admin.Catalog.CatalogLeftMenu.BestProductsCount")
+                </div>
+                <div class="aside-menu-count">
+                    <span class="aside-menu-count-inner" ng-bind="catalogLeftMenu.data.BestProductsCount + '/' + catalogLeftMenu.data.BestProductsCountTotal" ng-init="catalogLeftMenu.data.BestProductsCount=@Model.BestProductsCount; catalogLeftMenu.data.BestProductsCountTotal = @Model.BestProductsCountTotal">
+                        @(Model.BestProductsCount)/@(Model.BestProductsCountTotal)
+                    </span>
+                </div>
+            </div>
+        </a>
+        <a href="@Url.Action("Index", "MainPageProducts", new { type = "new" })" class="link-invert link-decoration-none aside-menu-row @(Model.SelectedItem == "new" ? "selected" : "")">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    @T("Admin.Catalog.CatalogLeftMenu.NewProductsCount")
+                </div>
+                <div class="aside-menu-count">
+                    <span class="aside-menu-count-inner" ng-bind="catalogLeftMenu.data.NewProductsCount + '/' + catalogLeftMenu.data.NewProductsCountTotal" ng-init="catalogLeftMenu.data.NewProductsCount=@Model.NewProductsCount; catalogLeftMenu.data.NewProductsCountTotal = @Model.NewProductsCountTotal">
+                        @(Model.NewProductsCount)/@(Model.NewProductsCountTotal)
+                    </span>
+                </div>
+            </div>
+        </a>
+        <a href="@Url.Action("Index", "MainPageProducts", new { type = "sale" })" class="link-invert link-decoration-none aside-menu-row @(Model.SelectedItem == "sale" ? "selected" : "")">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    @T("Admin.Catalog.CatalogLeftMenu.SaleProductsCount")
+                </div>
+                <div class="aside-menu-count">
+                    <span class="aside-menu-count-inner" ng-bind="catalogLeftMenu.data.SaleProductsCount + '/' + catalogLeftMenu.data.SaleProductsCountTotal" ng-init="catalogLeftMenu.data.SaleProductsCount=@Model.SaleProductsCount; catalogLeftMenu.data.SaleProductsCountTotal = @Model.SaleProductsCountTotal">
+                        @(Model.SaleProductsCount)/@(Model.SaleProductsCountTotal)
+                    </span>
+                </div>
+            </div>
+        </a>
+        <a href="@Url.Action("Index", "ProductLists")" class="link-invert link-decoration-none aside-menu-row @(Model.SelectedItem == "productlists" ? "selected" : "")">
+            <div class="aside-menu-inner">
+                <div class="aside-menu-name">
+                    @T("Admin.ProductLists.Index.Title")
+                </div>
+                <div class="aside-menu-count">
+                    <span class="aside-menu-count-inner" ng-bind="catalogLeftMenu.data.ProductListsCount" ng-init="catalogLeftMenu.data.ProductListsCount=@Model.ProductListsCount">@Model.ProductListsCount</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

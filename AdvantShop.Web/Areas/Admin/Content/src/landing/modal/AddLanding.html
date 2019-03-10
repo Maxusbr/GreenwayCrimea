@@ -1,0 +1,41 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Создание лендинга</h2>
+</div>
+<div class="modal-body">
+    <div>
+        
+        <div class="form-group">
+            <div>Название лендинга</div> 
+            <input type="text" name="name" data-ng-model="ctrl.name" class="form-control" />
+        </div>
+                            
+        <div class="form-group">
+            <div>Тип лендинга</div>
+            <label><input type="radio" name="type" value="0" data-ng-model="ctrl.type" checked> Лендинг под продажу одного товара</label><br>
+            <label><input type="radio" name="type" value="1" data-ng-model="ctrl.type"> Лендинг под продажу нескольких товаров</label><br>
+            <label><input type="radio" name="type" value="2" data-ng-model="ctrl.type"> Универсальный лендинг</label>
+        </div>
+                            
+        <div data-ng-show="ctrl.type == 1" class="form-group select-product">
+            <div>Товар</div>
+            <button type="button" class="btn btn-default">Выбрать</button>
+            <input type="hidden" name="productIds" data-ng-model="ctrl.productIds" value="" />
+        </div>
+                            
+        <div class="form-group">
+            <div>Цель</div>
+            <label><input type="radio" name="goal" data-ng-model="ctrl.goal" value="0" checked> Получить контакные данные</label><br>
+            <label><input type="radio" name="goal" data-ng-model="ctrl.goal" value="1"> Получить сразу оплату</label>
+        </div>
+                            
+        <div style="display: none">
+            <input type="checkbox" name="enabled" data-ng-model="ctrl.enabled" checked />
+        </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.addLanding()">Создать лендинг</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

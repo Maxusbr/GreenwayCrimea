@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Install/Layout.cshtml";
+}
+<h1>
+    @Resource.Install_UserContols_FinalView_h1
+</h1>
+<div class="group">
+    <p>@Resource.Install_UserContols_FinalView_Succese</p>
+    <p>@Resource.Install_UserContols_FinalView_Continue</p>
+</div>
+<div class="step-btns">
+    <span class="btn-c">
+        @using (Html.BeginForm("IndexPost", "Install", FormMethod.Post))
+        {
+            <input type="submit" class="btn btn-next" value="@Resource.Installer_Finish" />
+        }
+    </span>
+</div>

@@ -1,0 +1,35 @@
+.head-b {
+    border-bottom: 1px solid #efa832;
+}
+
+.bottom-tr-r {
+    color: #fff;
+    background: #efa832;
+}
+
+.bottom-tr-l {
+    color: #fff;
+    background: #efa832;
+}
+
+.cover-content {
+    background-size: cover;
+    background: #fee207;
+    background-repeat: no-repeat;
+    background: -webkit-linear-gradient(top, #fee207 0%, #efa832 100%);
+    background: linear-gradient(to bottom, #fee207 0%, #efa832 100%);
+}
+
+.cover-top {
+    -ms-box-shadow: #efa832 5px 5px 0 0;
+    box-shadow: #efa832 5px 5px 0 0;
+}
+
+.cover-middle-left, .cover-middle-right {
+    -ms-box-shadow: #efa832 10px 10px 0 0;
+    box-shadow: #efa832 10px 10px 0 0;
+}
+
+.cover-bottom {
+    color: #fff;
+}

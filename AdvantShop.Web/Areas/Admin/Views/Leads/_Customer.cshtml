@@ -1,0 +1,116 @@
+﻿@using AdvantShop.Core.Services.IPTelephony
+@model AdvantShop.Web.Admin.Models.Leads.LeadModel
+
+<div class="ibox">
+    <div class="ibox-content block-additional-parameters-content">
+        <div class="relative">
+            <h3 class="m-b-md inline lead-customer-title">Контактные данные</h3>
+            @if (Model.Lead.CustomerId != null)
+            {
+                <div class="inline pull-right">
+                    <a href="@Url.Action("Edit", "Customers", new {id = Model.Lead.CustomerId})" class="edit link-decoration-none" target="_blank">Карточка клиента</a>
+                </div>
+            }
+        </div>
+
+        @Html.HiddenFor(x => x.Lead.CustomerId)
+        <div class="m-b-xs">
+            Фамилия:
+        </div>
+        @if (Model.Lead.CustomerId != null)
+        {
+            @Html.TextBoxFor(x => x.Lead.Customer.LastName, new {ng_model = "lead.lastName", @class = "form-control m-b-md"})
+        }
+        else
+        {
+            @Html.TextBoxFor(x => x.Lead.LastName, new {ng_model = "lead.lastName", @class = "form-control m-b-md"})
+        }
+
+        <div class="m-b-xs">
+            Имя:
+        </div>
+        @if (Model.Lead.CustomerId != null)
+        {
+            @Html.TextBoxFor(x => x.Lead.Customer.FirstName, new {ng_model = "lead.firstName", @class = "form-control m-b-md"})
+        }
+        else
+        {
+            @Html.TextBoxFor(x => x.Lead.FirstName, new {ng_model = "lead.firstName", @class = "form-control m-b-md"})
+        }
+
+        <div class="m-b-xs">
+            Отчество:
+        </div>
+        @if (Model.Lead.CustomerId != null)
+        {
+            @Html.TextBoxFor(x => x.Lead.Customer.Patronymic, new {ng_model = "lead.patronymic", @class = "form-control m-b-md"})
+        }
+        else
+        {
+            @Html.TextBoxFor(x => x.Lead.Patronymic, new {ng_model = "lead.patronymic", @class = "form-control m-b-md"})
+        }
+
+        @if (Model.VkUser != null)
+        {
+            <div class="m-b-md">
+                @{
+                    var vkLink = "https://vk.com/" + (!string.IsNullOrEmpty(Model.VkUser.ScreenName) ? Model.VkUser.ScreenName : "id" + Model.VkUser.Id);
+                }
+                <i class="fa fa-vk vk-customer-icon" style=""></i> <a href="@vkLink" target="_blank">@vkLink</a>
+            </div>
+        }
+
+        <div class="m-b-xs">
+            E-mail:
+        </div>
+        <div class="m-b-md">
+            @if (Model.Lead.CustomerId != null)
+            {
+                @Html.TextBoxFor(x => x.Lead.Customer.EMail, new {ng_model = "lead.email", @class = "form-control"})
+            }
+            else
+            {
+                @Html.TextBoxFor(x => x.Lead.Email, new {ng_model = "lead.email", @class = "form-control"})
+            }
+            <div ng-if="lead.email != null && lead.email.length > 0">
+                <ui-modal-trigger data-controller="'ModalSendLetterToCustomerCtrl'" controller-as="ctrl" size="lg"
+                                  template-url="../areas/admin/content/src/_shared/modal/sendLetterToCustomer/sendLetterToCustomer.html"
+                                  data-resolve="{params: {@(Model.Lead.CustomerId != null ? "customerId: '" + Model.Lead.CustomerId + "'," : "") email: lead.email, firstName: lead.firstName, lastName: lead.lastName, patronymic: lead.patronymic}}">
+                    <a href="" class="edit link-decoration-none">Отправить письмо</a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+
+        <div class="m-b-xs">
+            Телефон:
+        </div>
+        <div class="m-b-md">
+            @if (Model.Lead.CustomerId != null)
+            {
+                @Html.TextBoxFor(x => x.Lead.Customer.Phone, new {ng_model = "lead.phone", @class = "form-control m-b-xs"})
+            }
+            else
+            {
+                @Html.TextBoxFor(x => x.Lead.Phone, new {ng_model = "lead.phone", @class = "form-control m-b-xs"})
+            }
+            @if (Model.StandardPhone != null)
+            {
+                <div>
+                    <a href="tel:@Model.StandardPhone" class="edit link-decoration-none">Позвонить</a>
+                    @Html.Raw(IPTelephonyOperator.Current.RenderCallButton(Model.StandardPhone, ECallButtonType.Big))
+                    @if (Model.Lead.Customer != null)
+                    {
+                        foreach (var module in Model.SmsModules)
+                        {
+                            @module.GetSendSmsButton(Model.Lead.Customer.Id, Model.StandardPhone.Value)
+                        }
+                    }
+                </div>
+            }
+        </div>
+        
+        <div class="">
+            @Html.Partial("_CustomerFields", Model.CustomerFields)
+        </div>
+    </div>
+</div>

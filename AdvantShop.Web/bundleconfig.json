@@ -1,0 +1,32 @@
+[
+  {
+    "outputFileName": "LandingBusinesCopy.min.html",
+    "inputFiles": [
+      "LandingBusinesCopy.html"
+    ]
+  },
+  {
+    "outputFileName": "styles/busines2.min.css",
+    "inputFiles": [
+      "styles/busines2.css"
+    ]
+  },
+  {
+    "outputFileName": "LandingBusines.min.html",
+    "inputFiles": [
+      "LandingBusines.html"
+    ]
+  },
+  {
+    "outputFileName": "vendors/angular/angular.min.js",
+    "inputFiles": [
+      "vendors/angular/angular.js"
+    ]
+  },
+  {
+    "outputFileName": "vendors/jquery/jquery-2.1.4.min.js",
+    "inputFiles": [
+      "vendors/jquery/jquery-2.1.4.js"
+    ]
+  }
+]

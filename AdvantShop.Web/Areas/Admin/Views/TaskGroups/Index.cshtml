@@ -1,0 +1,32 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.TaskGroups.TaskGroupsListViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Tasks/_TasksLayout.cshtml";
+}
+
+
+<div class="ibox">
+    <div class="ibox-content">
+        <div class="row">
+            <h1 class="col-sm-6">@T("Admin.TaskGroups.Index.Title")</h1>
+            <div class="col-sm-6 text-right">
+                <ui-modal-trigger data-controller="'ModalAddEditTaskGroupCtrl'" controller-as="ctrl" data-on-close="taskgroups.grid.fetchData()"
+                                  template-url="../areas/admin/content/src/taskgroups/modal/addEditTaskGroup.html">
+                    <button class="btn btn-sm btn-success" type="button">
+                        <span class="fa fa-plus"></span>
+                        @T("Admin.AddTaskGroup")
+                    </button>
+                </ui-modal-trigger>
+            </div>
+        </div>
+
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="taskgroups.gridOnInit(grid)"
+                        grid-options="taskgroups.gridOptions"
+                        grid-url="'taskgroups/gettaskgroups'" 
+                        grid-inplace-url="'taskgroups/inplacetaskgroup'"
+                        grid-extend-ctrl="taskgroups">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsUsers.gridDepartments.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

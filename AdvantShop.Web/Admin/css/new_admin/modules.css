@@ -1,0 +1,178 @@
+.modules-list {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+    .modules-list .modules-item-item {
+        display: inline-block;
+        margin: 0 0 50px 10px;
+        vertical-align: top;
+    }
+
+        .modules-list .modules-item-item:nth-child(2n+1) {
+            margin: 0 0 50px;
+        }
+
+.modules-item-pic-cell {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    overflow: hidden;
+    vertical-align: top;
+    width: 160px;
+}
+
+.modules-list .modules-item-pic-wrap {
+    /* border: 1px solid #F4F4F4; */
+    /*border: 1px solid gray;*/
+    /* border-radius: 15px 15px 15px 15px; */
+    /* box-shadow: 0 3px 3px 0 #F4F4F4; */
+    /*padding: 10px;*/
+    position: relative;
+}
+
+.modules-list .modules-item-pic {
+    border-radius: 3px 3px 3px 3px;
+    display: block;
+    position: relative;
+}
+
+.modules-item-pic-lnk {
+    display: block;
+    position: relative;
+}
+
+.inset-shadow:after {
+    /* border-radius: 3px 3px 3px 3px; */
+    bottom: 0;
+    /* box-shadow: 0 2px 2px 0 #5F5F5F inset; */
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.modules-list .modules-item-info {
+    display: inline-block;
+    vertical-align: top;
+    width: 260px;
+    position: relative;
+}
+
+.modules-list .modules-item-title {
+    color: #032B56;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-right:32px;
+    min-height:34px;
+}
+
+.modules-list .modules-item-descr {
+    color: #3F3F3F;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 5px;
+    min-height: 80px;
+}
+
+.modules-list .modules-item-module-price {
+    color: #00293C;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.modules-list .modules-item-module-more {
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+    .modules-list .modules-item-module-more:hover {
+        text-decoration: none;
+    }
+
+.modules-item-title-lnk {
+    text-decoration: none;
+}
+
+    .modules-item-title-lnk:hover {
+        text-decoration: underline;
+    }
+
+.modules-item-checkactive {
+    color: #3F3F3F; 
+    font-size: 14px; 
+    font-weight: normal; 
+    margin-top: 10px;
+}
+
+.modules-item-more {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.modules-item-more-lnk {
+    font-size: 14px;
+}
+
+.module-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.modules-item-item:hover .module-delete {
+    display: block;
+} 
+
+.modules-paging .page-number a, .modules-paging .page-number span {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    text-decoration: none;
+    color: #475761;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 6px 11px;
+    behavior: url("css/fix/PIE.htc");
+}
+
+.modules-paging .page-number a {
+    color: #475761;
+    box-shadow: 0 0 0 1px #dcdcdc;
+    background: #ffffff; /* Old browsers */ /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f4f4f4)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#f4f4f4 100%); /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+    background: -webkit-linear-gradient(top, #ffffff 0%, #f4f4f4 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#f4f4f4 100%); /* W3C */
+    -pie-background: linear-gradient(#ffffff,#f4f4f4); /* IE6-9 */
+}
+
+    .modules-paging .page-number a:hover {
+        color: #475761;
+        background: #f4f4f4; /* Old browsers */ /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #f4f4f4 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+        background: -webkit-linear-gradient(top, #f4f4f4 0%, #ffffff 100%);
+        background: linear-gradient(to bottom, #f4f4f4 0%,#ffffff 100%); /* W3C */
+        -pie-background: linear-gradient(#f4f4f4,#ffffff); /* IE6-9 */
+        text-decoration: none;
+    }
+
+.module-search {
+    
+}
+    .module-search .module-search-inp {
+        width: 190px;
+        text-indent: 5px;
+        height: 20px;
+    }
+
+    .module-search .module-search-b {
+        padding: 15px 0;
+    }
+

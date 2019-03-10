@@ -1,0 +1,25 @@
+.error-message {
+	background: #f7e7e6;
+	color: #b1140c;
+	font-style: italic;
+	font-family: Georgia;
+	font-size: 11px;
+	position: relative;
+	display: none;
+}
+.error-message .error-content {
+    padding: 4px;
+}
+.valid-success {
+	background: transparent url('../images/validator/success.png') no-repeat scroll center center;
+}
+.valid-error {
+	background: transparent url('../images/validator/error.png') no-repeat scroll center center;
+}
+.error-icon {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+}
+.valid-required, .valid-money, .valid-number, .valid-email, .valid-compare, .valid-login {
+}

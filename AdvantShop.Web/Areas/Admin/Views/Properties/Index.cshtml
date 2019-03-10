@@ -1,0 +1,67 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Properties.PropertiesViewModel
+
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-wl-2">
+        <div class="clearfix">
+            <div class="pull-left header-alt">@T("Admin.Properties.Index.PropertyGroups")</div>
+            <div class="pull-right header-alt-icons">
+                <ui-modal-trigger data-controller="'ModalAddGroupCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/properties/modal/addGroup/addGroup.html"
+                                  data-on-close="properties.updatePropertyGroups(result)">
+                    <a href="" class="fa fa-plus link-alt header-alt-icons-item link-decoration-none"></a>
+                </ui-modal-trigger>
+            </div>
+        </div>
+        <property-groups group-id="@Model.GroupId" on-init="properties.initPropertyGroups(propertyGroups)"></property-groups>
+        <div>
+            <ui-modal-trigger data-controller="'ModalAddGroupCtrl'" controller-as="ctrl"
+                              template-url="../areas/admin/content/src/properties/modal/addGroup/addGroup.html"
+                              data-on-close="properties.updatePropertyGroups(result)">
+                <button class="btn btn-sm btn-success" type="button">
+                    <span class="fa fa-plus"></span> Добавить группу
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-wl-10">
+        <div class="ibox">
+            <div class="ibox-content">
+                <div class="sticky-page-name" sticky sticky-top="0">
+                    <div class="page-name-block sticky-page-name-inner">
+                        <div class="page-name-block-item-main">
+                            <h1 class="page-name-block-text sticky-page-name-text inline bottom-cell m-r-xs">
+                                @Html.Raw(Model.GroupName)
+                            </h1>
+                            <a href="@Url.Action("Academy", "Service", new { id = 34 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline">
+                                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                Видеоурок о Свойствах и фильтрах
+                            </a>
+                        </div>
+                        <div class="page-name-block-item-additional">
+                            <ui-modal-trigger data-controller="'ModalAddEditPropertyCtrl'" controller-as="ctrl"
+                                              template-url="../areas/admin/content/src/properties/modal/addEditProperty/addEditProperty.html"
+                                              data-resolve="{'groupId': @Model.GroupId}"
+                                              data-on-close="properties.grid.fetchData()">
+                                <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                                    <span class="fa fa-plus"></span> @T("Admin.Properties.AddProperty")
+                                </button>
+                            </ui-modal-trigger>
+                        </div>
+                    </div>
+                </div>
+
+                <ui-grid-custom grid-unique-id="grid"
+                                grid-row-identificator="'PropertyId'"
+                                grid-options="properties.gridOptions"
+                                grid-on-init="properties.gridOnInit(grid)"
+                                grid-url="'properties/getProperties'"
+                                @Html.Raw(Model.GroupId != 0 ? "grid-params=\"{groupId: '" + Model.GroupId + "'}\"" : "")
+                                grid-inplace-url="'properties/inplaceProperty'">
+                    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="properties.grid.gridOptions.TotalString">
+                    </ui-grid-custom-footer>
+                </ui-grid-custom>
+
+            </div>
+        </div>
+    </div>
+</div>

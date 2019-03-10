@@ -1,0 +1,72 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Добавление формата писем" : "Редактирование формата писем"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">
+                    <span class="text-required">Название</span>
+                </label>
+                <div class="col-xs-10">
+                    <input data-e2e="FormatNameMailFormat" type="text" class="form-control" ng-model="ctrl.FormatName" required validation-input-text="Название" autofocus />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">Активен</label>
+                <div class="col-xs-10">
+                    <label class="adv-checkbox-label">
+                        <input data-e2e="EnableMailFormat" type="checkbox" ng-model="ctrl.Enable" class="adv-checkbox-input" />
+                        <span class="adv-checkbox-emul"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label text-required">Тип письма</label>
+                <div class="col-xs-10">
+                    <select data-e2e="MailFormatTypeIdMailFormat" ng-options="type.MailFormatTypeId as type.TypeName for type in ctrl.MailFormatTypes" ng-model="ctrl.MailFormatTypeId" class="form-control" ng-disabled="ctrl.mode == 'edit'" ng-change="ctrl.getTypeDescription()" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">
+                    <span class="text-required">Тема письма</span>
+                </label>
+                <div class="col-xs-10">
+                    <input data-e2e="FormatSubjectMailFormat" type="text" ng-model="ctrl.FormatSubject" class="form-control" required validation-input-text="Тема письма" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">
+                    <span class="text-required">Текст письма</span>
+                </label>
+                <div class="col-xs-10">
+                    <textarea data-e2e="FormatTextMailFormat" ng-model="ctrl.FormatText" class="form-control" ckeditor="{height: 350}" required validation-input-text="Текст письма"></textarea>
+                    <div class="m-t m-b-xs" ng-bind="ctrl.Description"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">Сортировка</label>
+                <div class="col-xs-10">
+                    <input data-e2e="SortOrderMailFormat" type="text" ng-model="ctrl.SortOrder" class="form-control" required validation-input-text="Сортировка" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-e2e="saveMailFormat" class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>{{ctrl.mode == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button data-e2e="cancelMailFormat" class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

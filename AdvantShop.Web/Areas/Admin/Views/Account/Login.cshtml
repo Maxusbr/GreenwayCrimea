@@ -1,0 +1,39 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Account.AccountLoginViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Account/_AccountLayout.cshtml";
+}
+<h3 class="auth-title">Вход в администрирование</h3>
+<form class="admin-signin m-t" role="form" name="form" action="login" method="POST" novalidate>
+    <div class="relative">
+        <input ng-attr-type="{{error.inputTypeLogin}}" name="txtLogin" id="txtLogin" class="admin-signin-field auth-field" placeholder="Логин" ng-model="error.login" required autofocus/>
+
+        <a href="" class="showhidepass" ng-click="error.inputTypeLogin = error.inputTypeLogin == 'password' ? 'text' : 'password'">
+            <span class="fa" ng-class="(error.inputTypeLogin == 'password') ? 'fa-eye' : 'fa-eye-slash'"></span>
+        </a>
+    </div>
+
+    <div class="relative">
+        <input ng-attr-type="{{error.inputTypePassword}}" name="txtPassword" id="txtPassword" class="admin-signin-field auth-field" placeholder="Пароль" ng-model="error.password" required autocomplete="off"/>
+
+        <a href="" class="showhidepass" ng-click="error.inputTypePassword = error.inputTypePassword == 'password' ? 'text' : 'password'">
+            <span class="fa" ng-class="(error.inputTypePassword == 'password') ? 'fa-eye' : 'fa-eye-slash'"></span>
+        </a>
+    </div>
+    
+
+    @if (Model.ShowCaptcha)
+    {
+        <div>
+            @Html.Action("Captcha", "Common", new {ngModel = "captcha", area = ""});
+        </div>
+    }
+    <div class="row middle-xs">
+        <div class="col-xs-6">
+            <button type="submit" class="btn-auth" ng-disabled="form.$invalid">Войти</button>
+        </div>
+        <div class="col-xs-6">
+            <a href="@Url.Action("ForgotPassword", "Account")" class="forget-link">Забыли пароль?</a>
+        </div>
+    </div>
+    <input type="hidden" name="from" value="@Model.From" />
+</form>

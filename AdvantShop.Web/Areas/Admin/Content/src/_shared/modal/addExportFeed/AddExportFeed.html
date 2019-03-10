@@ -1,0 +1,39 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Новая выгрузка</h2>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div class="m-b">
+                <span class="text-required">Название:</span>
+            </div>
+            <div>
+                <input type="text" placeholder="" ng-model="ctrl.name" class="form-control" data-e2e="ExportAddName" required validation-input-text="Название" autofocus />
+            </div>
+            <br />
+
+            <div class="m-b">
+                <span class="text-required">Тип:</span>
+            </div>
+            <div>
+                <select ng-model="ctrl.type" class="form-control" required validation-input-text="Тип" data-e2e="ExportAddType" ng-options="key as value for (key , value) in ctrl.exportfeedTypes">                   
+                </select>
+            </div>
+            <br />
+
+            <div class="m-b">
+                Описание:
+            </div>
+            <div>
+                <textarea placeholder="" ng-model="ctrl.description" class="form-control" data-e2e="ExportAddDesc" />
+            </div>
+
+            <span ng-model="ctrl.error" ng-if="ctrl.error!=''"></span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.add()" data-button-validation>Ок</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

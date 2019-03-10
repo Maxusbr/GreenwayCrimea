@@ -1,0 +1,53 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.ProductSets.Domain
+@model AdvantShop.Module.ProductSets.Models.AdminProductTabModel
+
+<div class="product-setting">
+    <div id="productTabs">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="inline product-setting-title content-header">
+                        Комплекты товаров
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="form-group middle-xs row">
+                <div class="col-xs-2">
+                    <div class="setting-label-wrap">
+                        <label for="discounts">Скидка на комплект</label>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-wl-2 relative">
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.ProductSetDiscount, new { @class = "form-control", ng_model = "product.ProductSetDiscount" })
+                        <div class="input-group-addon">%</div>
+                    </div>
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Скидка на комплект">
+                        <p>Скидка в процентах на товары в комплекте при покупке полного комплекта.</p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="form-group row">
+                <div class="col-xs-12" data-oc-lazy-load="['@UrlService.GetUrl("Modules/ProductSets/scripts/adminProductTab/components/adminProductSets.js")']">
+                    <admin-product-sets data-product-id="@Model.ProductId" data-title="@(!string.IsNullOrEmpty(ProductSetsSettings.Title) ? Html.AttributeEncode(ProductSetsSettings.Title) : "Товары в наборе")">
+                    </admin-product-sets>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <div class="adv-panel-info">
+                        <a href="http://www.advantshop.net/help/pages/module-kit-products" target="_blank">Инструкция. Модуль "Комплекты товаров"</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

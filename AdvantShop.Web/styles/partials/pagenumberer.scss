@@ -1,0 +1,41 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+.pagenumberer {
+    font-size: $font-size-xmedium;
+    margin-bottom: rem-calc(30px);
+
+    &.center {
+        text-align: center;
+    }
+}
+
+
+
+.pagenumberer-item {
+    padding: rem-calc(10px) rem-calc(15px);
+    line-height: 1;
+    border: 1px solid transparent;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pagenumberer-selected {
+    border-color: #e2e3e4;
+    -moz-border-radius: $border-radius-base;
+    -webkit-border-radius: $border-radius-base;
+    border-radius: $border-radius-base;
+}
+
+.pagenumberer-next,
+.pagenumberer-prev {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.pagenumberer-next-text,
+.pagenumberer-prev-text {
+    display: none;
+}

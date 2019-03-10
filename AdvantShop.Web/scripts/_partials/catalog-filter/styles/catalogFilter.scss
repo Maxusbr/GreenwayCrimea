@@ -1,0 +1,108 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss", "../../../../styles/functions/_icons.scss";
+
+.catalog-filter-block {
+    &:first-child .catalog-filter-block-header {
+        border-top-width: 0;
+    }
+}
+
+.catalog-filter-content {
+    border-radius: $border-radius-base;
+    border-width: rem-calc(1px);
+    border-style: solid;
+}
+
+.catalog-filter-block-header, .catalog-filter-block-content, .catalog-filter-footer {
+    border-width: rem-calc(1px) 0 0 0;
+    border-style: solid;
+}
+
+.catalog-filter-question-description{
+	display: inline-block;
+    vertical-align: middle;
+}
+
+.catalog-filter-block-content, .catalog-filter-footer {
+    padding: $padding-base;
+}
+
+.catalog-filter-block-header {
+    cursor: pointer;
+    position: relative;
+    padding: $padding-base rem-calc(20px) $padding-base $padding-base;
+
+
+    &:after {
+        @include icon-base();
+        font-size: $font-size-small;
+        content: "\e802";
+        position: absolute;
+        right: rem-calc(7px);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &.menu-dropdown-accordion-item-active:after {
+        content: "\e800";
+    }
+}
+
+.catalog-filter-block-header-open:after{
+        content: "\e800";
+}
+
+.catalog-filter-block-title {
+    font-size: $font-size-normal;
+}
+
+.catalog-filter-block-subtitle {
+    font-size: $font-size-small;
+    color: #737373;
+}
+
+.catalog-filter-block-content-checkbox {
+    margin-left: rem-calc(15px);
+}
+
+.catalog-filter-popover-button {
+    text-align: right;
+    margin-top: $vertical-interval-xsmall;
+}
+
+.catalog-filter-row {
+    position: relative;
+}
+
+.catalog-filter-popover-text {
+    white-space: nowrap;
+}
+.filter-content {
+    display: none;
+}
+#title-filter {
+    position: absolute;
+    left: -1000px;
+    opacity: 0;
+}
+#title-filter:checked ~ .filter-content {
+    display: block;
+}
+#title-filter:checked ~ .tab-filter {
+    border-bottom: 0;
+}
+.tab-filter {
+    display: block;
+    border-bottom: 1px solid;
+    padding-left: 17.333px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.filter-content .catalog-filter-header.h3 {
+    display: none;
+}
+.filter-content .popover {
+    display: none;
+}
+.filter-content .catalog-filter-content {
+    border-radius: 0;
+}

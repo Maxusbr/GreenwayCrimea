@@ -1,0 +1,44 @@
+* {outline:none}
+
+.academy-menu-row {
+    margin-left: 5px;
+    width: 100%;
+    padding: 6px 5px 8px 15px;
+    font-size: 12px;
+    display: block;
+    border-radius: 3px;
+    border-bottom: 1px transparent solid;
+}
+
+.academy-success {
+    width: 100%;
+    padding: 6px 5px 8px 5px;
+    font-size: 12px;
+    display: block;
+    color: #949494;
+}
+
+.academy-menu-row:hover  , .academy-menu-row-active{
+    border-bottom-color: #fff;
+    background-color: #dbdcde;
+}
+
+.aside-menu-name {
+	color:#000;
+}
+
+.academy-title {
+    padding:0;
+    font-size: 15px;
+	font-family: 'OpenSans-bold';
+    margin-bottom: 7px;
+}
+
+.btn-group {
+	margin: 5px 0 10px;
+}
+
+.academy-content {
+	margin:30px 0 0 0;
+	line-height:17px;
+}

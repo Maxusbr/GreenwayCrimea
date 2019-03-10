@@ -1,0 +1,174 @@
+﻿@model AdvantShop.ViewModel.PaymentReceipt.SberbankViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd XHTML 1.0 transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+    <link href="/styles/views/sberbank.css" rel="stylesheet" type="text/css" />
+    <link href="/userfiles/extra.css" rel="stylesheet" type="text/css" />
+    <title>@T("PaymentReceipt.Sberbank.Title")</title>
+</head>
+<script type="text/javascript">
+    function position_this_window() {
+        var x = (screen.availWidth - 700) / 2;
+        window.resizeTo(750, 550);
+        window.moveTo(Math.floor(x), 50);
+    }
+</script>
+<body onload="position_this_window();window.print();">
+    <div align="center">
+        <table width="700" border="1" style="border: #000000 1px solid; text-align: left;
+        font-weight: bold;" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 220px; text-align: center; vertical-align: top;">
+                    Платеж
+                </td>
+                <td>
+                    <table border="0" cellpadding="4">
+                        <tr>
+                            <td colspan="2">
+                                Получатель: @Model.CompanyName
+                            </td>
+                        </tr>
+                        <tr>
+                            @if (!string.IsNullOrEmpty(Model.Kpp))
+                            {
+                                <td>
+                                    КПП: @Model.Kpp
+                                </td>
+                            }
+                            <td @Html.Raw(string.IsNullOrEmpty(Model.Kpp) ? "colspan=\"2\"" : "")>
+                                ИНН: @Model.Inn
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                P/сч.: @Model.TransactAccount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                в: @Model.BankName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                БИК: @Model.Bik
+                            </td>
+                            <td>
+                                К/сч.: @Model.CorrespondentAccount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Платеж: @Model.PaymentDescription
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: left">
+                                Плательщик: @Model.Payer
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Адрес плательщика: @Model.PayerAddress
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                ИНН плательщика: @Model.PayerInn
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Сумма: @Model.WholeSumPrice руб. @Model.FractSumPrice коп.&nbsp;&nbsp; Сумма оплаты услуг банка:______ руб. __ коп.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Подпись:_________________ Дата: "__"__________ @(DateTime.Now.Year)г.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 220px; text-align: center; vertical-align: top;">
+                    Квитанция
+                </td>
+                <td>
+                    <table border="0" cellpadding="4">
+                        <tr>
+                            <td colspan="2">
+                                Получатель: @Model.CompanyName
+                            </td>
+                        </tr>
+                        <tr>
+                            @if (!string.IsNullOrEmpty(Model.Kpp))
+                            {
+                                <td>
+                                    КПП: @Model.Kpp
+                                </td>
+                            }
+                            <td @Html.Raw(string.IsNullOrEmpty(Model.Kpp) ? "colspan=\"2\"" : "")>
+                                ИНН: @Model.Inn
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                P/сч.: @Model.TransactAccount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                в: @Model.BankName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                БИК: @Model.Bik
+                            </td>
+                            <td>
+                                К/сч.: @Model.CorrespondentAccount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Платеж: @Model.PaymentDescription
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: left">
+                                Плательщик: @Model.Payer
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Адрес плательщика: @Model.PayerAddress
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                ИНН плательщика: @Model.PayerInn
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Сумма: @Model.WholeSumPrice руб. @Model.FractSumPrice коп.&nbsp;&nbsp; Сумма оплаты услуг банка:______ руб. __ коп.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Подпись:_________________ Дата: "__"__________@(DateTime.Now.Year)г.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

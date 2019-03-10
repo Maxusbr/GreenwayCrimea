@@ -1,0 +1,110 @@
+﻿<div class="ibox m-b-lg">
+    <div class="ibox-content">
+        <h1 class="page-name-block-text m-b-sm">События</h1>
+        <div class="relative">
+            <div class="add-event-dropdown">
+                <button class="btn btn-default dropdown-toggle flex around-xs middle-xs" type="button">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="add-even-btn-wrap">
+                <a class="btn btn-sm btn-success" ng-click="$ctrl.addLeadEvent()" data-e2e="LeadEventAdd">Добавить событие</a>
+            </div>
+            <div class="input-add-event-wrap inline">
+                <input class="form-control input-add-event" type="text" value="" ng-model="$ctrl.message" ng-keyup="$ctrl.addEventKeydown($event)" data-e2e="LeadEvent" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ibox m-b-lg" ng-repeat="group in $ctrl.groups track by $index">
+    <h4 class="m-b">{{group.Title}}</h4>
+
+    <div class="ibox-content" ng-repeat="event in group.Events track by $index">
+        <div class="row">
+            <div class="lead-time lead-time flex-grow-n col-fixed-size-sm" title="{{event.CreatedDate | date:'short'}}">
+                <div class="flex between-xs">
+                    <div>{{event.CreatedDate | date:'HH:mm'}}</div>
+                    <span><i class="fa fa-{{$ctrl.getIcon(event.EventType)}}" aria-hidden="true"></i></span>
+                </div>
+                <div class="italic"><span am-time-ago="event.CreatedDate"></span></div>
+            </div>
+
+            <div class="flex-grow flex-basis-n flex-width-n">
+                <div class="p-l-sm row">
+                    <div ng-if="event.EventType == 'vk'" class="vk-lead-photo">
+                        <img ng-src="{{event.VkData.Photo100}}" class="vk-message-photo-img"/>
+                    </div>
+                    <div class="col-xs">
+                        <div class="bold" ng-if="event.Title != null" ng-bind-html="event.Title" data-e2e="LeadEventTitle">
+                        </div>
+
+                        <div ng-if="event.Message != null">
+                            <span ng-if="!(event.EventType == 'task' && event.TaskId != null)" ng-bind-html="event.Message" data-e2e="LeadEventType">
+                            </span>
+                        </div>
+
+                        <div ng-if="event.EventType == 'task' && event.TaskId != null" class="m-b-xs">
+                            <ui-modal-trigger controller="'ModalEditTaskCtrl'" controller-as="ctrl" on-close="$ctrl.getLeadEvents()" size="lg" backdrop="static"
+                                              template-url="../areas/admin/content/src/tasks/modal/editTask/editTask.html" resolve="{'id': event.TaskId}" modal-id="{{event.TaskId}}">
+                                <a href="">{{event.Message}}</a>
+                            </ui-modal-trigger>
+                        </div>
+
+                        <div ng-if="event.EmailId != null">
+                            <ui-modal-trigger controller="'ModalShowEmailCtrl'" controller-as="ctrl" size="lg" on-close="$ctrl.getLeadEvents()"
+                                              resolve="{ params: {customerId: $ctrl.customerId, id: event.EmailId, folder: event.EmailFolder}}" template-url="../areas/admin/content/src/lead/components/leadEvents/modals/showEmail/showEmail.html">
+                                <a href="">Посмотреть</a>
+                            </ui-modal-trigger>
+                        </div>
+
+                        <div ng-if="event.EmailData != null">
+                            <ui-modal-trigger controller="'ModalShowEmailCtrl'" controller-as="ctrl" size="lg" on-close="$ctrl.getLeadEvents()"
+                                              resolve="{ params: {customerId: $ctrl.customerId, emailData: event.EmailData}}" template-url="../areas/admin/content/src/lead/components/leadEvents/modals/showEmail/showEmail.html">
+                                <a href="">Посмотреть</a>
+                            </ui-modal-trigger>
+                        </div>
+
+                        <div ng-if="event.EventType == 'call'" class="m-t-sm">
+                            <div ng-if="event.CallComent != null">
+                                <div class="m-b-sm">
+                                    {{event.CallComent.Text}}
+                                </div>
+                                <ui-modal-trigger controller="'ModalAddEditCallComentCtrl'" controller-as="ctrl" backdrop="static"
+                                                  resolve="{'id': event.CallComent.Id, 'objId': event.CallComent.ObjId}"
+                                                  on-close="$ctrl.setComment(event, result)"
+                                                  template-url="../areas/admin/content/src/lead/components/leadEvents/modals/addEditCallComent/addEditCallComent.html">
+                                    <a href="">Изменить комментарий</a>
+                                </ui-modal-trigger>
+                            </div>
+                            <div ng-if="event.CallComent == null">
+                                <ui-modal-trigger controller="'ModalAddEditCallComentCtrl'" controller-as="ctrl" backdrop="static"
+                                                  resolve="{'objId': event.Id}"
+                                                  on-close="$ctrl.setComment(event, result)"
+                                                  template-url="../areas/admin/content/src/lead/components/leadEvents/modals/addEditCallComent/addEditCallComent.html">
+                                    <a href="">Добавить комментарий</a>
+                                </ui-modal-trigger>
+                            </div>
+                        </div>
+
+                        <div ng-if="event.VkData != null && event.VkData.Type == 'Received'" class="m-t-xs">
+                            <a href="" ng-click="event.showVkAnswer[$index]=true" ng-if="event.showVkAnswer[$index]!=true">Ответить</a>
+                            <div class="m-t" ng-if="event.showVkAnswer[$index]==true">
+                                <div class="m-b">
+                                    <textarea ng-model="event.vkAnswerText" class="form-control" rows="4"></textarea>
+                                </div>
+                                <a href="" class="btn btn-action btn-sm" ng-click="$ctrl.sendVkAnswer(event, $index)">Отправить</a>
+                                <a href="" class="btn btn-default btn-sm" ng-click="event.showVkAnswer[$index]=false">Отмена</a>
+                            </div>
+                        </div>
+
+                        <div ng-if="event.SubMessage != null" bind-html-compile="event.SubMessage" class="m-t-xs">
+                        </div>
+                        <a href="" class="link-decoration-none" ng-if="event.CreatedBy != null">{{event.CreatedBy}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

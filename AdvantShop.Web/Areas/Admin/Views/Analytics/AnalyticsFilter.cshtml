@@ -1,0 +1,102 @@
+﻿@model AdvantShop.Web.Admin.Models.Analytics.AnalyticsFilterModel
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                Аналитика
+            </h1>
+            <span>Статистика по заказам, товарам и покупателям</span>
+        </div>
+        <div class="page-name-block-item-additional">
+            
+        </div>
+    </div>
+</div>
+<div class="ibox">
+    <div class="ibox-content">
+
+        @if (Model.Type == "abcxyz")
+        {
+            <div class="m-b-lg" style="font-size: 14px">
+                Товары в группе <span class="bold">@Model.Group.ToUpper()</span> с <span class="bold">@Model.From</span> по <span class="bold">@Model.To</span>
+                <div class="ng-cloak" ng-init="analyticsFilter.group='@Model.Group.ToLower()'">
+
+                    <div ng-if="analyticsFilter.group=='ax'">
+                        <div>Поставки = ритмично</div>
+                        <div>Поставщики = производители</div>
+                        <div>Контроль = ежедневно</div>
+                    </div>
+
+                    <div ng-if="analyticsFilter.group=='ay'">
+                        <div>Поставки = умерен. партиями</div>
+                        <div>Поставщики = производители</div>
+                        <div>Контроль = ежедневно</div>
+                    </div>
+
+                    <div ng-if="analyticsFilter.group=='az'">
+                        <div>Поставки = миним. партиями</div>
+                        <div>Поставщики = дистибьютеры</div>
+                        <div>Контроль = ежедневно</div>
+                    </div>
+
+                    <div ng-if="analyticsFilter.group=='bx'">
+                        <div>Поставки = ритмично</div>
+                        <div>Поставщики = производители</div>
+                        <div>Контроль = 2 раза в неделю</div>
+                    </div>
+
+                    <div ng-if="analyticsFilter.group=='by'">
+                        <div>Поставки = умерен. партиями</div>
+                        <div>Поставщики = производители</div>
+                        <div>Контроль = 2 раза в неделю</div>
+                    </div>
+
+                    <div ng-if="analyticsFilter.group=='bz'">
+                        <div>Поставки = миним. партиями</div>
+                        <div>Поставщики = дистибьютеры</div>
+                        <div>Контроль = 2 раза в неделю</div>
+                    </div>
+
+                    <div ng-if="analyticsFilter.group=='cx'">
+                        <div>Поставки = редко, макс. парт.</div>
+                        <div>Поставщики = производители</div>
+                        <div>Контроль = раз в неделю</div>
+                    </div>
+
+                    <div ng-if="analyticsFilter.group=='cy'">
+                        <div>Поставки = редко, макс. парт.</div>
+                        <div>Поставщики = дистибьютеры</div>
+                        <div>Контроль = раз в неделю</div>
+                    </div>
+
+                    <div ng-if="analyticsFilter.group=='cz'">
+                        <div>Позиции данного раздела исключаются из ассортимента</div>
+                    </div>
+                </div>
+            </div>
+
+            <ui-grid-custom grid-unique-id="grid"
+                            grid-filter-enabled="false"
+                            grid-options="analyticsFilter.gridOptionsAbcxyz"
+                            grid-params="{group: '@Model.Group', from: '@Model.From', to: '@Model.To'}"
+                            grid-url="'analytics/getAnalyticsFilterAbcxyz'">
+            </ui-grid-custom>
+        }
+
+        @if (Model.Type == "rfm")
+        {
+            var arr = Model.Group.Split('_');
+
+            <div class="m-b-lg" style="font-size: 14px">
+                Покупатели в группе <span class="text-uppercase">@arr[0]</span> = @arr[2], <span class="text-uppercase">@arr[1]</span> = @arr[3] с @Model.From по @Model.To
+            </div>
+            <ui-grid-custom grid-unique-id="grid"
+                            grid-filter-enabled="false"
+                            grid-options="analyticsFilter.gridOptionsRfm"
+                            grid-params="{group: '@Model.Group', from: '@Model.From', to: '@Model.To'}"
+                            grid-url="'analytics/getAnalyticsFilterRfm'">
+            </ui-grid-custom>
+        }
+    </div>
+</div>

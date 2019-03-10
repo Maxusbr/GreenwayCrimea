@@ -1,0 +1,15 @@
+﻿@import "../_settings.scss";
+
+.login-title {
+    font-size: $font-size-large;
+    margin-bottom: 13px;
+}
+
+.openid-title {
+    font-size: $font-size-large;
+}
+
+.modal-login-open-id {
+    min-width: 25vw;
+    text-align: center;
+}

@@ -1,0 +1,7 @@
+﻿@model IndexViewModel
+<div class="lp-main">
+    @foreach (var block in Model.Blocks)
+    {
+        @Html.Action("Block", "Landing", new { id = block.Id })
+    }
+</div>

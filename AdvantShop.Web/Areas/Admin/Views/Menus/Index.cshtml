@@ -1,0 +1,105 @@
+﻿@using AdvantShop.CMS
+
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                Меню
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        
+        <div class="row">
+            <div class="flex-grow-n col-fixed-size-md">
+                <h2 class="category-title">
+                    Главное меню
+                </h2>
+                <div>Меню, которое отображается в шапке</div>
+            </div>
+
+            <div class="flex-grow flex-basis-n flex-width-n">
+                <div class="ibox category-block">
+                    <div class="ibox-content category-content border_none">
+
+                        <div class="m-b-sm">
+                            <ui-modal-trigger data-controller="'ModalAddEditMenuItemCtrl'" controller-as="ctrl"
+                                              template-url="../areas/admin/content/src/menus/modal/AddEditMenuItem/AddEditMenuItem.html"
+                                              data-resolve="{params: {menuType: '@EMenuType.Top'}}"
+                                              data-on-close="menus.updateMenu(result, 'top')">
+                                <a class="btn btn-sm btn-success">Добавить пункт меню</a>
+                            </ui-modal-trigger>
+                        </div>
+                        <menu-treeview selected-id="0" type="@EMenuType.Top" menu-treeview-on-init="menus.menuTreeviewInit(jstree, 'top')" level="2"></menu-treeview>
+                        <div class="m-t-sm">
+                            <a href="@Url.Action("Index", "StaticPages")">Редактирование страниц</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="flex-grow-n col-fixed-size-md">
+                <h2 class="category-title">
+                    Нижнее меню
+                </h2>
+                <div>Меню, которое отображается в подвале сайта</div>
+            </div>
+
+            <div class="flex-grow flex-basis-n flex-width-n">
+                <div class="ibox category-block">
+                    <div class="ibox-content category-content border_none">
+
+                        <div class="m-b-sm">
+                            <ui-modal-trigger data-controller="'ModalAddEditMenuItemCtrl'" controller-as="ctrl"
+                                              template-url="../areas/admin/content/src/menus/modal/AddEditMenuItem/AddEditMenuItem.html"
+                                              data-resolve="{params: {menuType: '@EMenuType.Bottom'}}"
+                                              data-on-close="menus.updateMenu(result, 'bottom')">
+                                <a class="btn btn-sm btn-success">Добавить пункт меню</a>
+                            </ui-modal-trigger>
+                        </div>
+                        <menu-treeview selected-id="0" type="@EMenuType.Bottom" menu-treeview-on-init="menus.menuTreeviewInit(jstree, 'bottom')" level="2"></menu-treeview>
+                        <div class="m-t-sm">
+                            <a href="@Url.Action("Index", "StaticPages")">Редактирование страниц</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="flex-grow-n col-fixed-size-md">
+                <h2 class="category-title">
+                    Мобильное меню
+                </h2>
+                <div>Меню, которое отображается в мобильной версии</div>
+            </div>
+
+            <div class="flex-grow flex-basis-n flex-width-n">
+                <div class="ibox category-block">
+                    <div class="ibox-content category-content border_none">
+
+                        <div class="m-b-sm">
+                            <ui-modal-trigger data-controller="'ModalAddEditMenuItemCtrl'" controller-as="ctrl"
+                                              template-url="../areas/admin/content/src/menus/modal/AddEditMenuItem/AddEditMenuItem.html"
+                                              data-resolve="{params: {menuType: '@EMenuType.Mobile'}}"
+                                              data-on-close="menus.updateMenu(result, 'mobile')">
+                                <a class="btn btn-sm btn-success">Добавить пункт меню</a>
+                            </ui-modal-trigger>
+                        </div>
+                        <menu-treeview selected-id="0" type="@EMenuType.Mobile" menu-treeview-on-init="menus.menuTreeviewInit(jstree, 'mobile')" level="1"></menu-treeview>
+                        <div class="m-t-sm">
+                            <a href="@Url.Action("Index", "StaticPages")">Редактирование страниц</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

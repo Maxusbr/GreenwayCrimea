@@ -1,0 +1,24 @@
+﻿@import "../functions/_util.scss";
+
+.menu-header {
+    padding: 0;
+    margin: 0 rem-calc(-7px) rem-calc(15px);
+    top: rem-calc(7px);
+    position: relative;
+    z-index: 1;
+}
+
+.menu-header-item {
+    margin: 0 rem-calc(7px);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.menu-header-link, .menu-header-link:hover {
+    text-decoration: none;
+}
+
+.menu-header-tile-submenu {
+    padding-top: rem-calc(25px);
+    min-width: rem-calc(135px);
+}

@@ -1,0 +1,68 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Цвет</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">Название</span>
+            </label>
+            <div class="col-xs-9">
+                <input data-e2e="nameColor" type="text" class="form-control" ng-model="ctrl.colorName" required validation-input-text="Название" autofocus />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Код цвета</label>
+            <div class="col-xs-9">
+                <color-picker data-e2e="codColor"
+                              ng-model="ctrl.colorCode"
+                              options="ctrl.colorPickerOptions"
+                              ng-required="ctrl.colorCodeRequired"
+                              validation-input-text="Код или иконка цвета"
+                              api="ctrl.colorPickerApi"
+                              event-api="ctrl.colorPickerEventApi"></color-picker>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Иконка</label>
+            <div class="col-xs-9">
+                <div ng-if="ctrl.colorIcon != null && ctrl.colorIcon != ''">
+                    <img ng-src="{{ctrl.colorIcon}}" />
+                    <div>
+                        <a href="" class="picture-uploader-buttons-delete link-danger" ng-click="ctrl.deleteIcon()">Удалить</a>
+                    </div>
+                </div>
+                <div ng-if="ctrl.colorIcon == null || ctrl.colorIcon == ''">
+                    <figure class="">
+                        <button data-e2e="iconColor" class="btn btn-action btn-sm" type="button" ngf-drop ngf-max-size="15MB" accept="image/*" ngf-select=""
+                                ngf-change="ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)">
+                            <i class="fa fa-upload"></i>&nbsp;&nbsp;<span class="bold">Выберите файл</span>
+                        </button>
+                        <span ng-if="ctrl.file" ng-bind="ctrl.file.name"></span>
+                        <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                            <div class="help-content" ng-bind-html="ctrl.filesHelpText">
+                            </div>
+                        </help-trigger>
+                    </figure>
+                    <!--<input data-e2e="iconColor" type="file" accept="image/*"
+                           ngf-max-size="15MB"
+                           ngf-select=""
+                           ngf-change="ctrl.upload($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+                           class="picture-uploader-buttons-add" />-->
+                </div>
+                <div class="m-t" ng-bind-html="ctrl.iconSizesText | sanitize"></div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Порядок сортировки</label>
+            <div class="col-xs-9">
+                <input data-e2e="sortColor" type="text" ng-model="ctrl.sortOrder" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-e2e="saveColor" class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation="ctrl.colorCode != null || ctrl.file != null">Сохранить</button>
+        <button data-e2e="cancelColor" class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

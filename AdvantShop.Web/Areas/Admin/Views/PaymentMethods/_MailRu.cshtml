@@ -1,0 +1,62 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.MailRuPaymentModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Ключ доступа</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Key, new { ng_model = "paymentMethod.Parameters.Key", @class = "form-control", required = "required", validation_input_text = "Ключ доступа" })
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Номер Магазина в Системе</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.ShopId, new {ng_model = "paymentMethod.Parameters.ShopId", @class = "form-control", required = "required", validation_input_text = "Номер Магазина в Системе" })
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Криптографический кеш</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CryptoHex, new {ng_model = "paymentMethod.Parameters.CryptoHex", @class = "form-control", required = "required", validation_input_text = "Криптографический кеш" })
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Код валюты ISO3</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CurrencyCode, new { ng_model = "paymentMethod.Parameters.CurrencyCode", @class = "form-control", required = "required", validation_input_text = "Код валюты ISO3" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Проверять подпись в форме запроса платежа">
+                Код валюты платежей. Предпочтительно использовать RUR
+            </help-trigger>
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Поддерживать уникальность кода заказа
+        </div>
+        <div class="col-xs-6 relative">
+            <label class="adv-checkbox-label form-label-block m-r-xs">
+                @Html.CheckBoxFor(x => x.KeepUnique, new {ng_model = "paymentMethod.Parameters.KeepUnique", ng_init = "paymentMethod.Parameters.KeepUnique=" + Model.KeepUnique.ToLowerString(), @class = "adv-checkbox-input"})
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak" data-title="Поддерживать уникальность кода заказа">
+                Если параметр указан, выполнение покупателем новых платежей с таким же issuer_id будет запрещено, а при попытке выполнить аналогичный платеж будет получена ошибка
+            </help-trigger>
+        </div>
+    </div>
+
+

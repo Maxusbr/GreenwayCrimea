@@ -1,0 +1,223 @@
+﻿@model AdvantShop.Web.Admin.Models.StaticPages.AdminStaticPageModel
+
+<form method="POST" action="@(Model.IsEditMode ? Url.Action("Edit") : Url.Action("Add"))" enctype="multipart/form-data" novalidate="novalidate" name="form">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => Model.StaticPageId)
+    @Html.HiddenFor(x => Model.IsEditMode)
+
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    @if (Model.IsEditMode)
+                    {
+                        <span>Статическая страница</span> <strong>"@Html.Raw(Model.PageName)"</strong>
+                    }
+                    else
+                    {
+                        <strong>@T("Новая статическая страница")</strong>
+                    }
+                </h1>
+                <ul class="breadcrumb sticky-page-name-subtext">
+                    <li>
+                        <a class="link-invert" href="@Url.Action("Index", "StaticPages")">Все статические страницы</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-name-block-item-additional">
+                <a href="" class="link-danger m-r-xs" ng-if="@Model.IsEditMode.ToString().ToLower()" ng-click="staticPage.deleteStaticPage(@Model.StaticPageId)">Удалить</a>
+                @if (Model.IsEditMode)
+                {
+                    @Html.Button(T("Admin.View"), eButtonType.Simple, eButtonSize.Small, eColorType.Default, 
+                                    @Url.AbsoluteRouteUrl("StaticPage", new { url = Model.UrlPath }), name: "ViewStaticPage", attributes: new[] { "target=\"_blank\""})
+                }
+
+                @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, attributes: new [] { "ng-disabled=\"!form.modified\"", "disabled"})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="flex-grow-n col-fixed-size-md">
+                    <h2 class="category-title">Основное</h2>
+                    <div class="">
+                    </div>
+                </div>
+                <div class="flex-grow flex-basis-n flex-width-n">
+                    <div class="ibox category-block">
+                        <div class="ibox-content category-content border_none">
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="BrandName" class="form-label-block"><span class="text-required">Название страницы</span></label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextBoxFor(x => x.PageName, new { @class = "form-control", url_generator = "", url_path = "staticPage.UrlPath", url_generator_enabled = Model.UrlPath.IsNotEmpty()? "false" : "true", required = "required", ng_model = "staticPage.PageName", validation_input_text = "Название страницы" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="Enabled" class="form-label-block">Активность</label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <label class="adv-checkbox-label form-label-block">
+                                            @Html.CheckBoxFor(x => x.Enabled, new { ng_model = "staticPage.enabled", ng_init = "staticPage.enabled=" + Model.Enabled.ToLowerString(), @class = "adv-checkbox-input" })
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label class="form-label-block">Родитель</label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <span data-ng-bind-html="staticPage.parentPageName | sanitize" data-ng-init="staticPage.parentPageName='@Html.AttributeEncode(Model.ParentPageName)'">
+                                        </span>
+                                        <ui-modal-trigger data-controller="'ModalSelectStaticPageCtrl'" controller-as="ctrl"
+                                                          data-on-close="staticPage.changePage(result)"
+                                                          data-resolve="{showRoot: true, selected:@Model.StaticPageId, @(Model.ParentId != 0 ? "currentId:" + Model.ParentId : "")}"
+                                                          template-url="../areas/admin/content/src/_shared/modal/selectStaticPage/selectStaticPage.html">
+                                            <a href="" class="edit">@T("Admin.StaticPages.Index.ChooseParent")</a>
+                                        </ui-modal-trigger>
+                                        @Html.HiddenFor(x => x.ParentId, new { ng_value = "staticPage.parentId", ng_init = "staticPage.parentId=" + Model.ParentId, ng_model = "staticPage.parentId" })
+
+                                        <a href="" ng-if="staticPage.parentId != 0 " ng-click="staticPage.changePage({staticPageId: 0, pageName: 'Корень'})" class="ng-cloak">@T("Admin.StaticPages.Index.RemoveParent")</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="SortOrder" class="form-label-block">Сортировка</label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextBoxFor(x => x.SortOrder, new { @class = "form-control", required = "required", ng_model = "staticPage.sortOrder", validation_input_text = "Сортировка" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row middle-xs">
+                                    <div class="col-xs-2">
+                                        <label for="IndexAtSiteMap" class="form-label-block">Выводить в карте сайта</label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <label class="adv-checkbox-label form-label-block">
+                                            @Html.CheckBoxFor(x => x.IndexAtSiteMap, new { ng_model = "staticPage.indexAtSiteMap", ng_init = "staticPage.indexAtSiteMap=" + Model.IndexAtSiteMap.ToLowerString(), @class = "adv-checkbox-input" })
+                                            <span class="adv-checkbox-emul"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row category-row">
+                                    <div class="col-xs-2">
+                                        <label for="Description" class="form-label-block m-b-wl">Текст</label>
+                                        <a href="@Url.Action("Academy", "Service", new { id = 50 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline middle-cell">
+                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                            Видеоурок о Визуальном редакторе
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        @Html.TextAreaFor(x => x.PageText, new { @class = "wysiwyg", ckeditor = "{height: 600}", ng_model = "staticPage.PageText" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* SEO*@
+            <div class="row">
+                <div class="flex-grow-n col-fixed-size-md">
+                    <h2 class="category-title">SEO</h2>
+                    <div class="">
+                        SEO параметры заполняются автоматически по шаблону, указанному в настройках.<br />
+                        @*При необходимости вы самостоятельно можете указать SEO параметры такие как: title, h1, keywords, description*@
+                    </div>
+                </div>
+                <div class="flex-grow flex-basis-n flex-width-n">
+                    <div class="ibox brand-block">
+                        <div class="ibox-content brand-content border_none">
+
+                            <div>
+                                <div class="row category-row">
+                                    <div class="col-xs-2">
+                                        @*@T("Admin.Category.Index.UrlPath")*@
+                                        <label for="URL" class="form-label-block"><span class="text-required">Синоним для URL запроса</span></label>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <label class="input-group form-label-block">
+                                            <span class="input-group-addon fs-xs">@(SettingsMain.SiteUrl)/pages/</span>
+                                            @Html.TextBoxFor(x => x.UrlPath, new { @class = "form-control", ng_model = "staticPage.UrlPath", id = "URL", required = "required", validation_input_text = "Синоним для URL запроса" })
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-offset-2">
+                                    <label class="adv-checkbox-label">
+                                        @Html.CheckBoxFor(x => x.DefaultMeta, new { ng_model = "staticPage.defaultMeta", ng_init = "staticPage.defaultMeta=" + Model.DefaultMeta.ToString().ToLower(), @class = "adv-checkbox-input" })
+                                        <span class="adv-checkbox-emul" data-e2e="DefaultMetaCheckbox"></span>
+                                        Использовать Meta по умолчанию
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="brand-seo-custom-block ng-cloak m-t-md" ng-if="!staticPage.defaultMeta">
+                                <div>
+                                    <div class="row category-row middle-xs">
+                                        <div class="col-xs-2">
+                                            <label class="form-label-block" for="SeoTitle">@T("Admin.Category.Index.SeoTitle")</label>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", ng_model = "staticPage.seoTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row middle-xs">
+                                        <div class="col-xs-2">
+                                            <label class="form-label-block" for="SeoH1">@T("Admin.Category.Index.SeoH1")</label>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            @Html.TextBoxFor(x => x.SeoH1, new { @class = "form-control", ng_model = "staticPage.seoH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row middle-xs">
+                                        <div class="col-xs-2">
+                                            <label class="form-label-block" for="SeoKeywords">@T("Admin.Category.Index.SeoKeywords")</label>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", ng_model = "staticPage.seoKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row category-row middle-xs">
+                                        <div class="col-xs-2">
+                                            <label class="form-label-block" for="SeoDescription">@T("Admin.Category.Index.SeoDescription")</label>
+                                        </div>
+                                        <div class="col-xs-10">
+                                            @Html.TextBoxFor(x => x.SeoDescription, new { @class = "form-control", ng_model = "staticPage.seoDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage }) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-offset-2">
+                                        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

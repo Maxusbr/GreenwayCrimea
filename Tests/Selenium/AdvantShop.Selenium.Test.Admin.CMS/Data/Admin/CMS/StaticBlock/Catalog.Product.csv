@@ -1,0 +1,11 @@
+ProductId;ArtNo;Name;Ratio;Enabled;DateAdded;DateModified[DATE];UrlPath;CategoryEnabled;Multiplicity;HasMultiOffer;Adult;CurrencyID;ActiveView360
+1;1;TestProduct1;2;true;2007-08-25 20:08:00.000;19.07.2016 21:33;test-product1;true;1;false;false;4;false
+2;2;TestProduct2;1;false;2007-08-25 20:08:00.001;20.07.2016 21:33;test-product2;true;1;false;false;4;false
+3;3;TestProduct3;1;false;2007-08-25 20:08:00.002;21.07.2016 21:33;test-product3;true;1;false;false;4;false
+4;4;TestProduct4;1;true;2007-08-25 20:08:00.003;22.07.2016 21:33;test-product4;true;1;false;false;4;false
+5;5;TestProduct5;1;true;2007-08-25 20:08:00.004;23.07.2016 21:33;test-product5;true;1;false;false;4;false
+6;6;TestProduct6;1;true;2007-08-25 20:08:00.005;24.07.2016 21:33;test-product6;true;1;false;false;4;false
+7;7;TestProduct7;1;true;2007-08-25 20:08:00.006;25.07.2016 21:33;test-product7;true;1;false;false;4;false
+8;8;TestProduct8;1;true;2007-08-25 20:08:00.007;26.07.2016 21:33;test-product8;true;1;false;false;4;false
+9;9;TestProduct9;1;true;2007-08-25 20:08:00.008;27.07.2016 21:33;test-product9;true;1;false;false;4;false
+10;10;TestProduct10;1;true;2007-08-25 20:08:00.009;28.07.2016 21:33;test-product10;true;1;false;false;4;false

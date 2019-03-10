@@ -1,0 +1,75 @@
+﻿<div>
+    <div class="categories-block-mass" data-e2e-select="CategoryTop">
+        <div class="container-fluid">
+            <div class="row between-xs middle-xs">
+                <div data-e2e-select="CategoryTopLeftAll">
+                    <div class="btn-group" data-e2e-select="CategoryTopAllSelect">
+                        <label class="btn btn-sm btn-default">
+                            <div class="adv-checkbox-label" data-e2e-select="CategorySelect">
+                                <input class="adv-checkbox-input" data-e2e-select="CategorySelectedAll" type="checkbox" ng-model="$ctrl.categoriesSelectedAll" ng-change="$ctrl.toggleSelectedAll($ctrl.categoriesSelectedAll)" />
+                                <span class="adv-checkbox-emul" data-e2e-select="CategorySelectedAllCheck"></span>
+                            </div>
+                            <!--<span ng-bind="$ctrl.categoriesSelected.length" data-e2e-select="CategorySelectedCount"></span>-->
+                            <ng-pluralize class="categories-block-checkbox-text"
+                                          count="$ctrl.categoriesSelected.length"
+                                          when="{'0': 'Выбрать все категории',
+                                             'one': '{} категория выбрана',
+                                             'few': '{} категории выбрано',
+                                             'many': '{} категории выбрано',
+                                             'other': '{} категории выбрано'}">
+                            </ng-pluralize>
+                        </label>
+                        <input type="button" class="btn btn-sm btn-default" value="Удалить" data-e2e-select="CategorySelectedDelete"
+                               ng-if="$ctrl.categoriesSelected.length > 0"
+                               ng-click="$ctrl.deleteCategories($ctrl.categoriesSelected)" />
+                    </div>
+                </div>
+                <div class="categories-block-mass-search-col">
+                    <input type="text" class="form-control input-sm" ng-model="$ctrl.categorysearch" ng-keyup="$ctrl.fetch()" placeholder="Поиск по категориям" />
+                </div>
+                <div data-e2e-select="CategoryTopRightAll" class="fs-xs">
+                    Категорий: <span ng-bind="$ctrl.categories.length" data-e2e-quantity="CategoryAllQuantity"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-e2e-block="Category" class="categories-block-items" ng-switch="$ctrl.categories != null && $ctrl.categories.length > 0">
+        <div class="sortable-row clearfix" as-sortable="$ctrl.sortableOptions" ng-model="$ctrl.categories" ng-switch="true">
+            <div class="categories-block-wrap"
+                    ng-repeat="category in $ctrl.categories"
+                    data-as-sortable-item
+                    data-e2e="categoriesBlockItemIndex"
+                    data-e2e-categories-block-item-index-id="{{category.CategoryId}}">
+                <div class="categories-block" data-e2e-block="CategoryDrag" data-e2e-block-category-drag-id="{{category.CategoryId}}">
+                    <div class="clearfix">
+                        <div class="pull-left" as-sortable-item-handle data-e2e="CategoryDragDrop" ng-if="$ctrl.categorysearch == null || $ctrl.categorysearch.length === 0">
+                            <icon-move />
+                        </div>
+                        <div class="pull-right">
+                            <a class="link-invert link-decoration-none fa fa-pencil categories-block-icon" data-e2e="categoriesBlockItemEdit" data-e2e-categories-block-item-edit-id="{{category.CategoryId}}" ng-href="{{category.Url}}"></a>
+                            <a href="" class="link-invert link-decoration-none fa fa-remove categories-block-icon" data-e2e="categoriesBlockItemDelete" data-e2e-categories-block-item-delete-id="{{category.CategoryId}}" ng-click="$ctrl.deleteCategory(category.CategoryId)"></a>
+                        </div>
+                    </div>
+                    <div class="categories-block-content">
+                        <figure class="categories-block-figure">
+                            <a class="categories-block-figure-link" ng-href="catalog?categoryId={{category.CategoryId}}" ng-style="::{height: $ctrl.photoHeight}">
+                                <img class="categories-block-figure-img" ng-src="{{category.MiniPictureSrc}}" alt="{{category.Name}}" title="{{category.Name}}" />
+                            </a>
+                        </figure>
+                        <div class="categories-block-name">
+                            <label class="adv-checkbox-label" data-e2e="categoriesBlockItemSelect" data-e2e-categories-block-item-select-id="{{category.CategoryId}}">
+                                <input class="adv-checkbox-input" data-e2e-select="CategorySelectTrue" type="checkbox" checklist-value="category.CategoryId" checklist-model="$ctrl.categoriesSelected" />
+                                <span class="adv-checkbox-emul"></span>
+                            </label>
+                            <a ng-href="catalog?categoryId={{category.CategoryId}}" class="link-invert link-decoration-none">
+                                <span ng-bind="category.Name" data-e2e="categoriesBlockItem" data-e2e-categories-block-item-id="{{category.CategoryId}}"></span>
+                                <span class="categories-block-count">(<span ng-bind="category.ProductsCount"></span>)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-switch-when="false" class="categories-block-empty">Ни одной категории не найдено</div>
+    </div>
+</div>

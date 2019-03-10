@@ -1,0 +1,62 @@
+﻿@model  AdvantShop.Areas.Mobile.Models.Catalog.CategoryMobileViewModel
+@{
+    var category = Model.Category;
+    var tag = Model.Tag;
+    var briefDescription = tag != null ? tag.BriefDescription : category.BriefDescription;
+    var description = tag != null ? tag.Description : category.Description;
+}
+
+<div id="content">
+    @if (Model.Category.CategoryId != 0)
+    {
+        <a href="@(Model.ParentCategory.CategoryId == 0 ? Url.AbsoluteRouteUrl("CatalogRoot") : Url.AbsoluteRouteUrl("Category", new {url = Model.ParentCategory.UrlPath}))" class="panel no-borders back-link cs-bg-3 cs-l-1">
+            @Html.Raw(Model.ParentCategory.Name)
+            <div class="panel-arrow ar-l icon-left-open-before cs-l-1"></div>
+        </a>
+    }
+    <div class="panel no-borders main-product-cell">
+        <h1 class="product-title-mobile page-title" itemprop="name">@Html.GetPageH1()</h1>
+    </div>
+    
+    @if (Model.Filter != null && SettingsDesign.FilterVisibility)
+    {
+        <input type="checkbox" id="title-filter" name="title-filter" />
+        <label for="title-filter" class="cs-l-1 cs-br-1 tab-filter catalog-filter-block-header">Фильтры товаров</label>
+        <div class="filter-content">
+            <div data-catalog-filter data-url="catalog/filter"
+                 data-url-count="catalog/filterproductCount"
+                 data-parameters="{categoryId : @(category.CategoryId), tagUrl: '@Model.TagView.Tags.Where(x=>x.Selected).Select(x=>x.Url).SingleOrDefault()'}"
+                 data-count-visible-collapse="10">
+            </div>
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(briefDescription) && Model.Pager.CurrentPage == 1 || tag == null)
+    {
+        <div class="category-description">
+            @Html.Raw(briefDescription)
+        </div>
+    }
+    @Html.Action("CategoryList", "Catalog", new { categoryId = Model.Category.CategoryId })
+    @Html.Partial("_TagView", Model.TagView)
+
+    @if (Model.HasProducts)
+    {
+        <div class="panel no-borders">
+            <div class="catalog-sort-pnl" ng-controller="CatalogFilterMobileCtrl as catalogFilter">
+                @Html.Partial("_Sorting", Model.SortingList)
+                @Html.Partial("_ViewMode", Model.Filter.ViewMode)
+            </div>
+        </div>
+        @Html.Partial(Model.Filter.ViewMode == "list" ? "_ProductViewList" : "_ProductViewTile", Model.Products)
+        <div class="panel no-borders">
+            @Html.Paging(Model.Pager, "center-aligner")
+        </div>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(description) && Model.Pager.CurrentPage == 1 || tag == null)
+    {
+        <div class="category-description">
+            @Html.Raw(description)
+        </div>
+    }
+</div>

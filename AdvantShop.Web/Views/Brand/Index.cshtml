@@ -1,0 +1,53 @@
+﻿@model AdvantShop.ViewModel.Brand.BrandViewModel
+
+<div class="col-p-v p-l-xs p-r-xs">
+    <div class="page-title-row brands-title-row">
+        <h1 class="brands-title page-title">@T("Brand.Index.BrandsHeader")</h1>
+    </div>
+    @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+    <div class="mobile-container-fluid">
+        <div class="row brand-navigation">
+            <div class="col-xs-12 col-sm-3">
+                @*<span class="select-custom cs-t-4 icon-down-open-after-abs brand-county-select">
+                    @Html.DropDownList("country", Model.Countries, new { @class = "cs-bg-2", data_ng_model = "brand.CountryId", data_ng_init = "brand.CountryId = '" + @Model.CurentCountyId + "'", data_ng_change = "brand.changeCountyId(brand.CountryId)" })
+                </span>*@
+                <div class="rel vertical-interval-small brand-county-name">
+                    @Html.TextBoxFor(m => m.SearchBrand, new { @class = "input-small", data_ng_model = "brand.brandName", data_ng_model_options = "{ debounce: 100 }", data_ng_keypress = "brand.changeBrandname($event, brand.brandName)" })
+                    <a href="" data-ng-click="brand.changeBrandname($event, brand.brandName)" class="btn-ghost icon-search-before-abs"></a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                <div class="abc">
+                    <div class="eng">
+                        <a href="@Url.RouteUrl("BrandRoot")"
+                           class="letter all cs-bg-i-11 cs-l-6 @((Model.EnLetters.Exists(a => a.Selected) || Model.RuLetters.Exists(a => a.Selected)) ? "" : "cs-selected")">@T("Brand.BrandItem.All")</a>
+                        @Html.Partial("_Letters", Model.EnLetters)
+                    </div>
+                    <div class="rus">
+                        @Html.Partial("_Letters", Model.RuLetters)
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="brands-list">*@
+        <div class="row">
+            @foreach (var brand in Model.Brands)
+            {
+                <div class="brand-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="brand-logo">
+                        <a class="brand-logo-link" href="@Url.RouteUrl("Brand", new {url = brand.UrlPath})" style="height: @(Model.BrandLogoHeight)px">
+                            <img class="brand-logo-image" src="@brand.BrandLogo.ImageSrc()" alt="@Html.Encode(brand.Name)" title="@Html.Encode(brand.Name)" @Html.InplaceImageBrand(brand.ID) />
+                        </a>
+                    </div>
+                    <div class="brand-name">
+                        <a href="@Url.RouteUrl("Brand", new {url = brand.UrlPath})">@brand.Name</a>
+                    </div>
+                    <div class="brand-bDescr">
+                        <div @Html.InplaceBrand(brand.ID, BrandInplaceField.BriefDescription)>@Html.Raw(brand.BriefDescription)</div>
+                    </div>
+                </div>
+            }
+        </div>
+        </div>
+        @Html.Paging(Model.Pager, "center")
+    </div>

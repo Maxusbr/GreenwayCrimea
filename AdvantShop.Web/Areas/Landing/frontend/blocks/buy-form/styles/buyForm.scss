@@ -1,0 +1,25 @@
+.lp-buyForm-compact {
+
+    .lp-form-default {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .lp-form-block-field {
+        padding: 10px;
+    }
+
+    .lp-slide-header {
+        padding-top: 36px;
+    }
+}

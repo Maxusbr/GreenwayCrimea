@@ -1,0 +1,24 @@
+﻿<div class="ui-grid-custom-selection-action">
+    <div class="btn-group" ng-if="$ctrl.gridMenuItems != null && $ctrl.gridMenuItems.length > 0">
+        <button data-e2e="gridSelectionDropdownButton" data-toggle="dropdown" class="btn btn-success btn-sm dropdown-toggle">Выберите действие <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li ng-repeat="item in $ctrl.gridMenuItems track by $index" ng-hide="item.hide">
+                <a class="ui-grid-custom-selection-action-link" href="" ng-bind="item.text" data-e2e="gridSelectionDropdownItem" data-e2e-grid-selection-dropdown-index="{{$index}}" bind-html-compile="item.template" ng-click="$ctrl.select(item)"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-group-vertical ui-grid-custom-selection-info">
+        Выделено строк:
+        <span ng-switch="$ctrl.isSelectedAll" class="btn-group-vertical">
+            <span ng-switch-when="false">
+                <span class="ui-grid-custom-selection-count" ng-bind="$ctrl.storageSelectedRows.length" data-e2e="gridSelectionSelectedCount"></span>
+                <a href="" ng-click="$ctrl.selectAllRows($event)" data-e2e="gridSelectionSelectAllFn">Выделить все</a>
+            </span>
+            <span ng-switch-when="true">
+                <span class="ui-grid-custom-selection-count" ng-bind="$ctrl.totalItemsSelected" data-e2e="gridSelectionSelectedCount"></span>
+                <a href="" ng-click="$ctrl.clearSelectedRows()" data-e2e="gridSelectionDeselectAllFn">Снять выделение со всех</a>
+            </span>
+        </span>
+    </div>
+</div>
+

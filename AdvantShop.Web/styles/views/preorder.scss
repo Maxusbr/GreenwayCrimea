@@ -1,0 +1,26 @@
+﻿@import "../_settings.scss";
+@import "../functions/_util.scss";
+
+.preorder-text {
+    padding-bottom: rem-calc(30px);
+    font-size: $font-size-medium;
+}
+
+.preorder-product {
+    margin-left: $margin-value-base;
+}
+
+.preorder-form .form-field-name {
+    font-size: $font-size-medium;
+}
+
+.preorder-success-txt {
+    font-size: $font-size-xmedium;
+    padding-top: rem-calc(20px);
+}
+
+.preorder-price-wrap {
+    .price-new, .price-current {
+        font-size: $font-size-xmedium;
+    }
+}

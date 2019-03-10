@@ -1,0 +1,30 @@
+﻿@import "../_common/variables.scss";
+
+
+@mixin colSlim() {
+    flex-grow: 0;
+    flex-basis: auto;
+}
+
+
+.col-xs-slim {
+    flex-grow: 0;
+}
+
+@media #{$viewport-sm} {
+    .col-sm-slim {
+        @include colSlim();
+    }
+}
+
+@media #{$viewport-md} {
+    .col-md-slim {
+        @include colSlim();
+    }
+}
+
+@media #{$viewport-lg} {
+    .col-lg-slim {
+        @include colSlim();
+    }
+}

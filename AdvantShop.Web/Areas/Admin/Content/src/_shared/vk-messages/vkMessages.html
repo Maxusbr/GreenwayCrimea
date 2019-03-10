@@ -1,0 +1,25 @@
+﻿<div class="row m-b-md">
+    <div class="col-xs-8">
+        <textarea class="form-control" ng-model="$ctrl.answerText" placeholder="Напишите сообщение.." rows="2"></textarea>
+    </div>
+    <div class="col-xs-2">
+        <button type="button" class="btn btn-action btn-sm" ng-click="$ctrl.sendVkMessage()">Отправить</button>
+    </div>
+</div>
+<div ng-if="$ctrl.messages != null && $ctrl.messages.length > 0">
+    <div ng-repeat="message in $ctrl.messages track by $index" class="vk-message">
+        <div class="row">
+            <div class="vk-message-photo">
+                <span ng-if="message.Photo100 != null" class="text-align-center">
+                    <img ng-src="{{message.Photo100}}" class="vk-message-photo-img" />
+                </span>
+            </div>
+            <div class="col-xs">
+                <div class="m-b-xs">
+                    <a class="lead-vk-title bold" href="https://vk.com/{{message.ScreenName != null ? message.ScreenName : ('id' + message.UserId)}}" target="_blank">{{message.LastName}} {{message.FirstName}}</a> <span ng-bind="message.DateFormatted"></span>
+                </div>
+                <div class="" ng-bind-html="message.Body"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿@model AdvantShop.ViewModel.Mobile.MobileOverlapViewModel
+
+<div data-oc-lazy-load="['scripts/_mobile/mobileOverlap.js']" @Html.Raw(Model.ToolbarEnabled ? "class='toolbarEnabled'" : "")>
+    <div data-ng-controller="mobileOverlapCtrl as mOverlap">
+        <a href="@(Request.Path + AdvantShop.Helpers.QueryHelper.ChangeQueryParam(Request.QueryString.ToString(),
+                 new[] { "forcedMobile", "forcedDesktop" }, new[] { "true", null }))" rel="nofollow" data-ng-click="mOverlap.goToMobile()" class="desktopGoToMobile cs-br-1">
+            <i class="icon-mobile-after"></i>Перейти на мобильную версию
+        </a>
+    </div>
+</div>

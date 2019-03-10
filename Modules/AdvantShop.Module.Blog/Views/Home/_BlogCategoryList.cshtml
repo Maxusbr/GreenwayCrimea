@@ -1,0 +1,13 @@
+﻿@model AdvantShop.Module.Blog.Models.BlogCategoryListViewModel
+
+@if (Model.BlogCategories != null && Model.BlogCategories.Count > 0)
+{
+    <div class="news-categories">
+        <a href="@Url.AbsoluteRouteUrl("BlogHome")" class="news-menu-link @Html.Raw(Model.Selected == 0 ? "cs-bg-3" : "") link-text-decoration-none">@Model.Title</a>
+        @foreach (var category in Model.BlogCategories)
+        {
+            <a href="@Url.AbsoluteRouteUrl("BlogCategory",new { category = category.UrlPath } )" class="news-menu-link @Html.Raw(@Model.Selected == @category.ItemCategoryId ? "cs-bg-3" : "") link-text-decoration-none ">@Html.Raw(@category.Name)</a>
+            
+        }
+    </div>
+}

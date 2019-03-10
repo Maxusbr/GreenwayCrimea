@@ -1,0 +1,40 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ProductGiftsViewModel
+
+<div class="product-gift-image" data-mouseover-class-toggler>
+    <div class="gifts-list">
+        <div class="container-fluid gifts-list-container">
+            @foreach (var gift in Model.Gifts)
+            {
+                <div class="row middle-xs">
+                    <div class="col-xs-3 col-p-v gift-img">
+                        <a href="@Url.RouteUrl("Product", new {url = gift.Product.UrlPath})">
+                            <img src="@gift.Photo.ImageSrcXSmall()" alt="@Html.AttributeEncode(gift.Product.Name)" />
+                        </a>
+                    </div>
+                    <div class="col-xs-9 col-p-v gift-txt">
+                        <a href="@Url.RouteUrl("Product", new { url = gift.Product.UrlPath })">@gift.Product.Name</a>
+                        @if (gift.Color != null || gift.Size != null)
+                        {
+                            <ul class="gift-properties">
+                                @if (gift.Color != null)
+                                {
+                                    <li class="gift-properties__item">
+                                        <div class="gift-properties__itemName">@SettingsCatalog.ColorsHeader:</div>
+                                        <div class="gift-properties__itemValue">@gift.Color.ColorName</div>
+                                    </li>
+                                }
+                                @if (gift.Size != null)
+                                {
+                                    <li class="gift-properties__item">
+                                        <div class="gift-properties__itemName">@SettingsCatalog.SizesHeader:</div>
+                                        <div class="gift-properties__itemValue">@gift.Size.SizeName</div>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

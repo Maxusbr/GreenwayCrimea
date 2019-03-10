@@ -1,0 +1,681 @@
+﻿@using AdvantShop.ViewModel.Feedback
+@model FeedbackViewModel
+@{
+	Layout = "_Layout.cshtml";
+}
+<!-- CSS -->
+<link rel="stylesheet" media="screen" href="/styles/business/bootstrap.css">
+<link rel="stylesheet" media="screen" href="/styles/business/font-awesome.css">
+<!-- Owl Carousel Assets -->
+<link rel="stylesheet" type="text/css" href="/styles/business/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/styles/business/owl.theme.css">
+<!-- Magnific Popup core CSS file -->
+<link rel="stylesheet" media="screen" href="/styles/business/magnific-popup.css">
+<link rel="stylesheet" media="screen" href="/styles/business/style.css">
+<link rel="stylesheet" type="text/css" href="/styles/business/animate.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" type="text/css" href="/styles/business/google-font.css">
+<link rel="stylesheet" type="text/css" href="/styles/business/google-font1.css">
+
+<link rel="stylesheet" type="text/css" href="/styles/common/validation.css">
+
+<!-- start featured -->
+<section id="go-home" class="pad-t-50">
+	<div class="container">
+		<div class="row">
+			<div class="introducing text-center col-sm-12">
+				<h1 class="text-center">Начать свой бизнес</h1>
+				<h3>Станьте партнером компании <strong>GREENWAY</strong></h3>
+				<h2>и зарабатывайте от 30.000 рублей уже в первый месяц</h2>
+			</div>
+			<div class="col-md-12 wow fadeInUp featured-img featured-inner" data-wow-delay="0.4s">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="video-container">
+							<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/sjZCUGx-cwI"></iframe>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="row">
+							@using (Html.BeginForm("Index", "Business", FormMethod.Post, new { name = "firstcontactform", novalidate = "novalidate" }))
+							{
+								@Html.AntiForgeryToken()
+								<input type="hidden" id="firstMessageType" name="MessageType" value="Offer">
+								<input type="hidden" id="firstIsLanding" name="IsLanding" value="true">
+								<div class="col-sm-12">
+									<div class="gold shadow3d">
+										<h3>Запрос</h3>
+										<h4>на сотрудничество</h4>
+										<fieldset>
+											@Html.TextBoxFor(m => m.Name, new { required = "true", data_ng_model = "feedback.name", placeholder = "Имя" })
+											@*<input name="Name" type="text" required="required" id="firstname" size="30" value="" placeholder="Имя">*@
+											<br>
+											@Html.TextBoxFor(m => m.Email, new { required = "true", data_ng_model = "feedback.email",
+										   placeholder = "Email", type="email",
+										   pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)$"})
+											@*<input name="Email" type="text" required="required" id="firstemail" size="30" value="" placeholder="Email">*@
+											<br>
+											@Html.TextBoxFor(m => m.Phone, new { required = "true", data_ng_model = "feedback.phone", type = "tel", placeholder = "Телефон" })
+											@*<input name="Phone" type="text" required="required" id="firstphone" size="30" value="" placeholder="Телефон">*@
+											<br>
+											<button type="submit" data-button-validation value="Submit">Отправить</button>
+										</fieldset>
+									</div>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+				<!-- /.inner row -->
+			</div>
+			<!-- /.row -->
+		</div>
+	</div>
+	<!-- /.container -->
+</section>
+<!-- end featured -->
+
+<div id="wrapper">
+	<section id="features-list" class="space bg-dark">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-10">
+					<h1 class="hr-after f-white">
+						<strong>Преимущества бизнеса с компанией <span class="f-green">GREENWAY</span></strong>
+					</h1>
+				</div>
+			</div>
+			<div class="divide50"></div>
+			<div class="row features">
+				<div class="col-sm-4 icon-item">
+					<i class="glyphicon glyphicon-leaf"></i>
+					<div class="item-content">
+						<h3 class="f-white">«Вирусная» <br>продукция</h3>
+						<p>Информация о продукции GREENWAY не требует агрессивной рекламы и распространяется пользователями продукции естественно, подтверждая уникальность.</p>
+					</div>
+					<!--/.icon item content -->
+				</div>
+				<div class="col-sm-4 icon-item">
+					<i class="glyphicon glyphicon-usd"></i>
+					<div class="item-content">
+						<h3 class="f-white">Минимальные <br>вложения</h3>
+						<p>Для подтверждения регистрации достаточно купить (а лучше продать) товаров на сумму 4000 руб.</p>
+					</div>
+					<!--/.icon item content -->
+				</div>
+				<div class="col-sm-4 icon-item">
+					<i class="glyphicon glyphicon-signal"></i>
+					<div class="item-content">
+						<h3 class="f-white">Рост <br>дохода</h3>
+						<p>Нет ограничения для роста дохода партнера.</p>
+					</div>
+					<!--/.icon item content -->
+				</div>
+			</div>
+			<!-- .row -->
+			<div class="divide30"></div>
+			<div class="row features">
+				<div class="col-sm-4 icon-item">
+					<i class="glyphicon glyphicon-sort-by-attributes"></i>
+					<div class="item-content">
+						<h3 class="f-white">Выгодная <br>структура</h3>
+						<p>Подключения на поздних этапах развития сети так же выгодно, и позволяет добиваться лучших результатов.</p>
+					</div>
+					<!--/.icon item content -->
+				</div>
+				<div class="col-sm-4 icon-item">
+					<i class="glyphicon glyphicon-gift"></i>
+					<div class="item-content">
+						<h3 class="f-white">Выверенный <br>маркетинг-план</h3>
+						<p>Маркетинг-план выстроен таким образом, что на каждом этапе роста сети, партнер получает значимый доход.</p>
+					</div>
+					<!--/.icon item content -->
+				</div>
+				<div class="col-sm-4 icon-item">
+					<i class="bg-red glyphicon glyphicon-send" aria-hidden="true"></i>
+					<div class="item-content">
+						<h3 class="f-white">Быстрый <br>старт</h3>
+						<p>Опция «Быстрый старт» позволяет в течении короткого времени получить достойный доход и заложить основу успешного бизнеса.</p>
+					</div>
+					<!--/.icon item content -->
+				</div>
+			</div>
+			<!-- .row -->
+		</div>
+	</section>
+
+	<section class="single-feature space">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<!--<h6>SINGLE FEATURE SECTION</h6>-->
+					<h1 class="hr-after">
+						<strong>Активация</strong> партнерского соглашения
+						состоит из 4 простых шагов
+					</h1>
+
+					<!--<p class="lead">Персональная ссылка-приглашение будет активна только <span class="f-green">24 часа</span>.</p>
+					<p>Компания Greenway гарантирует конфеденциальность Ваших персональных данных</p>-->
+
+				</div>
+				<!-- /.col 6 -->
+				<div class="col-sm-6 single-feature-image">
+					@*<img src="images/app-2.png" alt="" class="img-responsive">*@
+				</div>
+			</div>
+			<div class="row features">
+				<div class="col-sm-3 icon-item">
+					<i class="glyphicon glyphicon-edit"></i>
+					<div class="item-content">
+						<h3>Запрос на регистрацию</h3>
+						<p>Отправляете запрос на регистрацию в форме ниже.</p>
+						<a href="business#contact" class="btn btn-default btn-radius btn-lg">Подробнее</a>
+					</div>
+					<!--/.icon item content -->
+				</div>
+				<div class="col-sm-3 icon-item">
+					<i class="glyphicon glyphicon-link"></i>
+					<div class="item-content">
+						<h3>Инвайт-ссылка</h3>
+						<p>Получаете персональную ссылку-приглашение.</p>
+						<a href="business#contact" class="btn btn-default btn-radius btn-lg">Подробнее</a>
+					</div>
+					<!--/.icon item content -->
+				</div>
+				<div class="col-sm-3 icon-item">
+					<i class="glyphicon glyphicon-list-alt"></i>
+					<div class="item-content">
+						<h3>Заполнение анкеты</h3>
+						<p>Заполняете анкету на официальном сайте компании.</p>
+						<a href="business#contact" class="btn btn-default btn-radius btn-lg">Подробнее</a>
+					</div>
+					<!--/.icon item content -->
+				</div>
+				<div class="col-sm-3 icon-item">
+					<i class="glyphicon glyphicon-phone"></i>
+					<div class="item-content">
+						<h3>SMS для авторизации</h3>
+						<p>Получаете пароль для активации аккаунта и авторизации партнера.</p>
+						<a href="business#contact" class="btn btn-default btn-radius btn-lg">Подробнее</a>
+					</div>
+					<!--/.icon item content -->
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<p class="lead">Персональная ссылка-приглашение будет активна только <span class="f-green">24 часа</span>.</p>
+				<p>Компания Greenway гарантирует конфеденциальность Ваших личных данных</p>
+			</div>
+			<!-- /.col 6 -->
+		</div>
+	</section>
+
+	<section id="tabbed" class="space-pb-0 bg-dark tabbed-info">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 wow bounceInDown animated text-center" data-wow-delay="0.5s" style="-webkit-animation: bounceInDown 0.5s;">
+					<!--<h5>WHAT CAN I DO WITH APPER?</h5>-->
+					<h2 class="hr-after f-white">
+						<strong>Виды бонусов в компании <span class="f-green">GREENWAY</span></strong>
+					</h2>
+					<div class="divide30"></div>
+				</div>
+
+				<div class="col-sm-12 wow bounceIn animated" data-wow-delay="1s" style="visibility: visible; -webkit-animation: bounceIn 1s;">
+					<ul class="nav nav-pills nav-justified" role="tablist" id="learnTabs">
+						<li class="active">
+							<a href="#tab-1" role="tab" data-toggle="tab">Бонус за покупки</a>
+						</li>
+						<li class="">
+							<a href="#tab-2" role="tab" data-toggle="tab">Бонус наставника</a>
+						</li>
+						<li class="">
+							<a href="#tab-3" role="tab" data-toggle="tab">Групповой бонус</a>
+						</li>
+						<li class="">
+							<a href="#tab-4" role="tab" data-toggle="tab">Лидерский бонус</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content wow bounceInUp animated" data-wow-delay="1s" style="visibility: visible; -webkit-animation: bounceInUp 1s;">
+						<div class="tab-pane active" id="tab-1">
+							<div class="col-sm-7">
+								<h5>Поощрение для потребителей и продавцов</h5>
+								<p>
+									Кешбэк для партнеров с личным объемом покупок, превышающим 50 ед. за период, составляет
+									<span class="f-green">40%</span> от объема продаж.
+								</p>
+								<p>
+									Дополнительное поощрение для партнеров, делающих личные объемы покупок более
+									<span class="f-green">100</span> ед. Зачисляется на <span class="f-white">подарочный счет</span>
+								</p>
+								<ul>
+									<li style="margin: 40px 0 10px 0">Объем расчитывается в единицах. 1 ед. = 77 руб. </li>
+									<li>Подарочный счет - это вознаграждение в виде продукции на ваш выбор.</li>
+								</ul>
+							</div>
+							<div class="col-sm-5">
+								<ul>
+									<li>
+										<h6>Личный объем: <span class="f-green">100 - 199</span> ед. за период</h6>
+										<p>
+											на личный счет: <span class="f-green">700 - 2 086</span> руб. <br>
+											на подарочный счет: <span class="f-green">385 - 766</span> руб.
+										</p>
+									</li>
+									<li>
+										<h6>Личный объем: <span class="f-green">200 - 499</span> ед. за период</h6>
+										<p>
+											на личный счет: <span class="f-green">2 100 - 6 280</span> руб. <br>
+											на подарочный счет: <span class="f-green">1 540 - 3 842</span> руб.
+										</p>
+									</li>
+									<li>
+										<h6>Личный объем: <span class="f-green">500</span> ед. и более за период</h6>
+										<p>
+											на личный счет: <span class="f-green">6 300</span> руб. и более<br>
+											на подарочный счет: <span class="f-green">7 700</span> руб. и более
+										</p>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab-2">
+							<div class="col-sm-7">
+								<h5>Начисляется с объемов всех партнеров первого поколения</h5>
+								<p>
+									Поощряет развитие и поддержание активной партнерской группы.
+								</p>
+							</div>
+							<div class="col-sm-5">
+								<ul>
+									<li>
+										<h6><span class="f-green">700 руб.</span> на личный счет</h6>
+										<p>За каждого партнера в первой линии, если его объем покупок составил <span class="f-green">50 ед. и более</span></p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab-3">
+							<div class="col-sm-7">
+								<h5>Начисляется с личного объема и товарооборота личной группы</h5>
+								<p>
+									В личную группу входят все партнеры структуры кроме партнеров квалификации
+									<span class="f-white">Лидер</span> или выше, а также их групп.<br>
+									Квалификации зависят от лично-группового объема (ЛГО).
+								</p>
+								<ul>
+									<li>
+										<span class="f-white">ЛГО</span> - сумма личного объема и объема личной группы.
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-5">
+								<ul>
+									<li>
+										<h6>Наставник 1 ступени - ЛГО <span class="f-green">750 ед.</span> </h6>
+										<!--<p>на личный счет: <span class="f-white">6%</span> от общего оборота группы</p>-->
+										<p>бонус: <span class="f-green">1 575 - 3 148</span> руб.</p>
+									</li>
+									<li>
+										<h6>Наставник 2 ступени - ЛГО <span class="f-green">1500 ед.</span> </h6>
+										<!--<p><span class="f-white">12%</span> от общего оборота группы</p>-->
+										<p>бонус: <span class="f-green">3 150 - 10 496</span> руб.</p>
+									</li>
+									<li>
+										<h6>Наставник 3 ступени - ЛГО <span class="f-green">2500 ед.</span> </h6>
+										<!--<p><span class="f-white">18%</span> от общего оборота группы</p>-->
+										<p>бонус: <span class="f-green">10 500 - 25 194</span> руб.</p>
+									</li>
+									<li>
+										<h6>Лидер - ЛГО <span class="f-green">4000 ед.</span> </h6>
+										<!--<p><span class="f-white">24%</span> от общего оборота группы</p>-->
+										<p>бонус: <span class="f-green">33 600 и более</span> руб.</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab-4">
+							<div class="col-sm-6">
+								<h5>Начисляется партнерам <span class="f-green">Лидерской</span> квалификации</h5>
+								<p>
+									Начиная с квалификации <span class="f-white">Лидер 1</span> начисляется бонус в процентах от лично-групповых объемов партнеров
+									в квалификации <span class="f-white">Лидер</span> и выше на глубину до девяти поколений, в зависимости от квалификации.
+								</p>
+								<ul>
+									<li>
+										<span class="f-white">ЛГО</span> - сумма личного объема и объема личной группы.
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-6">
+								<ul>
+									<li>
+										<h6><span class="f-green">Лидер 1 ступени</span> (L1) - </h6>
+										<p>
+											партнер, у которого <span class="f-white">одна</span> Лидерская ветвь и его ЛГО составляет не менее
+											<span class="f-green">2 000 ед.</span>. <br>
+											Бонус: от <span class="f-green">11 200</span> руб.
+										</p>
+									</li>
+									<li>
+										<h6><span class="f-green">Лидер 2 ступени</span> (L2) - </h6>
+										<p>
+											партнер, у которого <span class="f-white">две</span> Лидерские ветви и его ЛГО составляет не менее
+											<span class="f-green">1 500 ед.</span>. <br>
+											Бонус: от <span class="f-green">22 400</span> руб.
+										</p>
+									</li>
+									<li>
+										<h6><span class="f-green">Лидер 3 ступени</span> (L3) - </h6>
+										<p>
+											партнер, у которого <span class="f-white">три</span> Лидерские ветви и его ЛГО составляет не менее
+											<span class="f-green">1 000 ед.</span>. <br>
+											Бонус: от <span class="f-green">33 600</span> руб.
+										</p>
+									</li>
+									@*<li>
+										<h6><span class="f-green">Мастер</span> (М) - </h6>
+										<p>
+											партнер, у которого <span class="f-white">четыре</span> Лидерские ветви и его ЛГО составляет не менее
+											<span class="f-green">1 000 ед.</span>. <br>
+											Бонус: от <span class="f-green">33 600</span> руб.
+										</p>
+									</li>*@
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-7">
+					<ul>
+						<li>
+							<span >Все бонусы суммируются.</span>
+						</li>
+						<li>
+							<span>Подробный маркетинг-план Вы сможете получить, <a href="business#contact" class="">отправив заявку.</a></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="intro" class="hero">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1 wow fadeInUp featured-img featured-inner" data-wow-delay="0.4s">
+					<h1 class="f-white">Дополнительные бонусы за личные достижения</h1>
+					<div id="main-carousel" class="owl-carousel owl-theme quote-theme" style="opacity: 0; display: block;">
+						<div class="item">
+							<div class="row">
+								<div class="introducing text-center col-sm-12">
+									<h2 class="hr-after ">За рулём мечты - Персональный автомобиль Mercedes-Benz</h2>
+								</div>
+								<div class="col-sm-12">
+									<div class="video-container">
+										<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/58OZ3e5kCfo"></iframe>
+									</div>
+								</div>
+							</div>
+							<!-- /.inner row -->
+						</div>
+						<div class="item">
+							<div class="row">
+								<div class="introducing text-center col-sm-12">
+									<h2 class="hr-after">Трэвел бонус - Отдых за счет компании</h2>
+								</div>
+								<div class="col-sm-12">
+									<div class="video-container">
+										<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/rFAyO6qGw8E"></iframe>
+									</div>
+								</div>
+							</div>
+							<!-- /.inner row -->
+						</div>
+					</div>
+					<!-- /.carousel -->
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+
+
+
+	<section id="screenshots" class="space bg-dark pattern01">
+		<div class="container">
+			<div class="title-section text-center">
+				<h1 class="hr-after f-white">Продукция компании <span class="f-green"><strong>GREENWAY</strong></span></h1>
+				<p class="lead">
+					Мы производим товары для тех, <br>кто выбрал осознанный
+					экологический подход к своей жизни
+				</p>
+			</div>
+			<!-- .title-section -->
+			<div id="shoots" class="owl-carousel owl-theme" style="opacity: 0; display: block;">
+				<div class="item">
+					<a href="/manufacturers/igen" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_igen.png" />
+						<h4><span>Генетические тесты для домашнего использования</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_igen.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/healthberry" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_healthberry.png" />
+						<h4><span>Палитра растворимых ягодных напитков</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_healthberry.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/avitall" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_avitall.png" />
+						<h4><span>Коктейли для коррекции привычек питания</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_avitall.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/baofiber" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_baofiber.png" />
+						<h4><span>Растворимые напитки для красоты и здоровья</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_baofiber.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/aquamagic" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_aqua-magic.png" />
+						<h4><span>Новая технология чистоты без химии</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_aqua-magic.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/teavitall" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_tea-vitall.png" />
+						<h4><span>Изысканная коллекция чайных напитков</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_tea-vitall.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/sharme" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_sharme-ph.png" />
+						<h4><span>Линия сухой косметики и питательных кремов</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_sharme-ph.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/sharme-essential" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_sharme-es.png" />
+						<h4><span>Натуральные аромамасла для широкого применения</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_sharme-es.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/ecopam" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_ecopam.png" />
+						<h4><span>Активный источник жизненной энергии</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_ecopam.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/aquamatic" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_aqua-matic.png" />
+						<h4><span>Инновационные системы для уборки</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_aqua-matic.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/manufacturers/revitall" target="_blank">
+						<img class="img-responsive" src="userfiles/image/br_revital.png" />
+						<h4><span>Оздоровительные программы для всего организма</span></h4>
+						<img class="img-responsive" src="userfiles/image/pr_revital.jpg" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="clients" class="pad-t-90">
+		<div class="container">
+
+			<div class="row">
+				<div id="quote-carousel" class="owl-carousel owl-theme quote-theme" style="opacity: 0; display: block;">
+					<div class="item">
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-2 text-center">
+								<h1 class="hr-after">Отзывы о продукции <span class="f-green"><strong>GREENWAY</strong></span></h1>
+								<p class="lead">Sharme Smile очищающий зубной порошок.</p>
+							</div>
+						</div>
+						<!-- /.row -->
+						<div class="item-quote aligner">
+							<div class="col-sm-5 aligner-item--bottom">
+								<img src="/pictures/product/big/4708_big.jpg" alt="" class="img-responsive">
+							</div>
+							<div class="col-sm-7">
+								<blockquote class="quote-text aligner-item">
+									<p>Четыре дня пользуюсь минеральным зубным порошком. Такое приятное ощущение, шлифует уже с третьего раза понятно, это будет очень востребованный продукт. Да! Начала с очищающего. Очень нравится. Мелкие камушки отваливаются, запах очень хорошо убирает, ощущение чистоты длится весь день.</p>
+								</blockquote>
+								<p class="quote-author">
+									<a href="#">
+										<strong>Марина Шелковникова</strong>
+									</a>
+								</p>
+							</div>
+						</div>
+						<!-- /.item quote -->
+					</div>
+					<!-- /.owl item -->
+					<div class="item">
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-2 text-center">
+								<h1 class="hr-after">Отзывы о компании <span class="f-green"><strong>GREENWAY</strong></span></h1>
+								<p class="lead">Лидеры о бизнесе в GREENWAY.</p>
+							</div>
+						</div>
+						<!-- /.row -->
+						<div class="item-quote aligner">
+							<div class="col-sm-5 aligner-item--bottom">
+								<img src="userfiles/moskvina-305.jpg" alt="" class="img-responsive">
+							</div>
+							<div class="col-sm-7">
+								<blockquote class="quote-text aligner-item">
+									<p>Наш бизнес — это женский бизнес для умных мужиков.</p>
+								</blockquote>
+								<p class="quote-author">
+									<a href="#">
+										<strong>Москвина Елена</strong>
+									</a>
+								</p>
+							</div>
+						</div>
+						<!-- /.item quote -->
+					</div>
+					<!-- /.owl item -->
+					<div class="item">
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-2 text-center">
+								<h1 class="hr-after">Отзывы о продукции <span class="f-green"><strong>GREENWAY</strong></span></h1>
+								<p class="lead">Так работает авто-полотенце!</p>
+							</div>
+						</div>
+						<!-- /.row -->
+						<div class="item-quote aligner">
+							<div class="col-sm-5 aligner-item--bottom">
+								<img src="/pictures/product/big/4578_big.jpg" alt="" class="img-responsive">
+							</div>
+							<div class="col-sm-7">
+								<blockquote class="quote-text aligner-item">
+									<p>
+										Натерла машину автополотенцем. Один раз намочила в самом начале и все. Нет разводов, все чисто, если чуток потереть гладкой стороной то отходит слой цемента. Машина находится рядом с цементным заводом и вся покрыта им тонким слоем. Завтра будем оттирать слой цемента. Если обычной тряпкой по засохшей грязи машина царапается. Муж боится больше всего этого. А тут, красота, ничего не царапает!
+										Руки при этом остались чистые.
+									</p>
+								</blockquote>
+								<p class="quote-author">
+									<a href="#">
+										<strong>Васильева Ирина</strong>
+									</a>
+								</p>
+							</div>
+						</div>
+						<!-- /.item quote -->
+					</div>
+					<!-- /.owl item -->
+				</div>
+				<!-- /.quote carousel -->
+			</div>
+		</div>
+	</section>
+
+</div>
+<!-- /.wrapper -->
+
+<footer id="footer" class="bg-dark">
+	<section class="pad-t-50 pad-b-100 bg-dark space" id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 text-center">
+					<h3 class="small-heading-i">Остались вопросы?<br>Задайте их в форме ниже или</h3>
+					<h2 class="big-heading">Отправьте запрос на сотрудничество</h2>
+					<!--<h2 class="big-heading">Отправmте заявку на регистрацию</h2>-->
+				</div>
+			</div>
+			<div id="message"></div>
+			<div class="divide30"></div>
+			<div class="row">
+				@using (Html.BeginForm("Index", "Business", FormMethod.Post, new { name = "contactform", id = "contactform", novalidate = "novalidate" }))
+				{
+					<input type="hidden" id="IsLanding" name="IsLanding" value="true">
+					<input type="hidden" id="MessageType" name="MessageType" value="Offer">
+					<div class="col-sm-6">
+						<fieldset>
+							@Html.TextBoxFor(m => m.Name, new { required = "true", data_ng_model = "feedback.name", placeholder = "Имя" })
+							@*<input name="Name" type="text" required="required" id="firstname" size="30" value="" placeholder="Имя">*@
+							<br>
+							@Html.TextBoxFor(m => m.Email, new { required = "true", data_ng_model = "feedback.email", placeholder = "Email",
+							pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)$", type = "email"})
+							@*<input name="Email" type="text" required="required" id="firstemail" size="30" value="" placeholder="Email">*@
+							<br>
+							@Html.TextBoxFor(m => m.Phone, new { required = "true", data_ng_model = "feedback.phone", placeholder = "Телефон", type = "tel" })
+							@*<input name="Phone" type="text" required="required" id="firstphone" size="30" value="" placeholder="Телефон">*@
+							<br>
+						</fieldset>
+					</div>
+					<div class="col-sm-6">
+						<fieldset>
+							@Html.TextAreaFor(m => m.Message, new { data_ng_model = "feedback.message", cols = "40", rows = "8", placeholder = "Сообщение" })
+							@*<textarea name="message" id="message" cols = "40" rows = "8" placeholder="Сообщение"></textarea>*@
+							<button type="submit" data-button-validation class="btn btnGreen" id="submit" value="Submit">Отправить</button>
+						</fieldset>
+					</div>
+				}
+			</div>
+		</div>
+	</section>
+
+</footer>
+
+

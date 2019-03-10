@@ -1,0 +1,57 @@
+﻿@import '../../../styles/_variable.scss';
+
+.modal-body-template-setting {
+    background: #eee;
+}
+
+.design-theme-treeview-item {
+    padding: 5px 0 5px 10px;
+}
+.design-theme-treeview-item .fa-folder-open {
+    color: #d6be08;
+    font-size: 14px;
+}
+.design-theme-treeview-item a {
+    color: #475761;
+    text-decoration: none;
+}
+.design-theme-treeview-sub-item {
+    padding: 5px 0 0 20px;
+}
+
+.design-theme-files-item {
+    display: inline-block;
+    margin: 15px;
+    padding: 15px;
+    width: 155px;
+    vertical-align: top;
+    position: relative;
+    overflow: hidden;
+}
+.design-theme-files-item:hover {
+    border: solid 1px #ccc;
+    padding: 14px;
+    border-radius: 5px;
+}
+
+.design-theme-files-item .design-theme-files-item-preview {
+    padding: 3px;
+    height: 125px;
+}
+
+.design-theme-files-item .design-theme-files-item-preview .design-theme-files-item-preview-img {
+    max-height: 120px;
+    max-width: 120px;
+}
+
+.design-theme-files-item .design-theme-files-remove {
+    float: right;
+    font-size: 18px;
+    text-decoration: none;
+    color: red;
+    display: none;
+}
+
+.design-theme-files-item:hover .design-theme-files-remove {
+    display: block;
+}

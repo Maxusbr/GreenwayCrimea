@@ -1,0 +1,136 @@
+﻿@model AdvantShop.Core.Services.Catalog.ProductViewModel
+@{
+    float width = 100 / (float)Model.CountProductsInLine;
+    var widthString = width.ToInvariantString() + "%";
+}
+@foreach (var product in Model.Products)
+{
+    var productUrl = Url.AbsoluteRouteUrl("Product", new { url = product.UrlPath });
+    <div class="products-view-block cs-br-1 js-products-view-block" style="-webkit-flex-basis: @(widthString); -ms-flex-preferred-size: @(widthString); flex-basis: @(widthString); max-width: @(widthString);">
+        <div class="products-view-item text-static cs-br-1 js-products-view-item" style="padding-left:@(Model.PhotoWidth)px; min-height:@(Model.PhotoHeight)px;" data-product-view-item data-offer-id="@product.OfferId" data-product-id="@product.ProductId">
+            @if (Model.DisplayCategory)
+            {
+                <div class="products-specials-category">
+                    @if (!string.IsNullOrEmpty(product.CategoryUrl))
+                    {
+                        <a href="@Url.AbsoluteRouteUrl("Category", new {url = product.CategoryUrl})" class="products-specials-category-link">@Html.Raw(product.CategoryName)</a>
+                    }
+                    else
+                    {
+                        <span class="products-specials-category-link"></span>
+                    }
+                </div>
+            }
+            <figure class="products-view-pictures" style="width: @(Model.PhotoWidth)px;">
+                <a class="products-view-picture-link" href="@productUrl" data-ng-href="{{productViewItem.getUrl('@productUrl')}}" style="height: @(Model.PhotoHeight)px;">
+                    <img src="@product.Photo.ImageSrcSmall()"
+                         data-ng-src="{{productViewItem.picture.PathSmall}}"
+                         data-qazy="true"
+                         alt="@Html.Raw(product.Photo.Alt)"
+                         title="@Html.Raw(product.Photo.Title)"
+                         class="products-view-picture"
+                         @Html.InplaceImageProduct(product.Photo.PhotoId, product.ProductId, AdvantShop.FilePath.ProductImageType.Small)>
+                    @if (product.Gifts)
+                    {
+                        <div class="prod-gift-icon"></div>
+                    }
+                </a>
+                @if (Model.DisplayQuickView)
+                {
+                    <div class="products-view-quickview" data-quickview-trigger data-product-id="@product.ProductId"><a class="products-view-quickview-link btn btn-xsmall btn-confirm icon-search-before" href="">@T("Shared.ProductView.QuickView")</a></div>
+                }
+                @if (Model.DisplayPhotoCount)
+                {
+                    <div ng-bind="productViewItem.photos.length" ng-init="productViewItem.photos.length = '@product.CountPhoto'" class="products-view-photos-count cs-bg-1 cs-t-8" title="{{productViewItem.textNumberals}}">
+                    </div>
+                }
+            </figure>
+            <div class="products-view-info">
+                <div class="products-view-name @(string.IsNullOrEmpty(product.Colors) ? "products-view-name-default" : "products-view-name-slim")">
+                    <a href="@productUrl" data-ng-href="{{productViewItem.getUrl('@productUrl')}}" class="products-view-name-link" title="@product.Name">@product.Name</a>
+                </div>
+                <div class="products-view-meta@(!Model.DisplayProductArtNo ? " products-view-tile-element-hidden" : "")">
+                    <div class="products-view-meta-item cs-br-1"><span class="products-view-tile-element-hidden">@T("Shared.ProductView.Sku"): </span>@Html.Raw(product.ArtNo)</div>
+                    @if (Model.DisplayReviewCount)
+                    {
+                        <div class="products-view-meta-item products-view-tile-element-hidden cs-br-1">@Html.Numerals(product.Comments, T("Shared.ProductView.Reviews0"), T("Shared.ProductView.Reviews1"), T("Shared.ProductView.Reviews2"), T("Shared.ProductView.Reviews5"))</div>
+                    }
+                </div>
+                @if (!string.IsNullOrEmpty(product.Colors))
+                {
+                    @Html.Partial("_Colors", new ColorsViewModel()
+                    {
+                        NgColors = product.Colors,
+                        ColorWidth = Model.ColorImageWidth,
+                        ColorHeight = Model.ColorImageHeight,
+                        SelectedColors = Model.SelectedColors
+                    })
+                }
+                else
+                {
+                    <div class="products-view-colors-empty products-view-list-element-hidden products-view-table-element-hidden" style="height: @(Model.ColorImageHeight - 7)px"></div>
+                }
+                @if (Model.DisplayRating)
+                {
+                    <div class="products-view-rating">
+                        @Html.Partial("_Rating", new RatingViewModel(product.Ratio))
+                    </div>
+                }
+                @if (!string.IsNullOrWhiteSpace(product.BriefDescription))
+                {
+                    <div class="products-view-description products-view-tile-element-hidden products-view-table-element-hidden">
+                        @Html.Raw(product.BriefDescription)
+                    </div>
+                }
+            </div>
+            @if (product.Recomend || product.Sales || product.Bestseller || product.New || product.TotalDiscount.HasValue)
+            {
+                <div class="products-view-labels">
+                    @Html.RenderLabels(product.Recomend, product.Sales, product.Bestseller, product.New, product.TotalDiscount)
+                </div>
+            }
+            @*<div class="products-view-footer">*@
+            <div class="products-view-price-block products-view-price-inner">
+                <div class="products-view-price">
+                    <div class="price">
+                        @Html.Raw(product.PreparedPrice)
+                    </div>
+                </div>
+                @{
+                    var showBuyButton = Model.DisplayBuyButton && ((product.RoundedPrice > 0 && product.Amount > 0) || Model.AllowBuyOutOfStockProducts);
+                    var showPreOrderButton = Model.DisplayPreOrderButton && (product.RoundedPrice == 0 || product.Amount <= 0) && product.AllowPreorder && product.OfferId != 0 && !Model.AllowBuyOutOfStockProducts;
+                }
+                @if (showBuyButton || showPreOrderButton)
+                {
+                    <div class="products-view-buttons-cell">
+                        <div class="products-view-buttons">
+                            @if (showBuyButton)
+                            {
+                                <a href="@productUrl" data-ng-href="{{productViewItem.getUrl('@productUrl')}}" data-cart-add data-offer-id="0" data-product-id="@product.ProductId" data-amount="@product.MinAmount.ToInvariantString()" class="btn btn-small btn-buy icon-bag-before products-view-buy">@Model.BuyButtonText</a>
+                            }
+                            @if (showPreOrderButton)
+                            {
+                                <a href="@Url.RouteUrl("PreOrder", new {offerid= product.OfferId})" data-cart-preorder data-offer-id="productViewItem.offerId" class="btn btn-small btn-action icon-bag-before products-view-buy">@Model.PreOrderButtonText</a>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            @if (Model.DisplayComparison)
+            {
+                <div class="products-view-footer-additional cs-br-1">
+                    @Html.Partial("_CompareBlock", new CompareViewModel(product.OfferId))
+                </div>
+            }
+            @*</div>*@
+            @if (Model.DisplayPhotoPreviews)
+            {
+                <div class="product-view-photos-wrap"
+                     data-product-view-carousel-photos
+                     data-change-photo="productViewItem.changePhoto(photo)"
+                     data-photo-height="@(Model.PhotoPreviewHeight)px"
+                     data-photo-width="@(Model.PhotoPreviewWidth)px"></div>
+            }
+        </div>
+    </div>
+}

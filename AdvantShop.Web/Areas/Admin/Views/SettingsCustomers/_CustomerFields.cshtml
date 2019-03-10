@@ -1,0 +1,72 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CustomersSettingsModel
+
+<div ng-switch="settingsCustomers.field == null">
+    <div ng-switch-when="true" ng-cloak>
+        <div class="sticky-page-name m-b-md">
+            <div class="page-name-block sticky-page-name-inner">
+                <div class="page-name-block-item-main">
+                    <h1 class="page-name-block-text sticky-page-name-text">
+                        @T("Admin.Settings.CustomerFields")
+                    </h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger data-controller="'ModalAddEditCustomerFieldCtrl'" controller-as="ctrl" on-close="settingsCustomers.gridCustomerFields.fetchData()"
+                                      template-url="../areas/admin/content/src/settingsCustomers/modal/addEditCustomerField/AddEditCustomerField.html">
+                        <button class="btn btn-sm btn-success" type="button" data-e2e="btnAdd">
+                            <span class="fa fa-plus"></span>
+                            @T("Admin.Settings.CustomerFields.AddCustomerField")
+                        </button>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="m-b">
+        </div>
+        <ui-grid-custom grid-unique-id="gridCustomerFields"
+                        grid-row-identificator="'Id'"
+                        grid-on-init="settingsCustomers.gridCustomerFieldsOnInit(grid)"
+                        grid-options="settingsCustomers.gridCustomerFieldsOptions"
+                        grid-url="'customerFields/getPaging'"
+                        grid-inplace-url="'customerFields/inplace'"
+                        grid-extend-ctrl="settingsCustomers">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsCustomers.gridCustomerFields.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+
+    </div>
+    <div ng-switch-when="false" ng-cloak>
+        <div class="sticky-page-name m-n">
+            <div class="page-name-block sticky-page-name-inner">
+                <div class="page-name-block-item-main">
+                    <h1 class="page-name-block-text sticky-page-name-text" ng-bind="'@T("Admin.Settings.CustomerFieldValues") &quot;' + settingsCustomers.field.Name + '&quot;'">
+                        @T("Admin.Settings.CustomerFieldValues")
+                    </h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger data-controller="'ModalAddEditCustomerFieldValueCtrl'" controller-as="ctrl"
+                                      on-close="settingsCustomers.gridCustomerFieldValues.fetchData()"
+                                      resolve="{'fieldId': settingsCustomers.field.Id}"
+                                      template-url="../areas/admin/content/src/settingscustomers/modal/addEditCustomerFieldValue/AddEditCustomerFieldValue.html">
+                        <button class="btn btn-sm btn-success" type="button" data-e2e="btnAdd">
+                            <span class="fa fa-plus"></span>
+                            @T("Admin.Settings.CustomerFields.AddCustomerFieldValue")
+                        </button>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="m-b">
+            <a class="inline m-r" href="" ng-click="settingsCustomers.back()">@T("Admin.SettingsCustomers.BackToCustomerFields")</a>
+        </div>
+        <ui-grid-custom grid-unique-id="gridCustomerFieldValues"
+                        grid-on-init="settingsCustomers.gridCustomerFieldValuesOnInit(grid)"
+                        grid-options="settingsCustomers.gridCustomerFieldValuesOptions"
+                        grid-url="'customerFieldValues/getPaging'"
+                        grid-inplace-url="'customerFieldValues/inplace'"
+                        grid-params="{fieldId: settingsCustomers.field.Id}"
+                        grid-extend-ctrl="settingsCustomers">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsCustomers.gridCustomerFieldValues.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ProductPhotosViewModel
+
+<div class="gallery-block" data-ng-init="product.setPreview({'colorId': @(Model.MainPhoto.ColorID != null ? Model.MainPhoto.ColorID.ToString() : "null"), 'previewPath':'@Model.MainPhoto.ImageSrcMiddle()','originalPath':'@Model.MainPhoto.ImageSrcBig()', 'title':'@Model.MainPhoto.Title', 'PhotoId': @Model.MainPhoto.PhotoId})">
+    @if (Model.Photos.Count > 1)
+    {
+        <div class="gallery-photos details-carousel" data-ng-class="{'details-carousel' : product.carouselHidden}">
+            <div class="gallery-photos-slider-list-horizontal"
+                 data-magnific-popup
+                 data-carousel
+                 data-carousel-class="gallery-photos-slider"
+                 data-init-fn="product.addCarousel(carousel)"
+                 data-stretch="true">
+                @foreach (var photo in Model.Photos)
+                {
+                    <a href="@photo.ImageSrcBig()" class="details-carousel-item" data-parameters="{'colorId': @(photo.ColorID != null ? photo.ColorID.ToString() : "null") , 'main' : @photo.Main.ToString().ToLower(), 'previewPath': '@photo.ImageSrcMiddle()', 'originalPath': '@photo.ImageSrcBig()', 'title': '@Html.AttributeEncode(photo.Title)', 'PhotoId': @photo.PhotoId }">
+                        <figure class="gallery-photos-item">
+                            <img class="gallery-photos-item-obj img-not-resize" src="@photo.ImageSrcMiddle()" alt="@photo.Alt" title="@photo.Title" />
+                        </figure>
+                    </a>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+

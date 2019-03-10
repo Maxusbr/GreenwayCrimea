@@ -1,0 +1,142 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.StoreReviews
+@using AdvantShop.Module.StoreReviews.Domain
+@using AdvantShop.Module.StoreReviews.App_LocalResources
+@using AdvantShop.Configuration
+
+@model AdvantShop.Module.StoreReviews.Models.ReviewsModelViewModel
+
+@helper BuildReviews(List<StoreReview> reviews, int parentId, bool indent)
+{
+    var items = reviews.Where(r => r.ParentId == parentId).ToList();
+    if (items.Count > 0)
+    {
+        <ul class="reviews-list row">
+            @foreach (var item in items)
+            {
+                <li class="review-item col-xs-12" data-review-item data-review-id="@item.Id">
+                    <div class="row">
+                        <div class="col-xs">
+                            <div class="shop-reviews-review-header">
+                                <span class="review-item-name cs-t-1">
+                                    @Html.Raw(item.ReviewerName)
+                                </span>
+                                @if (item.Rate > 0 && Model.ShowRatio)
+                                {
+                                    @Html.Action("Rating", "Common", new { objId = 0, rating = item.Rate, readOnly = true })
+                                }
+                                <span class="review-item-date cs-t-3">
+                                    <time datetime="@item.DateAdded.ToString("yyyy-MM-dd")">@item.DateAdded.ToShortDateTime()</time>
+                                </span>
+                            </div>
+                            <div class="shop-reviews-review-text">
+                                @if (indent || !string.IsNullOrWhiteSpace(item.ReviewerImage))
+                                {
+                                    <div class="shop-reviews-review-image">
+                                        @if (!string.IsNullOrWhiteSpace(item.ReviewerImage))
+                                        {
+                                            <img alt="@item.ReviewerName" src="@UrlService.GetUrl(StoreReviews.ImagePathRelative + item.ReviewerImage)" />
+                                        }
+                                    </div>
+                                }
+                                @Html.Raw(item.Review)
+                            </div>
+                            <div class="review-item-buttons">
+                                <a href="" class="review-item-button" data-review-reply data-review-id="@item.Id">
+                                    @StoreReviewsClientPage_ascx.StoreReviews_Answer
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @if (item.HasChild)
+                    {
+                        @BuildReviews(item.ChildrenReviews, item.Id, indent || !string.IsNullOrWhiteSpace(item.ReviewerImage))
+                    }
+                </li>
+            }
+        </ul>
+    }
+}
+@*Template for review item*@
+<script type="text/ng-template" id="reviewItemTemplate.html">
+    <li class="review-item col-xs-12" data-review-item data-review-id="{{::reviewId}}">
+        <div class="row">
+            <div class="col-xs">
+                <div class="shop-reviews-review-header">
+                    <span class="review-item-name cs-t-1" data-ng-bind="::name"></span>
+                    <span class="review-item-date cs-t-3">
+                        <time datetime="" itemprop="datePublished" data-ng-bind="::date"></time>
+                    </span>
+                </div>
+                <div class="shop-reviews-review-text" itemprop="description">
+                    <div class="review-item-image" data-ng-show="photoPath" style="-webkit-flex-basis: @(Model.ImageWidth)px; -ms-flex-preferred-size: @(Model.ImageWidth)px; flex-basis: @(Model.ImageWidth)px; min-width: @(Model.ImageWidth)px;">
+                        <img alt="" data-ng-src="{{::photoPath}}" />
+                    </div>
+                    <span data-ng-bind="::text"></span>
+                </div>
+                <div class="review-item-buttons">
+                    <a href="" class="review-item-button" data-review-reply data-review-id="{{::reviewId}}">Ответить</a>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+
+
+<h1 class="main-title">@Model.Title</h1>
+@Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+<div class="mobile-container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-p-v">
+            <div class="site-body-cell-no-left">
+                @if (Model.Items.Count == 0)
+            {
+                    <div class="reviews-no-items">
+                        @StoreReviewsClientPage_ascx.StoreReviews_NoReviews
+                    </div>
+                }
+                else
+                {
+                    <div class="shop-reviews" data-reviews
+                         data-moderate="::@Model.ModerateReviews.ToString().ToLower()"
+                         data-name="@Model.Username"
+                         data-email="@Model.Email"
+                         data-action-url="/storereviews/add"
+                         data-form-visible="false"
+                         data-allow-image-upload="@Model.AllowImageUploading.ToString().ToLower()">
+                        <div>
+                            @BuildReviews(Model.Items, 0, false)
+                        </div>
+                        <div data-reviews-form
+                             data-form-visible="reviews.formVisible"
+                             data-allow-image-upload="reviews.allowImageUpload"
+                             data-name="reviews.name"
+                             data-email="reviews.email"
+                             data-visible-form-cancel-button="reviews.visibleFormCancelButton"
+                             data-review-id="reviews.reviewIdActive"
+                             data-submit-fn="reviews.submit(form, reviews.actionUrl)"
+                             data-cancel-fn="reviews.cancel(form)"
+                             data-is-show-user-agreement-text="@SettingsCheckout.IsShowUserAgreementText.ToString().ToLower()"
+                             data-user-agreement-text="@SettingsCheckout.UserAgreementText">
+                            @if (Model.UseCaptcha)
+                            {
+                                <div>
+                                    <span class="form-field-name vertical-interval-xsmall input-required">
+                                        @StoreReviewsClientPage_ascx.StoreReviews_Captcha
+                                    </span>
+                                    <div style="width:20%">
+                                        @Html.Action("Captcha_old", "Common", new { ngModel = "reviewsForm.captchaCodeStorRev", ngModelSource = "reviewsForm.captchaSourceStorRev" })
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    @Html.Paging(Model.Pager)
+                }
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-p-v">
+            @Html.Action("AddReview", "StoreReviews")
+        </div>
+    </div>
+</div>

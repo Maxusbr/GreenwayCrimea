@@ -1,0 +1,3 @@
+PaymentMethodID;Name;Enabled;SortOrder;Description;PaymentType;Extracharge;ExtrachargeType;CurrencyId
+1;Cash;true;1;Cash;Cash;0;0;4
+2;WalletOne;false;2;WalletOneCheckout;WalletOneCheckout;0;0;4

@@ -1,0 +1,26 @@
+﻿@model AdvantShop.ViewModel.Cart.CartViewModel
+
+<div class="page-title-row">
+    <h1 class="cart-title page-title">
+        @T("Cart.Index.ShoppingCart")
+    </h1>
+</div>
+<div data-module data-key="fullcartmessage">
+    @Html.RenderModules("fullcartmessage")
+</div>
+<div class="row">
+    <div class="col-xs">
+        <div data-cart-full data-photo-width="@Model.PhotoWidth"></div>
+    </div>
+    @Html.RenderModules("cart_right_column")
+</div>
+
+@Html.StaticBlock("shoppingcart")
+@Html.RenderModules("shoppingcart")
+
+@if (Model.IsDemo)
+{
+    <div class="cart-full-error">@T("Cart.Index.FakeShop")</div>
+}
+
+@Html.RenderModules("shoppingcart_after")

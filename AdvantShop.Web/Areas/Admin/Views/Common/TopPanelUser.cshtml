@@ -1,0 +1,108 @@
+﻿@{
+    var customer = CustomerContext.CurrentCustomer;
+}
+
+<div class="logo-block header-top-right-menu">
+    <div class="flex end-xs middle-xs">
+        <ul class="nav navbar-nav header-top-right-menu-list">
+            <li class="header-top-right-menu-item arrow-custom-popover">
+                <a href="service/supportcenter" target="_parent" class="dropdown-toggle log-block-link header-top-right-menu-link"
+                   @*ng-mouseenter="openQuestionMenu = true" ng-mouseleave="openQuestionMenu = false"*@>
+                    <span @*popover-is-open="openQuestionMenu" uib-popover-template="'questionMenu.html'" popover-trigger="'none'" popover-placement="bottom-left"*@>
+                        @T("Admin.TopMenu.Support")
+                    </span>
+                </a>
+                <script type="text/ng-template" id="questionMenu.html">
+                    <ul class="list-group popover-menu-list">
+                        <li class="list-group-item">
+                            <a class="dropdown-menu-link header-top-right-submenu-link" href="">
+                                <div class="dropdown-menu-content">
+                                    <div class="dropdown-menu-content-header">@T("Admin.Layout.SaasBlock.ClientCode") @SettingsLic.ClientCode</div>
+                                </div>
+                            </a>
+                        </li>
+                        @*<li class="divider"></li>*@
+                        <li class="list-group-item">
+                            <a class="dropdown-menu-link header-top-right-submenu-link" href="">
+                                <div class="dropdown-menu-content">
+                                    <div class="dropdown-menu-content-header">Поиск в Базе знаний</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="dropdown-menu-link header-top-right-submenu-link" href="">
+                                <div class="dropdown-menu-content">
+                                    <div class="dropdown-menu-content-header">Написать письмо</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="dropdown-menu-link header-top-right-submenu-link" href="">
+                                <div class="dropdown-menu-content">
+                                    <div class="dropdown-menu-content-header">Онлайн-чат (online)</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="dropdown-menu-link header-top-right-submenu-link" href="">
+                                <div class="dropdown-menu-content">
+                                    <div class="dropdown-menu-content-header">Позвонить (на связи)</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </script>
+            </li>
+            <li class="header-top-right-menu-item arrow-custom-popover" data-ng-controller="topPanelUserCtrl as TopPanel">
+                <div class="log-block-link header-top-right-menu-link"
+                        ng-mouseenter="openUserMenu = true"
+                        ng-mouseleave="openUserMenu = false">
+                    <span ng-init="TopPanel.userName = '@customer.FirstName @customer.LastName'"
+                            popover-is-open="openUserMenu"
+                            uib-popover-template="'userMenu.html'"
+                            popover-trigger="'none'"
+                            popover-placement="auto">
+                        <span class="log-block-inner" ng-click="TopPanel.loadCurrentUser()" ng-bind="TopPanel.userName">@customer.FirstName @customer.LastName</span>
+                    </span>
+                    <span class="fa fa-angle-down font-bold"></span>
+                </div>
+
+                <script type="text/ng-template" id="userMenu.html">
+                    <ul role="menu" class="list-group popover-menu-list">
+                        @if (customer.IsAdmin || customer.HasRoleAction(RoleAction.Customers))
+                        {
+                            <li class="list-group-item">
+                                <a class="dropdown-menu-link header-top-right-submenu-link" href="" ng-click="TopPanel.loadCurrentUser()">
+                                    <span class="dropdown-menu-content-header">Мой профиль</span>
+                                </a>
+                            </li>
+                        }
+                        @*<li class="divider"></li>*@
+                        <li class="list-group-item">
+                            <a class="dropdown-menu-link header-top-right-submenu-link" href="@Url.AbsoluteRouteUrl("Logout")">
+                                <span class="dropdown-menu-content-header">Выход</span>
+                            </a>
+                        </li>
+                    </ul>
+                </script>
+            </li>
+        </ul>
+        <div class="logout-wrap">
+            <div class="flex middle-xs arrow-custom-popover">
+                <a href="@Url.AbsoluteRouteUrl("Logout")" class="logout log-block-link"
+                    ng-mouseenter="openLogout = true"
+                    ng-mouseleave="openLogout = false">
+                    <span uib-popover="@T("Admin.TopMenu.Exit")"
+                            popover-is-open="openLogout"
+                            popover-placement="bottom-right">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="16px" height="16px" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M 1 14C 1 14 6 14 6 14 6.35 14 6.64 13.81 6.82 13.54 6.82 13.54 6.83 13.55 6.83 13.55 6.83 13.55 8.53 11 8.53 11 8.53 11 9.43 11 9.43 11 9.43 11 12.14 15.51 12.14 15.51 12.14 15.51 12.16 15.51 12.16 15.51 12.33 15.8 12.64 16 13 16 13.55 16 14 15.55 14 15 14 14.81 13.93 14.64 13.84 14.49 13.84 14.49 13.86 14.48 13.86 14.48 13.86 14.48 10.86 9.48 10.86 9.48 10.86 9.48 10.84 9.49 10.84 9.49 10.67 9.2 10.36 9 10 9 10 9 10 9 10 9 10 9 9.22 9 9.22 9 9.22 9 9.58 7.2 9.58 7.2 9.58 7.2 12.5 8.87 12.5 8.87 12.5 8.87 12.51 8.85 12.51 8.85 12.66 8.94 12.82 9 13 9 13.35 9 13.64 8.81 13.82 8.54 13.82 8.54 13.83 8.55 13.83 8.55 13.83 8.55 15.83 5.55 15.83 5.55 15.83 5.55 15.82 5.54 15.82 5.54 15.92 5.38 16 5.2 16 5 16 4.45 15.55 4 15 4 14.65 4 14.36 4.19 14.18 4.45 14.18 4.45 14.17 4.44 14.17 4.44 14.17 4.44 12.69 6.67 12.69 6.67 12.69 6.67 6.5 3.13 6.5 3.13 6.5 3.13 6.49 3.14 6.49 3.14 6.34 3.06 6.18 3 6 3 5.61 3 5.28 3.23 5.11 3.56 5.11 3.56 5.11 3.55 5.11 3.55 5.11 3.55 3.11 7.55 3.11 7.55 3.11 7.55 3.11 7.56 3.11 7.56 3.05 7.69 3 7.84 3 8 3 8.55 3.45 9 4 9 4.39 9 4.72 8.77 4.88 8.44 4.88 8.44 4.89 8.45 4.89 8.45 4.89 8.45 6.42 5.39 6.42 5.39 6.42 5.39 7.75 6.15 7.75 6.15 7.75 6.15 7.06 9.61 7.06 9.61 7.06 9.61 5.46 12 5.46 12 5.46 12 1 12 1 12 0.45 12-0 12.45-0 13-0 13.55 0.45 14 1 14ZM 11 4C 12.1 4 13 3.1 13 2 13 0.89 12.1-0 11-0 9.9-0 9 0.89 9 2 9 3.1 9.9 4 11 4Z" fill="rgb(189,195,199)" />
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

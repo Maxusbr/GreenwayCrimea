@@ -1,0 +1,87 @@
+﻿<style>
+.aw-customer-name {
+  font-weight: bold;
+  font-size: 120%; }
+
+.aw-customer-row {
+  margin: 5px 0; }
+
+.aw-customer-last-orders {
+  padding: 0;
+  margin: 15px 0;
+  border-collapse: collapse; }
+
+.aw-customer-last-orders-cell {
+  padding: 5px;
+  vertical-align: middle;
+  border: 1px #ccc solid;
+  border-width: 1px 0;
+  border-collapse: collapse;
+  margin: 0; }
+
+.aw-customer-last-orders-caption {
+  font-weight: bold;
+  text-align: left; }
+
+.aw-customer-not-found {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px; }
+
+.aw-header {
+  margin: 15px 0 5px;
+  font-size: 20px; }
+
+.aw-customer-error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px; }
+</style>
+
+<% if(Email != null && Email.length > 0){%>
+<div class="aw-customer-name aw-customer-row"><%=Name%></div>
+<div class="aw-customer-row">
+    <span><a href="mailto:<%= Email%>"><%= Email%></a></span>
+    <span><a href="tel:<%= Phone%>"><%= Phone%></a></span>
+</div>
+<div class="aw-customer-row">Количество заказов: <b><%= OrdersCount %></b></div>
+<div class="aw-customer-row">Общая сумма заказов: <b><%= OrdersSum %></b></div>
+<div class="aw-customer-row">
+    <% if(Link != null && Link.length > 0) {%>
+    <a href="<%= Link %>" target="_blank">Информация о клиенте</a>
+    <% } %>
+</div>
+<% if(LastOrders != null && LastOrders.length > 0){%>
+<table class="aw-customer-last-orders">
+    <caption class="aw-customer-last-orders-caption">
+        Последние заказы:
+    </caption>
+    
+    <% for ( var i = 0, l = LastOrders.length; i < l; i++ ) { %>
+    <tr>
+        <td class="aw-customer-last-orders-cell" style="border-left:3px #<%= LastOrders[i].StatusColor %> solid;" title="<%= LastOrders[i].Status %>">
+            <%= LastOrders[i].Date%>
+        </td>
+        <td class="aw-customer-last-orders-cell">
+            <%= LastOrders[i].Sum %>
+        </td>
+        <td class="aw-customer-last-orders-cell">
+            <%= LastOrders[i].Payed ? "Оплачен" : "Не оплачен" %>
+        </td>
+        <td class="aw-customer-last-orders-cell">
+            <a href="<%= LastOrders[i].Link %>" target="_blank">Подробнее</a>
+        </td>
+    </tr>
+    <% } %>
+    </table>
+	<% } else { %>
+    <div class="aw-customer-last-orders-caption">
+        Заказов нет
+    </div>
+    <% } %>
+<% } else { %>
+<div class="aw-customer-not-found">
+    Покупатель не найден
+</div>
+<% } %>

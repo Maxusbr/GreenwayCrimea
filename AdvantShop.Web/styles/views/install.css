@@ -1,0 +1,449 @@
+html {
+    overflow-y: scroll;
+}
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    height: 100%;
+    background: #7495bf url('../../../images/install/install/gradient.jpg') repeat-x scroll left top;
+    line-height: 1;
+}
+table {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    border-collapse: collapse;
+}
+td {
+    margin: 0px;
+    border-collapse: collapse;
+}
+input,
+select,
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+    font-weight: bold;
+    font-size: 20px;
+    color: #343233;
+    margin: 0px;
+    padding: 2px 0px 16px 0px;
+}
+h2 {
+    font-size: 17px;
+    margin: 0;
+    padding: 0 0 10px;
+    color: #515051;
+}
+form {
+    height: 100%;
+}
+div.top-img {
+    background: transparent url('../../images/install/bg-top.jpg') no-repeat scroll center top;
+    height: 578px;
+    left: 0px;
+    width: 100%;
+    top: 0px;
+    position: absolute;
+    z-index: 0;
+}
+div.footer-bg {
+    background: transparent url('../../images/install/footer-bg.gif') repeat-x scroll left bottom;
+    height: 274px;
+    bottom: 0px;
+    margin-top: -274px;
+}
+.footer-img {
+    background: transparent url('../../images/install/bg-footer.jpg') no-repeat scroll center bottom;
+    height: 274px;
+    bottom: 0px;
+    margin-top: -274px;
+}
+table.container {
+    height: 100%;
+    border: 0px;
+    border-collapse: collapse;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    z-index: 20;
+    width: 960px;
+    margin: 0px auto 0 auto;
+}
+table.container td {
+    border-collapse: collapse;
+    padding: 0px;
+    margin: 0px;
+}
+table.container td.footer {
+    height: 90px;
+    color: #fff;
+    font-size: 12px;
+}
+table.container td.content {
+    vertical-align: top;
+    text-align: left;
+    background: #fff url('../../images/install/split-column.gif') repeat-y scroll 276px top;
+}
+table.container td.header {
+    height: 152px;
+    vertical-align: top;
+}
+td.footer a:link,
+td.footer a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+td.footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+div.column-left {
+    float: left;
+    width: 276px;
+    padding-left: 22px;
+}
+div.column-right {
+    float: left;
+    width: 592px;
+    margin-left: 35px;
+    margin-top: 18px;
+    padding-right: 35px;
+    font-size: 14px;
+    color: #5c636d;
+}
+div.column-right p {
+    margin: 0px;
+    padding: 0px 0px 5px;
+}
+div.column-right p .sub {
+    font-size: 12px;
+    font-weight: normal;
+}
+.column-split-top {
+    background: #fff url('../../images/install/split-column-top.gif') no-repeat scroll right bottom;
+    height: 7px;
+    line-height: 0px;
+    font-size: 0px;
+}
+.column-split-bottom {
+    background: #fff url('../../images/install/split-column-bottom.gif') no-repeat scroll 276px top;
+    height: 7px;
+    line-height: 0px;
+    font-size: 0px;
+}
+.steps {
+    margin: 11px 0px;
+}
+.steps .step {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #727272;
+}
+.steps .step div {
+    padding-left: 30px;
+    height: 38px;
+    line-height: 38px;
+    margin-left: 8px;
+}
+.steps .step div.paragraf {
+    line-height: 13px;
+    height: 33px;
+    padding-top: 5px;
+}
+.steps .step {
+    display: block;
+    padding: 10px 0 10px 35px;
+}
+.steps .step .theme {
+    background: transparent url('../../images/install/menu/icons/theme-visited.png') no-repeat scroll 5px center;
+}
+.steps .shop-info {
+    background: transparent url('../../images/install/menu/icons/shop-info-visited.png') no-repeat scroll 5px center;
+}
+.steps .finance {
+    background: transparent url('../../images/install/menu/icons/finance-visited.png') no-repeat scroll 5px center;
+}
+.steps .payment {
+    background: transparent url('../../images/install/menu/icons/payment-visited.png') no-repeat scroll 5px center;
+}
+.steps .shipping {
+    background: transparent url('../../images/install/menu/icons/shipping-visited.png') no-repeat scroll 5px center;
+}
+.steps .openid {
+    background: transparent url('../../images/install/menu/icons/openid-visited.png') no-repeat scroll 5px center;
+}
+.steps .notify {
+    background: transparent url('../../images/install/menu/icons/notify-visited.png') no-repeat scroll 5px center;
+}
+.steps .final {
+    background: transparent url('../../images/install/menu/icons/final-visited.png') no-repeat scroll 5px center;
+}
+.steps .active {
+    background: transparent url('../../images/install/menu/menu-bg.png') no-repeat scroll left top;
+    color: #fff;
+    height: 40px;
+}
+.steps .active .step {
+    color: #fff;
+}
+.steps .active .theme {
+    background: transparent url('../../images/install/menu/icons/theme-active.png') no-repeat scroll 5px center;
+}
+.steps .active .shop-info {
+    background: transparent url('../../images/install/menu/icons/shop-info-active.png') no-repeat scroll 5px center;
+}
+.steps .active .finance {
+    background: transparent url('../../images/install/menu/icons/finance-active.png') no-repeat scroll 5px center;
+}
+.steps .active .payment {
+    background: transparent url('../../images/install/menu/icons/payment-active.png') no-repeat scroll 5px center;
+}
+.steps .active .shipping {
+    background: transparent url('../../images/install/menu/icons/shipping-active.png') no-repeat scroll 5px center;
+}
+.steps .active .openid {
+    background: transparent url('../../images/install/menu/icons/openid-active.png') no-repeat scroll 5px center;
+    padding: 5px 0 10px 35px;
+}
+.steps .active .notify {
+    background: transparent url('../../images/install/menu/icons/notify-active.png') no-repeat scroll 5px center;
+    padding: 5px 0 10px 35px;
+    margin: 10px 0 0 0;
+}
+.steps .active .final {
+    background: transparent url('../../images/install/menu/icons/final-active.png') no-repeat scroll 5px center;
+    margin: 10px 0 0 0;
+}
+.steps .post .theme {
+    background: transparent url('../../images/install/menu/icons/theme.gif') no-repeat scroll 5px center;
+}
+.steps .post .shop-info {
+    background: transparent url('../../images/install/menu/icons/shop-info.gif') no-repeat scroll 5px center;
+}
+.steps .post .finance {
+    background: transparent url('../../images/install/menu/icons/finance.gif') no-repeat scroll 5px center;
+}
+.steps .post .payment {
+    background: transparent url('../../images/install/menu/icons/payment.gif') no-repeat scroll 5px center;
+}
+.steps .post .shipping {
+    background: transparent url('../../images/install/menu/icons/shipping.gif') no-repeat scroll 5px center;
+}
+.steps .post .openid {
+    background: transparent url('../../images/install/menu/icons/openid.gif') no-repeat scroll 5px center;
+}
+.steps .post .notify {
+    background: transparent url('../../images/install/menu/icons/notify.gif') no-repeat scroll 5px center;
+}
+.steps .post .final {
+    background: transparent url('../../images/install/menu/icons/final.gif') no-repeat scroll 5px center;
+}
+.file-upload {
+    width: 365px;
+}
+.container-logo {
+    margin: 10px 0px 10px;
+}
+.container-logo img {
+    max-width: 500px;
+}
+.logo {
+    margin-top: 60px;
+}
+.txt {
+    width: 305px;
+    border: 1px #92aed1 solid;
+    padding: 0 0 0 5px;
+    height: 20px;
+    line-height: 19px;
+}
+.txt-area {
+    width: 575px;
+    height: 87px;
+    border: 1px #92aed1 solid;
+}
+.step-btns {
+    text-align: right;
+    width: 585px;
+    padding: 30px 0 0 0;
+}
+.str {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
+    margin-bottom: 5px;
+}
+table.subform {
+    font-size: 12px;
+    margin-top: 10px;
+}
+table.subform td {
+    padding: 0px 10px 0px 0px;
+    vertical-align: top;
+    margin: 0px;
+    border: 0px;
+}
+table.subform td.param-name {
+    padding-top: 3px;
+    width: 150px;
+}
+.do {
+    font-style: italic;
+}
+fieldset.group {
+    margin-bottom: 10px;
+    padding: 0px;
+    border: 1px #ccc solid;
+}
+fieldset.group legend {
+    margin-left: 10px;
+}
+fieldset.group legend img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.payment-mar {
+    margin-left: 16px;
+}
+.steps .post {
+    cursor: pointer;
+    color: #538cc0;
+    height: 40px;
+}
+.post:hover {
+    text-decoration: underline;
+}
+.post div {
+    color: #538cc0;
+}
+fieldset.collapsed-block {
+    border-color: transparent;
+}
+.block-options {
+    padding: 10px 10px 0px;
+}
+fieldset.simple {
+    border-color: transparent;
+}
+.valid-required,
+.valid-number,
+.valid-money,
+.valid-email {} .error-message {
+    width: 297px;
+}
+.header-text {
+    color: #fff;
+    font-family: "Myriad Pro";
+    font-weight: bold;
+    text-shadow: 1px 0px 1px #000;
+    float: right;
+    margin: 60px 0 0 0;
+}
+.header-text .options {
+    font-size: 25px;
+}
+.header-text .version {
+    font-size: 36px;
+    padding-left: 140px;
+}
+a {
+    color: #568bbd;
+    text-decoration: underline;
+}
+a:hover {
+    color: #568bbd;
+    text-decoration: none;
+}
+.list-methods {} .err-content {
+    color: #eb2642;
+    font-size: 12px;
+}
+.err-content div {
+    margin: 10px 0px;
+}
+.btn-back,
+.btn-next {
+    display: inline-block;
+    vertical-align: top;
+    height: 48px;
+    color: #fff;
+    font-size: 15px;
+    line-height: 48px;
+    text-decoration: none;
+    text-align: center;
+    border: 0;
+    cursor: pointer;
+}
+.btn-back:hover, .btn-next:hover {
+    color: #fff;
+}
+.btn-back {
+    background: transparent url('../../images/install/back.jpg') scroll no-repeat left top;
+    padding-left: 10px;
+    width: 138px;
+}
+.btn-next {
+    background: transparent url('../../images/install/next.jpg') scroll no-repeat left top;
+    padding-right: 10px;
+    width: 140px;
+}
+.btn-back:hover,
+.btn-next:hover {
+    background-position: left -46px;
+}
+.btn-back:active,
+.btn-next:active {
+    background-position: left -92px;
+}
+a:focus,
+input:focus,
+textarea:focus {
+    outline: none;
+}
+.install-mode .mode-name {
+    font-weight: bold;
+}
+.install-mode .mode-description {
+    display: block;
+    padding: 7px 0 0 25px;
+}
+a.check_other_folders {
+    cursor: pointer;
+}
+#load_content {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding-top: 10px;
+    display: none;
+}
+label {
+    cursor: pointer;
+}
+.error {
+    color: red;
+    padding: 15px 0;
+    font-size: 15px;
+}
+.error ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.field-validation-error {
+    display: block;
+    padding: 5px 0;
+    color: red;    
+}
+.post a.step {
+    color: #538cc0;
+    text-decoration: none;
+}

@@ -1,0 +1,26 @@
+﻿@using AdvantShop.Models.Install
+@model AdvantShop.ViewModel.Install.InstallViewModel
+
+@foreach (var menuItem in Model.MenuItems)
+{
+    if (menuItem.Step < Model.CurrentStep)
+    {
+        <div class="post">
+            <a class="step @menuItem.StyleClass" href="install/@(menuItem.Step != InstallStep.TrialSelect ? menuItem.Step.ToString().ToLower() : "")">
+                @Html.Raw(menuItem.MenuName)
+            </a>
+        </div>
+    }
+    else if (menuItem.Step == Model.CurrentStep)
+    {
+        <div class="active">
+            <span class="step @menuItem.StyleClass">@Html.Raw(menuItem.MenuName)</span>
+        </div>
+    }
+    else
+    {
+        <div>
+            <span class="step @menuItem.StyleClass">@Html.Raw(menuItem.MenuName)</span>
+        </div>
+    }
+}

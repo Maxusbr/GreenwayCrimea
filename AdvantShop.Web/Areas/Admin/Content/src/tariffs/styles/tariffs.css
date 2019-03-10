@@ -1,0 +1,91 @@
+.tariff-period-wrap,
+.tariff-wrap {
+  -webkit-flex-basis: 25%;
+  -ms-flex-preferred-size: 25%;
+  flex-basis: 25%;
+  max-width: 25%;
+  padding: 10px 5px; }
+
+.tariff-block {
+  min-height: 568px;
+  padding: 15px 28px;
+  border: 1px solid #c3c3c3; }
+
+.tariff-price,
+.tariff-description,
+.tariff-features,
+.tariff-title {
+  color: #2f4050; }
+
+.tariff-label {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  display: inline-block;
+  background: #8bc34a;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "OpenSans-bold";
+  font-size: 9px;
+  padding: 3px 7px;
+  border-radius: 3px;
+  line-height: 1; }
+
+.tariff-description {
+  font-size: 13px;
+  margin-bottom: 26px; }
+
+.tariff-features {
+  border-left: 0;
+  border-right: 0; }
+
+.tariff-features-text-danger {
+  color: #f44336; }
+
+.tariff-content {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto; }
+
+.tariff-footer {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto; }
+
+.tariff-price {
+  font-size: 13px; }
+
+.tariff-price .tarif-price-num {
+  color: #2f4050;
+  font-size: 30px; }
+
+.tariff-period {
+  color: #2f4050;
+  border: 1px solid #c3c3c3;
+  padding: 15px 28px; }
+
+.tariff-period-title {
+  color: #2f4050;
+  font-size: 12px; }
+
+.tariff-period-price {
+  color: #2f4050;
+  font-size: 18px; }
+
+.tariff-period-descount {
+  color: #2f4050;
+  font-size: 14px; }
+
+.selected-tariff-period,
+.selected-tariff {
+  border-color: #2d9cee;
+  box-shadow: 0 0 0 2px #2d9cee; }
+
+.tariff-block:hover {
+  border-color: #2d9cee;
+  box-shadow: 0 0 0 2px #2d9cee;
+  cursor: pointer; }
+
+.selected-tariff-period > *,
+.selected-tariff-period .tariff-period-title {
+  color: #8bc34a !important; }

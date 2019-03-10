@@ -1,0 +1,569 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SEOSettingsModel
+
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/settings-of-seo-module" target="_blank" data-e2e="metaInstruction">Инструкция. Настройка мета по умолчанию для магазина</a>
+        </div>
+    </div>
+</div>
+<div>
+    <a href="@Url.Action("Academy", "Service", new { id = 53 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert">
+        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+        Видеоурок о SEO продвижении
+    </a>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.Default")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.DefaultTitle, T("Admin.Settings.SeoSettings.DefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.DefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.DefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Default }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.DefaultMetaKeywords, T("Admin.Settings.SeoSettings.DefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.DefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.DefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Default }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.DefaultMetaDescription, T("Admin.Settings.SeoSettings.DefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.DefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.DefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Default }) })
+    </div>
+</div>
+
+<div class="col-xs-offset-2">
+    @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.Default, showInstruction = false })
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.CategoriesMeta")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CategoriesDefaultTitle, T("Admin.Settings.SeoSettings.CategoriesDefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.CategoriesDefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.CategoriesDefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Category }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CategoriesDefaultMetaKeywords, T("Admin.Settings.SeoSettings.CategoriesDefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.CategoriesDefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.CategoriesDefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Category }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CategoriesDefaultMetaDescription, T("Admin.Settings.SeoSettings.CategoriesDefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.CategoriesDefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.CategoriesDefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Category }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CategoriesDefaultH1, T("Admin.Settings.SeoSettings.CategoriesDefaultH1"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.CategoriesDefaultH1, new { @class = "form-control", ng_model = "settingsSeo.CategoriesDefaultH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Category }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.Category, showInstruction = false })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        <a href="" ng-click="settingsSeo.resetMeta('@AdvantShop.SEO.MetaType.Category.ToString()')">Сбросить мета информацию для всех категорий </a>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.TagsMeta")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.TagsDefaultTitle, T("Admin.Settings.SeoSettings.TagsDefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.TagsDefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.TagsDefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Tag }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.TagsDefaultMetaKeywords, T("Admin.Settings.SeoSettings.TagsDefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.TagsDefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.TagsDefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Tag }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.TagsDefaultMetaDescription, T("Admin.Settings.SeoSettings.TagsDefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.TagsDefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.TagsDefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Tag }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.TagsDefaultH1, T("Admin.Settings.SeoSettings.TagsDefaultH1"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.TagsDefaultH1, new { @class = "form-control", ng_model = "settingsSeo.TagsDefaultH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Tag }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.Tag, showInstruction = false })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        <a href="" ng-click="settingsSeo.resetMeta('@AdvantShop.SEO.MetaType.Tag.ToString()')">Сбросить мета информацию для всех тегов</a>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.ProductMeta")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ProductsDefaultTitle, T("Admin.Settings.SeoSettings.ProductsDefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.ProductsDefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.ProductsDefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Product }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ProductsDefaultMetaKeywords, T("Admin.Settings.SeoSettings.ProductsDefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.ProductsDefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.ProductsDefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Product }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ProductsDefaultMetaDescription, T("Admin.Settings.SeoSettings.ProductsDefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.ProductsDefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.ProductsDefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Product }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ProductsDefaultH1, T("Admin.Settings.SeoSettings.ProductsDefaultH1"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.ProductsDefaultH1, new { @class = "form-control", ng_model = "settingsSeo.ProductsDefaultH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Product }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.ProductsDefaultAdditionalDescription, T("Admin.Settings.SeoSettings.ProductsDefaultAdditionalDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.ProductsDefaultAdditionalDescription, new { @class = "form-control", ng_model = "settingsSeo.ProductsDefaultAdditionalDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Product }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.Product, showInstruction = false })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        <a href="" ng-click="settingsSeo.resetMeta('@AdvantShop.SEO.MetaType.Product.ToString()')">Сбросить мета информацию для всех товаров </a>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.StaticPage")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.StaticPageDefaultTitle, T("Admin.Settings.SeoSettings.StaticPageDefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.StaticPageDefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.StaticPageDefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.StaticPageDefaultMetaKeywords, T("Admin.Settings.SeoSettings.StaticPageDefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.StaticPageDefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.StaticPageDefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.StaticPageDefaultMetaDescription, T("Admin.Settings.SeoSettings.StaticPageDefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.StaticPageDefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.StaticPageDefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.StaticPageDefaultH1, T("Admin.Settings.SeoSettings.StaticPageDefaultH1"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.StaticPageDefaultH1, new { @class = "form-control", ng_model = "settingsSeo.StaticPageDefaultH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.StaticPage, showInstruction = false })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        <a href="" ng-click="settingsSeo.resetMeta('@AdvantShop.SEO.MetaType.StaticPage.ToString()')">Сбросить мета информацию для всех статических страниц </a>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.CategoryNewsMeta")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CategoryNewsDefaultTitle, T("Admin.Settings.SeoSettings.CategoryNewsDefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.CategoryNewsDefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.CategoryNewsDefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.NewsCategory }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CategoryNewsDefaultMetaKeywords, T("Admin.Settings.SeoSettings.CategoryNewsDefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.CategoryNewsDefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.CategoryNewsDefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.NewsCategory }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CategoryNewsDefaultMetaDescription, T("Admin.Settings.SeoSettings.CategoryNewsDefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.CategoryNewsDefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.CategoryNewsDefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.NewsCategory }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CategoryNewsDefaultH1, T("Admin.Settings.SeoSettings.CategoryNewsDefaultH1"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.CategoryNewsDefaultH1, new { @class = "form-control", ng_model = "settingsSeo.CategoryNewsDefaultH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.NewsCategory }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.NewsCategory, showInstruction = false })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        <a href="" ng-click="settingsSeo.resetMeta('@AdvantShop.SEO.MetaType.NewsCategory.ToString()')">Сбросить мета информацию для всех категорий новостей</a>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.NewsMeta")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.NewsDefaultTitle, T("Admin.Settings.SeoSettings.NewsDefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.NewsDefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.NewsDefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.News }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.NewsDefaultMetaKeywords, T("Admin.Settings.SeoSettings.NewsDefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.NewsDefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.NewsDefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.News }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.NewsDefaultMetaDescription, T("Admin.Settings.SeoSettings.NewsDefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.NewsDefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.NewsDefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.News }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.NewsDefaultH1, T("Admin.Settings.SeoSettings.NewsDefaultH1"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.NewsDefaultH1, new { @class = "form-control", ng_model = "settingsSeo.NewsDefaultH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.News }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.News, showInstruction = false })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        <a href="" ng-click="settingsSeo.resetMeta('@AdvantShop.SEO.MetaType.News.ToString()')">Сбросить мета информацию для всех новостей</a>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.Brands")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.BrandsDefaultTitle, T("Admin.Settings.SeoSettings.BrandsDefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.BrandsDefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.BrandsDefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Brand }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.BrandsDefaultMetaKeywords, T("Admin.Settings.SeoSettings.BrandsDefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.BrandsDefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.BrandsDefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Brand }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.BrandsDefaultMetaDescription, T("Admin.Settings.SeoSettings.BrandsDefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.BrandsDefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.BrandsDefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Brand }) })
+    </div>
+</div>
+
+<div class="col-xs-offset-2">
+    @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.Default, showInstruction = false })
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.BrandItem")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.BrandItemDefaultTitle, T("Admin.Settings.SeoSettings.BrandItemDefaultTitle"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.BrandItemDefaultTitle, new { @class = "form-control", ng_model = "settingsSeo.BrandItemDefaultTitle", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Brand }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.BrandItemDefaultMetaKeywords, T("Admin.Settings.SeoSettings.BrandItemDefaultMetaKeywords"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.BrandItemDefaultMetaKeywords, new { @class = "form-control", ng_model = "settingsSeo.BrandItemDefaultMetaKeywords", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Brand }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.BrandItemDefaultMetaDescription, T("Admin.Settings.SeoSettings.BrandItemDefaultMetaDescription"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.BrandItemDefaultMetaDescription, new { @class = "form-control", ng_model = "settingsSeo.BrandItemDefaultMetaDescription", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Brand }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.BrandItemDefaultH1, T("Admin.Settings.SeoSettings.BrandItemDefaultH1"))
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.BrandItemDefaultH1, new { @class = "form-control", ng_model = "settingsSeo.BrandItemDefaultH1", textcomplete = "", textcomplete_data = Html.Action("MetaVariablesСomplete", "Common", new { type = AdvantShop.SEO.MetaType.Brand }) })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        @Html.Action("MetaVariablesDescription", "Common", new { type = AdvantShop.SEO.MetaType.Brand, showInstruction = false })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-offset-2">
+        <a href="" ng-click="settingsSeo.resetMeta('@AdvantShop.SEO.MetaType.Brand.ToString()')">Сбросить мета информацию для всех брендов</a>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.Other")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.EnableCyrillicUrl, T("Admin.Settings.OpenGraph.EnableCyrillicUrl"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div>Внимание! НЕ рекомендуется использовать!</div>
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.EnableCyrillicUrl, new { @class = "adv-checkbox-input", ng_init = "settingsSeo.EnableCyrillicUrl=" + Model.EnableCyrillicUrl.ToLowerString(), ng_model = "settingsSeo.EnableCyrillicUrl" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+
+    </div>
+</div>

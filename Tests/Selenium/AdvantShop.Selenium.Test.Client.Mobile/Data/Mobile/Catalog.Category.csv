@@ -1,0 +1,3 @@
+﻿CategoryID;Name;ParentCategory;Description;Products_Count;SortOrder;Enabled;Total_Products_Count;DisplayChildProducts;UrlPath;HirecalEnabled;DisplayBrandsInMenu;DisplaySubCategoriesInMenu;CatLevel;BriefDescription;Sorting;DisplayStyle;Hidden
+1;first;0;;0;15;true;0;false;first;false;true;false;1;NULL;0;1;false
+2;second;0;;0;10;true;0;false;second;false;true;false;1;NULL;0;1;false

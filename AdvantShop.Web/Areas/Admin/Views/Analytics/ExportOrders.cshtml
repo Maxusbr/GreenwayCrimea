@@ -1,0 +1,276 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Analytics.ExportOrdersModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="sticky-page-name" sticky sticky-top="0">
+                <div class="page-name-block sticky-page-name-inner">
+                    <div class="page-name-block-item-main">
+                        <h1 class="page-name-block-text sticky-page-name-text">
+                            @T("Admin.Analytics.ExportOrders.Title")
+                        </h1>
+                    </div>
+                    <div class="page-name-block-item-additional">
+                    </div>
+                </div>
+            </div>
+            <div class="ibox" ng-if="!analytics.isStartExport">
+                <div class="ibox-content">
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                        </div>
+                        <div class="form-group row middle-xs">
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="setting-label-wrap">
+                                    @T("Admin.Analytics.ExportOrders.Status")
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="row middle-xs">
+                                    <div class="col-xs-1 col-wl-1">
+                                        <label class="adv-checkbox-label">
+                                            @Html.CheckBoxFor(x => Model.UseStatus, new { @class = "adv-checkbox-input", ng_model = "analytics.exportOrdersSettings.UseStatus" })
+                                            <span class="adv-checkbox-emul" data-e2e="exportOrdersUseStatus"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-xs-11 col-wl-11">
+                                        @Html.DropDownList("ddlOrderStatuses", new SelectList(Model.OrderStatuses, "Key", "Value", Model.Status), new { @class = "form-control", ng_init = "analytics.exportOrdersSettings.Status='" + Model.Status + "'", ng_model = "analytics.exportOrdersSettings.Status", ng_disabled = "!analytics.exportOrdersSettings.UseStatus" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="setting-label-wrap m-t-sm">
+                                    @T("Admin.Analytics.ExportOrders.Period")
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="row">
+                                    <div class="col-xs-1 col-wl-1">
+                                        <label class="adv-checkbox-label m-t-sm">
+                                            @Html.CheckBoxFor(x => Model.UseDate, new { @class = "adv-checkbox-input", ng_model = "analytics.exportOrdersSettings.UseDate" })
+                                            <span class="adv-checkbox-emul" data-e2e="exportOrdersUseDate"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-11 col-wl-11">
+                                        <div class="form-group row">
+                                            <label class="control-label ui-grid-filter-text col-xs-1 align-center" for="gridFilterDateFrom">
+                                                @T("Admin.Analytics.ExportOrders.Period.From")
+                                            </label>
+                                            <div class="dropdown col-xs-11" ng-disabled="!analytics.exportOrdersSettings.UseDate">
+                                                <div class="dropdown-toggle" id="gridFilterDateFrom" role="button" data-toggle="dropdown">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" data-e2e="datetimeFilterFrom" ng-model="analytics.exportOrdersSettings.DateFrom" data-date-time-input="DD.MM.YYYY HH:mm" ng-change="$ctrl.apply($ctrl.item.filter.datetimeOptions.from.name, $ctrl.item.filter.term.from, $ctrl.item)" ng-disabled="!analytics.exportOrdersSettings.UseDate"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker ng-model="analytics.exportOrdersSettings.DateFrom" data-datetimepicker-config="{ dropdownSelector: '#gridFilterDateFrom' }" ng-change="$ctrl.apply($ctrl.item.filter.datetimeOptions.from.name, $ctrl.item.filter.term.from, $ctrl.item)" />
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label ui-grid-filter-text col-xs-1 align-center" for="gridFilterDateTo">
+                                                @T("Admin.Analytics.ExportOrders.Period.To")
+                                            </label>
+                                            <div class="dropdown col-xs-11" ng-disabled="!analytics.exportOrdersSettings.UseDate">
+                                                <div class="dropdown-toggle" id="gridFilterDateTo" role="button" data-toggle="dropdown">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" data-e2e="datetimeFilterTo" ng-model="analytics.exportOrdersSettings.DateTo" data-date-time-input="DD.MM.YYYY HH:mm" ng-change="$ctrl.apply($ctrl.item.filter.datetimeOptions.to.name, $ctrl.item.filter.term.to, $ctrl.item)" ng-disabled="!analytics.exportOrdersSettings.UseDate"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker ng-model="analytics.exportOrdersSettings.DateTo" data-datetimepicker-config="{ dropdownSelector: '#gridFilterDateTo' }" ng-change="$ctrl.apply($ctrl.item.filter.datetimeOptions.to.name, $ctrl.item.filter.term.to, $ctrl.item)" />
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="setting-label-wrap">
+                                    @T("Admin.Analytics.ExportOrders.Encoding")
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-wl-2">
+                                @Html.DropDownList("ddlEncodings", new SelectList(Model.Encodings, "Key", "Value", Model.Encoding), new { @class = "form-control", ng_init = "analytics.exportOrdersSettings.Encoding='" + Model.Encoding + "'", ng_model = "analytics.exportOrdersSettings.Encoding" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row middle-xs">
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="setting-label-wrap">
+                                    Выгрузить заказы со статусом оплаты
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="row middle-xs">
+                                    <div class="col-xs-1 col-wl-1">
+                                        <label class="adv-checkbox-label">
+                                            @Html.CheckBoxFor(x => Model.UsePaid, new { @class = "adv-checkbox-input", ng_model = "analytics.exportOrdersSettings.UsePaid" })
+                                            <span class="adv-checkbox-emul" data-e2e="exportOrdersUsePaid"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-xs-11 col-wl-11">
+                                        @Html.DropDownList("ddlPaid", new SelectList(Model.PaidStatuses, "Key", "Value", Model.Paid), new { @class = "form-control", ng_init = "analytics.exportOrdersSettings.Paid='" + Model.Paid + "'", ng_model = "analytics.exportOrdersSettings.Paid", ng_disabled = "!analytics.exportOrdersSettings.UsePaid" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="setting-label-wrap m-t-sm">
+                                    Сумма заказа
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="row">
+                                    <div class="col-xs-1 col-wl-1">
+                                        <label class="adv-checkbox-label m-t-sm">
+                                            @Html.CheckBoxFor(x => Model.UseSum, new { @class = "adv-checkbox-input", ng_model = "analytics.exportOrdersSettings.UseSum" })
+                                            <span class="adv-checkbox-emul" data-e2e="exportOrdersUseSum"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-11 col-wl-11">
+                                        <div class="form-group row">
+                                            <label class="control-label ui-grid-filter-text col-xs-1 align-center">
+                                                @T("Admin.Analytics.ExportOrders.Period.From")
+                                            </label>
+                                            <div class="col-xs-11" ng-disabled="!analytics.exportOrdersSettings.UseSum">
+                                                @Html.TextBoxFor(x => Model.OrderSumFrom, new { @class = "form-control", ng_init = "analytics.exportOrdersSettings.OrderSumFrom='" + Model.OrderSumFrom + "'", ng_model = "analytics.exportOrdersSettings.OrderSumFrom", ng_disabled = "!analytics.exportOrdersSettings.UseSum" })
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label ui-grid-filter-text col-xs-1 align-center">
+                                                @T("Admin.Analytics.ExportOrders.Period.To")
+                                            </label>
+                                            <div class="col-xs-11" ng-disabled="!analytics.exportOrdersSettings.UseSum">
+                                                @Html.TextBoxFor(x => Model.OrderSumTo, new { @class = "form-control", ng_init = "analytics.exportOrdersSettings.OrderSumTo='" + Model.OrderSumTo + "'", ng_model = "analytics.exportOrdersSettings.OrderSumTo", ng_disabled = "!analytics.exportOrdersSettings.UseSum" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row middle-xs">
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="setting-label-wrap">
+                                    Выгрузить заказы с методом доставки
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="row middle-xs">
+                                    <div class="col-xs-1 col-wl-1">
+                                        <label class="adv-checkbox-label">
+                                            @Html.CheckBoxFor(x => Model.UseShipping, new { @class = "adv-checkbox-input", ng_model = "analytics.exportOrdersSettings.UseShipping" })
+                                            <span class="adv-checkbox-emul" data-e2e="exportOrdersUseShipping"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-xs-11 col-wl-11">
+                                        @Html.DropDownList("ddlShippings", new SelectList(Model.Shippings, "Key", "Value", Model.Shipping), new { @class = "form-control", ng_init = "analytics.exportOrdersSettings.Shipping='" + Model.Shipping + "'", ng_model = "analytics.exportOrdersSettings.Shipping", ng_disabled = "!analytics.exportOrdersSettings.UseShipping" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row middle-xs">
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="setting-label-wrap">
+                                    Выгрузить заказы с городом доставки
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-wl-2">
+                                <div class="row middle-xs">
+                                    <div class="col-xs-1 col-wl-1">
+                                        <label class="adv-checkbox-label">
+                                            @Html.CheckBoxFor(x => Model.UseCity, new { @class = "adv-checkbox-input", ng_model = "analytics.exportOrdersSettings.UseCity" })
+                                            <span class="adv-checkbox-emul" data-e2e="exportOrdersUseCity"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-xs-11 col-wl-11">
+                                        @Html.DropDownList("ddlCities", new SelectList(Model.Cities, "Key", "Value", Model.City), new { @class = "form-control", ng_init = "analytics.exportOrdersSettings.City='" + Model.City + "'", ng_model = "analytics.exportOrdersSettings.City", ng_disabled = "!analytics.exportOrdersSettings.UseCity" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-offset-3 col-wl-offset-2">
+                                <button class="btn btn-sm btn-success " data-e2e="Export" type="button" ng-click="analytics.exportOrders()">
+                                    @T("Admin.Analytics.ExportOrders.Export")
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="ibox" ng-init="analytics.initProgress()" ng-if="analytics.isStartExport">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <uib-progressbar max="analytics.progressTotal" value="analytics.progressValue"><span style="color:white; white-space:nowrap;"><span ng-bind="analytics.progressValue" data-e2e="exportCountValue"></span> / <span ng-bind="analytics.progressTotal" data-e2e="exportCountTotal"></span></span></uib-progressbar>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                            <div class="col-sm-2">
+                                <div class="setting-label-wrap">
+                                    @T("Admin.ProgressData.CurrentProcess")
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="adv-checkbox-label">
+                                    <a class="link-decoration-none" ng-href="{{analytics.progressCurrentProcess}}" ng-bind="analytics.progressCurrentProcessName"></a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" ng-if="!analytics.IsRun">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="setting-label-wrap">
+                                    @T("Admin.ProgressData.ProcessExportSuccess")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid" ng-if="!analytics.IsRun">
+                        <div class="form-group row">
+                            <div class="col-xs-12">
+                                <a ng-href="{{analytics.FileName}}" class="btn btn-sm btn-default" download>@T("Admin.ProgressData.DownloadFile")</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                            <div class="col-xs-12">
+                                <a class="link-decoration-none" href="" ng-click="analytics.isStartExport = false">@T("Admin.ProgressData.BackToExport")</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

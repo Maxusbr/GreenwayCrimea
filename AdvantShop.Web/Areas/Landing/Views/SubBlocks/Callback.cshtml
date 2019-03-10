@@ -1,0 +1,8 @@
+﻿@model SubBlockModel
+
+<a href="#"
+   class="btn btn-action btn-upper lp-btn-callback"
+   style="@Model.SubBlock.TryGetStyleString()"
+    @Html.Raw(Model.SubBlock.RenderInplaceNgStyle("subblockInplaceButton"))>
+    <span @(Model.InPlace ? Html.Raw("data-ng-bind=\"subblockInplaceButton.settings.text\""): Html.Raw(string.Empty) )>@Model.SubBlock.TryGetSettingsValue("text")</span>
+    </a>

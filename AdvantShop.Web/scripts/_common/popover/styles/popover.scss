@@ -1,0 +1,101 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+$popover-tile-size: rem-calc(10px);
+$popover-tile-shadow-length: rem-calc(9px);
+$popover-tile-size-outer: $popover-tile-size + $popover-tile-shadow-length;
+
+.adv-popover {
+    box-shadow: $box-shadow-base;
+    border-radius: $border-radius-base;
+    top: 0;
+    left: 0;
+    background: #fff;
+    padding: rem-calc(10px);
+    z-index: 100;
+    position: absolute;
+}
+
+.adv-popover-tile, .adv-popover-tile:after {
+}
+
+.adv-popover-tile {
+    position: absolute;
+    overflow: hidden;
+}
+
+.adv-popover-tile:after {
+    content: "";
+    display: inline-block;
+    background-color: #fff;
+    transform: rotate(45deg);
+    position: relative;
+    height: $popover-tile-size;
+    width: $popover-tile-size;
+    box-shadow: $box-shadow-base;
+}
+
+.adv-popover-position-top .adv-popover-tile,
+.adv-popover-position-bottom .adv-popover-tile {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: calc(#{$popover-tile-size} - 1px);
+    width: 100%;
+    text-align: center;
+}
+
+.adv-popover-position-top .adv-popover-tile {
+    top: 100%;
+}
+
+.adv-popover-position-top .adv-popover-tile:after {
+    top: -100%;
+}
+
+.adv-popover-position-bottom .adv-popover-tile {
+    bottom: 100%;
+}
+
+.adv-popover-position-bottom .adv-popover-tile:after {
+    /*nothing*/
+}
+
+.adv-popover-position-left .adv-popover-tile,
+.adv-popover-position-right .adv-popover-tile {
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: $popover-tile-size-outer;
+    width: $popover-tile-size;
+    text-align: left;
+}
+
+.adv-popover-position-left .adv-popover-tile {
+    left: 100%;
+}
+
+.adv-popover-position-left .adv-popover-tile:after {
+    right: $popover-tile-size/2;
+}
+
+.adv-popover-position-right .adv-popover-tile {
+    right: 100%;
+}
+
+.adv-popover-position-right .adv-popover-tile:after {
+    left: $popover-tile-size/2;
+}
+
+.adv-popover-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0, .5);
+    z-index: 90;
+}
+
+.adv-popover-fixed {
+    position: fixed;
+}

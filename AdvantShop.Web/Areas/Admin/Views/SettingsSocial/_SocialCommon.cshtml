@@ -1,0 +1,138 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SocialSettingsModel
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Social.VkShopTitle")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.VkTemplateActive, T("Admin.Settings.Social.VkTemplateActive"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.VkTemplateActive, new { @class = "adv-checkbox-input", ng_init = "settingsSocial.VkTemplateActive=" + Model.VkTemplateActive.ToLowerString(), ng_model = "settingsSocial.VkTemplateActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SocialLinkVk, T("Admin.Settings.Social.SocialLinkVk"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblSocialLinkVk", Model.SocialLinkVk)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/create-store-vk" target="_blank">@T("Admin.Settings.Social.VkShopInstruction")</a>
+        </div>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Social.FacebookShopTitle")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.FbTemplateActive, T("Admin.Settings.Social.FbTemplateActive"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.FbTemplateActive, new { @class = "adv-checkbox-input", ng_init = "settingsSocial.FbTemplateActive=" + Model.FbTemplateActive.ToLowerString(), ng_model = "settingsSocial.FbTemplateActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SocialLinkFb, T("Admin.Settings.Social.SocialLinkFb"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblSocialLinkFb", Model.SocialLinkFb)
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/install-eshop-facebook" target="_blank">@T("Admin.Settings.Social.FbShopInstruction")</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Social.ShareButtons")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SocialShareEnabled, T("Admin.Settings.Social.SocialShareEnabled"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.SocialShareEnabled, new { @class = "adv-checkbox-input", ng_init = "settingsSocial.SocialShareEnabled=" + Model.SocialShareEnabled.ToLowerString(), ng_model = "settingsSocial.SocialShareEnabled" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Social.SocialShareCustomEnabledByDefault")
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-radio-label">
+            @Html.RadioButtonFor(x => x.SocialShareCustomEnabled, false, new { @class = "adv-radio-input", ng_init = "settingsSocial.showBlockCustomCode=" + Model.SocialShareCustomEnabled.ToLowerString(), ng_click = "settingsSocial.showBlockCustomCode = false", name = "rblShareButtonsType" })
+            <span class="adv-radio-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Social.SocialShareCustomEnabledByCustomCode")
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-radio-label">
+            @Html.RadioButtonFor(x => x.SocialShareCustomEnabled, true, new { @class = "adv-radio-input", ng_click = "settingsSocial.showBlockCustomCode = true", name = "rblShareButtonsType" })
+            <span class="adv-radio-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row" ng-if="settingsSocial.showBlockCustomCode">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SocialShareCustomCode, T("Admin.Settings.Social.SocialShareCustomCode"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextAreaFor(x => x.SocialShareCustomCode, new { @class = "form-control", ng_model = "settingsSocial.SocialShareCustomCode" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-8">
+        <div class="adv-panel-info">
+            <a href="http://www.advantshop.net/help/pages/change-social-code" target="_blank">@T("Admin.Settings.Social.ShareButtonsInstruction")</a>
+        </div>
+    </div>
+</div>

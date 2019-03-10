@@ -1,0 +1,6 @@
+﻿@model string
+<div class="js-iframe-wrap">    
+    <iframe src="@SettingsLic.BasePlatformUrl/shop/GetFeature.aspx?lic=@SettingsLic.LicKey&name=@Model&ExecutionTime=@ViewBag.ExecutionTime&Hash=@ViewBag.Hash" scrolling="no"  style="height:calc(100vh - 195px); width: 100%;"  frameborder="0" name="getFeature">
+        Ваш браузер не поддерживает плавающие фреймы!
+    </iframe>
+</div>

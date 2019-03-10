@@ -1,0 +1,111 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.AssistPaymentModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Merchant ID</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.MerchantId, new { ng_model = "paymentMethod.Parameters.MerchantId", @class = "form-control", required = "required", validation_input_text = "Merchant ID" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Merchant ID">
+                Введите логин продавца, указанный в системе Робокассы
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Логин</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Login, new { ng_model = "paymentMethod.Parameters.Login", @class = "form-control", required = "required", validation_input_text = "Логин" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Пароль</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Password, new { ng_model = "paymentMethod.Parameters.Password", @class = "form-control", required = "required", validation_input_text = "Пароль" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">URL для рабочего режима</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.UrlWorkingMode, new {ng_model = "paymentMethod.Parameters.UrlWorkingMode", @class = "form-control", required = "required", validation_input_text = "URL для рабочего режима" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="URL для рабочего режима">
+                https://payments000.paysecure.ru/pay/order.cfm
+            </help-trigger>
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Код валюты ISO3</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CurrencyCode, new {ng_model = "paymentMethod.Parameters.CurrencyCode", @class = "form-control", required = "required", validation_input_text = "Код валюты ISO3" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Код валюты ISO3">
+                Код должен быть одним из следующих: AUD, BYR, DKK, USD, EUR, ISK, KZT, CAD, CNY, TRY, NOK, RUR, XDR, SGD, UAH, GBP, SEK, CHF, JPY
+            </help-trigger>
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Курс валюты</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CurrencyValue, new { ng_model = "paymentMethod.Parameters.CurrencyValue", @class = "form-control", required = "required", validation_input_text = "Курс валюты" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Курс валюты">
+                Курс валюты по отношению к валюте магазина
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Тестовый режим
+        </div>
+        <div class="col-xs-6 relative">
+            <label class="adv-checkbox-label form-label-block m-r-xs">
+                @Html.CheckBoxFor(x => x.Sandbox, new {ng_model = "paymentMethod.Parameters.Sandbox", ng_init = "paymentMethod.Parameters.Sandbox=" + Model.Sandbox.ToLowerString(), @class = "adv-checkbox-input"})
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak" data-title="Тестовый режим">
+                Обработка операций в тестовом режиме
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Признак авторизации
+        </div>
+        <div class="col-xs-6 relative">
+            <label class="adv-checkbox-label form-label-block m-r-xs">
+                @Html.CheckBoxFor(x => x.Delay, new {ng_model = "paymentMethod.Parameters.Delay", ng_init = "paymentMethod.Parameters.Delay=" + Model.Delay.ToLowerString(), @class = "adv-checkbox-input"})
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak" data-title="Признак авторизации">
+                Признак авторизации кредитной карты при двустадийном механизме работы: 0 – одностадийный механизм работы 1- двустадийный механизм
+            </help-trigger>
+        </div>
+    </div>
+

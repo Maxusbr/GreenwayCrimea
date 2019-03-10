@@ -1,0 +1,9 @@
+﻿<a class="order-item inked ink-dark" data-ng-href="adminmobile/task/{{::task.TaskId}}" data-ng-repeat="task in tasksCtrl.tasks">
+    <div data-ng-transclude></div>
+    <span class="ordInfo">
+        <span class="ordFIO" data-ng-bind="::task.Name"></span>
+        <span class="ordDate" data-ng-bind="::task.DateCreatedFormated"></span>
+    </span>
+    <span class="ordPrice" data-ng-bind="::task.StatusName"></span>
+</a>
+

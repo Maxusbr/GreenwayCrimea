@@ -1,0 +1,42 @@
+﻿<div>
+    <div class="payment-list" id="{{::paymentList.anchor}}"
+         data-ng-class="{'icon-spinner-after-abs icon-animate-spin-after payment-progress-after payment-progress': paymentList.isProgress === true}"
+         data-ng-switch="paymentList.items != null && paymentList.items.length > 0" ng-model="paymentList.selectPayment" required>
+        <div ng-switch-when="true">
+            <label class="payment-item" data-ng-repeat="item in paymentList.items | limitTo:paymentList.visibleItems track by $index" data-ng-class="{'payment-item-active' : item.Id === paymentList.selectPayment.Id }">
+                <span class="payment-item-radio">
+                    <span class="form-field-input" data-ng-init="item.Id === paymentList.selectPayment.Id ? paymentList.setSelectedIndex($index) : null">
+                        <input type="radio" name="payment" class="custom-input-native" data-ng-model="paymentList.selectPayment" data-ng-value="item" data-ng-change="paymentList.changePayment(item, $index)" />
+                        <span class="custom-input-radio"></span>
+                    </span>
+                </span>
+                <span class="payment-item-icon">
+                    <img data-ng-if="item.IconName != null" ng-style="{maxWidth: paymentList.iconWidth, maxHeight: paymentList.iconHeight }" data-ng-src="{{item.IconName}}" alt="{{item.Name}}">
+                </span>
+                <span class="payment-item-info">
+                    <span class="form-field-name">
+                        <span class="payment-item-title" data-ng-bind-html="item.Name"></span>
+                        <span class="payment-item-description  cs-t-3" data-ng-bind-html="item.Desc"></span>
+                        <span class="payment-item-additional" data-ng-if="item.Template != null && item.Template.length > 0">
+                            <span data-payment-template data-payment="item" data-template-url="item.Template" data-change-control="paymentList.changePaymentControl(payment)"></span>
+                        </span>
+                    </span>
+                </span>
+            </label>
+        </div>
+        <div ng-switch-when="false" class="payment-empty">
+            {{ ::'Js.Payment.NoPaymentMethods' | translate }}
+        </div>
+    </div>
+    <a href="" class="link-dotted-invert payment-item-more"
+       data-ng-if="paymentList.items.length > paymentList.countVisibleItems"
+       data-ng-switch="paymentList.collapsed"
+       data-ng-click="paymentList.toggleVisible()">
+        <span data-ng-switch-when="true">
+            {{ ::'Js.Payment.More' | translate }}
+        </span>
+        <span data-ng-switch-when="false">
+            {{ ::'Js.Payment.Hide' | translate }}
+        </span>
+    </a>
+</div>

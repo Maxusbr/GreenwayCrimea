@@ -1,0 +1,75 @@
+﻿@model AdvantShop.ViewModel.Common.MenuBottomViewModel
+
+<div class="site-footer-top-level cs-bg-4">
+    <div class="container container-fluid site-footer-top-level-wrap site-footer-top-level-inner">
+        <div class="row">
+            @if (Model.Categories.Count > 0)
+            {
+                <div class="col-xs footer-menu">
+                    <div class="footer-menu-head cs-t-3">
+                        @T("Common.MenuBottom.Categories")
+                    </div>
+                    <ul class="footer-menu-list">
+                        @foreach (var categoryItem in Model.Categories)
+                        {
+                            <li class="footer-menu-item">
+                                <a class="footer-menu-link cs-l-2" href="@Url.AbsoluteRouteUrl("Category", new { url = categoryItem.UrlPath })">
+                                    <span class="footer-menu-text">@categoryItem.Name</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            @foreach (var menuItem in Model.MenuItems)
+            {
+                <div class="col-xs footer-menu">
+                    <div class="footer-menu-head cs-t-3">
+                        @menuItem.Name
+                    </div>
+                    <ul class="footer-menu-list">
+                        @foreach (var subItem in menuItem.SubItems)
+                        {
+                            <li class="footer-menu-item">
+                                @if (subItem.NoFollow)
+                                {<!--noindex-->}
+
+                                @if (!string.IsNullOrEmpty(@subItem.IconPath))
+                                {
+                                   
+                                        <figure class="footer-menu-icon-block">
+                                            <img class="footer-menu-icon" src="pictures/icons/@subItem.IconPath" alt="@subItem.Name" data-qazy="true" />
+                                        </figure>
+                                }
+                                <a class="footer-menu-link cs-l-2" href="@subItem.UrlPath" @Html.Raw(subItem.Blank ? "target=\"_blank\"" : "") @Html.Raw(subItem.NoFollow ? "rel=\"nofollow\"" : "")>
+                                    <span class="footer-menu-text">@subItem.Name</span>
+                                </a>
+
+                                @if (subItem.NoFollow)
+                                {<!--/noindex-->}
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            }
+            <div class="col-xs">
+                <div class="footer-gifts">
+                    @if (SettingsDesign.GiftSertificateVisibility && SettingsCheckout.EnableGiftCertificateService)
+                    {
+                        <a class="gift-block footer-gifts-item cs-l-2" href="@Url.AbsoluteRouteUrl("GiftCertificate")">
+                            <span class="gift-picture"></span> @T("GiftCertificate.GiftCertificate")
+                        </a>
+                    }
+                    @*@if (BonusSystem.IsActive)
+                    {
+                        <a class="bonus-card-block bonus-card-icon footer-gifts-item cs-l-2" href="getbonuscard">@T("MenuBottom.Common.BonusCard")</a>
+                    }*@
+                    @Html.StaticBlock("bottom_menu_right")
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

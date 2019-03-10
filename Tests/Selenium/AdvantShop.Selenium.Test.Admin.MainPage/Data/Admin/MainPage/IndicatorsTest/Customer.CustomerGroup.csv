@@ -1,0 +1,6 @@
+﻿CustomerGroupID;GroupName;GroupDiscount;MinimumOrderPrice
+1;Обычный покупатель;0;100
+2;Оптовик;50;100
+3;Дилер;3;100
+4;Представитель;15;100
+6;Постоянный клиент;5;100

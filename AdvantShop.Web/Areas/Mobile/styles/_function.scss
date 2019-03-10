@@ -1,0 +1,17 @@
+﻿@import "defFuncValues.scss";
+
+@function toEm($target, $context: $hfs) {
+   @if $target == 0 { @return 0 }
+   @return $target / $context + 0em;
+}
+
+@function toEmSize($target, $context) {
+   @if $target == 0 { @return 0 }
+   @return unquote(($target / $context)*100 + '%') ;
+}
+
+
+
+
+
+

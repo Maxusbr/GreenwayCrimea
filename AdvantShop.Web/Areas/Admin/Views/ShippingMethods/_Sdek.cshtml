@@ -1,0 +1,289 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.SdekShippingAdminModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Логин</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.AuthLogin, new { ng_model = "shippingMethod.Params.AuthLogin", @class = "form-control", required = "required", validation_input_text = "Логин" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Логин">
+                Логин для интеграции выдается компанией СДЭК по вашему запросу. <br><br>
+                Важно! Это не данные от личного кабинета. Чтобы получить логин и пароль необходимо отправить запрос на генерацию учетной записи на электронную почту СДЭК.
+                <br><br>
+                Подробнее смотрите в инструкции - <a href="http://www.advantshop.net/help/pages/install-sdek" target="_blank">Инструкция. Подключение модуля доставки СДЭК</a>
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Пароль</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.AuthPassword, new { ng_model = "shippingMethod.Params.AuthPassword", @class = "form-control", required = "required", validation_input_text = "Пароль" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Пароль">
+                Так же как и логин, пароль для интеграции выдается компанией СДЭК по вашему запросу. <br><br>
+                Важно! Это не данные от личного кабинета. Чтобы получить логин и пароль необходимо отправить запрос на генерацию учетной записи на электронную почту СДЭК.
+                <br><br>
+                Подробнее смотрите в инструкции - <a href="http://www.advantshop.net/help/pages/install-sdek" target="_blank">Инструкция. Подключение модуля доставки СДЭК</a>
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Город склада</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.CityFrom, new { ng_model = "shippingMethod.Params.CityFrom", @class = "form-control", required = "required", validation_input_text = "Город склада" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Город склада">
+                Параметр передается в сервис доставки и означает место (город) откуда поедет посылка.<br><br>
+                Параметр необходим для расчета стоимости доставки.<br><br>
+                Например: Москва.
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Наценка на доставку</span>
+        </div>
+        <div class="col-xs-6 relative">
+            <div class="input-group" ng-init="shippingMethod.Params.TypeAdditionPrice='@(Model.TypeAdditionPrice)'">
+                @Html.TextBoxFor(x => x.AdditionalPrice, new { @class = "form-control ng-hide", ng_model = "shippingMethod.Params.AdditionalPrice", ng_show = "shippingMethod.Params.TypeAdditionPrice == 'Fixed'" })
+                @Html.TextBoxFor(x => x.AdditionalPrice, new { @class = "form-control ng-hide", ng_model = "shippingMethod.Params.AdditionalPrice", ng_show = "shippingMethod.Params.TypeAdditionPrice == 'Percent'" })
+                <div class="input-group-btn">
+                    <span class="btn btn-default" ng-click="shippingMethod.Params.TypeAdditionPrice = 'Fixed'" ng-class="{'product-currency-active':shippingMethod.Params.TypeAdditionPrice == 'Fixed'}" data-e2e="DiscountAmount"><span>руб.</span></span>
+                    <span class="btn btn-default" ng-click="shippingMethod.Params.TypeAdditionPrice = 'Percent'" ng-class="{'product-currency-active':shippingMethod.Params.TypeAdditionPrice == 'Percent'}" data-e2e="DiscountPercent"><span>%</span></span>
+                    @Html.HiddenFor(x => x.TypeAdditionPrice, new { ng_value = "shippingMethod.Params.TypeAdditionPrice", ng_model = "shippingMethod.Params.TypeAdditionPrice" })
+                </div>
+            </div>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Наценка на доставку">
+                Дополнительная наценка на доставку, например, за дополнительные услуги.<br><br>
+                Стоимость указывается в базовой валюте.<br><br>
+                Например: 100 (руб.)
+            </help-trigger>
+        </div>    
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Активные тарифы</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.DropDownListFor(x => x.Tariff, Model.Tariffs, new {ng_model = "shippingMethod.Params.Tariff", ng_init = "shippingMethod.Params.Tariff='" + Model.Tariff + "'", @class = "form-control", required = "required", validation_input_text = "Активные тарифы" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Активные тарифы">
+                Тут необходимо выбрать один вариант, который доступен вашему интернет-магазину.<br><br>
+                Обратите внимание, что следует выбрать только один из представленных вариантов.<br><br>
+                Для каждого тарифного плана, если у вас в личном кабинете СДЭК доступно более чем один тариф, необходимо создавать отдельный способ доставки типа СДЭК.
+            </help-trigger>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Количество копий накладных</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DeliveryNote, new { ng_model = "shippingMethod.Params.DeliveryNote", min = "1", max = "10", pattern = "10|[1-9]+", type = "number", ng_init = "shippingMethod.Params.DeliveryNote='" + Model.DeliveryNote + "'", @class = "form-control", required = "required", validation_input_text = "Количество копий накладных" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Активные тарифы">
+            Тут необходимо указать количество накладных, которое будет выдаваться при печати.
+        </help-trigger>
+    </div>
+</div>
+
+<div class="shipping-item-settings-header m-b-md m-t-sm">
+    Значения параметров товара по умолчанию
+</div>
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Вес</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultWeight, new { ng_model = "shippingMethod.Params.DefaultWeight", @class = "form-control", required = "required", validation_input_text = "Вес" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Вес товара">
+                Вес товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+                Значение указывается в кг, возможно указать дробное значение.<br><br>
+                Например: 1 или 0.2
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Длина</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultLength, new { ng_model = "shippingMethod.Params.DefaultLength", @class = "form-control", required = "required", validation_input_text = "Длина" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Длина товара">
+                Длина товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+                Значение указывается в мм.<br><br>
+                Например: 120
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Ширина</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultWidth, new { ng_model = "shippingMethod.Params.DefaultWidth", @class = "form-control", required = "required", validation_input_text = "Ширина" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Ширина товара">
+                Ширина товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+                Значение указывается в мм.<br><br>
+                Например: 120
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Высота</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultHeight, new { ng_model = "shippingMethod.Params.DefaultHeight", @class = "form-control", required = "required", validation_input_text = "Высота" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Высота товара">
+                Высота товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+                Значение указывается в мм.<br><br>
+                Например: 120
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+<div class="shipping-item-settings-header inline content-header m-b-md m-t-sm">
+    Форма вызова курьера
+</div>
+
+
+    <div class="form-group row ">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Дата и время вызова курьера</span>
+        </div>
+        <div class="col-xs-4 relative">
+            <div class="row m-b-sm">
+                <div class="col-xs-3">День</div>
+                <div class="col-xs relative">
+                    <div class="input-group" ng-flatpickr fp-opts="{dateFormat: 'd.m.Y', wrap: true}">
+                        <span class="flatpickr-custom-wrap">
+                            <input type="text" name="date" required="required" validation-input-text="День" ng-model="shippingMethod.sdek.Date" ng-init="shippingMethod.sdek.Date='@(DateTime.Now.ToString("yyyy-MM-dd"))'" class="form-control" ng-flatpickr-input>
+                            <span class="flatpickr-custom-clear" data-close data-clear><i class="glyphicon glyphicon-remove"></i></span>
+                        </span>
+                        <span class="input-group-addon" data-toggle><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Время</div>
+                <div class="col-xs">
+                    <input type="text" name="timeFrom" required="required" validation-input-text="Время" ng-model="shippingMethod.sdek.TimeFrom" value="12:00" class="form-control inline" style="width: 90px"/> - <input type="text" name="timeTo" ng-model="shippingMethod.sdek.TimeTo" value="15:00"  required="required" validation_input_text="Время" class="form-control inline" style="width: 100px"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group row">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Город интернет магазина</span>
+        </div>
+        <div class="col-xs-4 relative">
+
+            <div class="row m-b-sm">
+                <div class="col-xs-12">
+                    <input type="text" required="required" validation-input-text="Город интернет магазина" name="DefaultCourierCity" ng-model="shippingMethod.sdek.DefaultCourierCity" value="@Model.DefaultCourierCity" class="form-control" />
+                </div>
+            </div>
+
+            <div class="row m-b-sm">
+                <div class="col-xs-3">Улица</div>
+                <div class="col-xs">
+                    <input type="text" name="DefaultCourierStreet" ng-model="shippingMethod.sdek.DefaultCourierStreet" value="@Model.DefaultCourierStreet" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="row m-b-sm">
+                <div class="col-xs-3">Дом</div>
+                <div class="col-xs">
+                    <input type="text" name="DefaultCourierHouse" ng-model="shippingMethod.sdek.DefaultCourierHouse" value="@Model.DefaultCourierHouse" class="form-control" />
+                </div>                 
+            </div>
+
+            <div class="row m-b-sm">
+                <div class="col-xs-3">Квартира/офис</div>
+                <div class="col-xs">
+                    <input type="text" name="DefaultCourierFlat" ng-model="shippingMethod.sdek.DefaultCourierFlat" value="@Model.DefaultCourierFlat" class="form-control" />
+                </div>                 
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Имя контактного лица</span>
+        </div>
+        <div class="col-xs-4 relative">
+            <input type="text" required="required" validation-input-text="Имя контактного лица" name="DefaultCourierNameContact" ng-model="shippingMethod.sdek.DefaultCourierNameContact" value="@Model.DefaultCourierNameContact" class="form-control" />
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Телефон контактного лица</span>
+        </div>
+        <div class="col-xs-4 relative">
+            <input type="text" required="required" validation-input-text="Телефон контактного лица" name="DefaultCourierPhone" ng-model="shippingMethod.sdek.DefaultCourierPhone" value="@Model.DefaultCourierPhone" class="form-control" />
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Общий вес, в граммах</span>
+        </div>
+        <div class="col-xs-4 relative">
+            <input type="text" required="required" validation-input-text="Общий вес, в граммах" name="DefaultCourierWeight" ng-model="shippingMethod.sdek.Weight" value="0" class="form-control"/>
+        </div>
+    </div>
+
+
+<input type="hidden" name="sdekMethodId" ng-model="shippingMethod.sdek.MethodId" value="@Model.ShippingMethodId" />
+
+<div class="m-b-md">
+    <div class="form-group row middle-xs">
+        <div class="col-xs-12">
+            <a class="btn btn-sm btn-success" ng-click="shippingMethod.callSdekCourier()">Вызвать курьера</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="adv-panel-info ">
+    <a href="http://www.advantshop.net/help/pages/install-sdek" target="_blank">Инструкция. Подключение модуля доставки СДЭК</a>
+</div>

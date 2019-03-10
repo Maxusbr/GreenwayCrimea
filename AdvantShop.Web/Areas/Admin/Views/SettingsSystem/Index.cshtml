@@ -1,0 +1,73 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SystemSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "SettingsSystem", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", novalidate = "novalidate" }))
+{
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settingsSystem.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified"/>
+            </div>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+
+    <uib-tabset active uid="systemTab" on-select-batch="settingsSystem.floatHeader = '@T("Admin.Settings.System") / ' + tab.heading;">
+        <uib-tab index="'system'" classes="ng-tab" heading="@T("Admin.Settings.System.SystemCommon")">
+            <uib-tab-heading ng-class="{'tab-warning' : systemForm.$invalid}">
+                @T("Admin.Settings.System.SystemCommon")
+                <span ng-if="systemForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!systemForm.$invalid && systemForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="systemForm" validation-tab-index="'system'">
+                @Html.Partial("_SystemCommon", Model)
+            </ng-form>
+        </uib-tab>
+
+        <uib-tab index="'sitemap'" classes="ng-tab" heading="@T("Admin.Settings.System.SiteMap")">
+            <uib-tab-heading ng-class="{'tab-warning' : sitemapForm.$invalid}">
+                @T("Admin.Settings.System.SiteMap")
+                <span ng-if="sitemapForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!sitemapForm.$invalid && sitemapForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="sitemapForm" validation-tab-index="'sitemap'">
+                @Html.Partial("_SiteMap", Model)
+            </ng-form>
+        </uib-tab>
+
+        <uib-tab index="'auth'" classes="ng-tab" heading="@T("Admin.Settings.System.Authorization")">
+            <uib-tab-heading ng-class="{'tab-warning' : authForm.$invalid}">
+                @T("Admin.Settings.System.Authorization")
+                <span ng-if="authForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!authForm.$invalid && authForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="authForm" validation-tab-index="'auth'">
+                @Html.Partial("_Authorization", Model)
+            </ng-form>
+        </uib-tab>
+
+        <uib-tab index="'countries'" heading="@T("Admin.Settings.System.CountriesCities")" classes="ng-tab" removable="true">
+            <settings-location></settings-location>
+        </uib-tab>
+
+        <uib-tab index="'localization'" heading="@T("Admin.Settings.System.Localization")" classes="ng-tab" removable="true">
+            @Html.Partial("_Localization", Model)
+        </uib-tab>
+
+        <uib-tab index="'errlogs'" heading="@T("Admin.Settings.System.LogError")" classes="ng-tab" removable="true">
+            <settings-logs></settings-logs>
+        </uib-tab>
+
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" data-e2e="BtnSaveSettings" />
+        </div>
+    </uib-tabset>
+}

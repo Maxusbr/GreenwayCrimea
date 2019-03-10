@@ -1,0 +1,13 @@
+﻿<span class="inplace-autocomplete-wrap">
+    <span data-autocompleter
+          data-apply-fn="inplaceAutocomplete.autocompleteApply(value, obj)"
+          data-min-length="1"
+          data-field="Value"
+          data-params="inplaceAutocomplete.autocompleteParams"
+          data-template-path="/scripts/_common/autocompleter/templates/properties.html"
+          data-request-url="/product/getpropertiesvalues"
+          data-show-empty-result-message="false">
+        <input data-autocompleter-input class="inplace-autocomplete-input" type="text" autocomplete="off" data-ng-model="inplaceAutocomplete.value" />
+    </span>
+    <a href="" class="inplace-autocomplete-delete icon-cancel-before link-text-decoration-none" data-ng-click="inplaceAutocomplete.delete($event)"></a>
+</span>

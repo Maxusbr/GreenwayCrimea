@@ -1,0 +1,17 @@
+﻿{
+  "name": "productsView",
+  "type": "productsView",
+  "description": "Каталог товаров",
+  "category": "Товары",
+  "picture": null,
+  "subblocks": [
+    {
+      "name": "productsViewItem",
+      "type": "productsViewItem",
+      "placeholder": null
+    }
+  ],
+  "settings": {
+    "background_image": null
+  }
+}

@@ -1,0 +1,37 @@
+﻿
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text m-b-xs">
+                @T("Admin.Coupons.Index.Title")
+            </h1>
+            <div>
+                @T("Admin.Coupons.Index.Hint")
+            </div>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditCouponCtrl'" controller-as="ctrl" size="middle"
+                              template-url="../areas/admin/content/src/coupons/modal/addEditCoupon/addEditCoupon.html"
+                              data-on-close="coupons.grid.fetchData()">
+                <button class="btn btn-sm btn-success btn--margin-left" data-e2e="btnAdd" type="button">
+                    <span class="fa fa-plus"></span>@T("Admin.Add")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-row-identificator="'CouponId'"
+                        grid-on-init="coupons.gridOnInit(grid)"
+                        grid-options="coupons.gridOptions"
+                        grid-url="'coupons/getCoupons'"
+                        grid-inplace-url="'coupons/inplaceCoupon'"
+                        grid-extend-ctrl="coupons">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="coupons.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

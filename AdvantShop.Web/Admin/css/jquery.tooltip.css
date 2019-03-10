@@ -1,0 +1,9 @@
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid Grey;
+	background-color: white;
+	padding: 2px;
+	opacity: 0.85;
+}
+#tooltip h3, #tooltip div { margin: 0; font-size:11px; font-family: Tahoma; }

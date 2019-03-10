@@ -1,0 +1,315 @@
+.promo-main-block {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+    .promo-main-block input {
+        margin: 20px 0;
+    }
+
+.promo-main-icon {
+    width: 70px;
+    height: 70px;
+    margin: 10px auto;
+}
+
+.promo-main-icon--fill {
+    fill: white;
+}
+
+.promo-main-icon--rgba {
+    fill: rgba(255, 255, 255, 0.4);
+}
+
+.promo-main-icon--color-alt {
+    fill: #2f3fff;
+    --handle-color: #1f2bac;
+    --cup-color: #2f3fff;
+    --smoke-color: #a5acbd;
+}
+
+.promo-block-green {
+    background: #86bf5b;
+    color: white;
+    padding: 25px 0;
+}
+
+    .promo-block-green a {
+        color: white;
+    }
+
+        .promo-block-green a:hover {
+            color: #ffb504;
+        }
+
+.video-embed > div {
+    margin: 0 auto;
+}
+
+.promo-block-green .iconroot {
+    width: 48px;
+    left: 50%;
+    margin-left: -24px;
+    position: absolute;
+    top: -28px;
+}
+
+.promo-block-white .iconroot {
+    width: 80px;
+    margin: 0 auto;
+}
+#layout .promo-block-white .iconroot {
+    width: 60px;
+}
+.promo-main-block .lines {
+    position: absolute;
+    left: -3px;
+    right: -3px;
+    height: 3px;
+    top: -3px;
+    overflow: hidden;
+}
+
+    .promo-main-block .lines:before {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        margin-left: -48px;
+        width: 50%;
+        height: 3px;
+        top: 0;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .promo-main-block .lines:after {
+        content: ' ';
+        position: absolute;
+        right: 0;
+        margin-right: -48px;
+        width: 50%;
+        height: 3px;
+        top: 0;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+.promo-main-block .block {
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-top: none;
+    padding: 20px;
+    padding-top: 44px;
+    position: relative;
+    /*margin-top: 27px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;*/
+    margin: 25px;
+}
+
+.promo-main-block h1, .promo-main-block h2 {
+    padding: 20px 0;
+    margin: 0;
+}
+.promo-main-block h1, .promo-main-block h2, .promo-main-block h3, .promo-main-block h4 {
+    text-align: center;
+}
+.promo-main-block .svgwrap {
+    display: inline-block;
+    position: relative;
+}
+
+.promo-main-block svg.svgicon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.promo-block-green > .wrapper1 {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #FFF;
+}
+
+    .promo-block-green > .wrapper1 > .wrapper2 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .promo-block-green > .wrapper1 > .wrapper2 {
+        background-color: rgba(0, 0, 0, 0.56);
+    }
+
+.promo-main-block .container-cells {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    margin-bottom: 5px;
+}
+.cell {
+    text-align: center;
+}
+.three-column .cell {
+    width: 33.333333333333336%;
+}
+
+.four-column .cell {
+    width: 25%;
+}
+
+#layout .cell {
+    width: 100%!important;
+    padding-left: 10px !important;
+    padding-right: 0 !important;
+    display: inline-flex;
+}
+#layout .four-column .cell {
+    display: contents;
+}
+#layout .container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    transition: .4s all cubic-bezier(.25,.46,.45,.94);
+    z-index: 7;
+}
+#layout .container {
+    max-width: 767px;
+    min-width: 0;
+}
+#layout .promo-main-block .container-cells {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+#layout .widget-logo, #layout .widget-image, #layout .widget-text {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-width: 0 !important;
+    position: relative;
+    display: contents;
+}
+#layout .widget {
+    padding: 10px 20px;
+}
+#layout .block {
+    width: 73.75rem;
+}
+#layout h1 {
+    text-align: center;
+}
+#layout h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    text-align: center;
+    padding: 0;
+    padding-bottom: 20px;
+}
+#layout h3 {
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: center;
+}
+.block h2, #layout .block h2{
+    font-size: 36px;
+}
+.widget-text {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    padding: 0 28px;
+}
+
+.widget-line {
+    margin: 20px 0;
+}
+
+.promo-main-block .widget-logo > .logo-wrapper {
+    /*width: 260px;*/
+    margin: 0 auto;
+    font-size: 0;
+    text-align: center;
+}
+
+.promo-main-block .widget-image > .image-wrapper {
+    /*width: 280px;*/
+    margin: 0 auto;
+    font-size: 0;
+    text-align: center;
+}
+
+.widget {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+    .widget > .wrapper1 {
+        background-color: white;
+        color: #333;
+        border-radius: 5px;
+        box-shadow: 0px 10px 40px 0px rgba(32, 31, 0, 0.15);
+    }
+
+.promo-block-white .widget > .wrapper1 {
+    background-color: white;
+    color: #333;
+    border-radius: 3px;
+    box-shadow: 0px 6px 16px 6px rgba(0, 0, 0, 0.14);
+}
+
+.widget > .wrapper1 > .wrapper2 {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.cell-left > .widget {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.cell-center > .widget {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.cell-right > .widget {
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+.widget-text h4 {
+    word-wrap: break-word;
+    margin: 0;
+    font-size: inherit;
+}
+
+.st0 {
+    fill: none;
+    stroke: black;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+}

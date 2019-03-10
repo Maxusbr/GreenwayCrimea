@@ -1,0 +1,83 @@
+﻿@using AdvantShop.Customers
+@model AdvantShop.ViewModel.ProductDetails.ProductTabsViewModel
+@{
+    var tabIndex = 1;
+    var tabContentIndex = 1;
+    var product = Model.ProductModel.Product;
+    var inplaceEnabled = InplaceEditorService.CanUseInplace(RoleAction.Catalog);
+}
+
+<div data-tabs class="tabs tabs-horizontal details-tabs">
+	<ul class="tabs-headers clear">
+		<li id="tabDescription" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+			<a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+				@T("Product.ProductTabs.Description")
+			</a>
+		</li>
+		<li id="tabOptions" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+			<a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+				@T("Product.ProductTabs.Properties")
+			</a>
+		</li>
+		@foreach (var tab in Model.Tabs)
+		{
+			<li id="tab@(tabIndex++)" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+				<a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+					@tab.Title
+				</a>
+			</li>
+		}
+		<li id="tabVideos" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+			<a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+				@T("Product.ProductTabs.Video")
+			</a>
+		</li>
+
+		@if (SettingsCatalog.AllowReviews)
+		{
+			<li id="tabReviews" class="tabs-header-item" data-tab-header="" data-ng-hide="!tabHeader.isRender" data-ng-class="{'tabs-header-active cs-br-1' : tabHeader.selected}">
+				<a href="" class="tabs-header-item-link" data-ng-click="tabs.change(tabHeader)" data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+					@T("Product.ProductTabs.Reviews") @(Model.ReviewsCount > 0 ? "(" + Model.ReviewsCount + ")" : "")
+				</a>
+			</li>
+		}
+	</ul>
+    <div class="tabs-content">
+        <div class="tab-content details-tabs-deacription clear" itemprop="description" data-tab-content="tabDescription" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+            @if (inplaceEnabled)
+            {
+                <div @Html.InplaceProduct(product.ProductId, ProductInplaceField.Description)>@Html.Raw(product.Description)</div>
+            }
+            else
+            {
+                @Html.Raw(product.Description)
+            }
+            @if (!string.IsNullOrEmpty(Model.AdditionalDescription))
+            {
+                <div class="tab-description-additional">
+                    @Html.Raw(Model.AdditionalDescription)
+                </div>
+            }
+        </div>
+        <div class="tab-content details-tabs-properties" data-tab-content="tabOptions" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+            @Html.Action("ProductProperties", Model)
+        </div>
+        <div class="tab-content details-tabs-videos" data-tab-content="tabVideos" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+            @Html.Action("ProductVideos", new { product.ProductId })
+        </div>
+        @foreach (var tab in Model.Tabs)
+        {
+            <div class="tab-content details-tabs-videos" data-tab-content="tab@(tabContentIndex++)" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                @Html.Raw(tab.Body)
+            </div>
+        }
+        @if (SettingsCatalog.AllowReviews)
+        {
+            <div class="tab-content details-tabs-videos" data-tab-content="tabReviews" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                @(Model.UseStandartReviews
+                  ? Html.Action("ProductReviews", new { productModel = Model.ProductModel, ProductId = product.ProductId })
+                  : Html.RenderModules("product_reviews"))
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Design
+@using AdvantShop.Module.Journal.Domain
+@model AdvantShop.Module.Journal.Models.JournalViewModel
+@{
+    Layout = "";
+    // change to default template
+    System.Web.HttpContext.Current.Items["CurrentTemplate"] = TemplateService.DefaultTemplateId;
+}
+<!DOCTYPE html>
+<html data-ng-strict-di data-ng-app="app" @Html.GetNgController()>
+<head>
+    <meta charset="utf-8">
+    <title>Pdf version</title>
+    <base href="@UrlService.GetUrl()" />
+    <link rel="stylesheet" type="text/css" href="modules/journal/styles/styles.css" />
+    <link rel="stylesheet" type="text/css" href="modules/journal/styles/@(Model.ColorScheme).css" />
+    <script type="text/javascript" src="vendors/jquery/jquery-2.1.4.js"></script>
+</head>
+    <body>
+        @if (!string.IsNullOrWhiteSpace((Model.HeadBlock))) 
+        {
+        <div class="head-b">
+            <div class="head-container @(Model.ViewMode)">
+                @Html.Raw(Model.HeadBlock)
+                <div class="clear"></div>
+            </div>
+        </div>
+        }
+        <div class="products-view products-view-@(Model.ViewMode)">
+            <div class="products-view-container">
+                <div class="category-name">
+                    @Html.Raw(Model.CategoryName)
+                </div>
+                @foreach (var product in Model.Products.Products)
+                {
+                    <div class="products-view-block js-products-view-block">
+                        <div class="products-view-item text-static js-products-view-item">
+                            <div class="products-view-inner">
+                                <div class="products-view-pictures">
+                                    <div class="products-view-picture-block-wrap">
+                                        <figure class="products-view-picture-block">
+                                            <span class="products-view-picture-link">
+                                                <img src="@product.Photo.ImageSrcMiddle()" title="@product.Photo.Title" class="products-view-picture">
+                                            </span>
+                                        </figure>
+                                    </div>
+                                </div>
+
+                                <div class="products-view-info">
+                                    <div class="products-view-info-inner">
+                                        <div class="products-view-name-b">
+                                            <div class="products-view-name @Html.Raw(String.IsNullOrEmpty(@product.Colors) ? " products-view-name-default" : " products-view-name-slim")">
+                                                <span class="products-view-name-link" title="@product.Name">@Html.Raw(@product.Name)</span>
+                                            </div>
+                                            <div class="products-view-meta@(!Model.Products.ShowArtNo ? " products-view-tile-element-hidden" : "")">
+                                                <div class="products-view-meta-item cs-br-1">
+                                                    <span class="products-view-tile-element-hidden">@T("Shared.ProductView.Sku"): </span>@Html.Raw(product.ArtNo)
+                                                </div>
+                                            </div>
+                                            <div class="products-view-rating">
+                                                @Html.Action("Rating", "Common", new { area = "", objId = 0, rating = product.Ratio, readOnly = true })
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="products-view-price-b">
+                                            <div class="products-view-price">
+                                                <span class="price">
+                                                    @Html.Raw(@product.PreparedPrice)
+                                                </span>
+                                            </div>
+                                        </div>
+                                        @Html.Action("SizeColorBlock", "Journal", new { productId = product.ProductId, allowPreOrder = product.AllowPreorder })
+                                        <div class="products-view-description products-view-tile-element-hidden products-view-table-element-hidden">
+                                            @Html.Raw(@product.BriefDescription)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        
+            @{
+                var bottomText = Model.IsLeft ? JournalModuleSetting.CatalogPageBottomRight : JournalModuleSetting.CatalogPageBottomLeft;
+            }
+            @if (!string.IsNullOrWhiteSpace(bottomText))
+            {
+                <div class="bottom bottom-@(Model.IsLeft ? "l" : "r")">
+                    @if (!Model.IsLeft)
+                    {
+                        <div class="bottom-currentpage-r">
+                            @Model.Page
+                        </div>
+                    }
+                    <div class="bottom-tr-@(Model.IsLeft ? "l" : "r")">
+                        <div class="bottom-tr-@(Model.IsLeft ? "l-text" : "r-text")">
+                            @Html.Raw(bottomText)
+                        </div>
+                    </div>
+                    @if (Model.IsLeft)
+                    {
+                        <div class="bottom-currentpage-l">
+                            @Model.Page
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        @Html.Partial("_FooterScripts", new { area = "" })
+    </body>
+</html>

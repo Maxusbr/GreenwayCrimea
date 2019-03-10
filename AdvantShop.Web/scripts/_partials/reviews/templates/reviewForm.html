@@ -1,0 +1,44 @@
+﻿<div class="review-form-block" data-ng-show="reviewsForm.formVisible">
+    <div class="review-form-header">{{ ::'Js.Reviews.AddReview' | translate }}</div>
+    <form class="review-form" name="form" id="form" novalidate="novalidate">
+        <label class="form-field" data-ng-show="reviewsForm.allowImageUpload">
+            <span class="review-shift-right">{{ ::'Js.Reviews.Picture' | translate }}</span>
+            <a href="" ngf-select ngf-drop ng-model="reviewsForm.image" accept="image/*" ngf-accept="'image/*'" class="review-shift-right">
+                <span data-ng-bind="reviewsForm.image[0].name || 'Выберите файл'"></span>
+            </a>
+            <img id="reviewThumbs" data-ng-class="{ 'reviewThumbs cs-br-1' : reviewsForm.image !== undefined && reviewsForm.image !== null }" ngf-src="reviewsForm.image">
+            
+        </label>
+        <div class="row review-inputs-row" data-ng-init="reviewsForm.form = form">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <label class="form-field review-shift-right">
+                    <span class="form-field-name-alt input-required">{{ ::'Js.Reviews.Name' | translate }}</span>
+                    <input class="input-small" type="text" data-ng-model="reviewsForm.name" name="reviewsFormName" data-ng-value="reviewsForm.name" data-autofocus="reviewsForm.nameFocus" required />
+                </label>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <label class="form-field review-shift-left">
+                    <span class="form-field-name-alt input-required">{{ ::'Js.Reviews.Email' | translate }}</span>
+                    <input class="input-small" type="email" data-ng-model="reviewsForm.email" name="reviewsFormEmail" data-ng-value="reviewsForm.email" data-autofocus="reviewsForm.emailFocus" required />
+                </label>
+            </div>
+        </div>
+        <label class="form-field">
+            <span class="form-field-name-alt input-required">{{ ::'Js.Reviews.ReviewText' | translate }}</span>
+            <textarea class="textarea-small" data-ng-model="reviewsForm.text" name="reviewFormText" data-autofocus="reviewsForm.textFocus" required></textarea>
+        </label>
+        <label class="form-field" ng-if="reviewsForm.isShowUserAgreementText">
+            <span class="form-field-input vertical-interval-xsmall">
+                <input class="custom-input-native" type="checkbox" data-ng-model="reviewsForm.agreement" name="reviewsFormName" data-ng-init="reviewsForm.agreement=false" data-ng-value="reviewsForm.agreement" />
+                <span class="custom-input-checkbox"></span>
+                <span data-ng-bind-html="reviewsForm.userAgreementText"></span>
+            </span>
+        </label>
+        <div ng-transclude style="padding-bottom:15px;">
+        </div>
+        <div class="review-form-button">
+            <input class="btn btn-middle btn-submit" type="submit" name="reviewSubmit" value="{{ ::'Js.Reviews.Send' | translate }}" data-button-validation data-button-validation-success="reviewsForm.submit()" />
+            <input class="btn btn-middle btn-action" type="button" name="reviewCancel" value="{{ ::'Js.Reviews.Cancel' | translate }}" data-ng-click="reviewsForm.cancelFn({form: reviewsForm})" data-ng-show="reviewsForm.visibleFormCancelButton" />
+        </div>
+    </form>
+</div>

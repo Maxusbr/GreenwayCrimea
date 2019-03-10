@@ -1,0 +1,8 @@
+﻿<div>    
+    <a class="btn btn-xsmall btn-submit" href="javascript:void(0)" modal-open="modalDdeliveryWidget">Выбрать пункт выдачи</a>    
+    <div data-ng-bind="ddelivery.ddeliveryDeliveryShipping.PickpointAddress"></div>
+    <div data-ng-if="ddelivery.ddeliveryDeliveryShipping.PickpointAddress == null" class="shipping-extend-error error-color" >
+        Необходимо выбрать пункт выдачи
+    </div>
+    <input data-ng-if="ddelivery.ddeliveryIsSelected" class="shipping-extend-input-hidden" type="text" data-ng-model="ddelivery.ddeliveryDeliveryShipping.PickpointAddress" required readonly />    
+</div>

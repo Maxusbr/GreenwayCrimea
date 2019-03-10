@@ -1,0 +1,64 @@
+.chart-progress {
+    position: relative;
+}
+.chart-progress-bar {
+    position: relative;
+    background: #c0ccd3;
+    color: #fff;
+    font-size: 0;
+    line-height: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    height:36px;
+}
+.chart-progress-complete {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    background: #58bae9;
+    border-radius: 4px 0 0 4px;
+}
+.chart-progress-value 
+{
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 36px;
+    line-height: 36px;
+    font-size: 20px;
+}
+.chart-progress-legend {
+    font-size: 83%;
+    text-align: center;
+    margin-top: 10px;
+}
+.chart-progress-legend-complete {
+    margin-right: 7px;
+}
+.chart-progress-legend-complete:before,
+.chart-progress-legend-left:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 10px;
+    width: 10px;
+    margin-right: 3px;
+}
+.chart-progress-legend-complete:before {
+    background: #58bae9;
+}
+.chart-progress-legend-left:before {
+    background: #c0ccd3;
+}
+
+.chart-tooltip {
+    position:absolute;
+    display: none;
+    border: 1px solid #fdd;
+    padding: 2px;
+    opacity: 0.80;
+    filter: alpha(opacity = 50);
+}

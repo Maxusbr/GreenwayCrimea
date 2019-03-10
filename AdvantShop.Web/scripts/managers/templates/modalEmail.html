@@ -1,0 +1,55 @@
+﻿<div class="row">
+    <div class="col-xs-12" ng-switch="managers.currentFormEmail">
+        <div ng-switch-when="main">
+            <label class="row middle-xs">
+
+            </label>
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle input-required" data-translate="Js.Managers.Name"></span>
+                </span>
+                <span class="col-xs">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="text" id="managersRequestName" class="input-small" data-ng-model="managers.clientname" required />
+                    </span>
+                </span>
+            </label>
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle input-required">Email</span>
+                </span>
+                <span class="col-xs">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="email" id="managersRequestEmail" class="input-small" data-ng-model="managers.email" required />
+                    </span>
+                </span>
+            </label>
+            <label class="row middle-xs">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle input-required" data-translate="Js.Managers.EmailText"></span>
+                </span>
+                <span class="col-xs">
+                    <span class="form-field-input vertical-interval-middle">
+                        <textarea id="managersRequestPhone" class="input-small" data-ng-model="managers.emailtext" style="height: 100px" required></textarea>
+                    </span>
+                </span>
+            </label>
+            <label class="row middle-xs" data-ng-if="::managers.IsShowUserAgreementText">
+                <span class="col-xs-4">
+                    <span class="form-field-name vertical-interval-middle"></span>
+                </span>
+                <span class="col-xs-8">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="checkbox" data-ng-model="managers.useragreement" name="managersEmailUserAgreement" id="managersEmailUserAgreement" value="" class="input-small required" data-ng-required="true" />
+                        <span class="vertical-interval-middle" data-ng-bind-html="::managers.UserAgreementText" />
+                    </span>
+                </span>
+            </label>
+        </div>
+
+        <div ng-switch-when="final">
+            <span  data-translate="Js.Managers.EmailFinalText"></span>
+        </div>
+
+    </div>
+</div>

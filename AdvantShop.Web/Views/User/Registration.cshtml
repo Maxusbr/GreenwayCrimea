@@ -1,0 +1,247 @@
+﻿@using AdvantShop.Customers
+@using AdvantShop.ViewModel.Common;
+@model AdvantShop.ViewModel.User.RegistrationViewModel
+
+<div class="col-p-v">
+	<h1>
+		@T("User.Registration.Registration")
+	</h1>
+	@Html.SingleBreadCrumb(T("User.Registration.Registration").ToString())
+	@if (Model.IsDemo)
+	{
+		<div id="dvDemoDataUserNotification">
+			@T("User.Registration.DemoMode")
+		</div>
+	}
+	<div class="row between-xs">
+		<div class="col-xs-7">
+			@using (Html.BeginForm("Registration", "User", FormMethod.Post, new { name = "regForm", novalidate = "novalidate" }))
+			{
+				<label class="row middle-xs">
+					<span class="col-xs-4">
+						<span class="form-field-name vertical-interval-xsmall input-required">@SettingsCheckout.CustomerFirstNameField:</span>
+					</span>
+					<span class="col-xs-8">
+						<span class="form-field-input vertical-interval-xsmall">
+							@Html.TextBoxFor(m => m.FirstName, new
+					   {
+						   @class = "input-small",
+						   required = "required",
+						   data_ng_model = "fname",
+						   data_ng_init = "fname='" + Model.FirstName + "'",
+						   data_ng_model_options = "{ debounce: 300 }",
+						   data_ng_pattern = "/^[a-zа-яёїієґ ,.'-]+$/i",
+						   autocomplete = "given-name"
+					   })
+						</span>
+					</span>
+				</label>
+				if (SettingsCheckout.IsShowLastName)
+				{
+					<label class="row middle-xs">
+						<span class="col-xs-4">
+							<span class="form-field-name vertical-interval-xsmall input-required">@T("User.Registration.LastName"):</span>
+						</span>
+						<span class="col-xs-8">
+							<span class="form-field-input vertical-interval-xsmall">
+								@Html.TextBoxFor(m => m.LastName, new
+						   {
+							   @class = "input-small",
+							   required = "required",
+							   data_ng_model = "lastname",
+							   data_ng_init = "lastname='" + Model.LastName + "'",
+							   data_ng_model_options = "{ debounce: 300 }",
+							   data_ng_pattern = "/^[a-zа-яёїієґ ,.'-]+$/i",
+							   autocomplete = "family-name"
+						   })
+							</span>
+						</span>
+					</label>
+				}
+				if (SettingsCheckout.IsShowPatronymic)
+				{
+					<label class="row middle-xs">
+						<span class="col-xs-4">
+							<span class="form-field-name vertical-interval-xsmall input-required">@T("User.Registration.Patronymic"):</span>
+						</span>
+						<span class="col-xs-8">
+							<span class="form-field-input vertical-interval-xsmall">
+								@Html.TextBoxFor(m => m.Patronymic, new
+						   {
+							   @class = "input-small",
+							   required = "required",
+							   data_ng_model = "patronymic",
+							   data_ng_init = "patronymic='" + Model.Patronymic + "'",
+							   data_ng_model_options = "{ debounce: 300 }",
+							   data_ng_pattern = "/^[a-zа-яёїієґ ,.'-]+$/i",
+							   autocomplete = "additional-name"
+						   })
+							</span>
+						</span>
+					</label>
+				}
+				<label class="row middle-xs">
+					<span class="col-xs-4">
+						<span class="form-field-name vertical-interval-xsmall input-required">E-Mail:</span>
+					</span>
+					<span class="col-xs-8">
+						<span class="form-field-input vertical-interval-xsmall">
+							@Html.TextBoxFor(m => m.Email, new
+					   {
+						   @type = "email",
+						   @class = "input-small",
+						   required = "required",
+						   data_ng_model = "email",
+						   data_ng_init = "email='" + Model.Email + "'",
+						   data_ng_model_options = "{ debounce: 300 }",
+						   pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)|(admin)$",
+						   autocomplete = "email"
+					   })
+						</span>
+					</span>
+				</label>
+				if (SettingsCheckout.IsShowPhone || Model.IsBonusSystemActive)
+				{
+					<label class="row middle-xs">
+						<span class="col-xs-4">
+							<span class="form-field-name vertical-interval-xsmall input-required">@SettingsCheckout.CustomerPhoneField:</span>
+						</span>
+						<span class="col-xs-8">
+							<span class="form-field-input vertical-interval-xsmall">
+								@Html.TextBoxFor(m => m.Phone,
+								new {
+									placeholder = "{{::'Js.Phone.PhonePlaceholder' | translate}}",
+									data_ui_mask_placeholder = "",
+									data_ui_mask = "{{::'Js.Phone.PhoneMask' | translate}}",
+									@class = "input-small",
+									required = "required",
+									data_ng_model = "phone",
+									data_ng_init = "phone='" + Model.Phone + "'",
+									data_ng_model_options = "{ debounce: 300 }",
+									data_model_view_value = "true",
+									autocomplete = "tel",
+									maxlength = 70
+								})
+								@*Html.TextBoxFor(m => m.Phone, new { placeholder = "{{::'Js.Phone.PhonePlaceholder' | translate}}", @class = "input-small", required = "required", autocomplete = "tel" })*@
+							</span>
+						</span>
+					</label>
+				}
+				<label class="row middle-xs">
+					<span class="col-xs-4">
+						<span class="form-field-name vertical-interval-xsmall input-required">@T("User.Registration.Password"):</span>
+					</span>
+					<span class="col-xs-8">
+						<span class="form-field-input vertical-interval-xsmall">
+							@Html.PasswordFor(m => m.Password, new { @class = "input-small", autocomplete = "off", required = "required", data_ng_model = "pass", data_ng_model_options = "{ debounce: 300 }" })
+						</span>
+					</span>
+				</label>
+				<label class="row middle-xs">
+					<span class="col-xs-4">
+						<span class="form-field-name vertical-interval-xsmall input-required">@T("User.Registration.PasswordConfirm"):</span>
+					</span>
+					<span class="col-xs-8">
+						<span class="form-field-input vertical-interval-xsmall">
+							@Html.PasswordFor(m => m.PasswordConfirm, new { @class = "input-small", autocomplete = "off", required = "required", data_ng_model = "passagain", data_ng_model_options = "{ debounce: 300 }" })
+						</span>
+					</span>
+				</label>
+				<label class="row middle-xs">
+					<span class="col-xs-4">
+						<span class="form-field-name vertical-interval-xsmall input-required">@T("User.Registration.CustomerGroup"):</span>
+					</span>
+					<span class="col-xs-8">
+						<span class="form-field-input vertical-interval-xsmall">
+							@Html.DropDownListFor(m => m.CustomerGroup,
+								((CustomerGroupType[])Enum.GetValues(typeof(CustomerGroupType))).Select(o => new SelectListItem {Text = o.Localize(), Value = o.ToString()}).ToList(),
+								new { @class = "input-small", autocomplete = "off", required = "required", data_ng_model = "group", data_ng_init = "group='" + Model.CustomerGroup + "'", data_ng_model_options = "{ debounce: 300 }" })
+						</span>
+					</span>
+				</label>
+
+				@Html.Partial("_CustomerFields", new CustomerFieldsViewModel(Model.CustomerFields))
+
+				if (Model.IsBonusSystemActive)
+				{
+					<label class="row middle-xs">
+						<span class="col-xs-4">
+							<span class="form-field-name vertical-interval-xsmall">
+								@T("User.Registration.Bonuses")
+							</span>
+						</span>
+						<span class="col-xs-8">
+							<span class="form-field-input vertical-interval-xsmall">
+								@Html.CheckBoxFor(m => m.WantBonusCard, new { @class = "custom-input-native", id = "WantBonusCard", data_ng_model = "wantBonusCard", data_ng_init = "wantBonusCard=" + Model.WantBonusCard.ToLowerString() })
+								<span class="custom-input-checkbox"></span>
+								Хочу получить бонусную карту и оплачивать покупки бонусами!
+								@if (Model.BonusesForNewCard != null)
+								{
+									<div class="bonus-card-plus-amount">
+										<span class="bonus-card-plus-price">+@Model.BonusesForNewCard</span> на бонусную карту
+									</div>
+								}
+							</span>
+
+						</span>
+					</label>
+				}
+				<br/>
+				if (SettingsDesign.NewsSubscriptionVisibility)
+				{
+					<label class="row middle-xs">
+						<span class="col-xs-4">
+							<span class="form-field-name vertical-interval-xsmall">@T("User.Registration.NewsSubscribtion")</span>
+						</span>
+						<span class="col-xs-8">
+							<span class="form-field-input vertical-interval-xsmall">
+								@Html.CheckBoxFor(m => m.NewsSubscription, new { @class = "custom-input-native", @id = "NewsSubscription", data_ng_model = "subscr", data_ng_init = "subscr=" + Model.NewsSubscription.ToString().ToLower() })
+								<span class="custom-input-checkbox"></span>
+							</span>
+						</span>
+					</label>
+				}
+
+				if (SettingsMain.EnableCaptchaInRegistration)
+				{
+					<label class="row middle-xs">
+						<span class="col-xs-4">
+							<span class="form-field-name vertical-interval-xsmall input-required">
+								@T("Captcha.Code"):
+							</span>
+						</span>
+						<span class="col-xs-8">
+							@Html.Captcha("registration.captcha")
+						</span>
+					</label>
+				}
+				if (SettingsCheckout.IsShowUserAgreementText)
+				{
+					<label class="row middle-xs">
+						<span class="col-xs-4"></span>
+						<span class="col-xs-8">
+							<span class="form-field-input vertical-interval-xsmall">
+								@Html.CheckBoxFor(m => m.Agree, new { required = "required", data_ng_model = "agreement", @class = "custom-input-native" })
+								<span class="custom-input-checkbox"></span>
+								@Html.Raw(SettingsCheckout.UserAgreementText)
+							</span>
+						</span>
+					</label>
+				}
+				<div class="row middle-xs">
+					<div class="col-xs-offset-4 col-xs-8 col-p-v">
+						<input type="submit" class="btn btn-submit btn-middle group-reg" value="@T("User.Registration.RegisterButton")" data-button-validation />
+					</div>
+				</div>
+			}
+		</div>
+		<div class="col-xs-4">
+			<div class="block-alt cs-bg-3">
+				<div class="form-addon-text">
+					@Html.StaticBlock("textOnReg")
+				</div>
+				@Html.Action("LoginOpenId", new { pageToRedirect = Url.RouteUrl("Registration") })
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model AdvantShop.ViewModel.Common.ShoppingCartViewModel
+@using AdvantShop.Orders;
+@using AdvantShop.Repository.Currencies;
+
+<div class="site-head-cart">
+    <div class="cart-mini" data-cart-mini>
+        <div data-cart-mini-list data-cart-data="cartMini.cartData"></div>
+        <div data-cart-mini-trigger class="cart-mini__info-wrap">
+            <a href="@Url.RouteUrl("Cart")" class="cs-l-2 cs-bg-9 cart-mini-main-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 74.895 74.895">
+                        <path d="M64.907,22.341L52.149,3.683c-0.935-1.367-2.802-1.718-4.17-0.783c-1.368,0.936-1.718,2.802-0.783,4.17L57.62,22.313
+		                    H17.276L27.699,7.07c0.935-1.368,0.584-3.234-0.783-4.17c-1.37-0.936-3.236-0.584-4.17,0.783L9.989,22.341
+		                    C4.435,22.623,0,27.217,0,32.841c0,2.773,1.099,5.398,3.052,7.366L7.274,65.17c0.149,4.078,3.513,7.35,7.626,7.35h45.094
+		                    c4.113,0,7.478-3.271,7.627-7.35l4.222-24.963c1.952-1.968,3.052-4.593,3.052-7.366C74.894,27.218,70.46,22.624,64.907,22.341z
+		                     M67.176,36.347l-0.888,0.714l-4.621,27.326l-0.042,0.5c0,0.899-0.732,1.632-1.632,1.632H14.9c-0.9,0-1.632-0.732-1.632-1.632
+		                    L8.604,37.061l-0.887-0.714c-1.092-0.879-1.718-2.157-1.718-3.507c0-2.497,2.03-4.527,4.525-4.527h53.844
+		                    c2.495,0,4.525,2.031,4.525,4.527C68.894,34.191,68.268,35.469,67.176,36.347z" />
+                                    <path d="M51.965,36.152c-1.657,0-3,1.343-3,3v21.029c0,1.657,1.343,3,3,3s3-1.343,3-3V39.152
+		                    C54.965,37.495,53.622,36.152,51.965,36.152z" />
+                                    <path d="M37.447,36.152c-1.657,0-3,1.343-3,3v21.029c0,1.657,1.343,3,3,3s3-1.343,3-3V39.152
+		                    C40.447,37.495,39.104,36.152,37.447,36.152z" />
+                                    <path d="M22.929,36.152c-1.657,0-3,1.343-3,3v21.029c0,1.657,1.343,3,3,3s3-1.343,3-3V39.152
+		                    C25.929,37.495,24.586,36.152,22.929,36.152z" />
+                    </svg>
+                    <span class="cart-mini__count" data-cart-count data-type="count" data-ng-bind-html="cartCount.cartData.TotalItems">@ShoppingCartService.CurrentShoppingCart.Count</span>
+            </a>
+            <span class="cart-mini__price-total">
+               @CurrencyService.CurrentCurrency.Iso3 @ShoppingCartService.CurrentShoppingCart.TotalPrice
+            </span>
+        </div>
+    </div>
+    <div>
+        @Html.Action("ClientCode", "User")
+    </div>
+</div>

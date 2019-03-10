@@ -1,0 +1,3 @@
+CustomerGroupID;GroupName;GroupDiscount;MinimumOrderPrice
+1;CustomerGroup1;0;0
+2;CustomerGroup2;10;100

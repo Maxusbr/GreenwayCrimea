@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telePhone=no">
+    <base href="@UrlService.GetUrl()" />
+    <title>@Html.GetPageTitle()</title>
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="Keywords" content="@Html.GetPageKeywords()" />
+    
+    @Html.Partial("_HeaderScripts")
+</head>
+<body>
+    @Html.Partial("_TopMenu")
+    @RenderBody()
+    @Html.Partial("_FooterScripts")
+</body>
+</html>

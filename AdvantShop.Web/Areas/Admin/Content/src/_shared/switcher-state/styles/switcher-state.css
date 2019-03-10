@@ -1,0 +1,43 @@
+.switcher-state-label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.switcher-state-trigger {
+  display: inline-block;
+  background-color: #c8cbce;
+  padding: 8px 15px;
+  color: #fff;
+  border-radius: 2px;
+  cursor: pointer; }
+
+.switcher-state-trigger-off-disabled {
+  background-color: #2f4050;
+  cursor: default; }
+
+.switcher-state-trigger-off-active {
+  background-color: #2f4050;
+  cursor: default; }
+
+.switcher-state-trigger-on {
+  cursor: pointer; }
+
+.switcher-state-input {
+  display: none; }
+
+.switcher-state-trigger-on-active {
+  background-color: #2d9ced;
+  cursor: default; }
+
+.is-sticky .switcher-state-trigger-off-disabled,
+.is-sticky .switcher-state-trigger-off-active {
+  background-color: #2f4050;
+  box-shadow: inset 0 0 1px 0 #fff; }
+
+.is-sticky .switcher-state-trigger-off {
+  background-color: #2d9ced;
+  cursor: default; }
+
+.is-sticky .switcher-state-input {
+  display: none; }

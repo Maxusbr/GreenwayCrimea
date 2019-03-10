@@ -1,0 +1,65 @@
+﻿<div class="reports-graphic">
+    <div class="clear">
+        <h2 class="reports-title">
+            Входящие вызовы
+        </h2>
+        <div class="pull-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'dd'}" ng-click="$ctrl.changeGroup('dd')">По дням</button>
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'wk'}" ng-click="$ctrl.changeGroup('wk')">По неделям</button>
+                <button type="button" class="btn btn-xs btn-white" ng-class="{'active': $ctrl.groupFormatString == 'mm'}" ng-click="$ctrl.changeGroup('mm')">По месяцам</button>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="incalls"
+            class="chart chart-line"
+            chart-data="$ctrl.IncomingCalls.Data"
+            chart-labels="$ctrl.IncomingCalls.Labels"
+            chart-series="$ctrl.IncomingCalls.Series"
+            chart-colors="$ctrl.IncomingCalls.Colors"
+            chart-options="{legend:{display:true}}"></canvas>
+</div>
+
+
+<h2 class="reports-title">
+    Пропущенные вызовы
+</h2>
+<div class="reports-graphic">
+    <canvas id="missedcalls"
+            class="chart chart-line"
+            chart-data="$ctrl.MissedCalls.Data"
+            chart-labels="$ctrl.MissedCalls.Labels"
+            chart-series="$ctrl.MissedCalls.Series"
+            chart-colors="$ctrl.MissedCalls.Colors"
+            chart-options="{legend:{display:true}}"></canvas>
+</div>
+
+
+<h2 class="reports-title">
+    Исходящие вызовы
+</h2>
+<div class="reports-graphic">
+    <canvas id="outgoingCalls"
+            class="chart chart-line"
+            chart-data="$ctrl.OutgoingCalls.Data"
+            chart-labels="$ctrl.OutgoingCalls.Labels"
+            chart-series="$ctrl.OutgoingCalls.Series"
+            chart-colors="$ctrl.OutgoingCalls.Colors"
+            chart-options="{legend:{display:true}}"></canvas>
+</div>
+
+
+<h2 class="reports-title">
+    Средняя продолжительность разговора (сек.)
+</h2>
+<div class="reports-graphic">
+    <canvas id="avgDuration"
+            class="chart chart-line"
+            chart-data="$ctrl.AvgDuration.Data"
+            chart-labels="$ctrl.AvgDuration.Labels"
+            chart-series="$ctrl.AvgDuration.Series"
+            chart-colors="$ctrl.AvgDuration.Colors"
+            chart-options="{legend:{display:true}}"></canvas>
+</div>
+

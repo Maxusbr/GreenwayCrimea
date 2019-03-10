@@ -1,0 +1,40 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.ProductLists.PropductsByListViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Catalog/_CatalogLayout.cshtml";
+}
+
+<div class="clearfix ibox-content-header" ng-init="productlists.listId = @Model.ListId">
+    <div class="pull-right btns-in-header">
+        <ui-modal-trigger data-controller="'ModalAddEditProductListCtrl'" controller-as="ctrl" size="lg" 
+                          template-url="../areas/admin/content/src/productlists/modal/addEditProductList/addEditProductList.html" 
+                          data-resolve="{'id': @Model.ListId}"> 
+            <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="editProductList">
+                Редактировать список
+            </button>
+        </ui-modal-trigger>
+
+        <ui-modal-trigger class="header-subtext" data-controller="'ModalProductsSelectvizrCtrl'" controller-as="ctrl" size="xs-11"
+                          on-close="productlists.addProductsModal(result)"
+                          template-url="../areas/admin/content/src/_shared/modal/products-selectvizr/productsSelectvizrModal.html">
+            <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="product_ProductListAdd">
+                <span class="fa fa-plus"></span> @T("Admin.AddProduct")
+            </button>
+        </ui-modal-trigger>
+    </div>
+    <h2 class="inline content-header">
+        @T("Admin.ProductLists.Products.List") "@Html.Raw(Model.ListName)"
+    </h2>
+    <div>
+        <a href="@Url.Action("Index")">@T("Admin.Back")</a>
+    </div>
+</div>
+
+<ui-grid-custom grid-unique-id="gridProducts"
+                grid-options="productlists.gridProductsOptions"
+                grid-on-init="productlists.gridProductsOnInit(grid)"
+                grid-params="{ListId: '@Model.ListId.ToString().ToLower()'}"
+                grid-url="'productlists/getproductsbylist'"
+                grid-inplace-url="'productlists/inplaceproduct'"
+                grid-on-delete="productlists.onGridDeleteItem()"
+                grid-selection-mass-apply="productlists.onGridDeleteItem()"                >
+</ui-grid-custom>

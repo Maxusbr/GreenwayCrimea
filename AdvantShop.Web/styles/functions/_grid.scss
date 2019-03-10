@@ -1,0 +1,191 @@
+﻿//Idea get from http://flexboxgrid.com/
+
+@import '../_settings.scss', '_util.scss', '_prefixer', '_breakpoints';
+
+$grid-total-columns: 12 !default;
+$smallest: 'hand';
+
+// Calc percentage value for column
+// @function
+// @param {integer} $colNumber - number of column.
+// @param {integer} $totalColumns - total count columns in grid.
+@function grid-calc($colNumber, $totalColumns) {
+    @return percentage(($colNumber / $totalColumns));
+}
+
+// Horizontal align column
+// @mixin
+// @param {string} $device - name size (hand, lap, desk, wall).
+// @param {string} $align - start, center, end.
+@mixin grid-col-align-horizontal($device, $align) {
+    .grid-#{$align}-#{$device} {
+        @include flex-align-horizontal($align);
+    }
+}
+
+// Vertical align column
+// @mixin
+// @param {string} $device - name size (hand, lap, desk, wall).
+// @param {string} $align - top, middle, end.
+@mixin grid-col-align-vertical($device, $align) {
+    .grid-#{$align}-#{$device} {
+        @include flex-align-vertical($align);
+    }
+}
+
+// Around align column
+// @mixin
+// @param {string} $device - name size (hand, lap, desk, wall).
+@mixin grid-col-align-around($device) {
+    .grid-around-#{$device} {
+        @include flex-align-around();
+    }
+}
+
+// Between align column
+// @mixin
+// @param {string} $device - name size (hand, lap, desk, wall).
+@mixin grid-col-align-between($device) {
+    .grid-between-#{$device} {
+        @include flex-align-between();
+    }
+}
+
+// Column insert in start
+// @mixin
+// @param {string} $device - name size (hand, lap, desk, wall).
+@mixin grid-col-align-first($device) {
+    .grid-first-#{$device} {
+        @include flex-first();
+    }
+}
+
+// Column insert in end
+// @mixin
+// @param {string} $device - name size (hand, lap, desk, wall).
+@mixin grid-col-align-last($device) {
+    .grid-last-#{$device} {
+        @include flex-last();
+    }
+}
+
+// Specific styles for smallest breakpoints
+// @mixin
+@mixin grid-smallest() {
+
+    $listSelectors: null;
+
+    @for $columnIndex from 1 through $grid-total-columns {
+        $listSelectors: $listSelectors, unquote('.grid-column-#{$columnIndex}-#{$smallest}, .grid-offset-#{$columnIndex}-#{$smallest}');
+    }
+
+    #{$listSelectors} {
+        @include box-sizing(border-box);
+        @include flex();
+        @include flex-direction(column);
+        @include flex-grow(0);
+        @include flex-shrink(0);
+    }
+}
+
+// Render styles for grid column
+// @mixin
+// @param {string} $device - name size (hand, lap, desk, wall).
+@mixin grid-col($device) {
+
+    $columnValue: null;
+
+    @for $columnIndex from 1 through $grid-total-columns {
+
+        .grid-column-#{$columnIndex}-#{$device} {
+            @include flex-basis(grid-calc($columnIndex, $grid-total-columns));
+            @include box-sizing(border-box);
+            max-width: grid-calc($columnIndex, $grid-total-columns);
+        }
+
+        .grid-offset-#{$columnIndex}-#{$device} {
+            margin-left: grid-calc($columnIndex, $grid-total-columns);
+            @include box-sizing(border-box);
+        }
+
+        .grid-column-auto-#{$device} {
+            @include flex-basis(0);
+            @include flex-grow(1);
+            min-width: 0;
+        }
+    }
+
+    @include grid-col-align-horizontal($device, start);
+
+    @include grid-col-align-horizontal($device, center);
+
+    @include grid-col-align-horizontal($device, end);
+
+    @include grid-col-align-vertical($device, top);
+
+    @include grid-col-align-vertical($device, middle);
+
+    @include grid-col-align-vertical($device, bottom);
+
+    @include grid-col-align-around($device);
+
+    @include grid-col-align-between($device);
+
+    @include grid-col-align-first($device);
+
+    @include grid-col-align-last($device);
+}
+
+// Main mixin for generate grid styles
+// @mixin
+@mixin grid-init() {
+
+    $selectorsAuto: null;
+
+    @each $item in $breakpointsGrid {
+
+        $device: nth($item, 1);
+
+        @if($item == $smallest) {
+            @include grid-smallest();
+        }
+
+        @include breakpointsGetMedia($device, 'grid') {
+            @include grid-col($device);
+        }
+    }
+}
+
+@mixin grid-col-custom($device, $columnIndex, $columnValue) {
+
+    $columnValuePer: grid-calc($columnValue, $max-width);
+
+    .grid-column-#{$columnIndex}-#{$device}-custom {
+        @include flex-basis($columnValuePer);
+        @include box-sizing(border-box);
+    }
+
+    .grid-offset-#{$columnIndex}-#{$device}-custom {
+        margin-left: $columnValuePer;
+        @include box-sizing(border-box);
+    }
+}
+
+@mixin grid-custom($device, $sizes) {
+
+    $isSingleParam: false;
+
+    @include breakpointsGetMedia($device, 'grid') {
+        @each $items in $sizes {
+            @if($isSingleParam != true) {
+                @if(length($items) == 1) {
+                    @include grid-col-custom($device, nth($sizes, 1), nth($sizes, 2));
+                    $isSingleParam: true;
+                }
+                @else {
+                    @include grid-col-custom($device, nth($items, 1), nth($items, 2));
+                }
+            }
+        }
+    }
+}

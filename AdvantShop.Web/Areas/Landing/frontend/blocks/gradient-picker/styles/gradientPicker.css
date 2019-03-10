@@ -1,0 +1,22 @@
+.lp-gradient-picker-row {
+  margin-bottom: 15px; }
+
+.lp-gradient-picker-item, .lp-gradient-picker-color {
+  display: inline-block;
+  vertical-align: middle;
+  width: 125px; }
+
+.lp-gradient-picker-item {
+  margin-right: 15px; }
+  .lp-gradient-picker-item:last-child {
+    margin-right: 0; }
+
+.lp-gradient-picker-color {
+  margin-right: 5px; }
+
+.lp-gradient-picker-item-name {
+  display: block;
+  margin-bottom: 5px; }
+
+.lp-gradient-picker-direction {
+  width: 268px; }

@@ -1,0 +1,93 @@
+﻿@model AdvantShop.Web.Admin.Models.OrdersEdit.OrderModel
+@{
+    var order = Model.Order;
+    var isPaied = order != null && order.Payed;
+    var hasCerticates = order != null && order.OrderCertificates != null && order.OrderCertificates.Count > 0;
+}
+
+<div class="order-items-content" ng-init="order.startGridOrderItems(@isPaied.ToLowerString())">
+
+    <h2 class="m-b-sm clearfix">
+        Содержание заказа
+
+        @if (!isPaied && !hasCerticates)
+        {
+            <ui-modal-trigger class="header-subtext pull-right" size="xs-11" data-controller="'ModalOffersSelectvizrCtrl'" data-controller-as="ctrl"
+                              data-on-close="order.addOrderItems(result)"
+                              template-url="../areas/admin/content/src/_shared/modal/offers-selectvizr/offersSelectvizrModal.html">
+                <a class="btn btn-sm btn-action" href="">
+                    Добавить товар
+                </a>
+            </ui-modal-trigger>
+        }
+    </h2>
+
+    <div ng-if="order.isShowGridOrderItem" class="m-b">
+        <div class="row">
+            <div class="col-xs-12">
+                @if (hasCerticates)
+                {
+                    <ui-grid-custom grid-unique-id="gridOrderCertificates"
+                                    grid-filter-enabled="false"
+                                    grid-pagination-enabled="false"
+                                    grid-selection-enabled="false"
+                                    grid-params="{OrderId: order.orderId}"
+                                    grid-options="order.gridOrderCertificatesOptions"
+                                    grid-url="'orders/getOrderCertificates'">
+                    </ui-grid-custom>
+                }
+                else
+                {
+                    <ui-grid-custom grid-unique-id="gridOrderItems"
+                                    grid-on-init="order.gridOrderItemsOnInit(grid)"
+                                    grid-filter-enabled="false"
+                                    grid-pagination-enabled="false"
+                                    grid-selection-enabled="false"
+                                    grid-params="{OrderId: order.orderId}"
+                                    grid-options="order.gridOrderItemsOptions"
+                                    grid-url="'orders/getOrderItems'"
+                                    grid-inplace-url="'orders/updateOrderItem'"
+                                    grid-on-inplace-apply="order.gridOrderItemUpdate()"
+                                    grid-on-delete="order.gridOrderItemDelete()"
+                                    grid-extend-ctrl="order"
+                                    grid-empty-text="'Выберите товары'"
+                                    grid-selection-on-init="order.gridOrderItemsSelectionOnInit(selectionCustom)"
+                                    grid-on-inplace-before-apply="order.gridOnInplaceBeforeApply(rowEntity, colDef, newValue)">
+                    </ui-grid-custom>
+                }
+            </div>
+        </div>
+        <order-items-summary data-order-id="order.orderId"
+                             data-country="order.country"
+                             data-region="order.region"
+                             data-city="order.city"
+                             data-zip="order.zip"
+                             data-is-edit="@(isPaied ? "false" : "true")"
+                             ng-if="!(order.isDraft && (order.gridOrderItems.gridOptions.data == null || order.gridOrderItems.gridOptions.data.length == 0))"
+                             on-init="order.initOrderItemsSummary(orderItemsSummary)"
+                             on-stop-edit="order.checkStopEdit()">
+        </order-items-summary>
+    </div>
+</div>
+
+@Html.RenderModules("admin_order_orderitems", new { orderId = Model.OrderId })
+
+@if (Model.IsEditMode)
+{
+    <div class="row m-b">
+        <div class="col-xs-12">
+            <div class="m-b-xs">Комментарий пользователя к заказу:</div>
+            <div>@Html.Raw(order != null && !string.IsNullOrWhiteSpace(order.CustomerComment) ? order.CustomerComment : "Нет комментариев")</div>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-xs-6 col-wl-6">
+        <div class="m-b-xs">Комментарий к статусу:</div>
+        <div>@Html.TextAreaFor(x => x.Order.StatusComment, new { @class = "form-control", @rows = 5, ng_model = "order.statusComment", ng_blur = "order.saveChanges()" })</div>
+    </div>
+    <div class="col-xs-6 col-wl-6">
+        <div class="m-b-xs">Комментарии к заказу (только для администратора): </div>
+        <div>@Html.TextAreaFor(x => x.Order.AdminOrderComment, new { @class = "form-control", @rows = 5, ng_model = "order.adminOrderComment", ng_blur = "order.saveChanges()" })</div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Добавление голосования" : "Редактирование голосования"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">
+                <span class="text-required">
+                    Вопрос
+                </span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" ng-model="ctrl.Name" required validation-input-text="Вопрос" autofocus data-e2e="voteName" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Текущее</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="voteIsDefault">
+                    <input type="checkbox" ng-model="ctrl.IsDefault" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Имеет пустой голос</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="voteIsHaveNullVoice">
+                    <input type="checkbox" ng-model="ctrl.IsHaveNullVoice" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-3 control-label">Закрытое</label>
+            <div class="col-xs-9">
+                <label class="adv-checkbox-label" data-e2e="voteIsClose">
+                    <input type="checkbox" ng-model="ctrl.IsClose" class="adv-checkbox-input control-checkbox" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row" ng-if="ctrl.mode != 'add'">
+            <label class="col-xs-3 control-label">Варианты ответов</label>
+            <div class="col-xs-9" data-e2e="voteAnswersList">
+                <answers-list data-parametr="{{ctrl.ID}}"></answers-list>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" ladda="ctrl.btnSleep" data-e2e="voteSave" type="button" data-button-validation-success="ctrl.saveVoting()" data-button-validation>{{ctrl.mode == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

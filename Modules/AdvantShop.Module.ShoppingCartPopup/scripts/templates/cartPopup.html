@@ -1,0 +1,83 @@
+<div>
+    <div id="modalCartPopup" class="modal ng-hide"
+         data-modal-control data-modal-class="cart-popup-modal"
+         data-inject="cartPopup"
+         data-callback-close="cartPopup.modalCloseCallback(modalScope)">
+        <div class="modal-content cart-popup-content">
+            <div class="cart-popup-product container-fluid">
+                <div class="row middle-xs">
+                    <div>
+                        <div class="cart-popup-image">
+                            <a data-ng-href="{{cartPopup.item.Link}}">
+                                <img data-ng-src="{{cartPopup.item.PhotoPath}}" alt="{{cartPopup.item.PhotoAlt}}" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs">
+                        <h2 class="cart-popup-header h2">{{cartPopup.addedCount > 1 ? 'Добавлено товаров: ' + cartPopup.addedCount : 'Товар добавлен в корзину'}}</h2>
+                        <div class="row">
+                            <div class="col-xs">
+                                <a data-ng-href="{{cartPopup.item.Link}}" class="cart-popup-product-link" data-ng-bind-html="cartPopup.item.Name"></a>
+                                <div class="cart-popup-meta">
+                                    <div class="products-view-meta">
+                                        <ul class="products-view-meta-list">
+                                            <li class="products-view-meta-item">
+                                                <span>Артикул: <span data-ng-bind="cartPopup.item.Sku"></span></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="cart-popup-rating">
+                                    <div data-rating data-max="5" data-readonly="true" data-current="cartPopup.item.Rating"></div>
+                                </div>
+                                <ul class="cart-full-properties" data-ng-if="cartPopup.item.ColorName || cartPopup.item.SizeName || cartPopup.item.SelectedOptions.length > 0">
+                                    <li class="cart-full-properties-item" data-ng-if="cartPopup.item.ColorName">
+                                        <div class="cart-full-properties-name" data-ng-bind="(cartPopup.item.ColorHeader + ':')"></div>
+                                        <div class="cart-full-properties-value" data-ng-bind="cartPopup.item.ColorName"></div>
+                                    </li>
+                                    <li class="cart-full-properties-item" data-ng-if="cartPopup.item.SizeName">
+                                        <div class=" cart-full-properties-name" data-ng-bind="(cartPopup.item.SizeHeader + ':')"></div>
+                                        <div class="cart-full-properties-value" data-ng-bind="cartPopup.item.SizeName"></div>
+                                    </li>
+                                    <li class="cart-full-properties-item" data-ng-if="cartPopup.item.SelectedOptions.length > 0" data-ng-repeat="option in cartPopup.item.SelectedOptions track by $index">
+                                        <div class=" cart-full-properties-name" data-ng-bind="(option.CustomOptionTitle + ':')"></div>
+                                        <div class="cart-full-properties-value">
+                                            <span data-ng-bind="option.OptionTitle"></span>
+                                            <span data-ng-bind="option.OptionText"></span>
+                                            <span data-ng-bind="option.FormatPrice"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-4 text-align-right">
+                                <div class="cart-popup-price">
+                                    <span data-ng-bind-html="cartPopup.item.Price"></span>
+                                </div>
+                                <div class="cart-popup-cost">
+                                    x <span data-ng-bind="cartPopup.item.Amount"></span> = <span data-ng-bind-html="cartPopup.item.Cost"></span>
+                                </div>
+                                <div class="cart-popup-spinbox">
+                                    <div data-spinbox data-value="cartPopup.item.Amount" data-proxy="cartPopup.cartId" data-update-fn="cartPopup.updateAmount(value, proxy)" data-step="cartPopup.item.Multiplicity" data-max="cartPopup.item.MaxAmount" data-min="cartPopup.item.MinAmount"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-popup-footer">
+                <div class="row middle-xs">
+                    <div class="col-xs-5">
+                        <div class="cart-popup-cart-text icon-bag-before-abs-offset" data-ng-bind-html="cartPopup.item.TotalCount"></div>
+                    </div>
+                    <div class="col-xs">
+                        <div class="text-align-right">
+                            <a href="" class="btn btn-middle btn-action" type="button" data-ng-click="cartPopup.close()">Продолжить покупки</a>
+                            <a class="btn btn-middle btn-buy" data-ng-href="{{::cartPopup.buttonConfirmUrl}}">Оформить заказ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-cart-popup-carousel cart-popup-carousel" data-ng-bind-html="cartPopup.item.RelatedProducts"></div>
+        </div>
+    </div>
+</div>

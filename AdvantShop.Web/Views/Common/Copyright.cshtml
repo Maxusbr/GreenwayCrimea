@@ -1,0 +1,23 @@
+﻿@model AdvantShop.Models.Common.CopyrightModel
+
+<div>
+    <div class="cs-t-3">
+        @if (Model.Visible)
+        {
+            <span>@T("Common.Copyright.Copyright")</span>
+            if (@Model.ShowLink)
+            {
+                <a href="https://www.advantshop.net?utm_source=advantshop&utm_medium=site&utm_campaign=footer" target="_blank">advantshop.net</a>
+                <span>&copy; 2017</span>
+            }
+            else
+            {
+                <span>advantshop.net &copy; 2017</span>
+            }
+        }
+        else
+        {
+            @Html.StaticBlock("LeftBottom", "static-block-copyright")
+        }
+    </div>
+</div>

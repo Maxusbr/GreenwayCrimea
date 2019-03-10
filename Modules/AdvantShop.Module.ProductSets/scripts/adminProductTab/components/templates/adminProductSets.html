@@ -1,0 +1,41 @@
+﻿<div class="product-setting">
+    <div class="product-list-item-tab">
+        <uib-tabset active uid="tabProductSets">
+            <uib-tab index="1" heading="{{$ctrl.title}}" classes="ng-tab">
+                <div class="items-list">
+                    <div class="item rel-product-item" data-ng-repeat="item in $ctrl.items track by $index">
+                        <div class="item-block">
+                            <div class="item-block__inner">
+                                <div class="clearfix">
+                                    <div class="pull-right">
+                                        <a href="" ng-click="$ctrl.deleteItem(item.OfferId)" class="link-invert link-decoration-none link-grey fa fa-remove categories-block-icon"></a>
+                                    </div>
+                                </div>
+                                <div class="item-block__content">
+                                    <figure class="item-block__figure">
+                                        <a href="product/edit/{{item.ProductId}}" class="item-block__figure-link">
+                                            <img ng-src="{{item.ImageSrc}}" alt="" style="max-width: 130px; max-height: 130px;" />
+                                        </a>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="item-block__name">
+                                <a href="product/edit/{{item.ProductId}}" class="item-block__name-link">{{item.ArtNo}} - {{item.Name}}</a>
+                                <div ng-if="item.Error != null" class="text-danger">{{item.Error}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ui-modal-trigger size="xs-11" data-controller="'ModalOffersSelectvizrCtrl'" data-controller-as="ctrl"
+                                  data-on-close="$ctrl.addLinkedOffers(result)"
+                                  template-url="../areas/admin/content/src/_shared/modal/offers-selectvizr/offersSelectvizrModal.html">
+                    <a class="btn btn-sm btn-action" href="">
+                        Добавить товар
+                    </a>
+                </ui-modal-trigger>
+
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</div>

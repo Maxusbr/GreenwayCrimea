@@ -1,0 +1,34 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="inline product-setting-title content-header">Видео</h2>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="form-group row">
+        <div class="col-xs-12">
+            <div class="m-b">
+                Прикрепить к товару видео из Youtube и прочих сервисов.
+                <ui-modal-trigger data-controller="'ModalAddEditVideoCtrl'" controller-as="ctrl"
+                                  template-url="../areas/admin/content/src/product/components/productVideos/modal/addEditVideo/addEditVideo.html"
+                                  data-resolve="{'productId': ctrl.productId }"
+                                  data-on-close="ctrl.gridVideos.fetchData()">
+                    <a href="" data-e2e="ProductVideoAdd">Прикрепить</a>
+                </ui-modal-trigger>
+            </div>
+            <ui-grid-custom ng-if="ctrl.showGridVideos"
+                            grid-unique-id="gridVideos"
+                            grid-on-init="ctrl.gridOnInit(grid)"
+                            grid-on-fetch="ctrl.gridOnFetch(grid)"
+                            grid-filter-enabled="false"
+                            grid-pagination-enabled="false"
+                            grid-selection-enabled="false"
+                            grid-params="{ProductId:ctrl.productId}"
+                            grid-options="ctrl.gridOptions"
+                            grid-url="'product/getVideos'"
+                            grid-inplace-url="'product/updateVideo'">
+            </ui-grid-custom>
+        </div>
+    </div>
+</div>

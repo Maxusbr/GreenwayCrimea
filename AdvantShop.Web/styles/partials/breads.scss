@@ -1,0 +1,21 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+$breads-item-margin: rem-calc(5px);
+
+.breads{
+    line-height: 1;
+    margin-bottom: rem-calc(20px);
+}
+
+.breads-item {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: $font-size-small;
+    margin-right: $breads-item-margin;
+    &:after{
+        font-size: rem-calc(9px);
+    }
+}
+.breads-item-link{
+    margin-right: $breads-item-margin;
+}

@@ -1,0 +1,12 @@
+.loadingBlock
+{
+	margin-top:-34px;
+}
+
+.verticalSeparator
+{
+	border-right:solid 1px black;
+	display:inline;
+	width:1px;
+	margin-right:3px;
+}

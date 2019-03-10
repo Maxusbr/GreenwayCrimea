@@ -1,0 +1,31 @@
+﻿.customer-custom-fields {
+    display: flex;
+}
+
+.customer-custom-fields .custom-fields-row {
+    flex-basis: 50%;
+    max-width: 50%;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+}
+
+.customer-custom-fields-divider {
+    height: 1px;
+    background-color: #c3c3c3;
+    margin-bottom: 15px;
+}
+
+.customersegments-custom-fields .custom-fields-row {
+    flex-basis: 33%;
+    max-width: 33%;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+}
+.customer-segment-item {
+    background: #cae9f7;
+    color: #005e94;
+    border: 0;
+    padding: 3px 8px;
+    margin: 0 2px 2px 0;
+    display: inline-block;
+}

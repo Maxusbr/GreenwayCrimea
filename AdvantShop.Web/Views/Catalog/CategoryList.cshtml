@@ -1,0 +1,32 @@
+﻿@using AdvantShop.Customers
+@model AdvantShop.ViewModel.Catalog.CategoryListViewModel
+@{
+    var width = 100 / (Model.CountCategoriesInLine != 0 ? Model.CountCategoriesInLine : 4);
+    var widthString = width + "%";
+}
+<div class="product-categories product-categories-slim">
+    @foreach (var category in Model.Categories)
+    {
+        <div class="product-categories-item-slim" style="-webkit-flex-basis: @(widthString); -ms-flex-preferred-size: @(widthString); flex-basis: @(widthString); max-width: @(widthString);">
+            <div class="product-categories-item-inner-slim">
+                <div class="product-categories-header-slim @(!string.IsNullOrEmpty(category.MiniPicture.PhotoName) ? "product-categories-header-slim-extend" : "")">
+                    <div class="product-categories-header-container">
+                        <a href="@Url.AbsoluteRouteUrl("Category", new {url = category.UrlPath})" class="product-categories-header-slim-title">@Html.Raw(category.Name)</a>
+                        @if (Model.DisplayProductCount)
+                        {
+                            <span class="product-categories-header-slim-count">(@category.ProductsCount)</span>
+                        }
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(category.MiniPicture.PhotoName) || InplaceEditorService.CanUseInplace(RoleAction.Catalog))
+                {
+                    <figure class="product-categories-item-picture-slim center-aligner">
+                        <a href="@Url.AbsoluteRouteUrl("Category", new {url = category.UrlPath})" class="product-categories-item-photo-link-slim" style="height: @(SettingsPictureSize.SmallCategoryImageHeight)px;">
+                            <img class="product-categories-item-picture-obj-slim" src="@category.MiniPicture.ImageSrcSmall()" alt="@Html.Encode(category.Name)" title="@Html.Encode(category.Name)" @Html.InplaceImageCategory(category.CategoryId, ImageInplaceField.CategorySmall) />
+                        </a>
+                    </figure>
+                }
+            </div>
+        </div>
+    }
+</div>

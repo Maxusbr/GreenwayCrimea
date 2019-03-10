@@ -1,0 +1,20 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SEOSettingsModel
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SeoSettings.RobotsTxtHeader")</h3>
+</div>
+<div class="container-fluid">
+    <div class="form-group row">
+        <div class="col-xs-offset-0">
+            Здесь вы можете задать правила обработки URL для поисковых роботов.
+            <br />
+            Будьте внимательны при редактировании данного файла.
+        </div>
+    </div>
+</div>
+
+
+<ui-ace-textarea ng-model="settingsSeo.text">
+    @Html.TextAreaFor(x => Model.RobotsText, new { ng_model = "settingsSeo.text" })
+</ui-ace-textarea>

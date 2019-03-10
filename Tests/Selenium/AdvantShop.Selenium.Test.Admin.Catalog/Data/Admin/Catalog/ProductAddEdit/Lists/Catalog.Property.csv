@@ -1,0 +1,6 @@
+PropertyID;Name;UseInFilter;SortOrder;Type;GroupId;NameDisplayed
+1;Property1;true;1;1;1;Property1
+2;Property2;true;2;1;1;Property2
+3;Property3;true;3;1;1;Property3
+4;Property4;true;4;1;2;Property4
+5;Property5;true;5;1;2;Property5

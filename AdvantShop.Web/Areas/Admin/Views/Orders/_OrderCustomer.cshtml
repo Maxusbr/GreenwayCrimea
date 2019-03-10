@@ -1,0 +1,298 @@
+﻿@using AdvantShop.Core.Services.IPTelephony
+@model AdvantShop.Web.Admin.Models.OrdersEdit.OrderModel
+@{
+    var order = Model.Order;
+    var orderCustomer = order != null ? order.OrderCustomer : null;
+    var isNewOrDraft = order == null || order.IsDraft;
+}
+
+<div class="m-b-sm">
+    <h2 class="inline">
+        @(orderCustomer != null ? "Покупатель" : "Создать или найти покупателя")
+    </h2>
+    @if (Model.Customer != null)
+    {
+        <a href="@Url.Action("Edit", "Customers", new {id = Model.Customer.Id})" class="edit link-decoration-none">Карточка клиента</a>
+    }
+</div>
+
+@if (orderCustomer == null)
+{
+    <div class="m-b">
+        <ui-modal-trigger data-controller="'ModalSelectCustomerCtrl'" controller-as="ctrl" size="middle"
+                          template-url="../areas/admin/content/src/_shared/modal/selectCustomer/selectCustomer.html"
+                          data-on-close="order.selectCustomer(result)">
+            <a href="" class="edit link-decoration-none">Выбрать покупателя</a>
+        </ui-modal-trigger>
+        <span ng-if="order.selectedFirstName != null && order.selectedLastName != null" class="ng-cloak m-l-xs link-invert">
+            <a target="_blank" href="customers/edit/{{order.customerId}}">
+                {{order.selectedFirstName}} {{order.selectedLastName}}
+            </a>
+            <a href="" ng-click="order.resetOrderCustomer()" class="link-invert link-decoration-none fa fa-remove"></a>
+        </span>
+    </div>
+}
+else if (Model.Customer == null && Model.IsEditMode)
+{
+    <div class="m-b">
+        <a target="_blank" data-e2e="SaveCustomer" href="customers/add?orderid=@Model.OrderId" class="ng-cloak m-l-xs link-invert">
+            Создать пользователя из заказа
+        </a>
+    </div>
+}
+
+<ng-form novalidate="" name="orderCustomerForm">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="p-r-lg">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="control-label text-left m-b-xs">Фамилия</label>
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Order.OrderCustomer.LastName, new { @class = "form-control", ng_model = "order.lastName", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.LastName'].modified === true && order.changeCustomer(orderCustomerForm)", uib_typeahead = "item.LastName for item in order.findCustomers($viewValue)", typeahead_template_url = "../areas/admin/content/src/order/templates/autocompleteCustomers.html", typeahead_on_select = "order.selectCustomerByAutocomplete($item, $model, $label)", typeahead_focus_first = "false" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="control-label text-left m-b-xs">Имя</label>
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Order.OrderCustomer.FirstName, new { @class = "form-control", ng_model = "order.firstName", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.FirstName'].modified === true && order.changeCustomer(orderCustomerForm)", uib_typeahead = "item.FirstName for item in order.findCustomers($viewValue)", typeahead_template_url = "../areas/admin/content/src/order/templates/autocompleteCustomers.html", typeahead_on_select = "order.selectCustomerByAutocomplete($item, $model, $label)", typeahead_focus_first = "false" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="control-label text-left m-b-xs">Отчество</label>
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Order.OrderCustomer.Patronymic, new { @class = "form-control", ng_model = "order.patronymic", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Patronymic'].modified === true && order.changeCustomer(orderCustomerForm)", uib_typeahead = "item.Patronymic for item in order.findCustomers($viewValue)", typeahead_template_url = "../areas/admin/content/src/order/templates/autocompleteCustomers.html", typeahead_on_select = "order.selectCustomerByAutocomplete($item, $model, $label)", typeahead_focus_first = "false" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label text-left m-b-xs">Email</label>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="row between-xs middle-xs">
+                                <div class="col-xs">
+                                    @Html.TextBoxFor(x => x.Order.OrderCustomer.Email, new { @class = "form-control", ng_model = "order.email", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Email'].modified === true && order.changeCustomer(orderCustomerForm)", pattern= "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)|(admin)$" })
+                                </div>
+                                @if (!isNewOrDraft)
+                                {
+                                    <div class="col-xs flex-grow-n text-nowrap" ng-if="order.email != null && order.email.length > 0 && orderCustomerForm['Order.OrderCustomer.Email'].$error.pattern == null">
+                                        <ui-modal-trigger data-controller="'ModalSendLetterToCustomerCtrl'" controller-as="ctrl" size="lg"
+                                                          template-url="../areas/admin/content/src/_shared/modal/sendLetterToCustomer/sendLetterToCustomer.html"
+                                                          data-resolve="{params: {@(orderCustomer != null ? "customerId: '" + orderCustomer.CustomerID + "'," : "") email: order.email, firstName: order.firstName, lastName: order.lastName, patronymic: order.patronymic}}">
+                                            <a href="" class="edit link-decoration-none">Отправить письмо</a>
+                                        </ui-modal-trigger>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label text-left m-b-xs">Телефон в числовом формате</label>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="row between-xs middle-xs">
+                                <div class="col-xs">
+                                    @Html.TextBoxFor(x => x.Order.OrderCustomer.Phone, new { @class = "form-control", ng_model = "order.phone", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Phone'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                                </div>
+                                <div class="col-xs flex-grow-n text-nowrap">
+                                    @if (Model.StandardPhone != null) 
+                                    {
+                                        <a href="tel://@Model.StandardPhone" ng-href="tel://{{order.phone}}" class="edit link-decoration-none">Позвонить</a>
+
+                                        @Html.Raw(IPTelephonyOperator.Current.RenderCallButton(Model.StandardPhone, ECallButtonType.Big))
+                                        if (orderCustomer != null)
+                                        {
+                                            foreach (var module in Model.SmsModules)
+                                            {
+                                                @module.GetSendSmsButton(orderCustomer.CustomerID, Model.StandardPhone.Value)
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                @Html.RenderModules("admin_order_ordercustomer_left", new {orderId = Model.OrderId})
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Страна</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.Order.OrderCustomer.Country, new { @class = "form-control", ng_model = "order.country", autocompleter = "", on_type = "country", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Country'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Регион</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.Order.OrderCustomer.Region, new { @class = "form-control", ng_model = "order.region", autocompleter = "", on_type = "region", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Region'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Город</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.Order.OrderCustomer.City, new { @class = "form-control", ng_model = "order.city", autocompleter = "", on_type = "city", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.City'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">
+                                    Улица
+                                </label>
+                                <a href="//maps.yandex.ru/?text={{order.getMapAddress()}}" target="_blank"><i class="fa fa-map-marker"></i></a>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.Order.OrderCustomer.Street, new { @class = "form-control", ng_model = "order.street", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Street'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs">
+
+                        <div class="row">
+                            <div class="col-xs-12 m-b-xs">
+                                <label class="control-label text-left">Индекс</label>
+                            </div>
+                            <div class="col-xs-12">
+                                @Html.TextBoxFor(x => x.Order.OrderCustomer.Zip, new { @class = "form-control", ng_model = "order.zip", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Zip'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if ((isNewOrDraft && SettingsCheckout.IsShowCustomShippingField1) || (orderCustomer != null && !string.IsNullOrEmpty(order.OrderCustomer.CustomField1)))
+            {
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-3 col-wl-2">
+                            <label class="control-label text-left">@SettingsCheckout.CustomShippingField1</label>
+                        </div>
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.Order.OrderCustomer.CustomField1, new { @class = "form-control", ng_model = "order.customField1", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.CustomField1'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                        </div>
+                    </div>
+                </div>
+            }
+            @if ((isNewOrDraft && SettingsCheckout.IsShowCustomShippingField2) || (orderCustomer != null && !string.IsNullOrEmpty(order.OrderCustomer.CustomField2)))
+            {
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-3 col-wl-2">
+                            <label class="control-label text-left">@SettingsCheckout.CustomShippingField2</label>
+                        </div>
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.Order.OrderCustomer.CustomField2, new { @class = "form-control", ng_model = "order.customField2", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.CustomField2'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                        </div>
+                    </div>
+                </div>
+            }
+            @if ((isNewOrDraft && SettingsCheckout.IsShowCustomShippingField3) || (orderCustomer != null && !string.IsNullOrEmpty(order.OrderCustomer.CustomField3)))
+            {
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-3 col-wl-2">
+                            <label class="control-label text-left">@SettingsCheckout.CustomShippingField3</label>
+                        </div>
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.Order.OrderCustomer.CustomField3, new { @class = "form-control", ng_model = "order.customField3", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.CustomField3'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                        </div>
+                    </div>
+                </div>
+            }
+            
+            <div class="form-group">
+                <div class="row between-xs">
+                    <div class="col-xs-2">
+                        <label class="control-label text-left m-b-xs">Дом</label>
+
+                        @Html.TextBoxFor(x => x.Order.OrderCustomer.House, new { @class = "form-control", ng_model = "order.house", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.House'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                    </div>
+                    <div class="col-xs">
+                        <div class="row between-xs">
+                            <div class="col-xs-4">
+                                <label class="control-label text-left m-b-xs">Квартира</label>
+
+                                @Html.TextBoxFor(x => x.Order.OrderCustomer.Apartment, new { @class = "form-control", ng_model = "order.apartment", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Apartment'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                            </div>
+                            <div class="col-xs-8">
+                                <label class="control-label text-left m-b-xs">Строение/Корпус</label>
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        @Html.TextBoxFor(x => x.Order.OrderCustomer.Structure, new { @class = "form-control", ng_model = "order.structure", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Structure'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <label class="control-label text-left m-b-xs">Подъезд</label>
+
+                        @Html.TextBoxFor(x => x.Order.OrderCustomer.Entrance, new { @class = "form-control", ng_model = "order.entrance", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Entrance'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                    </div>
+                    <div class="col-xs-2">
+                        <label class="control-label text-left m-b-xs">Этаж</label>
+
+                        @Html.TextBoxFor(x => x.Order.OrderCustomer.Floor, new { @class = "form-control", ng_model = "order.floor", ng_blur = "order.isDraft && orderCustomerForm['Order.OrderCustomer.Floor'].modified === true && order.changeCustomer(orderCustomerForm)" })
+                    </div>
+                </div>
+            </div>
+            
+            @Html.RenderModules("admin_order_ordercustomer_right", new { orderId = Model.OrderId })
+        </div>
+    </div>
+
+    @if (Model.CustomerFields != null)
+    {
+        <div class="customer-custom-fields-divider"></div>
+        <div class="row customer-custom-fields">
+            @Html.Partial("_CustomerFields", Model.CustomerFields)
+        </div>
+    }
+</ng-form>

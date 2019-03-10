@@ -1,0 +1,112 @@
+﻿@model AdvantShop.Web.Admin.Models.Customers.CustomersModel
+@{
+    var customerGroupId = "1";
+    if (Model.Customer != null)
+    {
+        var group = Model.CustomerGroups.Find(x => x.Value == Model.Customer.CustomerGroupId.ToString());
+        if (group != null)
+        {
+            customerGroupId = group.Value;
+        }
+    }
+}
+
+<div class="ibox category-block block-additional-parameters">
+    <div class="ibox-content category-content block-additional-parameters-content p-r-lg border_none">
+        @*<h3 class="category-title">Дополнительно</h3>*@
+
+        @*@if (!string.IsNullOrEmpty(Model.Segment))
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    Сегмент:
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Model.Segment
+                </div>
+            </div>
+        }*@
+        @if (Model.ShowManager && Model.ShowCrm)
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    Менеджер
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Html.DropDownListFor(x => x.Customer.ManagerId, Model.Managers, new { @class = "form-control", ng_model = "customer.managerId", ng_init = "customer.managerId=" + (Model.Customer != null ? "'" + Model.Customer.ManagerId.ToString() + "'" : "null") + "" })
+                </div>
+            </div>
+        }
+
+        <div class="block-additional-parameters-row">
+            <div class="block-additional-parameters-name">
+                Комментарий администратора
+            </div>
+            <div class="block-additional-parameters-value">
+                @Html.TextAreaFor(x => x.Customer.AdminComment, new { @class = "form-control", @style = "height:85px", ng_model = "customer.adminComment", ng_init = "customer.adminComment=" + (Model.Customer != null ? "'" + Model.Customer.AdminComment + "'" : "null") })
+            </div>
+        </div>
+
+        <div class="block-additional-parameters-row">
+            <div class="block-additional-parameters-name">
+                Группа пользователя
+            </div>
+            <div class="block-additional-parameters-value">
+                @Html.DropDownListFor(x => x.Customer.CustomerGroupId, Model.CustomerGroups, new {@class = "form-control", ng_model = "customer.customerGroupId", ng_init = "customer.customerGroupId='" + customerGroupId + "'"})
+            </div>
+        </div>
+
+        @if (Model.CustomerSegments != null && Model.CustomerSegments.Count > 0)
+        {
+            <div class="block-additional-parameters-row ng-cloak">
+                <div class="block-additional-parameters-name">
+                    Сегменты пользователя
+                </div>
+                <div class="block-additional-parameters-value">
+                    @foreach (var segment in Model.CustomerSegments)
+                    {
+                        <span class="customer-segment-item btn-xs">@segment.Name</span>
+                    }
+                </div>
+            </div>
+        }
+
+        @if (Model.Customer != null && Model.Customer.RegistredUser)
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    Дата регистрации
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Model.Customer.RegistrationDateTime
+                </div>
+            </div>
+        }
+
+        <div class="block-additional-parameters-row">
+            <div class="block-additional-parameters-name">
+            </div>
+            <div class="block-additional-parameters-value">
+                <label class="adv-checkbox-label" data-e2e="SubscribedNews">
+                    @Html.CheckBoxFor(x => x.Customer.SubscribedForNews, new { @class = "adv-checkbox-input", ng_model = "customer.subscribedForNews", ng_init = "customer.subscribedForNews=" + (Model.Customer != null ? Model.Customer.SubscribedForNews.ToLowerString() : "false"), ng_disabled= "customer.email== null || customer.email.length == 0" })
+                    <span class="adv-checkbox-emul"></span>
+                    Подписка на новости
+                </label>
+            </div>
+        </div>
+
+        @if (Model.Customer != null && Model.Customer.RegistredUser &&
+                (CustomerContext.CurrentCustomer.CustomerRole == Role.Administrator ||
+                (CustomerContext.CurrentCustomer.CustomerRole == Role.Moderator && Model.Customer.CustomerRole != Role.Administrator)))
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-value">
+                    <ui-modal-trigger class="dropdown-menu-link js-menu-link" data-resolve="{params: {customerId: customer.customerId}}" data-controller="'ModalChangePasswordCtrl'" data-controller-as="ctrl" template-url="../areas/admin/content/src/customer/modals/changePassword/changePassword.html">
+                        <a href="">Изменить пароль</a>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

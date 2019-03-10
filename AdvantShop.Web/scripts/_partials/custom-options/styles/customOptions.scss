@@ -1,0 +1,24 @@
+﻿@import "../../../../styles/functions/_util.scss";
+
+.custom-options-list {
+    display: table;
+    width: 100%;
+}
+
+.custom-options-row {
+    display: table-row;
+}
+
+.custom-options-name,
+.custom-options-value {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.custom-options-name {
+    padding: rem-calc(5px) rem-calc(5px) rem-calc(5px) 0;
+}
+
+.custom-options-value {
+    padding: rem-calc(5px) 0 rem-calc(5px) rem-calc(5px);
+}

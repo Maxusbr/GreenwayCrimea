@@ -1,0 +1,134 @@
+﻿<div class="m-t-md">
+
+    <div class="row m-b">
+        <div class="col-xs">
+            <div class="text-right">
+
+                <a href="" uib-popover-template="'orderDiscountPopover.html'"
+                   popover-trigger="'none'"
+                   popover-is-open="$ctrl.discountPopoverIsOpen"
+                   ng-click="$ctrl.discountPopoverToggle()"
+                   ng-bind="$ctrl.Summary.Discount != 0 || $ctrl.Summary.DiscountValue != 0 ?  'Скидка' : 'Добавить скидку'"
+                   data-e2e="DiscountAddLink"></a>
+                <script type="text/ng-template" id="orderDiscountPopover.html">
+                    <form name="orderFormDiscount">
+                        <div class="m-b-xs bold">Укажите скидку</div>
+                        <div class="input-group m-b">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" value="0" data-e2e="LeadDiscountNumber" ng-click="$ctrl.toggleselectCurrencyLabel('0')" ng-class="{'label-currency-active':$ctrl.selectCurrency === '0'}"><span>{{$ctrl.Summary.LeadCurrency.Symbol}}</span></button>
+                                <button type="button" class="btn btn-default" value="1" data-e2e="LeadDiscountPercent" ng-click="$ctrl.toggleselectCurrencyLabel('1')" ng-class="{'label-currency-active':$ctrl.selectCurrency === '1'}"><span>%</span></button>
+                            </span>
+                            <input type="number" value="" class="form-control" ng-model="$ctrl.DiscountNew" ng-keyup="$event.keyCode === 13 && $ctrl.changeDiscount($ctrl.DiscountNew)" autofocus />
+                        </div>
+                        <div class="clearfix">
+                            <input type="button" value="Применить" class="btn btn-sm btn-success pull-left" ng-click="$ctrl.changeDiscount($ctrl.DiscountNew)" data-e2e="LeadDiscountAdd" />
+                            <input type="button" value="Отмена" class="btn btn-sm btn-action pull-right" ng-click="$ctrl.discountPopoverClose()" data-e2e="LeadDiscountCancel" />
+                        </div>
+                    </form>
+                </script>
+
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="'- ' + $ctrl.Summary.ProductsDiscountPriceStr" data-e2e="LeadDiscount"></span>
+            <span ng-if="$ctrl.Summary.Discount != 0" class="order-discount" data-e2e="LeadDiscountPercentAdded" ng-bind="'(' + $ctrl.Summary.Discount + '%)'"></span>
+        </div>
+    </div>
+
+    <div class="row m-b" ng-if="$ctrl.Summary.LeadItemsCount > 0">
+        <div class="col-xs">
+            <div class="text-right">
+                
+                <div style="position: relative; display: inline-block" 
+                     ng-mouseenter="$ctrl.popoverShippingOpen()" 
+                     ng-mouseleave="$ctrl.popoverShippingClose()">
+
+                    <a class="shippings-actions-toggle"
+                       href=""
+                       popover-trigger="'none'"
+                       uib-popover-template="'shippingPopover'"
+                       popover-is-open="$ctrl.popoverShippingIsOpen"
+                       popover-placement="bottom-left">
+                        <i class="fa fa-cog"></i>
+                    </a>
+
+                    <script type="text/ng-template" id="shippingPopover">
+                        <div class="nav text-nowrap">
+                            <ui-modal-trigger size="fixed-530" data-controller="'ModalShippingsTimeCtrl'" data-controller-as="ctrl"
+                                                data-resolve="{ obj: { id: $ctrl.leadId, isLead: true }}"
+                                                data-on-close="$ctrl.getLeadItemsSummary()"
+                                                template-url="../areas/admin/content/src/order/modal/shippingsTime/shippingsTime.html">
+                                <a href="" class="m-t-xs m-b-xs block fs-xs">
+                                    Дата и время доставки
+                                </a>
+                            </ui-modal-trigger>                                    
+                        </div>
+                    </script>
+                </div>
+
+
+                <!--<ui-modal-trigger ng-if="$ctrl.Summary.City != null && $ctrl.Summary.City.length > 0"
+                                  size="lg" data-controller="'ModalShippingsCtrl'" data-controller-as="ctrl"
+                                  data-resolve="{ order: { orderId: $ctrl.leadId, isLead: true, country: $ctrl.Summary.Country, region: $ctrl.Summary.Region, city: $ctrl.Summary.City }}"
+                                  data-on-close="$ctrl.changeShipping(result)"
+                                  template-url="../areas/admin/content/src/order/modal/shippings/shippings.html">-->
+                    <a href="" ng-click="$ctrl.chooseDelivery()" ng-if="$ctrl.Summary.City != null && $ctrl.Summary.City.length > 0">
+                        Доставка
+                    </a>
+                <!--</ui-modal-trigger>-->
+
+                <ui-modal-trigger ng-if="$ctrl.Summary.City == null || $ctrl.Summary.City.length == 0"
+                                  data-controller="'ModalShippingsCityCtrl'" data-controller-as="ctrl"
+                                  data-resolve="{ obj: { leadId: $ctrl.leadId }}"
+                                  data-on-close="$ctrl.chooseDeliveryResult(result)"
+                                  template-url="../areas/admin/content/src/lead/modal/shippingsCity/shippingsCity.html">
+                    <a href="">
+                        Доставка
+                    </a>
+                </ui-modal-trigger>
+
+                <div ng-bind="$ctrl.Summary.ShippingName" class="m-b-xs"></div>
+                <div class="order-modal-descr m-b-sm" ng-if="$ctrl.Summary.ShippingPickPoint != null">
+                    {{$ctrl.Summary.ShippingPickPoint.PickPointAddress}}
+                </div>
+                <div class="m-b-sm" ng-if="$ctrl.Summary.DeliveryDate != null || ($ctrl.Summary.DeliveryTime != null && $ctrl.Summary.DeliveryTime.length > 0)">
+                    Дата доставки:  
+                    <ui-modal-trigger size="fixed-530" data-controller="'ModalShippingsTimeCtrl'" data-controller-as="ctrl"
+                                      data-resolve="{ obj: { id: $ctrl.leadId, isLead: true }}"
+                                      data-on-close="$ctrl.getLeadItemsSummary()"
+                                      template-url="../areas/admin/content/src/order/modal/shippingsTime/shippingsTime.html">
+                        <a href="">{{$ctrl.Summary.DeliveryDate}}</a>
+                    </ui-modal-trigger>
+                    {{$ctrl.Summary.DeliveryTime}}
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            + <span ng-bind="$ctrl.Summary.ShippingCostStr"></span>
+        </div>
+    </div>
+
+
+    <div class="row m-b-md bold">
+        <div class="col-xs">
+            <div class="text-right">
+                Итого
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="$ctrl.Summary.SumStr" data-e2e="LeadDiscountSummary"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-md bold" ng-if="$ctrl.Summary.LeadItemsCount > 0">
+        <div class="col-xs">
+            <div class="text-right">
+                <a href="" ng-click="$ctrl.createOrderWithNotice()">Выставить счет покупателю</a>
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+        </div>
+    </div>
+
+</div>

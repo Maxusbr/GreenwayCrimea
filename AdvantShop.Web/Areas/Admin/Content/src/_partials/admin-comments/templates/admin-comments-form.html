@@ -1,0 +1,15 @@
+﻿<div ng-show="$ctrl.parent.formVisible" class="">
+    <form class="admin-comments-form" name="addAdminCommentForm" id="addAdminCommentForm" novalidate="novalidate">
+        <div class="row">
+            <div class="form-group col-xs-8">
+                <!--<label>Добавить комментарий</label>-->
+                <textarea class="form-control r-v" ng-model="$ctrl.text" ng-keyup="$ctrl.addCommentKeydown($event)" id="adminCommentsFormText" placeholder="Введите комментарий"></textarea>
+                <span>Добавление комментария по Ctrl+Enter</span>
+            </div>
+            <div class="form-group col-xs-4">
+                <button type="button" class="btn btn-action btn-sm" ng-click="$ctrl.submit()" data-e2e="commentAdd">Добавить</button>
+                <button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.cancelFn()" ng-show="$ctrl.parent.visibleFormCancelButton" data-e2e="commentAddCancel">Отмена</button>
+            </div>
+        </div>
+    </form>
+</div>

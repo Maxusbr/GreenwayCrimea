@@ -1,0 +1,42 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Ссылка на оплату</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="ng-cloak text-danger m-b-sm" ng-if="ctrl.error != null || ctrl.error.length == 0">
+                {{ctrl.error}}
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 control-label">
+                        <div class="input-group">
+                            <input type="text" ng-model="ctrl.link" class="form-control js-copy" readonly="readonly" ng-click="ctrl.select()" />
+                            <span class="input-group-btn">
+                                <a class="btn btn-default" href="" ng-click="ctrl.copyToClipboard()" title="Копировать"><i class="fa fa-clone"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 control-label">
+                        <ui-modal-trigger size="lg" data-controller="'ModalSendBillingLinkCtrl'" data-controller-as="ctrl"
+                                          data-resolve="{params: { orderId: ctrl.orderId }}"
+                                          template-url="../areas/admin/content/src/order/modal/sendBillingLink/sendBillingLink.html">
+                            <a href="">
+                                Отправить письмо со ссылкой на оплату клиенту
+                            </a>
+                        </ui-modal-trigger>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Закрыть</button>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Home.BirthdayDashboardViewModel
+
+@if (Model.Birthday.Count > 0)
+{
+    var rnd = DateTime.Now.ToString("hhmmss");
+<div class="ibox float-e-margins">
+    <div class="ibox-content birthday-block">
+        <h3 class="birthday-title">@T("Admin.Home.BirthdayDashboard.Header"):</h3>
+        <ul class="birthday-list">
+            @foreach (var birthday in Model.Birthday)
+            {
+            <li>
+                <div>
+                    <div class="birthday-img"><img width="40px" height="40px" src="@(birthday.SrcImage + "?" + rnd)" /></div>
+                    <div class="birthday-description">
+                        <sidebar-user-trigger customer-id="'@birthday.CustomerId'">
+                            <a href="" class="birthday-link" ng-bind="'@birthday.Name'"></a> 
+                        </sidebar-user-trigger>@birthday.Description
+                    </div>
+                </div>
+            </li>
+            }
+        </ul>
+    </div>
+</div>
+}

@@ -1,0 +1,8 @@
+﻿<div class="product-picker-block">
+    <div class="product-picker-col product-picker-col-tree">
+        <div data-js-tree data-tree-ajax="{{$ctrl.treeUrl}}" data-tree-core="$ctrl.tree.core" data-tree-events="select_node:$ctrl.treeCallbacks.selectNode"></div>
+    </div>
+    <div class="product-picker-col product-picker-col-grid">
+        <div ui-grid="$ctrl.grid.options"></div>
+    </div>   
+</div>

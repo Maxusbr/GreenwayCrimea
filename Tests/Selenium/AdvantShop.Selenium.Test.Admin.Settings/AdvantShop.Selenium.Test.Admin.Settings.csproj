@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6CFE714D-D8BD-49EA-B6BC-A9B03FC940B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvantShop.Selenium.Test.Admin.Settings</RootNamespace>
+    <AssemblyName>AdvantShop.Selenium.Test.Admin.Settings</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="WebDriver, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.Support.3.4.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Academy\AcademyTest.cs" />
+    <Compile Include="Tests\BonusSystem\BonusSystemClientTest.cs" />
+    <Compile Include="Tests\BonusSystem\BonusSystemGradeTest.cs" />
+    <Compile Include="Tests\BonusSystem\BonusSystemPayInOrder.cs" />
+    <Compile Include="Tests\BonusSystem\BonusSystemRules.cs" />
+    <Compile Include="Tests\BonusSystem\BonusSystemSettingsGradeTest.cs" />
+    <Compile Include="Tests\BonusSystem\BonusSystemSettingsTest.cs" />
+    <Compile Include="Tests\BonusSystem\Card\BonusCardFilterTest.cs" />
+    <Compile Include="Tests\BonusSystem\Card\BonusCardGridTest.cs" />
+    <Compile Include="Tests\BonusSystem\Card\BonusCardPageTest.cs" />
+    <Compile Include="Tests\BonusSystem\Card\BonusCardPresentTest.cs" />
+    <Compile Include="Tests\BonusSystem\Card\BonusCardSearchTest.cs" />
+    <Compile Include="Tests\BonusSystem\Card\BonusCardSortTest.cs" />
+    <Compile Include="Tests\BonusSystem\Card\BonusSystemCardFilterOrders.cs" />
+    <Compile Include="Tests\BonusSystem\Card\BonusSystemCardTest.cs" />
+    <Compile Include="Tests\BonusSystem\Card\CardBonusesToAll.cs" />
+    <Compile Include="Tests\BonusSystem\Card\CardFilterCustomerFields.cs" />
+    <Compile Include="Tests\BonusSystem\SmsHistory\BonusSmsLogFilter.cs" />
+    <Compile Include="Tests\BonusSystem\SmsHistory\BonusSmsLogPageView.cs" />
+    <Compile Include="Tests\BonusSystem\SmsHistory\BonusSmsLogSort.cs" />
+    <Compile Include="Tests\BonusSystem\SmsHistory\BonusSmsLogTest.cs" />
+    <Compile Include="Tests\BonusSystem\SmsTemplate\BonusSmsTemplate.cs" />
+    <Compile Include="Tests\BonusSystem\SmsTemplate\BonusSmsTemplateAddEdit.cs" />
+    <Compile Include="Tests\BusinessProcess\BizProcessLeadAddRuleTest.cs" />
+    <Compile Include="Tests\BusinessProcess\BizProcessLeadStatusRuleTest.cs" />
+    <Compile Include="Tests\BusinessProcess\BizProcessLeadTaskTest.cs" />
+    <Compile Include="Tests\BusinessProcess\BizProcessNewOrder.cs" />
+    <Compile Include="Tests\BusinessProcess\BizProcessOrderStatus.cs" />
+    <Compile Include="Tests\BusinessProcess\BizProcessReviewTaskTest.cs" />
+    <Compile Include="Tests\Countries\City\SettingsCityAdEditTest.cs" />
+    <Compile Include="Tests\Countries\City\SettingsCityFilterTest.cs" />
+    <Compile Include="Tests\Countries\City\SettingsCityPageTest.cs" />
+    <Compile Include="Tests\Countries\City\SettingsCitySearchTest.cs" />
+    <Compile Include="Tests\Countries\City\SettingsCitySortTest.cs" />
+    <Compile Include="Tests\Countries\City\SettingsCityTest.cs" />
+    <Compile Include="Tests\Countries\Country\CountriesAddEditTest.cs" />
+    <Compile Include="Tests\Countries\Country\CountriesFilterTest.cs" />
+    <Compile Include="Tests\Countries\Country\CountriesPageTest.cs" />
+    <Compile Include="Tests\Countries\Country\CountriesSearchTest.cs" />
+    <Compile Include="Tests\Countries\Country\CountriesSortTest.cs" />
+    <Compile Include="Tests\Countries\Country\CountriesTest.cs" />
+    <Compile Include="Tests\Countries\Region\SettingsRegionAddEditTest.cs" />
+    <Compile Include="Tests\Countries\Region\SettingsRegionFilterTest.cs" />
+    <Compile Include="Tests\Countries\Region\SettingsRegionPageTest.cs" />
+    <Compile Include="Tests\Countries\Region\SettingsRegionSearchTest.cs" />
+    <Compile Include="Tests\Countries\Region\SettingsRegionSortTest.cs" />
+    <Compile Include="Tests\Countries\Region\SettingsRegionTest.cs" />
+    <Compile Include="Tests\CustomerFields\CustomerFieldValues\CustomerFieldValuePageTest.cs" />
+    <Compile Include="Tests\CustomerFields\CustomerFieldValues\CustomerFieldValuePresentTest.cs" />
+    <Compile Include="Tests\CustomerFields\CustomerFieldValues\CustomerFieldValueSearchTest.cs" />
+    <Compile Include="Tests\CustomerFields\CustomerFieldValues\CustomerFieldValueSortTest.cs" />
+    <Compile Include="Tests\CustomerFields\CustomerFieldValues\CustomerFieldValueTest.cs" />
+    <Compile Include="Tests\CustomerFields\SettingsCustomerFieldsClientTest.cs" />
+    <Compile Include="Tests\CustomerFields\SettingsCustomerFieldsFilterTest.cs" />
+    <Compile Include="Tests\CustomerFields\SettingsCustomerFieldsPageTest.cs" />
+    <Compile Include="Tests\CustomerFields\SettingsCustomerFieldsPresentTest.cs" />
+    <Compile Include="Tests\CustomerFields\SettingsCustomerFieldsSearchTest.cs" />
+    <Compile Include="Tests\CustomerFields\SettingsCustomerFieldsSortTest.cs" />
+    <Compile Include="Tests\CustomerFields\SettingsCustomerFieldsTest.cs" />
+    <Compile Include="Tests\MethodShippingPayment\MethodPaymentAddEditTest.cs" />
+    <Compile Include="Tests\MethodShippingPayment\MethodShipingAddEditTest.cs" />
+    <Compile Include="Tests\MethodShippingPayment\MethodTest.cs" />
+    <Compile Include="Tests\SettingsCatalog\SettingsCatalogCommonTest.cs" />
+    <Compile Include="Tests\SettingsCatalog\SettingsCatalogBrandsTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Common\SettingsCheckoutCertificateTest.cs" />
+    <Compile Include="Tests\SettingsCatalog\SettingsCatalogProductCartTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Common\SettingsCheckoutPrintTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Common\SettingsCheckoutzOrdersNumberTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesAddEditTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesDefaultOrderTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesFilterEnabledTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesFilterNameTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesOrderTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesPageTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesPresentTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesSearchTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesSortTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Taxes\TaxesTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Common\SettingsCheckoutBuyOneClickTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoBrandItemTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoBrandsTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoCategoryNewsTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoCategoryTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoDefaultTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoNewsTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoProductTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoStaticPageTest.cs" />
+    <Compile Include="Tests\SettingsSeo\SeoTagTest.cs" />
+    <Compile Include="Tests\SettingsShop\SettingsShopTest.cs" />
+    <Compile Include="Tests\SettingsCheckout\Common\SettingsCheckoutTest.cs" />
+    <Compile Include="Tests\Users\SettingsUsersAddEditTest.cs" />
+    <Compile Include="Tests\Users\SettingsUsersFilterTest.cs" />
+    <Compile Include="Tests\Users\SettingsUsersPageTest.cs" />
+    <Compile Include="Tests\Users\SettingsUsersPresentTest.cs" />
+    <Compile Include="Tests\Users\SettingsUsersSearchTest.cs" />
+    <Compile Include="Tests\Users\SettingsUsersSortTest.cs" />
+    <Compile Include="Tests\Users\SettingsUsersTest.cs" />
+    <Compile Include="Tests\Users\UsersDepartment\SettingsUsersDepartmentsDelTest.cs" />
+    <Compile Include="Tests\Users\UsersDepartment\UsersDepartmentsPresentTest.cs" />
+    <Compile Include="Tests\Users\UsersDepartment\UsersDepartmentsSearchTest.cs" />
+    <Compile Include="Tests\Users\UsersDepartment\UsersDepartmentsTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AdvantShop.Web.Infrastructure\AdvantShop.Web.Infrastructure.csproj">
+      <Project>{95339807-58ec-4b9c-8808-0a893f3a2cc6}</Project>
+      <Name>AdvantShop.Web.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantShop.Selenium.Core\AdvantShop.Selenium.Core.csproj">
+      <Project>{a1f7b566-7c19-421f-b002-c6c7b48b13b0}</Project>
+      <Name>AdvantShop.Selenium.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Protractor\Protractor.csproj">
+      <Project>{de9c82c5-ebb3-4a2b-a75e-ce3e68e2c866}</Project>
+      <Name>Protractor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.Contact.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Customers.Contact.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilter\Customers.Region.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AdvantShop.Core\AdvantShop.Core.csproj">
+      <Project>{59344e96-1527-4fa3-b7c9-48516a82cc4f}</Project>
+      <Name>AdvantShop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\AdvantShop.Web.Infrastructure\AdvantShop.Web.Infrastructure.csproj">
+      <Project>{95339807-58ec-4b9c-8808-0a893f3a2cc6}</Project>
+      <Name>AdvantShop.Web.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantShop.Selenium.Core\AdvantShop.Selenium.Core.csproj">
+      <Project>{a1f7b566-7c19-421f-b002-c6c7b48b13b0}</Project>
+      <Name>AdvantShop.Selenium.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Protractor\Protractor.csproj">
+      <Project>{de9c82c5-ebb3-4a2b-a75e-ce3e68e2c866}</Project>
+      <Name>Protractor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Admin\Settings\BizProcessLead\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\CRM.BizProcessRule.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\CRM.DealStatus.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.CustomerField.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.CustomerFieldValue.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.CustomerFieldValuesMap.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.Departments.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.Managers.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.Task.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\Customers.TaskGroup.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\[Order].Lead.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\[Order].LeadCurrency.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\[Order].LeadEvent.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\[Order].LeadItem.csv" />
+    <None Include="Data\Admin\Settings\BizProcessLead\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\CRM.BizProcessRule.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\CRM.DealStatus.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.CustomerField.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.CustomerFieldValue.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.CustomerFieldValuesMap.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.Departments.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.Managers.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.Task.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\Customers.TaskGroup.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\[Order].Lead.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\[Order].LeadCurrency.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\[Order].LeadEvent.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\[Order].LeadItem.csv" />
+    <None Include="Data\Admin\Settings\BizProcessReview\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.Contact.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.CustomerField.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.CustomerFieldValue.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.CustomerFieldValuesMap.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterCustFields\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\[Order].OrderCustomer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\[Order].[Order].csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Customers.Contact.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\BonusCardFilterOrders\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\CardsBonusToAll\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\CardsBonusToAll\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\CardsBonusToAll\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\CardsBonusToAll\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\CardsBonusToAll\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\CardsBonusToAll\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\CardsBonusToAll\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\CardsBonusToAll\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.Contact.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.CustomerField.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.CustomerFieldValue.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.CustomerFieldValuesMap.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.Departments.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.Managers.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.ManagerTask.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.Task.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.TaskGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\Customers.ViewedTask.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].OrderCustomer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].PaymentMethod.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].ShippingMethod.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\ClientBonus\[Order].[Order].csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Customers.Contact.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Grid\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Grid\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Grid\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Grid\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Grid\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Grid\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Grid\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Grid\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Bonus.AdditionBonus.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\PayByBonusInOrder\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Bonus.AdditionBonus.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Customers.Contact.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\[Order].ShippingMethod.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\Settings\[Order].ShippingParam.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Bonus.SmsLog.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Bonus.SmsTemplate.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsHistory\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Bonus.SmsTemplate.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplateAddEdit\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Bonus.Card.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Bonus.Grade.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Bonus.SmsTemplate.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\BonusSystem\SmsTemplate\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\Countries\City\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\Countries\City\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\Countries\City\Customers.Country_en.csv" />
+    <None Include="Data\Admin\Settings\Countries\City\Customers.Country_ru.csv" />
+    <None Include="Data\Admin\Settings\Countries\City\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\Countries\City\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\Countries\City\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\Countries\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\Countries\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\Countries\Customers.Country_en.csv" />
+    <None Include="Data\Admin\Settings\Countries\Customers.Country_ru.csv" />
+    <None Include="Data\Admin\Settings\Countries\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\Countries\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\Countries\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\Customers.Country_en.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\Customers.Country_ru.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\RegionDelete\Customers.City.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\RegionDelete\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\RegionDelete\Customers.Country_en.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\RegionDelete\Customers.Country_ru.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\RegionDelete\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\RegionDelete\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\Countries\Region\RegionDelete\Customers.Region.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Catalog.Size.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Customers.CustomerField.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Customers.CustomerFieldValue.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldsClient\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\CustomerFields\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\CustomerFields\Customers.CustomerField.csv" />
+    <None Include="Data\Admin\Settings\CustomerFields\Customers.CustomerFieldValue.csv" />
+    <None Include="Data\Admin\Settings\CustomerFields\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldValues\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldValues\Customers.CustomerField.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldValues\Customers.CustomerFieldValue.csv" />
+    <None Include="Data\Admin\Settings\CustomerFieldValues\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.Property.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.PropertyGroupCategory.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.RelatedCategories.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.RelatedProducts.csv" />
+    <None Include="Data\Admin\Settings\SettingsCatalog\ProductCart\Catalog.RelatedPropertyValues.csv" />
+    <None Include="Data\Admin\Settings\SettingsSeo\Settings.Settings.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.Brand.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.ProductPropertyValue.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.Property.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.PropertyGroup.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Catalog.PropertyValue.csv" />
+    <None Include="Data\Admin\Settings\Shipping\Customers.Country.csv" />
+    <None Include="Data\Admin\Settings\Shipping\[Order].PaymentMethod.csv" />
+    <None Include="Data\Admin\Settings\Shipping\[Order].ShippingMethod.csv" />
+    <None Include="Data\Admin\Settings\Taxes\Catalog.Tax.csv" />
+    <None Include="Data\Admin\Settings\Taxes\Settings.Settings.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxDefault\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxDefault\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxDefault\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxDefault\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxDefault\Catalog.Tax.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxDefault\Settings.Settings.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxesClient\Catalog.Category.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxesClient\Catalog.Offer.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxesClient\Catalog.Product.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxesClient\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxesClient\Catalog.Tax.csv" />
+    <None Include="Data\Admin\Settings\Taxes\TaxesClient\Settings.Settings.csv" />
+    <None Include="Data\Admin\Settings\Users\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\Users\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\Users\Customers.Departments.csv" />
+    <None Include="Data\Admin\Settings\Users\Customers.ManagerRole.csv" />
+    <None Include="Data\Admin\Settings\Users\Customers.ManagerRolesMap.csv" />
+    <None Include="Data\Admin\Settings\Users\Customers.Managers.csv" />
+    <None Include="Data\Admin\Settings\Users\UserAddEdit\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\Users\UserAddEdit\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\Users\UserAddEdit\Customers.Departments.csv" />
+    <None Include="Data\Admin\Settings\Users\UserAddEdit\Customers.ManagerRole.csv" />
+    <None Include="Data\Admin\Settings\Users\UserAddEdit\Customers.ManagerRolesMap.csv" />
+    <None Include="Data\Admin\Settings\Users\UserAddEdit\Customers.Managers.csv" />
+    <None Include="Data\Admin\Settings\Users\UsersDepartment\Customers.Customer.csv" />
+    <None Include="Data\Admin\Settings\Users\UsersDepartment\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\Settings\Users\UsersDepartment\Customers.Departments.csv" />
+    <None Include="Data\Admin\Settings\Users\UsersDepartment\Customers.ManagerRole.csv" />
+    <None Include="Data\Admin\Settings\Users\UsersDepartment\Customers.ManagerRolesMap.csv" />
+    <None Include="Data\Admin\Settings\Users\UsersDepartment\Customers.Managers.csv" />
+    <None Include="Data\Admin\SettingTasks\Catalog.Category.csv" />
+    <None Include="Data\Admin\SettingTasks\Catalog.Offer.csv" />
+    <None Include="Data\Admin\SettingTasks\Catalog.Product.csv" />
+    <None Include="Data\Admin\SettingTasks\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.City.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.Contact.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.Country.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.Customer.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.CustomerField.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.CustomerFieldValue.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.CustomerFieldValuesMap.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.CustomerGroup.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.Departments.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.Managers.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.ManagerTask.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.Region.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.Task.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.TaskGroup.csv" />
+    <None Include="Data\Admin\SettingTasks\Customers.ViewedTask.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].OrderContact.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].OrderCurrency.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].OrderCustomer.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].OrderItems.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].OrderSource.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].OrderStatus.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].PaymentMethod.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].ShippingMethod.csv" />
+    <None Include="Data\Admin\SettingTasks\[Order].[Order].csv" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\packages\WebDriver.GeckoDriver.0.19.0\content\geckodriver.exe">
+      <Link>geckodriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pictures\avatar.jpg" />
+    <Content Include="Data\pictures\big.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.32.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.32.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.32.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.32.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

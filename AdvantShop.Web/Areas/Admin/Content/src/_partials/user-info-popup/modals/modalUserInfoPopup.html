@@ -1,0 +1,126 @@
+﻿<form novalidate>
+    <div class="modal-new__inner">
+        <div class="modal-form">
+            <h2 class="modal-form__title">Для настройки вашего аккаунта<br /> ответьте на 7 вопросов. <!--Шаг 1/2--></h2>
+            <div class="modal-form__note">Все поля обязательны для заполнения</div>
+            <div class="modal-form__fields">
+                <div class="segment-form">
+                    <div class="segment-form__inner">
+                        <div class="segment-form__field-wrap">
+                            <div class="segment-form__field-title">
+                                <span class="text-required">Ваше имя</span>
+                            </div>
+                            <div class="segment-form__value-wrap">
+                                <input type="text" ng-model="ctrl.userData.Name" class="valid-required" autocomplete="off" autofocus
+                                       required validation-input-text="Имя" />
+                            </div>
+                        </div>
+                        <div class="segment-form__field-wrap">
+                            <div class="segment-form__field-title">
+                                <span class="text-required">Фамилия</span>
+                            </div>
+                            <div class="segment-form__value-wrap">
+                                <input type="text" ng-model="ctrl.userData.LastName" class="valid-required" autocomplete="off"
+                                       required validation-input-text="Фамилия" />
+                            </div>
+                        </div>
+                        <div class="segment-form__field-wrap">
+                            <div class="segment-form__field-title">
+                                <span class="text-required">Телефон</span>
+                            </div>
+                            <div class="segment-form__value-wrap">
+                                <input type="tel" ng-model="ctrl.userData.Mobile" class="input-wrap" autocomplete="off"
+                                       required validation-input-text="Телефон" minlength="10" />
+                            </div>
+                        </div>
+                        <div class="segment-form__field-wrap">
+                            <div class="segment-form__field-title">
+                                <span class="text-required">Название компании</span>
+                            </div>
+                            <div class="segment-form__value-wrap">
+                                <input type="text" ng-model="ctrl.userData.CompanyName" class="valid-required" autocomplete="off"
+                                       required validation-input-text="Название компании" />
+                            </div>
+                        </div>
+                        <div class="segment-form__field-wrap">
+                            <div class="segment-form__field-title">
+                                <span class="text-required">Количество сотрудников в магазине</span>
+                            </div>
+                            <div class="segment-form__value-wrap">
+                                <input class="input-small valid-required" type="number" min="1" name="staff" ng-model="ctrl.Question1" autocomplete="off" autocapitalize="on"
+                                       required validation-input-text="Количество сотрудников в магазине" />
+                            </div>
+                        </div>
+                        <div class="segment-form__field-wrap">
+                            <div class="segment-form__field-title">
+                                <span class="text-required">Опыт продаж в интернете</span>
+                            </div>
+                            <div class="segment-form__wrap">
+                                <div class="select_custom">
+                                    <select ng-model="ctrl.Question2" ng-options="s.text as s.text for s in ctrl.q2Options" class="segment-form__select"
+                                            required validation-input-text="Опыт продаж в интернете">
+                                        <option selected="selected" value="" disabled="disabled">...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="segment-form__field-wrap">
+                            <div class="segment-form__field-title">
+                                <span class="text-required">Есть ли точки продаж оффлайн</span>
+                            </div>
+                            <div class="segment-form__wrap">
+                                <div class="select_custom">
+                                    <select ng-model="ctrl.Question3" ng-options="s.text as s.text for s in ctrl.q3Options" class="segment-form__select"
+                                            required validation-input-text="Есть ли точки продаж оффлайн">
+                                        <option selected="selected" value="" disabled="disabled">...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="segment-form__field-wrap">
+                            <div class="segment-form__field-title"></div>
+                            <div class="segment-form_field-agreement">
+                                <label class="adv-checkbox-label">
+                                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.agreement"
+                                           required validation-input-text="Согласие на обработку" />
+                                    <span class="adv-checkbox-emul"></span>
+                                    <span class="segment-form_field-agreement-text">Я даю согласие на обработку своих<br /> персональных данных.</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="segment-form__btn-wrap">
+                        <button class="segment-form-btn segment-form-btn_arrow segment-form-btn_action" type="submit" button-validation button-validation-success="ctrl.saveUserInfo(); ctrl.btnLoading = true" ladda="ctrl.btnLoading">
+                            <!--<span>Шаг 2</span>-->
+                            <span>Завершить регистрацию</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-info">
+            <div class="modal-info__inner">
+                <h4 class="modal-info__title">Зачем это нужно?</h4>
+                <div class="modal-info__text">Пожалуйста, ответьте на все вопросы. Эти данные помогут нам лучше понимать ваши потребности и предложить вам лучшее решение для работы интернет-магазина. Ваш телефон поможет быстрее решать возникшие у вас вопросы при обращении в службу поддержки.</div>
+                <div class="modal-info__about">
+                    <div class="modal-info__about-block">
+                        <div class="modal-info__feature calendar">
+                            <span class="modal-info__feature-inner">14 дней бесплатно</span>
+                        </div>
+                    </div>
+                    <div class="modal-info__about-block">
+                        <div class="modal-info__feature wing">
+                            <span class="modal-info__feature-inner">Полный функционал без ограничений</span>
+                        </div>
+                    </div>
+                    <div class="modal-info__about-block modal-info__about-block--margin-bot-none">
+                        <div class="modal-info__feature shield">
+                            <span class="modal-info__feature-inner">Ваши данные надежно защищены</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

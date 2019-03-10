@@ -1,0 +1,172 @@
+.tabs-hr, .tabs-vr 
+{
+    padding-bottom: 15px;
+    position: relative;
+}
+.tabs-hr .tabs-headers
+{
+    position: relative;
+    z-index: 3;
+    vertical-align: bottom;
+    height: 40px;
+    padding-left: 20px;
+}
+.tabs-hr .tabs-headers .tab-header
+{
+    position: relative;
+    z-index: 1;
+    vertical-align: bottom;
+    margin-right: 10px;
+    display: inline-block;
+}
+.tabs-hr .tabs-headers .tab-header span.tab-inside
+{
+    color: #818181;
+    text-decoration: none;
+    display: block;
+    border: 1px #fff solid;
+    border-bottom: 0px;
+    height: 31px;
+    line-height: 31px;
+    padding: 0 15px;
+    position: relative;
+    border-collapse: separate;
+    z-index: 1;
+}
+.tabs-hr .tabs-headers .tab-header span.tab-inside:hover
+{
+    color: #494949;
+    cursor: pointer;
+}
+.tabs-hr .tabs-headers .selected
+{
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 30;
+    cursor: default;
+}
+.tabs-hr .tabs-headers .selected span.tab-inside
+{
+    height: 40px;
+    line-height: 40px;
+    color: #000;
+}
+.tabs-hr .tabs-headers .selected span.tab-inside:hover
+{
+    color: #000;
+    cursor: default;
+}
+.tabs-hr .tabs-headers .selected span.tab-inside .extra
+{
+    color: #c0bebe;
+}
+.tabs-hr .tabs-contents
+{
+    background-color: #fff;
+    position: relative;
+    z-index: 4;
+    padding: 10px 20px 0;
+}
+.tabs-hr .tabs-contents .tab-content
+{
+    padding:10px;
+    display: none;
+    line-height: 16px;
+}
+.tabs-hr .tabs-contents > .selected
+{
+    display: block;
+}
+.tabs-hr .tabs-headers:after
+{
+    content: "";
+    display: block;
+    height: 7px;
+    bottom: 0px;
+    background: transparent url('../images/tabs-border.png') repeat-x scroll left top;
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    z-index: 2;
+}
+.tabs-vr
+{
+    background: transparent url('../../images/dot.gif') repeat-y scroll 225px top;
+}
+.tabs-vr .tabs-headers
+{
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 50px;
+    width: 170px;
+}
+.tabs-vr .tabs-headers div.tab-header
+{
+    position: relative;
+}
+.tabs-vr .tabs-headers div.tab-header span.right
+{
+    display: none;
+}
+.tabs-vr .tabs-headers div.selected
+{
+    background: #0272ba;
+    cursor: default;
+}
+.tabs-vr .tabs-headers div.selected span.tab-inside
+{
+    text-decoration: none;
+    color: #fff;
+    min-width: 160px;
+}
+.tabs-vr .tabs-headers div.selected span.right
+{
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #0272ba;
+    border-top: 20px solid transparent;
+    display: block;
+    height: 0;
+    position: absolute;
+    right: -20px;
+    top: 0px;
+    width: 0;
+}
+.tabs-vr .tabs-headers span.tab-inside
+{
+    color: #0272ba;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+    padding-left: 15px;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+}
+.tabs-vr .tabs-headers span.tab-inside:hover
+{
+    text-decoration: none;
+}
+.tabs-vr .tabs-contents
+{
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 20px;
+    width: 655px;
+}
+.tabs-vr .tabs-contents .tab-content
+{
+    display: none;
+}
+.tabs-vr .tabs-contents .selected
+{
+    display: block;
+}
+.tabs-hr .tabs-headers .tab-hidden
+{
+    display: none;
+}
+
+
+
+

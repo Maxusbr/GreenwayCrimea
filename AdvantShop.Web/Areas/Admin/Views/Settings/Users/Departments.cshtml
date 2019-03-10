@@ -1,0 +1,31 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Settings.UsersSettingsViewModel
+
+<div class="sticky-page-name m-b-sm" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Settings.Users.Departments")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditDepartmentCtrl'" controller-as="ctrl" on-close="settingsUsers.gridDepartments.fetchData()"
+                              template-url="../areas/admin/content/src/settings/modal/addEditDepartment/AddEditDepartment.html">
+                <button class="btn btn-sm btn-success" type="button">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.AddDepartment")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+<ui-grid-custom grid-unique-id="gridDepartments"
+                grid-row-identificator="'DepartmentId'"
+                grid-on-init="settingsUsers.gridDepartmentsOnInit(grid)"
+                grid-options="settingsUsers.gridDepartmentsOptions"
+                grid-url="'departments/getdepartments'"
+                grid-inplace-url="'departments/inplacedepartment'"
+                grid-extend-ctrl="settingsUsers"
+                grid-search-placeholder="'@T("Admin.Departments.Grid.SearchPlaceholder")'">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsUsers.gridDepartments.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

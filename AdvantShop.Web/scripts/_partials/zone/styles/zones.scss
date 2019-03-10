@@ -1,0 +1,74 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+.zone-dialog {
+    width: rem-calc(670px);
+}
+
+.zone-dialog .modal-content {
+    padding: 0;
+}
+
+.zone-dialog-items {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.zone-dialog-item {
+    display: table-cell;
+    vertical-align: top;
+    padding-right: $padding-base;
+}
+
+.zone-dialog-item-link {
+    display: block;
+    padding: $padding-base;
+    border-radius: $border-radius-base;
+    border: 1px solid transparent;
+
+    &:hover {
+        border-color: #dedddd;
+    }
+}
+
+.zone-dialog-text {
+    font-size: $font-size-xmedium;
+    padding-right: $padding-base;
+}
+
+.zone-dialog-countries,
+.zone-dialog-autocomplete-block,
+.zone-dialog-cities {
+    padding: $padding-base;
+    padding-bottom: 0;
+}
+
+.zone-dialog-autocomplete-block {
+    margin-bottom: rem-calc(15px);
+}
+
+.zone-dialog-cities {
+    border-top: 1px solid #e2e3e4;
+}
+
+.zone-dialog-input-wrap {
+    position: relative;
+}
+
+.zone-dialog-country-link {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: $font-size-medium;
+    padding: $padding-base;
+    border: rem-calc(1px) transparent solid;
+    border-radius: $border-radius-base;
+}
+
+.zone-dialog-country-image {
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.zone-dialog-country-selected {
+    border-color: #ccc;
+}

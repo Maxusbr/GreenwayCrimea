@@ -1,0 +1,31 @@
+﻿@model AdvantShop.ViewModel.Catalog.ProductByIdViewModel
+
+<div class="block">
+    @if (!String.IsNullOrEmpty(Model.Title))
+    {
+        <div class="block-head">
+            <div class="h2">@Html.Raw(Model.Title)</div>
+        </div>
+    }
+    <div class="block-content">
+        <div class="row products-view products-view-tile">
+            @if (Model.EnabledCarousel)
+            {
+                <div class="col-xs-12">
+                    <div class="product-view-carousel-list product-view-carousel-list-horizontal"
+                         data-carousel
+                         data-carousel-class="product-view-carousel"
+                         data-visible-max="@Model.VisibleItems"
+                         data-stretch="false"
+                         data-nav-position="outside">
+                        @Html.Partial("_ProductView", Model.Products)
+                    </div>
+                </div>
+            }
+            else
+            {
+                @Html.Partial("_ProductView", Model.Products)
+            }
+        </div>
+    </div>
+</div>

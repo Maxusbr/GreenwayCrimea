@@ -1,0 +1,42 @@
+﻿@model BlockModel
+
+<header class="lp-header">
+    <div class="container-fluid">
+        <div class="lp-container">
+            <div class="row between-xs middle-xs center-xs">
+                @if (Model.Block.TryGetSettingsValue("show_logo") == true)
+                {
+                    <div class="col-xs-12 col-sm-slim lp-col--vertical-padding">
+                        @Html.Action("Logo", "Common", new { area = "", InLanding = true })
+                    </div>
+                }
+                @if (Model.Block.TryGetSettingsValue("show_menu") == true)
+                {
+                    <div class="col-xs-12  col-sm-slim lp-col--vertical-padding">
+                        @Html.SubBlock(Model.Block, "menuHeader")
+                    </div>
+                }
+                <div class="col-xs-12  col-sm-slim lp-col--vertical-padding">
+                    @if (Model.Block.TryGetSettingsValue("show_email") == true)
+                    {
+                        <div class="lp-header__email">
+                            @Html.SubBlock(Model.Block, "email")
+                        </div>
+                    }
+                    @if (Model.Block.TryGetSettingsValue("show_phone") == true)
+                    {
+                        <div class="lp-header__phone">
+                            @Html.SubBlock(Model.Block, "phone")
+                        </div>
+                    }
+                    @if (Model.Block.TryGetSettingsValue("show_callback") == true)
+                    {
+                        <div class="lp-header__callback">
+                            @Html.SubBlock(Model.Block, "callback")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

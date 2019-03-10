@@ -1,0 +1,155 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.DDeliveryShippingModel
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.DDelivery.Token")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ApiKey, new { ng_model = "shippingMethod.Params.ApiKey", @class = "form-control", required = "required", validation_input_text = "API-key" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="API-key">
+            @T("Admin.ShippingMethods.DDelivery.GetApiKey")
+
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.DDelivery.ShopId")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ShopId, new { ng_model = "shippingMethod.Params.ShopId", @class = "form-control", required = "required", validation_input_text = "ID магазина" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="ID магазина">
+            @T("Admin.ShippingMethods.DDelivery.GetShopId")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.DDelivery")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.ReceptionCompanyId, new SelectList(Model.ListReceptionCompanies, "Id", "Name", Model.ReceptionCompanyId), new { ng_model = "shippingMethod.Params.ReceptionCompanyId", @class = "form-control", validation_input_text = "ReceptionCompanyId" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.DDelivery.ListOfParcelPickingCompanies")">
+            @T("Admin.ShippingMethods.DDelivery.ListOfParcelPickingCompanies")
+            <br />
+            @*(сортировочных узлов, в которых возможен прием посылок от интернет-магазина для доставки)*@
+        </help-trigger>
+    </div>
+</div>
+
+@*<div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            @T("Admin.ShippingMethods.DDelivery.CreateDraftOrderInDD")
+        </div>
+        <div class="col-xs-6 relative">
+            <label class="adv-checkbox-label form-label-block">
+                @Html.CheckBoxFor(x => x.CreateDraftOrder, new { ng_model = "shippingMethod.Params.CreateDraftOrder", ng_init = "shippingMethod.Params.CreateDraftOrder=" + Model.CreateDraftOrder.ToLowerString(), @class = "adv-checkbox-input" })
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.DDelivery.CreateDraftOrder")">
+                @T("Admin.ShippingMethods.DDelivery.WhenCreatingAnOrder")
+            </help-trigger>
+        </div>
+    </div>*@
+
+@*<div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            @T("Admin.ShippingMethods.DDelivery.GroupDeliveryByType")
+        </div>
+        <div class="col-xs-6 relative">
+            <label class="adv-checkbox-label form-label-block">
+                @Html.CheckBoxFor(x => x.GroupingShippingOptions, new { ng_model = "shippingMethod.Params.GroupingShippingOptions", ng_init = "shippingMethod.Params.GroupingShippingOptions=" + Model.GroupingShippingOptions.ToLowerString(), @class = "adv-checkbox-input" })
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.DDelivery.GroupDeliveryByType")">
+                @T("Admin.ShippingMethods.DDelivery.ShippingMethodsGroupedByType")
+            </help-trigger>
+        </div>
+    </div>*@
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.DDelivery.UseWidget")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.UseWidget, new { ng_model = "shippingMethod.Params.UseWidget", ng_init = "shippingMethod.Params.UseWidget=" + Model.UseWidget.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.DDelivery.UseWidget")">
+            @T("Admin.ShippingMethods.DDelivery.NoticeUseWidget")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="shipping-item-settings-header inline content-header m-b-md">
+    Значения параметров товара по умолчанию
+</div>
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Вес</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultWeight, new { ng_model = "shippingMethod.Params.DefaultWeight", @class = "form-control", required = "required", validation_input_text = "Вес" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Вес товара">
+            Вес товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+            Значение указывается в кг, возможно указать дробное значение.<br><br>
+            Например: 1 или 0.2
+        </help-trigger>
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Длина</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultLength, new { ng_model = "shippingMethod.Params.DefaultLength", @class = "form-control", required = "required", validation_input_text = "Длина" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Длина товара">
+            Длина товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+            Значение указывается в мм.<br><br>
+            Например: 120
+        </help-trigger>
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Ширина</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultWidth, new { ng_model = "shippingMethod.Params.DefaultWidth", @class = "form-control", required = "required", validation_input_text = "Ширина" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Ширина товара">
+            Ширина товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+            Значение указывается в мм.<br><br>
+            Например: 120
+        </help-trigger>
+    </div>
+</div>
+
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Высота</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultHeight, new { ng_model = "shippingMethod.Params.DefaultHeight", @class = "form-control", required = "required", validation_input_text = "Высота" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Высота товара">
+            Высота товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+            Значение указывается в мм.<br><br>
+            Например: 120
+        </help-trigger>
+    </div>
+</div>
+
+
+<input type="hidden" name="sdekMethodId" ng-model="shippingMethod.sdek.MethodId" value="@Model.ShippingMethodId" />

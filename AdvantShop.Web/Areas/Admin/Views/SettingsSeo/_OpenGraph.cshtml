@@ -1,0 +1,35 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SEOSettingsModel
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.OpenGraph.Header")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.OpenGraphEnabled, T("Admin.Settings.OpenGraph.OpenGraphEnabled"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => x.OpenGraphEnabled, new { @class = "adv-checkbox-input", ng_init = "settingsSeo.OpenGraphEnabled=" + Model.OpenGraphEnabled.ToLowerString(), ng_model = "settingsSeo.OpenGraphEnabled" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.OpenGraphFbAdmins, T("Admin.Settings.OpenGraph.OpenGraphFbAdmins"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.TextBoxFor(x => x.OpenGraphFbAdmins, new { @class = "form-control", ng_model = "settingsSeo.OpenGraphFbAdmins" })
+    </div>
+</div>
+
+
+
+
+

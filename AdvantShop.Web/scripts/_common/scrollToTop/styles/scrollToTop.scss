@@ -1,0 +1,35 @@
+﻿@import "../../../../styles/functions/_breakpoints.scss";
+
+.scroll-to-top {
+    position: fixed;
+    left: 0;
+    display: none;
+    height: 100%;
+    background: rgba(243, 243, 243, 0.9);
+    width: 40px;
+    top: 0;
+    z-index: 20;
+    cursor: pointer;
+
+    &:hover {
+        background: #E8E8E8;
+    }
+
+    .to-top-icon {
+        position: absolute;
+        bottom: 40px;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+    }
+}
+
+.scroll-to-top-active {
+    display: block;
+}
+
+@media screen and (max-width: 1260px) {
+    .scroll-to-top {
+        display: none !important;
+    }
+}

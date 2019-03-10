@@ -1,0 +1,19 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Родительский пункт меню</h2>
+</div>
+<div class="modal-body">
+    <div class="category-modal-change-text">
+        Выберите родительский пункт меню:
+    </div>
+    <div>
+        <div data-js-tree
+             data-show-root
+             data-tree-ajax="menus/menusTree?menuType={{ctrl.menuType}}&selectedId={{ctrl.selectedId}}{{ctrl.excludeId != null ? '&excludeId=' + ctrl.excludeId : ''}}"
+             data-tree-core="" data-tree-events="select_node:ctrl.selectItem"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.change()" ng-disabled="ctrl.btnChangeDisabled">Изменить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

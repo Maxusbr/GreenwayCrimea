@@ -1,0 +1,19 @@
+.grid-classic {
+  margin-left: -.625rem;
+  margin-right: -.625rem; }
+
+.grid-classic-fixed {
+  table-layout: fixed; }
+
+.grid-classic-row {
+  display: table;
+  width: 100%; }
+
+.grid-classic-col {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: .625rem;
+  padding-right: .625rem; }
+
+.grid-classic-col-md {
+  width: 200px; }

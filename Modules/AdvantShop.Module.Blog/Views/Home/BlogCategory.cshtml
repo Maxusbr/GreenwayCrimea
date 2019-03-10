@@ -1,0 +1,52 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@model AdvantShop.Module.Blog.Models.BlogCategoryViewModel
+
+<div class="mobile-container-fluid">
+<div class="row">
+    <div class="col-xs-12 col-sm-9  col-p-v">
+        <div class="page-title-row news-item-title-row">
+            <h1 class="news-item-title page-title">
+                @Model.BlogTitle
+                <a href="blog/rss" class="icon-rss-squared-before news-rss-link link-text-decoration-none" target="_blank" title="RSS"></a>
+            </h1>
+        </div>
+
+        @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+
+        @foreach (var item in Model.BlogItems)
+        {
+            <div class="row news-list-item">
+                @{
+                    var photoSrc = !string.IsNullOrEmpty(item.Picture) ? (UrlService.GetUrl() + "pictures/modules/blog/" + item.Picture) : null;
+                }
+                @if (!string.IsNullOrEmpty(photoSrc))
+                {
+                    <figure class="col-xs-12 col-sm-3 news-item-img-col">
+                        <img src="@photoSrc" alt="@item.Title" title="@item.Title" />
+                    </figure>
+                }
+                <div class="col-xs-12 col-sm-9">
+                    <div class="h3">
+                        <a href="@Url.AbsoluteRouteUrl("BlogItem", new { url = item.UrlPath })" class="news-link-title">@Html.Raw(item.Title)</a>
+                    </div>
+                    @if (Model.ShowAddDate)
+                    {
+                        <div class="subheader">
+                            @Html.Raw(item.AddingDate.ToShortDateTime())
+                        </div>
+                    }
+                    <div class="news-list-item-bDescr">
+                        @Html.Raw(item.TextAnnotation)
+                    </div>
+                </div>
+            </div>
+                    }
+        @Html.Paging(Model.Pager)
+
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-p-v">
+        @Html.Partial("~/Modules/Blog/Views/Home/_BlogCategoryList.cshtml", Model.SubCategories)
+        @Html.Raw(Model.SbRightBlock)
+    </div>
+</div>
+</div>

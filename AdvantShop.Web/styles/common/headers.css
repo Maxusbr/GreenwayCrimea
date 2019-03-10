@@ -1,0 +1,28 @@
+.h-inline {
+  display: inline-block; }
+
+h1, .h1 {
+  font-size: 1.875rem;
+  font-weight: normal;
+  margin: 0 0 1.25rem 0; }
+
+h2, .h2 {
+  font-size: 1.375rem;
+  font-weight: normal;
+  margin: 0 0 1rem 0; }
+
+h3, .h3 {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0 0 0.75rem 0; }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  line-height: 1.2; }
+  h1.no-margin, h2.no-margin, h3.no-margin, h4.no-margin, h5.no-margin, h6.no-margin, .h1.no-margin, .h2.no-margin, .h3.no-margin, .h4.no-margin, .h5.no-margin, .h6.no-margin {
+    margin: 0; }
+
+.subheader {
+  color: #c3c3c3;
+  font-size: 0.75rem;
+  line-height: 1;
+  margin: 0 0 0.625rem 0; }

@@ -1,0 +1,19 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Родительская категория</h2>
+</div>
+<div class="modal-body">
+    <div class="category-modal-change-text">
+        Выберите родительскую категорию:
+    </div>
+    <div>
+        <div data-js-tree
+             data-show-root
+             data-tree-ajax="catalog/categoriestree?categoryIdSelected={{ctrl.selectedCategoryId}}{{ctrl.excludeIds != null ? '&excludeids=' + ctrl.excludeIds : ''}}"
+             data-tree-core="" data-tree-events="select_node:ctrl.selectCategory"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.change()" ng-disabled="ctrl.btnChangeDisabled">Изменить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

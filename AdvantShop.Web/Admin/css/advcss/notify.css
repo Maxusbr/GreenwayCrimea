@@ -1,0 +1,76 @@
+#notify {
+    position: relative;
+    display: none;
+    padding-bottom: 3px;
+    z-index: 1000;
+}
+
+    #notify .notify-item {
+        border-radius: 4px;
+        padding: 15px;
+        font-size: 14px;
+        position: relative;
+        margin-top: 3px;
+        display: none;
+    }
+
+    #notify div.type-error {
+        color: #a94442;
+        background-color: #f2dede;
+    }
+
+    #notify div.type-notice {
+        color: #3c763d;
+        background-color: #d9effc;
+    }
+
+    #notify .close {
+        position: absolute;
+        background: url('../../images/notify/close.png') no-repeat;
+        width: 17px;
+        height: 17px;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+    }
+
+.notify-item .telphin {
+    padding-left: 28px;
+    background-image: url("../../images/telephony/telIcon.png");
+    background-repeat: no-repeat;
+    background-position: left 4px;
+    color: #001300;
+}
+
+.telphin__title {
+    color: #000800;
+    font-size: 16px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.telphin__customer {
+    color: #377c99;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.telphin__href {
+    color: #377c99;
+}
+
+.telphin__last-order-name, .telphin__manager, .telphin__last-lead, .telphin__total-price {
+    font-style: italic;
+}
+
+
+.telphin__info {
+    padding: 8px 0;
+}
+
+.telphin__info-item {
+    padding: 3px 0;
+}
+.telphin__info-manager {
+    padding: 10px 0;
+}

@@ -1,0 +1,32 @@
+﻿<form novalidate name="editUserRoleActionsForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Настройки доступа</h2>
+    </div>
+    <div class="modal-body">
+        <div class="row center-xs m-b-md">
+            <div class="col-xs-5">
+                <a href="" ng-click="ctrl.setSelectionAll(true)">Выделить все</a>
+                <a href="" class="p-l-sm" ng-click="ctrl.setSelectionAll(false)">Снять выделение</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6" ng-repeat="roleAction in ctrl.roleActions">
+                <label class="adv-checkbox-label form-group">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="roleAction.Enabled" />
+                    <span class="adv-checkbox-emul"></span>
+                    {{roleAction.Name}}
+                </label>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button"
+                data-button-validation-success="ctrl.apply()" data-button-validation
+                disabled ng-disabled="!editUserRoleActionsForm.modified">
+            Применить
+        </button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

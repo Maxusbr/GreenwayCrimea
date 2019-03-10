@@ -1,0 +1,11 @@
+﻿<div class="ui-grid-filter-block">
+    <div class="ui-grid-filter-block-title">
+        <h5 class="ui-grid-filter-block-title-text" data-ng-bind="$ctrl.item.filter.placeholder"></h5>
+        <a class="close-link ui-grid-filter-block-close link-invert" ng-click="$ctrl.close($ctrl.item.filter.name || $ctrl.item.name, $ctrl.item)" data-e2e="gridFilterItemClose">
+            <i class="fa fa-times"></i>
+        </a>
+    </div>
+    <div class="ui-grid-filter-block-content">
+        <ng-include src="$ctrl.blockUrl"></ng-include>
+    </div>
+</div>

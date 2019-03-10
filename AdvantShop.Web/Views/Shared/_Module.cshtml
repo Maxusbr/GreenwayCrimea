@@ -1,0 +1,20 @@
+﻿@using AdvantShop.Diagnostics
+@model List<AdvantShop.Core.Modules.ModuleRoute>
+@foreach (var module in Model)
+{
+    if (module.IsSimpleText)
+    {
+        @Html.Raw(module.Content)
+    }
+    else
+    {
+        try
+        {
+            @Html.Action(module.ActionName, module.ControllerName, module.RouteValues)
+        }
+        catch (Exception ex)
+        {
+            Debug.Log.Error("Module: " + module.ActionName + " " + module.ControllerName, ex);
+        }
+    }
+}

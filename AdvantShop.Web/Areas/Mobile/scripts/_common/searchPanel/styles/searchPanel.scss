@@ -1,0 +1,75 @@
+@import "../../../../styles/_function.scss", "../../../../styles/_defFuncValues.scss";
+
+.searchBtn {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    left: 50px;
+    top: 0;
+
+    .search-link {
+        box-sizing: content-box;
+        position: absolute;
+        height: 16px;
+        width: 16px;
+        margin: auto;
+        padding: 15px;
+        font-size: toEm(16px);
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.searchBtn.inked {
+    position: absolute;
+}
+
+.search-panel {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: 50px;
+    z-index: 2;
+    padding: 5px 5px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    .search-disable {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+
+        .search-disable-i {
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+            line-height: 40px;
+            font-size: 30px;
+        }
+    }
+
+    .search-input {
+        border-radius: 0;
+        height: 100%;
+        text-indent: 10px;
+    }
+}
+
+.autocompleter-list-item-category {
+    display: block;
+}

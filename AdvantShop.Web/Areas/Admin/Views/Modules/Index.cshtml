@@ -1,0 +1,76 @@
+﻿@using AdvantShop.Trial
+@model  List<AdvantShop.Core.Modules.Module>
+@{
+    Layout = "_ModulesLayout.cshtml";
+}
+<div ng-init="modules.pageType = true; modules.filterStart = '@(Request["name"] ?? string.Empty)'; modules.onInit()">
+    <ul class="nav nav-tabs">
+        <li class="uib-tab active nav-item ng-tab" classes="ng-tab">
+            <a href="" class="nav-link">Установленные модули</a>
+        </li>
+        <li data-ng-if="modules.needUpdateModules">
+            <div class="js-not-tabs pull-right">
+                <button type="button" class="btn btn-sm btn-success btn-block" ng-click="modules.updateAllModules()">Обновить все модули</button>
+            </div>
+        </li>
+    </ul>
+    <div class="tabs-content modules-list">
+        @if (TrialService.IsTrialEnabled)
+        {
+            <div class="h4">
+                Внимание! Некоторые из этих модулей платные и предоставлены в пробном режиме. <br />
+                Подробнее о ценах можно узнать на странице <a href="https://www.advantshop.net/modules" target="_blank">https://www.advantshop.net/modules</a>
+            </div>
+        }
+        <div class="ng-cloak" ng-if="modules.dataLoaded == true">
+            <div ng-switch="modules.modulesMaster == null || modules.modulesMaster.length === 0">
+
+                <div class="text-center" ng-switch-when="true">
+                    <div class="m-b-xl m-t-xxl">У вас еще нет установленных модулей</div>
+                    @Html.ActionLink("Магазин модулей", "Market", "Modules", null, new { @class = "btn btn-lg btn-success text-left" })
+                </div>
+
+                <div ng-switch-when="false">
+                    <div>
+                        <ui-grid-custom-filter grid-column-defs="modules.filterColumnDefs"
+                                               grid-params="modules.gridParams"
+                                               grid-search-text="'@(Request["name"] ?? string.Empty)'"
+                                               grid-search-placeholder="modules.gridSearchPlaceholder"
+                                               on-change="modules.filterApply(params, item)"
+                                               on-remove="modules.filterRemove(name, item)">
+                        </ui-grid-custom-filter>
+                    </div>
+                    <div class="modules-container flex flex-wrap">
+                        <div class="flex-basis-fix-xs item-module-wrap" ng-repeat="module in modules.modulesData">
+                            <div class="item-module">
+                                <a class="item-module-img flex middle-xs center-xs m-b-sm" ng-href="modules/details/{{module.StringId}}">
+                                    <img ng-src="{{module.Icon}}" />
+                                </a>
+                                <div class="m-b-sm m-t-sm">
+                                    <div class="item-module-name base-color text-center flex center-xs middle-xs" ng-bind="module.Name"></div>
+                                    <div class="item-module-price bold base-color text-center" ng-bind="module.PriceString"></div>
+                                    <div class="item-module-activity">
+                                        <label class="adv-checkbox-label form-label-block">
+                                            <input type="checkbox" ng-model="module.Enabled" class="adv-checkbox-input" ng-click="modules.changeEnabled(module)" />
+                                            <span class="adv-checkbox-emul"></span>
+                                            <span ng-class="{'green': module.Enabled}"
+                                                  ng-bind="module.Enabled ? 'Активен' : 'Не активен'"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <a href="javascript:void()" class="link-invert link-decoration-none fa fa-remove item-module-remove" ng-click="modules.uninstallModule(module)" title="Удалить"></a>
+                                <div ng-if="module.IsInstall && module.Active && module.Version != module.CurrentVersion && !module.IsLocalVersion">
+                                    <div>
+                                        <button type="button" class="btn btn-sm btn-success btn-block" data-ladda="module.isUpdating" ng-click="modules.updateModule(module)">Обновить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.spinbox-more,
+.spinbox-less {
+  display: block;
+  line-height: 1;
+  padding: 0.125rem 0.3125rem; }
+
+.spinbox-button-disabled {
+  cursor: default; }
+
+.spinbox-input {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield; }
+  .spinbox-input::-webkit-outer-spin-button, .spinbox-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+
+.spinbox-input-wrap {
+  padding-right: 0; }

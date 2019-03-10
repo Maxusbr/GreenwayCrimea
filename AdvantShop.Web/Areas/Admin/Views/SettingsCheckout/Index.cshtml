@@ -1,0 +1,55 @@
+﻿@using AdvantShop.Saas
+@model AdvantShop.Web.Admin.Models.Settings.CheckoutSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+    var currentsaasData = SaasDataService.CurrentSaasData;
+    var enabledSaas = SaasDataService.IsSaasEnabled;
+}
+
+@using (Html.BeginForm("Index", "SettingsCheckout", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settingsCheckout.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified"/>
+            </div>
+        </div>
+    </div>
+
+    <uib-tabset active uid="checkoutTab" on-select-batch="settingsCheckout.floatHeader = tab.heading;">
+        <uib-tab index="'common'" classes="ng-tab" heading="@T("Admin.Settings.Checkout.Common")">
+            <uib-tab-heading ng-class="{'tab-warning' : authForm.$invalid}">
+                @T("Admin.Settings.Checkout.Common")
+                <span ng-if="checkoutCommonForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!checkoutCommonForm.$invalid && authForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="checkoutCommonForm" validation-tab-index="'common'">
+                @Html.Partial("_CheckoutCommon", Model)
+            </ng-form>
+        </uib-tab>
+        @if (!enabledSaas || currentsaasData.OrderAdditionFields)
+        {
+            <uib-tab index="'checkoutfields'" heading="@T("Admin.Settings.Checkout.CheckoutFields")" classes="ng-tab">
+                @Html.Partial("_CheckoutFields", Model)
+            </uib-tab>
+        }
+        <uib-tab index="'taxes'" heading="@T("Admin.Settings.Checkout.Taxes")" classes="ng-tab">
+            @Html.Partial("_Taxes", Model)
+        </uib-tab>
+        <uib-tab index="'scripts'" heading="@T("Admin.Settings.Checkout.Scripts")" classes="ng-tab">
+            @Html.Partial("_CheckoutScripts", Model)
+        </uib-tab>
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success btn--margin-left" data-e2e="SettingsCheckoutSave" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+        </div>
+    </uib-tabset>
+}
+
+

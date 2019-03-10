@@ -1,0 +1,132 @@
+﻿@model AdvantShop.Web.Admin.Models.ExportFeeds.ExportFeedSettingsGoogleModel
+
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.Currency, T("Admin.ExportFeeed.SettingsGoogle.Currency"), new { @class = "required" })
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.DropDownList("ddlCurrency", new SelectList(Model.Currencies, "Key", "Value", Model.Currency), new { @class = "form-control", ng_init = "exportFeeds.AdvancedSettings.Currency='" + Model.Currency + "'", ng_model = "exportFeeds.AdvancedSettings.Currency" })
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.RemoveHtml, T("Admin.ExportFeeed.SettingsGoogle.RemoveHtml"), new { @class = "required" })
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            <label class="adv-checkbox-label">
+                @Html.CheckBoxFor(x => x.RemoveHtml, new { @class = "adv-checkbox-input", ng_init = "exportFeeds.AdvancedSettings.RemoveHtml=" + Model.RemoveHtml.ToLowerString(), ng_model = "exportFeeds.AdvancedSettings.RemoveHtml" })
+                <span class="adv-checkbox-emul"></span>
+            </label>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.DatafeedTitle, T("Admin.ExportFeeed.SettingsGoogle.DatafeedTitle"), new { @class = "required" })
+                <span class="text-required"></span>
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.TextBoxFor(x => x.DatafeedTitle, new { @class = "form-control", required = "required", ng_model = "exportFeeds.AdvancedSettings.DatafeedTitle", validation_input_text = T("Admin.ExportFeeed.SettingsGoogle.DatafeedTitle") })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.DatafeedDescription, T("Admin.ExportFeeed.SettingsGoogle.DatafeedDescription"), new { @class = "required" })
+                <span class="text-required"></span>
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.TextBoxFor(x => x.DatafeedDescription, new { @class = "form-control", required = "required", ng_model = "exportFeeds.AdvancedSettings.DatafeedDescription", validation_input_text = T("Admin.ExportFeeed.SettingsGoogle.DatafeedDescription") })
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.GoogleProductCategory, T("Admin.ExportFeeed.SettingsGoogle.GoogleProductCategory"))
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.TextBoxFor(x => x.GoogleProductCategory, new { @class = "form-control", ng_model = "exportFeeds.AdvancedSettings.GoogleProductCategory" })
+            <a href="https://support.google.com/merchants/answer/160081" target="_blank">@T("Admin.ExportFeed.SettingsGoogle.AvailableCategories")</a>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.ExportNotAvailable, T("Admin.ExportFeed.SettingsGoogle.ExportNotAvailable"), new { @class = "required" })
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            <label class="adv-checkbox-label">
+                @Html.CheckBoxFor(x => x.ExportNotAvailable, new { @class = "adv-checkbox-input", ng_init = "exportFeeds.AdvancedSettings.ExportNotAvailable=" + Model.ExportNotAvailable.ToLowerString(), ng_model = "exportFeeds.AdvancedSettings.ExportNotAvailable" })
+                <span class="adv-checkbox-emul"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.AllowPreOrderProducts, T("Admin.ExportFeeed.SettingsGoogle.AllowPreOrderProducts"), new { @class = "required" })
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            <label class="adv-checkbox-label">
+                @Html.CheckBoxFor(x => x.AllowPreOrderProducts, new { @class = "adv-checkbox-input", ng_model = "exportFeeds.AdvancedSettings.AllowPreOrderProducts" })
+                <span class="adv-checkbox-emul"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.ProductDescriptionType, T("Admin.ExportFeeed.SettingsGoogle.ProductDescriptionType"), new { @class = "required" })
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.DropDownList("ddlProductDescriptionType", new SelectList(Model.ProductDescriptionTypeList, "Key", "Value", Model.ProductDescriptionType), new { @class = "form-control", ng_init = "exportFeeds.AdvancedSettings.ProductDescriptionType = '" + Model.ProductDescriptionType + "'", ng_model = "exportFeeds.AdvancedSettings.ProductDescriptionType" })            
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2 ">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.OfferIdType, T("Admin.ExportFeeed.SettingsGoogle.OfferIdType"), new { @class = "required" })
+            </div>
+        </div>
+        <div class="col-xs-5 col-wl-4">
+            @Html.DropDownList("ddlOfferIdType", new SelectList(Model.OfferTypes, "Key", "Value", Model.OfferIdType), new { @class = "form-control", ng_init = "exportFeeds.AdvancedSettings.OfferIdType = '" + Model.OfferIdType + "'", ng_model = "exportFeeds.AdvancedSettings.OfferIdType" })
+
+        </div>
+    </div>
+
+
+
+
+

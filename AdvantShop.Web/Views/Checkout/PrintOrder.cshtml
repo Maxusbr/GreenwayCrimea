@@ -1,0 +1,363 @@
+﻿@using AdvantShop.Catalog
+@using AdvantShop.Core.Services.Catalog
+@using AdvantShop.Core.Services.Orders
+@using AdvantShop.Customers
+@using AdvantShop.FilePath
+@model AdvantShop.ViewModel.Checkout.PrintOrderViewModel
+@{
+    Layout = null;
+    var order = Model.Order;
+    var orderCustomer = order.OrderCustomer;
+    var currency = Model.OrderCurrency;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+    <base href="@UrlService.GetUrl()" />
+    <link href="styles/views/printorder.css" rel="stylesheet" type="text/css" />
+    <link href="userfiles/extra.css" rel="stylesheet" type="text/css" />
+    <title>@T("Checkout.PrintOrder.Title")</title>
+    @if (Model.MapType != "googlemap")
+    {
+        <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    }
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="phone">
+                <div class="tel">
+                    № @order.Number 
+                    @if (Model.ShowStatusInfo)
+                    {
+                        <span class="order-status">@order.OrderStatus.StatusName</span>
+                    }
+                </div>
+                <div class="inform">
+                    @T("Checkout.PrintOrder.Date") @AdvantShop.Localization.Culture.ConvertDate(order.OrderDate)
+                </div>
+            </div>
+            <div class="logo">
+                <img src="@FoldersHelper.GetPath(FolderType.Pictures, SettingsMain.LogoImageName, false)" alt="@SettingsMain.SiteUrl">
+            </div>
+        </div>
+        @Html.StaticBlock("PrintOrderTop")
+    <div class="order-info">
+        @if (!string.IsNullOrEmpty(order.TrackNumber))
+        {
+            <div class="data-cell-inf">
+                <span class="o-title vi">Номер отслеживания:</span> @order.TrackNumber
+            </div>
+        }
+        <div class="order-customer-info">
+            <div class="data-cell-inf">
+                <div class="o-title vi">
+                    @T("Checkout.PrintOrder.OrderInfo")
+                </div>
+                @if (Model.ShowStatusInfo)
+                {
+                    if (!string.IsNullOrEmpty(order.StatusComment))
+                    {
+                        <div class="l-row">
+                            <div class="l-name vi cs-light">@T("Checkout.PrintOrder.StatusComment")</div>
+                            <div class="l-value vi">@order.StatusComment</div>
+                        </div>
+                    }
+                }
+                <div class="l-row">
+                    <div class="l-name vi cs-light">@T("Checkout.PrintOrder.Email")</div>
+                    <div class="l-value vi">@order.OrderCustomer.Email</div>
+                </div>
+                @if (!string.IsNullOrEmpty(order.OrderCustomer.Phone))
+                {
+                    <div class="l-row">
+                        <div class="l-name vi cs-light">@T("Checkout.PrintOrder.Phone")</div>
+                        <div class="l-value vi">@order.OrderCustomer.Phone</div>
+                    </div>
+                }
+            </div>
+            <div class="data">
+                @if (Model.ShowContacts)
+                {
+                    <div class="data-cell">
+                        <div class="o-title vi">@T("Checkout.PrintOrder.ShippingInfo")</div>
+                        <div class="l-row">
+                            <div class="l-name vi cs-light">@T("Checkout.PrintOrder.ContactName")</div>
+                            <div class="l-value vi">@orderCustomer.GetFullName()</div>
+                        </div>
+                        @if (!string.IsNullOrEmpty(orderCustomer.Country))
+                        {
+                            <div class="l-row">
+                                <div class="l-name vi cs-light">@T("Checkout.PrintOrder.Country")</div>
+                                <div class="l-value vi">@orderCustomer.Country</div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(orderCustomer.Region))
+                        {
+                            <div class="l-row">
+                                <div class="l-name vi cs-light">@T("Checkout.PrintOrder.Zone")</div>
+                                <div class="l-value vi">@orderCustomer.Region</div>
+                            </div>
+                        }
+                        <div class="l-row">
+                            <div class="l-name vi cs-light">@T("Checkout.PrintOrder.City")</div>
+                            <div class="l-value vi">@orderCustomer.City</div>
+                        </div>
+                        @if (!string.IsNullOrEmpty(orderCustomer.Zip))
+                        {
+                            <div class="l-row">
+                                <div class="l-name vi cs-light">@T("Checkout.PrintOrder.Zip")</div>
+                                <div class="l-value vi">@orderCustomer.Zip</div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(orderCustomer.GetCustomerAddress()))
+                        {
+                            <div class="l-row">
+                                <div class="l-name vi cs-light">@T("Checkout.PrintOrder.Address")</div>
+                                <div class="l-value vi">@orderCustomer.GetCustomerAddress()</div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(orderCustomer.CustomField1))
+                        {
+                            <div class="l-row">
+                                <div class="l-name vi cs-light">@Html.Raw(SettingsCheckout.CustomShippingField1):</div>
+                                <div class="l-value vi">@orderCustomer.CustomField1</div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(orderCustomer.CustomField2))
+                        {
+                            <div class="l-row">
+                                <div class="l-name vi cs-light">@Html.Raw(SettingsCheckout.CustomShippingField2):</div>
+                                <div class="l-value vi">@orderCustomer.CustomField2</div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(orderCustomer.CustomField3))
+                        {
+                            <div class="l-row">
+                                <div class="l-name vi cs-light">@Html.Raw(SettingsCheckout.CustomShippingField3):</div>
+                                <div class="l-value vi">@orderCustomer.CustomField3</div>
+                            </div>
+                        }
+                    </div>
+                }
+                @*<div class="data-cell">
+                    <div class="o-title vi">@T("Checkout.PrintOrder.ShippingMethod")</div>
+                    <div class="l-row">
+                        <div class="l-value-m vi">
+                            @Html.Raw(order.ArchivedShippingName + (order.OrderPickPoint != null ? "<br />" + order.OrderPickPoint.PickPointAddress : ""))
+                        </div>
+                    </div>
+                </div>
+                <div class="data-cell">
+                    <div class="o-title vi">@T("Checkout.PrintOrder.PaymentMethod")</div>
+                    <div class="l-row">
+                        <div class="l-value-m vi">@order.PaymentMethodName</div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+
+        <div class="o-big-title">
+            @T("Checkout.PrintOrder.OrderItems")
+        </div>
+        <table class="orders-table">
+            @if (order.OrderItems.Count > 0)
+            {
+                <tr class="orders-table-header">
+                    <th class="photo"></th>
+                    <th class="artno">@T("Checkout.PrintOrder.ItemSku")</th>
+                    <th class="name">@T("Checkout.PrintOrder.ItemName")</th>
+                    <th class="price">@T("Checkout.PrintOrder.ItemPrice")</th>
+                    <th class="amount">@T("Checkout.PrintOrder.ItemAmount")</th>
+                    <th class="total-price">@T("Checkout.PrintOrder.ItemCost")</th>
+                </tr>
+                foreach (var item in order.OrderItems)
+                {
+                    var product = item.ProductID != null ? ProductService.GetProduct((int)item.ProductID) : null;
+                    <tr>
+                        <td class="photo">
+                            @if (item.Photo != null)
+                            {
+                                <img src="@item.Photo.ImageSrcXSmall()" alt="">
+                            }
+                            else if (item.ProductID != null && product != null)
+                            {
+                                <img src="@FoldersHelper.GetImageProductPath(ProductImageType.XSmall, product.Photo, true)" alt="" />
+                            }
+                        </td>
+                        <td class="artno">
+                            @item.ArtNo
+                        </td>
+                        <td class="name">
+                            <div class="description">
+                                <div class="prod-name">
+                                    <a href="@(product != null ? Url.RouteUrl("Product", new{ url = product.UrlPath}): "")" class="cs-link">@Html.Raw(item.Name)</a>
+                                </div>
+                                <div class="prod-option">
+                                    @Html.Raw(!string.IsNullOrEmpty(item.Color) ? "<span class='cs-light'>" + SettingsCatalog.ColorsHeader + "</span>: <span class='value cs-link'>" + item.Color + "</span>" : "")
+                                </div>
+                                <div class="prod-option">
+                                    @Html.Raw(!string.IsNullOrEmpty(item.Size) ? "<span class='cs-light'>" + SettingsCatalog.SizesHeader + "</span>: <span class='value cs-link'>" + item.Size + "</span>" : "")
+                                </div>
+                                @Html.RenderCustomOptions(item.SelectedOptions)
+                            </div>
+                        </td>
+                        <td class="p-price">@item.Price.FormatPrice(currency)</td>
+                        <td class="amount">@item.Amount</td>
+                        <td class="p-total-price">@((item.Price * item.Amount).FormatPrice(currency))</td>
+                    </tr>
+                }
+            }
+            @if (order.OrderCertificates.Count > 0)
+            {
+                <tr class="orders-table-header">
+                    <th class="name" colspan="5">@T("Checkout.PrintOrder.GiftCertificateCode")</th>
+                    <th class="total-price">@T("Checkout.PrintOrder.GiftCertificateSum")</th>
+                </tr>
+                foreach (var item in order.OrderCertificates)
+                {
+                    <tr>
+                        <td class="name" colspan="4">@T("Checkout.PrintOrder.GiftCertificate")</td>
+                        <td>@item.CertificateCode</td>
+                        <td class="total-price">@item.Sum.FormatPrice(currency)</td>
+                    </tr>
+                }
+            }
+            <tr>
+                <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.ProductsPrice"):</td>
+                <td class="footer-value">@Html.Raw(Model.ProductsPrice)</td>
+            </tr>
+            @if (!string.IsNullOrEmpty(Model.OrderDiscount))
+            {
+                <tr>
+                    <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.Discount"):</td>
+                    <td class="footer-value">-@Html.Raw(Model.OrderDiscount)</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.OrderBonus))
+            {
+                <tr>
+                    <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.Bonuses"):</td>
+                    <td class="footer-value">-@Html.Raw(Model.OrderBonus)</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.Certificate))
+            {
+                <tr>
+                    <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.Certificate"):</td>
+                    <td class="footer-value">-@Html.Raw(Model.Certificate)</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.Coupon))
+            {
+                <tr>
+                    <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.Coupon"):</td>
+                    <td class="footer-value">@Html.Raw(Model.Coupon)</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.ShippingPrice))
+            {
+                <tr>
+                    <td class="footer-name" colspan="5">
+                        @*@T("Checkout.PrintOrder.Shipping"):*@
+                        <span class="shipping-name">Доставка:</span>
+                        <div>
+                            @Html.Raw(Model.ShippingMethodName)
+                        </div>
+                    </td>
+                    <td class="footer-value shipping-value">@Html.Raw(Model.ShippingPrice)</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.PaymentPrice))
+            {
+                <tr>
+                    <td class="footer-name" colspan="5">
+                        @*@Html.Raw(Model.PaymentPriceTitle):*@
+                        <span class="shipping-name">Наценка на метод оплаты:</span>
+                        <div>
+                            @Html.Raw(Model.PaymentMethodName)
+                        </div>
+                    </td>
+                    <td class="footer-value shipping-value">@Html.Raw(Model.PaymentPrice)</td>
+                </tr>
+            }
+            @if (Model.Taxes != null)
+            {
+                foreach (var tax in Model.Taxes)
+                {
+                    <tr>
+                        <td class="footer-name" colspan="5">@((tax.ShowInPrice ? T("Core.Tax.IncludeTax").ToString() : "") + " " + tax.Name):</td>
+                        <td class="footer-value">@tax.Sum.FormatPrice(currency)</td>
+                    </tr>
+                }
+            }
+            <tr>
+                <td class="footer-name bold" colspan="5">@T("Checkout.PrintOrder.TotalPrice"):</td>
+                <td class="footer-value bold">@Html.Raw(Model.TotalPrice)</td>
+            </tr>
+
+        </table>
+        @if (order.CustomerComment.IsNotEmpty())
+        {
+            <div class="comment">
+                <span class="comment-title">@T("Checkout.PrintOrder.CustomerComment"):</span>
+                <span class="comment-txt">@order.CustomerComment</span>
+            </div>
+        }
+        
+        @Html.StaticBlock("PrintOrderBottom")
+        
+        @if (Model.ShowMap)
+        {
+            <div id="maps">
+                @if (Model.MapType == "googlemap")
+                {
+                    @Html.Raw("<div id='printorder-gmap'><img width='900' height='360' src='https://maps.googleapis.com/maps/api/staticmap?center=" + Model.MapAdress + "&zoom=16&size=595x300&sensor=false'></img></div>");
+                }
+                else
+                {
+                    <div id="printorder-yamap"></div>
+                    <script type="text/javascript">
+                        var myMap;
+                        ymaps.ready(function () {
+                            var coordinates;
+                            var myGeocoder = ymaps.geocode("@Model.MapAdress");
+                            myGeocoder.then(
+                                function (res) {
+                                    try {
+                                        coordinates = res.geoObjects.get(0).geometry.getCoordinates();
+                                        myMap = new ymaps.Map("printorder-yamap", {
+                                            center: coordinates,
+                                            zoom: 15,
+                                            behaviors: ["default", "scrollZoom"]
+                                        });
+                                        var myPlacemark = new ymaps.Placemark(coordinates);
+                                        myMap.geoObjects.add(myPlacemark);
+                                        myMap.controls.add("mapTools").add("zoomControl").add("typeSelector").add("trafficControl");
+                                    } catch (e) {
+                                    } finally {
+                                        setTimeout(function () { window.print(); }, 3000);
+                                    }
+                                }
+                            );
+                        });
+                    </script>
+                }
+            </div>
+        }
+    </div>
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', loaded, false);
+        function loaded() {
+            if (document.getElementById("printorder-gmap") != null || document.getElementById("maps") == null) {
+                window.print();
+            }
+        };
+    </script>
+</body>
+</html>

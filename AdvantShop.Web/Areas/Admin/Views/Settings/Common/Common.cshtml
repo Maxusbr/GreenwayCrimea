@@ -1,0 +1,185 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CommonSettingsModel
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Index.Logo")
+        </div>
+    </div>
+    <div class="col-xs-9">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="flex">
+                        <div>
+                            @Html.PictureUploader(AdvantShop.Catalog.PhotoType.Logo, 0, Model.LogoImgSrc)
+                        </div>
+                        @if (CustomerContext.CurrentCustomer.CustomerRole == Role.Administrator || Demo.IsDemoEnabled)
+                        {
+                            <div class="p-l-md">
+                                <a class="btn btn-md btn-submit" data-e2e="btnLogo" href="../?logoGeneratorEditOnPageLoad=true" target="_blank">Создать логотип</a>
+                            </div>
+                        }
+                    </div>
+                    @T("Admin.Settings.Index.LogoImgSizeRecommendations")
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Index.Favicon")
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <div class="setting-favicon-wrap">
+            @Html.PictureUploader(AdvantShop.Catalog.PhotoType.Favicon, 0, Model.FaviconSrc)
+        </div>
+        <div>
+            @T("Admin.Settings.Index.FaviconRecommendations")
+        </div>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2 ">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.StoreUrl, T("Admin.Settings.Index.StoreUrl"), new { @class = "required" })
+        </div>
+    </div>
+    <div class="col-xs-8 relative">
+        @Html.TextBoxFor(x => x.StoreUrl, new { @class = "form-control", required = "required", ng_model = "settings.storeUrl", validation_input_text = "URL Магазина", ng_readonly = Model.IsTrial.ToLowerString() })
+        @Html.ValidationMessageFor(model => model.StoreUrl)
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Index.StoreUrl")">
+            Тут вы указываете, какой адрес был куплен для магазина. Данный параметр влияет на построение ссылок по всей клиентской части магазина.
+            <br><br>
+            Обратите внимание, что данный параметр лишь указывает, какой домен используется для магазина, сам домен должен быть куплен и привязан к сайту заранее.
+            <br>
+            <br>
+            Подробнее о домене:
+            <br>
+            <a href="http://www.advantshop.net/help/pages/svoy-domen" target="_blank">Инструкция. Как привязать магазин к домену (доменному имени)?</a>
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.StoreName, T("Admin.Settings.Index.StoreName"), new { @class = "required" })
+        </div>
+    </div>
+    <div class="col-xs-8 relative">
+        @Html.TextBoxFor(x => x.StoreName, new { @class = "form-control", required = "required", ng_model = "settings.storeName", validation_input_text = "Название магазина" })
+        @Html.ValidationMessageFor(model => model.StoreName)
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Index.StoreName")">
+            <div class="help-content">
+                Краткое описание названия магазина. Будет использовано в SEO полях, в качестве переменной #STORE_NAME#.
+                <br><br>
+                Используйте небольшое описание, например:
+                <br>
+                <i>MyShop.ru - Товары для животных</i>
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.CountryId, T("Admin.Settings.Index.Country"))
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.DropDownListFor(x => x.CountryId, Model.Countries, new { @class = "form-control", ng_model = "settings.countryId", ng_init = "settings.countryId= '" + Model.CountryId + "'", ng_change = "settings.loadRegions('')" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Index.Country")">
+            <div class="help-content">
+                Укажите страну, в которой находится магазин или склад.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+
+@*@if (Model.HasRegions)
+{*@
+    <div ng-init="settings.loadRegions('@Model.RegionId')">
+        <div class="form-group row" ng-if="settings.hasRegions">
+            <div class="col-xs-2">
+                <div class="setting-label-wrap">
+                    @Html.LabelFor(x => x.RegionId, T("Admin.Settings.Index.Region"))
+                </div>
+            </div>
+            <div class="col-xs-4 relative">
+                <select data-e2e="RegionSelect" class="form-control" ng-model="settings.regionId">
+                    <option ng-selected="{{item.Selected}}"
+                            ng-repeat="item in settings.regions"
+                            value="{{item.Value}}">
+                        {{item.Text}}
+                    </option>
+                </select>
+                <input type="hidden" name="RegionId" id="RegionId" value="{{settings.regionId}}" />
+                @*<select class="form-control" ng-model="settings.regionId" ng-init="settings.regionId=@Html.Raw(Model.RegionId)" ng-options="region.Text  for region in settings.regions"></select>*@
+
+                @*@Html.DropDownListFor(x => x.RegionId, Model.Regions, new { @class = "form-control", ng_model = "settings.regionId", ng_init = "settings.regionId= '" + Model.RegionId + "'" })*@
+                <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Index.Region")">
+                    <div class="help-content">
+                        Укажите регион, в котором находится магазин или склад.
+                    </div>
+                </help-trigger>
+            </div>
+        </div>
+    </div>
+@*}*@
+<input type="hidden" name="HasRegions" id="HasRegions" value="{{settings.hasRegions}}" />
+
+@*@Html.HiddenFor(x => x.HasRegions)*@
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.City, T("Admin.Settings.Index.City"))
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.City, new { @class = "form-control", ng_model = "settings.city" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Index.City")">
+            <div class="help-content">
+                Укажите город, в котором находится магазин или склад. Этот город будет выбран по умолчанию для клиента, если не удалось определить город клиента.
+            </div>
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.Phone, T("Admin.Settings.Index.Phone"))
+        </div>
+    </div>
+    <div class="col-xs-4 relative">
+        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", ng_model = "settings.phone" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.Index.Phone")">
+            <div class="help-content">
+                Основной телефон магазина, будет показан для всех городов, для которых не задан телефон.<br>
+                <br>
+                Вы так же можете изменить внешний вид номера телефона и указать 2 и более номера - <a href="http://www.advantshop.net/help/pages/phone-change" target="_blank">подробнее</a>
+            </div>
+        </help-trigger>
+        <div>
+            <a target="_blank" href="settingssystem/#?systemTab=countries&locationType=city&gridCity=%7B%22cityCountrys%22:@Model.CountryId%7D">@T("Admin.Settings.Index.ChooseOtherCityPhones")</a>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+﻿@model AdvantShop.Module.RussianPostPrintBlank.Models.OrderInfoTemplatesList
+<div id="orderInfoTemplatesBlock" class="ibox category-block block-additional-parameters" style="display: none;">
+    <div class="ibox-content category-content block-additional-parameters-content border_none">
+        <h3 class="category-title">Печать бланков почты РФ</h3>
+        <div class="block-additional-parameters-row">
+            <div class="block-additional-parameters-name">
+                Шаблоны
+            </div>
+            <div class="block-additional-parameters-value">
+                @Html.DropDownList("ddlOrderInfoTemplatesList", Model.FormTypes, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="block-additional-parameters-row">
+            <div class="block-additional-parameters-name">
+                Предоплата
+            </div>
+            <div class="block-additional-parameters-value">
+                <input type="text" id="txtOrderInfoPrepayment" class="form-control" style="width: 100%;" value="0" />
+            </div>
+        </div>
+        <div>
+            <input type="button" id="orderInfoTemplatesBlockPrint" data-order-info-templates-order-id="@Model.OrderId" class="btn btn-sm btn-success" disabled style="width: 100%;" value="Печать" />
+        </div>
+    </div>
+</div>

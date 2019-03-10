@@ -1,0 +1,267 @@
+﻿@using AdvantShop.Core
+
+@Html.Raw(
+	JsCssTool.MiniJs(new List<string>
+	{
+		//"~/vendors/jquery/jquery-2.1.4.js",
+		"~/vendors/angular/angular.js",
+		"~/vendors/angular/angular-cookies.js",
+		"~/vendors/angular/angular-sanitize.js",
+		"~/vendors/materialClick/materialClick.js",
+		"~/vendors/angular/angular-sanitize.js",
+
+		"~/vendors/angular/i18n/angular-locale_" + SettingsMain.Language +".js",
+
+		"~/vendors/angular-cache/angular-cache.js",
+
+		"~/vendors/angular-ui-mask/mask.js",
+
+		"~/vendors/angular-bind-html-compile/angular-bind-html-compile.js",
+
+		"~/userfiles/" + SettingsMain.Language +".js",
+
+		"~/scripts/_partials/address/address.js",
+		"~/scripts/_partials/address/controllers/addressListController.js",
+		"~/scripts/_partials/address/directives/addressDirectives.js",
+		"~/scripts/_partials/address/services/addressService.js",
+
+		"~/scripts/_partials/bonus/bonus.js",
+		"~/scripts/_partials/bonus/controllers/bonusWhatToDoController.js",
+		"~/scripts/_partials/bonus/controllers/bonusAuthController.js",
+		"~/scripts/_partials/bonus/controllers/bonusRegController.js",
+		"~/scripts/_partials/bonus/controllers/bonusApplyController.js",
+		"~/scripts/_partials/bonus/controllers/bonusInfoController.js",
+		"~/scripts/_partials/bonus/controllers/bonusCodeController.js",
+		"~/scripts/_partials/bonus/directives/bonusDirectives.js",
+		"~/scripts/_partials/bonus/services/bonusService.js",
+
+		"~/scripts/_partials/catalog-filter/catalogFilter.js",
+		"~/scripts/_partials/catalog-filter/controllers/catalogFilterController.js",
+		"~/scripts/_partials/catalog-filter/controllers/catalogFilterSortController.js",
+		"~/scripts/_partials/catalog-filter/directives/catalogFilterDirectives.js",
+		"~/scripts/_partials/catalog-filter/services/catalogFilterService.js",
+
+		"~/scripts/_partials/cookies-policy/cookiesPolicy.js",
+		"~/scripts/_partials/cookies-policy/controllers/cookiesPolicyController.js",
+		"~/scripts/_partials/cookies-policy/directives/cookiesPolicyDirectives.js",
+
+		"~/scripts/_common/popover/popover.js",
+		"~/scripts/_common/popover/controllers/popoverControlController.js",
+		"~/scripts/_common/popover/controllers/popoverController.js",
+		"~/scripts/_common/popover/controllers/PopoverOverlayController.js",
+		"~/scripts/_common/popover/directives/popoverDirectives.js",
+		"~/scripts/_common/popover/services/popoverService.js",
+		"~/scripts/auth/auth.js",
+		"~/scripts/auth/controllers/authController.js",
+		"~/scripts/auth/services/authService.js",
+
+		"~/vendors/angular-translate/angular-translate.js",
+
+		"~/vendors/ng-file-upload/ng-file-upload-all.js",
+
+		"~/vendors/rangeSlider/angular.rangeSlider.js",
+
+		"~/areas/mobile/scripts/_common/uihelper/uihelper.js",
+
+		//"~/areas/mobile/scripts/templatesCache/templatesCache.js",
+
+		"~/areas/mobile/scripts/home/home.js",
+		"~/areas/mobile/scripts/home/controllers/homeController.js",
+
+		"~/scripts/_partials/payment/payment.js",
+		"~/scripts/_partials/payment/controllers/paymentListController.js",
+		"~/scripts/_partials/payment/directives/paymentDirectives.js",
+		"~/scripts/_partials/payment/controllers/paymentTemplateController.js",
+
+
+		"~/scripts/checkout/checkout.js",
+		"~/scripts/checkout/controllers/checkoutController.js",
+		"~/scripts/checkout/services/checkoutService.js",
+
+		"~/scripts/checkoutSuccess/checkoutSuccess.js",
+		"~/scripts/checkoutSuccess/controllers/checkoutSuccessController.js",
+
+
+
+		"~/scripts/preorder/preorder.js",
+		"~/scripts/preorder/controllers/preorderController.js",
+
+
+		"~/scripts/_partials/subscribe/subscribe.js",
+		"~/scripts/_partials/subscribe/controllers/subscribeController.js",
+
+		"~/scripts/_partials/submenu/submenu.js",
+		"~/scripts/_partials/submenu/controllers/submenuParentController.js",
+		"~/scripts/_partials/submenu/controllers/submenuController.js",
+		"~/scripts/_partials/submenu/controllers/submenuContainerController.js",
+		"~/scripts/_partials/submenu/directives/submenuDirectives.js",
+		"~/scripts/_partials/submenu/services/submenuService.js",
+
+		"~/scripts/_partials/videos/videos.js",
+		"~/scripts/_partials/videos/controllers/videoscontroller.js",
+		"~/scripts/_partials/videos/directives/videosdirective.js",
+
+		"~/scripts/_common/validation/validation.js",
+		"~/scripts/_common/validation/directives/validationDirectives.js",
+
+		"~/areas/mobile/scripts/_common/searchPanel/searchPanel.js",
+		"~/areas/mobile/scripts/_common/searchPanel/controllers/searchPanelController.js",
+		"~/areas/mobile/scripts/_common/searchPanel/directives/searchPanelDirectives.js",
+
+		"~/areas/mobile/scripts/_partitials/selectCatalog/selectCatalog.js",
+		"~/areas/mobile/scripts/_partitials/selectCatalog/controllers/selectCatalogController.js",
+
+		"~/areas/mobile/scripts/_partitials/inputSearch/inputSearch.js",
+		"~/areas/mobile/scripts/_partitials/inputSearch/controllers/inputSearchController.js",
+
+		"~/scripts/_common/countdown/countdown.js",
+		"~/scripts/_common/countdown/controllers/countdownController.js",
+		"~/scripts/_common/countdown/directives/countdownDirectives.js",
+
+		"~/scripts/brand/brand.js",
+		"~/scripts/brand/controllers/brandController.js",
+		"~/scripts/brand/services/brandService.js",
+
+		"~/scripts/feedback/feedback.js",
+		"~/scripts/feedback/controllers/feedbackController.js",
+
+		"~/scripts/_common/rating/rating.js",
+		"~/scripts/_common/rating/controllers/ratingController.js",
+		"~/scripts/_common/rating/directives/ratingDirectives.js",
+
+		"~/scripts/_common/tabs/tabs.js",
+		"~/scripts/_common/tabs/controllers/tabsController.js",
+		"~/scripts/_common/tabs/controllers/tabHeaderController.js",
+		"~/scripts/_common/tabs/controllers/tabContentController.js",
+		"~/scripts/_common/tabs/directives/tabsDirectives.js",
+		"~/scripts/_common/tabs/services/tabsService.js",
+		"~/scripts/_common/spinbox/spinbox.js",
+		"~/scripts/_common/spinbox/controllers/spinboxController.js",
+		"~/scripts/_common/spinbox/directives/spinboxDirectives.js",
+
+		"~/scripts/_common/urlhelper/urlHelperService.js",
+		//
+		"~/scripts/_common/autocompleter/autocompleter.js",
+		"~/scripts/_common/autocompleter/controllers/autocompleterController.js",
+		"~/scripts/_common/autocompleter/controllers/autocompleterInputController.js",
+		"~/scripts/_common/autocompleter/controllers/autocompleterListController.js",
+		"~/scripts/_common/autocompleter/controllers/autocompleterItemController.js",
+		"~/scripts/_common/autocompleter/directives/autocompleterDirectives.js",
+		"~/scripts/_common/autocompleter/services/autocompleterService.js",
+		//
+		"~/scripts/_common/input/input.js",
+		"~/scripts/_common/input/directives/inputDirectives.js",
+
+		"~/scripts/_common/readmore/readmore.js",
+		"~/scripts/_common/readmore/controllers/readmoreController.js",
+		"~/scripts/_common/readmore/directives/readmoreComponent.js",
+		"~/scripts/_common/readmore/constants/readmoreConstant.js",
+
+		"~/vendors/ocLazyLoad/ocLazyLoad.js",
+		"~/vendors/magnific-popup/magnific-popup.min.js",
+
+		"~/scripts/_mobile/sidebar/sidebar.js",
+		"~/scripts/_mobile/sidebar/controllers/sidebarController.js",
+		"~/scripts/_mobile/sidebar/services/sidebarService.js",
+
+		"~/areas/mobile/scripts/_common/catalogFilterMobile/catalogFilterMobile.js",
+		"~/areas/mobile/scripts/_common/catalogFilterMobile/controllers/catalogFilterMobileController.js",
+
+		"~/areas/mobile/scripts/_common/citySelector/citySelector.js",
+		"~/areas/mobile/scripts/_common/citySelector/controllers/citySelectorController.js",
+		"~/areas/mobile/scripts/_common/citySelector/directives/citySelectorDirectives.js",
+
+		"~/areas/mobile/scripts/_common/tableResponsive/tableResponsive.js",
+
+		//common scripts
+		"~/vendors/toaster/toaster.js",
+
+		"~/scripts/_partials/shipping/shipping.js",
+		"~/scripts/_partials/shipping/controllers/shippingListController.js",
+		"~/scripts/_partials/shipping/controllers/shippingVariantsController.js",
+		"~/scripts/_partials/shipping/controllers/shippingTemplateController.js",
+		"~/scripts/_partials/shipping/directives/shippingDirectives.js",
+
+		"~/scripts/_common/carousel/carouselNative.js",
+		"~/scripts/_common/carousel/carousel.js",
+		"~/scripts/_common/carousel/controllers/carouselController.js",
+		"~/scripts/_common/carousel/directives/carouselDirectives.js",
+		"~/scripts/_common/carousel/services/carouselService.js",
+
+		"~/scripts/_partials/cart/cart.js",
+		"~/scripts/_partials/cart/controllers/cartMiniController.js",
+		"~/scripts/_partials/cart/controllers/cartFullController.js",
+		"~/scripts/_partials/cart/controllers/cartMobileFullController.js",
+		"~/scripts/_partials/cart/controllers/cartAddMobileController.js",
+		"~/scripts/_partials/cart/controllers/cartPreorderController.js",
+		"~/scripts/_partials/cart/controllers/cartCountController.js",
+		"~/scripts/_partials/cart/controllers/cartConfirmController.js",
+		"~/scripts/_partials/cart/directives/cartDirectives.js",
+		"~/scripts/_partials/cart/services/cartService.js",
+
+		"~/scripts/_partials/sizes-viewer/sizesViewer.js",
+		"~/scripts/_partials/sizes-viewer/controllers/sizesViewerController.js",
+		"~/scripts/_partials/sizes-viewer/directives/sizesViewerDirectives.js",
+
+		"~/scripts/_partials/colors-viewer/colorsViewer.js",
+		"~/scripts/_partials/colors-viewer/controllers/colorsViewerController.js",
+		"~/scripts/_partials/colors-viewer/directives/colorsViewerDirectives.js",
+
+		"~/scripts/_partials/cards/cards.js",
+		"~/scripts/_partials/cards/controllers/cardsremovecontroller.js",
+		"~/scripts/_partials/cards/controllers/cardsFormController.js",
+		"~/scripts/_partials/cards/services/cardsService.js",
+		"~/scripts/_partials/cards/directives/cardsDirectives.js",
+
+		"~/scripts/_partials/reviews/reviews.js",
+		"~/scripts/_partials/reviews/controllers/reviewsController.js",
+		"~/scripts/_partials/reviews/controllers/reviewsFormController.js",
+		"~/scripts/_partials/reviews/directives/reviewsDirectives.js",
+
+		"~/scripts/_partials/custom-options/customOptions.js",
+		"~/scripts/_partials/custom-options/controllers/customOptionsController.js",
+		"~/scripts/_partials/custom-options/directives/customOptionsDirectives.js",
+		"~/scripts/_partials/custom-options/services/customOptionsService.js",
+
+		"~/scripts/product/product.js",
+		"~/scripts/product/controllers/productController.js",
+		"~/scripts/product/services/productService.js",
+		//
+
+		"~/scripts/_common/dom/dom.js",
+		"~/scripts/_common/dom/services/domService.js",
+
+		"~/scripts/_common/window/window.js",
+		"~/scripts/_common/window/controllers/windowController.js",
+		"~/scripts/_common/window/directives/windowDirectives.js",
+		"~/scripts/_common/window/services/windowService.js",
+
+		"~/scripts/_partials/catalog-filter/catalogFilter.js",
+		"~/scripts/_partials/catalog-filter/services/catalogFilterService.js",
+
+		"~/scripts/_common/modal/modal.js",
+		"~/scripts/_common/modal/services/modalService.js",
+		"~/scripts/_common/modal/controllers/modalController.js",
+		"~/scripts/_common/modal/directives/modalDirectives.js",
+
+		"~/scripts/_partials/zone/zone.js",
+		"~/scripts/_partials/zone/controllers/zoneController.js",
+		"~/scripts/_partials/zone/controllers/zonePopoverController.js",
+		"~/scripts/_partials/zone/directives/zoneDirectives.js",
+		"~/scripts/_partials/zone/services/zoneService.js",
+
+		"~/scripts/_partials/magnificPopupWrapper/magnificPopupWrapper.js",
+		"~/scripts/_partials/magnificPopupWrapper/directives/magnificPopupWrapperDirective.js",
+
+		"~/vendors/angular/angular-sanitize.js",
+
+		"~/vendors/ladda/spin.min.js",
+		"~/vendors/ladda/ladda.min.js",
+		"~/vendors/angular-ladda/angular-ladda.min.js",
+
+		"~/scripts/billing/billing.js",
+		"~/scripts/billing/controllers/billingController.js",
+
+		//from mobile
+		"~/areas/mobile/scripts/app.js",
+	}, "mobile.js"))

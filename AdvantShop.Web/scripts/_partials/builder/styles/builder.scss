@@ -1,0 +1,83 @@
+﻿@import "../../../../styles/functions/_util.scss", "../../../../styles/_settings.scss";
+
+.builder-dialog {
+    max-width: rem-calc(550px);
+}
+
+.builder-right-block {
+    padding-left: rem-calc(40px);
+}
+
+.builder-structure {
+    margin-bottom: $margin-value-base;
+}
+
+.builder-structure-head {
+    height: rem-calc(12px);
+}
+
+$structureBody: rem-calc(30px);
+$structure-blockMargin: rem-calc(1px);
+
+.builder-structure-body {
+    height: $structureBody;
+}
+
+.builder-structure-half-body {
+    height: $structureBody/2 - $structure-blockMargin*2;
+}
+
+.builder-structure-block {
+    border: 1px #0662c1 dashed;
+    margin: $structure-blockMargin;
+    background-color: #fff;
+}
+
+.builder-structure-item {
+    width: rem-calc(95px);
+    border: 5px #fff solid;
+    display: inline-block;
+    vertical-align: middle;
+    outline: 1px solid #eee;
+}
+
+.builder-checkbox {
+    margin: 0;
+}
+
+.builder-checkbox-native:checked ~ .builder-structure-item {
+    border-color: #f8c312;
+}
+
+.builder-structure-text {
+    font-size: $font-size-small;
+    line-height: 1.1;
+}
+
+.builder-structure-default {
+    padding-right: rem-calc(5px);
+}
+
+.builder-structure-twocolumns {
+    padding-left: rem-calc(5px);
+}
+
+.builder-structure-item {
+
+    .row {
+        margin: 0;
+    }
+
+    .col-xs-12, .col-xs-6, .col-xs-3, .col-xs-4, .col-xs-8 {
+        padding: 0;
+    }
+}
+
+.builder-structure > .row > .col-xs-3 {
+    padding: 0;
+    margin-top: 10px;
+}
+
+.builder-logo-generator {
+    padding-left: 40px;
+}

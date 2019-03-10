@@ -1,0 +1,299 @@
+﻿<div class="m-t-md">
+    <div class="row m-b-md">
+        <div class="col-xs">
+            <div class="text-right">
+                Стоимость заказа
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="$ctrl.Summary.ProductsCostStr"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-md">
+        <div class="col-xs">
+            <div class="text-right">
+
+                <div ng-switch="$ctrl.isEdit === true">
+                    <div ng-switch-when="true">
+                        <a href="" uib-popover-template="'orderDiscountPopover.html'"
+                           popover-trigger="'none'"
+                           popover-is-open="$ctrl.discountPopoverIsOpen"
+                           ng-click="$ctrl.discountPopoverToggle()"
+                           ng-bind="$ctrl.Summary.OrderDiscount != 0 || $ctrl.Summary.OrderDiscountValue != 0 ?  'Скидка' : 'Добавить скидку'"></a>
+                        <script type="text/ng-template" id="orderDiscountPopover.html">
+                            <form name="orderFormDiscount">
+                                <div class="m-b-xs bold">Укажите скидку</div>
+                                <div class="input-group m-b">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" value="0" ng-click="$ctrl.toggleselectCurrencyLabel('0')" ng-class="{'label-currency-active':$ctrl.selectCurrency === '0'}"><span>{{$ctrl.Summary.OrderCurrency.CurrencySymbol}}</span></button>
+                                        <button type="button" class="btn btn-default" value="1" ng-click="$ctrl.toggleselectCurrencyLabel('1')" ng-class="{'label-currency-active':$ctrl.selectCurrency === '1'}"><span>%</span></button>
+                                    </span>
+                                    <input type="number" value="" class="form-control" ng-model="$ctrl.OrderDiscountNew" ng-keyup="$event.keyCode === 13 && $ctrl.changeDiscount($ctrl.OrderDiscountNew)" autofocus />
+                                </div>
+                                <div class="clearfix">
+                                    <input type="button" value="Применить" class="btn btn-sm btn-success pull-left" ng-click="$ctrl.changeDiscount($ctrl.OrderDiscountNew)" />
+                                    <input type="button" value="Отмена" class="btn btn-sm btn-action pull-right" ng-click="$ctrl.discountPopoverClose()" />
+                                </div>
+                            </form>
+                        </script>
+                    </div>
+                    <div ng-switch-when="false">
+                        <a href=""
+                           ng-click="$ctrl.onStopEdit({})"
+                           ng-bind="$ctrl.Summary.OrderDiscount > 0 || $ctrl.Summary.OrderDiscountValue != 0 ?  'Скидка' : 'Добавить скидку'"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="'- ' + $ctrl.Summary.ProductsDiscountPriceStr"></span>
+            <span ng-if="$ctrl.Summary.OrderDiscount > 0" class="order-discount" ng-bind="'(' + $ctrl.Summary.OrderDiscount + '%)'"></span>
+        </div>
+    </div>
+
+
+    <div class="row m-b-md" ng-if="$ctrl.Summary.Certificate != null">
+        <div class="col-xs">
+            <div class="text-right">
+                Сертификат
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="'- ' + $ctrl.Summary.CertificatePriceStr"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-md" ng-if="$ctrl.Summary.Coupon != null">
+        <div class="col-xs">
+            <div class="text-right">
+                Купон
+                <div ng-bind="$ctrl.Summary.Coupon"></div>
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="'- ' + $ctrl.Summary.CouponPriceStr"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-md ng-cloak" ng-if="!$ctrl.Summary.CanChangeBonusAmount && $ctrl.Summary.BonusCost != 0">
+        <div class="col-xs">
+            <div class="text-right">
+                Бонусы
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="'- ' + $ctrl.Summary.BonusCost"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-md ng-cloak" ng-if="$ctrl.Summary.CanChangeBonusAmount">
+        <div class="col-xs">
+            <div class="text-right">
+
+                <a href="" uib-popover-template="'orderBonusesPopover.html'" popover-trigger="'none'" popover-is-open="$ctrl.bonusesPopoverIsOpen"
+                   ng-click="$ctrl.bonusesPopoverToggle()" data-e2e="BonusPay">
+                    Оплата бонусами
+                </a>
+
+                <script type="text/ng-template" id="orderBonusesPopover.html">
+                    <form name="orderFormBonuses">
+                        <div class="m-b-xs bold" data-e2e="BonusesAvailable">Использовать бонусы <br>(доступно {{$ctrl.Summary.BonusesAvailable}} бонусов)</div>
+                        <div class="m-b">
+                            <input type="number" value="" class="form-control" ng-model="$ctrl.Summary.BonusesUseNew" ng-keyup="$event.keyCode === 13 && $ctrl.useBonuses($ctrl.Summary.BonusesUseNew)" autofocus data-e2e="BonusesUseAdd" />
+                        </div>
+                        <div class="clearfix">
+                            <input type="button" value="Использовать" class="btn btn-sm btn-success pull-left m-r" ng-click="$ctrl.useBonuses($ctrl.Summary.BonusesUseNew)" data-e2e="BonusesUse" />
+                            <input type="button" value="Отмена" class="btn btn-sm btn-action pull-right" ng-click="$ctrl.bonusesPopoverClose()" data-e2e="BonusesUseCancel" />
+                        </div>
+                    </form>
+                </script>
+
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="'- ' + $ctrl.Summary.BonusCost" data-e2e="BonusCost"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-md">
+        <div class="col-xs">
+            <div class="text-right">
+
+                <div class="relative inline"
+                     ng-mouseenter="$ctrl.popoverShippingOpen()"
+                     ng-mouseleave="$ctrl.popoverShippingClose()">
+
+                    <a class="shippings-actions-toggle"
+                       href=""
+                       popover-trigger="'none'"
+                       uib-popover-template="'shippingPopover'"
+                       popover-is-open="$ctrl.popoverShippingIsOpen"
+                       popover-placement="bottom-left">
+                        <i class="fa fa-cog"></i>
+                    </a>
+
+                    <script type="text/ng-template" id="shippingPopover">
+                        <div class="nav text-nowrap">
+                            <ui-modal-trigger size="fixed-530" data-controller="'ModalShippingsTimeCtrl'" data-controller-as="ctrl"
+                                              data-resolve="{ obj: { id: $ctrl.orderId }}"
+                                              data-on-close="$ctrl.getOrderItemsSummary()"
+                                              template-url="../areas/admin/content/src/order/modal/shippingsTime/shippingsTime.html">
+                                <a href="" class="m-t-xs m-b-xs block fs-xs">
+                                    Дата и время доставки
+                                </a>
+                            </ui-modal-trigger>
+                        </div>
+                        <div ng-switch="$ctrl.Summary.ShippingType" class="nav text-nowrap">
+                            <div ng-switch-when="sdek">
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.createSdekOrder()">Отправить заказ в систему СДЭК</a>
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.sdekOrderReportStatus()">Скачать отчет «Статусы заказов»</a>
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.sdekReportOrderInfo()">Скачать отчет «Информация по заказам»</a>
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.sdekOrderPrintForm()">Скачать печатную форму квитанции к заказу</a>
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.sdekCallCustomer()">Прозвон получателя</a>
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.sdekDeleteOrder()">Удалить заказ из системы СДЭК</a>
+                            </div>
+
+                            <div ng-switch-when="checkoutru">
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.createCheckoutRuOrder()">Отправить заказ в систему Checkout.ru</a>
+                            </div>
+
+                            <div ng-switch-when="yandexdelivery">
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.createYandexDeliveryOrder()">Создать черновик заказа в Яндекс Доставке</a>
+                            </div>
+
+                            <div ng-switch-when="boxberry">
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.createBoxberryOrder()">Создать черновик заказа в Boxberry</a>
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.deleteBoxberryOrder()">Удалить черновик заказа в Boxberry</a>
+                            </div>
+
+                            <div ng-switch-when="grastin">
+                                <div ng-include="$ctrl.grastinActionsUrl"></div>
+                            </div>
+
+                            <div ng-switch-when="ddelivery">
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.createDdeliveryOrder()">Создать черновик заказа в DDelivery</a>
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.getDdeliveryOrderInfo()">Информация о заказе в DDelivery</a>
+                                <a href="" class="m-t-xs m-b-xs block fs-xs" ng-click="$ctrl.canselDdeliveryOrder()">Закрыть заказ в DDelivery</a>                                
+                            </div>
+                        </div>
+                    </script>
+                </div>
+
+                <div class="relative inline" ng-switch="$ctrl.isEdit === true">
+                    <div ng-switch-when="true">
+                        <ui-modal-trigger size="middle" data-controller="'ModalShippingsCtrl'" data-controller-as="ctrl"
+                                          data-resolve="{ order: { orderId: $ctrl.orderId, country: $ctrl.country, region: $ctrl.region, city: $ctrl.city, zip: $ctrl.zip }}"
+                                          data-on-close="$ctrl.changeShipping(result)"
+                                          template-url="../areas/admin/content/src/order/modal/shippings/shippings.html">
+                            <a href="">Доставка</a>
+                        </ui-modal-trigger>
+                    </div>
+                    <div ng-switch-when="false">
+                        <a href="" ng-click="$ctrl.onStopEdit({})">Доставка</a>
+                    </div>
+                </div>
+
+                <div ng-bind="$ctrl.Summary.ShippingName" class="m-b-xs"></div>
+                <div class="order-modal-descr m-b-sm" ng-if="$ctrl.Summary.OrderPickPoint != null">
+                    {{$ctrl.Summary.OrderPickPoint.PickPointAddress}}
+                </div>
+                <div class="m-b-sm" ng-if="$ctrl.Summary.DeliveryDate != null || ($ctrl.Summary.DeliveryTime != null && $ctrl.Summary.DeliveryTime.length > 0)">
+                    Дата доставки:
+                    <ui-modal-trigger size="fixed-530" data-controller="'ModalShippingsTimeCtrl'" data-controller-as="ctrl"
+                                      data-resolve="{ obj: { id: $ctrl.orderId }}"
+                                      data-on-close="$ctrl.getOrderItemsSummary()"
+                                      template-url="../areas/admin/content/src/order/modal/shippingsTime/shippingsTime.html">
+                        <a href="">{{$ctrl.Summary.DeliveryDate}}</a>
+                    </ui-modal-trigger>
+                    {{$ctrl.Summary.DeliveryTime}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            + <span ng-bind="$ctrl.Summary.ShippingCostStr"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-md">
+        <div class="col-xs">
+            <div class="text-right">
+
+                <div ng-switch="$ctrl.isEdit === true">
+                    <div ng-switch-when="true">
+                        <ui-modal-trigger size="lg" data-controller="'ModalPaymentsCtrl'" data-controller-as="ctrl"
+                                          data-resolve="{ order: { orderId: $ctrl.orderId, country: $ctrl.country, region: $ctrl.region, city: $ctrl.city }}"
+                                          data-on-close="$ctrl.changePayment(result)"
+                                          template-url="../areas/admin/content/src/order/modal/payments/payments.html">
+                            <a href="">Оплата</a>
+                        </ui-modal-trigger>
+                    </div>
+                    <div ng-switch-when="false">
+                        <a href="" ng-click="$ctrl.onStopEdit({})">Оплата</a>
+                    </div>
+                </div>
+
+                <div ng-bind="$ctrl.Summary.PaymentName" class="m-b-xs"></div>
+
+                <div ng-if="$ctrl.Summary.ShowSendBillingLink" class="m-b-xs">
+                    <ui-modal-trigger data-controller="'ModalGetBillingLinkCtrl'" data-controller-as="ctrl"
+                                      data-resolve="{params: { orderId: $ctrl.orderId }}"
+                                      template-url="../areas/admin/content/src/order/modal/getBillingLink/getBillingLink.html">
+                        <a href="">Ссылка на оплату</a>
+                    </ui-modal-trigger>
+                </div>
+
+                <div class="order-modal-descr" ng-if="$ctrl.Summary.PaymentDetails != null || ctrl.Summary.ShowPrintPaymentDetails">
+                    <div class="m-b-xs" ng-if="$ctrl.Summary.PaymentKey == 'sberbank' || $ctrl.Summary.PaymentKey == 'bill'">
+                        Инн: <input type="text" class="form-control payment-details-item" ng-model="$ctrl.Summary.PaymentDetails.INN" />
+                    </div>
+                    <div class="m-b-xs" ng-if="$ctrl.Summary.PaymentKey == 'bill'">
+                        Название компании: <input type="text" class="form-control payment-details-item" ng-model="$ctrl.Summary.PaymentDetails.CompanyName" />
+                    </div>
+                    <div class="m-b-xs" ng-if="$ctrl.Summary.PaymentKey == 'qiwi'">
+                        Телефон: <input type="text" class="form-control payment-details-item" ng-model="$ctrl.Summary.PaymentDetails.Phone" />
+                    </div>
+                    <div ng-if="$ctrl.Summary.ShowPrintPaymentDetails">
+                        <a target="_blank" href="{{$ctrl.getPaymentDetailsLink()}}">{{$ctrl.Summary.PrintPaymentDetailsText}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            + <span ng-bind="$ctrl.Summary.PaymentCostStr"></span> (наценка)
+        </div>
+    </div>
+
+    <div class="row m-b-md" ng-if="$ctrl.Summary.Taxes != null" ng-repeat="tax in $ctrl.Summary.Taxes track by $index">
+        <div class="col-xs">
+            <div class="text-right" ng-bind-html="tax.Key"></div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind-html="tax.Value"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-md bold">
+        <div class="col-xs">
+            <div class="text-right">
+                Итого
+            </div>
+        </div>
+        <div class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="$ctrl.Summary.SumStr" data-e2e="OrderSum"></span>
+        </div>
+    </div>
+
+    <div class="row m-b-xs" ng-if="$ctrl.Summary.BonusCardPurchase != null">
+        <div class="col-xs">
+            <div data-e2e="NameBonus" class="text-right">
+                <span ng-if="$ctrl.Summary.BonusCardPurchase.Status == 1">Бонусов зачислено на карту</span>
+                <span ng-if="$ctrl.Summary.BonusCardPurchase.Status != 1">Бонусов будет начислено на карту<br> после оплаты заказа</span>
+            </div>
+        </div>
+        <div data-e2e="CountBonus" class="col-xs flex-grow-n order-items-summary-col-value">
+            <span ng-bind="$ctrl.Summary.BonusCardPurchase.NewBonusAmount.toFixed(2)"></span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿@using AdvantShop.Core.Common.Extensions;
+@model AdvantShop.Web.Admin.Models.ExportFeeds.ExportFeedModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper" ng-init="exportFeeds.initProgress()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="m-b-md">
+                <div class="sticky-page-name" sticky sticky-top="0">
+                    <div class="page-name-block-item-main sticky-page-name-inner">
+                        <div class="page-name-block-item">
+                            <h1 class="page-name-block-text sticky-page-name-text">
+                                @Model.Name
+                                <br />
+                                @Model.Type.Localize()
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ibox">
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <uib-progressbar max="exportFeeds.progressTotal" value="exportFeeds.progressValue">
+                        <span style="color:white; white-space:nowrap;"><span ng-bind="exportFeeds.progressValue" data-e2e="ExportCountValue"></span> / <span ng-bind="exportFeeds.progressTotal" data-e2e="ExportCountTotal"></span></span>
+                    </uib-progressbar>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        Текущий процесс: 
+                        <a class="link-decoration-none" ng-href="{{exportFeeds.progressCurrentProcess}}" ng-bind="exportFeeds.progressCurrentProcessName"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" ng-if="!exportFeeds.IsRun">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="setting-label-wrap">
+                            Данные успешно экспортированы.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" ng-if="!exportFeeds.IsRun">
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <a ng-href="{{exportFeeds.FileName}}" target="_blank" download>@(Model.ExportFeedSettings.FileName+"."+ Model.ExportFeedSettings.FileExtention)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" ng-if="!exportFeeds.IsRun">
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <a ng-href="{{exportFeeds.FileName}}" class="btn btn-sm btn-success" target="_blank" download>@T("Скачать файл")</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <a class="link-decoration-none" href="exportFeeds/index/@Model.Id">Вернуться к экспорту</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

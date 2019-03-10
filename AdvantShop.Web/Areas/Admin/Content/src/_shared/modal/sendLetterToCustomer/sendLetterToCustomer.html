@@ -1,0 +1,38 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Письмо покупателю: {{ctrl.email}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">
+                            Тема письма
+                        </span>
+                    </label>
+                    <div class="col-xs-9 control-label">
+                        <input type="text" ng-model="ctrl.subject" class="form-control" required autofocus validation-input-text="Тема письма"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">
+                            Текст письма
+                        </span>
+                    </label>
+                    <div class="col-xs-9 control-label">
+                        <textarea ng-model="ctrl.text" class="wysiwyg" ckeditor="{height: 250}" required validation-input-text="Текст письма"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.send()" data-button-validation>Отправить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

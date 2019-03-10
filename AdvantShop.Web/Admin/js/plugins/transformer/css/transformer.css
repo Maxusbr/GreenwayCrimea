@@ -1,0 +1,6 @@
+.transformer-full .transformer-visible-full, .transformer-compact .transformer-visible-compact{
+    display:block;
+}
+.transformer-full .transformer-visible-compact,.transformer-compact .transformer-visible-full{
+    display:none;
+}

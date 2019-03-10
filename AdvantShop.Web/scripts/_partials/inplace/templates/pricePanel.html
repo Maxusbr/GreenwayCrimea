@@ -1,0 +1,16 @@
+﻿<div class="inplace-price-panel" data-ng-show="inplacePricePanel.inplacePrice.isShow && (inplacePricePanel.inplacePrice.product.colorSelected || inplacePricePanel.inplacePrice.product.sizeSelected)">
+    <div class="inplace-price-panel-item" data-ng-if="inplacePricePanel.inplacePrice.product.colorSelected">
+        {{ ::'Js.Inplace.Color' | translate }}:
+        <div class="inplace-price-panel-color-value"
+             data-colors-viewer
+             data-color-selected="inplacePricePanel.inplacePrice.product.colorSelected"
+             data-colors="[inplacePricePanel.inplacePrice.product.colorSelected]"
+             data-color-width="::'18px'"
+             data-color-height="::'18px'"
+             data-multiselect="false"
+             data-image-type="Details"></div>
+    </div>
+    <div class="inplace-price-panel-item" data-ng-if="inplacePricePanel.inplacePrice.product.sizeSelected">
+        {{ ::'Js.Inplace.Size' | translate }}: <span class="inplace-price-panel-size-value">{{inplacePricePanel.inplacePrice.product.sizeSelected.SizeName}}</span>
+    </div>
+</div>

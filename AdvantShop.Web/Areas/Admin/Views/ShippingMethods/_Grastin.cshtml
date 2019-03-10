@@ -1,0 +1,392 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.GrastinShippingModel
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.Grastin.APIkey")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.ApiKey, new { ng_model = "shippingMethod.Params.ApiKey", @class = "form-control", required = "required", validation_input_text = T("Admin.ShippingMethods.Grastin.APIkey") })
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.Grastin.PrefixToOrder")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.OrderPrefix, new { ng_model = "shippingMethod.Params.OrderPrefix", @class = "form-control", required = "required", validation_input_text = T("Admin.ShippingMethods.Grastin.PrefixToOrder") })
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.Grastin.PaymentForDelivery")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.TypePaymentDelivery, Model.TypesPaymentDelivery, new { ng_model = "shippingMethod.Params.TypePaymentDelivery", @class = "form-control", required = "required", validation_input_text = T("Admin.ShippingMethods.Grastin.PaymentForDelivery") })
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.Grastin.PaymentForSelfDelivery")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.TypePaymentPickup, Model.TypesPaymentPickup, new { ng_model = "shippingMethod.Params.TypePaymentPickup", @class = "form-control", required = "required", validation_input_text = T("Admin.ShippingMethods.Grastin.PaymentForSelfDelivery") })
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.DepartureCity")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.WidgetFromCity, Model.ListCities, new {ng_model = "shippingMethod.Params.WidgetFromCity", ng_init = "shippingMethod.Params.WidgetFromCity='" + Model.WidgetFromCity + "'", @class = "form-control", validation_input_text = T("Admin.ShippingMethods.Grastin.DepartureCity") })
+    </div>
+</div>
+
+@*<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Тип расчета</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.TypeCalc, Model.ListTypesCalc, new {ng_model = "shippingMethod.Params.TypeCalc", @class = "form-control", required = "required", validation_input_text = "Тип расчета"})
+    </div>
+</div>*@
+@Html.HiddenFor(x => x.TypeCalc, new { ng_model = "shippingMethod.Params.TypeCalc" })
+@Html.HiddenFor(x => x.ApiKey, new { ng_model = "shippingMethod.Params.ExistApi" })
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '0' && shippingMethod.Params.ExistApi">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.AgreementInMoscow")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.MoscowRegionId, Model.ListRegionIds, new { ng_model = "shippingMethod.Params.MoscowRegionId", ng_init = "shippingMethod.Params.MoscowRegionId='" + Model.MoscowRegionId + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '0' && shippingMethod.Params.ExistApi">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.AgreementInStPetersburg")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.SaintPetersburgRegionId, Model.ListRegionIds, new { ng_model = "shippingMethod.Params.SaintPetersburgRegionId", ng_init = "shippingMethod.Params.SaintPetersburgRegionId='" + Model.SaintPetersburgRegionId + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '0' && shippingMethod.Params.ExistApi">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.NizhnyNovgorod")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.NizhnyNovgorodRegionId, Model.ListRegionIds, new { ng_model = "shippingMethod.Params.NizhnyNovgorodRegionId", ng_init = "shippingMethod.Params.NizhnyNovgorodRegionId='" + Model.NizhnyNovgorodRegionId + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '0' && shippingMethod.Params.ExistApi">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.Orel")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.OrelRegionId, Model.ListRegionIds, new { ng_model = "shippingMethod.Params.OrelRegionId", ng_init = "shippingMethod.Params.OrelRegionId='" + Model.OrelRegionId + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '0' && shippingMethod.Params.ExistApi">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.BoxberryContract")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.BoxberryRegionId, Model.ListRegionIds, new { ng_model = "shippingMethod.Params.BoxberryRegionId", ng_init = "shippingMethod.Params.BoxberryRegionId='" + Model.BoxberryRegionId + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '0'">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.Grastin.DeliveryMethods")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.ListBoxFor(x => x.ActiveDeliveryTypes, Model.ListDeliveryTypes, new { ng_model = "shippingMethod.Params.ActiveDeliveryTypes", ng_init = "shippingMethod.Params.ActiveDeliveryTypes='" + string.Join(",", Model.ActiveDeliveryTypes) + "'", @class = "form-control", required = "required", validation_input_text = T("Admin.ShippingMethods.Grastin.DeliveryMethods"), size = 2 })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="">
+            @T("Admin.ShippingMethods.Grastin.SelectSeveralOptions")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '0'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippinhMethods.Grastin.WithInsurance")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.Insure, new { ng_model = "shippingMethod.Params.Insure", @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.HidePartners")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.ListBoxFor(x => x.WidgetHidePartners, Model.ListPartners, new { ng_model = "shippingMethod.Params.WidgetHidePartners", ng_init = "shippingMethod.Params.WidgetHidePartners='" + string.Join(",", Model.WidgetHidePartners) + "'", @class = "form-control", validation_input_text = T("Admin.ShippingMethods.Grastin.HidePartners"), size = 5 })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="">
+            @T("Admin.ShippingMethods.Grastin.SelectSeveralOptions")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.HideCityOfDeparture")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.WidgetFromCityHide, new { ng_model = "shippingMethod.Params.WidgetFromCityHide", @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.ProhibitChangeDepartureCity")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.WidgetFromCityNoChange, new { ng_model = "shippingMethod.Params.WidgetFromCityNoChange", @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.DoNotShowShippingCost")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.WidgetHideCost, new { ng_model = "shippingMethod.Params.WidgetHideCost", @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.DoNotShowDeliveryTime")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.WidgetHideDuration, new { ng_model = "shippingMethod.Params.WidgetHideDuration", @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.TypeOfExtraCharge")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.WidgetExtrachargeTypen, Model.ExtrachargeTypes, new { ng_model = "shippingMethod.Params.WidgetExtrachargeTypen", ng_init = "shippingMethod.Params.WidgetExtrachargeTypen='" + Model.WidgetExtrachargeTypen + "'", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.Grastin.TypeOfExtraCharge")">
+            <p>@T("Admin.ShippingMethods.Grastin.SpecifyTypeOfExtraCharge")</p>
+            <p>@T("Admin.ShippingMethods.Grastin.FixedNumberExample100")</p>
+            <p>@T("Admin.ShippingMethods.Grastin.PercentageIfPercentageExample3")</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.ExtraCharge")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.WidgetExtracharge, new { ng_model = "shippingMethod.Params.WidgetExtracharge", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.Grastin.ExtraCharge")">
+            <p>@T("Admin.ShippingMethods.Grastin.SpecifyTypeOfExtraCharge")</p>
+            <p>@T("Admin.ShippingMethods.Grastin.FixedNumberExample100")</p>
+            <p>@T("Admin.ShippingMethods.Grastin.PercentageIfPercentageExample3")</p>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.AddDaysToDeliveryTime")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.WidgetAddDuration, new { ng_model = "shippingMethod.Params.WidgetAddDuration", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.TypeCalc === '1'">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.ProhibitShowingPartnersInSpecificCities")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.WidgetHidePartnersJson, new { ng_model = "shippingMethod.Params.WidgetHidePartnersJson", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.Grastin.ProhibitShowingPartnersInSpecificCities")">
+            @T("Admin.ShippingMethods.Grastin.Example"){"@T("Admin.ShippingMethods.Grastin.ExampleStPetersburg")":["grastin","hermes"],"@T("Admin.ShippingMethods.Grastin.Example.Tver")":["boxberry"]}
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.CreatePaymentMethodPaymentByCourier")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.EnabledCod, new { ng_model = "shippingMethod.Params.EnabledCOD", ng_init = "shippingMethod.Params.EnabledCOD=" + Model.EnabledCod.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.CreatePaymentUponReceiptOfAnOrder")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.EnabledPickPoint, new { ng_model = "shippingMethod.Params.EnabledPickPoint", ng_init = "shippingMethod.Params.EnabledPickPoint=" + Model.EnabledPickPoint.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.SynchronizeOrderStatuses")
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.StatusesSync, new { ng_model = "shippingMethod.Params.StatusesSync", ng_init = "shippingMethod.Params.StatusesSync=" + Model.StatusesSync.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+    </div>
+</div>
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md font-bold">
+        @T("Admin.ShippingMethods.Grastin.Statuses")
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.DraftAcceptedViaAPI")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusDraft, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusDraft", ng_init = "shippingMethod.Params.StatusDraft='" + Model.StatusDraft + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.ConsideredByLogistician")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusNew, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusNew", ng_init = "shippingMethod.Params.StatusNew='" + Model.StatusNew + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.Return")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusReturn, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusReturn", ng_init = "shippingMethod.Params.StatusReturn='" + Model.StatusReturn + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.Completed")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusDone, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusDone", ng_init = "shippingMethod.Params.StatusDone='" + Model.StatusDone + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.OnDelivery")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusShipping, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusShipping", ng_init = "shippingMethod.Params.StatusShipping='" + Model.StatusShipping + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.OrderWasReceivedAtTheWarehouse")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusReceived, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusReceived", ng_init = "shippingMethod.Params.StatusReceived='" + Model.StatusReceived + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.OrderCancelled")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusCanceled, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusCanceled", ng_init = "shippingMethod.Params.StatusCanceled='" + Model.StatusCanceled + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.OrderIsPreparedForShipment")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusPreparedForShipment, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusPreparedForShipment", ng_init = "shippingMethod.Params.StatusPreparedForShipment='" + Model.StatusPreparedForShipment + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.ProblemOrder")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusProblem, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusProblem", ng_init = "shippingMethod.Params.StatusProblem='" + Model.StatusProblem + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.ReturnedToClient")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusReturnedToCustomer, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusReturnedToCustomer", ng_init = "shippingMethod.Params.StatusReturnedToCustomer='" + Model.StatusReturnedToCustomer + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs" ng-if="shippingMethod.Params.StatusesSync">
+    <div class="flex-grow-n col-fixed-size-md">
+        @T("Admin.ShippingMethods.Grastin.WrittenOff")
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.StatusDecommissioned, Model.ListStatuses, new { ng_model = "shippingMethod.Params.StatusDecommissioned", ng_init = "shippingMethod.Params.StatusDecommissioned='" + Model.StatusDecommissioned + "'", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">@T("Admin.ShippingMethods.Grastin.Weight")</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultWeight, new { ng_model = "shippingMethod.Params.DefaultWeight", @class = "form-control", required = "required", validation_input_text = T("Admin.ShippingMethods.Grastin.Weight") })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.Grastin.ProductWeight")">
+            @T("Admin.ShippingMethods.Grastin.ProductWeightWillAssume")<br><br>
+            @T("Admin.ShippingMethods.Grastin.ValueIsSpecifiedInKg")<br><br>
+            @T("Admin.ShippingMethods.Grastin.ForExample1or02")
+        </help-trigger>
+    </div>
+</div>
+
+@Html.Hidden("ShipIdCod", Model.ShipIdCod)
+@Html.Hidden("ShipIdPickPoint", Model.ShipIdPickPoint)

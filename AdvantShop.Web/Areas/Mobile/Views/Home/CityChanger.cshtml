@@ -1,0 +1,9 @@
+﻿@model AdvantShop.Areas.Mobile.Models.Home.CityChangerMobileViewModel
+<div class="search-cell">
+    <span data-ng-controller="CitySelectorCtrl as csCtrl">
+        <a class="link-dashed cs-l-ds-7" href="" ng-click="csCtrl.changeCity($event)" data-ng-show="@(SettingsDesign.DisplayCityInTopPanel.ToString().ToLower()) || csCtrl.curZone.city.length > 0">
+            <span data-zone-current data-ng-bind="zone.City" data-start-city="@Model.CityName"></span>
+        </a>
+        <span class="icon-down-open-big-after cs-l-1"></span>
+    </span>
+</div>

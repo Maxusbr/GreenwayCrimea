@@ -1,0 +1,13 @@
+﻿@model AdvantShop.ViewModel.Managers.DepartmentsListViewModel
+
+<div class="news-categories">
+    <a href="@Url.AbsoluteRouteUrl("Managers")" class="news-menu-link @Html.Raw(Model.Selected == 0 ? "cs-bg-3" : "") link-text-decoration-none">@T("Managers.DepartmentsList.AllDepartments")</a>
+    @if (Model.Departments != null && Model.Departments.Count > 0)
+    {        
+        foreach (var department in Model.Departments)
+        {
+            <a href="@Url.AbsoluteRouteUrl("Managers", new { departmentId = department.DepartmentId })" class="news-menu-link @Html.Raw(@Model.Selected == @department.DepartmentId ? "cs-bg-3" : "") link-text-decoration-none">@Html.Raw(@department.Name)</a>
+        }
+    }
+
+</div>

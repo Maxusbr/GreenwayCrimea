@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html data-ng-strict-di data-ng-app="app" @Html.GetNgController()>
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="AdVantShop.NET">
+    <link rel="canonical" href="@(SettingsMain.SiteUrl + Request.Path)" />
+    <meta name="format-detection" content="telePhone=no">
+    <title>@Html.GetPageTitle()</title>
+    <base href="@UrlService.GetUrl()" />
+    <meta name="Description" content="@Html.GetPageDescription()" />
+    <meta name="Keywords" content="@Html.GetPageKeywords()" />
+    @Html.Partial("_Head")
+    @Html.Action("Favicon", "Common")
+    <link rel="stylesheet" href="landings/styles/styles.css" />
+</head>
+<body class="cs-t-1 text-floating lp lp-default">
+    @Html.GoggleTagManagerCounter()
+    @Html.Action("GoogleAnalytics", "Common")
+    @Html.RenderModules("body_start")
+
+    <div class="stretch-container">
+        <header class="site-head">
+            <div class="container container-fluid site-head-inner">
+                <div class="row middle-xs">
+                    @Html.Action("Logo", "Common", new { DisplayHref = false })
+                    <div class="col-xs-5">
+                    </div>
+                    <div class="col-xs site-head-phone-col">
+                        <div class="cs-t-1 site-head-phone">@Html.GetCityPhone()</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="stretch-middle site-body lp cs-br-1">
+            <div class="container container-fluid site-body-inner js-site-body-inner cs-bg-7">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    @if (InplaceEditorService.DisplayInplace())
+    {
+        @Html.Action("ToolBarBottom", "Common", new { DisplayInplace = true, DisplayCompare = false, DisplayCart = false, DisplayWishList = false, DisplayRecentlyView = false })
+    }
+
+    @Html.Partial("_FooterScripts")
+    @Html.RenderModules("body_end")
+    @Html.GetNotifyMessages()
+    <script src="landings/scripts/productlandingpage.js"></script>
+</body>
+</html>

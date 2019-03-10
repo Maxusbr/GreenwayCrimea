@@ -1,0 +1,70 @@
+.formField
+{
+	text-align:right;
+	clear:both;
+}
+
+.formFieldText
+{
+	float:left;
+}
+
+.warning
+{
+	color:Gray;
+	font-size:10px;
+	font-weight:normal;
+}
+
+.pageHeader
+{
+	width:100%;
+	text-align:center;
+}
+
+.pageSubheader
+{
+	color:Gray;
+	font-size:90%;
+}
+
+.settingsRow
+{
+	background-color:#eff0f1;
+}
+
+.settingRowAlt
+{
+}
+
+.settingsRowWithDesc
+{
+	height:55px;
+}
+
+.parametrName
+{
+	text-align: right;
+	width: 50%; 
+	height: 45px;
+	font-weight:bold;
+	margin-left:10px;
+}
+
+.parametrValue
+{
+	text-align: left; 
+	width: 50%;
+}
+
+.parametrValueString
+{
+	margin-left:10px;
+}
+
+.historyData
+{
+	padding-bottom:3px;
+	padding-top:3px;
+	padding-left: 10px;
+}

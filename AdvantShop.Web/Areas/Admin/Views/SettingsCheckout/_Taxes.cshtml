@@ -1,0 +1,32 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CheckoutSettingsModel
+
+<div class="sticky-page-name m-b-md">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.Settings.Checkout.TaxesTitle")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditTaxCtrl'" controller-as="ctrl" on-close="settingsCheckout.gridTaxes.fetchData()"
+                              template-url="../areas/admin/content/src/settingsCheckout/modal/addEditTax/AddEditTax.html">
+                <button class="btn btn-sm btn-success" type="button" data-e2e="taxAdd">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Settings.Checkout.AddTax")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<ui-grid-custom grid-unique-id="gridTaxes"
+                grid-row-identificator="'TaxId'"
+                grid-on-init="settingsCheckout.gridTaxesOnInit(grid)"
+                grid-options="settingsCheckout.gridTaxesOptions"
+                grid-url="'settingsCheckout/getPaging'"
+                grid-inplace-url="'settingsCheckout/inplace'"
+                grid-on-inplace-apply="settingsCheckout.gridTaxesUpdate()"
+                grid-extend-ctrl="settingsCheckout">
+    <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsCheckout.gridTaxes.gridOptions.TotalString">
+    </ui-grid-custom-footer>
+</ui-grid-custom>

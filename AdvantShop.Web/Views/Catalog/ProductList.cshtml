@@ -1,0 +1,97 @@
+﻿@using AdvantShop.Catalog
+@model AdvantShop.ViewModel.Catalog.ProductListViewModel
+
+<div class="row">
+    <div class="col-xs-3 col-p-v site-body-aside">
+        <nav class="menu-dropdown menu-dropdown-expanded menu-dropdown-classic">
+            <div class="menu-dropdown-list cs-br-1">
+                @if (Model.ShowBest)
+                {
+                    <div class="menu-dropdown-item cs-br-1">
+                        <div class="menu-dropdown-link-wrap">
+                            <a href="@Url.RouteUrl("ProductList", new {type = "best"})" class="menu-dropdown-link @(Model.Type == EProductOnMain.Best ? "selected" : "")">
+                                <span class="menu-dropdown-link-text">@T("Catalog.ProductList.AllBestSellers")</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (Model.ShowNew)
+                {
+                    <div class="menu-dropdown-item cs-br-1">
+                        <div class="menu-dropdown-link-wrap">
+                            <a href="@Url.RouteUrl("ProductList", new {type = "new"})" class="menu-dropdown-link @(Model.Type == EProductOnMain.New ? "selected" : "")">
+                                <span class="menu-dropdown-link-text">@T("Catalog.ProductList.AllNewProducts")</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (Model.ShowSale)
+                {
+                    <div class="menu-dropdown-item cs-br-1">
+                        <div class="menu-dropdown-link-wrap">
+                            <a href="@Url.RouteUrl("ProductList", new {type = "sale"})" class="menu-dropdown-link @(Model.Type == EProductOnMain.Sale ? "selected" : "")">
+                                <span class="menu-dropdown-link-text">@T("Catalog.ProductList.AllSales")</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @foreach (var productList in Model.ProductLists)
+                {
+                    <div class="menu-dropdown-item cs-br-1">
+                        <div class="menu-dropdown-link-wrap">
+                            <a href="@Url.RouteUrl("ProductList", new { type = "list", list = productList.Id })" class="menu-dropdown-link">
+                                <span class="menu-dropdown-link-text">@Html.Raw(productList.Name)</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </nav>
+        @if (Model.Filter != null)
+        {
+            <div data-catalog-filter data-url="catalog/filterproductlist"
+                 data-url-count="catalog/filterproductlistCount"
+                 data-parameters="{type : '@(Model.Type)', list: @Model.ListId , tagUrl: '' }"></div>
+        }
+    </div>
+    <div class="col-xs-9 col-p-v site-body-main">
+        <div class="page-title-row catalog-title-row">
+            <h1 class="catalog-title page-title">@Html.Raw(Model.Title)</h1>
+        </div>
+        @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+        
+        @*Html.Partial("_TagView", Model.TagView)*@
+        
+        @if (!string.IsNullOrWhiteSpace(Model.Description) && Model.Pager.CurrentPage == 1)
+        {
+            <div class="category-description">
+                @Html.Raw(Model.Description)
+            </div>
+        }
+
+        @if (Model.HasProducts)
+        {
+            <div class="row">
+                <div class="col-xs-10">
+                    <div class="row between-xs">
+                        @Html.Partial("Sorting", Model.Filter.Sorting)
+                        <div class="products-view-sort-result">
+                            <span class="products-view-sort-result-text cs-t-3">@T("Catalog.Index.ItemsFound")</span>
+                            <span class="products-view-sort-result-number">@Model.Pager.TotalItemsCount</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    @if (Model.Filter.AllowChangeViewMode)
+                    {
+                        @Html.Action("ChangeMode", "Catalog", new { name = "productViewCatalog", viewMode = Model.Filter.ViewMode })
+                    }
+                </div>
+            </div>
+            <div class="products-view products-view-@Model.Filter.ViewMode products-view-container" product-view-mode data-name="productViewCatalog" data-current="@Model.Filter.ViewMode">
+                @Html.Partial("_ProductView", Model.Products)
+            </div>
+            @Html.Paging(Model.Pager)
+        }
+    </div>
+</div>

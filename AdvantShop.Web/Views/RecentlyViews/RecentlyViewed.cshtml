@@ -1,0 +1,48 @@
+﻿@model AdvantShop.Core.Services.Catalog.ProductViewModel
+
+<div class="toolbar-bottom-block" data-mouseover-class-toggler>
+    <div class="toolbar-bottom-link toolbar-bottom-link-with-icon-left link-dotted-invert">
+        <span class="toolbar-bottom-count toolbar-bottom-count-left">@Model.Products.Count</span>
+        @T("RecentlyViews.RecentlyViewed.RecentlyViewed")
+        @if (Model.Products.Any())
+        {
+            <div class="recently-list">
+                <div class="container-fluid recently-list__container cs-bg-9">
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="row">
+                            <div class="col-xs-3 col-p-v">
+                                <figure class="recently-product-image-block">
+                                    <a class="recently-product-image-link" href="@Url.RouteUrl("Product", new {url = product.UrlPath})">
+                                        <img class="recently-product-image" src="@product.Photo.ImageSrcXSmall()" alt="@product.Photo.Alt">
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-xs-9 col-p-v">
+                                <div class="recently-product-data">
+                                    <div class="recently-product-name">
+                                        <a class="recently-product-link" href="@Url.RouteUrl("Product", new {url = product.UrlPath})">
+                                            @product.Name
+                                        </a>
+                                    </div>
+                                    <div class="recently-product-additional">
+                                        <div class="row">
+                                            <div class="col-xs">
+                                                <div class="recently-product-additional-block">
+                                                    <div class="recently-product-price">
+                                                        <span class="recently-product-price-text cs-t-3">Цена:</span>
+                                                        <div class="recently-product-price-value cs-t-1">@Html.Raw(product.PreparedPrice)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

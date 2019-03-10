@@ -1,0 +1,182 @@
+﻿$placeholderColor: #a9aeb2;
+
+.search-autocomlete-item-link {
+    position: relative;
+    padding-right: 15px;
+}
+
+.search-autocomlete-item-icon {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    right: 10px;
+}
+
+.header-search-field-wrap .dropdown-menu > .active > a {
+    background-color: transparent;
+    color: #2f4050;
+}
+
+.header-search-field-wrap .dropdown-menu a {
+    padding: 0px;
+    margin: 0 0 5px;
+    line-height: 1.2;
+    color: #2d9cee;
+    display: inline-block;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.search-col-item-desc{
+     color: #cad1db;
+}
+
+.header-search-field-wrap .dropdown-menu a.search-col-item-link-more {
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.header-search-field-wrap .dropdown-menu > .active > a:hover,
+.header-search-field-wrap .dropdown-menu > .active > a:focus {
+    background: #f5f5f5;
+    color: #2f4050;
+}
+
+.uib-typeahead-match {
+
+    &:hover {
+        > .search-autocomlete-item-link {
+            background: #f5f5f5;
+            color: #2f4050;
+        }
+
+        .search-autocomlete-item-link {
+            &:hover, &:focus {
+                background: #f5f5f5;
+                color: #2f4050;
+            }
+        }
+    }
+
+    .search-autocomlete-item-link {
+        margin: 0;
+        padding: 3px 20px;
+        border-radius: 0;
+    }
+
+    .dropdown-menu {
+        left: 100%;
+        top: 1px;
+    }
+
+    &:hover .dropdown-menu {
+        display: block;
+    }
+
+
+    &:first-child {
+        .search-autocomlete-item-link {
+            border-radius: 3px 3px 0 0;
+        }
+    }
+
+    &:last-child {
+        .search-autocomlete-item-link {
+            border-radius: 0 0 3px 3px;
+        }
+    }
+}
+
+.search-row {
+    display: table;
+    table-layout: fixed;
+}
+
+.search-col-category,
+.search-col-items {
+    display: table-cell;
+    vertical-align: top;
+    padding: 10px;
+}
+
+.search-col-category {
+    font-weight: bold;
+    font-size: 12px;
+    max-width: 120px;
+    min-width: 120px;
+    width: 120px;
+}
+
+.search-col-category-desc{
+     font-size: 8px;
+     color: #cad1db;
+}
+
+.search-col-item-row {
+    margin-bottom: 5px;
+}
+
+.search-input-wrap {
+    position: relative;
+
+    > .dropdown-menu {
+        right: 0;
+        left: auto !important;
+        max-height: 45vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-width: 524px;
+        min-width: 268px;
+    }
+}
+
+.search-input {
+    border: 0;
+    background: #fff;
+    padding: 3px 5px 3px 25px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 47px;
+    background: #fff url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBkPSJNNTUuMTQ2LDUxLjg4N0w0MS41ODgsMzcuNzg2YzMuNDg2LTQuMTQ0LDUuMzk2LTkuMzU4LDUuMzk2LTE0Ljc4NmMwLTEyLjY4Mi0xMC4zMTgtMjMtMjMtMjNzLTIzLDEwLjMxOC0yMywyMyAgczEwLjMxOCwyMywyMywyM2M0Ljc2MSwwLDkuMjk4LTEuNDM2LDEzLjE3Ny00LjE2MmwxMy42NjEsMTQuMjA4YzAuNTcxLDAuNTkzLDEuMzM5LDAuOTIsMi4xNjIsMC45MiAgYzAuNzc5LDAsMS41MTgtMC4yOTcsMi4wNzktMC44MzdDNTYuMjU1LDU0Ljk4Miw1Ni4yOTMsNTMuMDgsNTUuMTQ2LDUxLjg4N3ogTTIzLjk4NCw2YzkuMzc0LDAsMTcsNy42MjYsMTcsMTdzLTcuNjI2LDE3LTE3LDE3ICBzLTE3LTcuNjI2LTE3LTE3UzE0LjYxLDYsMjMuOTg0LDZ6IiBmaWxsPSIjYTlhZWIyIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=) no-repeat left center;
+    background-size: 18px 18px;
+
+    &::-webkit-input-placeholder {
+        color: $placeholderColor;
+    }
+
+    ::-moz-placeholder {
+        color: $placeholderColor;
+    }
+    /* Firefox 19+ */
+    :-moz-placeholder {
+        color: $placeholderColor;
+    }
+    /* Firefox 18- */
+    :-ms-input-placeholder {
+        color: $placeholderColor;
+    }
+
+    &:hover {
+        &::-webkit-input-placeholder {
+            color: lighten($placeholderColor, 10);
+        }
+
+        ::-moz-placeholder {
+            color: lighten($placeholderColor, 10);
+        }
+        /* Firefox 19+ */
+        :-moz-placeholder {
+            color: lighten($placeholderColor, 10);
+        }
+        /* Firefox 18- */
+        :-ms-input-placeholder {
+            color: lighten($placeholderColor, 10);
+        }
+    }
+}

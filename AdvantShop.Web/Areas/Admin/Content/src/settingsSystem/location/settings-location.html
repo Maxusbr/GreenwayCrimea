@@ -1,0 +1,81 @@
+﻿<div ng-switch="$ctrl.locationTypeSelected">
+    <div ng-switch-default>
+        <div class="sticky-page-name m-b">
+            <div class="page-name-block sticky-page-name-inner">
+                <div class="page-name-block-item-main">
+                    <h1 data-e2e="h1-country" class="page-name-block-text sticky-page-name-text">
+                        Список стран
+                    </h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger data-controller="'ModalAddEditCountryCtrl'" 
+                                      template-url="../areas/admin/content/src/settingsSystem/location/modal/addEditCountry/addEditCountry.html"
+                                      data-on-close="$ctrl.locationGrids[$ctrl.enumLocation.country].fetchData()">
+                        <button data-e2e="AddCountry" class="btn btn-sm btn-success btn--margin-left" type="button">
+                            <span class="fa fa-plus"></span> Добавить страну
+                        </button>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        </div>
+        <grid-country on-grid-init="$ctrl.gridCountryOnInit(grid)"
+                      on-select="$ctrl.selectCountry(id, name)"></grid-country>
+    </div>
+    <div ng-switch-when="region">
+        <div class="sticky-page-name m-n">
+            <div class="page-name-block sticky-page-name-inner">
+                <div class="page-name-block-item-main">
+                    <h1 data-e2e="h1-region" class="page-name-block-text sticky-page-name-text" ng-bind="$ctrl.locationGridsParams[$ctrl.enumLocation.region].countryName + ' - Список регионов'"></h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger controller="'ModalAddEditRegionsCtrl'" 
+                                      template-url="../areas/admin/content/src/settingsSystem/location/modal/addEditRegion/addEditRegions.html"
+                                      resolve="{entity : { 'CountryId': $ctrl.locationGridsParams[$ctrl.enumLocation.region].id }}"
+                                      on-close="$ctrl.locationGrids[$ctrl.enumLocation.region].fetchData()">
+                        <button data-e2e="AddRegion" class="btn btn-sm btn-success btn--margin-left" type="button">
+                            <span class="fa fa-plus"></span> Добавить регион
+                        </button>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="ibox">
+            <div class="form-group m-t-sm">
+                <div><a href="" data-e2e="GoToCountry" ng-click="$ctrl.revertSubject($ctrl.enumLocation.country)">Вернуться к списку стран</a></div>
+                <div><a href="" data-e2e="GoToCity" ng-click="$ctrl.viewAllCity($ctrl.enumLocation.city)">Все города страны</a></div>
+            </div>
+            <grid-region on-grid-init="$ctrl.gridRegionOnInit(grid)"
+                         on-select="$ctrl.selectRegion(id, name)"
+                         grid-params="$ctrl.locationGridsParams[$ctrl.enumLocation.region]"></grid-region>
+        </div>
+    </div>
+    <div ng-switch-when="city">
+        <div class="sticky-page-name m-n">
+            <div class="page-name-block sticky-page-name-inner">
+                <div class="page-name-block-item-main">
+                    <h1 data-e2e="h1-city"  class="page-name-block-text sticky-page-name-text" 
+                        ng-bind="($ctrl.locationGridsParams[$ctrl.enumLocation.city].regionName != null ? $ctrl.locationGridsParams[$ctrl.enumLocation.city].regionName : $ctrl.countryNameFromUrl) + ' - Список городов'">
+                    </h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger controller="'ModalAddEditCitysCtrl'"
+                                      controller-as="ctrl" 
+                                      template-url="../areas/admin/content/src/settingsSystem/location/modal/addEditCitys/addEditCitys.html"
+                                      resolve="{'entity': { 'RegionId': $ctrl.locationGridsParams[$ctrl.enumLocation.city].id, 'cityCountrys': $ctrl.locationGridsParams[$ctrl.enumLocation.city].cityCountrys }}"
+                                      on-close="$ctrl.locationGrids[$ctrl.enumLocation.city].fetchData()">
+                        <button data-e2e="AddCity" class="btn btn-sm btn-success btn--margin-left" type="button">
+                            <span class="fa fa-plus"></span> Добавить город
+                        </button>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group m-t-sm">
+            <div><a data-e2e="GoToRegion" href="" ng-click="$ctrl.revertSubject($ctrl.enumLocation.region)">Вернуться к списку регионов</a></div>
+            <div><a data-e2e="GoToCountry" href="" ng-click="$ctrl.revertSubject($ctrl.enumLocation.country)">Вернуться к списку стран</a></div>
+        </div>
+        <grid-city on-grid-preinit="$ctrl.gridCityOnPreinit(grid)"
+                   grid-params="$ctrl.locationGridsParams[$ctrl.enumLocation.city]"></grid-city>
+    </div>
+</div>

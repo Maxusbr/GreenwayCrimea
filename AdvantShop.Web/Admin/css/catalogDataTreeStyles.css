@@ -1,0 +1,109 @@
+.controlLinks
+{
+	clear:both;
+	text-align:right;
+	margin-bottom:10px
+}
+
+.dataTable
+{
+	text-align:left;
+	border-collapse:collapse;
+	width:100%;
+}
+
+.dataTableBlock
+{	
+	border-style:solid;
+	border-color:Gray;
+	border-width:1px;
+}
+
+.tableFooter
+{
+	width:100%;
+	height:25px;
+	background-color:#bbbbbb;
+}
+
+.headerRow
+{
+	font-weight:bold;
+	height:30px;
+	background-image:url(images/gradient.png);
+	background-repeat:repeat-x;
+}
+
+.headerRowFiller
+{
+	height:30px;
+	margin-left:8px;
+	display:inline-block;
+	margin-bottom:-8px;
+	margin-top:6px;
+}
+
+.headerCell
+{
+	border-bottom-style:solid;
+	border-color:Gray;
+	border-width:1px;
+}
+
+.productIndentFiller
+{
+	height:23px;
+}
+
+.categoryIndentFiller
+{
+	height:25px;
+	margin-top:5px;
+}
+
+.categoryRow
+{
+	background-color:#e6e6e6;
+	height:25px;
+	cursor:pointer;
+}
+
+.categoryRow:hover
+{
+	background-color:#bbbbbb;
+}
+
+.productRow
+{
+	background-color:#ffffff;
+	height:23px;
+	line-height:23px;
+	cursor:pointer;
+}
+
+.productRow:hover
+{
+	background-color:#cccccc;
+}
+
+.categoryLink
+{
+	color:Black;
+	font-weight:bold;
+	text-decoration:none;
+	margin-left:7px;
+	margin-top:2px;
+}
+
+.productLiteral
+{
+	padding-left:26px;
+	/*display:block;*/
+}
+
+.categoryImage
+{
+	margin-left:3px;
+	margin-right:10px;
+	margin-top:2px;
+}

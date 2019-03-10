@@ -1,0 +1,12 @@
+ProductId;ArtNo;Name;Ratio;Discount;Weight;BriefDescription;Description;Enabled;DateAdded;DateModified[DATE];Recomended;New;Bestseller;OnSale;AllowPreOrder;SortBestseller;SortNew;SortDiscount;UrlPath;CategoryEnabled;ShippingPrice;Multiplicity;HasMultiOffer;Adult;Length;Width;Height;CurrencyID;ActiveView360;ManufacturerWarranty;Unit;DiscountAmount
+1;1;TestProduct1;1;0;1;briefDesc1;Desc1;true;2007-08-25 20:08:00.000;19.07.2016 21:33;false;false;false;false;false;0;0;0;test-product1;true;1;1;false;false;1;1;1;4;false;false;unit;0
+2;2;TestProduct2;1;0;2;briefDesc2;Desc2;true;2007-08-25 20:08:00.001;20.07.2016 21:33;false;false;false;false;false;0;0;0;test-product2;true;2;1;false;false;2;2;2;4;false;false;unit;0
+3;3;TestProduct3;1;0;3;briefDesc3;Desc3;true;2007-08-25 20:08:00.002;21.07.2016 21:33;false;false;false;false;false;0;0;0;test-product3;true;3;1;false;false;3;3;3;4;false;false;unit;0
+4;4;TestProduct4;1;0;0;briefDesc4;Desc4;true;2007-08-25 20:08:00.003;22.07.2016 21:33;false;false;false;false;false;0;0;0;test-product4;true;4;1;false;false;4;4;4;4;false;false;unit;0
+5;5;TestProduct5;1;0;5;briefDesc5;Desc5;true;2007-08-25 20:08:00.004;23.07.2016 21:33;false;false;false;false;false;0;0;0;test-product5;true;5;1;false;false;0;0;0;4;false;false;unit;0
+6;6;TestProduct6;1;0;10;briefDesc6;Desc6;true;2007-08-25 20:08:00.005;24.07.2016 21:33;false;false;false;false;false;0;0;0;test-product6;true;6;1;false;false;0;0;0;4;false;false;unit;0
+7;7;TestProduct7;1;0;15;briefDesc7;Desc7;true;2007-08-25 20:08:00.006;25.07.2016 21:33;false;false;false;false;false;0;0;0;test-product7;true;7;1;false;false;0;0;0;4;false;false;unit;0
+8;8;TestProduct8;1;0;20;briefDesc8;Desc8;true;2007-08-25 20:08:00.007;26.07.2016 21:33;false;false;false;false;false;0;0;0;test-product8;true;8;1;false;false;0;0;0;4;false;false;unit;0
+9;9;TestProduct9;1;0;25;briefDesc9;Desc9;true;2007-08-25 20:08:00.008;27.07.2016 21:33;false;false;false;false;false;0;0;0;test-product9;true;9;1;false;false;0;0;0;4;false;false;unit;0
+10;10;TestProduct10;1;0;30;briefDesc10;Desc10;true;2007-08-25 20:08:00.009;28.07.2016 21:33;false;false;false;false;false;0;0;0;test-product10;true;10;1;false;false;0;0;0;4;false;false;unit;0
+11;11;TestProduct11;1;0;35;briefDesc11;Desc11;true;2007-08-25 20:08:00.010;29.07.2016 21:33;false;false;false;false;false;0;0;0;test-product11;true;11;1;false;false;0;0;0;4;false;false;unit;0

@@ -1,0 +1,28 @@
+﻿@model AdvantShop.Areas.Mobile.Models.Catalog.ProductViewMobileModel
+
+@foreach (var product in Model.Products)
+{
+    <a class="panel cs-l-1 cs-br-1 link-text-decoration-none inked ink-dark" href="@(Url.RouteUrl("Product", new {url = product.UrlPath}))">
+        <div class="prod-photo" style="height: @(Model.PhotoHeight)px">
+            <div class="prod-photo-inner">
+                <img src="@product.Photo.ImageSrcSmall()" alt="@product.Photo.Alt" title="@product.Photo.Title" />
+                @if (product.Gifts)
+                {
+                    <div class="prod-gift-icon"></div>
+                }
+            </div>
+        </div>
+        <div class="prod-text">
+            <div class="prod-name">@Html.Raw(product.Name)</div>
+            <div class="mobile-prod-artno">@product.ArtNo</div>
+            <div class="price cs-l-8">@Html.Raw(product.PreparedPrice)</div>
+            @if (product.Recomend || product.Sales || product.Bestseller || product.New || product.TotalDiscount.HasValue)
+            {
+                <div class="products-view-labels">
+                    @Html.RenderLabels(product.Recomend, product.Sales, product.Bestseller, product.New, product.TotalDiscount)
+                </div>
+            }
+        </div>
+        <span class="panel-arrow ar-r icon-right-open-after cs-t-2"></span>
+    </a>
+}

@@ -1,0 +1,6 @@
+CustomerID[GUID];Password;FirstName;LastName;Phone;RegistrationDateTime;Email;CustomerGroupId;CustomerRole;Patronymic;BonusCardNumber;AdminComment;ManagerId;Rating;StandardPhone;Enabled;InnerId
+2C8FB106-8F07-499B-B06F-51B43076F3CF;Qpf0SxOVUjUkWySXOZ16kw==;TestName;Testsurename;999999;2017-08-08 13:48:00.000;test@mail.ru;1;0;;NULL;;NULL;0;999999;true;12
+CFC2C33B-1E84-415E-8482-E98156341601;4QrcOUm6Wau+VuBX8g+IPg==;test;testov;874452;2016-08-08 13:48:00.000;qwe@qwe.qwe;1;0;NULL;NULL;NULL;NULL;0;NULL;true;8
+CFC2C33B-1E84-415E-8482-E98156341602;QWoA8qQijxFsnOuRYXzfCg==;Elena;El;+7 (495) 584-33-74;2015-04-01 15:00:00.000;elena@advantshop.net;1;50;NULL;NULL;NULL;NULL;0;NULL;true;9
+CFC2C33B-1E84-415E-8482-E98156341603;Qpf0SxOVUjUkWySXOZ16kw==;Admin;Ad;+7 495 800 200 00 ;2015-11-06 09:58:00.000;admin;1;100;NULL;NULL;NULL;NULL;5;NULL;true;10
+CFC2C33B-1E84-415E-8482-E98156341604;Qpf0SxOVUjUkWySXOZ16kw==;FirstName;LastName;+7 495 800 200 01;2015-11-07 09:58:00.000;mail@mail.com;2;0;Patronymic;530833;Admin Comment Deafult;1;0;NULL;true;11

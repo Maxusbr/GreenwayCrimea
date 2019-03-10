@@ -1,0 +1,16 @@
+﻿@model List<AdvantShop.CMS.BreadCrumbs>
+<div class="breads" itemscope itemtype="http://schema.org/BreadcrumbList">
+    @for (var i = 0; i < Model.Count; ++i)
+    {
+        if (!string.IsNullOrEmpty(Model[i].Url) && i != Model.Count - 1)
+        {
+            <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breads-item icon-right-open-after">
+                <a itemprop="item" href="@Model[i].Url" class="breads-item-link cs-l-2"><span itemprop="name">@Model[i].Name</span></a>
+            </div>
+        }
+        else
+        {
+            <div class="breads-item"><span class="breads-item-current cs-t-3">@Model[i].Name</span></div>
+        }
+    }
+</div>

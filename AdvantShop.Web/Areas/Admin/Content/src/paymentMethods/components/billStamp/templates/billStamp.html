@@ -1,0 +1,19 @@
+﻿<img ng-if="$ctrl.StampImageName != null && $ctrl.StampImageName.length > 0"
+     ng-src="{{$ctrl.StampImageSrc}}" />
+
+<div class="m-t-sm">
+    <div>
+        <a href=""
+           accept="image/*"
+           ngf-max-size="15MB"
+           ngf-select=""
+           ngf-change="$ctrl.uploadBillStampImage($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+           class="picture-uploader-buttons-add">
+            Добавить изображение
+        </a>
+    </div>
+    <div ng-if="$ctrl.StampImageName != null && $ctrl.StampImageName.length > 0">
+        <a href="" class="picture-uploader-buttons-delete link-danger" ng-click="$ctrl.deleteBillStampImage()">Удалить изображение</a>
+    </div>
+    <input type="text" name="StampImageName" id="StampImageName" ng-model="$ctrl.StampImageName" hidden />
+</div>

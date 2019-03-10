@@ -1,0 +1,286 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.APISettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "SettingsApi", FormMethod.Post, new { name = "form", enctype = "multipart/form-data", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settings.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                @*<input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+                    @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, attributes: new[] { "ng-disabled=\"!form.modified\"", "disabled" })*@
+            </div>
+        </div>
+    </div>
+
+    <uib-tabset uid="apiTab" on-select-batch="settings.floatHeader = tab.heading;">
+        <uib-tab index="'api'" classes="ng-tab" heading="@T("Admin.Settings.System.API")">
+
+            <div class="form-group row">
+                <div class="col-xs-3 ">
+                    <div class="setting-label-wrap">
+                        @Html.LabelFor(x => x.Key, T("Admin.Settings.API.Key"))
+                    </div>
+                </div>
+                <div class="col-xs-7">
+                    <div class="row">
+                        <div class="col-xs-12 relative">
+                            @Html.TextBoxFor(x => x.Key, new { @class = "form-control", ng_model = "settings.Key" })
+                            <help-trigger class="ng-cloak help-trigger-icon-abs m-l-xs" data-title="@T("Admin.Settings.API.Key")">
+                                <div class="help-content">
+                                    API ключ - Это параметр необходимый для обеспечения возможности подключения сторонних сервисов к магазину.<br>
+                                    <br>
+                                    Обратите внимание, если вы повторно сгенерируете ключ, все ссылки в которых он используется, так же необходимо обновить, включая те, что были указанны ранее в сторонних сервисах.
+                                </div>
+                            </help-trigger>
+                        </div>
+                        <div class="col-xs-12">
+                            <a href="" ng-click="settings.generateApiKey()">Сгенерировать новый api ключ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.IsRus && Model.ShowOneC)
+            {
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x._1CEnabled, T("Admin.Settings.API.1CEnabled"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block">
+                            @Html.CheckBoxFor(x => x._1CEnabled, new { ng_model = "settings._1CEnabled", ng_init = "settings._1CEnabled=" + Model._1CEnabled.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x._1CDisableProductsDecremention, T("Admin.Settings.API.1CDisableProductsDecremention"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block">
+                            @Html.CheckBoxFor(x => x._1CDisableProductsDecremention, new { ng_model = "settings._1CDisableProductsDecremention", ng_init = "settings._1CDisableProductsDecremention=" + Model._1CDisableProductsDecremention.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group middle-xs row">
+                    <div class="col-xs-3">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.ExportOrdersType, T("Admin.Settings.API.ExportOrdersType"))
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-wl-2">
+                        @Html.DropDownListFor(x => x.ExportOrdersType, Model.ExportOrders, new { @class = "form-control", ng_model = "settings.ExportOrdersType", ng_init = "settings.ExportOrdersType='" + Model.ExportOrdersType + "'" })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x._1CUpdateStatuses, T("Admin.Settings.API.1CUpdateStatuses"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block">
+                            @Html.CheckBoxFor(x => x._1CUpdateStatuses, new { ng_model = "settings._1CUpdateStatuses", ng_init = "settings._1CUpdateStatuses=" + Model._1CUpdateStatuses.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group middle-xs row">
+                    <div class="col-xs-3">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x._1CUpdateProducts, T("Admin.Settings.API.1CUpdateProducts"))
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-wl-2">
+                        @Html.DropDownListFor(x => x._1CUpdateProducts, Model.UpdateProducts, new { @class = "form-control", ng_model = "settings._1CUpdateProducts", ng_init = "settings._1CUpdateProducts='" + Model._1CUpdateProducts + "'" })
+
+                    </div>
+                </div>
+
+                <div class="form-group middle-xs row">
+                    <div class="col-xs-3">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x._1CSendProducts, T("Admin.Settings.API.1CSendProducts"))
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-wl-2">
+                        @Html.DropDownListFor(x => x._1CSendProducts, Model.SendProducts, new { @class = "form-control", ng_model = "settings._1CSendProducts", ng_init = "settings._1CSendProducts='" + Model._1CSendProducts + "'" })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.ImportPhotosUrl, T("Admin.Settings.API.ImportPhotosUrl"))
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.ImportPhotosUrl, new { @class = "form-control", ng_model = "settings.ImportPhotosUrl", @readonly = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.ImportProductsUrl, T("Admin.Settings.API.ImportProductsUrl"))
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.ImportProductsUrl, new { @class = "form-control", ng_model = "settings.ImportProductsUrl", @readonly = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.ExportProductsUrl, T("Admin.Settings.API.ExportProductsUrl"))
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.ExportProductsUrl, new { @class = "form-control", ng_model = "settings.ExportProductsUrl", @readonly = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.DeletedProducts, T("Admin.Settings.API.DeletedProducts"))
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.DeletedProducts, new { @class = "form-control", ng_model = "settings.DeletedProducts", @readonly = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.ExportOrdersUrl, T("Admin.Settings.API.ExportOrdersUrl"))
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.ExportOrdersUrl, new { @class = "form-control", ng_model = "settings.ExportOrdersUrl", @readonly = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.ChangeOrderStatusUrl, T("Admin.Settings.API.ChangeOrderStatusUrl"))
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.ChangeOrderStatusUrl, new { @class = "form-control", ng_model = "settings.ChangeOrderStatusUrl", @readonly = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.DeletedOrdersUrl, T("Admin.Settings.API.DeletedOrdersUrl"))
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.DeletedOrdersUrl, new { @class = "form-control", ng_model = "settings.DeletedOrdersUrl", @readonly = "true" })
+                    </div>
+                </div>
+            }
+
+            <h3 class="m-b-md">Лид</h3>
+            <div class="form-group row">
+                <div class="col-xs-3 ">
+                    <div class="setting-label-wrap">
+                        @Html.LabelFor(x => x.LeadAddUrl, T("Создание лида"))
+                    </div>
+                </div>
+                <div class="col-xs-9">
+                    @Html.TextBoxFor(x => x.LeadAddUrl, new { @class = "form-control", ng_model = "settings.LeadAddUrl", @readonly = "true" })
+                    <a href="" ng-click="settings.showAddLeadExample = !settings.showAddLeadExample">Показать пример</a>
+                    <div class="ng-cloak m-t-sm" ng-show="settings.showAddLeadExample">
+                        Пример json-запроса:
+<pre>{
+    "FirstName": "Иван",             // имя
+    "LastName": "Иванов",            // фамилия
+    "Patronymic": "Иванович",        // отчество
+    "Phone": "790000000",            // телефон
+    "Email": "ivan@gmail.com",       // email
+    "CustomerId": "",                // id пользователя
+    "DiscountValue": "100",          // скидка числом
+    "DiscountPercent": "0",          // скидка процентом
+    "Description": "lead from api",  // описание
+    "Source": "",                    // источник лида
+    "Sum": "0",                      // сумма товаров
+    "Products": [                    // массив товаров: ArtNo - артикул товара в магазине. 
+        {                            // Если товар будет найден по артикулу, то подставится актуальная цена, название, цвет и тд.
+		    "ArtNo": "977",
+		    "Name": "Туфли",
+		    "Amount": 1,
+		    "Price": 1500
+	    }
+    ]
+}
+</pre>
+                        <div class="m-t-sm">
+                            Должно быть указано хотя бы 1 поле: FirstName, Email или Phone. Остальные не обязательные. Если передаются продукты, то ArtNo должен существовать в магазине.
+                        </div>
+
+                        <div class="m-t-sm">
+                            В случае успеха сервер вернет status ok и номер лида:
+<pre>{
+    "leadId": 1,
+    "status": "ok",
+    "errors": "",
+    "warnings": ""
+}
+</pre>
+                            <div class="m-t-sm">
+                                В случае неудачи - вернется ошибка:
+<pre>{
+    "status": "error",
+    "errors": "Заполните обязательные поля"
+}
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-3 ">
+                    <div class="setting-label-wrap">
+                        @Html.LabelFor(x => x.VkUrl, "Интеграция с ВКонтакте")
+                    </div>
+                </div>
+                <div class="col-xs-9">
+                    @Html.TextBoxFor(x => x.VkUrl, new {@class = "form-control", ng_model = "settings.VkUrl", @readonly = "true"})
+                </div>
+            </div>
+
+        </uib-tab>
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success btn--margin-left" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+        </div>
+    </uib-tabset>
+}

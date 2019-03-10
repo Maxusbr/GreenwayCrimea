@@ -1,0 +1,14 @@
+﻿@model AdvantShop.ViewModel.StaticBlock.StaticBlockViewModel
+
+@if (Model.CanUseInplace)
+{
+    <div class="static-block @Model.CssClass" data-static-block-key="@Model.Key" @Model.InplaceAttributes>
+        @Html.Raw(Model.Content)
+    </div>
+}
+else if (!string.IsNullOrWhiteSpace(Model.Content))
+{
+    <div class="static-block@(Model.CssClass != null ? " " + Model.CssClass : "")">
+        @Html.Raw(Model.Content)
+    </div>
+}

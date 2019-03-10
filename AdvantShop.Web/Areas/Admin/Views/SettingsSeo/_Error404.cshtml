@@ -1,0 +1,37 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SEOSettingsModel
+
+
+<div class="ng-cloak">
+
+    <div class="sticky-page-name ">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    @T("Admin.Settings.System.Error404")
+                </h1>
+                <label class="adv-checkbox-label form-label-block">
+                    @Html.CheckBoxFor(x => Model.EnableRedirect301, new { @class = "adv-checkbox-input", ng_model = "settingsSeo.active301in404", ng_change = "settingsSeo.setActive301(settingsSeo.active301in404)" })
+                    <span class="adv-checkbox-emul"></span>
+                    <span>Активность 301 редиректа</span>
+                </label>
+            </div>
+            <div class="page-name-block-item-additional">
+                @*<label class="adv-checkbox-label form-label-block">
+                    @Html.CheckBoxFor(x => Model.EnableRedirect301, new { @class= "adv-checkbox-input", ng_model= "settingsSeo.active301in404", ng_change = "settingsSeo.setActive301(settings.active301in404)" })
+                    <span class="adv-checkbox-emul"></span>
+                    <span>Активность 301 редиректа</span>
+                </label>*@
+            </div>
+        </div>
+    </div>
+
+    <ui-grid-custom grid-unique-id="gridErrorLog404"
+                    grid-options="settingsSeo.gridOptionsErrorLog404"
+                    grid-on-init="settingsSeo.gridErrorLog404OnInit(grid)"
+                    grid-url="'ErrorLog404/GetPage404'"
+                    grid-extend-ctrl="settings">
+        <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="settingsSeo.gridErrorLog404.gridOptions.TotalString">
+        </ui-grid-custom-footer>
+    </ui-grid-custom>
+
+</div>

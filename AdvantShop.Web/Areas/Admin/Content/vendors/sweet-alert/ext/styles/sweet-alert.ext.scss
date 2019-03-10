@@ -1,0 +1,45 @@
+﻿.sa-button-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+
+.sweet-alert .sa-button-container .cancel,
+.sweet-alert .sa-button-container .confirm {
+    min-width: 100px;
+}
+
+.sweet-alert .sa-button-container .cancel {
+    background-color: #2f4050;
+    color: #ffffff;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    font-size: 12px;
+    font-family: OpenSans-semibold;
+    margin-left: 3px;
+}
+
+.sweet-alert .sa-button-container .cancel:hover {
+    background-color: #41576d;
+}
+
+.sweet-alert .sa-button-container .confirm {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    font-size: 12px;
+    font-family: OpenSans-semibold;
+    margin-right: 0;
+}
+
+.sweet-alert .sa-button-container .confirm:hover {
+    background-color: #42a6ee !important;
+}
+
+body.stop-scrolling {
+    height: auto;
+    overflow: auto;
+}

@@ -1,0 +1,44 @@
+﻿@model AdvantShop.ViewModel.User.LoginOpenIdViewModel
+<div class="auth-social">
+    <div class="title vertical-interval-middle openid-title">
+        @T("User.LoginOpenId.LogInWithSocial")
+    </div>
+    <div>
+        @if (Model.DisplayGoogle)
+        {
+            <a href="@Url.Action("LoginGoogle", "user", new { pagetoredirect = Model.PageToRedirect})">
+                <img src="images/buttons/gl.png" alt="Google" title="Google" />
+            </a>
+        }
+        @if (Model.DisplayYandex)
+        {
+            <a href="@Url.Action("LoginYandex", "user", new { pagetoredirect = Model.PageToRedirect })">
+                <img src="images/buttons/ya.png" alt="Yandex" title="Yandex" />
+            </a>
+        }
+        @if (Model.DisplayFacebook)
+        {
+            <a href="@Url.Action("LoginFacebook", "user", new { pagetoredirect = Model.PageToRedirect })">
+                <img src="images/buttons/fb.png" alt="Facebook" title="Facebook" />
+            </a>
+        }
+        @if (Model.DisplayVk)
+        {
+            <a href="@Url.Action("LoginVk", "user", new { pagetoredirect = Model.PageToRedirect })">
+                <img src="images/buttons/vk.png" alt="Вконтакте" title="Вконтакте" />
+            </a>
+        }
+        @if (Model.DisplayMailRu)
+        {
+            <a href="@Url.Action("LoginMailRu", "user", new { pagetoredirect = Model.PageToRedirect })">
+                <img src="images/buttons/ml.png" alt="Mail.ru" title="Mail.ru" />
+            </a>
+        }
+        @if (Model.DisplayOdnoklassniki)
+        {
+            <a href="@Url.Action("LoginOk", "user", new { pagetoredirect = Model.PageToRedirect })">
+                <img src="images/buttons/od.png" alt="Одноклассники" title="Одноклассники" />
+            </a>
+        }
+    </div>
+</div>

@@ -1,0 +1,29 @@
+.page-number {
+    margin-top: 25px;
+    text-align: center;
+    position: relative;
+    font-size:12px;
+}
+
+    .page-number span {
+        color: #737271;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+        .page-number span.key {
+            color: #c5c5c4;
+            line-height: 12px;
+            font-family: Tahoma;
+        }
+
+    .page-number .page-all {
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        margin: 0;
+    }
+    .page-number a {
+    display: inline-block;
+    margin-right: 10px;
+}

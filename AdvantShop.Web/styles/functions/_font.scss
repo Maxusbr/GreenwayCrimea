@@ -1,0 +1,51 @@
+﻿
+$fontExtsDefault: ("eot" null, "eot?#iefix" "embedded-opentype", "woff" "woff", "ttf" "truetype") !default;
+
+@mixin font-face($name, $fileName, $weight: 'normal', $category: null, $catalog: null, $exts: $fontExtsDefault) {
+
+    @if($catalog == null) {
+        $catalog: "../fonts/" + $fileName + "/";
+    }
+
+    $filePath: $catalog + $fileName;
+
+    $fontFamily: null;
+
+    @if($category != null) {
+        $fontFamily: (quote(#{$name}), $category);
+    }
+    @else {
+        $fontFamily: quote(#{$name});
+    }
+
+    @font-face {
+        font-family: $fontFamily;
+        src: font-face-urls($name, $filePath, $exts);
+        font-weight: unquote($weight);
+        font-style: normal;
+    }
+}
+
+@function font-face-urls($name, $filePath, $exts) {
+
+    $result: (); //local($name)
+
+    @each $item in $exts {
+
+        $ext: unquote(nth($item, 1));
+
+        $formatVal: nth($item, 2);
+        $format: "";
+
+        @if($formatVal != null) {
+            $format: format($formatVal);
+        }
+
+        $urlVal: $filePath + "." + $ext;
+
+
+        $result: append($result, url($urlVal) + " " + $format, comma);
+    }
+
+    @return $result;
+}

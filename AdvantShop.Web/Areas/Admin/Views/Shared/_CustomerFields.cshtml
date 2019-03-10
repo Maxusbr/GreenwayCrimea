@@ -1,0 +1,84 @@
+﻿@model List<AdvantShop.Customers.CustomerFieldWithValue>
+
+@if (Model != null && Model != null)
+{
+    for(int i = 0; i < Model.Count; i++)
+    {
+        var field = Model[i];
+        <div class="form-group custom-fields-row">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label class="control-label text-left m-b-xs">
+                        @if (field.Required)
+                        {
+                            <span class="text-required">@field.Name</span>
+                        }
+                        else
+                        {
+                            @field.Name
+                        }
+                    </label>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="row between-xs middle-xs">
+                        <div class="col-xs">
+                            @if (field.FieldType == CustomerFieldType.Text)
+                            {
+                                @Html.TextBox("customerfields[" + i + "].value", field.Value, new { @class = "form-control", ng_model = "customer.f" + field.Id, ng_required = field.Required.ToLowerString(), validation_input_text = field.Name })
+                            }
+                            else if (field.FieldType == CustomerFieldType.Number)
+                            {
+                                @Html.TextBox("customerfields[" + i + "].value", field.Value, new { @type = "text", @class = "form-control", ng_model = "customer.f" + field.Id, ng_required = field.Required.ToLowerString(), validation_input_text = field.Name, pattern= @"^[\d,\.]*$" })
+                            }
+                            else if (field.FieldType == CustomerFieldType.TextArea)
+                            {
+                                @Html.TextArea("customerfields[" + i + "].value", field.Value, new { @class = "form-control", ng_model = "customer.f" + field.Id, ng_required = field.Required.ToLowerString(), validation_input_text = field.Name })
+                            }
+                            else if (field.FieldType == CustomerFieldType.Date)
+                            {
+                                <div class="dropdown">
+                                    <div class="dropdown-toggle" id="customerfields_@(field.Id)" role="button" data-toggle="dropdown">
+                                        <div class="input-group">
+                                            <input type="text" id="customerfields_@(i)_value" name="customerfields[@(i)].value" class="form-control" 
+                                                   ng-model="customer.f@(field.Id)" ng-required="@field.Required.ToLowerString()" validation-input-text="@field.Name"
+                                                   ng-init="customer.f@(field.Id)='@(field.Value)'" data-date-time-input="DD.MM.YYYY" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker ng-model="customer.f@(field.Id)" data-datetimepicker-config="{ dropdownSelector: '#customerfields_@(field.Id)', minView: 'day' }" />
+                                    </ul>
+                                </div>
+                            }
+                            else if (field.FieldType == CustomerFieldType.Select)
+                            {
+                                var fieldValues = field.Values;
+                                var selectedValue = "";
+
+                                if (field.Value != null)
+                                {
+                                    selectedValue = field.Value;
+                                    if (fieldValues.Find(x => x.Value == selectedValue) == null)
+                                    {
+                                        fieldValues.Insert(0, new SelectListItem() { Text = selectedValue, Value = selectedValue });
+                                    }
+                                }
+                                else
+                                {
+                                    var firstValue = fieldValues.FirstOrDefault();
+                                    selectedValue = firstValue != null ? firstValue.Value : "";
+                                }
+
+                                @Html.DropDownList("customerfields[" + i + "].value", fieldValues, new { @class = "form-control", ng_model = "customer.f" + field.Id, ng_init= "customer.f" + field.Id + "='" + selectedValue + "'", validation_input_text = field.Name })
+                            }
+
+                            @Html.Hidden("customerfields[" + i + "].FieldType", field.FieldType)
+                            @Html.Hidden("customerfields[" + i + "].id", field.Id)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

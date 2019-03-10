@@ -1,0 +1,77 @@
+﻿@model AdvantShop.Models.Common.LogoModel
+
+
+@if (Model.LogoGeneratorEnabled == false)
+{
+    if (Model.DisplayHref)
+    {
+        <a href="@UrlService.GetUrl()" class="site-head-logo-link">
+            @Html.Raw(Model.Html)
+        </a>
+    }
+    else
+    {
+        @Html.Raw(Model.Html)
+    }
+}
+else
+{
+    bool isDebug = HttpContext.Current.IsDebuggingEnabled;
+    string result = "";
+
+    if (isDebug)
+    {
+
+        result = @"'vendors/tinycolor/tinycolor.js', 
+                           'vendors/es6-promise/es6-promise.auto.min.js',
+                           'vendors/html2canvas/html2canvas.min.js',
+                           'scripts/_partials/logo-generator/logoGenerator.js',
+                           'scripts/_partials/logo-generator/controllers/logoGeneratorController.js',
+                           'scripts/_partials/logo-generator/controllers/logoGeneratorFontsController.js',
+                           'scripts/_partials/logo-generator/controllers/logoGeneratorPreviewController.js',
+                           'scripts/_partials/logo-generator/controllers/logoGeneratorTriggerController.js',
+                           'scripts/_partials/logo-generator/controllers/logoGeneratorModalController.js',
+                           'scripts/_partials/logo-generator/services/logoGeneratorService.js',
+                           'scripts/_partials/logo-generator/components/logoGeneratorComponent.js',
+                           'scripts/_partials/logo-generator/filters/logoGeneratorFilter.js'";
+
+        if (!Model.InLanding)
+        {
+            result += ",'vendors/angular-color-picker/angularjs-color-picker.js'";
+        }
+
+    }else
+    {
+        result = "'" + @UrlService.GetUrl() + "scripts/_partials/logo-generator/build/logogenerator.bundle.js'";
+    }
+
+
+    if (Model.DisplayHref)
+    {
+        @Html.Raw("<a href=" + UrlService.GetUrl() + " class=\"site-head-logo-link logo-generator-link\">")
+    }
+
+    <div data-oc-lazy-load="[{serie:true, files: [
+         './vendors/angular-color-picker/angularjs-color-picker.min.css',
+         './scripts/_partials/logo-generator/styles/logoGenerator.css',
+         @Html.Raw(result)
+         ]}]">
+        <logo-generator-preview class="logo-generator-preview"
+                                data-edit-on-page-load="@Request["logoGeneratorEditOnPageLoad"].TryParseBool().ToLowerString()"
+                                data-logo-generator-id="logoMain">
+            @Html.Raw(Model.Html)
+        </logo-generator-preview>
+        <logo-generator-start></logo-generator-start>
+    </div>
+    if (Model.DisplayHref)
+    {
+        @Html.Raw("</a>");
+    }
+}
+
+
+
+
+
+
+

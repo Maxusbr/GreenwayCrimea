@@ -1,0 +1,18 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.CashOnDeliveryPaymentModel
+
+<div class="form-group row middle-xs">
+    <div class="col-xs-12">
+        <div><strong>Для отображения этого метода оплаты требуется создание метода доставки типа Edost.ru, СДЭК, Boxberry и Grastin.</strong></div>
+        <div>С инструкцией о подключении метода Edost.ru можно ознакомиться по <a href="http://www.advantshop.net/help/pages/install-edost">ссылке</a></div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Привязанный метод доставки</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.ShippingMethodTemplate, Model.ShippingMethodTemplates, new { ng_model = "paymentMethod.Parameters.ShippingMethodTemplate", ng_init = "paymentMethod.Parameters.ShippingMethodTemplate='" + (Model.ShippingMethodTemplate == "0" ? "" : Model.ShippingMethodTemplate) + "'", @class = "form-control", required = "required", validation_input_text = "Привязанный метод доставки" })
+    </div>
+</div>
+

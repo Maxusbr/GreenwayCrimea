@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"
+    Inherits="Admin.m_MasterPage" Codebehind="m_MasterPage.master.cs" %>
+
+<%@ Import Namespace="AdvantShop.Core.UrlRewriter" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:Literal runat="server" ID="lBase" />
+    <asp:Literal ID="headStyle" runat="server" EnableViewState="false"></asp:Literal>
+    <asp:Literal ID="headScript" runat="server" EnableViewState="false"></asp:Literal>
+    <asp:Literal ID="headMeta" runat="server" />
+    <script type="text/javascript">!function () { "use strict"; function e(e, t, n) { e.addEventListener ? e.addEventListener(t, n, !1) : e.attachEvent && e.attachEvent("on" + t, n) } function t(e) { return window.localStorage && localStorage.font_css_cache && localStorage.font_css_cache_file === e } function n() { if (window.localStorage && window.XMLHttpRequest) if (t(o)) c(localStorage.font_css_cache); else { var e = new XMLHttpRequest; e.open("GET", o, !0), e.onreadystatechange = function () { 4 === e.readyState && (c(e.responseText), localStorage.font_css_cache = e.responseText, localStorage.font_css_cache_file = o) }, e.send() } else { var n = document.createElement("link"); n.href = o, n.rel = "stylesheet", n.type = "text/css", document.getElementsByTagName("head")[0].appendChild(n), document.cookie = "font_css_cache" } } function c(e) { var t = document.createElement("style"); t.setAttribute("type", "text/css"), t.styleSheet ? t.styleSheet.cssText = e : t.innerHTML = e, document.getElementsByTagName("head")[0].appendChild(t) } var o = "styles/font.css?v=2"; window.localStorage && localStorage.font_css_cache || document.cookie.indexOf("font_css_cache") > -1 ? n() : e(window, "load", n) }();</script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="Server" ID="scriptManager" ScriptMode="Release" />
+        <div>
+            <asp:ContentPlaceHolder ID="cphCenter" runat="server" />
+        </div>
+    </form>
+    <asp:ContentPlaceHolder ID="cphScript" runat="server" />
+
+    <!--ckeditor_при_минификации_падает!-->
+    <script type="text/javascript">
+        window.CKEDITOR_BASEPATH = '<%= UrlService.GetUrl("vendors/ckeditor/") %>';
+    </script>
+    <script src="../vendors/ckeditor/ckeditor.js?v=5.0"></script>
+     <script src="js/ckeditorInit.js"></script>
+    <!--ckeditor-->
+</body>
+</html>

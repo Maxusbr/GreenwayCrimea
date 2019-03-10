@@ -1,0 +1,14 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.Roistat
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>()
+    {
+        url + "modules/roistat/content/scripts/admin/roistatSettings.js",
+    };
+    var version = Html.GetModuleVersion(Roistat.ModuleId);
+}
+
+<div data-oc-lazy-load="[@(String.Join(", ", scripts.Select(x => "'" + x + "?v=" + version + "'")))]">
+    <roistat-settings />
+</div>

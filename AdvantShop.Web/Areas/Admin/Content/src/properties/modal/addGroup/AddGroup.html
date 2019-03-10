@@ -1,0 +1,30 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.mode == "add" ? "Добавление" : "Редактирование"}} группы свойств</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label"><span class="text-required">Название</span></label>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="" ng-model="ctrl.name" class="form-control" required validation-input-text="Название" autofocus />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-if="ctrl.mode != 'add'">
+                <div class="row">
+                    <label class="col-xs-3 control-label">Название в клиентской части</label>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="" ng-model="ctrl.nameDisplayed" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.addGroup()" data-button-validation>{{ctrl.mode == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

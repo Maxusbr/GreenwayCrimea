@@ -1,0 +1,26 @@
+﻿@model AdvantShop.ViewModel.Catalog.CategoryListViewModel
+
+@foreach (var category in Model.CategoriesWithProducts)
+{
+    <div class="product-categories-thin">
+        <div class="product-categories-item-thin">
+            <div class="product-categories-header-thin @(category.Products.Count > 0 ? "" : "no-products")">
+                <a href="@category.Url" class="product-categories-header-thin h2">@category.Title</a>
+                @if (Model.DisplayProductCount)
+                {
+                    <span class="product-categories-header-count-thin">(@category.ProductsCount)</span>
+                }
+            </div>
+            <div class="product-categories-view products-view products-view-tile products-view-container">
+                @Html.Partial("_ProductView", category)
+            </div>
+            <a href="@category.Url" class="product-categories-thin-total cs-bg-i-1 link-text-decoration-none">
+                <span class="product-categories-thin-total-text cs-t-8">@T("Catalog.CategoryListWithProducts.AllProducts")</span>
+                @if (Model.DisplayProductCount)
+                {
+                    <span class="product-categories-thin-total-count cs-t-8">@category.ProductsCount</span>
+                }
+            </a>
+        </div>
+    </div>
+}

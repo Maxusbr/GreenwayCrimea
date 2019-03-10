@@ -1,0 +1,32 @@
+﻿@model AdvantShop.Module.Journal.Models.SizeColorPickerViewModel
+
+@if (Model.Colors.IsNotEmpty())
+{
+    <div class="details-row details-colors" data-ng-init="product.colorsExist = true">
+        @Html.Partial("_Colors", new AdvantShop.ViewModel.Shared.ColorsViewModel
+       {
+           NgColors = Model.Colors,
+           ColorWidth = Model.ColorIconWidthDetails,
+           ColorHeight = Model.ColorIconHeightDetails,
+           NgColorSelected = "product.colorSelected",
+           NgInitColors = "product.initColors(colorsViewer)",
+           NgChangeColor = "product.changeColor(color)",
+           EnabledSlider = false,
+           HeaderText = Model.ColorsHeader,
+           ImageType = AdvantShop.FilePath.ColorImageType.Details
+       })
+    </div>
+}
+@if (Model.Sizes.IsNotEmpty())
+{
+    <div class="details-row details-sizes" data-ng-init="product.sizesExist = true">
+        @Html.Partial("_Sizes", new AdvantShop.ViewModel.ProductDetails.SizesViewModel
+        {
+            NgSizes = Model.Sizes,
+            NgSizeSelected = "product.sizeSelected",
+            NgInitSizes = "product.initSizes(sizesViewer)",
+            NgChangeSize = "product.changeSize(size)",
+            HeaderText = Model.SizesHeader
+        })
+    </div>
+}

@@ -1,0 +1,40 @@
+﻿@model AdvantShop.Models.Search.SearchBlockModel
+<!--noindex-->
+<div class="@(SettingsDesign.SearchBlockLocation != SettingsDesign.eSearchBlockLocation.TopMenu ? "container-fluid" : "" ) @("search-block-" + SettingsDesign.SearchBlockLocation.ToString().ToLower())">
+    <form name="searchHeaderForm" class="row site-head-search-form" novalidate="novalidate" data-ng-controller="SearchBlockCtrl as searchBlock" data-ng-init="searchBlock.url='@Url.Action("Index", "search")'">
+        <div class="col-xs-12 site-head-search-input-wrap" data-ng-init="searchBlock.form = searchHeaderForm">
+            <div class="site-head-site-head-search"
+                 data-autocompleter
+                 data-field="Name"
+                 data-link-all="search"
+                 data-apply-fn="searchBlock.aSubmut(value, obj)"
+                 data-template-path="scripts/_common/autocompleter/templates/categoriesProducts.html"
+                 data-request-url="search/autocomplete">
+                <input class="input-big site-head-search-input"
+                       data-autocompleter-input
+                       type="search"
+                       autocomplete="off"
+                       value="@Model.Q"
+                       placeholder="@T("Search.SearchBlock.SearchPlaceholder")"
+                       name="q"
+                       data-default-button="#searchHeaderSubmit"
+                       data-ng-model="searchBlock.search" />
+            </div>
+            @if (!string.IsNullOrEmpty(Model.ExampleText))
+            {
+                <div class="site-head-search-example cs-t-3">
+                    Например: <a href="@Model.ExampleLink" class="link-dotted-invert cs-l-3">@Model.ExampleText</a>
+                </div>
+            }
+        </div>
+        <div class="site-head-search-btn-wrap">
+            <div class="site-head-search-col">
+                <a href="" class="btn btn-submit btn-big btn-expander site-head-search-btn" id="searchHeaderSubmit" data-ng-click="searchBlock.submit(searchBlock.search, false)">
+                    <span class="icon-search-block icon-search-before cs-t-1"></span>
+                    <span class="site-head-search-btn-text">@T("Search.SearchBlock.Find")</span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+<!--/noindex-->

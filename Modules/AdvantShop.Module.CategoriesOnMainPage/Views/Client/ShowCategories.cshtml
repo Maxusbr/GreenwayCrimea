@@ -1,0 +1,44 @@
+﻿@using AdvantShop.Module.CategoriesOnMainPage.Service
+@model AdvantShop.Module.CategoriesOnMainPage.Models.CategoriesOnMainPageView
+@{
+    var width = 100 / (Model.CountCategoriesInLine != 0 ? Model.CountCategoriesInLine : 4);
+    var widthString = width + "%";
+}
+
+<div class="product-categories-module product-categories-slim" style="display: none;">
+    @foreach (var category in Model.Categories)
+    {
+        var urlPath = category.URL.Contains("http") ? category.URL : string.Format("{0}", category.URL);
+        <div class="product-categories-item-slim" style="-webkit-flex-basis: @(widthString); -ms-flex-preferred-size: @(widthString); flex-basis: @(widthString); max-width: @(widthString);">
+            <div class="product-categories-item-inner-slim@(COMPSettings.NoShowBorder ? "-no-show-border" : string.Empty)">
+                @if (!COMPSettings.NoShowCategoryName)
+                {
+                    <div class="product-categories-header-slim @(!string.IsNullOrEmpty(category.ImageUrl) ? "product-categories-header-slim-extend" : "")">
+                        <div class="product-categories-header-container">
+                            <a href="@urlPath" class="product-categories-header-slim-title" @(COMPSettings.NewWindow ? "target='_blank'" : string.Empty)>@Html.Raw(category.Name)</a>
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(category.ImageUrl))
+                {
+                    <figure class="product-categories-item-picture-slim center-aligner">
+                        <a href="@urlPath" class="product-categories-item-photo-link-slim@(COMPSettings.NoShowCategoryName ? "-no-category-name" : string.Empty)"
+                           @(COMPSettings.NewWindow ? "target=\"_blank\"" : string.Empty)>
+                            <div class="product-categories-item-photo-link-wrap"
+                                 style="width:@(COMPSettings.ImageWidth)px; height:@(COMPSettings.ImageHeight)px; max-width: 100%;">
+                                <div class="product-categories-item-photo-link-wrap@(COMPSettings.NoShowBorder && COMPSettings.Effect != "none" ? "-" + COMPSettings.Effect : string.Empty)"
+                                      style="max-height: 100%;">
+                                    <img class="product-categories-item-picture-obj-slim@(COMPSettings.NoShowBorder && COMPSettings.Effect != "none" ? "-" + COMPSettings.Effect : string.Empty)"
+                                         src="modules/CategoriesOnMainPage/Pictures/@category.ImageUrl"
+                                         alt="@Html.Encode(category.Name)"
+                                         title="@Html.Encode(category.Name)"
+                                         style="display: block;"/>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                }
+            </div>
+        </div>
+    }
+</div>

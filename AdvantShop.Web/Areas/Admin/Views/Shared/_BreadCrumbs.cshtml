@@ -1,0 +1,17 @@
+﻿@model List<AdvantShop.CMS.BreadCrumbs>
+@if (Model.Any())
+{
+    <ul class="breadcrumb">
+        @for (var i = 0; i < Model.Count; ++i)
+        {
+            if (!string.IsNullOrEmpty(Model[i].Url) && i != Model.Count - 1)
+            {
+                <li><a class="link-invert" href="@Model[i].Url">@Html.Raw(Model[i].Name)</a><span class="divider">→</span></li>
+            }
+            else
+            {
+                <li class="active">@Html.Raw(Model[i].Name)</li>
+            }
+        }
+    </ul>
+}

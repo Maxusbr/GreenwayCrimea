@@ -1,0 +1,21 @@
+.footer-menu-head {
+  display: inline-block;
+  font-size: 20px;
+  padding-bottom: 9px;
+  border-bottom: 2px solid #86bf5b;
+  margin-bottom: 0;
+  font-weight: normal;
+  color: #fff;
+  margin-bottom: 20px; }
+
+.footer-menu-item {
+  margin-bottom: 15px; }
+
+.footer-menu-link {
+  color: #999999;
+  transition: all .2s ease-in;
+  font-size: 13px; }
+
+.footer-menu-link:hover {
+  color: #fff;
+  text-decoration: none; }

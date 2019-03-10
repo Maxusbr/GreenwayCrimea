@@ -1,0 +1,154 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ProductPhotosViewModel
+@{
+    var labels = @Html.RenderLabels(Model.Product.Recomended, Model.Product.OnSale, Model.Product.BestSeller, Model.Product.New, Model.Discount, customLabels: Model.Labels, warranty: Model.Product.ManufacturerWarranty);
+}
+<div class="gallery-block" data-ng-init="product.setPreview({'colorId': @(Model.MainPhoto.ColorID != null ? Model.MainPhoto.ColorID.ToString() : "null"), 'previewPath':'@Model.MainPhoto.ImageSrcMiddle()','originalPath':'@Model.MainPhoto.ImageSrcBig()', 'title':'@Html.AttributeEncode(Model.MainPhoto.Title)', 'PhotoId': @Model.MainPhoto.PhotoId})">
+
+    <figure class="gallery-picture text-static">
+        <a class="gallery-picture-link link-text-decoration-none"
+           href="@Model.MainPhoto.ImageSrcBig()"
+           style="max-height: @(Model.PreviewPhotoHeight + "px");"
+           @(Model.EnabledModalPreview && Model.Photos.Count > 0 ? Html.Raw("data-ng-click=\"product.modalPreviewOpen($event)\"") : Html.Raw("data-ng-click=\"$event.preventDefault();\""))
+           @(Model.EnabledZoom && Model.Photos.Count > 0 ? Html.Raw("data-zoomer data-preview-path=\"product.picture.previewPath\" data-original-path=\"product.picture.originalPath\" data-zoomer-title=\"product.picture.title\" data-zoom-height=\"" + Model.PreviewPhotoHeight + "\" data-zoom-width=\"" + Model.PreviewPhotoWidth + "\"") : Html.Raw(""))>
+            <img itemprop="image" class="gallery-picture-obj"
+                 src="@Model.MainPhoto.ImageSrcMiddle()"
+                 alt="@Model.MainPhoto.Alt"
+                 data-ng-src="{{product.picture.previewPath}}"
+                 @Html.InplaceImageProduct(Model.MainPhoto.PhotoId, Model.Product.ProductId, AdvantShop.FilePath.ProductImageType.Middle) />
+        </a>
+        <span class="gallery-picture-labels">@labels</span>
+        @Html.Action("ProductGifts", "Product", new { productModel = Model.ProductModel })
+    </figure>
+    @if (Model.ActiveThreeSixtyView)
+    {
+        <div id="modalProductRotate" data-modal-control data-move-in-body="true" data-modal-class="modal-rotate" data-close-out="false" data-callback-close="product.showRotate(false)">
+            <div>
+                <div class="page-title-row details-title-row modal-header">
+                    <h2 class="details-title page-title">@Html.GetPageH1()</h2>
+                </div>
+                <figure class="details-rotate modal-content" style="height: @(Model.PreviewPhotoHeight + "px")" data-ng-if="product.visibleRotate === true">
+                    <div data-rotate
+                         data-image-path="pictures/product/rotate/@Html.Raw(Model.Product.ProductId)/"
+                         data-total-frames="@Model.Photos360.Count"
+                         data-height="@(Model.PreviewPhotoHeight)"
+                         data-width="@(Model.PreviewPhotoWidth)"
+                         data-end-frame="@Model.Photos360.Count"
+                         data-img-list=".threesixty_images"
+                         data-progress=".spinner"
+                         data-width="@(Model.PreviewPhotoWidth)"
+                         data-ext="@Model.Photos360Ext">
+                    </div>
+                </figure>
+            </div>
+        </div>
+    }
+
+    @if (Model.Video != null)
+    {
+        <div id="modalProductVideo" data-modal-control data-move-in-body="true" data-modal-class="modal-video" data-callback-close="product.showVideo(false)">
+            <div class="modal-content" data-ng-if="product.visibleVideo === true">@Html.Raw(Model.Video.PlayerCode)</div>
+        </div>
+    }
+    <div class="row between-xs middle-xs details-additional-graphics">
+        <div>
+            @if (Model.ActiveThreeSixtyView)
+            {
+                <a href="" class="prod-photo-view-change rotate" data-ng-click="product.showRotate(true)" data-modal-open="modalProductRotate">
+                </a>
+            }
+            @if (Model.Video != null)
+            {
+                <a href="" class="prod-photo-view-change video" data-ng-click="product.showVideo(true)" data-modal-open="modalProductVideo">
+                </a>
+            }
+        </div>
+        @if (Model.EnabledModalPreview && Model.Photos.Count > 0)
+        {
+            <div>
+                <a href="" class="gallery-zoom icon-search-before-abs cs-l-3 link-dotted" data-ng-click="product.modalPreviewOpen($event, product.picture)">@T("Product.ProductPhotos.Zoom")</a>
+            </div>
+        }
+    </div>
+
+    @if (Model.Photos.Count > 1)
+    {
+        <div class="gallery-photos details-carousel details-carousel-hidden" data-ng-class="{'details-carousel-hidden' : product.carouselHidden}" data-ng-init="product.carouselExist = true">
+            <div class="gallery-photos-slider-list-horizontal"
+                 data-carousel
+                 data-carousel-class="gallery-photos-slider"
+                 data-init-fn="product.addCarousel(carousel)"
+                 data-item-select="product.carouselItemSelect(carousel, item, index)"
+                 data-item-select-class="details-carousel-selected"
+                 data-stretch="true">
+                @foreach (var photo in Model.Photos)
+                {
+                    <div class="details-carousel-item" data-ng-click="product.photoInit()" data-parameters="{'colorId': @(photo.ColorID != null ? photo.ColorID.ToString() : "null") , 'main' : @photo.Main.ToString().ToLower(), 'previewPath': '@photo.ImageSrcMiddle()', 'originalPath': '@photo.ImageSrcBig()', 'title': '@Html.AttributeEncode(photo.Title)', 'PhotoId': @photo.PhotoId }">
+                        <figure class="gallery-photos-item" style="height: @(Model.CarouselPhotoHeight + "px");line-height: @(Model.CarouselPhotoHeight + "px");">
+                            <img class="gallery-photos-item-obj img-not-resize" src="@photo.ImageSrcXSmall()" alt="@photo.Alt" title="@photo.Title" />
+                        </figure>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+@if (Model.EnabledModalPreview && Model.Photos.Count > 0)
+{
+    <div class="modal ng-hide"
+         id="modalPreview_@Model.Product.ProductId"
+         data-modal-control
+         data-callback-open="product.modalPreviewCallbackOpen(modal)"
+         data-modal-class="details-modal-preview">
+        <div data-modal-header class="modal-header">@Html.GetPageH1()</div>
+        <div class="modal-content details-modal-preview-block">
+
+            @if (Model.Photos != null && Model.Photos.Count > 1)
+            {
+                <a href="" ng-click="product.carouselPreviewPrev()" class="icon-left-open-before details-modal-preview-arrow link-text-decoration-none"></a>
+            }
+
+            <div class="details-modal-preview-cell details-modal-preview-cell-photo">
+                <figure class="gallery-picture details-preview-block"
+                        data-ng-style="{'height' : product.modalPreviewHeight + 'px'}"
+                        data-ng-class="{'modal-preview-image-load' : product.modalPreviewState === 'load','modal-preview-image-complete' : product.modalPreviewState === 'complete'}"
+                        data-window-resize="product.resizeModalPreview(event)">
+                    <a href=""
+                       class="details-preview-block-link"
+                       data-ng-style="{'height' : product.modalPreviewHeight + 'px'}"
+                       @Html.Raw(Model.EnabledZoom && Model.Photos.Count > 0 ? "data-zoomer  data-type=\"inner\" data-zoomer-title=\"product.picture.title\" data-preview-path=\"product.picture.originalPath\"  data-original-path=\"product.picture.originalPath\"" : string.Empty)>
+                        <img alt="@Model.MainPhoto.Alt"
+                             class="gallery-picture-obj"
+                             data-ng-style="{'max-height' : product.modalPreviewHeight + 'px'}"
+                             data-ng-src="{{product.picture.originalPath}}" />
+                    </a>
+                </figure>
+            </div>
+
+            @if (Model.Photos != null && Model.Photos.Count > 1)
+            {
+                <a href="" ng-click="product.carouselPreviewNext()" class="icon-right-open-before details-modal-preview-arrow link-text-decoration-none"></a>
+            }
+
+            <div class="carousel details-modal-carousel">
+                <div class="carousel-inner">
+                    <div class="gallery-photos-slider-list-vertical details-modal-preview-aside"
+                         data-carousel
+                         data-is-vertical="true"
+                         data-stretch="false"
+                         data-init-fn="product.addModalPictureCarousel(carousel)"
+                         data-item-select="product.carouselItemSelect(carousel, item, index)"
+                         data-item-select-class="details-carousel-selected">
+                        @foreach (var photo in Model.Photos)
+                        {
+                            <div class="details-carousel-item-vertical" data-parameters="{'colorId': @(photo.ColorID != null ? photo.ColorID.ToString() : "null") , 'main' : @photo.Main.ToString().ToLower(), 'previewPath': '@photo.ImageSrcMiddle()', 'originalPath': '@photo.ImageSrcBig()', 'title': '@Html.AttributeEncode(photo.Title)', 'PhotoId': @photo.PhotoId }">
+                                <figure class="gallery-photos-item" style="height: @(Model.CarouselPhotoHeight + "px"); width: @(Model.CarouselPhotoWidth + "px");">
+                                    <img class="gallery-photos-item-obj" src="@photo.ImageSrcXSmall()" alt="@photo.Alt" title="@photo.Title" />
+                                </figure>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

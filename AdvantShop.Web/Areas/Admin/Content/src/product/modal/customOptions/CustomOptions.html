@@ -1,0 +1,14 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Дополнительные опции</h2>
+</div>
+<div class="modal-body">
+    <iframe id="customOptions"
+            src="{{ '../admin/productCustomOptions.aspx?productId=' + ctrl.productId + '&rnd=' + ctrl.rnd }}"
+            style="width: 100%; height: 100%; border: none; margin: 0; padding: 0;" 
+            onload="this.style.height = (this.contentDocument.body.scrollHeight < 200 ? 405 : this.contentDocument.body.scrollHeight) + 'px';"></iframe>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.save();" ladda="ctrl.btnLoading">Сохранить изменения</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Закрыть</button>
+</div>

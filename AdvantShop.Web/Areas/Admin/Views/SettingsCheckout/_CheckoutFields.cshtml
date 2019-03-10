@@ -1,0 +1,443 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CheckoutSettingsModel
+
+<a href="@Url.Action("Academy", "Service", new { id = 33 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert bottom-cell inline">
+    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+    Видеоурок о Параметрах заказа
+</a>
+<div class="setting-title setting-title__m-t-md">
+    <h3>@T("Admin.Settings.Checkout.CheckoutCustomerFields")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.NameField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ShowField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.RequiredField")
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        @Html.TextBoxFor(x => Model.CustomerFirstNameField, new { @class = "form-control input-small", ng_model = "settingsCheckout.CustomerFirstNameField" })
+    </div>
+    <div class="col-xs-2">
+        @*<label class="adv-checkbox-label">
+            @Html.CheckBox("chbShowFirstName", true, new { @class = "adv-checkbox-input", @disabled = "disabled" })
+            <span class="adv-checkbox-emul"></span>
+        </label>*@
+    </div>
+    <div class="col-xs-2">
+        @*<label class="adv-checkbox-label">
+            @Html.CheckBox("chbRequiredFirstName", true, new { @class = "adv-checkbox-input", @disabled = "disabled" })
+            <span class="adv-checkbox-emul"></span>
+        </label>*@
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.CustomerLastNameField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowLastName, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowLastName"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowLastName"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredLastName, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredLastName" })
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredLastName"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.CustomerPatronymicNameField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowPatronymic, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowPatronymic" })
+            <span class="adv-checkbox-emul" data-e2e="IsShowPatronymic"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredPatronymic, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredPatronymic" })
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredPatronymic"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @Html.TextBoxFor(x => Model.CustomerPhoneField, new { @class = "form-control input-small", ng_model = "settingsCheckout.CustomerPhoneField" })
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowPhone, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowPhone" })
+            <span class="adv-checkbox-emul" data-e2e="IsShowPhone"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredPhone, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredPhone" })
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredPhone"></span>
+        </label>
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.CheckoutShippingFields")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.NameField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ShowField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.RequiredField")
+        </div>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.CountryField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowCountry, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowCountry"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowCountry"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredCountry, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredCountry"})
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredCountry"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.StateField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowState, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowState"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowState"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredState, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredState" })
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredState"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.CityField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowCity, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowCity"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowCity"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredCity, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredCity" })
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredCity"></span>
+        </label>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ZipField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowZip, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowZip" })
+            <span class="adv-checkbox-emul" data-e2e="IsShowZip"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredZip, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredZip" })
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredZip"></span>
+        </label>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.AddressField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowAddress, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowAddress"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowAddress"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredAddress, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredAddress"})
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredAddress"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.UserCommentField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowUserComment, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowUserComment"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowUserComment"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @Html.TextBoxFor(x => Model.CustomShippingField1, new { @class = "form-control input-small", ng_model = "settingsCheckout.CustomShippingField1" })
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowCustomShippingField1, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowCustomShippingField1"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowCustomShippingField1"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsReqCustomShippingField1, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsReqCustomShippingField1" })
+            <span class="adv-checkbox-emul" data-e2e="IsReqCustomShippingField1"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @Html.TextBoxFor(x => Model.CustomShippingField2, new { @class = "form-control input-small", ng_model = "settingsCheckout.CustomShippingField2" })
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowCustomShippingField2, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowCustomShippingField2" })
+            <span class="adv-checkbox-emul" data-e2e="IsShowCustomShippingField2"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsReqCustomShippingField2, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsReqCustomShippingField2" })
+            <span class="adv-checkbox-emul" data-e2e="IsReqCustomShippingField2"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @Html.TextBoxFor(x => Model.CustomShippingField3, new { @class = "form-control input-small", ng_model = "settingsCheckout.CustomShippingField3" })
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowCustomShippingField3, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowCustomShippingField3" })
+            <span class="adv-checkbox-emul" data-e2e="IsShowCustomShippingField3"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsReqCustomShippingField3, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsReqCustomShippingField3" })
+            <span class="adv-checkbox-emul" data-e2e="IsReqCustomShippingField3"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row m-t">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.IsFullAddress")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowFullAddress, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowFullAddress" })
+            <span class="adv-checkbox-emul" data-e2e="IsShowFullAddress"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+    </div>
+</div>
+
+<div class="form-group row m-t">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ZipDisplayPlace")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.ZipDisplayPlace, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.ZipDisplayPlace" })
+            <span class="adv-checkbox-emul" data-e2e="ZipDisplayPlace"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+    </div>
+</div>
+
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.Checkout.BuyInOneClickFields")</h3>
+</div>
+
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.NameField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.ShowField")
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @T("Admin.Settings.Checkout.RequiredField")
+        </div>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @Html.TextBoxFor(x => Model.BuyInOneClickName, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickName" })
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowBuyInOneClickName, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowBuyInOneClickName"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowBuyInOneClickName"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredBuyInOneClickName, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredBuyInOneClickName"})
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredBuyInOneClickName"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @Html.TextBoxFor(x => Model.BuyInOneClickEmail, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickEmail" })
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowBuyInOneClickEmail, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowBuyInOneClickEmail"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowBuyInOneClickEmail"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredBuyInOneClickEmail, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredBuyInOneClickEmail"})
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredBuyInOneClickEmail"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @Html.TextBoxFor(x => Model.BuyInOneClickPhone, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickPhone" })
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowBuyInOneClickPhone, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowBuyInOneClickPhone"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowBuyInOneClickPhone"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredBuyInOneClickPhone, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredBuyInOneClickPhone"})
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredBuyInOneClickPhone"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <div class="setting-label-wrap">
+            @Html.TextBoxFor(x => Model.BuyInOneClickComment, new { @class = "form-control input-small", ng_model = "settingsCheckout.BuyInOneClickComment" })
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsShowBuyInOneClickComment, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsShowBuyInOneClickComment"})
+            <span class="adv-checkbox-emul" data-e2e="IsShowBuyInOneClickComment"></span>
+        </label>
+    </div>
+    <div class="col-xs-2">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(x => Model.IsRequiredBuyInOneClickComment, new { @class = "adv-checkbox-input", ng_model = "settingsCheckout.IsRequiredBuyInOneClickComment"})
+            <span class="adv-checkbox-emul" data-e2e="IsRequiredBuyInOneClickComment"></span>
+        </label>
+    </div>
+</div>

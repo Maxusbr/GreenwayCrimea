@@ -1,0 +1,106 @@
+﻿@model AdvantShop.ViewModel.Install.InstallNotifyModel
+@{
+    Layout = "~/Views/Install/Layout.cshtml";
+}
+@using (Html.BeginForm("notify", "install", FormMethod.Post))
+{
+    <div class="error">
+        @Html.ValidationSummary()
+    </div>
+    @Html.AntiForgeryToken()
+
+    <h1>
+        @Resource.Install_UserContols_NotifyParagrafView_h1
+    </h1>
+    <div class="h2">
+        @Resource.Install_UserContols_NotifyParagrafView_h2
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_RegReport
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.EmailRegReport, new { @class = "txt valid-email" })
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_Order
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.OrderEmail, new { @class = "txt valid-email" })
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_ProductDiscuss
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.EmailProductDiscuss, new { @class = "txt valid-email" })
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_Feedback
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.FeedbackEmail, new { @class = "txt valid-email" })
+        </div>
+    </div>
+    <div class="h2">
+        @Resource.Install_UserContols_NotifyParagrafView_h2_2
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_SMTP
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.EmailSmtp)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_Login
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.EmailLogin)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_Pass
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.EmailPassword)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_Port
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.EmailPort)
+        </div>
+    </div>
+    <div class="group">
+        <p>
+            @Resource.Install_UserContols_NotifyParagrafView_Email
+        </p>
+        <div class="str">
+            @Html.TextBoxFor(x => x.Email, new { @class = "txt valid-email" })
+        </div>
+    </div>
+    <div class="group">
+        <label>
+            @Html.CheckBoxFor(x => x.EnableSsl) @Resource.Install_UserContols_NotifyParagrafView_SSL
+        </label>
+    </div>
+
+
+    <div class="step-btns">
+        <span class="btn-c">
+            <a href="@Model.BackUrl" class="btn btn-back">@Resource.Installer_Back</a>
+            <input type="submit" class="btn btn-next" value="@Resource.Installer_Next" />
+        </span>
+    </div>
+}

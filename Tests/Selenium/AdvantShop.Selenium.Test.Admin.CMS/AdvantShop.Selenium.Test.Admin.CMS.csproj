@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0964FA37-E314-4F52-A010-3C8454B59769}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvantShop.Selenium.Test.Admin.CMS</RootNamespace>
+    <AssemblyName>AdvantShop.Selenium.Test.Admin.CMS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="WebDriver, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Selenium.Support.3.4.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\CMS\Carousel\CarouselAdd.cs" />
+    <Compile Include="Tests\CMS\Carousel\CarouselPageTest.cs" />
+    <Compile Include="Tests\CMS\Carousel\CarouselTest.cs" />
+    <Compile Include="Tests\CMS\Menu\CMSMenu.cs" />
+    <Compile Include="Tests\CMS\Menu\CMSMenuAdd.cs" />
+    <Compile Include="Tests\CMS\Menu\CMSMenuDeleteItem.cs" />
+    <Compile Include="Tests\CMS\Menu\CMSMenuEdit.cs" />
+    <Compile Include="Tests\CMS\Menu\CMSMenuEditEnabled.cs" />
+    <Compile Include="Tests\CMS\NewsCategory\CMSNewsCategoryAddTest.cs" />
+    <Compile Include="Tests\CMS\NewsCategory\CMSNewsCategoryEditTest.cs" />
+    <Compile Include="Tests\CMS\NewsCategory\CMSNewsCategoryFilterNameTest.cs" />
+    <Compile Include="Tests\CMS\NewsCategory\CMSNewsCategoryFilterUrlPathTest.cs" />
+    <Compile Include="Tests\CMS\NewsCategory\CMSNewsCategoryPageTest.cs" />
+    <Compile Include="Tests\CMS\NewsCategory\CMSNewsCategoryTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsAddTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsEditTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsFilterAddDateTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsFilterMainPageTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsFilterNameTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsFilterNewsCategoryTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsPageTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsFilterEnabledTest.cs" />
+    <Compile Include="Tests\CMS\News\CMSNewsAddProductTest.cs" />
+    <Compile Include="Tests\CMS\StaticBlock\CMSStaticBlockPageTest.cs" />
+    <Compile Include="Tests\CMS\StaticBlock\CMSStaticBlockTest.cs" />
+    <Compile Include="Tests\CMS\StaticPage\StaticPageAddEdit.cs" />
+    <Compile Include="Tests\CMS\StaticPage\StaticPageTest.cs" />
+    <Compile Include="Tests\CMS\StaticPage\StaticPageViewTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AdvantShop.Web.Infrastructure\AdvantShop.Web.Infrastructure.csproj">
+      <Project>{95339807-58ec-4b9c-8808-0a893f3a2cc6}</Project>
+      <Name>AdvantShop.Web.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantShop.Selenium.Core\AdvantShop.Selenium.Core.csproj">
+      <Project>{a1f7b566-7c19-421f-b002-c6c7b48b13b0}</Project>
+      <Name>AdvantShop.Selenium.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Protractor\Protractor.csproj">
+      <Project>{de9c82c5-ebb3-4a2b-a75e-ce3e68e2c866}</Project>
+      <Name>Protractor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Admin\CMS\Carousel\Catalog.Category.csv" />
+    <None Include="Data\Admin\CMS\Carousel\Catalog.Offer.csv" />
+    <None Include="Data\Admin\CMS\Carousel\Catalog.Photo.csv" />
+    <None Include="Data\Admin\CMS\Carousel\Catalog.Product.csv" />
+    <None Include="Data\Admin\CMS\Carousel\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\CMS\Carousel\CMS.Carousel.csv" />
+    <None Include="Data\Admin\CMS\Menu\Catalog.Brand.csv" />
+    <None Include="Data\Admin\CMS\Menu\Catalog.Category.csv" />
+    <None Include="Data\Admin\CMS\Menu\Catalog.Offer.csv" />
+    <None Include="Data\Admin\CMS\Menu\Catalog.Product.csv" />
+    <None Include="Data\Admin\CMS\Menu\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\CMS\Menu\CMS.Menu.csv" />
+    <None Include="Data\Admin\CMS\Menu\CMS.StaticBlock.csv" />
+    <None Include="Data\Admin\CMS\Menu\CMS.StaticPage.csv" />
+    <None Include="Data\Admin\CMS\Menu\Settings.News.csv" />
+    <None Include="Data\Admin\CMS\Menu\Settings.NewsCategory.csv" />
+    <None Include="Data\Admin\CMS\NewsCategory\Settings.News.csv" />
+    <None Include="Data\Admin\CMS\NewsCategory\Settings.NewsCategory.csv" />
+    <None Include="Data\Admin\CMS\News\Catalog.Category.csv" />
+    <None Include="Data\Admin\CMS\News\Catalog.Offer.csv" />
+    <None Include="Data\Admin\CMS\News\Catalog.Photo.csv" />
+    <None Include="Data\Admin\CMS\News\Catalog.Product.csv" />
+    <None Include="Data\Admin\CMS\News\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\CMS\News\Settings.News.csv" />
+    <None Include="Data\Admin\CMS\News\Settings.NewsCategory.csv" />
+    <None Include="Data\Admin\CMS\StaticBlock\Catalog.Category.csv" />
+    <None Include="Data\Admin\CMS\StaticBlock\Catalog.Offer.csv" />
+    <None Include="Data\Admin\CMS\StaticBlock\Catalog.Product.csv" />
+    <None Include="Data\Admin\CMS\StaticBlock\Catalog.ProductCategories.csv" />
+    <None Include="Data\Admin\CMS\StaticBlock\CMS.StaticBlock.csv" />
+    <None Include="Data\Admin\CMS\StaticBlock\CMS.StaticPage.csv" />
+    <None Include="Data\Admin\CMS\StaticPage\CMS.StaticPage.csv" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\packages\WebDriver.GeckoDriver.0.16.1\content\geckodriver.exe">
+      <Link>geckodriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pictures\avatar.jpg" />
+    <Content Include="Data\pictures\big.png" />
+    <Content Include="Data\pictures\brandeditpic.jpg" />
+    <Content Include="Data\pictures\brandpic.png" />
+    <Content Include="Data\pictures\brand_logo.jpg" />
+    <Content Include="Data\pictures\color.png" />
+    <Content Include="Data\pictures\icon.jpg" />
+    <Content Include="Data\pictures\mandaue_cebu.png" />
+    <Content Include="Data\pictures\pic.png" />
+    <Content Include="Data\pictures\pics3d\1.jpg" />
+    <Content Include="Data\pictures\pics3d\2.jpg" />
+    <Content Include="Data\pictures\pics3d\3.jpg" />
+    <Content Include="Data\pictures\pics3d\4.jpg" />
+    <Content Include="Data\pictures\pictures-1.jpg" />
+    <Content Include="Data\pictures\small.jpg" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Selenium.WebDriver.ChromeDriver.2.30.0.1\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,82 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.IPTelephonySettingsModel
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="TelphinAppKey" class="form-label-block">@T("Admin.Settings.Telephony.Telphin.AppKey")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.TelphinAppKey, new { ng_model = "settingsTelephony.telphinAppKey", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.Telphin.AppKey")">
+            @T("Admin.Telphin.AppKeyNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <div class="setting-label-wrap">
+            <label for="TelphinAppSecret" class="form-label-block">@T("Admin.Settings.Telephony.Telphin.AppSecret")</label>
+        </div>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.TelphinAppSecret, new { ng_model = "settingsTelephony.telphinAppSecret", @class = "form-control" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.Settings.Telephony.Telphin.AppSecret")">
+            @T("Admin.Telphin.AppSecretNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="setting-title" ng-init="settingsTelephony.telphinExtensions = @Model.TelphinExtensions">
+    <h3>@T("Admin.Telphin.Extensions") <a href="" ng-click="settingsTelephony.getTelphinExtensions()">@T("Admin.Telphin.Extensions.Refresh")</a></h3>
+</div>
+<div class="form-group row" ng-if="!settingsTelephony.telphinExtensions || settingsTelephony.telphinExtensions.length == 0">
+    <div class="col-xs-12">
+        <div class="setting-label-wrap">
+            <label class="form-label-block">@T("Admin.Telphin.Extensions.Empty")</label>
+        </div>
+    </div>
+</div>
+<div class="form-group row" ng-if="settingsTelephony.telphinExtensions.length > 0">
+    <div class="col-xs-1">
+        <b>@T("Admin.Telphin.Extensions.Number")</b>
+    </div>
+    <div class="col-xs-2">
+        <b>@T("Admin.Telphin.Extensions.Name")</b>
+    </div>
+    <div class="col-xs-9">
+        <b>@T("Admin.Telphin.Extensions.Notifications")</b>
+    </div>
+</div>
+<div class="form-group row" ng-repeat="ext in settingsTelephony.telphinExtensions">
+    <div class="col-xs-1">
+        {{ext.extension}}
+    </div>
+    <div class="col-xs-2">
+        {{ext.label}}
+    </div>
+    <div class="col-xs-6">
+        <div ng-if="!ext.events || ext.events.length == 0">
+            @T("Admin.Telphin.Extensions.Notifications.NotSet") <a href="" ng-click="settingsTelephony.addTelphinEvents(ext)">@T("Admin.Telphin.Extensions.Notifications.Set")</a>
+        </div>
+        <div class="row" ng-if="ext.events.length > 0">
+            <div class="col-xs-5"><b>@T("Admin.Telphin.Extensions.Notifications.Event")</b></div>
+            <div class="col-xs-7"><b>URL</b></div>
+        </div>
+        <div class="row" ng-repeat="event in ext.events">
+            <div class="col-xs-5">
+                {{event.eventTypeName}}
+            </div>
+            <div class="col-xs-7">
+                {{event.url}}
+            </div>
+        </div>
+        <div class="row" ng-if="ext.events.length > 0">
+            <div class="col-xs-12">
+                <a href="" ng-click="settingsTelephony.setTelphinEvents(ext)">@T("Admin.Telphin.Extensions.Notifications.Override")</a>
+                <a href="" ng-click="settingsTelephony.deleteTelphinEvents(ext)" class="text-danger m-l-sm">@T("Admin.Delete")</a>
+            </div>
+        </div>
+    </div>
+</div>
+

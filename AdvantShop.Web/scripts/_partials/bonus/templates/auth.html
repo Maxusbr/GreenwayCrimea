@@ -1,0 +1,28 @@
+﻿<div class="row">
+    <form name="binusAuthForm" novalidate="novalidate" class="col-xs-12 bonus-auth-inner">
+        <div class="row middle-xs between-xs">
+            <div class="col-xs-4">
+                <input type="text" class="input-small" placeholder="{{ ::'Js.Bonus.CardNumberPlaceholder' | translate }}"
+                       data-ng-model="bonusAuth.numberCard"
+                       data-ng-required="(bonusAuth.numberCard == null || bonusAuth.numberCard.length === 0) && (bonusAuth.phone == null || bonusAuth.phone.length === 0)">
+            </div>
+            <div>
+                {{ ::'Js.Bonus.Or' | translate }}
+            </div>
+            <div class="col-xs-4">
+                <input type="tel" class="input-small" placeholder="{{ ::'Js.Bonus.PhoneNumberPlaceholder' | translate }}" data-ui-mask-placeholder=""
+                       data-ng-init="bonusAuth.phone = (bonusAuth.phone || bonusAuth.outsidePhone)"
+                       data-ui-mask="{{ ::'Js.Bonus.PhoneMask' | translate }}" data-ng-model="bonusAuth.phone"
+                       data-ng-required="(bonusAuth.numberCard == null || bonusAuth.numberCard.length === 0) && (bonusAuth.phone == null || bonusAuth.phone.length === 0)"
+                       data-model-view-value="true">
+            </div>
+            <div class="col-xs-3">
+                <a href=""
+                   class="btn btn-small btn-submit btn-expander"
+                   data-ng-class="{'icon-spinner-before icon-animate-spin-before': bonusAuth.inProgress}"
+                   data-button-validation
+                   data-button-validation-success="bonusAuth.autorize()">{{ ::'Js.Bonus.ApplyCard' | translate }}</a>
+            </div>
+        </div>
+    </form>
+</div>

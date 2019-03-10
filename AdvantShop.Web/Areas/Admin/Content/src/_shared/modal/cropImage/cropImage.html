@@ -1,0 +1,49 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Загрузка изображения</h2>
+</div>
+<div class="modal-body">
+
+    <div class="row">
+        <div class="col-xs-6">
+            <a href=""
+               accept="image/*"
+               ngf-select=""
+               ngf-change="ctrl.uploadImage($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)">Загрузить изображение с компьютера</a>
+        </div>
+
+        <div class="col-xs-6">
+            <a href="" data-ng-click="ctrl.addImageByUrl()">Загрузить по ссылке</a>
+        </div>
+    </div>
+
+    <div class="input-group m-t m-b" ng-show="ctrl.showUploadByUrl">
+        <input type="text" class="form-control" placeholder="URL изображения" data-ng-model="ctrl.url" />
+        <span class="input-group-btn">
+            <a href="" class="btn btn-success" data-ng-click="ctrl.uploadImageByUrl()">Загрузить</a>
+        </span>
+    </div>
+    <div ng-if="ctrl.imageSrc" class="m-t m-b">
+        <div class="row">
+            <div class="col-xs-9">
+                <h4>Изображение</h4>
+                <img id="cropImg"
+                     alt=""
+                     ng-src="{{ctrl.imageSrc}}"
+                     ng-cropper
+                     ng-cropper-proxy="ctrl.cropperProxy"
+                     ng-cropper-show="ctrl.showEvent"
+                     ng-cropper-hide="ctrl.hideEvent"
+                     ng-cropper-options="ctrl.cropOptions" />
+            </div>
+            <div class="col-xs-3">
+                <h4>Предпросмотр</h4>
+                <div class="preview-container" style="width: 100px; height: 100px; overflow: hidden;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" data-ng-if="ctrl.imageSrc" data-ng-click="ctrl.cropImage()">Применить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

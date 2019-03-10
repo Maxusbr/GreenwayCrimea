@@ -1,0 +1,54 @@
+﻿@using AdvantShop.Core.Common.Extensions
+@using AdvantShop.Web.Admin.Models.Orders
+@model AdvantShop.Web.Admin.ViewModels.Orders.OrdersViewModel
+
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline bottom-cell m-r-xs">
+                @T("Admin.Orders.Index.Title")
+            </h1>
+            <a href="@Url.Action("Academy", "Service", new { id = 41 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert inline bottom-cell">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                Видеоурок о Заказах
+            </a>
+        </div>
+        <div class="page-name-block-item-additional">
+            <a href="@Url.Action("Add")" class="btn btn-sm btn-success" type="button">
+                <span class="fa fa-plus"></span> @T("Admin.Orders.Index.AddOrder")
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="ibox m-n">
+    <div class="row">
+        <div class="col-xs-12 tasks-navbar">
+            <ul class="nav nav-tabs">
+                @foreach (OrdersPreFilterType item in Enum.GetValues(typeof(OrdersPreFilterType)))
+                {
+                    <li class="ng-tab nav-item@(Model.PreFilter == item ? " active" : "")">
+                        <a href="@(Url.Action("Index") + (item != OrdersPreFilterType.None ? "?filterby=" + item.ToString().ToLower() : ""))" class="nav-link">
+                            @item.Localize()
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content no-top-border" ng-init="orders.init(@Model.EnableMangers.ToLowerString())">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-row-identificator="'OrderId'"
+                        grid-on-init="orders.gridOnInit(grid)"
+                        grid-options="orders.gridOptions"
+                        grid-params="{filterby: '@Model.PreFilter.ToString().ToLower()'}"
+                        grid-url="'orders/getorders'">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="orders.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

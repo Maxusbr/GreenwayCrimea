@@ -1,0 +1,30 @@
+﻿$breakpoints: ( 
+    hand "(min-device-width : 320px) and (max-device-width : 480px)", 
+    hand_landscape "(min-width : 321px)", 
+    hand_portrait "(max-width : 320px)", 
+    tablet "(min-device-width : 768px) and (max-device-width : 1024px)", 
+    tablet_landscape "(min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)", 
+    tablet_portrait "(min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)", 
+    desk "(min-width : 1224px)", 
+    wall "(min-width : 1824px)");
+
+
+@mixin breakpointsGetMedia($device) {
+
+    $result: null;
+
+    @each $item in $breakpoints {
+        @if(nth($item, 1) == $device) {
+            $result: nth($item, 2);
+        }
+    }
+
+    @if($result != null) {
+        @media #{$result} {
+            @content;
+        }
+    }
+    @else {
+        @content;
+    }
+}

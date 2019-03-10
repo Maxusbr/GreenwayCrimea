@@ -1,0 +1,16 @@
+﻿@model AdvantShop.Core.Services.Catalog.ProductViewModel
+<!--noindex-->
+<article class="block-uc-alt expander-ligth" data-plugin="expander">
+    <div class="title h3" data-expander-control="#recentlyview-content">@T("RecentlyViews.RecentlyViewedBlock.RecentlyViewed")</div>
+    <div class="content" id="recentlyview-content">
+        @foreach (var product in Model.Products)
+        {
+            <div class="row">
+                <a class="link-light" href="@Url.RouteUrl("Product", new {url = product.UrlPath})">
+                    @product.Name
+                </a>
+            </div>
+        }
+    </div>
+</article>
+<!--/noindex-->

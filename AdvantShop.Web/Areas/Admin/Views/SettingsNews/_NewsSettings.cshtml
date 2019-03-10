@@ -1,0 +1,52 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.NewsSettingsModel
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.News.DisplayMode")</h3>
+</div>
+
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.MainPageText, T("Admin.Settings.News.MainPageText"))
+            </div>
+        </div>
+        <div class="col-xs-6">
+            @Html.TextBoxFor(x => x.MainPageText, new { @class = "form-control", ng_model = "settingsNews.MainPageText" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.NewsPerPage, T("Admin.Settings.News.NewsPerPage"))
+            </div>
+        </div>
+        <div class="col-xs-6">
+            @Html.TextBoxFor(x => x.NewsPerPage, new { @class = "form-control", ng_model = "settingsNews.NewsPerPage" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.NewsMainPageCount, T("Admin.Settings.News.NewsMainPageCount"))
+            </div>
+        </div>
+        <div class="col-xs-6">
+            @Html.TextBoxFor(x => x.NewsMainPageCount, new { @class = "form-control", ng_model = "settingsNews.NewsMainPageCount" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 col-wl-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.RssViewNews, T("Admin.Settings.News.RssViewNews"))
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <label class="adv-checkbox-label">
+                @Html.CheckBoxFor(x => x.RssViewNews, new { @class = "adv-checkbox-input", ng_init = "settingsNews.RssViewNews=" + Model.RssViewNews.ToLowerString(), ng_model = "settingsNews.RssViewNews" })
+                <span class="adv-checkbox-emul"></span>
+            </label>
+        </div>
+    </div>   
+

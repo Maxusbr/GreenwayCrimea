@@ -1,0 +1,22 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Common.MetaVariablesDescriptionModel
+<div>
+    <p>
+        Для всех полей доступные переменные:<br />
+
+        @foreach (var item in Model.MetaVariables)
+        {
+            <div>
+                @item.Value - @item.Text
+            </div>
+        }
+    </p>
+    <p>
+        Переменные при выводе на страницу будут заменены на соответствующие им значения.
+    </p>
+</div>
+@if (Model.ShowInstruction)
+{
+    <div class="adv-panel-info">
+        <a href="http://www.advantshop.net/help/pages/settings-of-seo-module" target="_blank">Инструкция. Настройка мета по умолчанию для магазина</a>
+    </div>
+}

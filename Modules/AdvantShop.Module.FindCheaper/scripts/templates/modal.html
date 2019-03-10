@@ -1,0 +1,65 @@
+﻿<div class="row">
+    <div class="col-xs-12" ng-switch="findCheaper.currentForm">
+        <div ng-switch-when="main">
+            <label class="row middle-xs">
+                <span data-ng-bind-html="findCheaper.modalTopText"></span>
+            </label>
+            <label class="row middle-xs">
+                <span class="col-xs-5">
+                    <span class="form-field-name vertical-interval-middle input-required">Имя</span>
+                </span>
+                <span class="col-xs-7">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="text" id="findCheaperRequestName" class="input-small" data-ng-model="findCheaper.clientname" required="required" />
+                    </span>
+                </span>
+            </label>
+
+            <label class="row middle-xs">
+                <span class="col-xs-5">
+                    <span class="form-field-name vertical-interval-middle input-required">Телефон</span>
+                </span>
+                <span class="col-xs-7">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="tel" id="findCheaperRequestPhone" class="input-small" data-ng-model="findCheaper.clientphone" required="required" />
+                    </span>
+                </span>
+            </label>
+
+            <label class="row middle-xs">
+                <span class="col-xs-5">
+                    <span class="form-field-name vertical-interval-middle input-required">Желаемая цена</span>
+                </span>
+                <span class="col-xs-7">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="number" id="findCheaperRequestWishPrice" class="input-small" data-ng-model="findCheaper.wishprice" required="required"  />
+                    </span>
+                </span>
+            </label>
+
+            <label class="row middle-xs">
+                <span class="col-xs-5">
+                    <span class="form-field-name vertical-interval-middle input-required">Где нашли дешевле</span>
+                </span>
+                <span class="col-xs-7">
+                    <span class="form-field-input vertical-interval-middle">
+                        <input type="text" id="findCheaperRequestWhereCheaper" class="input-small" data-ng-model="findCheaper.wherecheaper" required="required" />
+                    </span>
+                </span>
+            </label>
+            <label class="row middle-xs col-xs-12" data-ng-if="findCheaper.isShowUserAgreementText">
+                <span class="form-field-input vertical-interval-xsmall">
+                    <input type="checkbox" id="findCheaperRequestWhereCheaper" class="custom-input-native" data-ng-model="findCheaper.agreement"
+                           required="required" data-ng-init="findCheaper.agreement = false" />
+                    <span class="custom-input-checkbox"></span>
+                    <span data-ng-bind-html="findCheaper.userAgreementText"></span>
+                </span>
+            </label>
+        </div>
+
+        <div ng-switch-when="final">
+            <span data-ng-bind-html="findCheaper.modalFinalText"></span>
+        </div>
+
+    </div>
+</div>

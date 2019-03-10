@@ -1,0 +1,22 @@
+﻿<span class="audio-container">
+    <span class="audio-controls">
+        <span class="audio-row">
+            <span class="audio-play-pause" ng-click="$ctrl.play()">
+                <i class="fa fa-play" ng-if="!$ctrl.isplaying"></i>
+                <i class="fa fa-pause" ng-if="$ctrl.isplaying"></i>
+            </span>
+            <span class="audio-progress" ng-mousedown="$ctrl.setTime($event)" ng-mouseup="$ctrl.reset()" ng-style="$ctrl.barStyle">
+                <span class="audio-time" ng-if="!$ctrl.noAudio && !$ctrl.loading && !$ctrl.duration" ng-click="$ctrl.play()">Прослушать</span>
+                <span class="audio-time" ng-if="$ctrl.duration">
+                    {{$ctrl.curPos}} / {{$ctrl.duration}}
+                </span>
+                <span class="audio-time" ng-if="$ctrl.noAudio">Нет записи</span>
+                <span class="audio-time" ng-if="$ctrl.loading">Загрузка...</span>
+            </span>
+            <span class="audio-volume" ng-if="$ctrl.audio" ng-click="$ctrl.toggleVolume()">
+                <i class="fa fa-volume-up" ng-if="!$ctrl.audio || !$ctrl.audio.muted"></i>
+                <i class="fa fa-volume-off" ng-if="$ctrl.audio.muted"></i>
+            </span>
+        </span>
+    </span>
+</span>

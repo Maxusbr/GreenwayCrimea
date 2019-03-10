@@ -1,0 +1,22 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Изменение группы свойств</h2>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">Группа</label>
+                <div class="col-xs-9">
+                    <select class="form-control" ng-model="ctrl.group" ng-options="s.Text for s in ctrl.groups track by s.Value">
+                        <option>Не выбрана</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.changeGroup()" ng-disabled="ctrl.btnMoveDisabled">Изменить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

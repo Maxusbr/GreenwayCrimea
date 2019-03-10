@@ -1,0 +1,107 @@
+﻿@model List<AdvantShop.Core.Services.Bonuses.Model.Purchase>
+
+<div>
+    <div class="m-b-sm" data-e2e="LinkToAllPurchases">
+        <h2 class="inline">История продаж</h2>
+        <a href="@Url.Action("AllPurchase",new { CardId = ViewBag.CardId })" class="edit link-decoration-none">Все...</a>
+    </div>
+
+    <div class="m-b">
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="viewTableSells" class="table table-striped table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width: 30px">
+                                ID продажи
+                            </th>
+                            <th style="width: 30px">
+                                Номер заказа
+                            </th>
+                            <th style="width: 130px">
+                                Дата и время
+                            </th>
+                            <th>
+                                Стоимость заказа
+                            </th>
+                            <th>
+                                Стоимость заказа с учетом скидки
+                            </th>
+                            <th>
+                                Оплачено деньгами
+                            </th>
+                            <th>
+                                Оплачено основными бонусами
+                            </th>
+                            <th>
+                                Оплачено доп. бонусами
+                            </th>
+                            <th>
+                                Начисленно бонусов
+                            </th>
+                            <th>
+                                Комментарий
+                            </th>
+                            <th>
+                                Статус
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr data-e2e="PurchaseId-@item.Id">
+                                <td data-e2e="PurchaseId">
+                                    @item.Id
+                                </td>
+                                <td data-e2e="PurchaseOrderId">
+                                    @if (item.OrderId != null) {
+                                        @Html.ActionLink(item.OrderId.ToString(), "Edit", "Orders", new { id = item.OrderId }, new { target = "_blank" })
+                                    }
+                                </td>
+                                <td data-e2e="PurchaseDate">
+                                    @item.CreateOn.ToString("dd.MM.yyyy HH:mm:ss")
+                                </td>
+                                <td data-e2e="PurchaseFullAmount">
+                                    @item.PurchaseFullAmount.ToInvatiant()
+                                </td>
+                                <td data-e2e="PurchaseDiscount">
+                                    @item.PurchaseAmount.ToInvatiant()
+                                </td>
+                                <td data-e2e="PurchaseCash">
+                                    @item.CashAmount.ToInvatiant()
+                                </td>
+                                <td data-e2e="PurchaseMainBonuses">
+                                    @item.MainBonusAmount.ToInvatiant()
+                                </td>
+                                <td data-e2e="PurchaseAdditionBonuses">
+                                    @item.AdditionBonusAmount.ToInvatiant()
+                                </td>
+                                <td data-e2e="PurchaseAddNewBonuses">
+                                    @item.NewBonusAmount.ToInvatiant()
+                                </td>
+                                <td data-e2e="PurchaseComment">
+                                    @item.Comment
+                                </td>
+                                <td data-e2e="PurchaseStatus">
+                                    @item.Status.Localize()
+                                </td>
+                                @*<td>
+                                        @Html.ActionLink("!!!!!", "Delete", "Purchase", new { id = item.PurchaseId }, null)
+                                    </td>*@
+                            </tr>
+                        }
+                        @if (Model.Count < 1)
+                        {
+                            <tr>
+                                <td colspan="11">
+                                    Ни одной записи не найдено
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.CustomerGroups.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddCustomerGroupCtrl'" controller-as="ctrl"
+                              template-url="../areas/admin/content/src/customergroups/modal/addCustomerGroup.html"
+                              data-on-close="customergroups.grid.fetchData()">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button">
+                    <span class="fa fa-plus"></span> @T("Admin.CustomerGroups.Index.AddGroup")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="customergroups.gridOnInit(grid)"
+                        grid-options="customergroups.gridOptions"
+                        grid-url="'customergroups/getcustomergroups'"
+                        grid-inplace-url="'customergroups/inplace'"
+                        grid-extend-ctrl="customergroups">
+        </ui-grid-custom>
+    </div>
+</div>

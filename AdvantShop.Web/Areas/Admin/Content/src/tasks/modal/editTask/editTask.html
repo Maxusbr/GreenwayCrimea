@@ -1,0 +1,163 @@
+﻿<form novalidate name="editTaskForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Задача №<span ng-bind="ctrl.id"></span></h2>
+    </div>
+    <div class="modal-body task-modal-content-new-item" ng-init="ctrl.editTaskForm = editTaskForm">
+        <div class="m-r-sm m-l-sm">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="btn-group m-r">
+                            <button data-e2e="edittaskStatusInprogress" class="btn btn-sm btn-success" type="button" ng-click="ctrl.changeStatus('inprogress')"
+                                    ng-if="ctrl.status == 'open'">
+                                Начать выполнение
+                            </button>
+                            <button data-e2e="edittaskStatusStop" class="btn btn-sm btn-success" type="button" ng-click="ctrl.changeStatus('open')"
+                                    ng-if="ctrl.status == 'inprogress'">
+                                Приостановить
+                            </button>
+                            <button data-e2e="edittaskStatusCompleted" class="btn btn-sm btn-action" type="button" ng-click="ctrl.completeTask()"
+                                    ng-if="ctrl.status != 'completed'">
+                                Завершить
+                            </button>
+                            <button data-e2e="edittaskStatusAccepted" class="btn btn-sm btn-success" type="button" ng-click="ctrl.acceptTask()"
+                                    ng-if="ctrl.status == 'completed' && !ctrl.accepted">
+                                Принять
+                            </button>
+                            <button data-e2e="edittaskStatusRestart" class="btn btn-sm btn-action" type="button" ng-click="ctrl.changeStatus('open')"
+                                    ng-if="ctrl.status == 'completed' || ctrl.accepted">
+                                Возобновить
+                            </button>
+                        </div>
+                        <button data-e2e="edittaskDelTask" type="button" class="btn btn-sm btn-red-white btn-default" ng-click="ctrl.deleteTask()">Удалить</button>  <!--ng-if="ctrl.canDelete"-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label class=""><span class="text-required">Название</span></label>
+                        <!--<div ng-if="!ctrl.editName" class="editable">
+                            <div ng-bind-html="ctrl.name | linky | nl2br" class="editable-text"></div>
+                            <a href="" class="fa fa-pencil m-l-xs link-invert link-decoration-none btn-edit" ng-click="ctrl.editTaskName(true)" title="Редактировать"></a>
+                        </div>-->
+                        <div> <!--ng-if="ctrl.editName"-->
+                            <input data-e2e="edittaskName" type="text" class="form-control" placeholder="Введите название задачи"
+                                   ng-model="ctrl.name" autofocus="!editTaskForm.modified || ctrl.editName"
+                                   required validation-input-text="Название">
+                            <!--<div class="text-right">
+                                <a href="" class="fa fa-check m-l-xs link-invert link-decoration-none" ng-click="ctrl.editTaskName(false)" title="Применить"></a>
+                                <a href="" class="fa fa-times m-l-xs link-invert link-decoration-none" ng-click="ctrl.editTaskName(false, true)" title="Отмена"></a>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="ctrl.leadId != null">
+                        <a href="" ng-href="leads/edit/{{ctrl.leadId}}" target="_blank" data-e2e="leadLink">Лид №<span ng-bind="ctrl.leadId"></span></a>
+                    </div>
+                    <div class="form-group" ng-if="ctrl.orderId != null">
+                        <a href="" ng-href="orders/edit/{{ctrl.orderId}}" target="_blank" data-e2e="orderLink">Заказ №<span ng-bind="ctrl.orderNumber"></span></a>
+                    </div>
+                    <div class="form-group" ng-if="ctrl.clientCustomerId != null">
+                        <a href="" ng-href="customers/edit/{{ctrl.clientCustomerId}}" ng-bind="ctrl.clientName" target="_blank" data-e2e="taskCustomerLink"></a>
+                    </div>
+                    <div class="form-group" ng-if="ctrl.reviewId != null">
+                        <ui-modal-trigger size="lg" data-controller="'ModalAddEditReviewCtrl'"
+                                          template-url="../areas/admin/content/src/reviews/modal/addEditReview/addEditReview.html"
+                                          data-resolve="{'reviewId': ctrl.reviewId}">
+                            <a href="">Открыть отзыв</a>
+                        </ui-modal-trigger>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="text-required">Описание</span></label>
+                        <!--<div ng-if="!ctrl.editDescription" class="editable" ng-click="ctrl.editTaskDescription($event, true)">
+                            <div ng-bind-html="ctrl.description" class="editable-text"></div>
+                            <a href="" class="fa fa-pencil m-l-xs link-invert link-decoration-none btn-edit" ng-click="ctrl.editTaskDescription($event, true)" title="Редактировать"></a>
+                        </div>-->
+                        <div><!--ng-if="ctrl.editDescription"-->
+                            <textarea data-e2e="edittaskDescription" class="form-control b-n wysiwyg r-v" rows="12" placeholder="" 
+                                      ckeditor="ctrl.ckeditor"
+                                      ng-model="ctrl.description" ng-if="ctrl.formInited"
+                                      required validation-input-text="Описание" />
+                            <!--<div class="text-right">
+                                <a href="" class="fa fa-check m-l-xs link-invert link-decoration-none" ng-click="ctrl.editTaskDescription($event, false)" title="Применить"></a>
+                                <a href="" class="fa fa-times m-l-xs link-invert link-decoration-none" ng-click="ctrl.editTaskDescription($event, false, true)" title="Отмена"></a>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="ctrl.status == 'completed'">
+                        <label class="">Результат выполнения:</label>
+                        <div data-e2e="edittaskRezult" ng-bind-html="ctrl.result | linky | nl2br"></div>
+                    </div>
+                    <div class="form-group" bs-modifiable="false">
+                        <label>Прикрепленные файлы</label>
+                        <ol ng-if="ctrl.attachments.length > 0">
+                            <li ng-repeat="attachment in ctrl.attachments track by $index">
+                                <a href="" target="_blank" ng-href="{{attachment.FilePathAdmin}}" ng-bind="attachment.FileName"></a> - <span ng-bind="attachment.FileSize"></span>
+                                <a href="" ng-click="ctrl.deleteAttachment(attachment.Id)" class="fa fa-times link-invert link-decoration-none" title="Удалить"></a>
+                            </li>
+                        </ol>
+                        <p class="" ng-if="ctrl.attachments.length == 0">
+                            Нет файлов
+                        </p>
+                        <figure class="">
+                            <button data-e2e="edittaskAttachment" class="btn btn-action btn-sm" type="button" ngf-drop ngf-max-size="15MB" ngf-select="" multiple
+                                    ngf-change="ctrl.uploadAttachment($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)" ladda="ctrl.loadingFiles">
+                                <i class="fa fa-upload"></i>&nbsp;&nbsp;<span class="bold">Прикрепить файл</span>
+                            </button>
+                            <help-trigger class="ng-cloak m-l-xs" use-template="true">
+                                <div class="help-content" ng-bind-html="ctrl.filesHelpText">
+                                </div>
+                            </help-trigger>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="">Исполнитель</label>
+                        <select data-e2e="edittaskAssigned" ng-model="ctrl.assignedManagerId" ng-options="s.value as s.label for s in ctrl.managers" class="form-control" convert-to-number></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="">Постановщик</label>
+                        <select data-e2e="edittaskAppointed" ng-model="ctrl.appointedManagerId" ng-options="s.value as s.label for s in ctrl.managers" class="form-control" convert-to-number></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="">Срок исполнения</label>
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" id="dueDate" role="button" data-toggle="dropdown">
+                                <div class="input-group">
+                                    <input data-e2e="edittaskDuedate" type="text" class="form-control" ng-model="ctrl.dueDate" data-date-time-input="DD.MM.YYYY HH:mm"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker ng-model="ctrl.dueDate" data-datetimepicker-config="{ dropdownSelector: '#dueDate' }" />
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="">Приоритет</label>
+                        <select data-e2e="edittaskPriopity" ng-model="ctrl.priority" ng-options="s.value as s.label for s in ctrl.priorities" class="form-control" convert-to-number></select>
+                    </div>
+                    <div class="form-group">
+                        <label class=""><span class="text-required">Проект</span></label>
+                        <select data-e2e="edittaskGroup" ng-model="ctrl.taskGroupId" ng-options="s.value as s.label for s in ctrl.taskGroups" class="form-control" convert-to-number></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="pull-left">Дата создания</label>
+                        <p class="pull-right" ng-bind="ctrl.dateCreatedFormatted"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" data-e2e="edittaskComment" bs-modifiable="false">
+                <h4>Комментарии</h4>
+                <admin-comments ng-if="ctrl.id != null" obj-id="ctrl.id" type="task" form-visible="true"></admin-comments>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" data-e2e="edittaskButtonSave" type="submit" 
+                button-validation button-validation-success="ctrl.saveTask()" ladda="ctrl.btnSleep"
+                disabled ng-disabled="!ctrl.formInited || !editTaskForm.modified">Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.dismiss()">Отмена</button>
+    </div>
+</form>

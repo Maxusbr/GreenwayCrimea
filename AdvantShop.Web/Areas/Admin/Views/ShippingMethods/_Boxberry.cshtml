@@ -1,0 +1,126 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.BoxberryShippingModel
+
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Токен</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.Token, new { ng_model = "shippingMethod.Params.Token", @class = "form-control", required = "required", validation_input_text = "API-token" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="API-token">
+            Получить уникальный ключ (API-token) для авторизации в панели администратора сервиса.
+
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Ключ интеграции</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.IntegrationToken, new { ng_model = "shippingMethod.Params.IntegrationToken", @class = "form-control", required = "required", validation_input_text = "API-token" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Ключ интеграции">
+            Ключ интеграции виджета. Необходим для<br />
+            использования функций калькулятора доставки, а<br />
+            также использования фильтрации отображения ПВЗ на карте.
+            <br /><br />
+            Можно получить в Личном Кабинете в разделе <br />
+            «Настройка средств интеграции».
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Перечень пунктов приёма Boxberry</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.DropDownListFor(x => x.ReceptionPointCode, new SelectList(Model.ListReceptionPoints, "Code", "Name", Model.ReceptionPointCode), new { ng_model = "shippingMethod.Params.ReceptionPointCode", @class = "form-control", validation_input_text = "ReceptionPointCode" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Перечень пунктов приёма Boxberry">
+            Перечень пунктов приёма Boxberry
+            <br />
+            (сортировочных узлов, в которых возможен прием посылок от интернет-магазина для доставки)
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        Включить расчет курьерской доставки
+    </div>
+    <div class="col-xs-6 relative">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.CalculateCourier, new { ng_model = "shippingMethod.Params.CalculateCourier", ng_init = "shippingMethod.Params.CalculateCourier=" + Model.CalculateCourier.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="@T("Admin.ShippingMethods.Boxberry.CalculateCourier")">
+            @T("Admin.ShippingMethods.Boxberry.NoticeUseWidget")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="shipping-item-settings-header m-b-md m-t-sm">
+    Значения параметров товара по умолчанию
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Вес</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultWeight, new { ng_model = "shippingMethod.Params.DefaultWeight", @class = "form-control", required = "required", validation_input_text = "Вес" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Вес товара">
+            Вес товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+            Значение указывается в кг, возможно указать дробное значение.<br><br>
+            Например: 1 или 0.2
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Длина</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultLength, new { ng_model = "shippingMethod.Params.DefaultLength", @class = "form-control", required = "required", validation_input_text = "Длина" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Длина товара">
+            Длина товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+            Значение указывается в мм.<br><br>
+            Например: 120
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Ширина</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultWidth, new { ng_model = "shippingMethod.Params.DefaultWidth", @class = "form-control", required = "required", validation_input_text = "Ширина" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Ширина товара">
+            Ширина товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+            Значение указывается в мм.<br><br>
+            Например: 120
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs">
+    <div class="flex-grow-n col-fixed-size-md">
+        <span class="text-required">Высота</span>
+    </div>
+    <div class="col-xs-6 relative">
+        @Html.TextBoxFor(x => x.DefaultHeight, new { ng_model = "shippingMethod.Params.DefaultHeight", @class = "form-control", required = "required", validation_input_text = "Высота" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Высота товара">
+            Высота товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+            Значение указывается в мм.<br><br>
+            Например: 120
+        </help-trigger>
+    </div>
+</div>
+
+<input type="hidden" name="sdekMethodId" ng-model="shippingMethod.sdek.MethodId" value="@Model.ShippingMethodId" />
+
+@*<div class="adv-panel-info ">
+        <a href="http://www.advantshop.net/help/pages/install-sdek" target="_blank">Инструкция. Подключение модуля доставки СДЭК</a>
+    </div>*@

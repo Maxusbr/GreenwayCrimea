@@ -1,0 +1,29 @@
+﻿@model  AdvantShop.Areas.Mobile.Models.Catalog.ProductListMobileViewModel
+
+<div id="content">
+    
+    <a href="@Url.AbsoluteRouteUrl("Home")" class="panel no-borders back-link cs-bg-3 cs-l-1">
+        @T("MainPage")
+        <div class="panel-arrow ar-l icon-left-open-before cs-l-1"></div>
+    </a>
+
+    <h1 class="main-title">
+        @Model.Title
+    </h1>
+
+    @if (Model.HasProducts)
+    {
+        <div class="panel no-borders">
+            <div class="catalog-sort-pnl" ng-controller="CatalogFilterMobileCtrl as catalogFilter">
+                @Html.Partial("_Sorting", Model.SortingList)
+                @Html.Partial("_ViewMode", Model.Filter.ViewMode)
+            </div>
+            
+        </div>
+        
+        @Html.Partial(Model.Filter.ViewMode == "list" ? "_ProductViewList" : "_ProductViewTile", Model.Products)
+        <div class="panel no-borders">
+            @Html.Paging(Model.Pager, "center-aligner")
+        </div>
+    }
+</div>

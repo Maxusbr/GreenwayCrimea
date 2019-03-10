@@ -1,0 +1,55 @@
+﻿@import "../functions/_util.scss", "../_settings.scss";
+
+.toolbar-top {
+    position: relative;
+    z-index: 5;
+    background-color: rgba(243, 243, 243, .9);
+}
+
+.toolbar-top-item {
+    padding: rem-calc(9px) 0 rem-calc(10px);
+    margin: 0 rem-calc(10px);
+    font-size: $font-size-normal;
+    color: #94969b;
+
+    &.curency-item {
+        padding: rem-calc(6px) 0;
+    }
+}
+
+.toolbar-top-link, .toolbar-top-link-alt {
+    position: relative;
+}
+
+.toolbar-top-link-alt {
+    margin: 0 rem-calc(7px);
+}
+
+.toolbar-top-link-alt:first-child {
+    margin-left: 0;
+}
+
+.toolbar-top-link-alt:last-child {
+    margin-right: 0;
+}
+
+
+.top-panel-select {
+    color: #94969b;
+}
+
+.toolbar-top-link-alt, .toolbar-top-link, .toolbar-top-item a {
+    color: #94969b;
+
+    &:hover, &:active {
+        color: #94969b;
+    }
+
+    &.link-dotted-invert {
+        border-bottom-color: #94969b;
+    }
+}
+
+.toolbar-top-link-transformer {
+    margin-left: rem-calc(15px);
+}

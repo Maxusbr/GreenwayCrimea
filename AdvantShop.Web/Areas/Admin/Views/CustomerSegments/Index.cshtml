@@ -1,0 +1,26 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Customers.CustomersListViewModel
+
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text inline bottom-cell m-r-xs">
+                @T("Admin.CustomerSegments.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">            
+            <a class="btn btn-sm btn-success" data-e2e="customerSegmentAdd" href="@Url.Action("Add")">
+                <span class="fa fa-plus"></span> @T("Admin.CustomerSegments.Index.Add")
+            </a>
+        </div>
+    </div>
+</div>
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-row-identificator="'Id'"
+                        grid-options="customerSegments.gridOptions"
+                        grid-url="'customerSegments/getList'"
+                        grid-on-init="customerSegments.gridOnInit(grid)">
+        </ui-grid-custom>
+    </div>
+</div>

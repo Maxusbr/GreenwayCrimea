@@ -1,0 +1,97 @@
+﻿@import "../_settings.scss", "../functions/_util.scss", "../functions/_prefixer.scss";
+
+$block-margin: 0 0 $margin-value-alt 0 !default;
+$block-head-margin: 0 0 rem-calc(20px) 0 !default;
+$block-content-margin: 0 !default;
+
+$block-alt-margin: 0 0 $margin-value-alt 0 !default;
+$block-alt-head-margin: 0 0 rem-calc(15px) 0 !default;
+$block-alt-content-margin: 0 !default;
+
+.block {
+    margin: $block-margin;
+}
+
+.block-alt {
+    margin: $block-alt-margin;
+    padding: rem-calc(21px) rem-calc(25px);
+    @include box-sizing(border-box);
+    border-radius: $border-radius-base;
+}
+    .block-alt .title {
+        font-size: rem-calc(18px);
+        padding-bottom: rem-calc(15px);
+    }
+
+.block-head {
+    margin: $block-head-margin;
+}
+
+.block-alt-head {
+    margin: $block-alt-head-margin;
+    font-size: $font-size-xmedium;
+}
+
+.block-content {
+    margin: $block-content-margin;
+    font-size: rem-calc(13px);
+
+}
+
+.block-alt-content {
+    margin: $block-alt-content-margin;
+    font-size: $font-size-medium;
+}
+
+
+.name-value-blocks {
+    font-size: $font-size-medium;
+
+    .name-value-block {
+        margin-bottom: rem-calc(28px);
+    }
+
+    .block-value, .block-name {
+        margin-bottom: rem-calc(5px);
+    }
+
+    .block-name {
+        font-weight: bold;
+    }
+
+    .block-value {
+    }
+}
+
+.name-value-list-block {
+    .list-title {
+        font-size: $font-size-large;
+        margin-bottom: rem-calc(10px);
+    }
+
+    .list-name, .list-value {
+        font-size: rem-calc(16px);
+        margin-bottom: rem-calc(15px);
+    }
+
+    .list-name {
+        color: #b3b4b7;
+    }
+
+    .list-value {
+    }
+}
+
+.block-exuding {
+    border-radius: $border-radius-base;
+    margin-bottom: $margin-value-base;
+}
+
+.block-exuding-row{
+    padding: rem-calc(15px) rem-calc(15px);
+    border-bottom: rem-calc(1px) #e9e9e9 solid;
+
+    &:last-child{
+        border-bottom-width: 0;
+    }
+}

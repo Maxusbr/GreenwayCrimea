@@ -1,0 +1,11 @@
+.progress{	
+	display:none;
+    z-index: 50;
+}
+.progress-over {
+    position:absolute; 
+	z-index:999;
+	opacity: .7;
+    filter: alpha(opacity=70);
+	background:#fff url(../images/ajax-loader.gif) no-repeat scroll center center;  
+}

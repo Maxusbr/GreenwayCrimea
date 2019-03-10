@@ -1,0 +1,23 @@
+ProductId;ArtNo;Name;Ratio;Discount;Weight;BriefDescription;Description;DateAdded[DATE];DateModified[DATE];Recomended;New;Bestseller;OnSale;AllowPreOrder;SortBestseller;SortNew;SortDiscount;UrlPath;CategoryEnabled;ShippingPrice;Multiplicity;HasMultiOffer;Adult;Length;Width;Height;CurrencyID;ActiveView360;ManufacturerWarranty
+1;449;first pr;1;0;0;qwereqwe;Description1;19.07.2016 21:33;19.07.2016 21:33;false;false;false;false;false;1;1;1;first-pr;true;0;1;false;false;0;0;0;4;false;false
+2;500;product;1;0;0;zxcvvvcxz;Description2;19.07.2016 21:33;19.07.2016 21:33;false;false;false;false;false;2;2;2;prod;true;0;1;false;false;0;0;0;4;false;false
+3;501;TestProduct1;1;0;0;qwereqwe;Description3;19.07.2016 21:33;19.07.2016 21:33;true;false;false;false;false;3;3;3;test-product1;true;0;1;false;false;0;0;0;4;false;false
+4;502;TestProduct2;1;0;0;qwereqwe;Description4;20.07.2016 21:33;20.07.2016 21:33;true;false;false;false;false;4;4;4;test-product2;true;0;1;false;false;0;0;0;4;false;false
+5;503;TestProduct3;1;0;0;qwereqwe;Description5;21.07.2016 21:33;21.07.2016 21:33;true;false;false;false;false;5;5;5;test-product3;true;0;1;false;false;0;0;0;4;false;false
+6;504;TestProduct4;1;0;0;qwereqwe;Description6;22.07.2016 21:33;22.07.2016 21:33;true;false;false;false;false;6;6;6;test-product4;true;0;1;false;false;0;0;0;4;false;false
+7;505;TestProduct5;1;0;0;qwereqwe;Description7;23.07.2016 21:33;23.07.2016 21:33;true;false;false;false;false;7;7;7;test-product5;true;0;1;false;false;0;0;0;4;false;false
+8;506;TestProduct6;1;0;0;qwereqwe;Description8;24.07.2016 21:33;24.07.2016 21:33;false;true;false;false;false;8;8;8;test-product6;true;0;1;false;false;0;0;0;4;false;false
+9;507;TestProduct7;1;0;0;qwereqwe;Description9;25.07.2016 21:33;25.07.2016 21:33;false;true;false;false;false;9;9;9;test-product7;true;0;1;false;false;0;0;0;4;false;false
+10;508;TestProduct8;1;0;0;qwereqwe;Description10;26.07.2016 21:33;26.07.2016 21:33;false;true;false;false;false;10;10;10;test-product8;true;0;1;false;false;0;0;0;4;false;false
+11;509;TestProduct9;1;0;0;qwereqwe;Description11;27.07.2016 21:33;27.07.2016 21:33;false;true;false;false;false;11;11;11;test-product9;true;0;1;false;false;0;0;0;4;false;false
+12;510;TestProduct10;1;0;0;qwereqwe;Description12;28.07.2016 21:33;28.07.2016 21:33;false;true;false;false;false;12;12;12;test-product10;true;0;1;false;false;0;0;0;4;false;false
+13;511;TestProduct11;1;0;0;qwereqwe;Description13;29.07.2016 21:33;29.07.2016 21:33;false;false;true;false;false;13;13;13;test-product11;true;0;1;false;false;0;0;0;4;false;false
+14;512;TestProduct12;1;0;0;qwereqwe;Description14;30.07.2016 21:33;30.07.2016 21:33;false;false;true;false;false;14;14;14;test-product12;true;0;1;false;false;0;0;0;4;false;false
+15;513;TestProduct13;1;0;0;qwereqwe;Description15;31.07.2016 21:33;31.07.2016 21:33;false;false;true;false;false;15;15;15;test-product13;true;0;1;false;false;0;0;0;4;false;false
+16;514;TestProduct14;1;0;0;qwereqwe;Description16;01.08.2016 21:33;01.08.2016 21:33;false;false;true;false;false;16;16;16;test-product14;true;0;1;false;false;0;0;0;4;false;false
+17;515;TestProduct15;1;0;0;qwereqwe;Description17;02.08.2016 21:33;02.08.2016 21:33;false;false;true;false;false;17;17;17;test-product15;true;0;1;false;false;0;0;0;4;false;false
+18;516;TestProduct16;1;0;0;qwereqwe;Description18;03.08.2016 21:33;03.08.2016 21:33;false;false;false;true;false;18;18;18;test-product16;true;0;1;false;false;0;0;0;4;false;false
+19;517;TestProduct17;1;0;0;qwereqwe;Description19;04.08.2016 21:33;04.08.2016 21:33;false;false;false;true;false;19;19;19;test-product17;true;0;1;false;false;0;0;0;4;false;false
+20;518;TestProduct18;1;0;0;qwereqwe;Description20;05.08.2016 21:33;05.08.2016 21:33;false;false;false;true;false;20;20;20;test-product18;true;0;1;false;false;0;0;0;4;false;false
+21;519;TestProduct19;1;0;0;qwereqwe;Description21;06.08.2016 21:33;06.08.2016 21:33;false;false;false;true;false;21;21;21;test-product19;true;0;1;false;false;0;0;0;4;false;false
+22;520;TestProduct20;1;0;0;qwereqwe;Description22;07.08.2016 21:33;07.08.2016 21:33;false;false;false;true;false;22;22;22;test-product20;true;0;1;false;false;0;0;0;4;false;false

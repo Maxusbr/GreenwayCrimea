@@ -1,0 +1,21 @@
+﻿@import "../../../../styles/_settings.scss", "../../../../styles/functions/_util.scss";
+
+.subscribe-block {
+    padding: rem-calc(15px) rem-calc(25px);
+    margin-bottom: $margin-value-alt;
+    border-radius: $border-radius-base;
+}
+
+.subscribe-block-text {
+    font-size: $font-size-xmedium;
+    margin: $vertical-interval-xsmall 0;
+    line-height: 1.1;
+}
+
+.subscribe-block-button, .subscribe-block-button-slim, .subscribe-block-field {
+    margin: $vertical-interval-xsmall 0;
+}
+
+.btn-subscribe{
+
+}

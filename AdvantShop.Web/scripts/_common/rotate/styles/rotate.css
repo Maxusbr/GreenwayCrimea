@@ -1,0 +1,164 @@
+.carousel {
+  position: relative;
+  height: 2.125rem;
+  box-sizing: border-box; }
+  .carousel > div {
+    visibility: hidden; }
+  .carousel:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    content: "";
+    z-index: 5; }
+  .carousel:after {
+    font-family: "advantshopfonts";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    line-height: 1;
+    text-align: center;
+    opacity: 1;
+    font-variant: normal;
+    text-transform: none;
+    /*line-height: 1em;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: "\e805";
+    font-size: 2.125rem;
+    margin: -1.0625rem 0 0 -1.0625rem;
+    display: block;
+    -webkit-animation: carousel-loading 1.5s infinite linear;
+    animation: carousel-loading 1.5s infinite linear;
+    z-index: 10; }
+  .carousel .products-view-name {
+    width: 0; }
+  .carousel .products-view-price-inner {
+    width: auto; }
+  .carousel .carousel-item .products-view-item {
+    margin: 0; }
+  .carousel.carousel-initilized {
+    height: auto; }
+    .carousel.carousel-initilized > div {
+      visibility: visible; }
+    .carousel.carousel-initilized:before, .carousel.carousel-initilized:after {
+      display: none; }
+    .carousel.carousel-initilized .products-view-name {
+      width: auto; }
+    .carousel.carousel-initilized .products-view-price-inner {
+      width: 100%; }
+
+.carousel-item {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  box-sizing: border-box;
+  white-space: normal; }
+  .carousel-item.products-view-block {
+    padding: 0.625rem; }
+
+.carousel-inner {
+  overflow: hidden;
+  position: relative; }
+
+.carousel-list {
+  white-space: nowrap;
+  font-size: 0;
+  line-height: 0; }
+
+.carousel-dots {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: block;
+  text-align: center; }
+
+.carousel-dots-item {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0.3125rem;
+  font-size: 0;
+  line-height: 0; }
+
+.carousel-dots-item-inner {
+  border-radius: 50%;
+  height: 0.5rem;
+  width: 0.5rem;
+  display: inline-block;
+  opacity: .5; }
+
+.carousel-dots-selected {
+  opacity: 1; }
+
+.carousel-nav-prev, .carousel-nav-next {
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  text-align: center;
+  line-height: 1.25rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent none;
+  font-size: 1rem; }
+  .carousel-nav-prev:focus, .carousel-nav-next:focus {
+    outline: none; }
+  .carousel-nav-prev:after, .carousel-nav-next:after {
+    margin: 0; }
+
+.carousel-vertical {
+  height: 100% !important;
+  padding: 1rem 0; }
+  .carousel-vertical .carousel-item {
+    display: block; }
+  .carousel-vertical .carousel-nav-prev {
+    top: 0;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    left: 50%; }
+  .carousel-vertical .carousel-nav-next {
+    bottom: 0;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    left: 50%; }
+
+.carousel-horizontal {
+  padding: 0 1rem; }
+  .carousel-horizontal .carousel-item {
+    display: inline-block;
+    vertical-align: middle; }
+  .carousel-horizontal .carousel-nav-prev {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0; }
+  .carousel-horizontal .carousel-nav-next {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 0; }
+
+.carousel-mobile {
+  padding: 0; }
+
+@-webkit-keyframes carousel-loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+@keyframes carousel-loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }

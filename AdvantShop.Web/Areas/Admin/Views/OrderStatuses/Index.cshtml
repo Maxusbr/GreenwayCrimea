@@ -1,0 +1,32 @@
+﻿
+<div class="sticky-page-name" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                @T("Admin.OrderStatuses.Index.Title")
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditOrderStatusCtrl'" controller-as="ctrl"
+                              template-url="../areas/admin/content/src/orderstatuses/modal/addEditOrderStatus.html"
+                              data-on-close="orderstatuses.grid.fetchData()">
+                <button class="btn btn-sm btn-success btn--margin-left" type="button" data-e2e="btnAdd">
+                    <span class="fa fa-plus"></span> @T("Admin.Add")
+                </button>
+            </ui-modal-trigger>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <ui-grid-custom grid-unique-id="grid"
+                        grid-on-init="orderstatuses.gridOnInit(grid)"
+                        grid-options="orderstatuses.gridOptions"
+                        grid-url="'orderstatuses/getstatuses'"
+                        grid-extend-ctrl="orderstatuses">
+            <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="orderstatuses.grid.gridOptions.TotalString">
+            </ui-grid-custom-footer>
+        </ui-grid-custom>
+    </div>
+</div>

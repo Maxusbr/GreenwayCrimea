@@ -1,0 +1,20 @@
+/* font-family: "DroidSansRegular"; */
+@font-face {
+    font-family: "DroidSansRegular";
+    src: url("../fonts/DroidSansRegular/DroidSansRegular.eot");
+    src: url("../fonts/DroidSansRegular/DroidSansRegular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/DroidSansRegular/DroidSansRegular.woff") format("woff"),
+    url("../fonts/DroidSansRegular/DroidSansRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+/* font-family: "DroidSansBold"; */
+@font-face {
+    font-family: "DroidSansBold";
+    src: url("../fonts/DroidSansBold/DroidSansBold.eot");
+    src: url("../fonts/DroidSansBold/DroidSansBold.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/DroidSansBold/DroidSansBold.woff") format("woff"),
+    url("../fonts/DroidSansBold/DroidSansBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}

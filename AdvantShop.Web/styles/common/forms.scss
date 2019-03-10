@@ -1,0 +1,116 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+.form-field-name, .form-field-input {
+    display: block;
+    font-size: $font-size-normal;
+}
+
+.form-field-name-alt, .form-field-input-alt {
+    margin-bottom: rem-calc(5px);
+    display: block;
+    /*line-height: 1;*/
+}
+
+.form-field-name {
+    padding-right: $padding-base;
+    font-size: $font-size-normal;
+}
+
+.form-field {
+    margin-bottom: $margin-value-base;
+    display: block;
+}
+
+
+.form-title {
+    padding: rem-calc(15px) rem-calc(25px);
+    margin: 0;
+    font-size: $font-size-base;
+}
+
+.form-content {
+    margin: 0 rem-calc(25px);
+    padding-bottom: rem-calc(30px);
+}
+
+.form-input-title {
+    padding-top: rem-calc(21px);
+    margin-bottom: rem-calc(10px);
+    font-size: $font-size-normal;
+    
+    &.moMarginTop {
+        margin-top: 0;    
+    }
+
+    &.moMarginBottom {
+        margin-bottom: 0;
+    }
+}
+
+.form-input-value {
+    margin-bottom: rem-calc(20px);
+}
+
+.input-required {
+    position: relative;
+    display: inline-block;
+
+    &:after {
+        content: "*";
+        position: absolute;
+        top: 0;
+        color: red;
+        left: 100%;
+    }
+
+
+    &.form-field-name:after {
+        right: 0;
+        left: auto;
+    }
+}
+
+.input-required__rel.input-required:after {
+    position: relative;
+    margin-left: 4px;
+}
+
+
+.form-buttons-block {
+    padding-left: rem-calc(5px);
+    margin-top: rem-calc(20px);
+}
+
+.form-required-explanation {
+    display: inline-block;
+    float: right;
+    font-size: rem-calc(12px);
+    color: #acadae;
+    position: relative;
+
+    &:after {
+        content: "*";
+        position: absolute;
+        top: 0;
+        color: red;
+        left: -12px;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+    }
+}
+
+.form-legend {
+    font-size: $font-size-xmedium;
+    font-weight: bold;
+    margin-bottom: $margin-value-base;
+}
+
+.form-addon-text .title {
+    font-size: $font-size-xmedium;
+      padding: 0 0 rem-calc(10px) 0;
+}
+
+.text-required {
+    color: red;
+}

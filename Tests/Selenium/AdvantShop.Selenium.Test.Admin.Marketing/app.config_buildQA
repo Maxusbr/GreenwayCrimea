@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="EtalonDatabaseName" value="etalon" />
+    <add key="TestDatabaseName" value="test_Marketing" />
+    <add key="BackupPath" value="d:\_DB\Backup\" />
+    <add key="DatabasePath" value="d:\_DB\" />
+    <add key="SiteUrl" value="http://localhost/test_Marketing/" />
+    <add key="SitePath" value="d:\_SITE\test_Marketing\" />
+    <add key="ScreenshotsPath" value="d:\_SITE\_screenshots\" />
+    <add key="LogFile" value="d:\_SITE\logs\TeamcityLog.txt" />
+  </appSettings>
+  <connectionStrings>
+  
+  <add name="etalon" connectionString="Data Source='WIN-AS50UVO3F9J\SQLEXPRESS'; Connect Timeout='60'; Initial Catalog='etalon'; Persist Security Info='True'; User ID='sa'; Password='qweQWE123!';" providerName="System.Data.SqlClient" />
+  <add name="AdvantConnectionString" connectionString="Data Source=WIN-AS50UVO3F9J\SQLEXPRESS; Connect Timeout='60'; Initial Catalog='test_Marketing'; Persist Security Info='True'; User ID='sa'; Password='qweQWE123!';" providerName="System.Data.SqlClient" />
+  
+    </connectionStrings>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+  </startup>
+</configuration>

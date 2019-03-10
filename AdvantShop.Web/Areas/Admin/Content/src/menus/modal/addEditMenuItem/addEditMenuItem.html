@@ -1,0 +1,227 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ctrl.type == "add" ? "Добавление элемента меню" : "Редактирование элемента меню"}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">
+                    <span class="text-required">Имя пункта меню</span>
+                </label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" ng-model="ctrl.menuItem.MenuItemName" required validation-input-text="Название" autofocus data-e2e="MenuItemName" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">Тип ссылки</label>
+                <div class="col-xs-9">
+
+                    <div class="row">
+
+                        <div class="col-xs-6">
+                            <div class="m-b-sm">
+                                <label class="adv-checkbox-label" data-e2e="StatPageNew">
+                                    <input type="radio" class="adv-radio-input control-checkbox" value="-1" ng-model="ctrl.menuItem.MenuItemUrlType" /> Новая страница
+                                    <span class="adv-radio-emul"></span>
+                                </label>
+                            </div>
+
+                            <div class="m-b-sm">
+                                <label class="adv-checkbox-label" data-e2e="StatPage">
+                                    <input type="radio" class="adv-radio-input control-checkbox" value="2" ng-model="ctrl.menuItem.MenuItemUrlType" /> Существующая страница
+                                    <span class="adv-radio-emul"></span>
+                                </label>
+                            </div>
+
+                            <div class="m-b-sm">
+                                <label class="adv-checkbox-label" data-e2e="News">
+                                    <input type="radio" class="adv-radio-input control-checkbox" value="3" ng-model="ctrl.menuItem.MenuItemUrlType" /> Новости
+                                    <span class="adv-radio-emul"></span>
+                                </label>
+                            </div>
+
+                            <div class="m-b-sm">
+                                <label class="adv-checkbox-label" data-e2e="Link">
+                                    <input type="radio" class="adv-radio-input control-checkbox" value="5" ng-model="ctrl.menuItem.MenuItemUrlType" /> Ссылка
+                                    <span class="adv-radio-emul"></span>
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <!--<div class="col-xs-6">
+                            <div class="m-b-sm">
+                                <label class="adv-checkbox-label" data-e2e="Product">
+                                    <input type="radio" class="adv-radio-input control-checkbox" value="0" ng-model="ctrl.menuItem.MenuItemUrlType" /> Товар
+                                    <span class="adv-radio-emul"></span>
+                                </label>
+                            </div>
+
+                            <div class="m-b-sm">
+                                <label class="adv-checkbox-label" data-e2e="Category">
+                                    <input type="radio" class="adv-radio-input control-checkbox" value="1" ng-model="ctrl.menuItem.MenuItemUrlType"/> Категория
+                                    <span class="adv-radio-emul"></span>
+                                </label>
+                            </div>
+
+                            <div class="m-b-sm">
+                                <label class="adv-checkbox-label" data-e2e="Brand">
+                                    <input type="radio" class="adv-radio-input control-checkbox" value="4" ng-model="ctrl.menuItem.MenuItemUrlType" /> Бренд
+                                    <span class="adv-radio-emul"></span>
+                                </label>
+                            </div>
+                        </div>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="ctrl.menuItem.MenuItemUrlType == null || ctrl.menuItem.MenuItemUrlType == '-1'">
+            <div class="row">
+                <label class="col-xs-3 control-label">
+                    <span class="text-required">Название страницы</span>
+                </label>
+                <div class="col-xs-9">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" ng-model="ctrl.newPageName" required validation-input-text="Название страницы" data-e2e="MenuItemNamePage" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="ctrl.menuItem.MenuItemUrlType != null && ctrl.menuItem.MenuItemUrlType != '-1'">
+            <div class="row">
+                <label class="col-xs-3 control-label">
+                    <span class="text-required" ng-if="ctrl.menuItem.MenuItemParentId > 0">URL</span>
+                    <span ng-if="ctrl.menuItem.MenuItemParentId == 0">URL</span>
+                </label>
+                <div class="col-xs-9">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" ng-model="ctrl.menuItem.MenuItemUrlPath" ng-required="ctrl.menuItem.MenuItemParentId > 0" validation-input-text="URL" data-e2e="MenuItemURL" />
+                        </div>
+                        <div class="col-xs-3 control-label">
+                            <a ng-if="ctrl.menuItem.MenuItemUrlType != 5" ng-click="ctrl.changeUrl()" href="">Выбрать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="ctrl.menuType != 'Mobile'">
+            <div class="row">
+                <label class="col-xs-3 control-label">Родитель</label>
+                <div class="col-xs-9" data-e2e="MenuItemParentName">
+                    {{ctrl.menuItem.MenuItemParentName}}
+
+                    <ui-modal-trigger data-controller="'ModalChangeParentMenuItemCtrl'" controller-as="ctrl"
+                                      data-on-close="ctrl.changeParentItem(result)"
+                                      data-resolve="{params: {showRoot: true, selected:ctrl.menuItem.MenuItemParentId, excludeId:ctrl.menuItem.MenuItemId, menuType: ctrl.menuType}}"
+                                      template-url="../areas/admin/content/src/menus/modal/changeParentMenuItem/changeParentMenuItem.html">
+                        <a href="" class="edit">Изменить</a>
+                    </ui-modal-trigger>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">
+                    Открывать в новой вкладке
+                </label>
+                <div class="col-xs-9">
+                    <label class="adv-checkbox-label">
+                        <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.menuItem.Blank" data-e2e="MenuItemBlankSelected" />
+                        <span class="adv-checkbox-emul" data-e2e="MenuItemBlank"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">
+                    Доступен
+                </label>
+                <div class="col-xs-9">
+                    <label class="adv-checkbox-label">
+                        <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.menuItem.Enabled" data-e2e="MenuItemEnabledSelected" />
+                        <span class="adv-checkbox-emul" data-e2e="MenuItemEnabled"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">
+                    Запретить индексацию
+                </label>
+                <div class="col-xs-9">
+                    <label class="adv-checkbox-label">
+                        <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="ctrl.menuItem.NoFollow" data-e2e="MenuItemNoFollowSelected" />
+                        <span class="adv-checkbox-emul" data-e2e="MenuItemNoFollow"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">
+                    Кому показывать
+                </label>
+                <div class="col-xs-9">
+                    <select ng-model="ctrl.menuItem.ShowMode" ng-options="s.label for s in ctrl.showModes track by s.value" class="form-control" data-e2e="MenuItemShowMode"></select>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">Порядок сортировки</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" ng-model="ctrl.menuItem.SortOrder"/>
+                </div>
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-3 control-label">Иконка</label>
+                <div class="col-xs-9">
+                    <img ng-if="ctrl.menuItem.MenuItemIconPath != null && ctrl.menuItem.MenuItemIconPath.length > 0"
+                         ng-src="{{ctrl.menuItem.MenuItemIconPath}}" />
+
+                    <div class="m-t-sm">
+                        <div>
+                            <a href=""
+                               accept="image/*"
+                               ngf-max-size="15MB"
+                               ngf-select=""
+                               ngf-change="ctrl.uploadIcon($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+                               class="picture-uploader-buttons-add">
+                                Добавить изображение
+                            </a>
+                        </div>
+                        <div ng-if="ctrl.menuItem.MenuItemIconPath != null && ctrl.menuItem.MenuItemIconPath.length > 0">
+                            <a href="" class="picture-uploader-buttons-delete link-danger" ng-click="ctrl.deleteIcon()">Удалить изображение</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>{{ctrl.type == "add" ? "Добавить" : "Сохранить"}}</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

@@ -1,0 +1,230 @@
+﻿@using Newtonsoft.Json
+@model AdvantShop.Web.Admin.Models.CustomerSegments.CustomerSegmentModel
+
+<div class="row m-b-md">
+    <div class="flex-grow-n col-xs-1">
+        <label class="form-label-block">Фильтры</label>
+    </div>
+    <div class="flex-grow flex-basis-n flex-width-n">
+        <div class="row">
+
+            <div class="col-xs-4 m-b">
+                <div class="p-b-xs">Сумма всех заказов</div>
+                <div>
+                    <div class="row middle-xs">
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.SegmentFilter.OrdersSumFrom, "{0:G10}", new { @class = "form-control", ng_model = "customerSegment.OrdersSumFrom" })
+                        </div>
+                        <div class="col-xs-1">–</div>
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.SegmentFilter.OrdersSumTo, "{0:G10}", new { @class = "form-control", ng_model = "customerSegment.OrdersSumTo" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4 m-b">
+                <div class="p-b-xs">Сумма оплаченных заказов</div>
+                <div>
+                    <div class="row middle-xs">
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.SegmentFilter.OrdersPaidSumFrom, "{0:G10}", new { @class = "form-control", ng_model = "customerSegment.OrdersPaidSumFrom" })
+                        </div>
+                        <div class="col-xs-1">–</div>
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.SegmentFilter.OrdersPaidSumTo, "{0:G10}", new { @class = "form-control", ng_model = "customerSegment.OrdersPaidSumTo" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4 m-b">
+                <div class="p-b-xs">Кол-во заказов</div>
+                <div>
+                    <div class="row middle-xs">
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.SegmentFilter.OrdersCountFrom, new { @class = "form-control", ng_model = "customerSegment.OrdersCountFrom" })
+                        </div>
+                        <div class="col-xs-1">–</div>
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.SegmentFilter.OrdersCountTo, new { @class = "form-control", ng_model = "customerSegment.OrdersCountTo" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4 m-b">
+                <div class="p-b-xs">Дата последнего заказа</div>
+                <div>
+                    <div class="row middle-xs">
+                        <div class="col-xs">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" id="LastOrderDateFrom" role="button" data-toggle="dropdown">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(x => x.SegmentFilter.LastOrderDateFrom, "{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control", ng_model = "customerSegment.LastOrderDateFrom", data_date_time_input = "DD.MM.YYYY" })
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker ng-model="customerSegment.LastOrderDateFrom" data-datetimepicker-config="{dropdownSelector:'#LastOrderDateFrom', minView:'day'}" />
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-1">–</div>
+                        <div class="col-xs">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" id="LastOrderDateTo" role="button" data-toggle="dropdown">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(x => x.SegmentFilter.LastOrderDateTo, "{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control", ng_model = "customerSegment.LastOrderDateTo", data_date_time_input = "DD.MM.YYYY" })
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker ng-model="customerSegment.LastOrderDateTo" data-datetimepicker-config="{dropdownSelector:'#LastOrderDateTo', minView:'day'}" />
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4 m-b">
+                <div class="p-b-xs">Средний чек</div>
+                <div>
+                    <div class="row middle-xs">
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.SegmentFilter.AverageCheckFrom, new { @class = "form-control", ng_model = "customerSegment.AverageCheckFrom" })
+                        </div>
+                        <div class="col-xs-1">–</div>
+                        <div class="col-xs">
+                            @Html.TextBoxFor(x => x.SegmentFilter.AverageCheckTo, new { @class = "form-control", ng_model = "customerSegment.AverageCheckTo" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="col-xs-4 m-b">
+                <div class="p-b-xs">Дата рождения</div>
+                <div>
+                    <div class="row middle-xs">
+                        <div class="col-xs-5">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" id="BirthDayFrom" role="button" data-toggle="dropdown">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(x => x.SegmentFilter.BirthDayFrom, "{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control", ng_model = "customerSegment.BirthDayFrom", data_date_time_input = "DD.MM.YYYY" })
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker ng-model="customerSegment.BirthDayFrom" data-datetimepicker-config="{dropdownSelector:'#BirthDayFrom', minView:'day'}" />
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-1">–</div>
+                        <div class="col-xs-5">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" id="BirthDayTo" role="button" data-toggle="dropdown">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(x => x.SegmentFilter.BirthDayTo, "{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control", ng_model = "customerSegment.BirthDayTo", data_date_time_input = "DD.MM.YYYY" })
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker ng-model="customerSegment.BirthDayTo" data-datetimepicker-config="{dropdownSelector:'#BirthDayTo', minView:'day'}" />
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+            <div class="col-xs-4 m-b">
+                <div class="p-b-xs">Покупки из товарных категорий</div>
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12 ng-cloak" data-e2e="customerSegmentCategories">
+                            <ui-select multiple
+                                       tagging-label=""
+                                       sortable="true"
+                                       ng-init="customerSegment.initCategories('@JsonConvert.SerializeObject(Model.Categories)')"
+                                       ng-model="customerSegment.selectedCategories">
+                                <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                                <ui-select-choices repeat="tag in customerSegment.Categories | filter:$select.search">
+                                    {{tag}}
+                                </ui-select-choices>
+                            </ui-select>
+                            @*select для отправки данных через post *@
+                            <select name="Categories" multiple hidden>
+                                <option selected value="{{option}}" ng-repeat="option in customerSegment.selectedCategories track by $index"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4 m-b">
+                <div class="p-b-xs">Город</div>
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12 ng-cloak" data-e2e="customerSegmentCities">
+                            <ui-select multiple
+                                       tagging-label=""
+                                       sortable="true"
+                                       ng-init="customerSegment.initCities('@JsonConvert.SerializeObject(Model.Cities)')"
+                                       ng-model="customerSegment.selectedCities">
+                                <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                                <ui-select-choices repeat="tag in customerSegment.Cities | filter:$select.search">
+                                    {{tag}}
+                                </ui-select-choices>
+                            </ui-select>
+                            @*select для отправки данных через post *@
+                            <select name="Cities" multiple hidden>
+                                <option selected value="{{option}}" ng-repeat="option in customerSegment.selectedCities track by $index"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4 m-b">
+                <div class="p-b-xs">Страна</div>
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12 ng-cloak" data-e2e="customerSegmentCountries">
+                            <ui-select multiple
+                                       tagging-label=""
+                                       sortable="true"
+                                       ng-init="customerSegment.initCountries('@JsonConvert.SerializeObject(Model.Countries)')"
+                                       ng-model="customerSegment.selectedCountries">
+                                <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                                <ui-select-choices repeat="tag in customerSegment.Countries | filter:$select.search">
+                                    {{tag}}
+                                </ui-select-choices>
+                            </ui-select>
+                            @*select для отправки данных через post *@
+                            <select name="Countries" multiple hidden>
+                                <option selected value="{{option}}" ng-repeat="option in customerSegment.selectedCountries track by $index"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@if (Model.CustomerFields != null && Model.CustomerFields.Count > 0)
+{
+    <div class="row m-b-md">
+        <div class="flex-grow-n col-xs-1">
+            <label class="form-label-block">Поля покупателя</label>
+        </div>
+        <div class="flex-grow flex-basis-n flex-width-n">
+            <div class="row customersegments-custom-fields">
+                @Html.Partial("_CustomerFields", Model.CustomerFields)
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,17 @@
+﻿
+<div class="m-t m-b-sm">
+    История изменения заказа
+</div>
+<div class="order-history">
+    <ui-grid-custom grid-unique-id="gridOrderHistory"
+                    grid-on-init="ctrl.gridOnInit(grid)"
+                    grid-filter-enabled="false"
+                    grid-pagination-enabled="false"
+                    grid-selection-enabled="false"
+                    grid-params="{orderId:$ctrl.orderId}"
+                    grid-options="$ctrl.gridOptions"
+                    grid-url="'orders/getOrderHistory'"
+                    grid-empty-text="'Записи отсутсвуют'"
+                    grid-extend-ctrl="$ctrl">
+    </ui-grid-custom>
+</div>

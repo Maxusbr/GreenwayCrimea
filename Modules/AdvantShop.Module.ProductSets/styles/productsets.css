@@ -1,0 +1,50 @@
+.productset .products-view-container {
+  display: block;
+  font-size: 0; }
+
+.productset .price-current {
+  margin-bottom: 5px; }
+
+.productset a:hover {
+  text-decoration: none; }
+
+.productset .products-view-block {
+  width: 25%;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative; }
+  .productset .products-view-block.notselected {
+    opacity: 0.7; }
+    .productset .products-view-block.notselected:hover {
+      opacity: 1; }
+  .productset .products-view-block .products-view-item {
+    margin-right: 30px;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+  .productset .products-view-block:last-child .products-view-item {
+    margin-right: 0; }
+  .productset .products-view-block:after {
+    content: '+';
+    font-size: 32px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -32px; }
+  .productset .products-view-block:nth-last-child(2):after {
+    display: none; }
+
+.productset .productset-price {
+  position: relative;
+  width: auto; }
+  .productset .productset-price.products-view-block:after {
+    content: '=';
+    left: -38px;
+    right: auto; }
+  .productset .productset-price .products-view-item {
+    border: none;
+    position: relative; }
+    .productset .productset-price .products-view-item:hover {
+      box-shadow: none; }
+    .productset .productset-price .products-view-item .price-text {
+      font-size: 20px; }

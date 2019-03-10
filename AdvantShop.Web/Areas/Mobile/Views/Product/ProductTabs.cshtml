@@ -1,0 +1,108 @@
+﻿@model AdvantShop.ViewModel.ProductDetails.ProductTabsViewModel
+@{
+    var tabIndex = 0;
+    var product = Model.ProductModel.Product;
+}
+
+<div data-tabs data-is-toggle="true" class="mobile-details-tabs">
+    <div class="mobile-details-tabs-group">
+        <a id="tabDescription"
+           href=""
+           class="mobile-details-tabs-header-item cs-l-1 link-dotted-invert cs-br-1"
+           data-tab-header=""
+           data-ng-hide="!tabHeader.isRender"
+           data-ng-class="{'mobile-details-tabs-header-item-selected' : tabHeader.selected}"
+           data-ng-click="tabs.change(tabHeader)">
+            @T("Product.ProductTabs.Description")
+            <span class="mobile-details-tabs-arrow color-scheme-text-сhameleon" ng-class="{'icon-down-open-before' : tabHeader.selected, 'icon-right-open-before' : !tabHeader.selected }"></span>
+        </a>
+        <div class="mobile-tabs-content">
+            <div class="mobile-tab-content" data-tab-content="tabDescription" data-ng-class="{'mobile-tab-content-active': tabContent.header.selected}">
+                @Html.Raw(product.Description)
+                @Html.Raw(Model.AdditionalDescription)
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-details-tabs-group">
+        <a id="tabOptions"
+           href=""
+           class="mobile-details-tabs-header-item cs-l-1 link-dotted-invert cs-br-1"
+           data-tab-header=""
+           data-ng-hide="!tabHeader.isRender"
+           data-ng-class="{'mobile-details-tabs-header-item-selected' : tabHeader.selected}"
+           data-ng-click="tabs.change(tabHeader)">
+            @T("Product.ProductTabs.Properties")
+            <span class="mobile-details-tabs-arrow color-scheme-text-сhameleon" ng-class="{'icon-down-open-before' : tabHeader.selected, 'icon-right-open-before' : !tabHeader.selected }"></span>
+        </a>
+        <div class="mobile-tabs-content">
+            <div class="mobile-tab-content" data-tab-content="tabOptions" data-ng-class="{'mobile-tab-content-active': tabContent.header.selected}">
+                @Html.Action("ProductProperties", new { area = "", productModel = Model.ProductModel })
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-details-tabs-group">
+        <a id="tabVideos"
+           href=""
+           class="mobile-details-tabs-header-item cs-l-1 link-dotted-invert cs-br-1"
+           data-tab-header=""
+           data-ng-hide="!tabHeader.isRender"
+           data-ng-class="{'mobile-details-tabs-header-item-selected' : tabHeader.selected}"
+           data-ng-click="tabs.change(tabHeader)">
+            @T("Product.ProductTabs.Video")
+            <span class="mobile-details-tabs-arrow color-scheme-text-сhameleon" ng-class="{'icon-down-open-before' : tabHeader.selected, 'icon-right-open-before' : !tabHeader.selected }"></span>
+        </a>
+        <div class="mobile-tabs-content">
+            <div class="mobile-tab-content" data-tab-content="tabVideos" data-ng-class="{'mobile-tab-content-active': tabContent.header.selected}">
+                @Html.Action("ProductVideos", new { area = "", product.ProductId })
+            </div>
+        </div>
+    </div>
+
+    @foreach (var tab in Model.Tabs)
+    {
+        tabIndex += 1;
+
+        <div class="mobile-details-tabs-group">
+            <a id="tab@(tabIndex)"
+               href=""
+               class="mobile-details-tabs-header-item cs-l-1 link-dotted-invert cs-br-1"
+               data-tab-header=""
+               data-ng-hide="!tabHeader.isRender"
+               data-ng-class="{'mobile-details-tabs-header-item-selected' : tabHeader.selected}"
+               data-ng-click="tabs.change(tabHeader)">
+                @tab.Title
+                <span class="mobile-details-tabs-arrow color-scheme-text-сhameleon" ng-class="{'icon-down-open-before' : tabHeader.selected, 'icon-right-open-before' : !tabHeader.selected }"></span>
+            </a>
+            <div class="mobile-tabs-content">
+                <div class="mobile-tab-content" data-tab-content="tab@(tabIndex)" data-ng-class="{'mobile-tab-content-active': tabContent.header.selected}">
+                    @Html.Raw(tab.Body)
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (SettingsCatalog.AllowReviews)
+    {
+        <div class="mobile-details-tabs-group">
+            <a id="tabReviews"
+               href=""
+               class="mobile-details-tabs-header-item cs-l-1 link-dotted-invert cs-br-1"
+               data-tab-header=""
+               data-ng-hide="!tabHeader.isRender"
+               data-ng-class="{'mobile-details-tabs-header-item-selected' : tabHeader.selected}"
+               data-ng-click="tabs.change(tabHeader)">
+                @T("Product.ProductTabs.Reviews") @(Model.ReviewsCount > 0 ? "(" + Model.ReviewsCount + ")" : "")
+                <span class="mobile-details-tabs-arrow color-scheme-text-сhameleon" ng-class="{'icon-down-open-before' : tabHeader.selected, 'icon-right-open-before' : !tabHeader.selected }"></span>
+            </a>
+            <div class="mobile-tabs-content">
+                <div class="mobile-tab-content" data-tab-content="tabReviews" data-ng-class="{'mobile-tab-content-active': tabContent.header.selected}">
+                    @(Model.UseStandartReviews
+                  ? Html.Action("ProductReviews", new { area = "", productModel = Model.ProductModel, ProductId = product.ProductId })
+                  : Html.RenderModules("product_reviews"))
+                </div>
+            </div>
+        </div>
+    }
+</div>

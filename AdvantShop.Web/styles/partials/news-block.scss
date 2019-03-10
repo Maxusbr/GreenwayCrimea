@@ -1,0 +1,32 @@
+﻿@import "../functions/_util.scss", "../_settings.scss";
+
+.news-block{
+
+}
+
+.news-block-items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.news-block-row {
+    margin: 0 0 rem-calc(20px) 0;
+    font-size: $font-size-normal;
+}
+
+.allNews {
+    font-size: $font-size-normal;
+}
+
+.news-block-anno {
+}
+
+.news-block-anno-link {
+}
+
+.news-block-date {
+}
+
+.news-block-date-text {
+}

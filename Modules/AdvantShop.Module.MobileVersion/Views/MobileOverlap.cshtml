@@ -1,0 +1,20 @@
+﻿@model AdvantShop.ViewModel.Home.MobileOverlapViewModel
+@using AdvantShop.Core.UrlRewriter
+
+<div data-oc-lazy-load="['modules/mobileversion/scripts/mobileOverlap.js']">
+    <div class="mobile-layout" data-ng-controller="mobileOverlapCtrl as mOverlap">
+        <div class="mobile-layout__wrapper">
+            <div class="mobile-layout__logo">
+                <img src="@Model.logoPath" alt="@Model.logoAlt" />
+            </div>
+            <div class="mobile-layout__instruction">
+                Перейти на мобильную версию сайта
+            </div>
+            <a href="@(UrlService.GetUrl() + "?forcedMobile=true")" class="btn btn-big btn-buy mobile-layout__button">Да, перейти</a>
+            <a href="@Request.RawUrl" class="btn btn-big btn-buy mobile-layout__button" data-ng-click="mOverlap.stayOnDesktop()">Остаться на основной версии</a>
+            <div class="mobile-layout__footer">
+                @Html.Action("Copyright", "Common")
+            </div>
+        </div>
+    </div>
+</div>

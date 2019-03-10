@@ -1,0 +1,641 @@
+﻿@{
+    var staticPath = "~/" + UrlService.GetAdminStaticPath();
+
+    Html.AddBundles(new List<string>
+    {
+        staticPath + "vendors/jquery-2.2.4/jquery.min.js",
+        staticPath + "vendors/angular/angular.js",
+
+        "~/userfiles/" + SettingsMain.Language +".js",
+
+        "~/vendors/autofocus/autofocus.js",
+        "~/vendors/ocLazyLoad/ocLazyLoad.js",
+
+        "~/scripts/_common/urlHelper/urlHelperService.js",
+
+        "~/scripts/_common/input/input.js",
+        "~/scripts/_common/input/directives/inputDirectives.js",
+
+        "~/scripts/_partials/submenu/submenu.js",
+        "~/scripts/_partials/submenu/controllers/submenuParentController.js",
+        "~/scripts/_partials/submenu/controllers/submenuController.js",
+        "~/scripts/_partials/submenu/controllers/submenuContainerController.js",
+        "~/scripts/_partials/submenu/directives/submenuDirectives.js",
+        "~/scripts/_partials/submenu/services/submenuService.js",
+
+
+        "~/scripts/_common/countdown/countdown.js",
+        "~/scripts/_common/countdown/controllers/countdownController.js",
+        "~/scripts/_common/countdown/directives/countdownDirectives.js",
+
+
+        "~/scripts/_common/carousel/carousel.js",
+        "~/scripts/_common/carousel/carouselNative.js",
+        "~/scripts/_common/carousel/controllers/carouselController.js",
+        "~/scripts/_common/carousel/directives/carouselDirectives.js",
+        "~/scripts/_common/carousel/services/carouselService.js",
+
+
+        "~/scripts/_common/dom/dom.js",
+        "~/scripts/_common/dom/services/domService.js",
+
+        "~/scripts/_partials/magnificPopupWrapper/magnificPopupWrapper.js",
+        "~/scripts/_partials/magnificPopupWrapper/directives/magnificPopupWrapperDirective.js",
+
+        "~/scripts/_common/select/select.js",
+
+        "~/scripts/_common/spinbox/spinbox.js",
+        "~/scripts/_common/spinbox/controllers/spinboxController.js",
+        "~/scripts/_common/spinbox/directives/spinboxDirectives.js",
+
+        "~/scripts/_common/transformer/transformer.js",
+        "~/scripts/_common/transformer/controllers/transformerController.js",
+        "~/scripts/_common/transformer/directives/transformerDirectives.js",
+
+        "~/scripts/_common/window/window.js",
+        "~/scripts/_common/window/controllers/windowController.js",
+        "~/scripts/_common/window/directives/windowDirectives.js",
+        "~/scripts/_common/window/services/windowService.js",
+
+        "~/scripts/_partials/shipping/shipping.js",
+        "~/scripts/_partials/shipping/controllers/shippingListController.js",
+        "~/scripts/_partials/shipping/controllers/shippingVariantsController.js",
+        "~/scripts/_partials/shipping/controllers/shippingTemplateController.js",
+        "~/scripts/_partials/shipping/directives/shippingDirectives.js",
+
+        "~/scripts/_partials/payment/payment.js",
+        "~/scripts/_partials/payment/directives/paymentDirectives.js",
+        "~/scripts/_partials/payment/controllers/paymentListController.js",
+        "~/scripts/_partials/payment/controllers/paymentTemplateController.js",
+
+        "~/scripts/_common/modal/modal.js",
+        "~/scripts/_common/modal/controllers/modalController.js",
+        "~/scripts/_common/modal/directives/modalDirectives.js",
+        "~/scripts/_common/modal/services/modalService.js",
+
+
+        staticPath + "vendors/bootstrap/bootstrap.min.js",
+        staticPath + "vendors/moment/moment.min.js",
+        staticPath + "vendors/moment/locale/ru.js",
+        staticPath + "vendors/moment/moment-timezone-with-data-2012-2022.min.js",
+        //staticPath + "vendors/pace/pace.min.js",
+        staticPath + "vendors/sweetalert/sweetalert2.min.js",
+        staticPath + "vendors/jstree/jstree.min.js",
+        staticPath + "vendors/angular-cookies/angular-cookies.min.js",
+
+
+        staticPath + "vendors/angular-sanitize/angular-sanitize.min.js",
+        staticPath + "vendors/angular-locale/angular-locale_ru-ru.js",
+        staticPath + "vendors/angular-translate/angular-translate.min.js",
+        staticPath + "vendors/ui-grid/ui-grid.min.js",
+        staticPath + "vendors/angular-bootstrap-datetimepicker/datetimepicker.js",
+        staticPath + "vendors/angular-bootstrap-datetimepicker/datetimepicker.templates.js",
+        staticPath + "vendors/tiny-color/tinycolor.min.js",
+        staticPath + "vendors/angular-color-picker/angularjs-color-picker.min.js",
+        staticPath + "vendors/chart/Chart.bundle.min.js",
+        staticPath + "vendors/angular-chart/angular-chart.min.js",
+        staticPath + "vendors/checklist-model/checklist-model.js",
+        staticPath + "vendors/ng-file-upload/ng-file-upload.min.js",
+        staticPath + "vendors/ui-select/select.js",
+        staticPath + "vendors/ng-sortable/ng-sortable.min.js",
+        staticPath + "vendors/ui-mask/mask.min.js",
+        staticPath + "vendors/spin/spin.min.js",
+        staticPath + "vendors/ladda/ladda.min.js",
+        staticPath + "vendors/angular-ladda/angular-ladda.min.js",
+        staticPath + "vendors/magnific-popup/jquery.magnific-popup.min.js",
+        staticPath + "vendors/angular-moment/angular-moment.js",
+        staticPath + "vendors/angular-inview/angular-inview.js",
+        staticPath + "src/_shared/validation/validation.js",
+        staticPath + "src/_shared/validation/directives/validationDirectives.js",
+
+        staticPath + "vendors/scrollMaster/angular-scroll.js",
+
+        staticPath + "vendors/angular-sticky/angular-sticky.custom.js",
+
+        staticPath + "vendors/angular-bind-html-compile/angular-bind-html-compile.js",
+        staticPath + "vendors/jsTree.directive/jsTree.directive.custom.js",
+
+        staticPath + "vendors/ui-bootstrap/ui-bootstrap-custom-tpls-2.5.0.js",
+        staticPath + "vendors/ui-bootstrap/angular-tab-decorator/angular-tab-decorator.js",
+
+        staticPath + "vendors/angular-date-time-input/dateTimeInput.js",
+        staticPath + "vendors/angular-date-time-input/dateTimeInput.decorator.js",
+
+        staticPath + "vendors/ng-sweet-alert/ng-sweet-alert.js",
+
+        staticPath + "vendors/toaster/toaster.js",
+        staticPath + "vendors/cropper/cropper.min.js",
+        staticPath + "vendors/cropper/ngCropper.js",
+
+        staticPath + "vendors/ng-textcomplete/ng-textcomplete.js",
+        staticPath + "vendors/ng-textcomplete/ng-textcomplete.ext.directive.js",
+
+        "~/vendors/internationalPhoneNumber/international-phone-number.js",
+        "~/vendors/internationalPhoneNumber/intl-tel-input/js/intlTelInput.min.js",
+
+        staticPath + "vendors/signalr/jquery.signalR.js",
+        staticPath + "vendors/iwc/iwc-all.js",
+        staticPath + "vendors/iwc-signalr/iwc-signalr.js",
+        staticPath + "vendors/iwc-signalr/signalr-patch.js",
+
+        staticPath + "vendors/angular-web-notification/desktop-notify.js",
+        staticPath + "vendors/angular-web-notification/angular-web-notification.js",
+
+        staticPath + "src/_shared/admin-web-notifications/adminWebNotifications.service.js",
+        staticPath + "src/_shared/admin-web-notifications/directives/admin-web-notifications.directive.js",
+
+        staticPath + "vendors/angular-input-modified/angular-input-modified.custom.js",
+
+        staticPath + "vendors/ng-ckeditor/ng-ckeditor.modified.js",
+
+
+        staticPath + "vendors/jquery.rcrumbs/jquery.rcrumbs.js",
+        staticPath + "vendors/jquery.rcrumbs/angular.rcrumbs.js",
+
+        staticPath + "src/_shared/cm-stat/cmStat.js",
+        staticPath + "src/_shared/cm-stat/cmStat.service.js",
+        staticPath + "src/_shared/cm-stat/cmStat.component.js",
+
+        staticPath + "src/_shared/icon-move/iconMove.js",
+
+        staticPath + "src/_shared/saas-stat/saasStat.js",
+        staticPath + "src/_shared/saas-stat/saasStat.service.js",
+        staticPath + "src/_shared/saas-stat/saasStat.component.js",
+
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustom.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustom.constant.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustom.config.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustom.component.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustom.service.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomFilter.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomFilterBlock.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomFilter.component.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomFilterBlock.component.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomPagination.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomPagination.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomEdit.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomEdit.component.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomRow.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomRow.component.js",
+
+        staticPath + "src/_shared/ui-ace-textarea/uiAceTextarea.js",
+        staticPath + "src/_shared/ui-ace-textarea/uiAceTextarea.constant.js",
+
+        staticPath + "src/_shared/modal/uiModal.js",
+        staticPath + "src/_shared/modal/uiModalDecorator.js",
+        staticPath + "src/_shared/modal/uiModal.component.js",
+
+        staticPath + "src/_shared/modal/addCategory/ModalAddCategoryCtrl.js",
+        staticPath + "src/_shared/modal/addCategoryList/ModalAddCategoryListCtrl.js",
+        staticPath + "src/_shared/modal/addProduct/ModalAddProductCtrl.js",
+        staticPath + "src/_shared/modal/addProductList/ModalAddProductListCtrl.js",
+        staticPath + "src/_shared/modal/addTask/ModalAddTaskCtrl.js",
+        staticPath + "src/_shared/modal/addLead/ModalAddLeadCtrl.js",
+        staticPath + "src/_shared/modal/addBrand/ModalAddBrandCtrl.js",
+        staticPath + "src/_shared/modal/addAvatar/ModalAddAvatarCtrl.js",
+        staticPath + "src/_shared/modal/cropImage/ModalCropImageCtrl.js",
+        staticPath + "src/_shared/modal/products-selectvizr/ModalProductsSelectvizrCtrl.js",
+        staticPath + "src/_shared/modal/offers-selectvizr/ModalOffersSelectvizrCtrl.js",
+        staticPath + "src/_shared/modal/moveProductInOtherCategory/ModalMoveProductInOtherCategoryCtrl.js",
+        staticPath + "src/_shared/modal/selectCategories/ModalSelectCategoriesCtrl.js",
+        staticPath + "src/_shared/modal/selectCustomer/ModalSelectCustomerCtrl.js",
+        staticPath + "src/_shared/modal/sendLetterToCustomer/ModalSendLetterToCustomerCtrl.js",
+        staticPath + "src/_shared/modal/selectNews/ModalSelectNewsCtrl.js",
+        staticPath + "src/_shared/modal/selectStaticPage/ModalSelectStaticPageCtrl.js",
+        staticPath + "src/_shared/modal/search/ModalSearchCtrl.js",
+        staticPath + "src/_shared/modal/bonus/MainBonus/ModalAddMainBonusCtrl.js",
+        staticPath + "src/_shared/modal/bonus/MainBonus/ModalSubtractMainBonusCtrl.js",
+        staticPath + "src/_shared/modal/bonus/AdditionBonus/ModalAddAdditionBonusCtrl.js",
+        staticPath + "src/_shared/modal/bonus/AdditionBonus/ModalSubtractAdditionBonusCtrl.js",
+        staticPath + "src/_shared/modal/bonus/SmsTemplate/ModalAddEditSmsTemplateCtrl.js",
+        staticPath + "src/_shared/modal/bonus/Rule/ModalListRulesCtrl.js",
+        staticPath + "src/_shared/modal/bonus/Cards/ModalAddCardCtrl.js",
+        staticPath + "src/_shared/modal/bonus/Cards/ModalImportCardsCtrl.js",
+        staticPath + "src/_shared/modal/changeAdminShopName/ModalChangeAdminShopNameCtrl.js",
+
+
+        staticPath + "src/_shared/activity/activity.component.js",
+        staticPath + "src/_shared/activity/controllers/activityEmails.js",
+        staticPath + "src/_shared/activity/controllers/activitySmses.js",
+        staticPath + "src/_shared/activity/controllers/activityCalls.js",
+        staticPath + "src/_shared/activity/controllers/activityActions.js",
+
+        staticPath + "src/_shared/input-ghost/inputGhost.js",
+        staticPath + "src/_shared/input-ghost/inputGhost.directive.js",
+
+        staticPath + "src/_shared/autosave-text/autosaveText.component.js",
+
+        staticPath + "src/_shared/picture-uploader/pictureUploader.js",
+        staticPath + "src/_shared/picture-uploader/pictureUploader.component.js",
+        staticPath + "src/_shared/picture-uploader/modal/pictureUploaderModal.js",
+
+
+        staticPath + "src/_shared/file-uploader/fileUploader.js",
+        staticPath + "src/_shared/file-uploader/fileUploader.component.js",
+        staticPath + "src/_shared/file-uploader/modal/fileUploaderModal.js",
+
+        staticPath + "src/_shared/kanban/kanban.js",
+        staticPath + "src/_shared/kanban/kanban.ctrl.js",
+        staticPath + "src/_shared/kanban/kanban.component.js",
+
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomPagination.component.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomSelection.js",
+        staticPath + "src/_shared/ui-grid-custom/uiGridCustomSelection.component.js",
+
+        staticPath + "src/_shared/product-picker/productPicker.js",
+        staticPath + "src/_shared/product-picker/constants/productPickerConstants.js",
+        staticPath + "src/_shared/product-picker/controllers/productPickerController.js",
+        staticPath + "src/_shared/product-picker/components/productPickerComponent.js",
+        staticPath + "src/_shared/product-picker/services/productPickerService.js",
+
+        staticPath + "src/_shared/switch-on-off/switchOnOff.js",
+        staticPath + "src/_shared/statistics/statistics.js",
+        staticPath + "src/_shared/statistics/statistics.service.js",
+
+        staticPath + "src/_shared/switcher-state/switcherState.js",
+        staticPath + "src/_shared/switcher-state/switcherState.component.js",
+
+        staticPath + "src/_shared/audio-player/audioPlayer.js",
+        staticPath + "src/_shared/audio-player/audioPlayer.component.js",
+        staticPath + "src/_shared/search/searchBlockController.js",
+        staticPath + "src/_shared/recalc/recalc.js",
+        staticPath + "src/_shared/url-generator/urlGenerator.js",
+        staticPath + "src/_shared/autocompleter/autocompleter.js",
+
+
+        staticPath + "src/_shared/post-message/doPostMessage.js",
+
+        staticPath + "src/_shared/button-save/buttonSave.js",
+
+        staticPath + "src/_shared/vk-messages/vkMessages.js",
+
+
+        staticPath + "src/_partials/admin-comments/adminComments.js",
+        staticPath + "src/_partials/admin-comments/adminCommentsForm.js",
+        staticPath + "src/_partials/admin-comments/adminCommentsItem.js",
+        staticPath + "src/_partials/admin-comments/adminComments.component.js",
+        staticPath + "src/_partials/admin-comments/adminComments.service.js",
+
+        staticPath + "src/_partials/categories-block/categoriesBlock.js",
+        staticPath + "src/_partials/categories-block/categoriesBlock.component.js",
+
+        staticPath + "src/_partials/change-admin-shop-name/changeAdminShopName.js",
+
+        staticPath + "src/_partials/products-selectvizr/productsSelectvizr.js",
+        staticPath + "src/_partials/products-selectvizr/productsSelectvizr.component.js",
+
+        staticPath + "src/_partials/offers-selectvizr/offersSelectvizr.js",
+        staticPath + "src/_partials/offers-selectvizr/offersSelectvizr.component.js",
+
+        staticPath + "src/_partials/person-avatar/personAvatar.js",
+        staticPath + "src/_partials/person-avatar/personAvatar.component.js",
+        staticPath + "src/_partials/person-avatar/personAvatarImage.directive.js",
+
+        staticPath + "src/_partials/help-trigger/helpTrigger.js",
+        staticPath + "src/_partials/help-trigger/helpTrigger.component.js",
+
+        staticPath + "src/_partials/sidebar-user/sidebarUser.js",
+        staticPath + "src/_partials/sidebar-user/sidebarUser.component.js",
+        staticPath + "src/_partials/sidebar-user/sidebarUserTrigger.js",
+        staticPath + "src/_partials/sidebar-user/sidebarUserTrigger.component.js",
+        staticPath + "src/_partials/sidebar-user/sidebarUserContainer.js",
+        staticPath + "src/_partials/sidebar-user/sidebarUser.service.js",
+
+        staticPath + "src/_partials/tasks-grid/tasksGrid.js",
+        staticPath + "src/_partials/tasks-grid/tasksGrid.component.js",
+        staticPath + "src/_partials/tasks-grid/tasksGrid.service.js",
+
+        staticPath + "src/_partials/user-info-popup/userInfoPopup.js",
+        staticPath + "src/_partials/user-info-popup/userInfoPopup.component.js",
+        staticPath + "src/_partials/user-info-popup/modals/ModalUserInfoPopupCtrl.js",
+        staticPath + "src/_partials/user-info-popup/modals/ModalUserInfoPopupInviteCtrl.js",
+
+        staticPath + "src/_partials/collapse-tab/collapseTab.js",
+        staticPath + "src/_partials/collapse-tab/Controllers/collapseTabCtrl.js",
+        staticPath + "src/_partials/collapse-tab/Directive/collapseTabDirective.js",
+
+        staticPath + "src/_partials/top-panel-user/topPanelUser.js",
+
+        staticPath + "src/home/home.js",
+
+        staticPath + "src/carousel/carousel.js",
+        staticPath + "src/carousel/modal/addEditCarousel/ModalAddEditCarouselCtrl.js",
+
+        staticPath + "src/module/module.js",
+
+        staticPath + "src/modules/modules.js",
+        staticPath + "src/modules/modules.service.js",
+
+        staticPath + "src/certificates/modal/addEditCertificates/ModalAddEditCertificatesCtrl.js",
+        staticPath + "src/certificates/modal/certificateSettings/ModalCertificateSettingsCtrl.js",
+        staticPath + "src/certificates/certificates.js",
+
+        staticPath + "src/calls/calls.js",
+        staticPath + "src/calls/components/callRecord/callRecord.js",
+
+        staticPath + "src/catalog/catalog.js",
+        staticPath + "src/catalog/catalog.service.js",
+        staticPath + "src/catalog/components/catalog-left-menu/catalogLeftMenu.js",
+        staticPath + "src/catalog/components/catalog-left-menu/catalogLeftMenu.directive.js",
+        staticPath + "src/catalog/components/catalog-treeview/catalogTreeview.js",
+        staticPath + "src/catalog/components/catalog-treeview/catalogTreeview.component.js",
+
+        staticPath + "src/files/files.js",
+
+        staticPath + "src/mailSettings/mailSettings.js",
+        staticPath + "src/mailSettings/modal/AddEditMailFormat/ModalAddEditMailFormatCtrl.js",
+
+        staticPath + "src/settingsCheckout/settingsCheckout.js",
+
+        staticPath + "src/settingsCatalog/settingsCatalog.js",
+        staticPath + "src/settingsCatalog/modal/addEditCurrency/ModalAddEditCurrencyCtrl.js",
+
+        staticPath + "src/settingsCustomers/settingsCustomers.js",
+        staticPath + "src/settingsCustomers/customerFields.service.js",
+        staticPath + "src/settingsCustomers/customerFieldValues.service.js",
+        staticPath + "src/settingsCustomers/modal/addEditCustomerField/ModalAddEditCustomerFieldCtrl.js",
+        staticPath + "src/settingsCustomers/modal/addEditCustomerFieldValue/ModalAddEditCustomerFieldValueCtrl.js",
+
+        staticPath + "src/settingsSeo/settingsSeo.js",
+        staticPath + "src/settingsNews/settingsNews.js",
+        staticPath + "src/settingsSystem/settingsSystem.js",
+        staticPath + "src/settingsSystem/location/settingsSystem.location.js",
+        staticPath + "src/settingsSystem/location/settingsSystem.location.component.js",
+        staticPath + "src/settingsSystem/location/settingsSystem.location.country.js",
+        staticPath + "src/settingsSystem/location/settingsSystem.location.country.component.js",
+        staticPath + "src/settingsSystem/location/settingsSystem.location.region.js",
+        staticPath + "src/settingsSystem/location/settingsSystem.location.region.component.js",
+        staticPath + "src/settingsSystem/location/settingsSystem.location.city.js",
+        staticPath + "src/settingsSystem/location/settingsSystem.location.city.component.js",
+        staticPath + "src/settingsSystem/location/modal/addEditCountry/ModalAddEditCountryCtrl.js",
+        staticPath + "src/settingsSystem/location/modal/addEditRegion/ModalAddEditRegionsCtrl.js",
+        staticPath + "src/settingsSystem/location/modal/addEditCitys/ModalAddEditCitysCtrl.js",
+        staticPath + "src/settingsSystem/logs/settingsSystem.logs.js",
+        staticPath + "src/settingsSystem/logs/settingsSystem.logs.component.js",
+        staticPath + "src/settingsSystem/logs/settingsSystem.logs.service.js",
+        staticPath + "src/settingsSocial/settingsSocial.js",
+        staticPath + "src/settingsTelephony/settingsTelephony.js",
+        staticPath + "src/settingsCrm/settingsCrm.js",
+        staticPath + "src/settingsCrm/components/dealStatuses/dealStatuses.js",
+        staticPath + "src/settingsCrm/components/vkAuth/vkAuth.js",
+        staticPath + "src/settingsCrm/components/vkAuth/vkAuthService.js",
+        staticPath + "src/settingsCrm/modals/editDealStatus/ModalEditDealStatusCtrl.js",
+        staticPath + "src/settingsBonus/settingsBonus.js",
+
+        staticPath + "src/orders/orders.js",
+        staticPath + "src/orders/modal/modalChangeOrderStatusesCtrl.js",
+
+        staticPath + "src/order/order.js",
+        staticPath + "src/order/components/orderItemsSummary/orderItemsSummary.js",
+        staticPath + "src/order/components/orderStatusHistory/orderStatusHistory.js",
+        staticPath + "src/order/components/orderHistory/orderHistory.js",
+        staticPath + "src/order/modal/shippings/ModalShippingsCtrl.js",
+        staticPath + "src/order/modal/shippingsTime/ModalShippingsTimeCtrl.js",
+        staticPath + "src/order/modal/sendOrderGrastin/ModalSendOrderGrastinCtrl.js",
+        staticPath + "src/order/modal/sendOrderGrastin/ModalSendRequestGrastinForIntakeCtrl.js",
+        staticPath + "src/order/modal/sendOrderGrastin/ModalSendRequestGrastinForActCtrl.js",
+        staticPath + "src/order/modal/payments/ModalPaymentsCtrl.js",
+        staticPath + "src/order/modal/changeOrderStatus/ModalChangeOrderStatusCtrl.js",
+        staticPath + "src/order/modal/sendBillingLink/ModalSendBillingLinkCtrl.js",
+        staticPath + "src/order/modal/getBillingLink/ModalGetBillingLinkCtrl.js",
+
+        staticPath + "src/orderstatuses/orderstatuses.js",
+        staticPath + "src/orderstatuses/modal/ModalAddEditOrderStatusCtrl.js",
+
+        staticPath + "src/ordersources/ordersources.js",
+        staticPath + "src/ordersources/modal/ModalAddEditOrderSourceCtrl.js",
+
+        staticPath + "src/customer/customer.js",
+        staticPath + "src/customer/components/customerOrders/customerOrders.js",
+        staticPath + "src/customer/components/customerLeads/customerLeads.js",
+        staticPath + "src/customer/modals/changePassword/modalChangePasswordCtrl.js",
+
+        staticPath + "src/customers/customers.js",
+        staticPath + "src/customergroups/customergroups.js",
+        staticPath + "src/customergroups/modal/modalAddCustomerGroupCtrl.js",
+
+        staticPath + "src/customerSegment/customerSegment.js",
+        staticPath + "src/customerSegments/customerSegments.js",
+
+        staticPath + "src/category/category.js",
+        staticPath + "src/category/components/catProductRecommendations.js",
+        staticPath + "src/category/modal/addPropertyGroup/ModalAddPropertyGroupCtrl.js",
+        staticPath + "src/category/modal/changeParentCategory/ModalChangeParentCategoryCtrl.js",
+        staticPath + "src/category/modal/addRecomProperty/ModalAddRecomPropertyCtrl.js",
+
+        staticPath + "src/lead/lead.js",
+        staticPath + "src/lead/components/leadItemsSummary/leadItemsSummary.js",
+        staticPath + "src/lead/components/leadEvents/leadEvents.js",
+        staticPath + "src/lead/components/leadEvents/modals/addEditCallComent/ModalAddEditCallComentCtrl.js",
+        staticPath + "src/lead/components/leadEvents/modals/showEmail/ModalShowEmailCtrl.js",
+        staticPath + "src/lead/modal/shippingsCity/ModalShippingsCityCtrl.js",
+        staticPath + "src/leads/leads.js",
+
+        staticPath + "src/product/product.js",
+        staticPath + "src/product/product.service.js",
+        staticPath + "src/product/components/productPhotos/productPhotos.js",
+        staticPath + "src/product/components/productPhotos/productPhotos.service.js",
+        staticPath + "src/product/components/productPhotos/modal/ModalEditPhotoCtrl.js",
+        staticPath + "src/product/components/productPhotos360/productPhotos360.js",
+        staticPath + "src/product/components/productVideos/productVideos.js",
+        staticPath + "src/product/components/productVideos/modal/addEditVideo/ModalAddEditVideoCtrl.js",
+        staticPath + "src/product/components/productProperties/productProperties.js",
+        staticPath + "src/product/components/productGifts/productGifts.js",
+        staticPath + "src/product/components/relatedProducts/relatedProducts.js",
+        staticPath + "src/product/modal/copyProduct/ModalCopyProductCtrl.js",
+        staticPath + "src/product/modal/exportOptions/ModalExportOptionsCtrl.js",
+        staticPath + "src/product/modal/addEditOffer/ModalAddEditOfferCtrl.js",
+        staticPath + "src/product/modal/customOptions/ModalCustomOptionsCtrl.js",
+
+        staticPath + "src/settings/settings.js",
+
+        staticPath + "src/settings/settings.Users.js",
+
+        staticPath + "src/settings/modal/clearData/ModalClearDataCtrl.js",
+
+        staticPath + "src/settings/modal/addEditDepartment/ModalAddEditDepartmentCtrl.js",
+        staticPath + "src/settings/modal/addEdit301Red/ModalAddEdit301RedCtrl.js",
+        staticPath + "src/settings/modal/addEditManagerRole/ModalAddEditManagerRoleCtrl.js",
+        staticPath + "src/settings/modal/addEditUser/ModalAddEditUserCtrl.js",
+        staticPath + "src/settings/modal/changeUserPassword/ModalChangeUserPasswordCtrl.js",
+        staticPath + "src/settings/modal/editUserRoleActions/ModalEditUserRoleActionsCtrl.js",
+
+        staticPath + "src/settingsTasks/SettingsTasks.js",
+        staticPath + "src/settingsTasks/modal/addEditRule/ModalAddEditRuleCtrl.js",
+        staticPath + "src/settingsTasks/modal/addEditFilterRule/ModalAddEditFilterRuleCtrl.js",
+        staticPath + "src/settingsTasks/modal/addEditManagerFilterRule/ModalAddEditManagerFilterRuleCtrl.js",
+
+        staticPath + "src/settingsSystem/modal/addEditLocalization/ModalAddEditLocalizationCtrl.js",
+
+        staticPath + "src/settingsCheckout/modal/addEditTax/ModalAddEditTaxCtrl.js",
+
+        staticPath + "src/settingsSearch/SettingsSearch.js",
+        staticPath + "src/SettingsSearch/modal/AddEditSettingsSearch/ModalAddEditSettingsSearchCtrl.js",
+
+
+        staticPath + "src/subscription/subscription.js",
+
+        staticPath + "src/taskgroups/taskgroups.js",
+        staticPath + "src/taskgroups/modal/ModalAddEditTaskGroupCtrl.js",
+        staticPath + "src/tasks/tasks.js",
+        staticPath + "src/tasks/tasks.service.js",
+        staticPath + "src/tasks/modal/editTask/ModalEditTaskCtrl.js",
+        staticPath + "src/tasks/modal/changeTaskStatuses/modalChangeTaskStatusesCtrl.js",
+        staticPath + "src/tasks/modal/completeTask/ModalCompleteTaskCtrl.js",
+
+        staticPath + "src/mainpageproducts/mainpageproducts.js",
+        staticPath + "src/mainpageproducts/modal/editMainPageList/ModalEditMainPageListCtrl.js",
+        staticPath + "src/mainpageproducts/mainpageproducts.service.js",
+
+        staticPath + "src/productlists/productlists.js",
+        staticPath + "src/productlists/modal/addEditProductList/ModalAddEditProductListCtrl.js",
+
+        staticPath + "src/properties/properties.js",
+        staticPath + "src/properties/modal/addEditProperty/ModalAddEditPropertyCtrl.js",
+        staticPath + "src/properties/modal/changeGroups/ModalChangeGroupsCtrl.js",
+        staticPath + "src/properties/modal/changePropertyGroup/ModalChangePropertyGroupCtrl.js",
+        staticPath + "src/properties/modal/addGroup/ModalAddGroupCtrl.js",
+        staticPath + "src/properties/components/propertyGroups/propertyGroups.js",
+
+        staticPath + "src/propertyValues/propertyValues.js",
+        staticPath + "src/propertyValues/modal/addPropertyValue/ModalAddPropertyValueCtrl.js",
+
+
+        staticPath + "src/landing/landings.js",
+        staticPath + "src/landing/modal/ModalAddLandingCtrl.js",
+
+        staticPath + "src/brandsList/brandsList.js",
+        staticPath + "src/brandsList/brandsList.service.js",
+        staticPath + "src/brand/brand.js",
+
+        staticPath + "src/exportfeeds/exportfeeds.js",
+        staticPath + "src/exportfeeds/exportfeeds.service.js",
+        staticPath + "src/_shared/modal/addExportFeed/ModalAddExportFeedCtrl.js",
+        staticPath + "src/exportfeeds/modal/addYandexGlobalDeliveryCost/ModalAddYandexGlobalDeliveryCostCtrl.js",
+
+        staticPath + "src/exportcategories/exportcategories.js",
+        staticPath + "src/exportcategories/exportcategories.service.js",
+
+        staticPath + "src/analytics/analytics.js",
+        staticPath + "src/analytics/analytics.service.js",
+
+        staticPath + "src/analyticsFilter/analyticsFilter.js",
+
+        staticPath + "src/analyticsReport/analyticsReport.js",
+        staticPath + "src/analyticsReport/components/vortex/vortex.js",
+        staticPath + "src/analyticsReport/components/profit/profit.js",
+        staticPath + "src/analyticsReport/components/avgcheck/avgcheck.js",
+        staticPath + "src/analyticsReport/components/ordersAnalysis/ordersAnalysis.js",
+        staticPath + "src/analyticsReport/components/rfm/rfm.js",
+        staticPath + "src/analyticsReport/components/managers-report/managersReport.js",
+        staticPath + "src/analyticsReport/components/abcxyzAnalysis/abcxyzAnalysis.js",
+        staticPath + "src/analyticsReport/components/telephony/telephony.js",
+
+
+        staticPath + "src/import/import.js",
+        staticPath + "src/import/import.service.js",
+
+        staticPath + "src/design/design.js",
+        staticPath + "src/tariffs/tariffs.js",
+        staticPath + "src/design/design.service.js",
+        staticPath + "src/design/modal/ModalTemplateSettingsCtrl.js",
+
+        staticPath + "src/priceregulation/priceregulation.js",
+        staticPath + "src/priceregulation/modals/resultPriceRegulation/ResultPriceRegulationCtrl.js",
+        staticPath + "src/sizes/sizes.js",
+        staticPath + "src/sizes/modal/addEditSize/ModalAddEditSizeCtrl.js",
+
+        staticPath + "src/colors/colors.js",
+        staticPath + "src/colors/modal/addEditColor/ModalAddEditColorCtrl.js",
+
+        staticPath + "src/tags/tags.js",
+        staticPath + "src/grades/grades.js",
+        staticPath + "src/grades/modal/addEditGrade/ModalAddEditGradeCtrl.js",
+        staticPath + "src/cards/cards.js",
+        staticPath + "src/smstemplates/smstemplates.js",
+        staticPath + "src/rules/rules.js",
+
+        staticPath + "src/menus/menus.js",
+        staticPath + "src/menus/components/menu-item-actions/menuItemActions.js",
+        staticPath + "src/menus/components/menu-treeview/menuTreeview.component.js",
+        staticPath + "src/menus/components/menu-treeview/menuTreeview.js",
+        staticPath + "src/menus/modal/addEditMenuItem/ModalAddEditMenuItemCtrl.js",
+        staticPath + "src/menus/modal/changeParentMenuItem/ModalChangeParentMenuItemCtrl.js",
+
+        staticPath + "src/newsItem/newsItem.js",
+        staticPath + "src/newsItem/components/newsProducts/newsProducts.js",
+        staticPath + "src/news/news.js",
+        staticPath + "src/newsCategory/newsCategory.js",
+        staticPath + "src/newsCategory/modal/addEditNewsCategory/ModalAddEditNewsCategoryCtrl.js",
+
+        staticPath + "src/staticBlock/modal/addEditStaticBlock/ModalAddEditStaticBlockCtrl.js",
+        staticPath + "src/staticBlock/staticBlock.js",
+        staticPath + "src/staticPage/staticPage.js",
+        staticPath + "src/staticPages/staticPages.js",
+
+        staticPath + "src/reviews/reviews.js",
+        staticPath + "src/reviews/modal/addEditReview/ModalAddEditReviewCtrl.js",
+
+        staticPath + "src/discountsPriceRange/DiscountsPriceRange.js",
+        staticPath + "src/discountsPriceRange/modal/addEditDiscountsPriceRange/modalAddEditDiscountsPriceRangeCtrl.js",
+        staticPath + "src/discountsPriceRange/modal/discountByDatetime/modalDiscountByDatetimeCtrl.js",
+
+        staticPath + "src/coupons/coupons.js",
+        staticPath + "src/coupons/modal/addEditCoupon/modalAddEditCouponCtrl.js",
+
+
+        staticPath + "src/paymentMethods/paymentMethod.js",
+        staticPath + "src/paymentMethods/components/paymentMethodsList/paymentMethodsList.js",
+        staticPath + "src/paymentMethods/components/billStamp/billStamp.js",
+        staticPath + "src/paymentMethods/modal/addPaymentMethod/ModalAddPaymentMethodCtrl.js",
+
+        staticPath + "src/shippingMethods/shippingMethod.js",
+        staticPath + "src/shippingMethods/components/shippingMethodsList/shippingMethodsList.js",
+        staticPath + "src/shippingMethods/components/shippingByOrderPrice/shippingByOrderPriceMethod.js",
+        staticPath + "src/shippingMethods/components/shippingByRangeWeightAndDistance/shippingByWeightLimit.js",
+        staticPath + "src/shippingMethods/components/shippingByRangeWeightAndDistance/shippingByDistanceLimit.js",
+        staticPath + "src/shippingMethods/components/shippingByProductAmount/shippingByProductAmount.js",
+        staticPath + "src/shippingMethods/components/pointDelivery/pointDelivery.js",
+        staticPath + "src/shippingMethods/modal/addShippingMethod/ModalAddShippingMethodCtrl.js",
+
+        staticPath + "src/csseditor/csseditor.js",
+
+
+
+        staticPath + "src/voting/modal/addEditAnswers/ModalAddEditAnswersCtrl.js",
+        staticPath + "src/voting/modal/addEditVoting/ModalAddEditVotingCtrl.js",
+        staticPath + "src/voting/modal/addEditVoting/components/answersList/answersList.js",
+        staticPath + "src/voting/voting.js",
+
+        staticPath + "src/landingPages/landingPages.js",
+
+        staticPath + "templatesCache.js",
+
+        staticPath + "src/_app/app.js",
+
+    }, "all_admin_new.js");
+}
+
+<script type="text/javascript">
+    window.baseUrl = '@UrlService.GetUrl()';
+</script>
+
+@Html.RenderJsBundle("all_admin_new.js")
+
+<script type="text/javascript">
+    moment.locale('ru');
+    try {
+        moment.tz.setDefault("Europe/Moscow"); //moment.tz.guess());
+    } catch (err) {
+        console.log(err);
+    }
+</script>
+<script type="text/javascript" src="@UrlService.GetUrl("signalr/hubs")"></script>
+<!--ckeditor_при_минификации_падает!-->
+<script>
+    window.CKEDITOR_BASEPATH = '@UrlService.GetUrl("vendors/ckeditor/")';
+    window.CKEDITOR_LANGUAGE = '@SettingsMain.Language.Split('-')[0].ToLower()';
+</script>
+
+@Html.RenderModuleCssBundles("admin_modules.css")
+@Html.RenderModuleJsBundles("admin_modules.js")

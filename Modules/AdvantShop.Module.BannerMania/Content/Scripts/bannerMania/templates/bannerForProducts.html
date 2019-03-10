@@ -1,0 +1,141 @@
+﻿
+<h3 class="m-b">Баннеры для отдельных товаров, товаров по категориям и для категорий товаров</h3>
+
+<div class="row m-b-md">
+    <div class="col-sm-4">
+        Выберите тип баннера
+        <help-trigger class="ng-cloak word-spacing" data-title="Тип баннера" ng-if="$ctrl.entityType.Id == 0">
+            Выберите товар, на странице которого будет отображаться загружаемое изображение.
+        </help-trigger>
+        <help-trigger class="ng-cloak word-spacing" data-title="Тип баннера" ng-if="$ctrl.entityType.Id == 1">
+            Выберите категорию товаров, на страницах которых будет отображаться загружаемое изображение. Баннер будет показываться в товарах, для которых выбранная категория является "Основной". Если для товара уже установлен баннер в выбираемом размещении - отображение будет приоритетным для выбранного баннера типа "Для отдельных товаров"
+        </help-trigger>
+        <help-trigger class="ng-cloak word-spacing" data-title="Тип баннера" ng-if="$ctrl.entityType.Id == 2">
+            Выберите категорию товаров, на странице которой будет отображаться загружаемое изображение.
+        </help-trigger>
+    </div>
+    <div class="col-sm-8">
+        <select ng-options="type as type.Value for type in $ctrl.entityTypes track by type.Id"
+                ng-model="$ctrl.entityType"
+                ng-change="$ctrl.changeEntityType()"
+                style="width: 300px; height: 34px;"></select>
+    </div>
+</div>
+
+<form role="form" id="bmBannerForProductsForm" name="bmBannerForProductsForm" novalidate class="form-inline">
+    <div ng-if="$ctrl.entityType.Id == 0">
+        <div class="row m-b-md" style="vertical-align: middle;line-height: 34px;">
+            <div class="col-sm-4">
+                <span class="text-required">Введите артикул товара</span>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="$ctrl.artNo" ng-change="$ctrl.getProduct()" ng-style="{'border-color': $ctrl.entityId == -1 ? 'red' : ''}" style="width: 300px; height: 34px;" />
+            </div>
+        </div>
+
+        <div class="row m-b-md" style="vertical-align: middle; line-height: 34px;">
+            <div class="col-sm-4" ng-if="$ctrl.entityId == -1" style="color: red;">
+                Товар с таким артикулом не найден.
+            </div>
+            <div class="col-sm-8 bannermania" ng-if="$ctrl.entityId > 0">
+                <a href="../adminv2/product/edit/{{ $ctrl.entityId }}" target="_blank">{{ $ctrl.entityName }}</a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="$ctrl.entityType.Id > 0">
+        <div class="row m-b-md" style="vertical-align: middle; line-height: 34px;">
+            <div class="col-sm-4">
+                <span class="text-required">Выберите категорию</span>
+            </div>
+            <div class="col-sm-6">
+                <select ng-options="category as category.Name for category in $ctrl.categories track by category.Id"
+                        ng-model="$ctrl.currentCategory"
+                        ng-change="$ctrl.changeCategory()"
+                        style="width: 300px; height: 34px;"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-b-md" style="vertical-align: middle; line-height: 34px;">
+        <div class="col-sm-4">
+            <div for="file" class="btn btn-sm btn-success m-b-md" ngf-change="$ctrl.selectFile($file)" ngf-select="" ngf-accept="'.jpg,.jpeg,.png,.gif'" style="vertical-align: initial;">
+                Выберите изображение
+            </div>
+            <help-trigger class="ng-cloak word-spacing" data-title="Рекомендуемые размеры баннеров" ng-if="$ctrl.entityType.Id != 2">
+                "Над инфо о доставке": 245 x 300 px <br />
+                "Под инфо о доставке": 245 x 300 px <br />
+                "Над подвалом": 1160 x 100 px <br />
+                "Под блоком меню": 1160 x 100 px <br /><br />
+                Рекомендуемые размеры изображений приведены для стандартного шаблона <br /><br />
+                Доступные типы файлов для загрузки: jpeg, jpg, png и gif. <br />
+                Уточнение - файлы gif не пережимаются, поэтому перед загрузкой файла проверьте размер файла по ширине и высоте в пикс, чтобы он корректно отображался.
+            </help-trigger>
+            <help-trigger class="ng-cloak word-spacing" data-title="Рекомендуемые размеры баннеров" ng-if="$ctrl.entityType.Id == 2">
+                "Над фильтром" 245 x 300 px <br />
+                "Под фильтром" x 300 px <br />
+                "Над подвалом": 1160 x 100 px <br />
+                "Под блоком меню": 1160 x 100 px <br /><br />
+                Рекомендуемые размеры изображений приведены для стандартного шаблона <br /><br />
+                Доступные типы файлов для загрузки: jpeg, jpg, png и gif. <br />
+                Уточнение - файлы gif не пережимаются, поэтому перед загрузкой файла проверьте размер файла по ширине и высоте в пикс, чтобы он корректно отображался.
+            </help-trigger>
+        </div>
+        <div class="col-sm-8" ng-if="$ctrl.imageFile != null && $ctrl.imageFile != ''">
+            Выбранный файл: {{ $ctrl.imageFile.name }}
+        </div>
+    </div>
+
+    <div class="row m-b-md" style="vertical-align: middle; line-height: 34px;">
+        <div class="col-sm-4">
+            URL
+            <help-trigger class="ng-cloak word-spacing" data-title="URL">
+                В данном поле вы можете указать URL, чтобы перенаправить пользователя на отдельный товар, статическую страницу или другой ресурс.
+            </help-trigger>
+        </div>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" ng-model="$ctrl.url" style="width: 300px; height: 34px;" />
+        </div>
+    </div>
+
+    <div class="row m-b-md">
+        <div class="col-sm-4">
+            Выберите размещение
+        </div>
+        <div class="col-sm-8">
+            <select ng-options="type as type.Value for type in $ctrl.placementTypes track by type.Id" ng-model="$ctrl.placement" style="width: 300px; height: 34px;"></select>
+        </div>
+    </div>
+    <div class="row m-b-md">
+        <div class="col-sm-4">
+            Открывать в новом окне
+        </div>
+        <div class="col-sm-8">
+            <input type="checkbox" ng-model="$ctrl.newWindow" />
+        </div>
+    </div>
+    <div class="row m-b-md">
+        <div class="col-sm-4">
+            Активность
+        </div>
+        <div class="col-xs-6">
+            <input type="checkbox" ng-model="$ctrl.enabled" />
+        </div>
+    </div>
+    <div class="m-b-md">
+        <input type="submit" ng-click="$ctrl.addBannerEntity(bmBannerForProductsForm)" class="btn btn-sm btn-success" value="Добавить баннер" />
+    </div>
+</form>
+
+<hr />
+
+<div>
+    <ui-grid-custom grid-unique-id="$ctrl"
+                    grid-row-identificator="'BannerId'"
+                    grid-on-init="$ctrl.gridOnInit(grid)"
+                    grid-options="$ctrl.gridOptions"
+                    grid-url="'../bfpadmin/getBannerEntities'"
+                    grid-inplace-url="'../bfpadmin/inplace'"
+                    grid-extend-ctrl="$ctrl">
+    </ui-grid-custom>
+</div>

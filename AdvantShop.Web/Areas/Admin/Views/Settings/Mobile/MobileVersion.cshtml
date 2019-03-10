@@ -1,0 +1,172 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.MobileVersionSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+<div class="form-horizontal">
+    @using (Html.BeginForm("MobileVersion", "Settings", FormMethod.Post, new { name = "form", enctype = "multipart/form-data", novalidate = "novalidate" }))
+    {
+
+        <div class="sticky-page-name m-n" sticky sticky-top="0">
+            <div class="page-name-block sticky-page-name-inner header-hidden">
+                <div class="page-name-block-item-main">
+                    <h1 class="page-name-block-text sticky-page-name-text">
+                        <span class="float-header-page" ng-bind="settings.floatHeader"></span>
+                    </h1>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+                </div>
+            </div>
+        </div>
+        
+        @Html.AntiForgeryToken()
+
+        <uib-tabset uid="mobileTab" on-select-batch="settings.floatHeader = tab.heading;">
+            <uib-tab index="'mobile'" classes="ng-tab" heading="@T("Admin.Settings.MobileVersion")">
+                <div class="row m-b-lg">
+                    <div class="col-xs-12">
+                        <a href="@Url.Action("Academy", "Service", new { id = 17 })" target="_blank" class="link-academy btn btn-xsmall btn-default link-invert">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                            Видеоурок о Мобильной версии
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.Enabled, T("Admin.Settings.MobileVersion.Enabled"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block" data-e2e="mobileEnabled">
+                            @Html.CheckBoxFor(x => x.Enabled, new { ng_model = "form.enabled", ng_init = "form.enabled=" + Model.Enabled.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-3">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.MobilePhone, T("Admin.Settings.Index.MobilePhone"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        @Html.TextBoxFor(x => x.MobilePhone, new { @class = "form-control", ng_model = "form.mobilePhone", style = "width: 260px;" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.MainPageProductCountMobile, T("Admin.Settings.MobileVersion.MainPageProductsCount"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        @Html.TextBoxFor(x => x.MainPageProductCountMobile, new { @class = "form-control", ng_model = "form.mainPageProductCountMobile", style = "width: 60px;" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.ShowCity, T("Admin.Settings.MobileVersion.ShowCity"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block" data-e2e="mobileShowCity">
+                            @Html.CheckBoxFor(x => x.ShowCity, new { ng_model = "form.showCity", ng_init = "form.showCity=" + Model.ShowCity.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.ShowSlider, T("Admin.Settings.MobileVersion.ShowSlider"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block" data-e2e="mobileShowSlider">
+                            @Html.CheckBoxFor(x => x.ShowSlider, new { ng_model = "form.showSlider", ng_init = "form.showSlider=" + Model.ShowSlider.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.DisplayHeaderTitle, T("Admin.Settings.MobileVersion.DisplayHeaderTitle"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block" data-e2e="mobileDisplayHeader">
+                            @Html.CheckBoxFor(x => x.DisplayHeaderTitle, new { ng_model = "form.displayHeaderTitle", ng_init = "form.displayHeaderTitle=" + Model.DisplayHeaderTitle.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.HeaderCustomTitle, T("Admin.Settings.MobileVersion.HeaderCustomTitle"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        @Html.TextAreaFor(x => x.HeaderCustomTitle, new { @class = "wysiwyg", ng_model = "form.headerCustomTitle", cols = "50" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.IsFullCheckout, T("Admin.Settings.MobileVersion.IsFullCheckout"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block" data-e2e="mobileFullCheckout">
+                            @Html.CheckBoxFor(x => x.IsFullCheckout, new { ng_model = "form.isFullCheckout", ng_init = "form.isFullCheckout=" + Model.IsFullCheckout.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3 ">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.RedirectToSubdomain, T("Admin.Settings.MobileVersion.RedirectToSubdomain"))
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <label class="adv-checkbox-label form-label-block" data-e2e="mobileRedirectToSubDomain">
+                            @Html.CheckBoxFor(x => x.RedirectToSubdomain, new { ng_model = "form.redirectToSubdomain", ng_init = "form.redirectToSubdomain=" + Model.RedirectToSubdomain.ToLowerString(), @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-3">
+                        <div class="setting-label-wrap">
+                            @Html.LabelFor(x => x.Robots, T("Admin.Settings.MobileVersion.Robots"))
+                            <div class="m-t-sm">
+                                (Файл будет использоваться, только если к сайту привязан поддомен m.)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <ui-ace-textarea ng-model="form.robots">
+                            @Html.TextAreaFor(x => x.Robots, new { ng_model = "form.robots" })
+                        </ui-ace-textarea>
+                    </div>
+                </div>
+            </uib-tab>
+            <div class="js-not-tabs">
+                <input type="submit" class="btn btn-sm btn-success btn--margin-left" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" data-e2e="mobileSave" />
+            </div>
+        </uib-tabset>
+    }
+
+</div>
+

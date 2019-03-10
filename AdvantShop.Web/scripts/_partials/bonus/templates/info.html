@@ -1,0 +1,36 @@
+﻿<div>
+    <div class="row">
+        <div class="col-xs-4">
+            <span class="vertical-interval-xsmall form-field-name">
+                {{ ::'Js.Bonus.CardNumber' | translate }}:
+            </span>
+        </div>
+        <div class="col-xs-8">
+            <span class="vertical-interval-xsmall form-field-input" data-ng-bind="bonusInfo.bonusData.CardNumber"></span> 
+            <span class="vertical-interval-xsmall form-field-input" data-ng-if="bonusInfo.bonusData.Blocked">Заблокирована</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <span class="vertical-interval-xsmall form-field-name">
+                {{ ::'Js.Bonus.CardBonuses' | translate }}:
+            </span>
+        </div>
+        <div class="col-xs-8">
+            <span class="vertical-interval-xsmall form-field-input" data-ng-bind="bonusInfo.bonusData.BonusAmount"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <span class="vertical-interval-xsmall form-field-name">
+                {{ ::'Js.Bonus.CardPercent' | translate }}:
+            </span>
+        </div>
+        <div class="col-xs-8">
+            <span class="vertical-interval-xsmall form-field-input" data-ng-bind="bonusInfo.bonusData.BonusPercent"></span>
+        </div>
+    </div>
+    <!--<div>
+        <a href="" data-ng-click="bonusInfo.dialogOpen()">{{ ::'Js.Bonus.EditInfo' | translate }}</a>
+    </div>-->
+</div>

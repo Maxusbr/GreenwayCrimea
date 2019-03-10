@@ -1,0 +1,17 @@
+﻿<div>
+    <div class="m-b-sm bold">
+        Письма отправленные сайтом
+    </div>
+
+    <table class="table table-striped">
+        <tr ng-if="$ctrl.items != null && $ctrl.items.length > 0" data-ng-repeat="item in $ctrl.items track by $index">
+            <td>{{item.EmailAddress}}</td>
+            <td>{{item.Subject}}</td>
+            <td>{{item.Status}}</td>
+            <td class="text-right mail-date">{{item.CreateOn}}</td>
+        </tr>
+        <tr ng-if="$ctrl.items == null || $ctrl.items.length == 0">
+            <td colspan="4">Записи отсутствуют</td>
+        </tr>
+    </table>
+</div>

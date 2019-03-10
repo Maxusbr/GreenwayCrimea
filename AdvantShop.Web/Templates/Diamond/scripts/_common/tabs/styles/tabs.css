@@ -1,0 +1,20 @@
+.tabs-horizontal .tabs-header-item {
+  border: 0;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 25px; }
+
+.tabs-headers {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.tabs-header-item.tabs-header-active {
+  border-bottom: 2px solid #00a3cc !important; }
+
+.tabs-header-item-link {
+  border: 0; }

@@ -1,0 +1,3 @@
+ManagerId;CustomerId[GUID];DepartmentId;Position;Active
+1;CFC2C33B-1E84-415E-8482-E98156341601;1;test;true
+2;CFC2C33B-1E84-415E-8482-E98156341602;1;test1;true

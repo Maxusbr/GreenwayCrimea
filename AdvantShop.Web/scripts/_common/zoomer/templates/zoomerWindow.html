@@ -1,0 +1,12 @@
+﻿<div class="zoomer-window"
+     data-ng-show="parentScope.isShowZoom"
+     data-ng-style="{
+     'background-image':'url(' + parentScope.originalPath +')',
+     'background-position': parentScope.zoomPos.left + 'px ' + parentScope.zoomPos.top + 'px',
+     'top': parentScope.zoomSizes.top + 'px',
+     'left': parentScope.zoomSizes.left + 'px',
+     'width': parentScope.zoomSizes.width + 'px',
+     'height': parentScope.zoomSizes.height + 'px'
+    }">
+    <div class="zoomer-window-title" data-ng-if="parentScope.zoomerTitle" data-ng-bind-html="parentScope.zoomerTitle"></div>
+</div>

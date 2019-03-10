@@ -1,0 +1,13 @@
+﻿<div ng-switch="$ctrl.validationErrors[0] != null && $ctrl.validationErrors[0].$error != null && $ctrl.validationErrors[0].$error[$ctrl.validationType].length > 0">
+    <div ng-switch-when="true">
+        <validation-list validation-type="$ctrl.validationType" validation-errors="$ctrl.validationErrors[0].$error[$ctrl.validationType]"></validation-list>
+    </div>
+    <div ng-switch-when="false">
+        <ul>
+            <li ng-repeat="error in $ctrl.validationErrors">
+                <validation-list-item error="error"></validation-list-item>
+            </li>
+        </ul>
+    </div>
+</div>
+

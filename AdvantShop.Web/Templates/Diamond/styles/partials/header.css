@@ -1,0 +1,53 @@
+.site-head-search-input {
+  margin-bottom: 0; }
+
+.site-head-search-btn .icon-search-block {
+  display: inline-block;
+  color: #000; }
+
+.site-head-search-btn-wrap {
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  right: 10px;
+  top: 0; }
+
+.site-head-search-btn {
+  padding: 15px !important;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: none; }
+
+.site-head-search-btn:hover {
+  background-color: transparent; }
+
+.search-block-topmenu {
+  display: inline-block;
+  margin-right: 19px;
+  width: 347px; }
+
+.site-head-phone-wrap,
+.site-head-cart {
+  vertical-align: middle;
+  display: inline-block; }
+
+.site-head-cart {
+  margin-left: 22px;
+  margin-right: 15px; }
+
+.site-head-userid {
+  color: #fff; }
+
+.site-head-phone {
+  color: #fff;
+  font-size: 24px;
+  font-weight: normal; }
+
+.static-block-email-header a {
+  color: #fff; }
+
+.site-head-logo,
+.site-head-menu-col,
+.site-head-phone-col {
+  margin-top: 25px;
+  margin-bottom: 25px; }

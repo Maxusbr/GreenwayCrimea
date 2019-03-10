@@ -1,0 +1,62 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+.banners-main-page {
+    margin-bottom: $margin-value-alt;
+}
+
+.banners-main-page-item {
+    border-radius: $border-radius-base;
+    border: $border-width #e2e3e4 solid;
+    padding: rem-calc(4px);
+    margin: 0 rem-calc(5px);
+}
+
+.banners-main-page-col:first-child .banners-main-page-item {
+    margin-left: 0;
+    color: #fc972a;
+}
+
+.banners-main-page-col:last-child .banners-main-page-item {
+    margin-right: 0;
+    color: #e44937;
+}
+
+.banners-main-page-item-inner {
+    border: $border-width #e2e3e4 dashed;
+    padding: rem-calc(8px);
+}
+
+.banners-main-inner-img {
+    display: block;
+}
+
+.banner-main-head {
+    font-size: $font-size-large;
+    font-weight: bold;
+    margin-bottom: rem-calc(5px);
+}
+
+.banner-main-text {
+}
+
+.banner-main-page-aside {
+    border: rem-calc(1px) solid #e2e3e4;
+    border-radius: $border-radius-base;
+    padding: $padding-base;
+    margin-bottom: rem-calc(10px);
+}
+
+.banner-main-page-header {
+    font-weight: bold;
+    font-size: $font-size-xmedium;
+}
+
+.banner-main-page-aside-pic {
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    margin-bottom: rem-calc(19px);
+}
+.banner-main-page-aside-wrap{
+    margin-bottom: $margin-value-alt;
+}

@@ -1,0 +1,66 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SystemSettingsModel
+
+
+<div class="form-group row">
+    <div class="col-xs-12">
+        <a class="btn btn-sm btn-success" ng-click="settingsSystem.updateSiteMaps()">@T("Обновить карты")</a>
+    </div>
+</div>
+
+<div class="setting-title" 
+     ng-init="settingsSystem.SiteMapFileHtmlDate='@Model.SiteMapFileHtmlDate';
+     settingsSystem.SiteMapFileXmlDate='@Model.SiteMapFileXmlDate';
+     settingsSystem.SiteMapFileHtmlLink='@Model.SiteMapFileHtmlLink';
+     settingsSystem.SiteMapFileXmlLink='@Model.SiteMapFileXmlLink'">
+    <h3>@T("Admin.Settings.SystemSettings.SitemapXml")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SiteMapFileXmlDate, T("Admin.Settings.SystemSettings.SitemapXmlLastUpdate"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblSiteMapFileXmlDate", Model.SiteMapFileXmlDate, new { ng_bind = "settingsSystem.SiteMapFileXmlDate" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SiteMapFileXmlLink, T("Admin.Settings.SystemSettings.SiteMapFileXmlLink"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <a ng-href="{{settingsSystem.SiteMapFileXmlLink}}" target="_blank" ng-bind="settingsSystem.SiteMapFileXmlLink">@Model.SiteMapFileXmlLink</a>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3>@T("Admin.Settings.SystemSettings.SitemapHtml")</h3>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SiteMapFileHtmlDate, T("Admin.Settings.SystemSettings.SitemapHtmlLastUpdate"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @Html.Label("lblSiteMapFileHtmlDate", Model.SiteMapFileHtmlDate, new { ng_bind = "settingsSystem.SiteMapFileHtmlDate" })
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <div class="setting-label-wrap">
+            @Html.LabelFor(x => x.SiteMapFileHtmlLink, T("Admin.Settings.SystemSettings.SiteMapFileHtmlLink"))
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <a ng-href="{{settingsSystem.SiteMapFileHtmlLink}}" target="_blank" ng-bind="settingsSystem.SiteMapFileHtmlLink">@Model.SiteMapFileHtmlLink</a>
+    </div>
+</div>
+
+

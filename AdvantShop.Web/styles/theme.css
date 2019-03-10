@@ -1,0 +1,14 @@
+/*ׁמגלוסעטלמסעü עול ס 4.0*/
+
+#theme-container{
+	position:absolute;
+	left:0px;
+	top:0px;
+    min-width: 940px;
+    width: 100%;
+	z-index:0;
+}
+.theme-left, .theme-right{
+	position:absolute;
+    left: 50%;
+}

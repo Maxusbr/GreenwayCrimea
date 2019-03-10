@@ -1,0 +1,105 @@
+﻿@using AdvantShop.Web.Admin.Extensions;
+@model AdvantShop.Web.Infrastructure.Admin.FilterResult<AdvantShop.Core.Services.Bonuses.Model.Purchase>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <h2 class="m-b-sm clearfix">История продаж</h2>
+        <div class="m-b">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px">
+                                    ID продажи
+                                </th>
+                                <th style="width: 30px">
+                                    Номер заказа
+                                </th>
+                                <th style="width: 130px">
+                                    Дата и время
+                                </th>
+                                <th>
+                                    Стоимость заказа
+                                </th>
+                                <th>
+                                    Стоимость заказа с учетом скидки
+                                </th>
+                                <th>
+                                    Оплачено деньгами
+                                </th>
+                                <th>
+                                    Оплачено основными бонусами
+                                </th>
+                                <th>
+                                    Оплачено доп. бонусами
+                                </th>
+                                <th>
+                                    Начисленно бонусов
+                                </th>
+                                <th>
+                                    Комментарий
+                                </th>
+                                <th>
+                                    Статус
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DataItems)
+                            {
+                                <tr data-e2e="PurchaseId-@item.Id">
+                                    <td data-e2e="PurchaseId">
+                                        @item.Id
+                                    </td>
+                                    <td data-e2e="PurchaseOrderId">
+                                        @item.OrderId
+                                    </td>
+                                    <td data-e2e="PurchaseDate">
+                                        @item.CreateOn.ToString("dd.MM.yyyy HH:mm:ss")
+                                    </td>
+                                    <td data-e2e="PurchaseFullAmount">
+                                        @item.PurchaseFullAmount.ToString("F2")
+                                    </td>
+                                    <td data-e2e="PurchaseDiscount">
+                                        @item.PurchaseAmount.ToString("F2")
+                                    </td>
+                                    <td data-e2e="PurchaseCash">
+                                        @item.CashAmount.ToString("F2")
+                                    </td>
+                                    <td data-e2e="PurchaseMainBonuses">
+                                        @item.MainBonusAmount.ToString("F2")
+                                    </td>
+                                    <td data-e2e="PurchaseAdditionBonuses">
+                                        @item.AdditionBonusAmount.ToString("F2")
+                                    </td>
+                                    <td data-e2e="PurchaseAddNewBonuses">
+                                        @item.NewBonusAmount.ToString("F2")
+                                    </td>
+                                    <td data-e2e="PurchaseComment">
+                                        @item.Comment
+                                    </td>
+                                    <td data-e2e="PurchaseStatus">
+                                        @item.Status.Localize()
+                                    </td>
+                                    @*<td>
+                                            @Html.ActionLink("!!!!!", "Delete", "Purchase", new { id = item.PurchaseId }, null)
+                                        </td>*@
+                                </tr>
+                            }
+                            @if (Model.DataItems.Count < 1)
+                            {
+                                <tr>
+                                    <td colspan="11">
+                                        Ни одной записи не найдено
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @Html.BootstrapPager(Model.PageIndex, index => Url.Action("AllPurchase", "Cards", new { CardId = ViewBag.CardId, pageIndex = index }), Model.TotalItemsCount)           
+            </div>
+        </div>
+    </div>
+</div>

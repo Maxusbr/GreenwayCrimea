@@ -1,0 +1,187 @@
+/*---fixed window---*/
+.achievements-help-body {
+    display: none;
+}
+
+.achievements-help-default-position {
+    right: 0px;
+    bottom: 0px;
+}
+
+.toolbar-bottom ~ .achievements-help-default-position {
+    right: 5px;
+    bottom: 40px;
+}
+
+.achievements-help {
+    display: none;
+    position: fixed;
+    border-radius: 5px;
+    border: 3px #3a3c3d solid;
+    background: #3a3c3d;
+    width: 537px;
+    z-index: 1000;
+}
+
+.achievements-help-title {
+    padding: 10px 65px 10px 10px;
+    border-radius: 3px 3px 0 0;
+    color: #fff;
+    font-weight: bold;
+    background: #48494a;
+    cursor: move;
+}
+
+.achievements-help-content {
+    padding: 10px;
+    background: #fff;
+}
+
+.achievements-help-content-wrap {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.achievements-help-collapse,
+.achievements-help-expand,
+.achievements-help-close,
+.achievements-help-getout {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    vertical-align: top;
+    position: relative;
+    border-radius: 3px;
+}
+
+    .achievements-help-collapse:hover,
+    .achievements-help-expand:hover,
+    .achievements-help-close:hover,
+    .achievements-help-getout:hover {
+        background: rgba(0,0,0, .25);
+    }
+
+    .achievements-help-collapse:before,
+    .achievements-help-expand:before,
+    .achievements-help-close:before,
+    .achievements-help-getout:before {
+        content: "";
+        background: url(../../images/new_admin/achievements/help-window-controls.png) no-repeat;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .achievements-help-collapse:before {
+        background-position: center -9px;
+    }
+
+    .achievements-help-expand:before {
+        background-position: center -23px;
+    }
+
+    .achievements-help-close:before {
+        background-position: center 4px;
+    }
+
+    .achievements-help-getout:before {
+        background-position: center -39px;
+    }
+
+.achievements-help-window-controls {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.achievements-help-footer {
+    padding: 10px;
+    text-align: right;
+    background: #eee;
+}
+
+    .achievements-help-footer a {
+        margin-left: 10px;
+    }
+/*--/fixed window--*/
+
+.achievements-help-btn-next,
+.achievements-help-btn-ready {
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    text-decoration: none;
+    vertical-align: middle;
+    z-index: 0;
+    font-size: 12px;
+    line-height: 23px;
+    padding: 0 15px;
+    border-radius: 3px;
+}
+
+    .achievements-help-btn-next:hover,
+    .achievements-help-btn-ready:hover {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+
+.achievements-help-btn-next {
+    background-color: #ffd226;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd226), color-stop(24%,#ffc21f), color-stop(82%,#ff8406), color-stop(100%,#ff7801));
+    background: -webkit-linear-gradient(top, #ffd226 0%,#ffc21f 24%,#ff8406 82%,#ff7801 100%);
+    background: -webkit-linear-gradient(top, #ffd226 0%, #ffc21f 24%, #ff8406 82%, #ff7801 100%);
+    background: linear-gradient(top, #ffd226 0%,#ffc21f 24%,#ff8406 82%,#ff7801 100%);
+}
+
+    .achievements-help-btn-next:hover {
+        background-color: #ff7600;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff7600), color-stop(21%,#ff8406), color-stop(79%,#ffc21f), color-stop(100%,#ffd125));
+        background: -webkit-linear-gradient(top, #ff7600 0%,#ff8406 21%,#ffc21f 79%,#ffd125 100%);
+        background: -webkit-linear-gradient(top, #ff7600 0%, #ff8406 21%, #ffc21f 79%, #ffd125 100%);
+        background: linear-gradient(top, #ff7600 0%,#ff8406 21%,#ffc21f 79%,#ffd125 100%);
+    }
+
+
+.achievements-help-btn-ready {
+    background: #0371cd;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0371cd), color-stop(6%,#0577d5), color-stop(9%,#0478d6), color-stop(89%,#0267bc), color-stop(94%,#0261b3), color-stop(100%,#0357a6));
+    background: -webkit-linear-gradient(top, #0371cd 0%,#0577d5 6%,#0478d6 9%,#0267bc 89%,#0261b3 94%,#0357a6 100%);
+    background: -webkit-linear-gradient(top, #0371cd 0%, #0577d5 6%, #0478d6 9%, #0267bc 89%, #0261b3 94%, #0357a6 100%);
+    background: linear-gradient(top, #0371cd 0%,#0577d5 6%,#0478d6 9%,#0267bc 89%,#0261b3 94%,#0357a6 100%);
+    -pie-background: linear-gradient(top, #0371cd 0%,#0577d5 6%,#0478d6 9%,#0267bc 89%,#0261b3 94%,#0357a6 100%);
+}
+
+    .achievements-help-btn-ready:hover {
+        background: #0257a6;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0257a6), color-stop(11%,#0267bd), color-stop(91%,#0478d6), color-stop(100%,#0371cd));
+        background: -webkit-linear-gradient(top, #0257a6 0%,#0267bd 11%,#0478d6 91%,#0371cd 100%);
+        background: -webkit-linear-gradient(top, #0257a6 0%, #0267bd 11%, #0478d6 91%, #0371cd 100%);
+        background: linear-gradient(top, #0257a6 0%,#0267bd 11%,#0478d6 91%,#0371cd 100%);
+        -pie-background: linear-gradient(top, #0257a6 0%,#0267bd 11%,#0478d6 91%,#0371cd 100%);
+    }
+
+.achievements-help-content img {
+    box-shadow: 0 0 0 3px #FFFFFF, 0 0 3px 3px #808080;
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+.achievements-help-content .ignore-border img,
+.achievements-help-content .ignore-border  {
+     box-shadow:none;
+}
+
+
+.achievements-help-inside-static img.social {
+    box-shadow: none;
+    margin: 0 2px;
+}
+
+.achievements-help-block-collapse{
+    width:auto;
+}

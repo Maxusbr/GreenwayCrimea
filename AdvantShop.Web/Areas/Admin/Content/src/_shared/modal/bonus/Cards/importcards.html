@@ -1,0 +1,29 @@
+﻿<form novalidate>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Загрузить карты</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal m-r m-l" ng-if="!ctrl.btnLoading">
+            <div class="form-group">
+                <file-uploader upload-url="cards/ImportCards" on-before-send="ctrl.onBeforeSend()" on-success="ctrl.onSuccess(data)"></file-uploader>
+            </div>
+        </div>
+        <cm-stat ng-if="ctrl.isStartExport">
+
+            <uib-progressbar max="cmStat.entity.Total" value="cmStat.entity.Processed"><span style="color:white; white-space:nowrap;">{{cmStat.entity.ProcessedPercent }} %</span></uib-progressbar>
+
+            <div ng-if="cmStat.entity.ProcessedPercent === 100 && cmStat.entity.Error === 0">
+                <div class="form-group">
+                    <div class="setting-label-wrap">
+                        Завершено
+                    </div>
+                </div>
+            </div>
+        </cm-stat>
+    </div>
+    <div class="modal-footer" data-ng-switch="ctrl.btnLoading">
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.cancel()" data-ng-switch-when="false">Отмена</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()" data-ng-switch-when="true">Закрыть</button>
+    </div>
+</form>

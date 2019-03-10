@@ -1,0 +1,22 @@
+﻿@model BlockModel
+
+@if (Model.InPlace)
+{
+    <blocks-constructor-container class="lp-blocks-constructor-container" style="@Model.Block.TryGetStyleString()" data-ng-style="blocksConstructorContainer.styles">
+        @Html.Partial(Model.Config.BlockPath, Model)
+        <blocks-constructor class="lp-blocks-constructor"
+                            data-landingpage-id="@Model.Block.LandingId"
+                            data-block-id="@Model.Block.Id"
+                            data-name="@Model.Block.Name"
+                            data-type="@Model.Block.Type"
+                            data-sort-order="@Model.Block.SortOrder"
+                            data-settings="@Model.Block.Settings"
+                            data-is-show-add-subblock="::@(Model.Block.Type == "productsView" ? "true": "false")" />
+    </blocks-constructor-container>
+}
+else
+{
+    <div style="@Model.Block.TryGetStyleString()">
+        @Html.Partial(Model.Config.BlockPath, Model)
+    </div>
+}

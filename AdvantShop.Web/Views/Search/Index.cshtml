@@ -1,0 +1,59 @@
+﻿@model AdvantShop.Models.Catalog.SearchCatalogViewModel
+@{ 
+    var sumFounded = Model.Pager.TotalItemsCount + Model.Categories.Categories.Count;
+}
+<div class="row">
+    <div class="col-xs-3 site-body-aside">
+        <div data-catalog-filter data-url="search/filter"
+             data-url-count="search/filterproductCount"
+             data-parameters='{searchQuery : "@Html.AttributeEncode(Model.Q)"}'></div>
+        @Html.StaticBlock("search_page_leftcolumn")
+    </div>
+    <div class="col-xs-9 site-body-main">
+        <div class="page-title-row catalog-title-row">
+            <div class="catalog-title page-title h2">
+                @(string.IsNullOrWhiteSpace(Model.Q)
+                    ? T("Search.Index.EnterSearchTerm")
+                      : T("Search.Index.Found", sumFounded, @Model.Q.HtmlEncode()))
+            </div>
+        </div>
+        @Html.SingleBreadCrumb(Model.Q)
+
+        @Html.StaticBlock("search_page_top")
+        @Html.RenderModules("search_page_top", Model.Q)
+
+        @Html.Partial("~/Views/Catalog/CategoryList.cshtml", Model.Categories)
+
+        @if (Model.HasProducts)
+        {
+            <div class="row">
+                <div class="col-xs-10">
+                    @*@Html.Partial("Sorting", Model.Filter.Sorting)*@
+                    <div class="products-view-sort-result">
+                        <span class="products-view-sort-result-text cs-t-3">@T("Catalog.Index.ItemsFound")</span>
+                        <span class="products-view-sort-result-number">@Model.Pager.TotalItemsCount</span>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    @if (Model.AllowChangeViewMode)
+                    {
+                        @Html.Action("ChangeMode", "Catalog", new { name = "productViewCatalog", viewMode = Model.ViewMode })
+                    }
+                </div>
+            </div>
+            <div class="products-view products-view-@Model.ViewMode products-view-container" product-view-mode data-name="productViewCatalog" data-ng-class="catalog.getViewClass('productViewCatalog')" data-current="@Model.ViewMode">
+                @Html.Partial("_ProductView", Model.Products)
+            </div>
+            @Html.Paging(Model.Pager)
+        }
+        else if(sumFounded == 0)
+        {
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center;">
+                    К сожалению, по вашему запросу ничего не найдено. Попробуйте изменить поисковый запрос или выбранный фильтр.
+                </div>
+            </div>
+        }
+        @Html.StaticBlock("search_page_bottom")
+    </div>
+</div>

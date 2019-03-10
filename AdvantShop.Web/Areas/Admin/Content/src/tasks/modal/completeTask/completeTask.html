@@ -1,0 +1,27 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">Завершение задачи №<span ng-bind="ctrl.task.id"></span></h2>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label class="">Введите результат выполнения задачи</label>
+        <input data-e2e="taskResult" type="text" class="form-control" placeholder="Результат" ng-model="ctrl.taskResult" autofocus
+               ng-keypress="$event.keyCode === 13 && ctrl.taskResult && ctrl.completeTask()">
+    </div>
+    <div class="form-group" ng-if="ctrl.task.orderId != null">
+        <label class="">Сменить статус заказа №<span ng-bind="ctrl.task.orderId"></span></label>
+        <select ng-model="ctrl.orderStatusId" ng-options="s.OrderStatusId as s.StatusName for s in ctrl.orderStatuses" class="form-control" data-e2e="TaskCompleteChangeDealStatus">
+            <option value="">Не менять</option>
+        </select>
+    </div>
+    <div class="form-group" ng-if="ctrl.task.leadId != null">
+        <label class="">Сменить этап лида №<span ng-bind="ctrl.task.leadId"></span></label>
+        <select ng-model="ctrl.dealStatusId" ng-options="s.Id as s.Name for s in ctrl.dealStatuses" class="form-control">
+            <option value="">Не менять</option>
+        </select>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.completeTask()" ladda="ctrl.btnSleep">Завершить</button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+</div>

@@ -1,0 +1,32 @@
+﻿@using AdvantShop.Core.Services.IPTelephony.CallBack
+@model AdvantShop.ViewModel.Common.TelephonyViewModel
+
+<form name="telephonyFormObj" novalidate="novalidate" class="telephony-form @(Model.ShowMode == ECallBackShowMode.Mini ? "telephony-form-compact" : string.Empty)"
+      data-telephony-form
+      data-ng-class="{'telephony-form-compact': telephonyForm.isCompact}"
+      @(Model.ShowMode == ECallBackShowMode.Mini ? Html.Raw("data-ng-init=\"telephonyForm.isCompact=true\"") : Html.Raw("data-ng-init=\"telephonyForm.focus=true\""))>
+    <div data-ng-init="telephonyForm.form = telephonyFormObj">
+        <a href="" class="icon-phone-before link-text-decoration-none cs-bg-1 cs-l-4 telephony-form-trigger" data-ng-click="telephonyForm.switchOnFull()"></a>
+        <div class="telephony-form-block link-text-decoration-none cs-bg-1">
+            <div class="telephony-form-cell cs-t-8">
+                @T("Common.Telephony.CallBackInTime", Model.TimeInterval)
+            </div>
+            <div class="telephony-form-cell">
+                <input class="input-small cs-t-1" type="tel" required data-ng-model="telephonyForm.phone" placeholder="@T("Common.Telephony.CallPhone")"
+                       data-autofocus="telephonyForm.focus" data-ui-mask="+7(999)999-99-99" ui-mask-placeholder />
+            </div>
+            <div class="telephony-form-cell">
+                <button class="icon-phone-before link-text-decoration-none btn btn-small btn-confirm telephony-form-btn"
+                        data-button-validation
+                        data-button-validation-success="telephonyForm.submit(telephonyForm.phone)">
+                    @T("Common.Telephony.RequestCall")
+                </button>
+            </div>
+            <a href="" class="icon-cancel-before link-text-decoration-none telephony-form-close" data-ng-click="telephonyForm.switchOnCompact()"></a>
+            <div class="telephony-copyright">
+                сервис предоставлен <a href="//www.advantshop.net" target="_blank">advantshop.net</a>
+            </div>
+        </div>
+    </div>
+</form>
+

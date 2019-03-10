@@ -1,0 +1,5 @@
+﻿<div class="switcher-state-label">
+    <input class="switcher-state-input" type="checkbox" ng-model="$ctrl.checked" name="{{::$ctrl.name}}"  id="{{::$ctrl.name}}" value="{{$ctrl.checked ? 'true' : 'false'}}" />
+    <span class="switcher-state-trigger" ng-class="{'switcher-state-trigger-on-active': $ctrl.invert ? !$ctrl.checked : $ctrl.checked}" ng-click="$ctrl.changeState(!$ctrl.invert)" ng-bind="::$ctrl.textOn"></span>
+    <span class="switcher-state-trigger" ng-class="{'switcher-state-trigger-off-active': $ctrl.invert ? $ctrl.checked : !$ctrl.checked}" ng-click="$ctrl.changeState($ctrl.invert)" ng-bind="::$ctrl.textOff"></span>
+</div>

@@ -1,0 +1,52 @@
+﻿<div class="telphin">
+    <a ng-if="directiveData.Exist && directiveData.hasCustomersAccess" class="telphin__customer" href="customers/edit/{{directiveData.Id}}">
+        {{directiveData.LastName}} {{directiveData.FirstName}}
+    </a>
+    <span class="telphin__customer" ng-if="!directiveData.Exist || !directiveData.hasCustomersAccess">
+        {{directiveData.LastName}} {{directiveData.FirstName}} {{directiveData.StandardPhone}}
+    </span>
+    <div class="telphin__info">
+        <div class="telphin__info-item" ng-if="directiveData.lastOrder != null">
+            <span class="telphin__last-order-name">Последний заказ: </span>
+            <span class="bold">
+                <a class="" href="orders/edit/{{directiveData.lastOrder.orderId}}">
+                    {{directiveData.lastOrder.orderNumber}}
+                </a> ({{directiveData.lastOrder.status}})
+            </span> от {{directiveData.lastOrder.date}}
+        </div>
+        <div class="telphin__info-item" ng-if="directiveData.lastLead != null">
+            <span class="telphin__last-lead">Последний лид: </span>
+            <span class="bold">
+                <a class="" href="leads/edit/{{directiveData.lastLead.id}}">
+                    {{directiveData.lastLead.id}}
+                </a> ({{directiveData.lastLead.status}})
+            </span> от {{directiveData.lastLead.date}}
+        </div>
+        <div class="telphin__info-item" ng-if="directiveData.totalOrdersCount > 0">
+            <span class="telphin__total-price">Всего заказов на сумму:</span><br/>
+            <b>{{directiveData.totalOrdersPrice}}</b> <b>({{directiveData.totalOrdersCount}} шт)</b><br/>
+            <span class="telphin__total-price">Оплаченных заказов на сумму:</span><br/>
+            <b>{{directiveData.payedOrdersPrice}}</b> <b>({{directiveData.payedOrdersCount}} шт)</b>
+        </div>
+        <div class="telphin__info-item" ng-if="directiveData.totalOrdersCount == 0">
+            Нет заказов
+        </div>
+        <div ng-if="directiveData.Manager != null" class="telphin__info-manager">
+            Менеджер: <span>{{directiveData.Manager.Name}}</span>
+        </div>
+    </div>
+
+    <ui-modal-trigger ng-if="directiveData.leadId == null && directiveData.haveCrm && directiveData.hasCRMAccess" data-controller="'ModalAddLeadCtrl'" controller-as="ctrl" size="lg" backdrop="static"
+                      template-url="../areas/admin/content/src/_shared/modal/addLead/addLead.html"
+                      resolve="{params: {'customerId': directiveData.Id, 'phone': directiveData.StandardPhone}}">
+        <a href="" style="margin-right: 10px;">Создать лид</a>
+    </ui-modal-trigger>
+
+    <a class="" href="" ng-href="leads/edit/{{directiveData.leadId}}" ng-if="directiveData.leadId != null && directiveData.hasCRMAccess" style="margin-right: 10px;">
+        Перейти в лид
+    </a>
+
+    <a class="" href="" ng-href="orders/add?{{directiveData.Exist ? 'customerId=' + directiveData.Id + '&' : ''}}phone={{directiveData.StandardPhone}}" ng-if="directiveData.hasOrdersAccess">
+        Создать заказ
+    </a>
+</div>

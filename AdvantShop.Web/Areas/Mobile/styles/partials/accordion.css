@@ -1,0 +1,29 @@
+.accordion-title {
+  padding: 10px 20px;
+  display: block;
+  font-size: 21px;
+  border-top-width: 1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-style: solid;
+  position: relative;
+  cursor: pointer; }
+  .accordion-title.selected {
+    border-bottom-color: transparent !important; }
+  .accordion-title.selected + .accordion-body {
+    display: block; }
+
+.accordion-body {
+  display: none;
+  padding: 10px 20px; }
+
+.acc-arrow {
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 23px;
+  width: 12px;
+  position: absolute;
+  right: 20px; }

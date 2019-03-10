@@ -1,0 +1,137 @@
+﻿@model AdvantShop.Web.Admin.Models.Categories.AdminCategoryModel
+
+<div class="flex-grow-n block-additional-parameters-col">
+    <div class="ibox category-block block-additional-parameters">
+        <div class="ibox-content category-content block-additional-parameters-content block-additional-parameters-content--padding-mid border_none">
+            <h3 class="category-title">Отображение</h3>
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    @T("Admin.Category.Index.SortOrder")
+                </div>
+                <div class="block-additional-parameters-value relative">
+                    @Html.TextBoxFor(x => x.SortOrder, new { @class = "form-control", required = "required", ng_model = "category.sortOrder" })
+                    <help-trigger class="ng-cloak word-spacing help-trigger-icon-abs" data-title="Порядок сортировки">
+                        Порядковый номер категории. Используется сортировка по возрастанию (ноль вверху).
+                    </help-trigger>
+                </div>
+            </div>
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    Вид отображения подкатегорий
+                </div>
+                <div class="block-additional-parameters-value relative">
+                    @Html.DropDownListFor(x => x.DisplayStyle, Model.DisplayStyles, new { @class = "form-control", ng_model = "category.displayStyle", ng_init = "category.displayStyle='" + Model.DisplayStyle + "'" })
+
+                    <help-trigger class="ng-cloak word-spacing help-trigger-icon-abs" data-title="Вид отображения подкатегорий">
+                        Подкатегории в данной категории будут отображены одним из выбранных вариантов.
+                    </help-trigger>
+                </div>
+            </div>
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    Сортировка по умолчанию
+                </div>
+                <div class="block-additional-parameters-value">
+                    @Html.DropDownListFor(x => x.Sorting, Model.Sortings, new { @class = "form-control", ng_model = "category.sorting", ng_init = "category.sorting='" + (int)Model.Sorting + "'" })
+
+                    <help-trigger class="ng-cloak word-spacing help-trigger-icon-abs" data-title="Сортировка по умолчанию">
+                        Данная опция будет выбрана для товаров данной категории по умолчанию, пользователь имеет возможность изменить сортировку на удобную.
+                    </help-trigger>
+                </div>
+            </div>
+            <div class="block-additional-parameters-row">
+
+                <div class="block-additional-parameters-name">
+                    Отображать производителей в меню
+                    <help-trigger class="ng-cloak word-spacing" data-title="Отображать производителей в меню">
+                        Опция включает или выключает отображение колонки "производители" в меню каталога для данной категории.
+                    </help-trigger>
+                </div>
+                <div class="block-additional-parameters-value">
+                    <label class="adv-radio-label">
+                        @T("Admin.Yes")
+                        @Html.RadioButtonFor(x => x.DisplayBrandsInMenu, true, new { @class = "adv-radio-input", ng_model = "category.displayBrandsInMenu" })
+                        <span class="adv-radio-emul"></span>
+                    </label>
+                    <label class="adv-radio-label">
+                        @T("Admin.No")
+                        @Html.RadioButtonFor(x => x.DisplayBrandsInMenu, false, new { @class = "adv-radio-input", ng_model = "category.displayBrandsInMenu" })
+                        <span class="adv-radio-emul"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="block-additional-parameters-row form-group">
+                <div class="block-additional-parameters-name">
+                    Отображать в меню два уровня подкатегорий
+                    <help-trigger class="ng-cloak word-spacing" data-title="Отображать в меню два уровня подкатегорий">
+                        Выводить один или два уровня дерева категорий в пункте меню.
+                        <br />
+                        Два уровня - более предпочтительный вариант.
+                    </help-trigger>
+                </div>
+                <div class="i-checks block-additional-parameters-value">
+                    <label class="adv-radio-label">
+                        @T("Admin.Yes")
+                        @Html.RadioButtonFor(x => x.DisplaySubCategoriesInMenu, true, new { @class = "adv-radio-input", ng_model = "category.displaySubCategoriesInMenu" })
+                        <span class="adv-radio-emul"></span>
+                    </label>
+                    <label class="adv-radio-label">
+                        @T("Admin.No")
+                        @Html.RadioButtonFor(x => x.DisplaySubCategoriesInMenu, false, new { @class = "adv-radio-input", ng_model = "category.displaySubCategoriesInMenu" })
+                        <span class="adv-radio-emul"></span>
+                    </label>
+
+                </div>
+            </div>
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-name">
+                    Скрыть в меню
+                    <help-trigger class="ng-cloak word-spacing" data-title="Скрыть в меню">
+                        Если категория скрыта, то действуют правила:<br>
+                        - Категория скрывается из меню каталога<br>
+                        - Переход по URL категории работает<br>
+                        - Все товары категории (если она отмечена как основная) будут так же доступны.<br>
+                        Ссылки на товары и категорию продолжают работать, категория скрывается только из меню.
+                    </help-trigger>
+                </div>
+                <div class="block-additional-parameters-value">
+                    <label class="adv-radio-label">
+                        @T("Admin.Yes")
+                        @Html.RadioButtonFor(x => x.Hidden, true, new { @class = "adv-radio-input", ng_model = "category.hidden" })
+                        <span class="adv-radio-emul"></span>
+                    </label>
+                    <label class="adv-radio-label">
+                        @T("Admin.No")
+                        @Html.RadioButtonFor(x => x.Hidden, false, new { @class = "adv-radio-input", ng_model = "category.hidden" })
+                        <span class="adv-radio-emul"></span>
+                    </label>
+                </div>
+            </div>
+            
+            @Html.RenderModules("admin_category_rightpanel_bottom", new { categoryId = Model.CategoryId })
+        </div>
+    </div>
+
+    @if (Model.IsTagsVisible)
+    {
+        <div class="ibox category-block block-additional-parameters ng-cloak">
+            <div class="ibox-content category-content block-additional-parameters-content block-additional-parameters-content--padding-mid border_none">
+                <h3 class="category-title">Теги</h3>
+                <ui-select multiple
+                           tagging="category.tagTransform"
+                           sortable="true"
+                           ng-init="category.loadTags(@Model.CategoryId)"
+                           ng-model="category.selectedTags">
+                    <ui-select-match placeholder="Выберите теги">{{$item.value}}</ui-select-match>
+                    <ui-select-choices repeat="tag in category.tags | filter:$select.search">
+                        {{tag.value}}
+                    </ui-select-choices>
+                </ui-select>
+                @*select для отправки данных через обычный post *@
+                <select name="Tags" id="Tags" multiple hidden>
+                    <option selected value="{{option.value}}" ng-repeat="option in category.selectedTags track by $index"></option>
+                </select>
+            </div>
+        </div>
+    }
+</div>

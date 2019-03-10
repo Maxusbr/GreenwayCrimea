@@ -1,0 +1,250 @@
+﻿<form>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">Параметры экспорта</h2>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Заметки для продажи
+                </label>
+                <div class="col-xs m-r-md relative">
+                    <input type="text" class="form-control" ng-model="ctrl.SalesNote" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Заметки для продажи">
+                        <p>Элемент "sales_notes", используется только для Яндекс.Маркета</p>
+                        <p>Элемент используется для отражения информации о минимальной сумме заказа, минимальной партии товара или необходимости предоплаты, а также для описания акций, скидок и распродаж.</p>
+                        <p>Допустимая длина текста в элементе — 50 символов.</p>
+                        <p>Необязательный элемент.</p>
+                        <p>Например: Необходима предоплата.</p>
+                        <p><a href="http://www.advantshop.net/help/pages/yandex-market-sales-note" target="_blank">Инструкция. Заметки для продажи (Sales note)</a></p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Код международной маркировки и учета логистических единиц
+                </label>
+                <div class="col-xs m-r-md relative">
+                    <input type="text" class="form-control" ng-model="ctrl.Gtin" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Google GTIN">
+                        <p>Используется только для Google Merchant Center</p>
+                        <p>Подробнее:</p>
+                        <p><a href="https://support.google.com/merchants/answer/160161?hl=ru#valid" target="_blank">Google GTIN на support.google.com</a></p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Категория товара Google Merchant Center
+                </label>
+                <div class="col-xs m-r-md relative">
+                    <input type="text" class="form-control" ng-model="ctrl.GoogleProductCategory" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Классификация товаров Google">
+                        <p>Этот атрибут определяет категорию товара в соответствии с классификацией Google.</p>
+                        <p>Используется только для Google Merchant Center</p>
+                        <p>Подробнее:</p>
+                        <p><a href="https://support.google.com/merchants/answer/160081?hl=ru" target="_blank">Google Product Category на support.google.com</a></p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Категория товара, в которой он должен быть размещен на Яндекс.Маркете
+                </label>
+                <div class="col-xs m-r-md relative">
+                    <input type="text" class="form-control" ng-model="ctrl.YandexMarketCategory" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Классификация товаров Яндекс">
+                        <p>Этот атрибут определяет категорию товара в соответствии с классификацией Яндекс.</p>
+                        <p>Используется только для Яндекс.Маркет</p>
+                        <p>Подробнее:</p>
+                        <p><a href="http://download.cdn.yandex.net/market/market_categories.xls" target="_blank">Список доступных категорий (*.xls)</a></p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>-->
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Яндекс-маркет префикс
+                </label>
+                <div class="col-xs m-r-md relative">
+                    <input type="text" class="form-control" ng-model="ctrl.YandexTypePrefix" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Тип или категория товара">
+                        <p>Элемент "typePrefix"</p>
+                        <p>Тип или категория товара, необходимо передавать правильно (см. инструкцию)</p>
+                        <p>Необязательный элемент.</p>
+                        <p>Подробнее:</p>
+                        <p><a href="https://yandex.ru/support/partnermarket/elements/vendor-name-model.xml" target="_blank">Название предложения: model, typePrefix</a></p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Яндекс-маркет модель
+                </label>
+                <div class="col-xs m-r-md relative">
+                    <input type="text" class="form-control" ng-model="ctrl.YandexModel" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Модель">
+                        <p> Элемент "model"</p>
+                        <p>Используется для передачи модели товара или важных параметров.</p>
+                        <p>Подробнее:</p>
+                        <p><a href="https://yandex.ru/support/partnermarket/elements/vendor-name-model.xml" target="_blank">Название предложения: model, typePrefix</a></p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Яндекс-маркет название товара
+                </label>
+                <div class="col-xs m-r-md relative">
+                    <input type="text" class="form-control" ng-model="ctrl.YandexName" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Название товара">
+                        <p> Элемент "name"</p>
+                        <p>Используется для передачи названия товара.</p>
+                        <p>Подробнее:</p>
+                        <p><a href="https://yandex.ru/support/partnermarket/elements/vendor-name-model.xml" target="_blank">Название предложения: name</a></p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Ставка для карточки модели
+                </label>
+                <div class="col-xs-3 relative">
+                    <input type="text" class="form-control" ng-model="ctrl.Cbid" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Ставка для карточки модели">
+                        <p>Вы можете передавать значения ставок в прайс-листе формата YML.</p>
+                        <p>В качестве значений указываются условные центы. Значения должны быть целыми и положительными числами, например «80», что соответствует ставке 0,8 у. е.</p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Размер комиссии на товарное предложение, участвующее в программе «Заказ на Маркете»
+                </label>
+                <div class="col-xs-3 relative">
+                    <input type="text" class="form-control" ng-model="ctrl.Fee" />
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Размер комисии">
+                        <p>Вы можете повышать размер комиссии на товарное предложение, участвующее в программе «Заказ на Маркете», чтобы оно занимало более высокие позиции на местах размещения</p>
+                        <p>Таким образом, 1% комиссии соответствует значению 100. Примеры:</p>
+                        <p>Значение 220 соответствует комиссии в 2,2% от стоимости товара.</p>
+                        <p>Значение 1220 соответствует комиссии в 12,2%.Значение 22 соответствует комиссии в 0,22%.</p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Обозначения размерных сеток в атрибуте unit
+                </label>
+                <div class="col-xs-3 relative">
+                    <select type="text" class="form-control" ng-model="ctrl.YandexSizeUnit">
+                        <option value="">Не выбрано</option>
+                        <optgroup label="По странам">
+                            <option value="AU">AU</option>
+                            <option value="DE">DE</option>
+                            <option value="EU">EU</option>
+                            <option value="FR">FR</option>
+                            <option value="Japan">Japan</option>
+                            <option value="INT">INT</option>
+                            <option value="IT">IT</option>
+                            <option value="RU">RU</option>
+                            <option value="UK">UK</option>
+                            <option value="US">US</option>
+                        </optgroup>
+                        <optgroup label="По типу измерения">
+                            <option value="INCH">INCH</option>
+                            <option value="Height">Height</option>
+                            <option value="Months">Months</option>
+                            <option value="Round">Round</option>
+                            <option value="Years">Years</option>
+                        </optgroup>
+                    </select>
+                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Обозначения размерных сеток">
+                        - по странам:<br />
+                        AU — Австралия;<br />
+                        DE — Германия;<br />
+                        EU — Европа;<br />
+                        FR — Франция;<br />
+                        Japan — Япония;<br />
+                        INT — международные обозначения (для одежды: XS, S, M, L, XL, XXL, 2XL и т. д., для бюстгальтеров: AA, A, B, C и т. д.);<br />
+                        IT — Италия;<br />
+                        RU — Россия;<br />
+                        UK — Англия;<br />
+                        US — США.<br />
+                        - по типу измерения:<br />
+                        INCH или «дюймы» — дюймы;<br />
+                        Height или «рост» — рост в сантиметрах;<br />
+                        Months или «мес.» — возраст в месяцах;<br />
+                        Round или «окружность» — окружность в сантиметрах;<br />
+                        Years или «лет» — возраст в годах.<br />
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Товар для взрослых
+                </label>
+                <div class="col-xs">
+                    <label class="adv-checkbox-label control-checkbox">
+                        <input type="checkbox" ng-model="ctrl.Adult" class="adv-checkbox-input control-checkbox" />
+                        <span class="adv-checkbox-emul"></span>
+                    </label>
+                    <help-trigger class="ng-cloak" data-title="Товар для взрослых">
+                        <p>Элемент "adult"</p>
+                        <p>Элемент обязателен для обозначения товара, имеющего отношение к удовлетворению сексуальных потребностей, либо иным образом эксплуатирующего интерес к сексу.</p>
+                        <p>Необязательный элемент.</p>
+                        <p>Используется как для Яндекс.Маркет, так и Google Merchant Center.</p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row middle-xs">
+                <label class="col-xs-3 control-label">
+                    Гарантия производителя
+                </label>
+                <div class="col-xs">
+                    <label class="adv-checkbox-label control-checkbox">
+                        <input type="checkbox" ng-model="ctrl.ManufacturerWarranty" class="adv-checkbox-input control-checkbox" />
+                        <span class="adv-checkbox-emul"></span>
+                    </label>
+                    <help-trigger class="ng-cloak" data-title="Гарантия производителя">
+                        <p>Элемент "manufacturer_warranty"</p>
+                        <p>Элемент предназначен для отметки товаров, имеющих официальную гарантию производителя.</p>
+                        <p>Необязательный элемент.</p>
+                    </help-trigger>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>Сохранить</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

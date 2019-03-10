@@ -1,0 +1,12 @@
+﻿@import "../_settings.scss", "../functions/_util.scss";
+
+input.input-code-country {
+    width: 30%;
+}
+input.input-mobile-phone {
+    width: 55%;
+}
+
+.char-block {
+    display: inline-block;
+}

@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SmsNotificationsValid_NumberPhoneAdmin" xml:space="preserve">
+    <value>Номер телефона администратора необходимо оставить пустым, либо заполнить 11ти значным номером телефона.</value>
+  </data>
+  <data name="SmsNotificationsValid_PhoneAdmin" xml:space="preserve">
+    <value>Для отправки смс администратору, необходимо указать его телефон.</value>
+  </data>
+  <data name="SmsNotificationsValid_TextSmsChangeStatus" xml:space="preserve">
+    <value>Необходимо указать текст смс для уведомления о смене статуса.</value>
+  </data>
+  <data name="SmsNotificationsValid_TextSmsNewOrder" xml:space="preserve">
+    <value>Необходимо указать текст смс для уведомления о новом заказе.</value>
+  </data>
+  <data name="SmsNotificationsWarning_SendSmsOrderPhone" xml:space="preserve">
+    <value>Для пользователей, оформивших заказ без регистрации, или пользователей, не указавших номер для уведомления по смс через личный кабинет, 
+уведомление будет отправлено на номер телефона, указанный в заказе.&lt;br/&gt;
+Внимание! Номера телефонов, указанные в заказе, интернет-магазином не проверяются. Уведомления не будут отправляться на некорректные номера.</value>
+  </data>
+  <data name="SmsNotifications_Active" xml:space="preserve">
+    <value>Активность модуля</value>
+  </data>
+  <data name="SmsNotifications_ApiKey" xml:space="preserve">
+    <value>API-key</value>
+  </data>
+  <data name="SmsNotifications_ChangeStatus" xml:space="preserve">
+    <value>Изменение статуса</value>
+  </data>
+  <data name="SmsNotifications_Header" xml:space="preserve">
+    <value>СМС информирование</value>
+  </data>
+  <data name="SmsNotifications_IdOrder" xml:space="preserve">
+    <value>Номер заказа</value>
+  </data>
+  <data name="SmsNotifications_Login" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="SmsNotifications_Message" xml:space="preserve">
+    <value>Изменения сохранены</value>
+  </data>
+  <data name="SmsNotifications_NewOrder" xml:space="preserve">
+    <value>Создание заказа</value>
+  </data>
+  <data name="SmsNotifications_NumberPhoneAdmin" xml:space="preserve">
+    <value>номер телефона (79091234567,79091234567,  и т.д.)</value>
+  </data>
+  <data name="SmsNotifications_Origin_id" xml:space="preserve">
+    <value>Номер имени отправителя (origin_id)</value>
+  </data>
+  <data name="SmsNotifications_Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="SmsNotifications_PhoneAdmin" xml:space="preserve">
+    <value>Номер телефона администратора</value>
+  </data>
+  <data name="SmsNotifications_Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="SmsNotifications_Sender" xml:space="preserve">
+    <value>Имя отправителя</value>
+  </data>
+  <data name="SmsNotifications_SendNewOrderAdmin" xml:space="preserve">
+    <value>Администратору</value>
+  </data>
+  <data name="SmsNotifications_SendNewOrderUser" xml:space="preserve">
+    <value>Пользователю</value>
+  </data>
+  <data name="SmsNotifications_SendSms" xml:space="preserve">
+    <value>Отправлять уведомления:</value>
+  </data>
+  <data name="SmsNotifications_SendSmsOrderPhone" xml:space="preserve">
+    <value>Отправлять уведомления через телефон указанный в заказе</value>
+  </data>
+  <data name="SmsNotifications_SmsService" xml:space="preserve">
+    <value>Сервис отправки смс</value>
+  </data>
+  <data name="SmsNotifications_Status" xml:space="preserve">
+    <value>Статус заказа</value>
+  </data>
+  <data name="SmsNotifications_StatusComment" xml:space="preserve">
+    <value>Комментарий к статусу заказа</value>
+  </data>
+  <data name="SmsNotifications_TextSmsChangeStatus" xml:space="preserve">
+    <value>Текст смс</value>
+  </data>
+  <data name="SmsNotifications_TextSmsNewOrder" xml:space="preserve">
+    <value>Текст смс</value>
+  </data>
+  <data name="SmsNotifications_PrivateKey" xml:space="preserve">
+    <value>Приватный ключ</value>
+  </data>
+  <data name="SmsNotifications_PublicKey" xml:space="preserve">
+    <value>Публичный ключ</value>
+  </data>
+  <data name="SmsNotifications_ChooseService" xml:space="preserve">
+    <value>Выберите сервис</value>
+  </data>
+  <data name="SmsNotifications_TrackNumber" xml:space="preserve">
+    <value>Номер отслеживания заказа</value>
+  </data>
+  <data name="SmsNotifications_SendForStatus" xml:space="preserve">
+    <value>Шаблоны СМС при смене статусов</value>
+  </data>
+  <data name="SmsNotifications_ORDER_SUM" xml:space="preserve">
+    <value>Сумма заказа</value>
+  </data>
+  <data name="SmsNotifications_SecretKey" xml:space="preserve">
+    <value>Cекретный ключ</value>
+  </data>
+</root>

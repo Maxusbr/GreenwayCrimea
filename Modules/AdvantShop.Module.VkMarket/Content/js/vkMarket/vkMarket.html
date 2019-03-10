@@ -1,0 +1,20 @@
+﻿
+<div ng-if="$ctrl.isActive == false">
+    <vk-market-auth redirect-url="$ctrl.redirectUrl" client-id="$ctrl.clientId" on-update="$ctrl.getAuthSettings()"></vk-market-auth>
+</div>
+<div ng-if="$ctrl.isActive == true">
+    <uib-tabset active uid="tab">
+
+        <uib-tab index="'cats'" classes="ng-tab" heading="Выбор категорий">
+            <vk-market-categories></vk-market-categories>
+        </uib-tab>
+
+        <uib-tab index="'settings'" classes="ng-tab" heading="Параметры выгрузки">
+            <vk-market-export-settings data-on-update="$ctrl.getAuthSettings()"></vk-market-export-settings>
+        </uib-tab>
+        
+        <div class="js-not-tabs">
+            <a class="btn btn-sm btn-success" ng-click="$ctrl.export()">Выгрузить сейчас</a>
+        </div>
+    </uib-tabset>
+</div>

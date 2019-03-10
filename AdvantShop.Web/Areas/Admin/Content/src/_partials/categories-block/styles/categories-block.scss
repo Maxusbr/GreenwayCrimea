@@ -1,0 +1,81 @@
+﻿@import "../../../../styles/_variable.scss";
+
+.categories-block {
+    border: $border-default;
+    padding: 10px;
+    background: #fff;
+}
+
+.categories-block-icon {
+    margin: 0 5px;
+}
+
+.categories-block-figure {
+}
+
+.categories-block-figure-link {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 0;
+    display: block;
+
+    &:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        width: 0;
+    }
+}
+
+.categories-block-figure-img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.categories-block-name {
+    margin-top: 10px;
+    font-size: 12px;
+
+    .adv-checkbox-label {
+        margin-bottom: 0;
+    }
+}
+
+.categories-block-count {
+    color: #b0b1b1;
+}
+
+.categories-block-mass {
+    margin-bottom: 5px;
+}
+
+.categories-block-items {
+    .categories-block-wrap, .as-sortable-placeholder {
+        width: 198px;
+        /*height: 182px;*/
+        padding: 10px 20px 10px 0;
+        display: inline-block !important;
+        vertical-align: top;
+        /*float: left;*/
+    }
+}
+
+.categories-block-checkbox-text {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.categories-block-mass-search-col {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    padding: 0 20px;
+}
+
+.categories-block-empty {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}

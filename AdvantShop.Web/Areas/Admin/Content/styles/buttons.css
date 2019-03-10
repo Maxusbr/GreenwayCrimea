@@ -1,0 +1,41 @@
+﻿.btn-action {
+    position: relative;
+    background-color: #2f4050;
+    color: #FFFFFF;
+    font-family: 'OpenSans-semibold';
+}
+
+    .btn-action:hover,
+    .btn-action:focus,
+    .btn-action:active {
+        color: #FFFFFF;
+        background-color: #40566c;
+    }
+
+.btn-red-white {
+    color: #f44336;
+    font-family: 'OpenSans-semibold';
+    font-size: 12px;
+}
+
+    .btn-red-white:hover,
+    .btn-red-white:focus,
+    .btn-red-white:active {
+        color: #f44336 !important;
+    }
+
+.btn-xsmall {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.btn-danger {
+    background-color: #f1453d;
+    min-width: 190px;
+    box-sizing: border-box;
+}
+
+.btn.dropdown-toggle {
+    min-width: 0;
+}

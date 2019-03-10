@@ -1,0 +1,27 @@
+.footer-menu-head {
+  font-size: 1rem;
+  margin: 0 0 1.25rem; }
+
+.footer-menu-list {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+.footer-menu-item {
+  padding: 0;
+  margin: 0 0 1.25rem;
+  list-style: none;
+  font-size: 0.75rem; }
+
+.footer-menu-text {
+  vertical-align: middle; }
+
+.footer-menu-icon-block {
+  display: inline-block;
+  margin-right: 0.3125rem;
+  line-height: 0;
+  font-size: 0;
+  vertical-align: middle; }
+
+.footer-menu-icon {
+  display: block; }

@@ -1,0 +1,11 @@
+BrandID;BrandName;BrandDescription;Enabled;CountryID;SortOrder;UrlPath;BrandBriefDescription
+1;BrandName1;DescripBrand1;true;171;1;1;BriefBrand1
+2;BrandName2;DescripBrand2;false;171;2;2;BriefBrand2
+3;BrandName3;DescripBrand3;false;171;3;3;BriefBrand3
+4;BrandName4;DescripBrand4;false;171;4;4;BriefBrand4
+5;BrandName5;DescripBrand5;false;171;5;5;BriefBrand5
+6;BrandName6;DescripBrand6;true;171;6;6;BriefBrand6
+7;BrandName7;DescripBrand7;true;171;7;7;BriefBrand7
+8;BrandName8;DescripBrand8;true;171;8;8;BriefBrand8
+9;BrandName9;DescripBrand9;true;171;9;9;BriefBrand9
+10;BrandName10;DescripBrand10;true;251;10;10;BriefBrand10

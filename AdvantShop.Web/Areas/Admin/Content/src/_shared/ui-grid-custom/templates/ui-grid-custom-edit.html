@@ -1,0 +1,51 @@
+﻿<div class="ui-grid-cell-contents ui-grid-custom-edit-block js-grid-not-clicked">
+    <form name="inputForm" ng-switch="col.colDef.type" class="ui-grid-custom-edit-number">
+        <div class="ui-grid-custom-edit-form" ng-init="uiGridEditCustom.form = inputForm">
+            <input type="number"
+                   class="ui-grid-custom-edit-field form-control"
+                   ng-switch-when="number"
+                   ng-model="MODEL_CUSTOM_EDIT"
+                   ng-focus="uiGridEditCustom.focus($event, MODEL_CUSTOM_EDIT)"
+                   ng-keyup="uiGridEditCustom.keyup(row.entity, col.colDef, MODEL_CUSTOM_EDIT, $event)"
+                   ng-blur="inputForm.$valid ? uiGridEditCustom.change(row.entity, col.colDef, MODEL_CUSTOM_EDIT, true) : null" INPUT_ATTRIBUTES />
+            <div ng-switch-when="select" data-e2e="select">
+                <!--isOpen в uis-open-close, переменная внутренняя ui-select-->
+                <ui-select ng-model="MODEL_CUSTOM_EDIT"
+                           on-select="uiGridEditCustom.change(row.entity, col.colDef, MODEL_CUSTOM_EDIT, $event)"
+                           uis-open-close="uiGridEditCustom.selectToggle($event, isOpen, MODEL_CUSTOM_EDIT)"
+                           append-to-body="true"
+                           INPUT_ATTRIBUTES>
+                    <ui-select-match>
+                        <span ng-bind="$select.selected[uiGridEditCustom.editDropdownValueLabel]" data-e2e="itemSelected"></span>
+                    </ui-select-match>
+                    <ui-select-choices repeat="item[uiGridEditCustom.editDropdownIdLabel] as item in uiGridEditCustom.editDropdownOptionsArray | filter: $select.search">
+                        <span ng-bind="item[uiGridEditCustom.editDropdownValueLabel]" data-e2e="itemDropDownSelect"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <label class="ui-grid-custom-edit-field adv-checkbox-label" ng-switch-when="checkbox" data-e2e="switchOnOffLabel" INPUT_ATTRIBUTES>
+                <input type="checkbox"
+                       class="adv-checkbox-input"
+                       ng-model="MODEL_CUSTOM_EDIT"
+                       ng-change="uiGridEditCustom.change(row.entity, col.colDef, MODEL_CUSTOM_EDIT)" data-e2e="switchOnOffSelect" INPUT_ATTRIBUTES />
+                <span class="adv-checkbox-emul" data-e2e="switchOnOffInput"></span>
+            </label>
+            <textarea rows="2"
+                      class="ui-grid-custom-edit-field form-control"
+                      ng-switch-when="textarea"
+                      ng-model="MODEL_CUSTOM_EDIT"
+                      ng-focus="uiGridEditCustom.focus($event, MODEL_CUSTOM_EDIT)"
+                      ng-keyup="uiGridEditCustom.keyup(row.entity, col.colDef, MODEL_CUSTOM_EDIT, $event)"
+                      ng-blur="inputForm.$valid ? uiGridEditCustom.change(row.entity, col.colDef, MODEL_CUSTOM_EDIT) : null" INPUT_ATTRIBUTES></textarea>
+            <input type="text"
+                   class="ui-grid-custom-edit-field form-control"
+                   ng-switch-default
+                   ng-model="MODEL_CUSTOM_EDIT"
+                   ng-focus="uiGridEditCustom.focus($event, MODEL_CUSTOM_EDIT)"
+                   ng-keyup="uiGridEditCustom.keyup(row.entity, col.colDef, MODEL_CUSTOM_EDIT, $event)"
+                   ng-blur="inputForm.$valid ? uiGridEditCustom.change(row.entity, col.colDef, MODEL_CUSTOM_EDIT) : null"
+                   INPUT_ATTRIBUTES />
+        </div>
+    </form>
+</div>
+

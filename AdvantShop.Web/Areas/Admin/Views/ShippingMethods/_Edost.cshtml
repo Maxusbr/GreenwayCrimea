@@ -1,0 +1,152 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.EdostShippingAdminModel
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Идентификатор магазина</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.ShopId, new { ng_model = "shippingMethod.Params.ShopId", @class = "form-control", required = "required", validation_input_text = "Идентификатор магазина" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Идентификатор магазина">
+                Введите идентификатор магазина из личного кабинета системы eDost
+            </help-trigger>
+        </div>
+    </div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Пароль</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Password, new { ng_model = "shippingMethod.Params.Password", @class = "form-control", required = "required", validation_input_text = "Пароль" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Пароль">
+                Введите пароль для доступа к серверу расчетов из личного кабинета системы eDost
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Курс к базовой валюте</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.Rate, new { ng_model = "shippingMethod.Params.Rate", @class = "form-control", required = "required", validation_input_text = "Курс к базовой валюте" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Курс к базовой валюте">
+                Введите курс к базовой валюте магазина
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Создать метод оплаты "Оплата наличными"
+        </div>
+        <div class="col-xs-6 relative">
+            <label class="adv-checkbox-label form-label-block">
+                @Html.CheckBoxFor(x => x.EnabledCod, new {ng_model = "shippingMethod.Params.EnabledCOD", ng_init = "shippingMethod.Params.EnabledCOD=" + Model.EnabledCod.ToLowerString(), @class = "adv-checkbox-input"})
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Создать метод оплаты 'Оплата наличными'">
+                Создать метод оплаты "Оплата наличными"
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            Создать метод оплаты "Оплата PicPoint"
+        </div>
+        <div class="col-xs-6 relative">
+            <label class="adv-checkbox-label form-label-block">
+                @Html.CheckBoxFor(x => x.EnabledPickPoint, new {ng_model = "shippingMethod.Params.EnabledPickPoint", ng_init = "shippingMethod.Params.EnabledPickPoint=" + Model.EnabledPickPoint.ToLowerString(), @class = "adv-checkbox-input"})
+                <span class="adv-checkbox-emul"></span>
+            </label>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Создать метод оплаты 'Оплата PicPoint'">
+                Создать метод оплаты "Оплата PicPoint"
+            </help-trigger>
+        </div>
+    </div>
+
+
+<div class="shipping-item-settings-header inline content-header m-b-md">
+    Значения параметров товара по умолчанию
+</div>
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Вес</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultWeight, new { ng_model = "shippingMethod.Params.DefaultWeight", @class = "form-control", required = "required", validation_input_text = "Вес" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Вес товара">
+                Вес товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+                Значение указывается в кг, возможно указать дробное значение.<br><br>
+                Например: 1 или 0.2
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Длина</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultLength, new { ng_model = "shippingMethod.Params.DefaultLength", @class = "form-control", required = "required", validation_input_text = "Длина" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Длина товара">
+                Длина товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+                Значение указывается в мм.<br><br>
+                Например: 120
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Ширина</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultWidth, new { ng_model = "shippingMethod.Params.DefaultWidth", @class = "form-control", required = "required", validation_input_text = "Ширина" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Ширина товара">
+                Ширина товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+                Значение указывается в мм.<br><br>
+                Например: 120
+            </help-trigger>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row middle-xs">
+        <div class="flex-grow-n col-fixed-size-md">
+            <span class="text-required">Высота</span>
+        </div>
+        <div class="col-xs-6 relative">
+            @Html.TextBoxFor(x => x.DefaultHeight, new {ng_model = "shippingMethod.Params.DefaultHeight", @class = "form-control", required = "required", validation_input_text = "Высота" })
+            <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Высота товара">
+                Высота товара примет указанное значение, если у товара данный параметр не был задан.<br><br>
+                Значение указывается в мм.<br><br>
+                Например: 120
+            </help-trigger>
+        </div>
+    </div>
+
+
+<div class="adv-panel-info">
+    <a href="http://www.advantshop.net/help/pages/install-edost" target="_blank">Инструкция. Подключение модуля доставки eDost</a>
+</div>
+
+
+@Html.Hidden("ShipIdCod", Model.ShipIdCod)
+@Html.Hidden("ShipIdPickPoint", Model.ShipIdPickPoint)

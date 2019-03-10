@@ -1,0 +1,16 @@
+.details-row .block-head {
+  text-align: center;
+  margin: 0; }
+
+.details-row .block-head .h2 {
+  display: inline-block;
+  font-size: 20px;
+  border-bottom: 2px solid #00a3cc;
+  padding-bottom: 9px;
+  margin: 0; }
+
+.details-row .carousel-horizontal.carousel-wrap-nav-outside {
+  margin-top: 0; }
+
+.details-row.details-availability .availability {
+  border-radius: 10px; }

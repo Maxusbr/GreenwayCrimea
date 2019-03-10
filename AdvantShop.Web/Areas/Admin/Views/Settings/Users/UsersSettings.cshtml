@@ -1,0 +1,41 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Settings.UsersSettingsViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+@using (Html.BeginForm("UsersSettings", "Settings", FormMethod.Post, new { name = "form", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settingsUsers.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </div>
+    </div>
+    
+    <uib-tabset active uid="tab" on-select-batch="settingsUsers.floatHeader = tab.heading;">
+        <uib-tab index="'Users'" heading="@T("Admin.Settings.Users")" classes="ng-tab"  removable="true">
+            @Html.Partial("Users/Users", Model.UsersViewModel)
+        </uib-tab>
+        <uib-tab index="'Departments'" heading="@T("Admin.Settings.Users.Departments")" classes="ng-tab"  removable="true">
+            @Html.Partial("Users/Departments", Model)
+        </uib-tab>
+        <uib-tab index="'ManagerRoles'" heading="@T("Admin.Settings.Users.ManagerRoles")" classes="ng-tab"  removable="true">
+            @Html.Partial("Users/ManagerRoles", Model)
+        </uib-tab>
+        <uib-tab index="'settings'" heading="@T("Admin.Settings.Users.Settings")" classes="ng-tab">
+            @Html.Partial("Users/Settings", Model)
+        </uib-tab>
+        <div class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success btn--margin-left" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+        </div>
+    </uib-tabset>
+}
+
+

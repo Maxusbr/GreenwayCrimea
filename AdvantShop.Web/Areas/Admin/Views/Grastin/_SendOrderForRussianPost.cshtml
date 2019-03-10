@@ -1,0 +1,185 @@
+﻿@model AdvantShop.Web.Admin.Models.Grastin.SendOrderForRussianPostModel
+
+<form novalidate="novalidate">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">@T("Admin.Grastin.OrderShipment") @string.Format("{0}{1}", Model.OrderPrefix, Model.OrderNumber) @T("Admin.Grastin.ToGrastin")</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+
+            <input name="typeForm" type="hidden" value="russianpost" ng-model="ctrl.typeForm"/>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.Warehouse")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.DropDownListFor(x => x.TakeWarehouse, Model.TakeWarehouses, new { ng_model = "ctrl.takeWarehouse", @class = "form-control", required = "required", validation_input_text = T("Admin.Grastin.Warehouse") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.FullName")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.Buyer, new {ng_model = "ctrl.buyer", @class = "form-control", required = "required", validation_input_text = T("Admin.Grastin.FullName") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.MobilePhone")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.Phone, new {ng_model = "ctrl.phone", @class = "form-control", required = "required", @type = "number", validation_input_text = T("Admin.Grastin.MobilePhone") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">Email</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.Email, new { ng_model = "ctrl.email", @class = "form-control", required = "required", pattern = "^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)$", validation_input_text = "Email" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.DeliveryType") </span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.DropDownListFor(x => x.Service, Model.Services, new { ng_model = "ctrl.service", @class = "form-control", required = "required", validation_input_text = T("Admin.Grastin.DeliveryType") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.DateDelivery")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" id="DeliveryDate" role="button" data-toggle="dropdown">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.DeliveryDateString, new { ng_model = "ctrl.deliveryDate", ng_init = "ctrl.deliveryDate='" + Model.DeliveryDateString + "'", data_date_time_input = "DD.MM.YYYY", @class = "form-control", required = "required", validation_input_text = T("Admin.Grastin.DateDelivery") })
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker ng-model="ctrl.deliveryDate" data-datetimepicker-config="{ dropdownSelector: '#DeliveryDate' }" />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.Zip")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.Index, new { ng_model = "ctrl.index", @class = "form-control", required = "required", @type = "number", @maxlength = "6", validation_input_text = T("Admin.Grastin.Zip") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.Region")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.Region, new { ng_model = "ctrl.region", @class = "form-control", required = "required", validation_input_text = T("Admin.Grastin.Region") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        @T("Admin.Grastin.Area")
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.District, new { ng_model = "ctrl.district", @class = "form-control", validation_input_text = T("Admin.Grastin.Area") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.City")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.City, new { ng_model = "ctrl.city", @class = "form-control", required = "required", validation_input_text = T("Admin.Grastin.City") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.Adress")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.Address, new { ng_model = "ctrl.address", @class = "form-control", required = "required", validation_input_text = T("Admin.Grastin.Adress") })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        @T("Admin.Grastin.Note")
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextAreaFor(x => x.Comment, new { ng_model = "ctrl.comment", @class = "form-control", @rows = 3 })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        @T("Admin.Grastin.COD");
+                    </label>
+                    <div class="col-xs-9">
+                        <label class="adv-checkbox-label">
+                            @Html.CheckBoxFor(x => x.CashOnDelivery, new { ng_model = "ctrl.cashOnDelivery", @class = "adv-checkbox-input" })
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-xs-3 control-label">
+                        <span class="text-required">@T("Admin.Grastin.AssessedValue")</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(x => x.AssessedCost, new { ng_model = "ctrl.assessedCost", @class = "form-control", validation_input_float = "", required = "required", validation_input_text = T("Admin.Grastin.AssessedValue") })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" button-validation-success="ctrl.send(); ctrl.btnLoading = true" ladda="ctrl.btnLoading" data-button-validation>@T("Admin.Grastin.Send")</button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">@T("Admin.Grastin.Cancel")</button>
+    </div>
+</form>

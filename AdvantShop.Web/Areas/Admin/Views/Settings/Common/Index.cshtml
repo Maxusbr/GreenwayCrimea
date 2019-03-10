@@ -1,0 +1,49 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CommonSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "Settings", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", novalidate = "novalidate" }))
+{
+    <div class="sticky-page-name m-n" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner header-hidden">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    <span class="float-header-page" ng-bind="settings.floatHeader"></span>
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+            </div>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+    <div class="error">
+        @Html.ValidationSummary()
+    </div>
+    <uib-tabset uid="indexTab" on-select-batch="settings.floatHeader = tab.heading;">
+        <uib-tab index="'about'" classes="ng-tab" heading="@T("Admin.Settings.Index.AboutStore")">
+            <uib-tab-heading ng-class="{'tab-warning' : aboutSettingsForm.$invalid}">
+                @T("Admin.Settings.Index.AboutStore")
+                <span ng-if="aboutSettingsForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!aboutSettingsForm.$invalid && aboutSettingsForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="aboutSettingsForm" validation-tab-index="'about'">
+                @Html.Partial("Common/Common", Model)
+            </ng-form>
+        </uib-tab>
+        <uib-tab index="'plan'" classes="ng-tab" heading="@T("Admin.Settings.Index.SalesPlan")">
+            <uib-tab-heading ng-class="{'tab-warning' : planForm.$invalid}">
+                @T("Admin.Settings.Index.SalesPlan")
+                <span ng-if="planForm.$invalid" class="fa fa-exclamation-triangle tab-warning-icon"></span>
+                <span ng-if="!planForm.$invalid && planForm.modified" class="fa fa-floppy-o tab-warning-icon"></span>
+            </uib-tab-heading>
+            <ng-form name="planForm" validation-tab-index="'plan'">
+                @Html.Partial("Common/SalesPlan", Model)
+            </ng-form>
+        </uib-tab>
+        <div data-e2e="btnSave" class="js-not-tabs">
+            <input type="submit" class="btn btn-sm btn-success" value="Сохранить" data-button-validation disabled ng-disabled="!form.modified" />
+        </div>
+    </uib-tabset>
+}

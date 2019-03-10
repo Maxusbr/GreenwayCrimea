@@ -1,0 +1,257 @@
+﻿@import "../_defFuncValues.scss";
+@import "../_function.scss";
+
+.properties td {
+    padding: 10px 0;
+}
+
+
+.gallery-photos-slider-list-horizontal {
+    white-space: nowrap;
+}
+
+.details-carousel-item {
+    display: inline-block;
+    width: 100%;
+}
+
+.details-carousel-item, .details-carousel-item-vertical {
+    border: 0.0625rem transparent solid;
+    cursor: pointer;
+    vertical-align: middle;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.carousel-nav-next, .carousel-nav-prev {
+    font-size: toEm(32px);
+}
+
+.sizes-viewer-inner {
+    display: inline-block;
+    min-width: toEm(17px);
+    line-height: normal;
+    font-family: Arial;
+}
+
+.gallery-photos-mobile {
+    margin-bottom: toEm(25px);
+    overflow: hidden;
+}
+
+.product-title-mobile {
+    padding: toEm(10px, 21px) 0 toEm(20px, 21px);
+    text-align: center;
+}
+
+.sizes-viewer-header {
+    margin-top: toEm(5px);
+}
+
+.block-exuding-row {
+    padding: toEm(20px);
+    border-radius: 5px;
+}
+
+.top-shipping-row {
+    font-weight: bold;
+    font-size: toEm(14px);
+    margin-bottom: toEm(5px);
+}
+
+.product-price {
+    margin-bottom: toEm(15px);
+}
+
+.block-exuding-row .shipping-variants {
+    margin: toEm(15px) 0 0 0;
+}
+
+.shipping-variants-cell {
+    font-size: toEm(14px);
+}
+
+.color-viewer-block {
+    margin-right: 3px;
+}
+
+.color-viewer-list {
+    margin-bottom: toEm(5px);
+}
+
+.gallery-photos-item {
+    margin: 0 auto;
+}
+
+.bi-time {
+    text-align: center;
+
+    .buy-in-time-text {
+        text-align: center;
+        margin-bottom: toEm(5px);
+        font-weight: bold;
+    }
+
+    .details-buy-in-time-block {
+        margin-bottom: toEm(5px);
+        display: inline-block;
+
+        .buy-in-time-text {
+            text-align: center;
+        }
+    }
+
+    .countdown-spliter {
+        width: 5%;
+    }
+}
+
+.custom-options-name, .custom-options-value {
+    width: 50%;
+}
+
+.color-viewer-header, .sizes-viewer-header {
+    font-size: toEm(16px);
+    margin: 10px 0;
+}
+
+.details-custom-options {
+    margin: 5px 0;
+}
+
+.custom-input-text {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.custom-input-text__indent {
+    text-indent: 15px;
+}
+
+.availability {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: toEm(3px);
+    color: #fff;
+    padding: toEm(5px);
+}
+
+.available {
+    background-color: #b1cd03;
+}
+
+.not-available {
+    background-color: #fb6363;
+}
+
+.properties-item {
+}
+
+.details-availability {
+    text-align: center;
+    margin: 10px 0;
+
+    .available {
+        padding: 5px;
+
+        .details-avalable-text, .details-avalable-unit {
+            display: inline-block;
+        }
+    }
+}
+
+.review-form-block {
+    .review-form-header {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: toEm(10px);
+    }
+}
+
+.prod-reviews-mobile {
+    .col-xs-12 {
+        padding: 10px 0;
+    }
+
+    .form-field-name-alt {
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .review-form-button {
+        margin-top: 10px;
+    }
+}
+
+
+.details-payment .price {
+    margin: 0;
+}
+
+.details-param-name, .details-param-value, .details-param-value-weight {
+    display: inline;
+    font-size: .75rem;
+}
+
+.gallery-picture-labels {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+
+    .products-view-label {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+.gifts-list {
+}
+
+
+.gift-properties {
+    display: table;
+    padding: 0;
+    margin: rem-calc(5px) 0 0;
+}
+
+.gift-properties__item {
+    display: table-row;
+}
+
+.gift-properties__itemName, .gift-properties__itemValue {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: rem-calc(10px);
+    font-size: rem-calc(12px);
+}
+
+.product-gift-image {
+
+    margin-top: 10px;
+
+    .gifts-list-container {
+        background: white;
+        position: relative;
+        border-radius: 5px;
+        z-index: 1;
+    }
+
+    .gifts-list {
+        white-space: normal;
+
+        .gift-txt {
+            text-align: left;
+        }
+    }
+
+    .gift-img {
+        text-align: center;
+    }
+}
+.mobile-product-main-info{
+    padding-left: 20px;
+}

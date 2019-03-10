@@ -1,0 +1,11 @@
+﻿<div class="ng-cloak">
+    <div data-ng-show="$ctrl.logoGenerator.isActive" class="logo-generator-preview-dynamic"
+         data-ng-style="{'backgroundColor': $ctrl.logoGenerator.logo.style.backgroundColor}"
+         data-ng-class="{'logo-generator-slogan-vertical-top': $ctrl.logoGenerator.slogan.style.verticalAlign === 'top', 'logo-generator-slogan-vertical-bottom': $ctrl.logoGenerator.slogan.style.verticalAlign === 'bottom'}">
+        <link data-ng-href="{{$ctrl.logoGenerator.logo.font.link}}" rel="stylesheet" />
+        <div data-logo-generator-preview-logo data-ng-bind-html="$ctrl.logoGenerator.logo.text | sanitize" data-ng-style="$ctrl.logoGenerator.logo.style"></div>
+        <link data-ng-if="$ctrl.logoGenerator.isUseSlogan" data-ng-href="{{$ctrl.logoGenerator.slogan.font.link}}" rel="stylesheet" />
+        <div data-logo-generator-preview-slogan data-ng-if="$ctrl.logoGenerator.isUseSlogan" data-ng-bind-html="$ctrl.logoGenerator.slogan.text | sanitize" data-ng-style="$ctrl.logoGenerator.slogan.style"></div>
+    </div>
+    <div  data-ng-show="!$ctrl.logoGenerator.isActive" data-ng-transclude></div>
+</div>

@@ -1,0 +1,182 @@
+﻿@model  AdvantShop.Web.Admin.ViewModels.Common.LeftMenuViewModel
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu" data-submenu-container="{'checkOrientation': true,'verticalOrientation': true, 'type': 'modern'}">
+            <li class="side-menu-item">
+                <person-avatar start-value="@Model.AvatarSrc" no-avatar-src="@Model.NoAvatarSrc" customer-id="@Model.CustomerId" class="person-avatar">
+                    <img class="person-avatar-image" src="@Model.AvatarSrc" alt="" data-person-avatar-image />
+                </person-avatar>
+            </li>
+
+            @foreach (var rootItem in Model.MenuItems)
+            {
+                if (!rootItem.IsAccessibleToUser())
+                {
+                    continue;
+                }
+
+                <li class="side-menu-item  @(rootItem.Selected ? "active" : "")" data-submenu-parent>
+                    <a href="@(rootItem.IsEmptyUrl() ? "#" : Url.Action(rootItem.Action, rootItem.Controller, rootItem.RouteDictionary))" class="side-menu-link js-menu-link">
+                        <i class="fa @rootItem.Icon">
+                            @if (!string.IsNullOrEmpty(rootItem.StatisticsDataType) && rootItem.ActiveInSaas)
+                            {
+                                <span data-statistics-count data-type="@rootItem.StatisticsDataType" data-ng-bind-html="statisticsCount.getValue()"></span>
+                            }
+                        </i>
+                        <span class="nav-label">@T(rootItem.Name)</span>
+                    </a>
+                    @if (rootItem.MenuItems != null && rootItem.MenuItems.Count > 0)
+                    {
+                        <ul role="menu" class="@rootItem.Class side-menu-submenu dropdown-menu submenu vertical-menu" data-submenu>
+                            @foreach (var menuItem in rootItem.MenuItems.Where(x => x.Visible && x.ActiveInSaas))
+                            {
+                                if (!menuItem.IsAccessibleToUser())
+                                {
+                                    continue;
+                                }
+                                <li class="dropdown-submenu" data-submenu-parent>
+                                    @{
+                                        var hasChild = menuItem.MenuItems != null && menuItem.MenuItems.Any(x => x.Visible && x.ActiveInSaas);
+                                    }
+                                    <a class="dropdown-menu-link js-menu-link" href="@(menuItem.IsEmptyUrl() ? "#" : Url.Action(menuItem.Action, menuItem.Controller, menuItem.RouteDictionary))">
+                                        @T(menuItem.Name)
+                                        @if (hasChild)
+                                        {
+                                            <span class="fa fa-angle-right font-bold"></span>
+                                        }
+                                    </a>
+                                    @if (hasChild)
+                                    {
+                                        <ul role="menu" class="@menuItem.Class dropdown-menu dropdown-menu-submenu"  data-submenu>
+                                            @foreach (var subItem in menuItem.MenuItems.Where(x => x.Visible && x.ActiveInSaas))
+                                            {
+                                                if (!subItem.IsAccessibleToUser())
+                                                {
+                                                    continue;
+                                                }
+                                                <li class="dropdown-submenu dropdown-submenu-last-item" data-submenu-parent>
+                                                    @{
+                                                        var subItemHasChild = subItem.MenuItems != null && subItem.MenuItems.Any(x => x.Visible && x.ActiveInSaas);
+                                                    }
+                                                    <a href="@(subItem.IsEmptyUrl() ? " #" : Url.Action(subItem.Action, subItem.Controller, subItem.RouteDictionary))" class="js-menu-link">
+                                                        @T(subItem.Name)
+                                                        @if (subItemHasChild)
+                                                        {
+                                                            <span class="fa fa-angle-right font-bold"></span>
+                                                        }
+                                                    </a>
+                                                    @if (subItemHasChild)
+                                                    {
+                                                        <ul role="menu" class="side-menu-last-submenu dropdown-menu side-menu__submenu"  data-submenu>
+                                                            @foreach (var item in subItem.MenuItems.Where(x => x.Visible && x.ActiveInSaas))
+                                                            {
+                                                                <li class="dropdown-submenu">
+                                                                    <a href="@(item.IsEmptyUrl() ? "#" : Url.Action(item.Action, item.Controller, item.RouteDictionary))" class="js-menu-link">@T(item.Name)</a>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </li>
+                                             }
+                                        </ul>
+                                     }
+                                </li>
+                             }
+                        </ul>
+                     }
+                </li>
+            }
+
+            <li class="side-menu-item dropdown" data-submenu-parent @*ng-show="@Model.ShowAddMenu.ToLowerString()"*@>
+                <a href="" class="side-menu-link js-menu-link">
+                    <i class="fa fa-plus"></i> <span class="nav-label">Добавить</span>
+                </a>
+
+                <ul role="menu" class="dropdown-menu side-menu__submenu submenu" data-submenu>
+                    @if (Model.DisplayOrders)
+                    {
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-menu-link js-menu-link" href="@Url.Action("Add", "Orders")">
+                                Заказ
+                            </a>
+                        </li>
+
+                        <li class="divider">
+                        </li>
+                    }
+                    @if (Model.DisplayCrm)
+                    {
+                        <li class="dropdown-submenu">
+                            <ui-modal-trigger class="dropdown-menu-link js-menu-link" data-controller="'ModalAddLeadCtrl'" controller-as="ctrl" size="lg" backdrop="static" template-url="../areas/admin/content/src/_shared/modal/addLead/addLead.html">
+                                <a href="" class="dropdown-menu-link js-menu-link">
+                                    Лид
+                                </a>
+                            </ui-modal-trigger>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <ui-modal-trigger class="dropdown-menu-link js-menu-link" data-controller="'ModalAddTaskCtrl'" controller-as="ctrl" data-resolve="{redirectToTasks: true}" size="lg" backdrop="static" template-url="../areas/admin/content/src/_shared/modal/addTask/addTask.html">
+                                <a href="" class="dropdown-menu-link js-menu-link">
+                                    Задача
+                                </a>
+                            </ui-modal-trigger>
+                        </li>
+                        <li class="divider">
+                        </li>
+                    }
+                    @if (Model.DisplayCustomers)
+                    {
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-menu-link js-menu-link" href="@Url.Action("Add", "Customers")">
+                                Покупатель
+                            </a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                    }
+
+                    @if (Model.DisplayCatalog)
+                    {
+                        <li class="dropdown-submenu">
+                            <ui-modal-trigger class="dropdown-menu-link js-menu-link" data-controller="'ModalAddProductCtrl'" data-controller-as="ctrl" template-url="../areas/admin/content/src/_shared/modal/addProduct/addProduct.html">
+                                <a href="" class="dropdown-menu-link js-menu-link">
+                                    Товар
+                                </a>
+                            </ui-modal-trigger>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-menu-link js-menu-link" href="@Url.Action("Add", "Category", new { parentId = 0 })">
+                                Категория
+                            </a>
+                        </li>
+
+                        <li class="divider">
+                        </li>
+                        <li class="dropdown-submenu">
+                            <ui-modal-trigger class="dropdown-menu-link js-menu-link" data-controller="'ModalAddProductListCtrl'" template-url="../areas/admin/content/src/_shared/modal/addProductList/addProductList.html" size="xs-5">
+                                <a href="" class="dropdown-menu-link js-menu-link">
+                                    Товары списком
+                                </a>
+                            </ui-modal-trigger>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <ui-modal-trigger class="dropdown-menu-link js-menu-link" data-controller="'ModalAddCategoryListCtrl'" template-url="../areas/admin/content/src/_shared/modal/addCategoryList/addCategoryList.html" size="xs-5">
+                                <a href="" class="dropdown-menu-link js-menu-link">
+                                    Категории списком
+                                </a>
+                            </ui-modal-trigger>
+                        </li>
+                    }
+                    @if (Model.DisplayCms)
+                    {
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-menu-link js-menu-link" href="@Url.Action("Add", "News")">
+                                Новость
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
