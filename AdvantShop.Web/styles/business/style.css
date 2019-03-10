@@ -2793,7 +2793,9 @@ address {
     /* Microsoft Edge */
     color: #c4e17f;
 }
-
+img.lazy {
+    display: none;
+}
 .gold *::placeholder {
     /* modern browser */
     color: #c4e17f;

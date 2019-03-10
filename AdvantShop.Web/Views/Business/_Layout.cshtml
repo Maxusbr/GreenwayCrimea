@@ -33,7 +33,12 @@
 	<script src="/scripts/business/custom.min.js"></script>
 	<script>
 		$(function () {
-			$("iframe[data-src]").Lazy({
+			$("iframe[data-src]").lazy({
+				afterLoad: function (element) {
+					element.fadeIn(600);
+				}
+			});
+			$('.lazy').lazy({
 				afterLoad: function (element) {
 					element.fadeIn(600);
 				}
