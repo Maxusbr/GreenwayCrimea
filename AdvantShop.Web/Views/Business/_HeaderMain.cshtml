@@ -1,20 +1,21 @@
 ﻿@model AdvantShop.ViewModel.Feedback.FeedbackViewModel
-<section id="go-home" class="pad-t-50">
+<section id="go-home" class="space">
 	<div class="container">
 		<div class="row">
 			<div class="introducing text-center col-sm-12">
-				<h1 class="text-center">Начать свой бизнес</h1>
-				<h3>Станьте партнером компании <strong>GREENWAY</strong></h3>
-				<h2>и зарабатывайте от 30.000 рублей уже в первый месяц</h2>
+				<h1>Начать свой бизнес</h1>
+				<h3>Успей стать партнером <span class="f-green"><strong>GREENWAY</strong></span></h3>
+				@*<h3>компании </h3>*@
+				<h2>и зарабатывай от 30.000 рублей уже в первый месяц!</h2>
 			</div>
 			<div class="col-md-12 wow fadeInUp featured-img featured-inner" data-wow-delay="0.4s">
 				<div class="row">
-					<div class="col-sm-offset-1 col-sm-8">
+					@*<div class="col-sm-offset-1 col-sm-8">
 						<div class="video-container">
 							<iframe data-loader="youtube" data-src="sjZCUGx-cwI" style="display: none;" frameborder="0"></iframe>
 						</div>
-					</div>
-					<div class="col-sm-3">
+					</div>*@
+					<div class="col-sm-offset-3 col-sm-6">
 						<div class="row">
 							@using (Html.BeginForm("Index", "Business", FormMethod.Post, new { name = "firstcontactform", novalidate = "novalidate" }))
 							{
@@ -23,8 +24,7 @@
 								<input type="hidden" id="firstIsLanding" name="IsLanding" value="true">
 								<div class="col-sm-12">
 									<div class="gold shadow3d">
-										<h3>Запрос</h3>
-										<h4>на сотрудничество</h4>
+										<h3>Заявка на сотрудничество</h3>
 										<fieldset>
 											@Html.TextBoxFor(m => m.Name, new { required = "true", data_ng_model = "feedback.name", placeholder = "Имя" })
 											@*<input name="Name" type="text" required="required" id="firstname" size="30" value="" placeholder="Имя">*@
@@ -37,9 +37,9 @@
 											@Html.TextBoxFor(m => m.Phone, new { required = "true", data_ng_model = "feedback.phone", type = "tel", placeholder = "Телефон" })
 											@*<input name="Phone" type="text" required="required" id="firstphone" size="30" value="" placeholder="Телефон">*@
 											<br>
-											<button type="submit" data-button-validation value="Submit">Отправить</button>
 										</fieldset>
 									</div>
+									<button type="submit" class="redbtn shadow3d" data-button-validation value="Submit">Стать официальным партнером</button>
 								</div>
 							}
 						</div>
