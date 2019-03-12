@@ -146,8 +146,14 @@ namespace AdvantShop.Module.Callback
                     Key = "mobile_body_end",
                     ActionName = "GetCallback",
                     ControllerName = "Callback"
-                }
-            };
+                },
+	            new ModuleRoute()
+	            {
+		            Key = "body_end_lp",
+		            ActionName = "GetCallback",
+		            ControllerName = "Callback"
+	            }
+			};
         }
     }
 }

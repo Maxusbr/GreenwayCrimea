@@ -16,6 +16,9 @@
 	<script type="text/javascript" src="/vendors/jquery/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="/scripts/business/jquery.lazy.min.js"></script>
 	<script type="text/javascript" src="/scripts/business/jquery.lazy.youtube.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/common/validation.css">
+	<link rel="stylesheet" type="text/css" href="/scripts/_common/modal/styles/modal.css">
+
 	@*	<script type="text/javascript" src="/vendors/angular/angular.js"></script>*@
 	<style>
 		.ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
@@ -66,7 +69,10 @@
 					</div>
 					<div class="col-md-4"></div>
 					<div class="col-md-3 site-head-phone-col">
-						<div class="cs-t-1 site-head-phone">@Html.GetCityPhone()</div>
+						<div class="cs-t-1 site-head-phone">
+							@Html.GetCityPhone()
+							@Html.StaticBlock("callback", "f-white")
+						</div>
 					</div>
 				</div>
 			</div>
@@ -75,11 +81,12 @@
 			@RenderBody()
 		</main>
 	</div>
+	@Html.RenderModules("body_end_lp")
 
 	@Html.Action("CookiesPolicy", "Common")
 
 	<link rel="stylesheet" type="text/css" href="/scripts/_partials/cookies-policy/styles/cookies-policy.css">
 	@Html.Partial("_FooterMinScripts")
-	
+
 </body>
 </html>

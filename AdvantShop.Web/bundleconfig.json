@@ -46,5 +46,11 @@
     "inputFiles": [
       "scripts/business/custom.js"
     ]
+  },
+  {
+    "outputFileName": "vendors/angular/angular-route.min.js",
+    "inputFiles": [
+      "vendors/angular/angular-route.js"
+    ]
   }
 ]

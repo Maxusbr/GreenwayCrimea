@@ -32,11 +32,15 @@ h6 {
     color: #fff;
     font-size: 24px;
     font-weight: normal;
+    margin: 25px auto;
 }
 
-.site-head-logo, .site-head-menu-col, .site-head-phone-col {
-    margin-top: 25px;
-    margin-bottom: 25px;
+.site-head-logo/*, .site-head-menu-col, .site-head-phone-col*/ {
+    margin: 25px auto;
+}
+
+.site-head-phone .static-block {
+    padding-top: 10px;
 }
 
 img:not([width]), img:not([height]) {
@@ -85,9 +89,11 @@ p {
     /*padding-top: 20vh;*/
     padding: 70px 0
 }
+
     .space p {
         margin-bottom: 0.75em;
     }
+
 .space-sm {
     padding: 55px 0;
 }
@@ -157,9 +163,13 @@ hr {
 }
 /** Font colors **/
 
-.f-white {
+.f-white, .f-white a {
     color: #fff
 }
+
+    .f-white a:hover {
+        /*text-decoration: none;*/
+    }
 
 .f-green {
     color: #82b440;
@@ -280,9 +290,23 @@ hr {
     background: none;
 }
 
-.btn-radius {
+.btn-radius, .btn-middle {
     border-radius: 22px;
 }
+
+.btn-middle {
+    color: #464f5d;
+    background-color: #fff;
+    border: #f8f8f8 2px solid;
+}
+
+    .btn-middle:hover,
+    .btn-middle:focus,
+    .btn-middle:active,
+    .btn-middle.active {
+        border-color: #82b440;
+        /*background-color: transparent;*/
+    }
 
 .btn-default {
     color: #464f5d;
@@ -1080,6 +1104,7 @@ media_tag_5 {
 #steps .icon-item:hover {
     cursor: pointer;
 }
+
 @media screen and (max-width: 480px) {
     .icon-item {
         margin-top: 25px;
@@ -1217,6 +1242,7 @@ media_tag_5 {
     .silver.right {
         /*border-left: 1px solid #969696;*/
     }
+
 #backimage {
     background-attachment: fixed;
     background-image: url(/userfiles/zelen.jpg);
@@ -1247,6 +1273,7 @@ media_tag_5 {
     border-radius: 15px;
     border: 5px solid #82b440;
 }
+
     .gold:after,
     .gold:before {
         top: 100%;
@@ -1274,6 +1301,7 @@ media_tag_5 {
         margin-left: -33px;
         margin-top: 3px;
     }
+
     .gold > .price {
         background: #2A2930;
         color: #fff;
@@ -1288,18 +1316,18 @@ media_tag_5 {
         /*color: white*/
     }
 
-.redbtn, .gold button {
-    display: block;
-    margin: 40px auto 0 auto;
-    /* width: 150px; */
-    padding: 15px 25px;
-    /* height: 53px; */
-    background: #db4410;
-    border: 1px solid white;
-    border-radius: 20px;
-    color: white;
-    font-weight: 300;
-    transition: all ease-in-out .2s;
+    .redbtn, .gold button {
+        display: block;
+        margin: 40px auto 0 auto;
+        /* width: 150px; */
+        padding: 15px 25px;
+        /* height: 53px; */
+        background: #db4410;
+        border: 1px solid white;
+        border-radius: 20px;
+        color: white;
+        font-weight: 300;
+        transition: all ease-in-out .2s;
     }
 
         .gold button:hover {
@@ -2823,14 +2851,33 @@ address {
     /* Microsoft Edge */
     color: #747474;
 }
+
 .gold *::placeholder {
     /* modern browser */
     color: #747474;
 }
+
 .gold input[placeholder], .gold [placeholder], .gold *[placeholder] {
     color: #747474;
 }
+
 img.lazy {
     display: none;
 }
 
+.adv-modal.adv-modal-active .modal-header {
+    background-color: #82b440;
+    color: white;
+    padding: 20px;
+}
+
+.adv-modal.adv-modal-active .modal-content {
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.modal-content label {
+    font-weight: 400;
+    padding: 5px 20px;
+}

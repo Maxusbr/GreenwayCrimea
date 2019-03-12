@@ -1058,7 +1058,6 @@
     <Content Include="Areas\Mobile\pictures\cat2.png" />
     <Content Include="Areas\Mobile\pictures\cat3.png" />
     <Content Include="Areas\Mobile\robots.txt" />
-    <Content Include="Areas\Mobile\scripts\appmin.js" />
     <Content Include="Areas\Mobile\scripts\app.js" />
     <Content Include="Areas\Mobile\scripts\home\controllers\homeController.js" />
     <Content Include="Areas\Mobile\scripts\home\home.js" />
@@ -4416,6 +4415,10 @@
     <Content Include="vendors\angular-color-picker\themes\angularjs-color-picker-bootstrap.css" />
     <Content Include="vendors\angular-color-picker\themes\angularjs-color-picker-bootstrap.min.css" />
     <Content Include="vendors\angular-ladda\angular-ladda.min.js" />
+    <Content Include="vendors\angular\angular-route.js" />
+    <Content Include="vendors\angular\angular-route.min.js">
+      <DependentUpon>angular-route.js</DependentUpon>
+    </Content>
     <Content Include="vendors\angular\angular.min.js">
       <DependentUpon>angular.js</DependentUpon>
     </Content>
@@ -6731,7 +6734,7 @@
     <Content Include="Views\Common\Inplace.cshtml" />
     <Content Include="Views\Business\Index.cshtml" />
     <Content Include="Views\Business\_FooterMinScripts.cshtml" />
-    <Content Include="Views\Business\_Footer.cshtml" />
+    <Content Include="Views\Business\_FooterMain.cshtml" />
     <Content Include="Views\Business\_Comments.cshtml" />
     <Content Include="Views\Business\_Products.cshtml" />
     <Content Include="Views\Business\_Bonuses.cshtml" />
