@@ -1,22 +1,43 @@
 .products-specials-best-h,
 .products-specials-new-h,
 .products-specials-discount-h {
-  display: inline-block;
-  font-size: 20px;
-  padding-bottom: 9px;
-  border-bottom: 2px solid #00a3cc;
-  margin-bottom: 0;
-  font-weight: normal;
-  position: relative; }
+    display: inline-block;
+    font-size: 20px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #86bf5b;
+    margin-bottom: 0;
+    font-weight: normal;
+    position: relative;
+}
+
+.products-specials-best-h a,
+.products-specials-new-h a,
+.products-specials-discount-h a {
+    text-decoration: none;
+}
 
 .buy-in-time-block {
-  margin-top: 16px; }
+    margin-top: 16px;
+}
 
 .products-specials-more {
-  display: inline-block; }
+    display: inline-block;
+    font-size: 1rem;}
+
+.products-specials-more:after {
+    font-size: 0.7625rem;
+    margin-left: 7px;}
 
 .products-specials-header {
   text-align: center; }
+
+.products-specials-footer {
+    background-color: #86bf5b;
+    color: white;}
+
+.products-specials-footer a {
+    color: white;
+    padding: 10px;}
 
 .buy-in-time-block .buy-in-time-inner {
   padding: 0;
@@ -31,9 +52,10 @@
   font-size: 20px; }
 
 .buy-in-time-content {
-  padding: 20px;
-  box-shadow: 0px 0px 0px 2px #00a3cc;
-  border-color: transparent; }
+    padding: 20px;
+    box-shadow: 0px 0px 0px 2px #86bf5b;
+    border-color: transparent;
+}
 
 .products-specials-container .buy-in-time-block-vertical {
   -ms-flex-preferred-size: 33.33333%;

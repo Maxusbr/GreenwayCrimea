@@ -8,11 +8,16 @@
             <div class="col-xs">
                 <article class="products-specials-block products-specials-best cs-br-1">
                     <header class="products-specials-header">
-                        <div class="h2 h-inline products-specials-best-h">@T("Home.MainPageProducts.BestSellersTitle")</div><a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "best"})" class="products-specials-more">@T("Home.MainPageProducts.BestSellersAllLink")</a>
+	                    <div class="h2 h-inline products-specials-best-h">
+							<a href="@Url.AbsoluteRouteUrl("ProductList", new {type = "best"})">@T("Home.MainPageProducts.BestSellersTitle")</a>
+	                    </div>
                     </header>
-                    <div class="row products-view products-view-tile row">
-                        @Html.Partial("_ProductView", Model.BestSellers)
-                    </div>
+	                <div class="row products-view products-view-tile row">
+		                @Html.Partial("_ProductView", Model.BestSellers)
+	                </div>
+	                <footer class="products-specials-footer">
+		                <a href="@Url.AbsoluteRouteUrl("ProductList", new {type = "best"})" class="products-specials-more icon-right-open-after">@T("Home.MainPageProducts.BestSellersAllLink")</a>
+	                </footer>
                 </article>
             </div>
 
@@ -24,34 +29,48 @@
     {
         <article class="products-specials-block products-specials-new cs-br-1">
             <header class="products-specials-header">
-                <div class="h2 h-inline products-specials-new-h">@T("Home.MainPageProducts.NewProductsTitle")</div><a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "new"})" class="products-specials-more">@T("Home.MainPageProducts.NewProductsAllLink")</a>
+	            <div class="h2 h-inline products-specials-new-h">
+		            <a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "new"})">@T("Home.MainPageProducts.NewProductsTitle")</a>
+	            </div>
             </header>
-            <div class="row products-view products-view-tile">
-                @Html.Partial("_ProductView", Model.NewProducts)
-            </div>
+	        <div class="row products-view products-view-tile">
+		        @Html.Partial("_ProductView", Model.NewProducts)
+	        </div>
+	        <footer class="products-specials-footer">
+		        <a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "new"})" class="products-specials-more icon-right-open-after">@T("Home.MainPageProducts.NewProductsAllLink")</a>
+	        </footer>
         </article>
     }
     @if (Model.Sales.Products.Count > 0)
     {
         <article class="products-specials-block products-specials-discount cs-br-1">
             <header class="products-specials-header">
-                <div class="h2 h-inline products-specials-discount-h">@T("Home.MainPageProducts.SalesTitle")</div><a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "sale"})" class="products-specials-more">@T("Home.MainPageProducts.SalesAllLink")</a>
+	            <div class="h2 h-inline products-specials-discount-h">
+		            <a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "sale"})">@T("Home.MainPageProducts.SalesTitle")</a>
+	            </div>
             </header>
-            <div class="row products-view products-view-tile">
-                @Html.Partial("_ProductView", Model.Sales)
-            </div>
+	        <div class="row products-view products-view-tile">
+		        @Html.Partial("_ProductView", Model.Sales)
+	        </div>
+	        <footer class="products-specials-footer">
+				<a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "sale"})" class="products-specials-more icon-right-open-after">@T("Home.MainPageProducts.SalesAllLink")</a>
+	        </footer>
         </article>
     }
     @foreach (var productList in Model.ProductLists)
     {
         <article class="products-specials-block products-specials-discount cs-br-1">
             <header class="products-specials-header">
-                <div class="h2 h-inline">@Html.Raw(productList.Title)</div>
-                <a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "list", list = productList.Id })" class="products-specials-more">@T("Home.MainPageProducts.AllProducts")</a>
+	            <div class="h2 h-inline products-specials-discount-h">
+		            <a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "list", list = productList.Id })">@Html.Raw(productList.Title)</a>
+	            </div>
             </header>
-            <div class="products-view products-view-tile row">
-                @Html.Partial("_ProductView", productList)
-            </div>
+	        <div class="products-view products-view-tile row">
+		        @Html.Partial("_ProductView", productList)
+	        </div>
+	        <footer class="products-specials-footer">
+				<a href="@Url.AbsoluteRouteUrl("ProductList", new { type = "list", list = productList.Id })" class="products-specials-more icon-right-open-after">@T("Home.MainPageProducts.AllProducts")</a>
+	        </footer>
         </article>
     }
 </div>
