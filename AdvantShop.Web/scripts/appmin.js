@@ -6,6 +6,7 @@
 	window.addEventListener('unload', function () { });
 
 	ng.module('app', [
+		'ngSanitize',
 		'ngCookies',
 		'angular-cache',
 		'oc.lazyLoad',
@@ -18,7 +19,10 @@
 		'urlHelper',
 		'address',
 		'input',
-
+		'modal',
+		'module',
+		'toaster',
+		'pascalprecht.translate',
 	])
 		.config(['$provide', '$compileProvider', '$cookiesProvider', '$httpProvider', '$localeProvider', '$locationProvider', function ($provide, $compileProvider, $cookiesProvider, $httpProvider, $localeProvider, $locationProvider) {
 

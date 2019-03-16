@@ -1276,10 +1276,6 @@
     <Content Include="fonts\fontawesome-webfont\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont\FontAwesome.otf" />
-    <Content Include="fonts\glyphicons-halflings-regular\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular\glyphicons-halflings-regular.woff2" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1463,7 +1459,6 @@
     <Content Include="design\themes\womanDay\styles\styles.min.css" />
     <Content Include="design\themes\_none\styles\styles.css" />
     <Content Include="fonts\fontawesome-webfont\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular\glyphicons-halflings-regular.svg" />
     <Content Include="gulpfile.js" />
     <Content Include="images\advlogo.png" />
     <Content Include="images\business\1.svg" />
@@ -4311,6 +4306,7 @@
     <Content Include="styles\busines2.css" />
     <Content Include="styles\business\animate.css" />
     <Content Include="styles\business\bootstrap.css" />
+    <Content Include="styles\business\bootstrap.min.css" />
     <Content Include="styles\business\font-awesome.css" />
     <Content Include="styles\business\fontawesome.css" />
     <Content Include="styles\business\fontawesome.min.css" />
@@ -4321,6 +4317,7 @@
     <Content Include="styles\business\owl.theme.css" />
     <Content Include="styles\business\player.css" />
     <Content Include="styles\business\style.css" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Templates\Basic\design\backgrounds\asphalt\images\asphalt.jpg" />
     <Content Include="Templates\Basic\design\backgrounds\asphalt\styles\styles.css" />
     <Content Include="Templates\Basic\design\backgrounds\_none\styles\styles.css" />
@@ -4415,10 +4412,6 @@
     <Content Include="vendors\angular-color-picker\themes\angularjs-color-picker-bootstrap.css" />
     <Content Include="vendors\angular-color-picker\themes\angularjs-color-picker-bootstrap.min.css" />
     <Content Include="vendors\angular-ladda\angular-ladda.min.js" />
-    <Content Include="vendors\angular\angular-route.js" />
-    <Content Include="vendors\angular\angular-route.min.js">
-      <DependentUpon>angular-route.js</DependentUpon>
-    </Content>
     <Content Include="vendors\angular\angular.min.js">
       <DependentUpon>angular.js</DependentUpon>
     </Content>
@@ -6007,6 +6000,10 @@
     <Content Include="Templates\Diamond\Views\_ViewStart.cshtml" />
     <Content Include="Templates\Diamond\design\colors\green\color.config" />
     <Content Include="Templates\Diamond\design\colors\green\styles\styles.scss" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="vendors\ckeditor\plugins\fileman\index.html.bak" />
     <Content Include="vendors\ckeditor\plugins\fileman\js\custom.js" />
     <Content Include="vendors\ckeditor\plugins\fileman\js\directory.js" />

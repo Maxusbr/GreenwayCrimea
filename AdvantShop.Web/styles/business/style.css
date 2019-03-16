@@ -35,7 +35,7 @@ h6 {
     margin: 25px auto;
 }
 
-.site-head-logo/*, .site-head-menu-col, .site-head-phone-col*/ {
+.site-head-logo /*, .site-head-menu-col, .site-head-phone-col*/ {
     margin: 25px auto;
 }
 
@@ -210,11 +210,15 @@ hr {
         text-decoration: none;
     }
 
-        .bg-dark a:hover,
-        .bg-dark a:focus,
-        .bg-dark a.active {
-            color: #82b440;
-        }
+    .bg-dark p {
+        color: #8d8d8d;
+    }
+
+    .bg-dark a:hover,
+    .bg-dark a:focus,
+    .bg-dark a.active {
+        color: #82b440;
+    }
 
 .bg-light {
     background: #f8f8f8
@@ -1016,7 +1020,6 @@ media_tag_5 {
     }
 
     .tabbed-info .tab-content .tab-pane ul p {
-        color: #6d737f;
         line-height: 24px;
         font-weight: 300;
     }
@@ -1606,6 +1609,12 @@ ul.clients {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width: 992px) {
+    .aligner {
+        display: block;
+    }
 }
 
 .aligner-item {
