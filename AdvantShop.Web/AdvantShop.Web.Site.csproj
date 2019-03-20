@@ -6743,6 +6743,7 @@
     <Content Include="Views\Business\_FooterScripts.cshtml" />
     <Content Include="Views\Home\Logo.cshtml" />
     <Content Include="Views\Business\_AdBonus.cshtml" />
+    <Content Include="Views\Business\_ProductVideo.cshtml" />
     <None Include="Web.ConnectionString.config">
       <SubType>Designer</SubType>
     </None>
