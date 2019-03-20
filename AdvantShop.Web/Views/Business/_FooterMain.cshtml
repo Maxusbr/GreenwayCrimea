@@ -14,6 +14,7 @@
 			<div class="row">
 				@using (Html.BeginForm("Index", "Business", FormMethod.Post, new { name = "contactform", id = "contactform", novalidate = "novalidate" }))
 				{
+					@Html.AntiForgeryToken()
 					<input type="hidden" id="IsLanding" name="IsLanding" value="true">
 					<input type="hidden" id="MessageType" name="MessageType" value="Offer">
 					<div class="col-sm-6">
