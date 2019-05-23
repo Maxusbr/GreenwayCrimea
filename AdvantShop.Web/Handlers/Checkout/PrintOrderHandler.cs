@@ -44,6 +44,10 @@ namespace AdvantShop.Handlers.Checkout
                                     : _order.OrderItems.Sum(item => item.Amount * item.Price);
             var productsIgnoreDiscountPrice = _order.OrderItems.Where(item => item.IgnoreOrderDiscount).Sum(item => item.Price * item.Amount);
 
+	        foreach (var item in _order.OrderItems)
+	        {
+		        item.Weight = item.Weight > 0 ? item.Weight : ProductService.GetProduct(item.ProductID ?? 0)?.Weight ?? 0;
+	        }
             model.ProductsPrice = productPrice.FormatPrice(currency);
 
             if (_order.OrderDiscount != 0 || _order.OrderDiscountValue != 0)

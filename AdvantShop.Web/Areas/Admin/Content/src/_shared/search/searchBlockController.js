@@ -8,11 +8,11 @@
         var ctrl = this;
 
         ctrl.shouldSelect = function () {
-            return false;
+            return true;
         }
 
         ctrl.find = function (val) {
-            return $http.get('search/autocomplete', { params: { q: val, rnd: Math.random() } }).then(function (response) {
+            return $http.get('search/autocomplete', { params: { q: val } }).then(function (response) {
                 return response.data;
             });
         };

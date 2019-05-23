@@ -4,11 +4,12 @@
     var OrderItemsSummaryCtrl = function ($http, $timeout, toaster, SweetAlert) {
         var ctrl = this, popoverShippingTimer, popoverPaymentTimer;
 
+		ctrl.OrderDiscountNew = 0;
+
         ctrl.$onInit = function () {
 
-            ctrl.grastinActionsUrl = 'grastin/getorderactions?orderid=' + ctrl.orderId;
-
-            ctrl.toggleselectCurrencyLabel('1');
+			ctrl.grastinActionsUrl = 'grastin/getorderactions?orderid=' + ctrl.orderId;
+            ctrl.toggleselectCurrencyLabel('0');
 
             ctrl.getOrderItemsSummary();
 
@@ -212,7 +213,8 @@
             ctrl.discountPopoverIsOpen = false;
         };
 
-        ctrl.discountPopoverToggle = function () {
+		ctrl.discountPopoverToggle = function () {
+			ctrl.OrderDiscountNew = ctrl.Summary.OrderDiscountValue;
             ctrl.discountPopoverIsOpen === true ? ctrl.discountPopoverClose() : ctrl.discountPopoverOpen();
         }
 

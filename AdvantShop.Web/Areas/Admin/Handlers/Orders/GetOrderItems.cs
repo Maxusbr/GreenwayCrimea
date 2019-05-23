@@ -56,7 +56,9 @@ namespace AdvantShop.Web.Admin.Handlers.Orders
                     Cost = (item.Price*item.Amount).FormatPrice(currency),
                     Width = item.Width,
                     Height = item.Height,
-                    Length = item.Length
+                    Length = item.Length,
+
+					Weight = item.Weight > 0 ? item.Weight: p?.Weight ?? 0
                 };
 
                 var offer = OfferService.GetOffer(item.ArtNo);

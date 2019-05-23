@@ -186,189 +186,206 @@
                             </div>
 
                             <div class="product-setting">
-                                <div id="price">
-                                    <div class="container-fluid">
-                                        <div class="row middle-xs">
-                                            <div class="col-xs-12">
-                                                <h2 class="inline product-setting-title content-header">Цена и наличие</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <div class="form-group middle-xs row">
-                                            <div class="col-xs-2">
-                                                <div class="setting-label-wrap">
-                                                    <label for="currency">Валюта</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-3 col-wl-2 relative">
-                                                @Html.DropDownListFor(x => x.CurrencyId, Model.Currencies, new { @class = "form-control", ng_model = "product.CurrencyId", ng_init = "product.CurrencyId='" + Model.CurrencyId + "'" })
-                                                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Валюта">
-                                                    <p>Для конкретного товара, вы можете выбрать, в какой валюте храниться его цена.</p>
-                                                    <p>Подробнее о валютах в магазине:</p>
-                                                    <p><a href="http://www.advantshop.net/help/pages/currency" target="_blank">Инструкция. Настройка параметров валюты в магазине</a></p>
-                                                </help-trigger>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <div class="form-group middle-xs row">
-                                            <div class="col-xs-2">
-                                                <div class="setting-label-wrap">
-                                                    <label for="discounts">Скидки</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-3 col-wl-2 relative">
-                                                <div class="input-group" ng-init="product.discountType=@((int) Model.DiscountType)">
-                                                    @Html.TextBoxFor(x => x.DiscountPercent, new { @class = "form-control ng-hide", ng_model = "product.DiscountPercent", ng_show = "product.discountType === 0" })
-                                                    @Html.TextBoxFor(x => x.DiscountAmount, new { @class = "form-control ng-hide", ng_model = "product.DiscountAmount", ng_show = "product.discountType === 1" })
-                                                    <div class="input-group-btn">
-                                                        <span class="btn btn-default" ng-click="product.setDiscountType(0)" ng-class="{'product-currency-active':product.discountType === 0}" data-e2e="DiscountPercent"><span>%</span></span>
-                                                        <span class="btn btn-default" ng-click="product.setDiscountType(1)" ng-class="{'product-currency-active':product.discountType === 1}" data-e2e="DiscountAmount"><span>@Model.Currency.Symbol</span></span>
-                                                    </div>
-                                                </div>
-                                                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Валюта">
-                                                    <p>Скидка на цену товара, указывается только на этот товар, на всё вариации.</p>
-                                                    <p>Скидка указывается в процентах или валюте магазина.</p>
-                                                </help-trigger>
-                                            </div>
-                                            <div class="col-xs-6 relative m-l">
-                                                <div class="label-wrap">
-                                                    <label class="adv-checkbox-label category-label">
-                                                        @Html.CheckBoxFor(x => x.AllowPreOrder, new { @class = "adv-checkbox-input absolute", ng_model = "product.AllowPreOrder", ng_init = "product.AllowPreOrder=" + Model.AllowPreOrder.ToLowerString() })
-                                                        <span class="adv-checkbox-emul" data-e2e="AllowPreOrderClick"></span>
-                                                        <span class="italic">Под заказ если нет в наличии</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+								<div id="price">
+									<div class="container-fluid">
+										<div class="row middle-xs">
+											<div class="col-xs-12">
+												<h2 class="inline product-setting-title content-header">Цена и наличие</h2>
+											</div>
+										</div>
+									</div>
+									<div class="container-fluid">
+										<div class="form-group middle-xs row">
+											<div class="col-xs-2">
+												<div class="setting-label-wrap">
+													<label for="currency">Валюта</label>
+												</div>
+											</div>
+											<div class="col-xs-3 col-wl-2 relative">
+												@Html.DropDownListFor(x => x.CurrencyId, Model.Currencies, new { @class = "form-control", ng_model = "product.CurrencyId", ng_init = "product.CurrencyId='" + Model.CurrencyId + "'" })
+												<help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Валюта">
+													<p>Для конкретного товара, вы можете выбрать, в какой валюте храниться его цена.</p>
+													<p>Подробнее о валютах в магазине:</p>
+													<p><a href="http://www.advantshop.net/help/pages/currency" target="_blank">Инструкция. Настройка параметров валюты в магазине</a></p>
+												</help-trigger>
+											</div>
+										</div>
+									</div>
+									<div class="container-fluid">
+										<div class="form-group middle-xs row">
+											<div class="col-xs-2">
+												<div class="setting-label-wrap">
+													<label for="discounts">Скидки</label>
+												</div>
+											</div>
+											<div class="col-xs-3 col-wl-2 relative">
+												<div class="input-group" ng-init="product.discountType=@((int) Model.DiscountType)">
+													@Html.TextBoxFor(x => x.DiscountPercent, new { @class = "form-control ng-hide", ng_model = "product.DiscountPercent", ng_show = "product.discountType === 0" })
+													@Html.TextBoxFor(x => x.DiscountAmount, new { @class = "form-control ng-hide", ng_model = "product.DiscountAmount", ng_show = "product.discountType === 1" })
+													<div class="input-group-btn">
+														<span class="btn btn-default" ng-click="product.setDiscountType(0)" ng-class="{'product-currency-active':product.discountType === 0}" data-e2e="DiscountPercent"><span>%</span></span>
+														<span class="btn btn-default" ng-click="product.setDiscountType(1)" ng-class="{'product-currency-active':product.discountType === 1}" data-e2e="DiscountAmount"><span>@Model.Currency.Symbol</span></span>
+													</div>
+												</div>
+												<help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Валюта">
+													<p>Скидка на цену товара, указывается только на этот товар, на всё вариации.</p>
+													<p>Скидка указывается в процентах или валюте магазина.</p>
+												</help-trigger>
+											</div>
+											<div class="col-xs-6 relative m-l">
+												<div class="label-wrap">
+													<label class="adv-checkbox-label category-label">
+														@Html.CheckBoxFor(x => x.AllowPreOrder, new { @class = "adv-checkbox-input absolute", ng_model = "product.AllowPreOrder", ng_init = "product.AllowPreOrder=" + Model.AllowPreOrder.ToLowerString() })
+														<span class="adv-checkbox-emul" data-e2e="AllowPreOrderClick"></span>
+														<span class="italic">Под заказ если нет в наличии</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
 
-                                    @if (BonusSystem.IsActive)
-                                    {
-                                        <div class="container-fluid">
-                                            <div class="form-group middle-xs row">
-                                                <div class="col-xs-2">
-                                                    <div class="setting-label-wrap">
-                                                        <label for="AccrueBonuses">Начислять баллы за товар</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 relative">
-                                                    <label class="adv-checkbox-label form-label-block" data-e2e="ChargeBonuses">
-                                                        @Html.CheckBoxFor(x => x.AccrueBonuses, new { @class = "adv-checkbox-input", ng_model = "product.AccrueBonuses" })
-                                                        <span class="adv-checkbox-emul"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
+									@if (BonusSystem.IsActive)
+									{
+										<div class="container-fluid">
+											<div class="form-group middle-xs row">
+												<div class="col-xs-2">
+													<div class="setting-label-wrap">
+														<label for="AccrueBonuses">Начислять баллы за товар</label>
+													</div>
+												</div>
+												<div class="col-xs-6 relative">
+													<label class="adv-checkbox-label form-label-block" data-e2e="ChargeBonuses">
+														@Html.CheckBoxFor(x => x.AccrueBonuses, new { @class = "adv-checkbox-input", ng_model = "product.AccrueBonuses" })
+														<span class="adv-checkbox-emul"></span>
+													</label>
+												</div>
+											</div>
+										</div>
+									}
 
-                                    <div class="container-fluid" in-view="$inview ? product.offersShow() : null" in-view-options="{throttle : @inViewThrottle}">
-                                        <div class="form-group row"  ng-if="product.gridOffersShowed">
-                                            <div class="col-xs-12 col-wl-12">
-                                                <div ng-if="product.offersValidation != null" ng-bind="product.offersValidation" class="m-b error-color"></div>
-                                                <ui-grid-custom grid-unique-id="gridOffers"
-                                                                grid-on-init="product.gridOffersOnInit(grid)"
-                                                                grid-filter-enabled="false"
-                                                                grid-pagination-enabled="false"
-                                                                grid-selection-enabled="false"
-                                                                grid-params="{ProductId: product.productId}"
-                                                                grid-options="product.gridOffersOptions"
-                                                                grid-url="'product/getOffers'"
-                                                                grid-inplace-url="'product/updateOffer'"
-                                                                grid-empty-text="'У товара нет цен'"
-                                                                grid-on-inplace-apply="product.gridOffersUpdate()"
-                                                                grid-extend-ctrl="product">
-                                                </ui-grid-custom>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid m-b-sm">
-                                        <div class="form-group row">
-                                            <div class="col-xs-12">
-                                                <ui-modal-trigger data-controller="'ModalAddEditOfferCtrl'" controller-as="ctrl" template-url="../areas/admin/content/src/product/modal/addEditOffer/addEditOffer.html"
-                                                                  data-resolve="{'ProductId': product.productId}"
-                                                                  data-on-close="product.gridOffersUpdate()">
-                                                    <a href="" class="btn btn-sm btn-action">Добавить цену</a>
-                                                </ui-modal-trigger>
-                                                <span class="m-l-xs">Справочники <a href="@Url.Action("Index", "Colors")" target="_blank">цветов</a> и <a href="@Url.Action("Index", "Sizes")" target="_blank">размеров</a></span>
-                                            </div>
-                                        </div>
-                                    </div>
+									<div class="container-fluid" in-view="$inview ? product.offersShow() : null" in-view-options="{throttle : @inViewThrottle}">
+										<div class="form-group row" ng-if="product.gridOffersShowed">
+											<div class="col-xs-12 col-wl-12">
+												<div ng-if="product.offersValidation != null" ng-bind="product.offersValidation" class="m-b error-color"></div>
+												<ui-grid-custom grid-unique-id="gridOffers"
+																grid-on-init="product.gridOffersOnInit(grid)"
+																grid-filter-enabled="false"
+																grid-pagination-enabled="false"
+																grid-selection-enabled="false"
+																grid-params="{ProductId: product.productId}"
+																grid-options="product.gridOffersOptions"
+																grid-url="'product/getOffers'"
+																grid-inplace-url="'product/updateOffer'"
+																grid-empty-text="'У товара нет цен'"
+																grid-on-inplace-apply="product.gridOffersUpdate()"
+																grid-extend-ctrl="product">
+												</ui-grid-custom>
+											</div>
+										</div>
+									</div>
+									<div class="container-fluid m-b-sm">
+										<div class="form-group row">
+											<div class="col-xs-12">
+												<ui-modal-trigger data-controller="'ModalAddEditOfferCtrl'" controller-as="ctrl" template-url="../areas/admin/content/src/product/modal/addEditOffer/addEditOffer.html"
+																  data-resolve="{'ProductId': product.productId}"
+																  data-on-close="product.gridOffersUpdate()">
+													<a href="" class="btn btn-sm btn-action">Добавить цену</a>
+												</ui-modal-trigger>
+												<span class="m-l-xs">Справочники <a href="@Url.Action("Index", "Colors")" target="_blank">цветов</a> и <a href="@Url.Action("Index", "Sizes")" target="_blank">размеров</a></span>
+											</div>
+										</div>
+									</div>
 
-                                    <div class="container-fluid">
-                                        <div class="form-group middle-xs row">
-                                            <div class="col-xs-2">
-                                                <div class="setting-label-wrap">
-                                                    <label for="TaxId">Налог</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-3 col-wl-2 relative">
-                                                @Html.DropDownListFor(x => x.TaxId, Model.Taxes, new { @class = "form-control", ng_model = "product.TaxId", ng_init = "product.TaxId='" + Model.TaxId + "'" })
-                                                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Налог">
-                                                    <p>Вы можете указать налог для конкретного товара.</p>
-                                                </help-trigger>
-                                            </div>
-                                        </div>
-                                    </div>
+									<div class="container-fluid">
+										<div class="form-group middle-xs row relative">
+											<div class="col-xs-2">
+												<div class="setting-label-wrap">
+													<label for="Weight">Объем</label>
+												</div>
+											</div>
+											<div class="col-xs-1">
+												@Html.TextBoxFor(x => x.Weight, new { @class = "form-control", ng_model = "product.Weight", validation_input_float = "", validation_input_text = "Вес" })
+											</div>
+											<span>ед.</span>
+											<help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Объем">
+												<p>Вы можете указать объем товара в ед.</p>
+											</help-trigger>
+										</div>
+									</div>
 
-                                    <div class="container-fluid">
-                                        <div class="form-group middle-xs row">
-                                            <div class="col-xs-2">
-                                                <div class="setting-label-wrap">
-                                                    <label for="Unit">Единицы измерения</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-1 relative">
-                                                @Html.TextBoxFor(x => x.Unit, new { @class = "form-control", ng_model = "product.Unit" })
-                                                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Единицы измерения">
-                                                    <p>Единицы измерения товара.</p>
-                                                    <p>Например:<br> штуки (шт.), литры (л.), упаковка (упак.) и т.д.</p>
-                                                </help-trigger>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <div class="form-group row">
-                                            <div class="col-xs-2">
-                                                <div class="setting-label-wrap">
-                                                    <label for="MinAmount">Ограничения на минимальное и максимальное количество товара в заказе</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-1">
-                                                @Html.TextBoxFor(x => x.MinAmount, new { @class = "form-control", ng_model = "product.MinAmount", validation_input_float = "", validation_input_text = "Минимальное кол-во товара" })
-                                            </div>
-                                            <div class="dash">-</div>
-                                            <div class="col-xs-1 relative" style="line-height: 30px;height: 30px;">
-                                                @Html.TextBoxFor(x => x.MaxAmount, new { @class = "form-control", ng_model = "product.MaxAmount", validation_input_float = "", validation_input_text = "Максимальное кол-во товара" })
-                                                <span>
-                                                    <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Минимальное и максимальное количество">
-                                                        <p>Определяет минимальное и максимальное возможное количество товара в заказе.</p>
-                                                        <p>Например: 2-10. Означает, что купить можно минимум 2 штуки, но не более 10 за 1 заказ.</p>
-                                                        <p>Если ограничение не нужно, например, на верхнюю границу, оставьте поле пустым.</p>
-                                                    </help-trigger>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <div class="form-group middle-xs row">
-                                            <div class="col-xs-2">
-                                                <div class="setting-label-wrap">
-                                                    <label for="Multiplicity">Кратность количества</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-1 relative">
-                                                @Html.TextBoxFor(x => x.Multiplicity, new { @class = "form-control", ng_model = "product.Multiplicity", validation_input_float = "", validation_input_text = "Кратность количества" })
-                                                <help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Кратность количества">
-                                                    <p>Важная опция, если товар можно купить порциями, которые меньше единицы.</p>
-                                                    <p>Значение должно быть больше 0.</p>
-                                                    <p>Например: Метры, вы можете указать кратность, 0.2, если продаете, например ткань, кусочками по 20 см.</p>
-                                                </help-trigger>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+									<div class="container-fluid">
+										<div class="form-group middle-xs row">
+											<div class="col-xs-2">
+												<div class="setting-label-wrap">
+													<label for="TaxId">Налог</label>
+												</div>
+											</div>
+											<div class="col-xs-3 col-wl-2 relative">
+												@Html.DropDownListFor(x => x.TaxId, Model.Taxes, new { @class = "form-control", ng_model = "product.TaxId", ng_init = "product.TaxId='" + Model.TaxId + "'" })
+												<help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Налог">
+													<p>Вы можете указать налог для конкретного товара.</p>
+												</help-trigger>
+											</div>
+										</div>
+									</div>
+
+									<div class="container-fluid">
+										<div class="form-group middle-xs row">
+											<div class="col-xs-2">
+												<div class="setting-label-wrap">
+													<label for="Unit">Единицы измерения</label>
+												</div>
+											</div>
+											<div class="col-xs-1 relative">
+												@Html.TextBoxFor(x => x.Unit, new { @class = "form-control", ng_model = "product.Unit" })
+												<help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Единицы измерения">
+													<p>Единицы измерения товара.</p>
+													<p>Например:<br> штуки (шт.), литры (л.), упаковка (упак.) и т.д.</p>
+												</help-trigger>
+											</div>
+										</div>
+									</div>
+									<div class="container-fluid">
+										<div class="form-group row">
+											<div class="col-xs-2">
+												<div class="setting-label-wrap">
+													<label for="MinAmount">Ограничения на минимальное и максимальное количество товара в заказе</label>
+												</div>
+											</div>
+											<div class="col-xs-1">
+												@Html.TextBoxFor(x => x.MinAmount, new { @class = "form-control", ng_model = "product.MinAmount", validation_input_float = "", validation_input_text = "Минимальное кол-во товара" })
+											</div>
+											<div class="dash">-</div>
+											<div class="col-xs-1 relative" style="line-height: 30px;height: 30px;">
+												@Html.TextBoxFor(x => x.MaxAmount, new { @class = "form-control", ng_model = "product.MaxAmount", validation_input_float = "", validation_input_text = "Максимальное кол-во товара" })
+												<span>
+													<help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Минимальное и максимальное количество">
+														<p>Определяет минимальное и максимальное возможное количество товара в заказе.</p>
+														<p>Например: 2-10. Означает, что купить можно минимум 2 штуки, но не более 10 за 1 заказ.</p>
+														<p>Если ограничение не нужно, например, на верхнюю границу, оставьте поле пустым.</p>
+													</help-trigger>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="container-fluid">
+										<div class="form-group middle-xs row">
+											<div class="col-xs-2">
+												<div class="setting-label-wrap">
+													<label for="Multiplicity">Кратность количества</label>
+												</div>
+											</div>
+											<div class="col-xs-1 relative">
+												@Html.TextBoxFor(x => x.Multiplicity, new { @class = "form-control", ng_model = "product.Multiplicity", validation_input_float = "", validation_input_text = "Кратность количества" })
+												<help-trigger class="ng-cloak help-trigger-icon-abs" data-title="Кратность количества">
+													<p>Важная опция, если товар можно купить порциями, которые меньше единицы.</p>
+													<p>Значение должно быть больше 0.</p>
+													<p>Например: Метры, вы можете указать кратность, 0.2, если продаете, например ткань, кусочками по 20 см.</p>
+												</help-trigger>
+											</div>
+										</div>
+									</div>
+								</div>
                             </div>
 
                             <div class="product-setting">
@@ -380,7 +397,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="container-fluid">
+                                    @*<div class="container-fluid">
                                         <div class="form-group middle-xs row relative">
                                             <div class="col-xs-2">
                                                 <div class="setting-label-wrap">
@@ -402,7 +419,7 @@
                                                 </ul>
                                             </help-trigger>
                                         </div>
-                                    </div>
+                                    </div>*@
                                     <div class="container-fluid">
                                         <div class="form-group middle-xs row">
                                             <div class="col-xs-2">

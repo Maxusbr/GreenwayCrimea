@@ -306,8 +306,12 @@
 }
 
 .orders-table .p-price {
-    min-width: 100px;
+    min-width: 60px;
 }
 .orders-table .p-total-price, .orders-table .footer-value {
     min-width: 110px;
+}
+.orders-table .volume {
+    min-width: 60px;
+    text-align: center;
 }

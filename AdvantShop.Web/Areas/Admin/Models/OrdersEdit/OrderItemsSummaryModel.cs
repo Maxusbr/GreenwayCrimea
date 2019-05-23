@@ -22,6 +22,9 @@ namespace AdvantShop.Web.Admin.Models.OrdersEdit
         public float ProductsCost { get; set; }
         public string ProductsCostStr { get { return ProductsCost.FormatPrice(OrderCurrency); } }
 
+        public float ProductsWeight { get; set; }
+        public string ProductsWeightStr { get { return ProductsWeight.FormatPriceInvariant(); } }
+
         public float ProductsDiscountPrice { get; set; }
         public string ProductsDiscountPriceStr { get { return ProductsDiscountPrice.FormatPrice(OrderCurrency); } }
         public float OrderDiscount { get; set; }

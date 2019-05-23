@@ -59,6 +59,11 @@
                     //    width: 105,
                     //},
                     {
+						name: 'Weight',
+                        displayName: 'Объем',
+                        width: 100,
+                    },
+                    {
                         name: 'Cost',
                         displayName: 'Стоимость',
                         width: 100,

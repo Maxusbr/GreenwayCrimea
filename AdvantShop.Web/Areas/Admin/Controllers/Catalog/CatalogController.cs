@@ -148,6 +148,8 @@ namespace AdvantShop.Web.Admin.Controllers.Catalog
                 product.Offers[0].BasePrice = model.Price = price.Replace(" ", "").TryParseFloat();
             }
 
+	        product.Weight = model.Weight;
+
             ProductService.UpdateProduct(product, true);
 
             var reloadCatalogTree = false;

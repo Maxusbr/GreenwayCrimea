@@ -30,6 +30,7 @@ namespace AdvantShop.Web.Admin.Models.Catalog
             }
         }
 
+        public float Weight { get; set; }
         public float Amount { get; set; }
 
         public int OffersCount { get; set; }

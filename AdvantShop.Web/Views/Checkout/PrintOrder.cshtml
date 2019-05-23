@@ -165,143 +165,150 @@
         <div class="o-big-title">
             @T("Checkout.PrintOrder.OrderItems")
         </div>
-        <table class="orders-table">
-            @if (order.OrderItems.Count > 0)
-            {
-                <tr class="orders-table-header">
-                    <th class="photo"></th>
-                    <th class="artno">@T("Checkout.PrintOrder.ItemSku")</th>
-                    <th class="name">@T("Checkout.PrintOrder.ItemName")</th>
-                    <th class="price">@T("Checkout.PrintOrder.ItemPrice")</th>
-                    <th class="amount">@T("Checkout.PrintOrder.ItemAmount")</th>
-                    <th class="total-price">@T("Checkout.PrintOrder.ItemCost")</th>
-                </tr>
-                foreach (var item in order.OrderItems)
-                {
-                    var product = item.ProductID != null ? ProductService.GetProduct((int)item.ProductID) : null;
-                    <tr>
-                        <td class="photo">
-                            @if (item.Photo != null)
-                            {
-                                <img src="@item.Photo.ImageSrcXSmall()" alt="">
-                            }
-                            else if (item.ProductID != null && product != null)
-                            {
-                                <img src="@FoldersHelper.GetImageProductPath(ProductImageType.XSmall, product.Photo, true)" alt="" />
-                            }
-                        </td>
-                        <td class="artno">
-                            @item.ArtNo
-                        </td>
-                        <td class="name">
-                            <div class="description">
-                                <div class="prod-name">
-                                    <a href="@(product != null ? Url.RouteUrl("Product", new{ url = product.UrlPath}): "")" class="cs-link">@Html.Raw(item.Name)</a>
-                                </div>
-                                <div class="prod-option">
-                                    @Html.Raw(!string.IsNullOrEmpty(item.Color) ? "<span class='cs-light'>" + SettingsCatalog.ColorsHeader + "</span>: <span class='value cs-link'>" + item.Color + "</span>" : "")
-                                </div>
-                                <div class="prod-option">
-                                    @Html.Raw(!string.IsNullOrEmpty(item.Size) ? "<span class='cs-light'>" + SettingsCatalog.SizesHeader + "</span>: <span class='value cs-link'>" + item.Size + "</span>" : "")
-                                </div>
-                                @Html.RenderCustomOptions(item.SelectedOptions)
-                            </div>
-                        </td>
-                        <td class="p-price">@item.Price.FormatPrice(currency)</td>
-                        <td class="amount">@item.Amount</td>
-                        <td class="p-total-price">@((item.Price * item.Amount).FormatPrice(currency))</td>
-                    </tr>
-                }
-            }
-            @if (order.OrderCertificates.Count > 0)
-            {
-                <tr class="orders-table-header">
-                    <th class="name" colspan="5">@T("Checkout.PrintOrder.GiftCertificateCode")</th>
-                    <th class="total-price">@T("Checkout.PrintOrder.GiftCertificateSum")</th>
-                </tr>
-                foreach (var item in order.OrderCertificates)
-                {
-                    <tr>
-                        <td class="name" colspan="4">@T("Checkout.PrintOrder.GiftCertificate")</td>
-                        <td>@item.CertificateCode</td>
-                        <td class="total-price">@item.Sum.FormatPrice(currency)</td>
-                    </tr>
-                }
-            }
-            <tr>
-                <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.ProductsPrice"):</td>
-                <td class="footer-value">@Html.Raw(Model.ProductsPrice)</td>
-            </tr>
-            @if (!string.IsNullOrEmpty(Model.OrderDiscount))
-            {
-                <tr>
-                    <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.Discount"):</td>
-                    <td class="footer-value">-@Html.Raw(Model.OrderDiscount)</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.OrderBonus))
-            {
-                <tr>
-                    <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.Bonuses"):</td>
-                    <td class="footer-value">-@Html.Raw(Model.OrderBonus)</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.Certificate))
-            {
-                <tr>
-                    <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.Certificate"):</td>
-                    <td class="footer-value">-@Html.Raw(Model.Certificate)</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.Coupon))
-            {
-                <tr>
-                    <td class="footer-name" colspan="5">@T("Checkout.PrintOrder.Coupon"):</td>
-                    <td class="footer-value">@Html.Raw(Model.Coupon)</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.ShippingPrice))
-            {
-                <tr>
-                    <td class="footer-name" colspan="5">
-                        @*@T("Checkout.PrintOrder.Shipping"):*@
-                        <span class="shipping-name">Доставка:</span>
-                        <div>
-                            @Html.Raw(Model.ShippingMethodName)
-                        </div>
-                    </td>
-                    <td class="footer-value shipping-value">@Html.Raw(Model.ShippingPrice)</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.PaymentPrice))
-            {
-                <tr>
-                    <td class="footer-name" colspan="5">
-                        @*@Html.Raw(Model.PaymentPriceTitle):*@
-                        <span class="shipping-name">Наценка на метод оплаты:</span>
-                        <div>
-                            @Html.Raw(Model.PaymentMethodName)
-                        </div>
-                    </td>
-                    <td class="footer-value shipping-value">@Html.Raw(Model.PaymentPrice)</td>
-                </tr>
-            }
-            @if (Model.Taxes != null)
-            {
-                foreach (var tax in Model.Taxes)
-                {
-                    <tr>
-                        <td class="footer-name" colspan="5">@((tax.ShowInPrice ? T("Core.Tax.IncludeTax").ToString() : "") + " " + tax.Name):</td>
-                        <td class="footer-value">@tax.Sum.FormatPrice(currency)</td>
-                    </tr>
-                }
-            }
-            <tr>
-                <td class="footer-name bold" colspan="5">@T("Checkout.PrintOrder.TotalPrice"):</td>
-                <td class="footer-value bold">@Html.Raw(Model.TotalPrice)</td>
-            </tr>
+		<table class="orders-table">
+			@if (order.OrderItems.Count > 0)
+			{
+				<tr class="orders-table-header">
+					<th class="photo"></th>
+					<th class="artno">@T("Checkout.PrintOrder.ItemSku")</th>
+					<th class="name">@T("Checkout.PrintOrder.ItemName")</th>
+					<th class="price">@T("Checkout.PrintOrder.ItemPrice")</th>
+					<th class="volume">Объем</th>
+					<th class="amount">@T("Checkout.PrintOrder.ItemAmount")</th>
+					<th class="total-price">@T("Checkout.PrintOrder.ItemCost")</th>
+				</tr>
+				foreach (var item in order.OrderItems)
+				{
+					var product = item.ProductID != null ? ProductService.GetProduct((int)item.ProductID) : null;
+					<tr>
+						<td class="photo">
+							@if (item.Photo != null)
+							{
+								<img src="@item.Photo.ImageSrcXSmall()" alt="">
+							}
+							else if (item.ProductID != null && product != null)
+							{
+								<img src="@FoldersHelper.GetImageProductPath(ProductImageType.XSmall, product.Photo, true)" alt="" />
+							}
+						</td>
+						<td class="artno">
+							@item.ArtNo
+						</td>
+						<td class="name">
+							<div class="description">
+								<div class="prod-name">
+									<a href="@(product != null ? Url.RouteUrl("Product", new{ url = product.UrlPath}): "")" class="cs-link">@Html.Raw(item.Name)</a>
+								</div>
+								<div class="prod-option">
+									@Html.Raw(!string.IsNullOrEmpty(item.Color) ? "<span class='cs-light'>" + SettingsCatalog.ColorsHeader + "</span>: <span class='value cs-link'>" + item.Color + "</span>" : "")
+								</div>
+								<div class="prod-option">
+									@Html.Raw(!string.IsNullOrEmpty(item.Size) ? "<span class='cs-light'>" + SettingsCatalog.SizesHeader + "</span>: <span class='value cs-link'>" + item.Size + "</span>" : "")
+								</div>
+								@Html.RenderCustomOptions(item.SelectedOptions)
+							</div>
+						</td>
+						<td class="p-price">@item.Price.FormatPrice(currency)</td>
+						<td class="volume">@item.Weight</td>
+						<td class="amount">@item.Amount</td>
+						<td class="p-total-price">@((item.Price * item.Amount).FormatPrice(currency))</td>
+					</tr>
+				}
+			}
+			@if (order.OrderCertificates.Count > 0)
+			{
+				<tr class="orders-table-header">
+					<th class="name" colspan="5">@T("Checkout.PrintOrder.GiftCertificateCode")</th>
+					<th class="total-price">@T("Checkout.PrintOrder.GiftCertificateSum")</th>
+				</tr>
+				foreach (var item in order.OrderCertificates)
+				{
+					<tr>
+						<td class="name" colspan="4">@T("Checkout.PrintOrder.GiftCertificate")</td>
+						<td>@item.CertificateCode</td>
+						<td class="total-price">@item.Sum.FormatPrice(currency)</td>
+					</tr>
+				}
+			}
+			<tr>
+				<td class="footer-name" colspan="6">@T("Checkout.PrintOrder.ProductsPrice"):</td>
+				<td class="footer-value">@Html.Raw(Model.ProductsPrice)</td>
+			</tr>
+			<tr>
+				<td class="footer-name bold" colspan="6">Объем:</td>
+				<td class="footer-value bold">@Html.Raw(order.OrderItems.Sum(o => o.Weight * o.Amount))</td>
+			</tr>
+			@if (!string.IsNullOrEmpty(Model.OrderDiscount))
+			{
+			<tr>
+				@*<td class="footer-name" colspan="6">@T("Checkout.PrintOrder.Discount"):</td>*@
+				<td class="footer-name" colspan="6">Оплачено:</td>
+				<td class="footer-value">-@Html.Raw(Model.OrderDiscount)</td>
+			</tr>
+			}
+			@if (!string.IsNullOrEmpty(Model.OrderBonus))
+			{
+				<tr>
+					<td class="footer-name" colspan="6">@T("Checkout.PrintOrder.Bonuses"):</td>
+					<td class="footer-value">-@Html.Raw(Model.OrderBonus)</td>
+				</tr>
+			}
+			@if (!string.IsNullOrEmpty(Model.Certificate))
+			{
+				<tr>
+					<td class="footer-name" colspan="6">@T("Checkout.PrintOrder.Certificate"):</td>
+					<td class="footer-value">-@Html.Raw(Model.Certificate)</td>
+				</tr>
+			}
+			@if (!string.IsNullOrEmpty(Model.Coupon))
+			{
+				<tr>
+					<td class="footer-name" colspan="6">@T("Checkout.PrintOrder.Coupon"):</td>
+					<td class="footer-value">@Html.Raw(Model.Coupon)</td>
+				</tr>
+			}
+			@if (!string.IsNullOrEmpty(Model.ShippingPrice))
+			{
+				<tr>
+					<td class="footer-name" colspan="6">
+						@*@T("Checkout.PrintOrder.Shipping"):*@
+						<span class="shipping-name">Доставка:</span>
+						<div>
+							@Html.Raw(Model.ShippingMethodName)
+						</div>
+					</td>
+					<td class="footer-value shipping-value">@Html.Raw(Model.ShippingPrice)</td>
+				</tr>
+			}
+			@if (!string.IsNullOrEmpty(Model.PaymentPrice))
+			{
+				<tr>
+					<td class="footer-name" colspan="6">
+						@*@Html.Raw(Model.PaymentPriceTitle):*@
+						<span class="shipping-name">Наценка на метод оплаты:</span>
+						<div>
+							@Html.Raw(Model.PaymentMethodName)
+						</div>
+					</td>
+					<td class="footer-value shipping-value">@Html.Raw(Model.PaymentPrice)</td>
+				</tr>
+			}
+			@if (Model.Taxes != null)
+			{
+				foreach (var tax in Model.Taxes)
+				{
+					<tr>
+						<td class="footer-name" colspan="6">@((tax.ShowInPrice ? T("Core.Tax.IncludeTax").ToString() : "") + " " + tax.Name):</td>
+						<td class="footer-value">@tax.Sum.FormatPrice(currency)</td>
+					</tr>
+				}
+			}
+			<tr>
+				<td class="footer-name bold" colspan="6">@T("Checkout.PrintOrder.TotalPrice"):</td>
+				<td class="footer-value bold">@Html.Raw(Model.TotalPrice)</td>
+			</tr>
 
-        </table>
+		</table>
         @if (order.CustomerComment.IsNotEmpty())
         {
             <div class="comment">

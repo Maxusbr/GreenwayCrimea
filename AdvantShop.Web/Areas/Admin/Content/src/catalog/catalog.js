@@ -51,6 +51,13 @@
                     //enableCellEdit: true
                 },
                 {
+					name: 'Weight',
+					displayName: 'Объем',
+					enableCellEdit: true,
+					type: 'number',
+					width: 80,
+                },
+                {
                     name: 'PriceString',
                     displayName: 'Цена',
                     enableCellEdit: true,

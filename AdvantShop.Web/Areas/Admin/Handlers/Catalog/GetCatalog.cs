@@ -64,6 +64,7 @@ namespace AdvantShop.Web.Admin.Handlers.Catalog
                 "PhotoName",
                 //"(Select Count(ProductID) From Catalog.ProductCategories Where ProductID=Product.ProductID)".AsSqlField("ProductCategoriesCount"),
                 "Price",
+				"Weight",
                 "(Select sum (Amount) from catalog.Offer where Offer.ProductID=Product.productID)".AsSqlField("Amount"),
                 "(Select count (offerid) from catalog.Offer where Offer.ProductID=Product.productID)".AsSqlField("OffersCount"),
                 "Enabled",
